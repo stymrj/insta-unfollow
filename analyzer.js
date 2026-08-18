@@ -1060,6 +1060,10 @@ function setupFilterListener() {
 const FREE_FIRST_DAY_SCANS = 40;
 const FREE_DAILY_ADD = 20;
 
+// Free plan unfollow cap: 50 per day per Instagram account, reset at midnight local time.
+// Premium members have no cap. Counting happens on successful unfollows only.
+const FREE_DAILY_UNFOLLOWS = 50;
+
 async function getDailyScanLimit(userId) {
     if (!userId) return null;
     
@@ -1138,6 +1142,53 @@ async function getDailyScanLimit(userId) {
         dailyAdd: limitData.dailyAdd || (limitData.isFirstDay ? FREE_FIRST_DAY_SCANS : FREE_DAILY_ADD),
         isTrialActive: false
     };
+}
+
+// Daily unfollow allowance (per Instagram account), in the same shape as the scan limit so one
+// plan means one thing. Premium is unlimited; free gets FREE_DAILY_UNFOLLOWS per day.
+async function getDailyUnfollowAllowance(userId) {
+    if (!userId) return null;
+
+    const membership = await getPremiumMembership();
+    const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
+    if (isPremium) {
+        return { isPremium: true, used: 0, remaining: Infinity, total: Infinity };
+    }
+
+    const data = await chrome.storage.local.get(['dailyUnfollowLimits']);
+    const allLimits = data.dailyUnfollowLimits || {};
+    const today = new Date().toDateString();
+    const record = allLimits[userId] || {};
+
+    if (record.date !== today) {
+        await chrome.storage.local.set({
+            dailyUnfollowLimits: { ...allLimits, [userId]: { date: today, used: 0 } }
+        });
+        return { isPremium: false, used: 0, remaining: FREE_DAILY_UNFOLLOWS, total: FREE_DAILY_UNFOLLOWS };
+    }
+
+    const used = record.used || 0;
+    return {
+        isPremium: false,
+        used: used,
+        remaining: Math.max(0, FREE_DAILY_UNFOLLOWS - used),
+        total: FREE_DAILY_UNFOLLOWS
+    };
+}
+
+// Count a successful unfollow against today's allowance for this account.
+async function recordUnfollowUsed(userId) {
+    if (!userId) return;
+
+    const data = await chrome.storage.local.get(['dailyUnfollowLimits']);
+    const allLimits = data.dailyUnfollowLimits || {};
+    const today = new Date().toDateString();
+    const record = allLimits[userId] || {};
+    const used = record.date === today ? (record.used || 0) + 1 : 1;
+
+    await chrome.storage.local.set({
+        dailyUnfollowLimits: { ...allLimits, [userId]: { date: today, used } }
+    });
 }
 
 // Show daily limit info in UI - Basit ve anlaşılır uyarı
@@ -1778,8 +1829,9 @@ async function probeWritePath() {
 
     try {
         // Probes the same two endpoints the real unfollow uses, in the same order, so the answer
-        // reflects what a run would actually meet rather than one path's health.
-        await unfollowUser(target.node.username, target.node.id);
+        // reflects what a run would actually meet rather than one path's health. A no-op on a
+        // non-follower, so it must never spend the free plan's daily unfollow quota.
+        await unfollowUser(target.node.username, target.node.id, { countQuota: false });
         return rememberWriteProbe('open');
     } catch (error) {
         if (error.code === 'SESSION_EXPIRED') throw error;
@@ -1894,7 +1946,7 @@ async function postUnfollow(url, headers) {
     }
 }
 
-async function unfollowUser(username, userId) {
+async function unfollowUser(username, userId, options = {}) {
     try {
         const targetId = userId || await resolveUserId(username);
         if (!targetId) throw new Error(getMessage('failedToUnfollow') || 'Could not resolve account');
@@ -1946,6 +1998,12 @@ async function unfollowUser(username, userId) {
             throw err;
         }
 
+        // Counted only on confirmed success, so a blocked or failed request never eats the quota.
+        // The write-path probe is a no-op health check and is the one caller that does not count.
+        if (options.countQuota !== false) {
+            await recordUnfollowUsed(currentUserId);
+        }
+
         return ok;
     } catch (error) {
         console.error('Error unfollowing user:', error);
@@ -1970,6 +2028,18 @@ function setupUnfollowListeners() {
             try {
                 this.disabled = true;
                 this.textContent = getMessage('unfollowing');
+
+                const allowance = await getDailyUnfollowAllowance(currentUserId);
+                if (allowance && !allowance.isPremium && allowance.remaining <= 0) {
+                    this.textContent = getMessage('unfollow');
+                    this.disabled = false;
+                    showToast(
+                        getMessage('freeUnfollowLimitReached', [String(allowance.total)])
+                            || 'Daily unfollow limit reached',
+                        'error'
+                    );
+                    return;
+                }
 
                 // The id is on the button, so the username never has to be resolved again.
                 const success = await unfollowUser(username, this.dataset.userid);
@@ -2108,6 +2178,7 @@ function buildUnfollowQueue(mode) {
         if (currentWhitelistSet.has(user.node.username)) return false;
         if (user._unfollowed) return false;
         if (user._unfollowError) return false;
+        if (user._unfollowSkippedForLimit) return false;
         if (mode === 'nonFollowers') return !followerIds.has(user.node.id);
         return true;
     });
@@ -2266,6 +2337,50 @@ async function warnWaitingTimeOutOfRange(seconds) {
     });
 }
 
+// Enforce the free plan's daily unfollow cap on a bulk run before it is confirmed.
+// Returns the (possibly reduced) queue, or null when the run must stop entirely.
+// Premium members pass through unchanged. The skip flag is per-run: a later run on the same
+// page (e.g. the next day, when the allowance has refilled) rebuilds the whole queue.
+async function applyUnfollowAllowance(mode) {
+    allDisplayData.forEach(user => { user._unfollowSkippedForLimit = false; });
+    const queue = buildUnfollowQueue(mode);
+
+    if (!currentUserId) return queue;
+    const allowance = await getDailyUnfollowAllowance(currentUserId);
+    if (!allowance || allowance.isPremium) return queue;
+
+    if (allowance.remaining <= 0) {
+        await showCustomModal({
+            icon: 'info',
+            title: 'Daily unfollow limit reached',
+            message: getMessage('freeUnfollowLimitReached', [String(allowance.total)])
+                || 'You can unfollow up to ' + allowance.total + ' users per day with the free plan. Upgrade to Premium for unlimited unfollowing.',
+            confirmText: getMessage('ok') || 'OK',
+            showCancel: false
+        });
+        return null;
+    }
+
+    if (queue.length > allowance.remaining) {
+        const capped = queue.slice(0, allowance.remaining);
+        queue.slice(allowance.remaining).forEach(user => {
+            user._unfollowSkippedForLimit = true;
+        });
+        await showCustomModal({
+            icon: 'info',
+            title: 'Daily unfollow limit reached',
+            message: 'The free plan allows ' + allowance.total + ' unfollows per day. This run will '
+                + 'unfollow ' + allowance.remaining + ' of ' + queue.length + ' selected accounts — '
+                + 'the rest stay on the list and can be unfollowed tomorrow or with Premium.',
+            confirmText: getMessage('ok') || 'OK',
+            showCancel: false
+        });
+        return capped;
+    }
+
+    return queue;
+}
+
 async function startUnfollowNonFollowers() {
     // Both checks go to the network, so they run behind the button's checking state.
     const preflight = await withPreflight(document.getElementById('unfollowNonFollowers'), async () => {
@@ -2283,7 +2398,8 @@ async function startUnfollowNonFollowers() {
     const everyoneBtn = document.getElementById('unfollowEveryone');
     const stopButton = document.getElementById('stopUnfollow');
     const waitingTimeInput = document.getElementById('waitingTime');
-    const queue = buildUnfollowQueue('nonFollowers');
+    const queue = await applyUnfollowAllowance('nonFollowers');
+    if (queue === null) return;
 
     const waitingTime = readWaitingTime(waitingTimeInput);
     if (waitingTime < MIN_WAIT_SECONDS || waitingTime > MAX_WAIT_SECONDS) {
@@ -2348,7 +2464,8 @@ async function startUnfollowEveryone() {
     const everyoneBtn = document.getElementById('unfollowEveryone');
     const stopButton = document.getElementById('stopUnfollow');
     const waitingTimeInput = document.getElementById('waitingTime');
-    const queue = buildUnfollowQueue('everyone');
+    const queue = await applyUnfollowAllowance('everyone');
+    if (queue === null) return;
 
     const waitingTime = readWaitingTime(waitingTimeInput);
     if (waitingTime < MIN_WAIT_SECONDS || waitingTime > MAX_WAIT_SECONDS) {

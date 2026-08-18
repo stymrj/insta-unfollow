@@ -4,7 +4,7 @@
 // Owner bypass: this Google account is always premium, no payment needed.
 const PREMIUM_ADMIN_EMAIL = 'sstymrj@gmail.com';
 // Everyone premium until the payment worker is deployed and selling starts.
-const PREMIUM_BY_DEFAULT = true;
+const PREMIUM_BY_DEFAULT = false;
 // Public key that verifies premium tokens signed by the payment worker
 // (see premium-config.js in the extension pages for the same value).
 const PREMIUM_PUBLIC_KEY = '1ad6e3be3cdfab04e5078b78ab5da26adb2ba93d0b8ec2d0fe23f66f073671ad';

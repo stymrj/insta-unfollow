@@ -18,7 +18,7 @@ window.PREMIUM_PUBLIC_KEY = '1ad6e3be3cdfab04e5078b78ab5da26adb2ba93d0b8ec2d0fe2
 window.PREMIUM_ADMIN_EMAIL = 'sstymrj@gmail.com';
 // PREMIUM_BY_DEFAULT: everyone is premium until you deploy the payment worker.
 // Flip this to false once PAYMENT_API_URL points at a live worker and you start selling.
-window.PREMIUM_BY_DEFAULT = true;
+window.PREMIUM_BY_DEFAULT = false;
 
 // The background service worker cannot load this file, so it reads the worker URL from
 // storage instead. Kept in sync here, once, on every extension page load.
