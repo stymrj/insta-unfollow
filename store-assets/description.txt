@@ -1,0 +1,22 @@
+Insta Unfollow — Followers & Unfollowers Tracker
+
+Who doesn't follow you back? Who's secretly a bot? Insta Unfollow analyses your Instagram account and answers both questions in seconds — then unfollows the accounts you choose, safely and politely.
+
+Key features:
+• Non-followers finder — see exactly who isn't following you back, in one clean list
+• Bot & fake-account scanner — suspicious accounts flagged with a risk score, plus deep-scan checks
+• Safe unfollowing — respectful pacing so Instagram doesn't throttle you; pause or stop anytime
+• Whitelist — protect friends, family, and accounts you never want to touch
+• Growth tracking — see who unfollowed you since your last analysis
+• Free plan — 40 analyses on day one, +20 every day, 50 unfollows per day
+• Premium (optional) — unlimited analysis and unlimited unfollowing
+
+How it works:
+1. Sign in with Google
+2. Open Instagram in your browser
+3. Click Analyse — your followers and following lists are read
+4. Review, whitelist who you love, unfollow the rest
+
+Your data stays yours: results are stored on your device. We never touch your private messages, stories, or posts.
+
+Made with ♥ by Satyam Raj

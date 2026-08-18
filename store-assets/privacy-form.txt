@@ -1,0 +1,28 @@
+Chrome Web Store Privacy tab — reference answers (v1.0.0)
+
+SINGLE PURPOSE DESCRIPTION
+Insta Unfollow analyses the user's own Instagram followers and following lists to identify accounts that do not follow them back, detect bot-like and fake accounts, and unfollow the accounts the user chooses.
+
+PERMISSION JUSTIFICATIONS
+storage:
+Stores the user's login state, analysis results, daily scan/unfollow counters and membership data locally so the extension works offline and enforces free-plan limits.
+
+unlimitedStorage:
+Analysis results and cached follower lists for large Instagram accounts can exceed the regular 5 MB quota; unlimited storage prevents data loss for accounts with tens of thousands of followers.
+
+identity:
+Google sign-in via OAuth 2.0 (chrome.identity launchWebAuthFlow) to identify the user and check premium membership. No passwords are ever collected.
+
+Host permission:
+https://*.instagram.com/* — reads the user's own followers and following lists and sends unfollow requests from their own session. https://*.cdninstagram.com/* and https://*.fbcdn.net/* — loads profile pictures for display. https://accounts.google.com/* and https://www.googleapis.com/* — Google sign-in and profile fetch. https://*.workers.dev/* — checks premium membership status with the extension's own backend worker.
+
+REMOTE CODE
+No, I am not using Remote code.
+
+DATA USAGE
+Checked: Personally identifiable information (name, email, profile picture, Instagram username).
+Unchecked: health, financial, authentication, personal communications, location, web history, user activity, website content.
+All three certification boxes checked.
+
+PRIVACY POLICY URL
+https://stymrj.github.io/insta-unfollow/privacy.html
