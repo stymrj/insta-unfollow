@@ -19,7 +19,6 @@
       "32": "img/32.png",
       "48": "img/48.png"
    },
-   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr4wLtwMLa7V3uynd2mHwFV2CnTIHjHPmzmjZMWD1PmEfY2pHoecJ5RI0A4Ammtuz2AGTWE3WXhfwIKxsOHsnJJTsLaw1JYvf3gOCZsoqTzRvBDRHD1W+tlwP/zTtCCPVBIrAEJWp0rquYkAuaYPtdSsvOZrP8HjG/48ux3mIQBgA7HNK/bGaDWLQocwCaisTpdEu2smUv3/ra6pPAtR8kottnjZFqEOzY78mW9mT+tBDjhZn+gPvpHEDKt3luLS+RlFdJO2b3ad3K4fKbqTviNL8z8VEV43BUXtCJODAJjsyIRQ5LC7qj7Z+IZXTvRHOf/5NV+DuET+p3KiDxpLZfQIDAQAB",
    "manifest_version": 3,
    "name": "__MSG_extensionName__",
    "permissions": [ "storage", "unlimitedStorage", "identity" ],
