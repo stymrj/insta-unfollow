@@ -1,0 +1,10 @@
+name = "insta-unfollow"
+main = "payments-worker.js"
+compatibility_date = "2026-08-18"
+
+# KV namespace for the user registry, payment links, grants and bans.
+# Create it first (dashboard → Workers & Pages → KV → Create namespace, or
+# `npx wrangler kv namespace create PAYMENTS_KV`), then paste its id below.
+kv_namespaces = [
+  { binding = "PAYMENTS_KV", id = "PASTE-KV-NAMESPACE-ID" }
+]
