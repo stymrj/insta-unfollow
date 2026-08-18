@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Στοιχεία Λογαριασμού"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ λογαριασμοί ακόμα διαθέσιμοι. Για να δείτε όλους",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Ενεργοί Χρήστες"
+   },
+   "addToWhitelist": {
+      "message": "Προσθήκη στη λίστα εξαιρέσεων"
+   },
+   "allAccountsUnlocked": {
+      "message": "Όλοι οι λογαριασμοί ξεκλειδώθηκαν!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "λογαριασμών θα καταργηθεί η παρακολούθηση."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Το Instagram επέστρεψε τη λίστα ακολούθων σας χωρίς δεδομένα φωτογραφίας προφίλ, οπότε κάθε βαθμολογία εδώ είναι χαμηλότερη απ’ ό,τι θα έπρεπε και κάποια bot θα ξεφύγουν. Ανοίξτε το Instagram σε μια καρτέλα και εκτελέστε ξανά τη σάρωση για πλήρες αποτέλεσμα."
+   },
+   "botBlindTitle": {
+      "message": "Ο έλεγχος φωτογραφίας προφίλ δεν ήταν δυνατός"
+   },
+   "botCleared": {
+      "message": "Υπέρ του"
+   },
+   "botDeepAllChecked": {
+      "message": "Όλοι οι επισημασμένοι λογαριασμοί ελέγχθηκαν"
+   },
+   "botDeepChecked": {
+      "message": "Το προφίλ ελέγχθηκε"
+   },
+   "botDeepChecksFor": {
+      "message": "Έλεγχος σε βάθος $1 λογαριασμών"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Απομένουν $1 ($2 ήδη έγιναν)"
+   },
+   "botDeepDone": {
+      "message": "Οι έλεγχοι σε βάθος ολοκληρώθηκαν — ελέγχθηκαν $1 λογαριασμοί."
+   },
+   "botDeepNoTargets": {
+      "message": "Κανένας λογαριασμός δεν χρειάζεται έλεγχο σε βάθος."
+   },
+   "botDeepPausedBody": {
+      "message": "Πριν σταματήσει ελέγχθηκαν $1 λογαριασμοί και $2 όχι. Οι παρακάτω ετυμηγορίες βασίζονται μόνο σε όσα διαβάστηκαν. Δεν υπάρχει σταθερή αναμονή — μπορεί να πάρει ώρες ή μέχρι αύριο. Επιστρέψτε αργότερα αντί να δοκιμάσετε τώρα, κάτι που απλώς τη μεγαλώνει."
+   },
+   "botDeepPausedTitle": {
+      "message": "Το Instagram διέκοψε τους ελέγχους προφίλ"
+   },
+   "botDeepRemaining": {
+      "message": "$1 έμειναν χωρίς έλεγχο."
+   },
+   "botDeepSubtitle": {
+      "message": "Ένα αίτημα ανά λογαριασμό, με ασφαλή ρυθμό."
+   },
+   "botFilterAll": {
+      "message": "Όλοι οι σαρωμένοι"
+   },
+   "botFilterLikely": {
+      "message": "Πιθανά bot"
+   },
+   "botFilterSuspicious": {
+      "message": "Ύποπτοι"
+   },
+   "botFreeHeadline": {
+      "message": "ακόμη επισημασμένοι λογαριασμοί είναι κλειδωμένοι"
+   },
+   "botFreeWithheld": {
+      "message": "Βρέθηκαν $1 ακόμη — αναβαθμίστε για να τους δείτε όλους."
+   },
+   "botIntroHeading": {
+      "message": "Βρείτε τους λογαριασμούς που δεν είναι πραγματικοί άνθρωποι"
+   },
+   "botIntroLead": {
+      "message": "Κάθε ακόλουθος βαθμολογείται ως προς το πόσο πιθανό είναι να είναι bot ή λογαριασμός μιας χρήσης."
+   },
+   "botIntroReasons": {
+      "message": "Κάθε βαθμολογία συνοδεύεται από τους λόγους της, ώστε να βλέπετε γιατί επισημάνθηκε ένας λογαριασμός αντί να εμπιστεύεστε έναν αριθμό. Τίποτα δεν αφαιρείται αυτόματα — η λίστα είναι εδώ για να δείτε και να αποφασίσετε."
+   },
+   "botNoFlagged": {
+      "message": "Τίποτα δεν επισημάνθηκε — η λίστα ακολούθων σας φαίνεται καθαρή."
+   },
+   "botNoRowsForFilter": {
+      "message": "Τίποτα σε αυτή την ομάδα."
+   },
+   "botNoSignals": {
+      "message": "Τίποτα ασυνήθιστο"
+   },
+   "botNotRunYet": {
+      "message": "Εκτελέστε μια σάρωση για να δείτε εδώ τους ακολούθους σας με βαθμολογία."
+   },
+   "botPopupBody": {
+      "message": "Βαθμολογεί κάθε ακόλουθο ως προς το πόσο πιθανό είναι να είναι bot ή λογαριασμός μιας χρήσης: χωρίς φωτογραφία προφίλ, χωρίς δημοσιεύσεις, όνομα χρήστη που μοιάζει αυτόματα παραγόμενο, ακολουθεί χιλιάδες ενώ σχεδόν κανείς δεν τον ακολουθεί."
+   },
+   "botPopupReasons": {
+      "message": "Κάθε βαθμολογία συνοδεύεται από τους λόγους της. Τίποτα δεν αφαιρείται αυτόματα."
+   },
+   "botProvisionalBody": {
+      "message": "Σε $1 επισημασμένους λογαριασμούς δεν έχει ελεγχθεί ακόμη το προφίλ. Τα περισσότερα bot επιβεβαιώνονται μόνο με αυτόν τον έλεγχο — εκτελέστε τον πριν εμπιστευτείτε τον αριθμό των πιθανών bot."
+   },
+   "botProvisionalTitle": {
+      "message": "Αυτές οι ετυμηγορίες δεν είναι ακόμη οριστικές"
+   },
+   "botReadSubtitle": {
+      "message": "Διαβάζεται απευθείας από τη λίστα ακολούθων σας — χωρίς επιπλέον αιτήματα."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Χωρίς φωτογραφία προφίλ"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Ισορροπημένη αναλογία ακολούθων"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Πολλά ψηφία στο όνομα χρήστη"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Χωρίς εμφανιζόμενο όνομα"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Ακολουθεί πολύ περισσότερους απ’ όσους τον ακολουθούν"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Έχει σήμα λογαριασμού"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Ακολουθεί τεράστιο αριθμό λογαριασμών"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Χωρίς ακολούθους"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Δεν έχει δημοσιεύσει ποτέ"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Δημοσιεύει τακτικά"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Το όνομα χρήστη λήγει σε ψηφία"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Ασυνήθιστο μοτίβο κάτω παύλας"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Επαληθευμένος λογαριασμός"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Ασυνήθιστα μεγάλο όνομα χρήστη"
+   },
+   "botRunDeepChecks": {
+      "message": "Εκτέλεση σε βάθος ελέγχων"
+   },
+   "botScanCached": {
+      "message": "Τελευταία σάρωση $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Το Instagram διέκοψε τους ελέγχους προφίλ. Τα παρακάτω αποτελέσματα προέρχονται από όσα προλάβαμε να διαβάσουμε."
+   },
+   "botScanDeepProgress": {
+      "message": "Έλεγχος προφίλ… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Η σάρωση ολοκληρώθηκε."
+   },
+   "botScanNoData": {
+      "message": "Δεν ήταν δυνατή η ανάγνωση της λίστας ακολούθων σας. Το Instagram μας κρατά πίσω — περνά από μόνο του, αλλά χωρίς σταθερή αναμονή. Δοκιμάστε αργότερα."
+   },
+   "botScanPartial": {
+      "message": "Η σάρωση τελείωσε, αλλά η λίστα ακολούθων επέστρεψε ελλιπής — λείπουν κάποιοι λογαριασμοί."
+   },
+   "botScanReading": {
+      "message": "Ανάγνωση των ακολούθων σας…"
+   },
+   "botScanReadingCount": {
+      "message": "Ανάγνωση ακολούθων… $1"
+   },
+   "botScanTitle": {
+      "message": "Σάρωση ακολούθων bot"
+   },
+   "botScoreRaw": {
+      "message": "Ακατέργαστη βαθμολογία"
+   },
+   "botSignalName": {
+      "message": "Όνομα χρήστη που μοιάζει αυτόματα παραγόμενο"
+   },
+   "botSignalPhoto": {
+      "message": "Χωρίς φωτογραφία προφίλ"
+   },
+   "botSignalPosts": {
+      "message": "Χωρίς δημοσιεύσεις"
+   },
+   "botSignalRatio": {
+      "message": "Ακολουθεί χιλιάδες, σχεδόν κανείς δεν τον ακολουθεί"
+   },
+   "botSignalsUnavailable": {
+      "message": "Για αυτόν τον λογαριασμό δεν ήταν δυνατοί κάποιοι έλεγχοι, οπότε η βαθμολογία του στηρίζεται σε λιγότερα στοιχεία από των υπολοίπων."
+   },
+   "botStatFlagged": {
+      "message": "Επισημασμένοι"
+   },
+   "botStatFollowers": {
+      "message": "Ακόλουθοι"
+   },
+   "botStatFollowing": {
+      "message": "Ακολουθεί"
+   },
+   "botStatLikely": {
+      "message": "Πιθανά bot"
+   },
+   "botStatPosts": {
+      "message": "Δημοσιεύσεις"
+   },
+   "botStatScanned": {
+      "message": "Σαρώθηκαν"
+   },
+   "botStatSuspicious": {
+      "message": "Ύποπτοι"
+   },
+   "botStatsGone": {
+      "message": "Ο λογαριασμός χάθηκε"
+   },
+   "botStatsGoneHint": {
+      "message": "Το Instagram δεν επέστρεψε προφίλ — ο λογαριασμός διαγράφηκε ή απενεργοποιήθηκε, τα νούμερά του δεν διαβάζονται πια."
+   },
+   "botStatsNotChecked": {
+      "message": "Δεν ελέγχθηκε"
+   },
+   "botStepDeep": {
+      "message": "Έλεγχος προφίλ"
+   },
+   "botStepReading": {
+      "message": "Ανάγνωση ακολούθων"
+   },
+   "botTableReasons": {
+      "message": "Γιατί"
+   },
+   "botTableScore": {
+      "message": "Βαθμολογία"
+   },
+   "botTableStats": {
+      "message": "Αριθμοί προφίλ"
+   },
+   "botTableVerdict": {
+      "message": "Ετυμηγορία"
+   },
+   "botVerdictClean": {
+      "message": "Μοιάζει αληθινός"
+   },
+   "botVerdictLikely": {
+      "message": "Πιθανό bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Ύποπτος"
+   },
+   "cacheExpiryWarning": {
+      "message": "Οι εικόνες προφίλ ενδέχεται να μην εμφανίζονται επειδή η τελευταία ανάλυση ήταν πριν από $DAYS$ ημέρες. Αναλύστε ξανά για ενημερωμένα αποτελέσματα.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Τελευταία ανάλυση $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Έλεγχος…"
+   },
+   "checkingLoginStatus": {
+      "message": "Έλεγχος κατάστασης σύνδεσης..."
+   },
+   "chooseMonthly": {
+      "message": "Επίλεξε Μηνιαίο"
+   },
+   "chooseYearly": {
+      "message": "Επίλεξε Ετήσιο"
+   },
+   "comeBackTomorrow": {
+      "message": "Ελάτε πίσω αύριο"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Μπορείς να αναλύσεις +20 ακόλουθους περισσότερους κάθε μέρα. Αν είσαι ανυπόμονος, άλλαξε σε Premium, δες τους όλους τώρα. Αν είσαι υπομονετικός, έλα πίσω αύριο, θα μπορείς να δεις +20 ακόλουθους περισσότερους. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Ελάτε πίσω αύριο για να δείτε $1 λογαριασμούς περισσότερους (+$2 νέα ξεκλειδώματα)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Σίγουρα θέλετε να καταργήσετε την παρακολούθηση ΟΛΩΝ;"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Επιβεβαίωση ενέργειας"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Σίγουρα θέλετε να καταργήσετε την παρακολούθηση όλων όσων δεν σας ακολουθούν;"
+   },
+   "connected": {
+      "message": "Συνδεδεμένο"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Αδύνατη λήψη λίστας. Δοκιμάστε αργότερα."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$ω $MINUTES$λ $SECONDS$δ $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "αργότερα"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$λ $SECONDS$δ $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "αργότερα"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Αύριο μπορείτε να δείτε +20 λογαριασμούς περισσότερους ($COUNTDOWN$). Κάθε ημέρα προστίθενται +20 λογαριασμοί, τα όρια συσσωρεύονται!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5ω 30λ αργότερα"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Ημερήσιο Όριο"
+   },
+   "dailyScanLimit": {
+      "message": "Ημερήσιο Όριο Σάρωσης"
+   },
+   "dataLoading": {
+      "message": "Φόρτωση δεδομένων..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Φόρτωση: $COUNT$ ακόλουθοι βρέθηκαν",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Φόρτωση: $COUNT$ ακολουθούμενοι βρέθηκαν",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "-50%"
+   },
+   "email": {
+      "message": "Email"
+   },
+   "errorFetchingData": {
+      "message": "Σφάλμα λήψης δεδομένων. Δοκιμάστε ξανά."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Το Instagram είναι προσωρινά μη διαθέσιμο. Δοκιμάστε ξανά αργότερα."
+   },
+   "errorNetwork": {
+      "message": "Δεν ήταν δυνατή η σύνδεση με το Instagram. Ελέγξτε τη σύνδεσή σας — τίποτα δεν χάθηκε και η διαδικασία θα συνεχιστεί."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "Προέκυψε σφάλμα. Δοκιμάστε ξανά."
+   },
+   "errorRateLimit": {
+      "message": "Το Instagram διέκοψε τα αιτήματά μας. Περνά από μόνο του, αλλά δεν υπάρχει σταθερή αναμονή — ανάλογα με το πόσα έγιναν, μπορεί να πάρει ώρες ή μέχρι αύριο. Η άμεση επανάληψη τη μεγαλώνει."
+   },
+   "errorSessionExpired": {
+      "message": "Η συνεδρία σας στο Instagram έληξε. Συνδεθείτε στο Instagram και δοκιμάστε ξανά."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 λεπτά απομένουν"
+   },
+   "etaSeconds": {
+      "message": "~$1 δευτ. απομένουν"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Αποτυχία κατάργησης. Δοκιμάστε ξανά."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Προηγμένο φίλτρο"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Φίλτρα και αναφορές"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Προηγμένο Σύστημα Ειδοποιήσεων"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Προηγμένη κατάργηση"
+   },
+   "featureBasicUnfollow": {
+      "message": "Βασική κατάργηση"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/ημέρα)"
+   },
+   "featureMax50Analysis": {
+      "message": "Μέγ. 40 αναλύσεις"
+   },
+   "featureSpamDetector": {
+      "message": "Ανίχνευση spam"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Απεριόριστες αναλύσεις"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Απεριόριστη ανάλυση"
+   },
+   "finalizingAnalysis": {
+      "message": "Ολοκλήρωση..."
+   },
+   "firstDayBonus": {
+      "message": "Μπόνους Πρώτης Ημέρας"
+   },
+   "firstDayBonusMessage": {
+      "message": "Μπόνους πρώτης ημέρας: 40 λογαριασμοί! Αύριο μπορείτε να δείτε +20 λογαριασμούς περισσότερους ($COUNTDOWN$). Κάθε ημέρα προστίθενται +20 λογαριασμοί.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5ω 30λ αργότερα"
+         }
+      }
+   },
+   "followers": {
+      "message": "Ακόλουθοι"
+   },
+   "following": {
+      "message": "Ακολουθεί"
+   },
+   "followingYouBadge": {
+      "message": "Σας Ακολουθεί"
+   },
+   "freePlanLimitDescription": {
+      "message": "Φτάσατε 40 αναλύσεις. Premium για απεριόριστες!"
+   },
+   "freePlanLimitReached": {
+      "message": "Όριο Δωρεάν Εξαντλήθηκε"
+   },
+   "freePlanTodayMessage": {
+      "message": "Στο δωρεάν σχέδιο, μπορείτε να δείτε $DISPLAYED$ λογαριασμούς σήμερα. Υπάρχουν $HIDDEN$ λογαριασμοί ακόμα αλλά δεν μπορείτε να τους δείτε.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Στο δωρεάν σχέδιο, μπορείτε να δείτε $COUNT$ λογαριασμούς σήμερα.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Με το δωρεάν σχέδιο μπορείτε να σταματήσετε να ακολουθείτε μόνο έως $COUNT$ χρήστες. Παρακαλώ επιλέξτε μόνο τους πρώτους $COUNT$ χρήστες ή αναβαθμίστε σε Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Με το δωρεάν σχέδιο μπορείτε να σταματήσετε να ακολουθείτε μόνο έως $COUNT$ χρήστες. Αναβαθμίστε σε Premium για απεριόριστη διακοπή παρακολούθησης!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Όνομα"
+   },
+   "getStartedWithGoogle": {
+      "message": "Εγγραφή με Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Πήγαινε στο Instagram"
+   },
+   "gotIt": {
+      "message": "Εντάξει"
+   },
+   "incompleteDataMessage": {
+      "message": "Το Instagram σταμάτησε να στέλνει δεδομένα πριν φτάσει ολόκληρη η λίστα, οπότε λείπουν κάποιοι λογαριασμοί. Αν ενεργήσετε τώρα, μπορεί να καταργήσετε την παρακολούθηση ατόμων που όντως σας ακολουθούν. Εκτελέστε πρώτα ξανά την ανάλυση."
+   },
+   "incompleteDataTitle": {
+      "message": "Η λίστα είναι ελλιπής"
+   },
+   "instagramLimitedBody": {
+      "message": "Είστε ακόμη συνδεδεμένοι και δεν υπάρχει κάτι λάθος με τον λογαριασμό σας. Αυτό περνά από μόνο του, αλλά δεν υπάρχει σταθερή αναμονή — ανάλογα με το πόσα έγιναν, μπορεί να πάρει ώρες ή μέχρι αύριο. Οι επαναλαμβανόμενες προσπάθειες τη μεγαλώνουν."
+   },
+   "instagramLimitedTitle": {
+      "message": "Το Instagram περιορίζει τα αιτήματα αυτή τη στιγμή"
+   },
+   "instagramLoginAlert": {
+      "message": "Συνδεθείτε πρώτα στο Instagram!"
+   },
+   "invalidWaitingTime": {
+      "message": "Εισάγετε έγκυρο χρόνο 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Μη έγκυρος χρόνος αναμονής"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "Τα $1 δευτερόλεπτα είναι εκτός του επιτρεπόμενου εύρους. Εισαγάγετε τιμή μεταξύ $2 και $3 δευτερολέπτων."
+   },
+   "later": {
+      "message": "αργότερα"
+   },
+   "limitedTimeOffer": {
+      "message": "Περιορισμένη Προσφορά"
+   },
+   "liveCounterPrefix": {
+      "message": "Τις τελευταίες 24 ώρες"
+   },
+   "liveCounterSuffix": {
+      "message": "άτομα αναβάθμισαν σε Premium!"
+   },
+   "loading": {
+      "message": "Φόρτωση..."
+   },
+   "loadingProfile": {
+      "message": "Φόρτωση προφίλ"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Φόρτωση της αποθηκευμένης ανάλυσής σας…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Δεν ζητείται τίποτα από το Instagram."
+   },
+   "login": {
+      "message": "Σύνδεση"
+   },
+   "loginFailed": {
+      "message": "Αποτυχία σύνδεσης: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Άγνωστο σφάλμα"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Απαιτείται Σύνδεση"
+   },
+   "loginSuccessful": {
+      "message": "Επιτυχής σύνδεση!"
+   },
+   "loginWithGoogle": {
+      "message": "Σύνδεση με Google"
+   },
+   "logout": {
+      "message": "Αποσύνδεση"
+   },
+   "logoutError": {
+      "message": "Σφάλμα αποσύνδεσης: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Άγνωστο σφάλμα"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Διαχείριση Συνδρομής"
+   },
+   "membership": {
+      "message": "Συνδρομή"
+   },
+   "menuBotScan": {
+      "message": "Σάρωση bot"
+   },
+   "menuHome": {
+      "message": "Αρχική"
+   },
+   "menuProfile": {
+      "message": "Προφίλ"
+   },
+   "menuUpgrade": {
+      "message": "Αναβάθμιση"
+   },
+   "minutesTest": {
+      "message": "$1 λεπτά (Δοκιμή)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 λογαριασμοί περισσότεροι διαθέσιμοι"
+   },
+   "moreInHours": {
+      "message": "Σε $2 ώρες θα μπορείς να δεις +$1 ακόλουθους περισσότερους"
+   },
+   "nextCheckTime": {
+      "message": "Επόμενος έλεγχος: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Επόμενος έλεγχος: Αύριο"
+   },
+   "nextInSeconds": {
+      "message": "Επόμενο σε $SECONDS$δ",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Κανένας που δεν σας ακολουθεί"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Δεν υπάρχουν λογαριασμοί που δεν σας ακολουθούν για κατάργηση."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Δεν υπάρχουν λογαριασμοί για κατάργηση παρακολούθησης."
+   },
+   "notFollowingYouBadge": {
+      "message": "Δεν Ακολουθεί"
+   },
+   "notProvided": {
+      "message": "Δεν δόθηκε"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Άνοιγμα..."
+   },
+   "openingInNewTab": {
+      "message": "Άνοιγμα σε νέα καρτέλα..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/μήνα"
+   },
+   "perYear": {
+      "message": "/έτος"
+   },
+   "planFree": {
+      "message": "Δωρεάν"
+   },
+   "planPopular": {
+      "message": "Δημοφιλές"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Ετήσιο"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Συνδεθείτε για συνδρομή"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Συνδεθείτε πρώτα στο Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Συνδεθείτε για αναβάθμιση"
+   },
+   "pleaseSignInToView": {
+      "message": "Συνδεθείτε για να δείτε πληροφορίες"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Με Premium, δείτε όλους τους $COUNT$ λογαριασμούς τώρα, χωρίς όρια!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Προστασία Απορρήτου"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Επεξεργασία..."
+   },
+   "rateLimitWaiting": {
+      "message": "Το Instagram ζήτησε παύση — συνεχίζουμε σε $1 δευτ."
+   },
+   "rating": {
+      "message": "Βαθμολογία"
+   },
+   "reAnalyze": {
+      "message": "Επανανάλυση"
+   },
+   "reAnalyzing": {
+      "message": "Επανανάλυση..."
+   },
+   "removeFromWhitelist": {
+      "message": "Αφαίρεση από τη λίστα εξαιρέσεων"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "50% έκπτωση Premium"
+   },
+   "saveSettings": {
+      "message": "Αποθήκευση"
+   },
+   "scanBlockedBody": {
+      "message": "Αυτό είναι συνηθισμένο, περνά από μόνο του, και δεν υπάρχει κάτι λάθος ούτε με τον λογαριασμό σας ούτε με την επέκταση. Σταματήσαμε αμέσως αντί να ξαναπροσπαθήσουμε, γιατί οι επαναλαμβανόμενες προσπάθειες μεγαλώνουν την αναμονή. Δοκιμάστε αργότερα σήμερα."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Δεν ήταν δυνατή η ανάγνωση της λίστας ακολούθων αυτή τη στιγμή."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Δεν ήταν δυνατή η ανάγνωση της λίστας «ακολουθείτε» αυτή τη στιγμή."
+   },
+   "scanBlockedTitle": {
+      "message": "Το Instagram θέλει ένα σύντομο διάλειμμα"
+   },
+   "scanPartialBody": {
+      "message": "Ήρθε ένα μέρος και μετά το Instagram μας σταμάτησε, οπότε τα αποτελέσματα δεν είναι αρκετά πλήρη για να ενεργήσετε. Δεν άλλαξε τίποτα. Επιστρέψτε αργότερα και εκτελέστε ξανά την ανάλυση — μπορεί να πάρει ώρες και η δοκιμή τώρα τη μεγαλώνει."
+   },
+   "scanPartialTitle": {
+      "message": "Η λίστα επέστρεψε ελλιπής"
+   },
+   "scanPaused": {
+      "message": "Το Instagram ζήτησε να επιβραδύνουμε — αναμονή…"
+   },
+   "scanRemaining": {
+      "message": "Απομένουν $1 λογαριασμοί"
+   },
+   "scanShortBody": {
+      "message": "Η σάρωση τελείωσε, αλλά επέστρεψαν λιγότεροι λογαριασμοί από όσους αναφέρει το Instagram. Αν ενεργήσετε βάσει αυτού, μπορεί να καταργήσετε την παρακολούθηση ατόμων που σας ακολουθούν, γι’ αυτό δεν εμφανίζεται τίποτα. Εκτελέστε ξανά την ανάλυση."
+   },
+   "scanShortTitle": {
+      "message": "Λείπουν κάποιοι λογαριασμοί"
+   },
+   "seconds": {
+      "message": "δευτερόλεπτα"
+   },
+   "secure": {
+      "message": "Ασφαλές"
+   },
+   "secureLogin": {
+      "message": "Ασφαλής Σύνδεση"
+   },
+   "sessionExpiredTitle": {
+      "message": "Η συνεδρία σας στο Instagram έληξε"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Μόνο μη ακόλουθοι"
+   },
+   "showingFirstAccounts": {
+      "message": "Εμφάνιση πρώτων $COUNT$ λογαριασμών.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Παράλειψη ακολούθων"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Παράλειψη επαληθευμένων"
+   },
+   "startAnalysis": {
+      "message": "Έναρξη Ανάλυσης"
+   },
+   "startBotScan": {
+      "message": "Έναρξη σάρωσης bot"
+   },
+   "startUnfollow": {
+      "message": "Έναρξη Κατάργησης"
+   },
+   "startingAnalysis": {
+      "message": "Έναρξη ανάλυσης..."
+   },
+   "statFailed": {
+      "message": "Απέτυχαν"
+   },
+   "statFollowers": {
+      "message": "Ακόλουθοι"
+   },
+   "statFollowing": {
+      "message": "Ακολουθείτε"
+   },
+   "statNonFollowers": {
+      "message": "Δεν Ακολουθείτε"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Καταργήθηκαν"
+   },
+   "stop": {
+      "message": "Στοπ"
+   },
+   "stopping": {
+      "message": "Διακοπή…"
+   },
+   "support": {
+      "message": "Υποστήριξη"
+   },
+   "tableAction": {
+      "message": "Ενέργεια"
+   },
+   "tableFollowingYou": {
+      "message": "Σας Ακολουθεί"
+   },
+   "tableFullName": {
+      "message": "Όνομα"
+   },
+   "tablePrivate": {
+      "message": "Ιδιωτικό"
+   },
+   "tableProfile": {
+      "message": "Προφίλ"
+   },
+   "tableUsername": {
+      "message": "Χρήστης"
+   },
+   "tableVerified": {
+      "message": "Επαληθευμένο"
+   },
+   "testNow": {
+      "message": "Δοκιμή τώρα"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Αυτή η ενέργεια δεν αναιρείται!"
+   },
+   "toRemoveLimits": {
+      "message": "για να αφαιρέσετε τα όρια"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Απομένουν $COUNT$ ημέρες",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Η δοκιμαστική περίοδος έληξε"
+   },
+   "tryAgain": {
+      "message": "Δοκιμάστε ξανά"
+   },
+   "tryAnyway": {
+      "message": "Δοκιμή ούτως ή άλλως"
+   },
+   "unfollow": {
+      "message": "Κατάργηση"
+   },
+   "unfollowDelayLabel": {
+      "message": "Καθυστέρηση (δευτ)"
+   },
+   "unfollowEveryone": {
+      "message": "Κατάργηση Όλων"
+   },
+   "unfollowFailed": {
+      "message": "Απέτυχε"
+   },
+   "unfollowNonFollowers": {
+      "message": "Κατάργηση Μη-Ακολούθων"
+   },
+   "unfollowProcessStarted": {
+      "message": "Η κατάργηση παρακολούθησης ξεκίνησε."
+   },
+   "unfollowSettings": {
+      "message": "Ρυθμίσεις Κατάργησης"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 δευτερόλεπτα ανάμεσα σε κάθε κατάργηση παρακολούθησης."
+   },
+   "unfollowedSuccess": {
+      "message": "Καταργήθηκε"
+   },
+   "unfollowing": {
+      "message": "Κατάργηση..."
+   },
+   "unknownError": {
+      "message": "Άγνωστο σφάλμα"
+   },
+   "upgradeToPremium": {
+      "message": "Αναβάθμιση σε Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Αναβάθμιση σε Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium για όλους!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "λογαριασμών θα καταργηθεί η παρακολούθηση."
+   },
+   "waitingSeconds": {
+      "message": "Αναμονή $SECONDS$δ",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Χρόνος αναμονής (3-300 δευτ)"
+   },
+   "welcomeFunText1": {
+      "message": "Θέλετε να δείτε ποιος δεν σας ακολουθεί; 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Η κατάργηση ακολούθησης είναι πλέον εύκολη 😊"
+   },
+   "welcomeTitle": {
+      "message": "Καλώς ήρθατε! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Συνδεθείτε με Google, τα δεδομένα σας είναι ασφαλή!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 θα ξεκλειδωθούν αύριο"
+   },
+   "writeBlockedMessage": {
+      "message": "Το Instagram σταμάτησε προσωρινά να δέχεται αυτόματες καταργήσεις παρακολούθησης σε αυτόν τον λογαριασμό. Είναι προσωρινό και δεν υπάρχει κάτι λάθος με τον λογαριασμό σας.\n\nΣτο μεταξύ μπορείτε να καταργείτε την παρακολούθηση χειροκίνητα από τη σελίδα προφίλ, και η λίστα σας μένει εδώ — δεν αναλώθηκε τίποτα."
+   },
+   "writeBlockedTitle": {
+      "message": "Το Instagram περιορίζει αυτή τη στιγμή τις καταργήσεις παρακολούθησης"
+   },
+   "yesUnfollow": {
+      "message": "Ναι, κατάργηση"
+   },
+   "yesUnfollowAll": {
+      "message": "Ναι, κατάργηση όλων"
+   }
+}

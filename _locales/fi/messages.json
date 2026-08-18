@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Tilin tiedot"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ lisää tiliä saatavilla. Nähdäksesi kaikki",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Aktiiviset käyttäjät"
+   },
+   "addToWhitelist": {
+      "message": "Lisää sallittujen listalle"
+   },
+   "allAccountsUnlocked": {
+      "message": "Kaikki tilit avattu!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "käyttäjän seuraaminen lopetetaan."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram palautti seuraajaluettelosi ilman profiilikuvatietoja, joten kaikki pisteet täällä ovat matalampia kuin niiden pitäisi olla ja osa boteista jää huomaamatta. Avaa Instagram välilehdelle ja aja skannaus uudelleen saadaksesi täyden tuloksen."
+   },
+   "botBlindTitle": {
+      "message": "Profiilikuvan tarkistusta ei voitu tehdä"
+   },
+   "botCleared": {
+      "message": "Sen puolesta"
+   },
+   "botDeepAllChecked": {
+      "message": "Kaikki merkityt tilit tarkistettu"
+   },
+   "botDeepChecked": {
+      "message": "Profiili tarkistettu"
+   },
+   "botDeepChecksFor": {
+      "message": "Syvätarkista $1 tiliä"
+   },
+   "botDeepChecksRemaining": {
+      "message": "$1 jäljellä ($2 jo tehty)"
+   },
+   "botDeepDone": {
+      "message": "Syvätarkistukset valmiit — $1 tiliä tarkistettu."
+   },
+   "botDeepNoTargets": {
+      "message": "Yksikään tili ei tarvitse syvätarkistusta."
+   },
+   "botDeepPausedBody": {
+      "message": "$1 tiliä ehdittiin tarkistaa ennen pysähtymistä ja $2 ei. Alla olevat tulokset perustuvat vain siihen, mitä ehdittiin lukea. Kiinteää odotusaikaa ei ole — se voi kestää tunteja tai huomiseen. Palaa myöhemmin sen sijaan että yrittäisit nyt, mikä vain pidentää sitä."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram keskeytti profiilitarkistukset"
+   },
+   "botDeepRemaining": {
+      "message": "$1 jäi tarkistamatta."
+   },
+   "botDeepSubtitle": {
+      "message": "Yksi pyyntö tiliä kohti, turvallisella tahdilla."
+   },
+   "botFilterAll": {
+      "message": "Kaikki skannatut"
+   },
+   "botFilterLikely": {
+      "message": "Todennäköiset botit"
+   },
+   "botFilterSuspicious": {
+      "message": "Epäilyttävät"
+   },
+   "botFreeHeadline": {
+      "message": "muuta merkittyä tiliä on lukittu"
+   },
+   "botFreeWithheld": {
+      "message": "Löytyi $1 lisää — päivitä nähdäksesi kaikki."
+   },
+   "botIntroHeading": {
+      "message": "Löydä tilit, joiden takana ei ole oikeita ihmisiä"
+   },
+   "botIntroLead": {
+      "message": "Jokainen seuraaja pisteytetään sen mukaan, kuinka todennäköisesti kyseessä on botti tai kertakäyttötili."
+   },
+   "botIntroReasons": {
+      "message": "Jokaisen pistemäärän mukana tulevat sen perusteet, jotta näet miksi tili merkittiin sen sijaan että luottaisit numeroon. Mitään ei poisteta automaattisesti — lista on täällä sinun katsottavaksesi ja päätettäväksesi."
+   },
+   "botNoFlagged": {
+      "message": "Ei merkintöjä — seuraajaluettelosi näyttää puhtaalta."
+   },
+   "botNoRowsForFilter": {
+      "message": "Tässä ryhmässä ei ole mitään."
+   },
+   "botNoSignals": {
+      "message": "Ei mitään epätavallista"
+   },
+   "botNotRunYet": {
+      "message": "Aja skannaus nähdäksesi seuraajasi pisteytettyinä tässä."
+   },
+   "botPopupBody": {
+      "message": "Pisteyttää jokaisen seuraajan sen mukaan, kuinka todennäköisesti kyseessä on botti tai kertakäyttötili: ei profiilikuvaa, ei julkaisuja, generoidulta näyttävä käyttäjänimi, seuraa tuhansia vaikka häntä ei seuraa juuri kukaan."
+   },
+   "botPopupReasons": {
+      "message": "Jokaisen pistemäärän mukana tulevat sen perusteet. Mitään ei poisteta automaattisesti."
+   },
+   "botProvisionalBody": {
+      "message": "$1 merkityn tilin profiilia ei ole vielä tarkistettu. Suurin osa boteista varmistuu vasta sillä tarkistuksella — aja se ennen kuin luotat todennäköisten bottien määrään."
+   },
+   "botProvisionalTitle": {
+      "message": "Nämä tulokset eivät ole vielä lopullisia"
+   },
+   "botReadSubtitle": {
+      "message": "Luetaan suoraan seuraajaluettelostasi — ei ylimääräisiä pyyntöjä."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Ei profiilikuvaa"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Tasapainoinen seuraajasuhde"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Paljon numeroita käyttäjänimessä"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Ei nimeä"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Seuraa paljon useampia kuin seuraajia"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Tilillä on merkki"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Seuraa valtavan montaa tiliä"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Ei seuraajia"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Ei julkaisuja"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Julkaisee säännöllisesti"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Käyttäjänimi päättyy numeroihin"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Epätavallinen alaviivakuvio"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Vahvistettu tili"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Epätavallisen pitkä käyttäjänimi"
+   },
+   "botRunDeepChecks": {
+      "message": "Aja syvätarkistukset"
+   },
+   "botScanCached": {
+      "message": "Viimeisin skannaus $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram keskeytti profiilitarkistukset. Alla olevat tulokset ovat siitä, mitä ehdittiin lukea."
+   },
+   "botScanDeepProgress": {
+      "message": "Tarkistetaan profiileja… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Skannaus valmis."
+   },
+   "botScanNoData": {
+      "message": "Seuraajaluetteloasi ei voitu lukea. Instagram pidättelee meitä — se menee ohi itsestään, mutta ilman kiinteää odotusaikaa. Yritä myöhemmin."
+   },
+   "botScanPartial": {
+      "message": "Skannaus valmistui, mutta seuraajaluettelo palautui puutteellisena — osa tileistä puuttuu."
+   },
+   "botScanReading": {
+      "message": "Luetaan seuraajiasi…"
+   },
+   "botScanReadingCount": {
+      "message": "Luetaan seuraajia… $1"
+   },
+   "botScanTitle": {
+      "message": "Bottiseuraajien skannaus"
+   },
+   "botScoreRaw": {
+      "message": "Raakapisteet"
+   },
+   "botSignalName": {
+      "message": "Generoidulta näyttävä käyttäjänimi"
+   },
+   "botSignalPhoto": {
+      "message": "Ei profiilikuvaa"
+   },
+   "botSignalPosts": {
+      "message": "Ei julkaisuja"
+   },
+   "botSignalRatio": {
+      "message": "Seuraa tuhansia, häntä ei seuraa juuri kukaan"
+   },
+   "botSignalsUnavailable": {
+      "message": "Tälle tilille osaa tarkistuksista ei voitu tehdä, joten sen pisteet perustuvat vähempään näyttöön kuin muiden."
+   },
+   "botStatFlagged": {
+      "message": "Merkityt"
+   },
+   "botStatFollowers": {
+      "message": "Seuraajat"
+   },
+   "botStatFollowing": {
+      "message": "Seuraa"
+   },
+   "botStatLikely": {
+      "message": "Todennäköiset botit"
+   },
+   "botStatPosts": {
+      "message": "Julkaisut"
+   },
+   "botStatScanned": {
+      "message": "Skannattu"
+   },
+   "botStatSuspicious": {
+      "message": "Epäilyttävät"
+   },
+   "botStatsGone": {
+      "message": "Tiliä ei ole"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram ei palauttanut profiilia — tili on poistettu tai suljettu, sen lukuja ei voi enää lukea."
+   },
+   "botStatsNotChecked": {
+      "message": "Ei tarkistettu"
+   },
+   "botStepDeep": {
+      "message": "Tarkistetaan profiileja"
+   },
+   "botStepReading": {
+      "message": "Luetaan seuraajia"
+   },
+   "botTableReasons": {
+      "message": "Miksi"
+   },
+   "botTableScore": {
+      "message": "Pisteet"
+   },
+   "botTableStats": {
+      "message": "Profiililuvut"
+   },
+   "botTableVerdict": {
+      "message": "Tulos"
+   },
+   "botVerdictClean": {
+      "message": "Vaikuttaa aidolta"
+   },
+   "botVerdictLikely": {
+      "message": "Todennäköisesti botti"
+   },
+   "botVerdictSuspicious": {
+      "message": "Epäilyttävä"
+   },
+   "cacheExpiryWarning": {
+      "message": "Profiilikuvat eivät ehkä näy, koska viimeisin analyysisi tehtiin $DAYS$ päivää sitten. Analysoi uudelleen saadaksesi päivitetyt tulokset.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Viimeisin analyysi $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Peruuta"
+   },
+   "checkingBeforeStart": {
+      "message": "Tarkistetaan…"
+   },
+   "checkingLoginStatus": {
+      "message": "Tarkistetaan kirjautumistilaa..."
+   },
+   "chooseMonthly": {
+      "message": "Valitse kuukausittainen"
+   },
+   "chooseYearly": {
+      "message": "Valitse vuosittainen"
+   },
+   "comeBackTomorrow": {
+      "message": "Tule takaisin huomenna"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Voit analysoida +20 lisää seuraajia joka päivä. Jos olet kärsimätön, vaihda Premiumiin ja näe kaikki nyt. Jos olet kärsivällinen, tule takaisin huomenna, voit nähdä +20 lisää seuraajia. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Tule takaisin huomenna nähdäksesi $1 lisää tiliä (+$2 uutta avausta)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Varoitus!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Haluatko varmasti lopettaa KAIKKIEN seuraamisen?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Vahvista toiminto"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Haluatko varmasti lopettaa kaikkien ei-seuraajien seuraamisen?"
+   },
+   "connected": {
+      "message": "Yhdistetty"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Seurattavien listaa ei voitu hakea. Yritä myöhemmin uudelleen."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$t $MINUTES$min $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "myöhemmin"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$min $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "myöhemmin"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Huomenna voit nähdä +20 lisää tiliä ($COUNTDOWN$). +20 tiliä lisätään joka päivä, rajat kertyvät!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5t 30min myöhemmin"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Päivittäinen raja"
+   },
+   "dailyScanLimit": {
+      "message": "Päivittäinen skannausraja"
+   },
+   "dataLoading": {
+      "message": "Tietoja ladataan..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Tiedot ladataan: $COUNT$ seuraajaa löydetty",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Tiedot ladataan: $COUNT$ seurattavaa löydetty",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "50% ALENNUS"
+   },
+   "email": {
+      "message": "Sähköposti"
+   },
+   "errorFetchingData": {
+      "message": "Tietojen haussa tapahtui virhe. Yritä myöhemmin uudelleen."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram on tilapäisesti poissa käytöstä. Yritä myöhemmin uudelleen."
+   },
+   "errorNetwork": {
+      "message": "Instagramiin ei saatu yhteyttä. Tarkista yhteytesi — mitään ei ole menetetty ja ajo jatkuu."
+   },
+   "errorNetworkConnection": {
+      "message": "Yhteysvirhe. Tarkista internetyhteytesi ja yritä uudelleen."
+   },
+   "errorOccurred": {
+      "message": "Tapahtui virhe. Yritä uudelleen."
+   },
+   "errorRateLimit": {
+      "message": "Instagram on keskeyttänyt pyyntömme. Se menee ohi itsestään, mutta kiinteää odotusaikaa ei ole — riippuen siitä kuinka paljon tehtiin, se voi kestää tunteja tai huomiseen. Heti uudelleen yrittäminen pidentää sitä."
+   },
+   "errorSessionExpired": {
+      "message": "Instagram-istuntosi on vanhentunut. Kirjaudu Instagramiin ja yritä uudelleen."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Liian monta seuraamisen lopetuspyyntöä. Odotetaan 5 minuuttia ennen uudelleenyritystä..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min jäljellä"
+   },
+   "etaSeconds": {
+      "message": "~$1 s jäljellä"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Seuraamisen lopetus epäonnistui. Yritä uudelleen."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Edistynyt suodatus"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Edistynyt suodatus ja raportointi"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Edistynyt ilmoitusjärjestelmä"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Edistyneet seuraamisen lopetustoiminnot"
+   },
+   "featureBasicUnfollow": {
+      "message": "Perusseuraamisen lopetustoiminnot"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/päivä)"
+   },
+   "featureMax50Analysis": {
+      "message": "Enintään 40 seurattavan analyysi"
+   },
+   "featureSpamDetector": {
+      "message": "Roskapostitilin tunnistin"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Rajaton analyysi"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Rajaton seurattavien analyysi"
+   },
+   "finalizingAnalysis": {
+      "message": "Viimeistellään..."
+   },
+   "firstDayBonus": {
+      "message": "Ensimmäisen päivän bonus"
+   },
+   "firstDayBonusMessage": {
+      "message": "Ensimmäisen päivän bonus: 40 tiliä! Huomenna voit nähdä +20 lisää tiliä ($COUNTDOWN$). +20 tiliä lisätään joka päivä.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5t 30min myöhemmin"
+         }
+      }
+   },
+   "followers": {
+      "message": "Seuraajat"
+   },
+   "following": {
+      "message": "Seurataan"
+   },
+   "followingYouBadge": {
+      "message": "Seuraa sinua"
+   },
+   "freePlanLimitDescription": {
+      "message": "Olet saavuttanut 40 analyysin rajan. Päivitä Premiumiin rajattomaan analyysiin!"
+   },
+   "freePlanLimitReached": {
+      "message": "Ilmaisen suunnitelman raja saavutettu"
+   },
+   "freePlanTodayMessage": {
+      "message": "Ilmaisella suunnitelmalla voit nähdä $DISPLAYED$ tiliä tänään. On $HIDDEN$ lisää tiliä, mutta et voi nähdä niitä.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Ilmaisella suunnitelmalla voit nähdä $COUNT$ tiliä tänään.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Voit lopettaa seuraamisen vain $COUNT$ käyttäjälle ilmaisella suunnitelmalla. Valitse vain ensimmäiset $COUNT$ käyttäjää tai päivitä Premiumiin.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Voit lopettaa seuraamisen vain $COUNT$ käyttäjälle ilmaisella suunnitelmalla. Päivitä Premiumiin rajattomaan seuraamisen lopetukseen!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Koko nimi"
+   },
+   "getStartedWithGoogle": {
+      "message": "Aloita Googlella"
+   },
+   "goToInstagramLogin": {
+      "message": "Siirry Instagram-kirjautumiseen"
+   },
+   "gotIt": {
+      "message": "OK"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram lopetti tietojen lähettämisen ennen kuin koko lista ehti saapua, joten osa tileistä puuttuu. Toimiminen nyt voi lopettaa sellaisten ihmisten seuraamisen, jotka oikeasti seuraavat sinua. Aja analyysi ensin uudelleen."
+   },
+   "incompleteDataTitle": {
+      "message": "Luettelo on puutteellinen"
+   },
+   "instagramLimitedBody": {
+      "message": "Olet edelleen kirjautuneena eikä tililläsi ole mitään vikaa. Tämä menee ohi itsestään, mutta kiinteää odotusaikaa ei ole — riippuen siitä kuinka paljon tehtiin, se voi kestää tunteja tai huomiseen. Toistuva yrittäminen pidentää sitä."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram rajoittaa pyyntöjä juuri nyt"
+   },
+   "instagramLoginAlert": {
+      "message": "Kirjaudu ensin Instagramiin!"
+   },
+   "invalidWaitingTime": {
+      "message": "Syötä kelvollinen odotusaika välillä 3–300 sekuntia"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Virheellinen odotusaika"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 sekuntia on sallitun alueen ulkopuolella. Anna arvo väliltä $2–$3 sekuntia."
+   },
+   "later": {
+      "message": "myöhemmin"
+   },
+   "limitedTimeOffer": {
+      "message": "Rajoitetun ajan tarjous"
+   },
+   "liveCounterPrefix": {
+      "message": "Viimeisten 24 tunnin aikana"
+   },
+   "liveCounterSuffix": {
+      "message": "henkilöä päivitti Premiumiin!"
+   },
+   "loading": {
+      "message": "Ladataan..."
+   },
+   "loadingProfile": {
+      "message": "Ladataan profiilia"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Ladataan tallennettua analyysiäsi…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Instagramilta ei pyydetä mitään."
+   },
+   "login": {
+      "message": "Kirjaudu sisään"
+   },
+   "loginFailed": {
+      "message": "Kirjautuminen epäonnistui: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Tuntematon virhe"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Kirjautuminen vaaditaan"
+   },
+   "loginSuccessful": {
+      "message": "Kirjautuminen onnistui!"
+   },
+   "loginWithGoogle": {
+      "message": "Kirjaudu Googlella"
+   },
+   "logout": {
+      "message": "Kirjaudu ulos"
+   },
+   "logoutError": {
+      "message": "Uloskirjautumisessa tapahtui virhe: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Tuntematon virhe"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Hallitse tilausta"
+   },
+   "membership": {
+      "message": "Jäsenyys"
+   },
+   "menuBotScan": {
+      "message": "Bottiskannaus"
+   },
+   "menuHome": {
+      "message": "Koti"
+   },
+   "menuProfile": {
+      "message": "Profiili"
+   },
+   "menuUpgrade": {
+      "message": "Päivitä"
+   },
+   "minutesTest": {
+      "message": "$1 minuuttia (Testi)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 lisää tiliä saatavilla"
+   },
+   "moreInHours": {
+      "message": "$2 tunnin kuluttua näet +$1 lisää seuraajia"
+   },
+   "nextCheckTime": {
+      "message": "Seuraava tarkistus: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Seuraava tarkistus: Huomenna"
+   },
+   "nextInSeconds": {
+      "message": "Seuraava $SECONDS$s kuluttua",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Ei ei-seuraajia"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Ei ei-seuraajia, joiden seuraaminen lopetettaisiin."
+   },
+   "noUsers": {
+      "message": "Ei käyttäjiä"
+   },
+   "noUsersToUnfollow": {
+      "message": "Ei käyttäjiä, joiden seuraaminen lopetettaisiin."
+   },
+   "notFollowingYouBadge": {
+      "message": "Ei seuraa sinua"
+   },
+   "notProvided": {
+      "message": "Ei annettu"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Avataan..."
+   },
+   "openingInNewTab": {
+      "message": "Avataan uudessa välilehdessä..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/kuukausi"
+   },
+   "perYear": {
+      "message": "/vuosi"
+   },
+   "planFree": {
+      "message": "Ilmainen"
+   },
+   "planPopular": {
+      "message": "Suosittu"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Vuosittainen"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Kirjaudu uudelleen tilataksesi"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Kirjaudu ensin Instagramiin"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Kirjaudu sisään päivittääksesi Premiumiin"
+   },
+   "pleaseSignInToView": {
+      "message": "Kirjaudu sisään nähdäksesi tilitietosi"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Premiumilla näet kaikki $COUNT$ tiliä nyt, ilman rajoituksia!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Yksityisyys suojattu"
+   },
+   "processStarted": {
+      "message": "Prosessi aloitettu"
+   },
+   "processing": {
+      "message": "Käsitellään..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram pyysi taukoa — jatketaan $1 s kuluttua"
+   },
+   "rating": {
+      "message": "Arvostelu"
+   },
+   "reAnalyze": {
+      "message": "Analysoi uudelleen"
+   },
+   "reAnalyzing": {
+      "message": "Analysoidaan uudelleen..."
+   },
+   "removeFromWhitelist": {
+      "message": "Poista sallittujen listalta"
+   },
+   "retryIn": {
+      "message": "Yritetään uudelleen $SECONDS$s kuluttua...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Säästä 50% Premiumista - Paras arvo"
+   },
+   "saveSettings": {
+      "message": "Tallenna asetukset"
+   },
+   "scanBlockedBody": {
+      "message": "Tämä on tavallista, se menee itsestään ohi, eikä tililläsi tai laajennuksessa ole mitään vikaa. Lopetimme heti sen sijaan että olisimme yrittäneet uudelleen, koska toistuvat yritykset vain pidentävät odotusta. Yritä myöhemmin tänään."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Seuraajaluetteloa ei voitu lukea juuri nyt."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Seurattavien luetteloa ei voitu lukea juuri nyt."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram haluaa lyhyen tauon"
+   },
+   "scanPartialBody": {
+      "message": "Osa saapui ja sitten Instagram keskeytti meidät, joten tulokset eivät ole tarpeeksi täydelliset toimenpiteitä varten. Mitään ei ole muutettu. Palaa myöhemmin ja aja analyysi uudelleen — tämä voi kestää tunteja ja nyt yrittäminen pidentää sitä."
+   },
+   "scanPartialTitle": {
+      "message": "Luettelo palautui puutteellisena"
+   },
+   "scanPaused": {
+      "message": "Instagram pyysi hidastamaan — odotetaan…"
+   },
+   "scanRemaining": {
+      "message": "$1 tiliä jäljellä"
+   },
+   "scanShortBody": {
+      "message": "Skannaus valmistui, mutta tilejä palautui vähemmän kuin Instagram ilmoittaa listalla olevan. Toimiminen voisi lopettaa sinua seuraavien ihmisten seuraamisen, joten mitään ei näytetä. Aja analyysi uudelleen."
+   },
+   "scanShortTitle": {
+      "message": "Osa tileistä puuttuu"
+   },
+   "seconds": {
+      "message": "sekuntia"
+   },
+   "secure": {
+      "message": "Turvallinen"
+   },
+   "secureLogin": {
+      "message": "Turvallinen kirjautuminen"
+   },
+   "sessionExpiredTitle": {
+      "message": "Instagram-istuntosi on päättynyt"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Näytä vain ei-seuraajat"
+   },
+   "showingFirstAccounts": {
+      "message": "Näytetään ensimmäiset $COUNT$ tiliä.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Ohita sinua seuraavat tilit"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Ohita vahvistetut tilit"
+   },
+   "startAnalysis": {
+      "message": "Aloita analyysi"
+   },
+   "startBotScan": {
+      "message": "Aloita bottiskannaus"
+   },
+   "startUnfollow": {
+      "message": "Aloita seuraamisen lopetus"
+   },
+   "startingAnalysis": {
+      "message": "Aloitetaan analyysiä..."
+   },
+   "statFailed": {
+      "message": "Epäonnistui"
+   },
+   "statFollowers": {
+      "message": "Seuraajat"
+   },
+   "statFollowing": {
+      "message": "Seurataan"
+   },
+   "statNonFollowers": {
+      "message": "Ei seuraa"
+   },
+   "statRemaining": {
+      "message": "Ei seuraa"
+   },
+   "statUnfollowed": {
+      "message": "Seuraaminen lopetettu"
+   },
+   "stop": {
+      "message": "Pysäytä"
+   },
+   "stopping": {
+      "message": "Pysäytetään…"
+   },
+   "support": {
+      "message": "Tuki"
+   },
+   "tableAction": {
+      "message": "Toiminto"
+   },
+   "tableFollowingYou": {
+      "message": "Seuraa sinua"
+   },
+   "tableFullName": {
+      "message": "Koko nimi"
+   },
+   "tablePrivate": {
+      "message": "Yksityinen"
+   },
+   "tableProfile": {
+      "message": "Profiili"
+   },
+   "tableUsername": {
+      "message": "Käyttäjänimi"
+   },
+   "tableVerified": {
+      "message": "Vahvistettu"
+   },
+   "testNow": {
+      "message": "Testaa nyt"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Tätä toimintoa ei voi perua!"
+   },
+   "toRemoveLimits": {
+      "message": "rajoitusten poistamiseksi"
+   },
+   "trendDown": {
+      "message": "$COUNT$ viimeisimmän analyysin jälkeen",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "Ei muutosta"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ viimeisimmän analyysin jälkeen",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ päivää jäljellä",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Huomenna voit nähdä +20 lisää tiliä ($COUNTDOWN$). +20 tiliä lisätään joka päivä, rajat kertyvät!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "11t 13min 14s myöhemmin"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Ilmainen kokeilujaksosi on päättynyt. Voit nähdä $COUNT$ tiliä tänään.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Kokeilujakso päättynyt"
+   },
+   "tryAgain": {
+      "message": "Yritä uudelleen"
+   },
+   "tryAnyway": {
+      "message": "Yritä silti"
+   },
+   "unfollow": {
+      "message": "Lopeta seuraaminen"
+   },
+   "unfollowDelayLabel": {
+      "message": "Seuraamisen lopetusviive (sekuntia)"
+   },
+   "unfollowEveryone": {
+      "message": "Lopeta kaikkien seuraaminen"
+   },
+   "unfollowFailed": {
+      "message": "Epäonnistui"
+   },
+   "unfollowNonFollowers": {
+      "message": "Lopeta ei-seuraajien seuraaminen"
+   },
+   "unfollowProcessStarted": {
+      "message": "Seuraamisen lopetusprosessi on aloitettu."
+   },
+   "unfollowSettings": {
+      "message": "Seuraamisen lopetusasetukset"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 sekuntia jokaisen seuraamisen lopettamisen välissä."
+   },
+   "unfollowedSuccess": {
+      "message": "Seuraaminen lopetettu"
+   },
+   "unfollowing": {
+      "message": "Lopetetaan seuraamista..."
+   },
+   "unknownError": {
+      "message": "Tuntematon virhe"
+   },
+   "upgradeToPremium": {
+      "message": "Päivitä Premiumiin"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Päivitä Premiumiin"
+   },
+   "upgradeToSeeAll": {
+      "message": "Päivitä Premiumiin nähdäksesi kaikki tilit!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "käyttäjän seuraaminen lopetetaan."
+   },
+   "waitingSeconds": {
+      "message": "Odotetaan $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Odotusaika sekunteina (3-300)"
+   },
+   "welcomeFunText1": {
+      "message": "Haluatko nähdä, kuka ei seuraa sinua takaisin? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Seuraamisen lopettaminen on nyt paljon helpompaa 😊"
+   },
+   "welcomeTitle": {
+      "message": "Tervetuloa! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Kirjaudu vain Google-tililläsi, tietosi ovat turvassa!"
+   },
+   "whitelist": {
+      "message": "Sallittujen lista"
+   },
+   "whitelisted": {
+      "message": "Suojattu"
+   },
+   "whitelistedSkipped": {
+      "message": "Ohitettu (sallittujen listalla)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 avataan huomenna"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram ei toistaiseksi hyväksy automaattista seuraamisen lopettamista tällä tilillä. Tämä on väliaikaista, eikä tililläsi ole mitään vikaa.\n\nVoit yhä lopettaa seuraamisen käsin profiilisivulta sillä välin, ja listasi säilyy täällä — mitään ei ole kulunut."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram rajoittaa juuri nyt seuraamisen lopettamista"
+   },
+   "yesUnfollow": {
+      "message": "Kyllä, lopeta seuraaminen"
+   },
+   "yesUnfollowAll": {
+      "message": "Kyllä, lopeta kaikkien seuraaminen"
+   }
+}

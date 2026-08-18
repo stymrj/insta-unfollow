@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Konta Dati"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ konti vēl pieejami. Lai redzētu visus",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Aktīvi Lietotāji"
+   },
+   "addToWhitelist": {
+      "message": "Pievienot baltajam sarakstam"
+   },
+   "allAccountsUnlocked": {
+      "message": "Visi konti atslēgti!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "kontiem tiks pārtraukta sekošana."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram atgrieza tavu sekotāju sarakstu bez profila attēla datiem, tāpēc visi vērtējumi šeit ir zemāki nekā vajadzētu un daļa botu paliks nepamanīta. Atver Instagram cilnē un palaid skenēšanu vēlreiz pilnam rezultātam."
+   },
+   "botBlindTitle": {
+      "message": "Profila attēla pārbaudi neizdevās veikt"
+   },
+   "botCleared": {
+      "message": "Par labu tam"
+   },
+   "botDeepAllChecked": {
+      "message": "Visi atzīmētie konti pārbaudīti"
+   },
+   "botDeepChecked": {
+      "message": "Profils pārbaudīts"
+   },
+   "botDeepChecksFor": {
+      "message": "Padziļināti pārbaudīt $1 kontus"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Atlikuši $1 ($2 jau pārbaudīti)"
+   },
+   "botDeepDone": {
+      "message": "Padziļinātās pārbaudes pabeigtas — pārbaudīti $1 konti."
+   },
+   "botDeepNoTargets": {
+      "message": "Nevienam kontam nav vajadzīga padziļināta pārbaude."
+   },
+   "botDeepPausedBody": {
+      "message": "Pirms apstāšanās tika pārbaudīti $1 konti, bet $2 ne. Zemāk redzamie secinājumi balstās tikai uz to, ko paspēja nolasīt. Noteikta gaidīšanas laika nav — tas var ilgt stundas vai līdz rītdienai. Atgriezies vēlāk, nevis mēģini tagad, kas to tikai pagarina."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram apturēja profilu pārbaudi"
+   },
+   "botDeepRemaining": {
+      "message": "$1 palika nepārbaudīti."
+   },
+   "botDeepSubtitle": {
+      "message": "Viens pieprasījums uz kontu, drošā tempā."
+   },
+   "botFilterAll": {
+      "message": "Visi noskenētie"
+   },
+   "botFilterLikely": {
+      "message": "Iespējamie boti"
+   },
+   "botFilterSuspicious": {
+      "message": "Aizdomīgi"
+   },
+   "botFreeHeadline": {
+      "message": "citi atzīmēti konti ir bloķēti"
+   },
+   "botFreeWithheld": {
+      "message": "Atrasti vēl $1 — jaunini, lai redzētu visus."
+   },
+   "botIntroHeading": {
+      "message": "Atrodi kontus, aiz kuriem nav īstu cilvēku"
+   },
+   "botIntroLead": {
+      "message": "Katrs sekotājs tiek novērtēts pēc tā, cik ticami tas ir bots vai vienreizējs konts."
+   },
+   "botIntroReasons": {
+      "message": "Katram vērtējumam līdzi nāk tā pamatojums, lai tu redzētu, kāpēc konts tika atzīmēts, nevis paļautos uz skaitli. Nekas netiek noņemts automātiski — saraksts ir šeit, lai tu paskatītos un izlemtu."
+   },
+   "botNoFlagged": {
+      "message": "Nekas nav atzīmēts — tavs sekotāju saraksts izskatās tīrs."
+   },
+   "botNoRowsForFilter": {
+      "message": "Šajā grupā nekā nav."
+   },
+   "botNoSignals": {
+      "message": "Nekā neparasta"
+   },
+   "botNotRunYet": {
+      "message": "Palaid skenēšanu, lai šeit redzētu savus sekotājus ar vērtējumu."
+   },
+   "botPopupBody": {
+      "message": "Novērtē katru sekotāju pēc tā, cik ticami tas ir bots vai vienreizējs konts: nav profila attēla, nav ierakstu, ģenerēti izskatošs lietotājvārds, seko tūkstošiem, kamēr viņam gandrīz neviens."
+   },
+   "botPopupReasons": {
+      "message": "Katram vērtējumam līdzi nāk tā pamatojums. Nekas netiek noņemts automātiski."
+   },
+   "botProvisionalBody": {
+      "message": "$1 atzīmētiem kontiem profils vēl nav pārbaudīts. Lielākā daļa botu apstiprinās tikai ar šo pārbaudi — veic to, pirms uzticies iespējamo botu skaitam."
+   },
+   "botProvisionalTitle": {
+      "message": "Šie secinājumi vēl nav galīgi"
+   },
+   "botReadSubtitle": {
+      "message": "Nolasīts tieši no tava sekotāju saraksta — bez papildu pieprasījumiem."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Nav profila attēla"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Līdzsvarota sekotāju attiecība"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Daudz ciparu lietotājvārdā"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Nav vārda"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Seko daudz vairāk nekā seko viņam"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Ir konta nozīmīte"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Seko ļoti daudziem kontiem"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Nav sekotāju"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Nekad nav publicējis"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Publicē regulāri"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Lietotājvārds beidzas ar cipariem"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Neparasti pasvītrojumi"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Verificēts konts"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Neparasti garš lietotājvārds"
+   },
+   "botRunDeepChecks": {
+      "message": "Veikt padziļinātas pārbaudes"
+   },
+   "botScanCached": {
+      "message": "Pēdējā skenēšana $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram apturēja profilu pārbaudi. Zemāk redzamie rezultāti ir no tā, ko paspēja nolasīt."
+   },
+   "botScanDeepProgress": {
+      "message": "Pārbaudām profilus… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Skenēšana pabeigta."
+   },
+   "botScanNoData": {
+      "message": "Tavu sekotāju sarakstu neizdevās nolasīt. Instagram mūs attur — tas pāriet pats no sevis, taču bez noteikta gaidīšanas laika. Mēģini vēlāk."
+   },
+   "botScanPartial": {
+      "message": "Skenēšana beidzās, bet sekotāju saraksts atgriezās nepilnīgs — trūkst dažu kontu."
+   },
+   "botScanReading": {
+      "message": "Lasām tavus sekotājus…"
+   },
+   "botScanReadingCount": {
+      "message": "Lasām sekotājus… $1"
+   },
+   "botScanTitle": {
+      "message": "Botu sekotāju skenēšana"
+   },
+   "botScoreRaw": {
+      "message": "Neapstrādāts vērtējums"
+   },
+   "botSignalName": {
+      "message": "Ģenerēti izskatošs lietotājvārds"
+   },
+   "botSignalPhoto": {
+      "message": "Nav profila attēla"
+   },
+   "botSignalPosts": {
+      "message": "Nav ierakstu"
+   },
+   "botSignalRatio": {
+      "message": "Seko tūkstošiem, viņam gandrīz neviens"
+   },
+   "botSignalsUnavailable": {
+      "message": "Šim kontam daļu pārbaužu neizdevās veikt, tāpēc tā vērtējums balstās uz mazāk datiem nekā pārējiem."
+   },
+   "botStatFlagged": {
+      "message": "Atzīmēti"
+   },
+   "botStatFollowers": {
+      "message": "Sekotāji"
+   },
+   "botStatFollowing": {
+      "message": "Seko"
+   },
+   "botStatLikely": {
+      "message": "Iespējamie boti"
+   },
+   "botStatPosts": {
+      "message": "Ieraksti"
+   },
+   "botStatScanned": {
+      "message": "Noskenēti"
+   },
+   "botStatSuspicious": {
+      "message": "Aizdomīgi"
+   },
+   "botStatsGone": {
+      "message": "Konta vairs nav"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram neatgrieza profilu — konts ir dzēsts vai deaktivizēts, tā skaitļus vairs nevar nolasīt."
+   },
+   "botStatsNotChecked": {
+      "message": "Nav pārbaudīts"
+   },
+   "botStepDeep": {
+      "message": "Pārbaudām profilus"
+   },
+   "botStepReading": {
+      "message": "Lasām sekotājus"
+   },
+   "botTableReasons": {
+      "message": "Kāpēc"
+   },
+   "botTableScore": {
+      "message": "Vērtējums"
+   },
+   "botTableStats": {
+      "message": "Profila skaitļi"
+   },
+   "botTableVerdict": {
+      "message": "Slēdziens"
+   },
+   "botVerdictClean": {
+      "message": "Izskatās īsts"
+   },
+   "botVerdictLikely": {
+      "message": "Iespējams bots"
+   },
+   "botVerdictSuspicious": {
+      "message": "Aizdomīgs"
+   },
+   "cacheExpiryWarning": {
+      "message": "Profila attēli var netikt parādīti, jo pēdējā analīze bija pirms $DAYS$ dienām. Lūdzu, atkārtoti analizējiet, lai iegūtu atjauninātus rezultātus.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Pēdējā analīze $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Pārbaudām…"
+   },
+   "checkingLoginStatus": {
+      "message": "Pārbauda pieteikšanās statusu..."
+   },
+   "chooseMonthly": {
+      "message": "Izvēlēties Mēneša"
+   },
+   "chooseYearly": {
+      "message": "Izvēlēties Gada"
+   },
+   "comeBackTomorrow": {
+      "message": "Atgriezieties rīt"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Var analizēt +20 sekotājus vairāk katru dienu. Ja esi nepacietīgs, pārslēdzies uz Premium, redzi tos visus tagad. Ja esi pacietīgs, atgriezies rīt, varēsi redzēt +20 sekotājus vairāk. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Atgriezieties rīt, lai redzētu $1 kontus vairāk (+$2 jaunas atslēgšanas)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Vai tiešām vēlaties pārtraukt sekot VISIEM?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Apstipriniet darbību"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Vai tiešām vēlaties pārtraukt sekot visiem, kas neseko jums atpakaļ?"
+   },
+   "connected": {
+      "message": "Savienots"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Nevarēja iegūt sarakstu. Mēģiniet vēlāk."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$st $MINUTES$min $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "vēlāk"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$min $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "vēlāk"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Rīt varat redzēt +20 kontus vairāk ($COUNTDOWN$). Katru dienu tiek pievienoti +20 konti, ierobežojumi uzkrājas!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5st 30min vēlāk"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Dienas Limits"
+   },
+   "dailyScanLimit": {
+      "message": "Dienas Skenēšanas Limits"
+   },
+   "dataLoading": {
+      "message": "Datu ielāde..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Ielādē: $COUNT$ sekotāji atrasti",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Ielādē: $COUNT$ sekojamie atrasti",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "-50%"
+   },
+   "email": {
+      "message": "E-pasts"
+   },
+   "errorFetchingData": {
+      "message": "Kļūda iegūstot datus. Mēģiniet vēlreiz."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram īslaicīgi nav pieejams. Mēģiniet vēlāk."
+   },
+   "errorNetwork": {
+      "message": "Neizdevās sasniegt Instagram. Pārbaudi savienojumu — nekas nav zaudēts un darbs turpināsies."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "Radās kļūda. Mēģiniet vēlreiz."
+   },
+   "errorRateLimit": {
+      "message": "Instagram ir apturējis mūsu pieprasījumus. Tas pāriet pats no sevis, taču noteikta gaidīšanas laika nav — atkarībā no paveiktā tas var ilgt stundas vai līdz rītdienai. Tūlītējs mēģinājums to pagarina."
+   },
+   "errorSessionExpired": {
+      "message": "Jūsu Instagram sesija ir beigusies. Piesakieties Instagram un mēģiniet vēlreiz."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min atlicis"
+   },
+   "etaSeconds": {
+      "message": "~$1 s atlicis"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Atsekošana neizdevās. Mēģiniet vēlreiz."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Uzlabota filtrēšana"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Filtri un atskaites"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Uzlabota Paziņojumu Sistēma"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Uzlabota atsekošana"
+   },
+   "featureBasicUnfollow": {
+      "message": "Pamata atsekošana"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/dienā)"
+   },
+   "featureMax50Analysis": {
+      "message": "Maks 40 analīzes"
+   },
+   "featureSpamDetector": {
+      "message": "Surogātpasta noteikšana"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Neierobežota analīze"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Neierobežota analīze"
+   },
+   "finalizingAnalysis": {
+      "message": "Pabeidz..."
+   },
+   "firstDayBonus": {
+      "message": "Pirmās Dienas Bonuss"
+   },
+   "firstDayBonusMessage": {
+      "message": "Pirmās dienas bonuss: 40 konti! Rīt varat redzēt +20 kontus vairāk ($COUNTDOWN$). Katru dienu tiek pievienoti +20 konti.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5st 30min vēlāk"
+         }
+      }
+   },
+   "followers": {
+      "message": "Sekotāji"
+   },
+   "following": {
+      "message": "Seko"
+   },
+   "followingYouBadge": {
+      "message": "Seko Jums"
+   },
+   "freePlanLimitDescription": {
+      "message": "Sasniegtas 40 analīzes. Jauniniet uz Premium!"
+   },
+   "freePlanLimitReached": {
+      "message": "Bezmaksas Limits Sasniegts"
+   },
+   "freePlanTodayMessage": {
+      "message": "Ar bezmaksas plānu, šodien varat redzēt $DISPLAYED$ kontus. Ir vēl $HIDDEN$ konti, bet jūs nevarat tos redzēt.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Ar bezmaksas plānu, šodien varat redzēt $COUNT$ kontus.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Bezmaksas plānā varat pārtraukt sekt tikai līdz $COUNT$ lietotājiem. Lūdzu, izvēlieties tikai pirmos $COUNT$ lietotājus vai jauniniet uz Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Bezmaksas plānā varat pārtraukt sekt tikai līdz $COUNT$ lietotājiem. Jauniniet uz Premium, lai pārtrauktu sekt bez ierobežojumiem!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Vārds"
+   },
+   "getStartedWithGoogle": {
+      "message": "Reģistrēties ar Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Doties uz Instagram"
+   },
+   "gotIt": {
+      "message": "Labi"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram pārtrauca sūtīt datus, pirms bija pienācis viss saraksts, tāpēc daļas kontu trūkst. Rīkoties tagad varētu nozīmēt pārtraukt sekošanu cilvēkiem, kuri patiešām seko tev. Vispirms palaid analīzi vēlreiz."
+   },
+   "incompleteDataTitle": {
+      "message": "Saraksts ir nepilnīgs"
+   },
+   "instagramLimitedBody": {
+      "message": "Tu joprojām esi pieteicies un ar tavu kontu viss ir kārtībā. Tas pāriet pats no sevis, taču noteikta gaidīšanas laika nav — atkarībā no paveiktā tas var ilgt stundas vai līdz rītdienai. Atkārtoti mēģinājumi to pagarina."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram pašlaik ierobežo pieprasījumus"
+   },
+   "instagramLoginAlert": {
+      "message": "Vispirms piesakieties Instagram!"
+   },
+   "invalidWaitingTime": {
+      "message": "Ievadiet derīgu laiku 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Nederīgs gaidīšanas laiks"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 sekundes ir ārpus atļautā diapazona. Ievadi vērtību no $2 līdz $3 sekundēm."
+   },
+   "later": {
+      "message": "vēlāk"
+   },
+   "limitedTimeOffer": {
+      "message": "Ierobežots Piedāvājums"
+   },
+   "liveCounterPrefix": {
+      "message": "Pēdējās 24 stundās"
+   },
+   "liveCounterSuffix": {
+      "message": "cilvēki atjaunināja uz Premium!"
+   },
+   "loading": {
+      "message": "Ielādē..."
+   },
+   "loadingProfile": {
+      "message": "Profila ielāde"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Ielādējam tavu saglabāto analīzi…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "No Instagram netiek pieprasīts nekas."
+   },
+   "login": {
+      "message": "Pieteikties"
+   },
+   "loginFailed": {
+      "message": "Pieteikšanās neizdevās: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Nezināma kļūda"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Nepieciešama Pieteikšanās"
+   },
+   "loginSuccessful": {
+      "message": "Veiksmīga pieteikšanās!"
+   },
+   "loginWithGoogle": {
+      "message": "Pieteikties ar Google"
+   },
+   "logout": {
+      "message": "Izrakstīties"
+   },
+   "logoutError": {
+      "message": "Izrakstīšanās kļūda: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Nezināma kļūda"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Pārvaldīt Abonementu"
+   },
+   "membership": {
+      "message": "Dalība"
+   },
+   "menuBotScan": {
+      "message": "Botu skenēšana"
+   },
+   "menuHome": {
+      "message": "Sākums"
+   },
+   "menuProfile": {
+      "message": "Profils"
+   },
+   "menuUpgrade": {
+      "message": "Jaunināt"
+   },
+   "minutesTest": {
+      "message": "$1 minūtes (Tests)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 konti vairāk pieejami"
+   },
+   "moreInHours": {
+      "message": "Pēc $2 stundām varēsi redzēt +$1 sekotājus vairāk"
+   },
+   "nextCheckTime": {
+      "message": "Nākamā pārbaude: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Nākamā pārbaude: Rīt"
+   },
+   "nextInSeconds": {
+      "message": "Nākamais pēc $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Nav neviena, kas tev neseko"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Nav neviena, kas tev neseko, lai pārtrauktu sekošanu."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Nav kontu, kuriem pārtraukt sekošanu."
+   },
+   "notFollowingYouBadge": {
+      "message": "Neseko"
+   },
+   "notProvided": {
+      "message": "Nav norādīts"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Atver..."
+   },
+   "openingInNewTab": {
+      "message": "Atver jaunā cilnē..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/mēn"
+   },
+   "perYear": {
+      "message": "/gads"
+   },
+   "planFree": {
+      "message": "Bezmaksas"
+   },
+   "planPopular": {
+      "message": "Populārs"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Gada"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Pieteikieties abonēšanai"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Vispirms piesakieties Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Pieteikieties jaunināšanai"
+   },
+   "pleaseSignInToView": {
+      "message": "Pieteikieties informācijas apskatei"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Ar Premium, redziet visus $COUNT$ kontus tagad, bez ierobežojumiem!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Aizsargāta Privātums"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Apstrādā..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram lūdza pauzi — turpinām pēc $1 s"
+   },
+   "rating": {
+      "message": "Vērtējums"
+   },
+   "reAnalyze": {
+      "message": "Atkārtota analīze"
+   },
+   "reAnalyzing": {
+      "message": "Atkārtota analīze..."
+   },
+   "removeFromWhitelist": {
+      "message": "Noņemt no baltā saraksta"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "50% atlaide Premium"
+   },
+   "saveSettings": {
+      "message": "Saglabāt"
+   },
+   "scanBlockedBody": {
+      "message": "Tas ir bieži, tas pāriet pats no sevis, un ne ar tavu kontu, ne ar paplašinājumu nekas nav kārtībā. Mēs uzreiz apstājāmies, nevis mēģinājām atkārtoti, jo atkārtoti mēģinājumi tikai pagarina gaidīšanu. Pamēģini vēlāk šodien."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Sekotāju sarakstu pašlaik neizdevās nolasīt."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Sekoto sarakstu pašlaik neizdevās nolasīt."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram vēlas īsu pārtraukumu"
+   },
+   "scanPartialBody": {
+      "message": "Daļa pienāca, un tad Instagram mūs apturēja, tāpēc rezultāti nav pietiekami pilnīgi, lai uz tiem balstītos. Nekas nav mainīts. Atgriezies vēlāk un palaid analīzi vēlreiz — tas var ilgt stundas, un mēģinājums tagad to pagarina."
+   },
+   "scanPartialTitle": {
+      "message": "Saraksts atgriezās nepilnīgs"
+   },
+   "scanPaused": {
+      "message": "Instagram lūdza palēnināt — gaidām…"
+   },
+   "scanRemaining": {
+      "message": "Atlikuši $1 konti"
+   },
+   "scanShortBody": {
+      "message": "Skenēšana beidzās, bet atgriezās mazāk kontu, nekā Instagram norāda sarakstā. Rīkošanās uz šī pamata varētu pārtraukt sekošanu cilvēkiem, kuri tev seko, tāpēc nekas netiek rādīts. Lūdzu, palaid analīzi vēlreiz."
+   },
+   "scanShortTitle": {
+      "message": "Trūkst dažu kontu"
+   },
+   "seconds": {
+      "message": "sekundes"
+   },
+   "secure": {
+      "message": "Drošs"
+   },
+   "secureLogin": {
+      "message": "Droša Pieteikšanās"
+   },
+   "sessionExpiredTitle": {
+      "message": "Tava Instagram sesija ir beigusies"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Tikai nesekotāji"
+   },
+   "showingFirstAccounts": {
+      "message": "Rāda pirmos $COUNT$ kontus.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Izlaist sekotājus"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Izlaist verificētos"
+   },
+   "startAnalysis": {
+      "message": "Sākt Analīzi"
+   },
+   "startBotScan": {
+      "message": "Sākt botu skenēšanu"
+   },
+   "startUnfollow": {
+      "message": "Sākt Atsekošanu"
+   },
+   "startingAnalysis": {
+      "message": "Sāk analīzi..."
+   },
+   "statFailed": {
+      "message": "Neizdevās"
+   },
+   "statFollowers": {
+      "message": "Sekotāji"
+   },
+   "statFollowing": {
+      "message": "Sekojat"
+   },
+   "statNonFollowers": {
+      "message": "Neseko"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Atsekots"
+   },
+   "stop": {
+      "message": "Apturēt"
+   },
+   "stopping": {
+      "message": "Apturam…"
+   },
+   "support": {
+      "message": "Atbalsts"
+   },
+   "tableAction": {
+      "message": "Darbība"
+   },
+   "tableFollowingYou": {
+      "message": "Seko Jums"
+   },
+   "tableFullName": {
+      "message": "Vārds"
+   },
+   "tablePrivate": {
+      "message": "Privāts"
+   },
+   "tableProfile": {
+      "message": "Profils"
+   },
+   "tableUsername": {
+      "message": "Lietotājs"
+   },
+   "tableVerified": {
+      "message": "Verificēts"
+   },
+   "testNow": {
+      "message": "Testēt tagad"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Šo darbību nevar atsaukt!"
+   },
+   "toRemoveLimits": {
+      "message": "lai noņemtu ierobežojumus"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Atlikušas $COUNT$ dienas",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Izmēģinājuma periods beidzies"
+   },
+   "tryAgain": {
+      "message": "Mēģināt vēlreiz"
+   },
+   "tryAnyway": {
+      "message": "Tomēr mēģināt"
+   },
+   "unfollow": {
+      "message": "Atsekot"
+   },
+   "unfollowDelayLabel": {
+      "message": "Aizkave (sekundes)"
+   },
+   "unfollowEveryone": {
+      "message": "Pārtraukt Sekot Visiem"
+   },
+   "unfollowFailed": {
+      "message": "Neizdevās"
+   },
+   "unfollowNonFollowers": {
+      "message": "Pārtraukt Sekot Nesekotājiem"
+   },
+   "unfollowProcessStarted": {
+      "message": "Sekošanas pārtraukšana ir sākta."
+   },
+   "unfollowSettings": {
+      "message": "Atsekošanas Iestatījumi"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 sekundes starp katru sekošanas pārtraukšanu."
+   },
+   "unfollowedSuccess": {
+      "message": "Atsekots"
+   },
+   "unfollowing": {
+      "message": "Atseko..."
+   },
+   "unknownError": {
+      "message": "Nezināma kļūda"
+   },
+   "upgradeToPremium": {
+      "message": "Jaunināt uz Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Atjaunināt uz Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium visiem!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "kontiem tiks pārtraukta sekošana."
+   },
+   "waitingSeconds": {
+      "message": "Gaida $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Gaidīšanas laiks (3-300 sek)"
+   },
+   "welcomeFunText1": {
+      "message": "Vēlaties redzēt, kas jums neseko? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Pārtraukt sekot tagad ir vienkārši 😊"
+   },
+   "welcomeTitle": {
+      "message": "Laipni lūdzam! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Pieteikieties ar Google, jūsu dati ir drošībā!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 tiks atslēgti rīt"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram uz laiku vairs nepieņem automātisku sekošanas pārtraukšanu šajā kontā. Tas ir pagaidu, un ar tavu kontu viss ir kārtībā.\n\nPa to laiku vari joprojām pārtraukt sekošanu ar roku no profila lapas, un tavs saraksts paliek šeit — nekas nav iztērēts."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram pašlaik ierobežo sekošanas pārtraukšanu"
+   },
+   "yesUnfollow": {
+      "message": "Jā, pārtraukt sekošanu"
+   },
+   "yesUnfollowAll": {
+      "message": "Jā, pārtraukt sekošanu visiem"
+   }
+}

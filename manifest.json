@@ -1,0 +1,30 @@
+{
+   "action": {
+      "default_popup": "popup.html"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "ig-content.js" ],
+      "matches": [ "https://*.instagram.com/*" ],
+      "run_at": "document_idle"
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_extensionDescription__",
+   "host_permissions": [ "https://*.instagram.com/*", "https://*.cdninstagram.com/*", "https://*.fbcdn.net/*", "https://accounts.google.com/*", "https://www.googleapis.com/*", "https://*.workers.dev/*" ],
+   "icons": {
+      "128": "img/128.png",
+      "16": "img/16.png",
+      "32": "img/32.png",
+      "48": "img/48.png"
+   },
+   "manifest_version": 3,
+   "name": "__MSG_extensionName__",
+   "permissions": [ "storage", "unlimitedStorage", "identity" ],
+   "version": "1.0.0",
+   "web_accessible_resources": [ {
+      "matches": [ "https://*.instagram.com/*" ],
+      "resources": [ "unfollow-bridge.js", "ig-inject.js" ]
+   } ]
+}

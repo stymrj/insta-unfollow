@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "รายละเอียดบัญชี"
+   },
+   "accountsRemaining": {
+      "message": "มีบัญชีอีก $COUNT$ บัญชี ดูทั้งหมด",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "ผู้ใช้งาน"
+   },
+   "addToWhitelist": {
+      "message": "เพิ่มในรายการยกเว้น"
+   },
+   "allAccountsUnlocked": {
+      "message": "บัญชีทั้งหมดปลดล็อกแล้ว!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "บัญชีจะถูกเลิกติดตาม"
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram ส่งรายชื่อผู้ติดตามกลับมาโดยไม่มีข้อมูลรูปโปรไฟล์ คะแนนทั้งหมดที่นี่จึงต่ำกว่าที่ควรเป็น และบอทบางส่วนจะหลุดรอด เปิด Instagram ในแท็บแล้วรันการสแกนใหม่เพื่อผลลัพธ์ที่ครบถ้วน"
+   },
+   "botBlindTitle": {
+      "message": "ไม่สามารถตรวจรูปโปรไฟล์ได้"
+   },
+   "botCleared": {
+      "message": "ข้อดีของบัญชีนี้"
+   },
+   "botDeepAllChecked": {
+      "message": "ตรวจบัญชีที่ทำเครื่องหมายครบแล้ว"
+   },
+   "botDeepChecked": {
+      "message": "ตรวจโปรไฟล์แล้ว"
+   },
+   "botDeepChecksFor": {
+      "message": "ตรวจสอบเชิงลึก $1 บัญชี"
+   },
+   "botDeepChecksRemaining": {
+      "message": "เหลือ $1 บัญชี ($2 ตรวจแล้ว)"
+   },
+   "botDeepDone": {
+      "message": "ตรวจสอบเชิงลึกเสร็จแล้ว — ตรวจแล้ว $1 บัญชี"
+   },
+   "botDeepNoTargets": {
+      "message": "ไม่มีบัญชีใดต้องตรวจสอบเชิงลึก"
+   },
+   "botDeepPausedBody": {
+      "message": "ก่อนหยุด ตรวจไปแล้ว $1 บัญชี และยังไม่ได้ตรวจ $2 บัญชี ผลด้านล่างอ้างอิงเฉพาะส่วนที่อ่านได้ ไม่มีเวลารอที่แน่นอน — อาจใช้เวลาหลายชั่วโมงหรือถึงพรุ่งนี้ กรุณากลับมาภายหลังแทนการลองตอนนี้ ซึ่งมีแต่จะทำให้นานขึ้น"
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram หยุดการตรวจโปรไฟล์ชั่วคราว"
+   },
+   "botDeepRemaining": {
+      "message": "$1 รายการยังไม่ได้ตรวจ"
+   },
+   "botDeepSubtitle": {
+      "message": "หนึ่งคำขอต่อหนึ่งบัญชี ในจังหวะที่ปลอดภัย"
+   },
+   "botFilterAll": {
+      "message": "ที่สแกนทั้งหมด"
+   },
+   "botFilterLikely": {
+      "message": "น่าจะเป็นบอท"
+   },
+   "botFilterSuspicious": {
+      "message": "น่าสงสัย"
+   },
+   "botFreeHeadline": {
+      "message": "บัญชีที่ทำเครื่องหมายเพิ่มเติมถูกล็อก"
+   },
+   "botFreeWithheld": {
+      "message": "พบเพิ่มอีก $1 รายการ — อัปเกรดเพื่อดูทั้งหมด"
+   },
+   "botIntroHeading": {
+      "message": "ค้นหาบัญชีที่ไม่ใช่คนจริง"
+   },
+   "botIntroLead": {
+      "message": "ผู้ติดตามแต่ละคนได้คะแนนตามความเป็นไปได้ที่จะเป็นบอทหรือบัญชีใช้แล้วทิ้ง"
+   },
+   "botIntroReasons": {
+      "message": "ทุกคะแนนมีเหตุผลกำกับไว้ คุณจึงเห็นว่าทำไมบัญชีหนึ่งถึงถูกทำเครื่องหมาย แทนที่จะต้องเชื่อตัวเลขเฉย ๆ ไม่มีการลบใครโดยอัตโนมัติ — รายชื่อนี้มีไว้ให้คุณดูและตัดสินใจเอง"
+   },
+   "botNoFlagged": {
+      "message": "ไม่มีรายการที่ถูกทำเครื่องหมาย — รายชื่อผู้ติดตามของคุณดูสะอาด"
+   },
+   "botNoRowsForFilter": {
+      "message": "ไม่มีอะไรในกลุ่มนี้"
+   },
+   "botNoSignals": {
+      "message": "ไม่มีอะไรผิดปกติ"
+   },
+   "botNotRunYet": {
+      "message": "เรียกใช้การสแกนเพื่อดูคะแนนของผู้ติดตามที่นี่"
+   },
+   "botPopupBody": {
+      "message": "ให้คะแนนผู้ติดตามแต่ละคนตามความเป็นไปได้ที่จะเป็นบอทหรือบัญชีใช้แล้วทิ้ง เช่น ไม่มีรูปโปรไฟล์ ไม่มีโพสต์ ชื่อผู้ใช้ที่ดูเหมือนสร้างขึ้นมา ติดตามคนหลายพันแต่แทบไม่มีใครติดตามกลับ"
+   },
+   "botPopupReasons": {
+      "message": "ทุกคะแนนมีเหตุผลกำกับไว้ ไม่มีการลบใครโดยอัตโนมัติ"
+   },
+   "botProvisionalBody": {
+      "message": "บัญชีที่ทำเครื่องหมายไว้ $1 บัญชียังไม่ได้ตรวจโปรไฟล์ บอทส่วนใหญ่ยืนยันได้ด้วยการตรวจนี้เท่านั้น จึงควรรันก่อนที่จะเชื่อจำนวน \"น่าจะเป็นบอท\""
+   },
+   "botProvisionalTitle": {
+      "message": "ผลตัดสินเหล่านี้ยังไม่สิ้นสุด"
+   },
+   "botReadSubtitle": {
+      "message": "อ่านจากรายชื่อผู้ติดตามของคุณโดยตรง — ไม่มีคำขอเพิ่มเติม"
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "ไม่มีรูปโปรไฟล์"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "สัดส่วนผู้ติดตามสมดุล"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "ตัวเลขเยอะในชื่อผู้ใช้"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "ไม่มีชื่อที่แสดง"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "ติดตามคนอื่นมากกว่าผู้ติดตามมาก"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "มีตราสัญลักษณ์บัญชี"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "ติดตามบัญชีจำนวนมหาศาล"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "ไม่มีผู้ติดตาม"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "ไม่เคยโพสต์"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "โพสต์สม่ำเสมอ"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "ชื่อผู้ใช้ลงท้ายด้วยตัวเลข"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "รูปแบบขีดล่างผิดปกติ"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "บัญชีที่ยืนยันแล้ว"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "ชื่อผู้ใช้ยาวผิดปกติ"
+   },
+   "botRunDeepChecks": {
+      "message": "ตรวจสอบเชิงลึก"
+   },
+   "botScanCached": {
+      "message": "สแกนล่าสุด $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram หยุดการตรวจโปรไฟล์ชั่วคราว ผลด้านล่างมาจากส่วนที่อ่านได้"
+   },
+   "botScanDeepProgress": {
+      "message": "กำลังตรวจโปรไฟล์… $1/$2"
+   },
+   "botScanDone": {
+      "message": "สแกนเสร็จแล้ว"
+   },
+   "botScanNoData": {
+      "message": "อ่านรายชื่อผู้ติดตามของคุณไม่ได้ Instagram กำลังกันเราไว้ — จะหายเอง แต่ไม่มีเวลารอที่แน่นอน กรุณาลองภายหลัง"
+   },
+   "botScanPartial": {
+      "message": "สแกนเสร็จแล้ว แต่รายชื่อผู้ติดตามที่ได้กลับมาไม่ครบ — บางบัญชีขาดหายไป"
+   },
+   "botScanReading": {
+      "message": "กำลังอ่านผู้ติดตามของคุณ…"
+   },
+   "botScanReadingCount": {
+      "message": "กำลังอ่านผู้ติดตาม… $1"
+   },
+   "botScanTitle": {
+      "message": "สแกนผู้ติดตามที่เป็นบอท"
+   },
+   "botScoreRaw": {
+      "message": "คะแนนดิบ"
+   },
+   "botSignalName": {
+      "message": "ชื่อผู้ใช้ที่ดูเหมือนสร้างขึ้นมา"
+   },
+   "botSignalPhoto": {
+      "message": "ไม่มีรูปโปรไฟล์"
+   },
+   "botSignalPosts": {
+      "message": "ไม่มีโพสต์"
+   },
+   "botSignalRatio": {
+      "message": "ติดตามหลายพัน แทบไม่มีใครติดตามกลับ"
+   },
+   "botSignalsUnavailable": {
+      "message": "บัญชีนี้มีบางการตรวจสอบที่ทำไม่ได้ คะแนนจึงตั้งอยู่บนหลักฐานน้อยกว่าบัญชีอื่น"
+   },
+   "botStatFlagged": {
+      "message": "ทำเครื่องหมายแล้ว"
+   },
+   "botStatFollowers": {
+      "message": "ผู้ติดตาม"
+   },
+   "botStatFollowing": {
+      "message": "กำลังติดตาม"
+   },
+   "botStatLikely": {
+      "message": "น่าจะเป็นบอท"
+   },
+   "botStatPosts": {
+      "message": "โพสต์"
+   },
+   "botStatScanned": {
+      "message": "สแกนแล้ว"
+   },
+   "botStatSuspicious": {
+      "message": "น่าสงสัย"
+   },
+   "botStatsGone": {
+      "message": "ไม่มีบัญชีแล้ว"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram ไม่ได้ส่งโปรไฟล์กลับมา — บัญชีถูกลบหรือปิดใช้งาน จึงอ่านตัวเลขไม่ได้อีก"
+   },
+   "botStatsNotChecked": {
+      "message": "ยังไม่ได้ตรวจ"
+   },
+   "botStepDeep": {
+      "message": "กำลังตรวจโปรไฟล์"
+   },
+   "botStepReading": {
+      "message": "กำลังอ่านผู้ติดตาม"
+   },
+   "botTableReasons": {
+      "message": "เพราะอะไร"
+   },
+   "botTableScore": {
+      "message": "คะแนน"
+   },
+   "botTableStats": {
+      "message": "ตัวเลขโปรไฟล์"
+   },
+   "botTableVerdict": {
+      "message": "ผลตัดสิน"
+   },
+   "botVerdictClean": {
+      "message": "ดูเหมือนคนจริง"
+   },
+   "botVerdictLikely": {
+      "message": "น่าจะเป็นบอท"
+   },
+   "botVerdictSuspicious": {
+      "message": "น่าสงสัย"
+   },
+   "cacheExpiryWarning": {
+      "message": "รูปโปรไฟล์อาจไม่แสดงเนื่องจากการวิเคราะห์ครั้งล่าสุดของคุณเมื่อ $DAYS$ วันที่แล้ว กรุณาวิเคราะห์ใหม่เพื่อผลลัพธ์ที่อัปเดต",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "วิเคราะห์ล่าสุด $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "กำลังตรวจสอบ…"
+   },
+   "checkingLoginStatus": {
+      "message": "กำลังตรวจสอบสถานะการเข้าสู่ระบบ..."
+   },
+   "chooseMonthly": {
+      "message": "เลือกรายเดือน"
+   },
+   "chooseYearly": {
+      "message": "เลือกรายปี"
+   },
+   "comeBackTomorrow": {
+      "message": "กลับมาพรุ่งนี้"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "คุณสามารถวิเคราะห์ผู้ติดตามเพิ่มเติม +20 คนทุกวัน หากคุณใจร้อน ให้เปลี่ยนเป็น Premium ดูทั้งหมดตอนนี้ หากคุณอดทน กลับมาพรุ่งนี้ คุณจะสามารถเห็นผู้ติดตามเพิ่มเติม +20 คน ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "กลับมาพรุ่งนี้เพื่อดูบัญชี $1 รายการเพิ่มเติม (+$2 การปลดล็อกใหม่)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "แน่ใจหรือไม่ว่าต้องการเลิกติดตามทุกคน?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "ยืนยันการดำเนินการ"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "แน่ใจหรือไม่ว่าต้องการเลิกติดตามทุกคนที่ไม่ติดตามคุณกลับ?"
+   },
+   "connected": {
+      "message": "เชื่อมต่อแล้ว"
+   },
+   "couldNotFetchFollowing": {
+      "message": "ไม่สามารถดึงรายการ ลองใหม่ภายหลัง"
+   },
+   "countdownFormat": {
+      "message": "$HOURS$ชม. $MINUTES$นาที $SECONDS$วินาที $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "ต่อมา"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$นาที $SECONDS$วินาที $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "ต่อมา"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "พรุ่งนี้คุณสามารถดู +20 บัญชีเพิ่มเติม ($COUNTDOWN$) ทุกวันจะเพิ่ม +20 บัญชี ขีดจำกัดสะสม!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5ชม. 30นาที ต่อมา"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "ขีดจำกัดรายวัน"
+   },
+   "dailyScanLimit": {
+      "message": "ขีดจำกัดการสแกนรายวัน"
+   },
+   "dataLoading": {
+      "message": "กำลังโหลดข้อมูล..."
+   },
+   "dataLoadingFollowers": {
+      "message": "โหลด: พบ $COUNT$ ผู้ติดตาม",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "โหลด: พบ $COUNT$ ติดตาม",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "ลด 50%"
+   },
+   "email": {
+      "message": "อีเมล"
+   },
+   "errorFetchingData": {
+      "message": "ผิดพลาดดึงข้อมูล ลองใหม่"
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram ใช้งานไม่ได้ชั่วคราว กรุณาลองใหม่ภายหลัง"
+   },
+   "errorNetwork": {
+      "message": "ติดต่อ Instagram ไม่ได้ กรุณาตรวจการเชื่อมต่อ — ไม่มีอะไรสูญหายและงานจะดำเนินต่อ"
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "เกิดข้อผิดพลาด ลองใหม่"
+   },
+   "errorRateLimit": {
+      "message": "Instagram หยุดคำขอของเราชั่วคราว จะหายเอง แต่ไม่มีเวลารอที่แน่นอน — ขึ้นกับปริมาณที่ทำไป อาจใช้เวลาหลายชั่วโมงหรือถึงพรุ่งนี้ การลองทันทีทำให้นานขึ้น"
+   },
+   "errorSessionExpired": {
+      "message": "เซสชัน Instagram ของคุณหมดอายุแล้ว กรุณาเข้าสู่ระบบ Instagram แล้วลองใหม่"
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "เหลืออีกราว $1 นาที"
+   },
+   "etaSeconds": {
+      "message": "เหลืออีกราว $1 วินาที"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "เลิกติดตามล้มเหลว ลองใหม่"
+   },
+   "featureAdvancedFiltering": {
+      "message": "กรองขั้นสูง"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "กรองและรายงาน"
+   },
+   "featureAdvancedNotifications": {
+      "message": "ระบบแจ้งเตือนขั้นสูง"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "เลิกติดตามขั้นสูง"
+   },
+   "featureBasicUnfollow": {
+      "message": "เลิกติดตามพื้นฐาน"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/วัน)"
+   },
+   "featureMax50Analysis": {
+      "message": "วิเคราะห์สูงสุด 40"
+   },
+   "featureSpamDetector": {
+      "message": "ตรวจจับสแปม"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "วิเคราะห์ไม่จำกัด"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "วิเคราะห์ไม่จำกัด"
+   },
+   "finalizingAnalysis": {
+      "message": "กำลังเสร็จสิ้น..."
+   },
+   "firstDayBonus": {
+      "message": "โบนัสวันแรก"
+   },
+   "firstDayBonusMessage": {
+      "message": "โบนัสวันแรก: 40 บัญชี! พรุ่งนี้คุณสามารถดู +20 บัญชีเพิ่มเติม ($COUNTDOWN$) ทุกวันจะเพิ่ม +20 บัญชี",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5ชม. 30นาที ต่อมา"
+         }
+      }
+   },
+   "followers": {
+      "message": "ผู้ติดตาม"
+   },
+   "following": {
+      "message": "กำลังติดตาม"
+   },
+   "followingYouBadge": {
+      "message": "ติดตามคุณ"
+   },
+   "freePlanLimitDescription": {
+      "message": "ถึง 40 วิเคราะห์แล้ว อัปเกรด Premium!"
+   },
+   "freePlanLimitReached": {
+      "message": "ถึงขีดจำกัดฟรี"
+   },
+   "freePlanTodayMessage": {
+      "message": "ในแผนฟรี คุณสามารถดู $DISPLAYED$ บัญชีวันนี้ มีอีก $HIDDEN$ บัญชี แต่คุณไม่สามารถดูได้",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "ในแผนฟรี คุณสามารถดู $COUNT$ บัญชีวันนี้",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "ในแผนฟรีคุณสามารถเลิกติดตามได้สูงสุด $COUNT$ ผู้ใช้เท่านั้น กรุณาเลือกเฉพาะ $COUNT$ ผู้ใช้แรกหรืออัปเกรดเป็น Premium",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "ในแผนฟรีคุณสามารถเลิกติดตามได้สูงสุด $COUNT$ ผู้ใช้เท่านั้น อัปเกรดเป็น Premium เพื่อเลิกติดตามแบบไม่จำกัด!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "ชื่อ"
+   },
+   "getStartedWithGoogle": {
+      "message": "ลงทะเบียนด้วย Google"
+   },
+   "goToInstagramLogin": {
+      "message": "ไป Instagram"
+   },
+   "gotIt": {
+      "message": "ตกลง"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram หยุดส่งข้อมูลก่อนที่รายชื่อทั้งหมดจะมาถึง จึงมีบางบัญชีขาดหายไป การดำเนินการตอนนี้อาจเลิกติดตามคนที่ติดตามคุณอยู่จริง กรุณาเรียกใช้การวิเคราะห์ใหม่ก่อน"
+   },
+   "incompleteDataTitle": {
+      "message": "รายชื่อไม่ครบ"
+   },
+   "instagramLimitedBody": {
+      "message": "คุณยังเข้าสู่ระบบอยู่และบัญชีของคุณไม่มีปัญหาใด ๆ เรื่องนี้จะหายเอง แต่ไม่มีเวลารอที่แน่นอน — ขึ้นกับปริมาณที่ทำไป อาจใช้เวลาหลายชั่วโมงหรือถึงพรุ่งนี้ การลองซ้ำ ๆ ทำให้นานขึ้น"
+   },
+   "instagramLimitedTitle": {
+      "message": "ตอนนี้ Instagram กำลังจำกัดคำขอ"
+   },
+   "instagramLoginAlert": {
+      "message": "เข้าสู่ระบบ Instagram ก่อน!"
+   },
+   "invalidWaitingTime": {
+      "message": "ใส่เวลาที่ถูกต้อง 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "เวลารอไม่ถูกต้อง"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 วินาทีอยู่นอกช่วงที่อนุญาต กรุณาใส่ค่าระหว่าง $2 ถึง $3 วินาที"
+   },
+   "later": {
+      "message": "ต่อมา"
+   },
+   "limitedTimeOffer": {
+      "message": "ข้อเสนอจำกัดเวลา"
+   },
+   "liveCounterPrefix": {
+      "message": "ใน 24 ชั่วโมงที่ผ่านมา"
+   },
+   "liveCounterSuffix": {
+      "message": "คนอัปเกรดเป็นพรีเมียม!"
+   },
+   "loading": {
+      "message": "กำลังโหลด..."
+   },
+   "loadingProfile": {
+      "message": "กำลังโหลดโปรไฟล์"
+   },
+   "loadingSavedAnalysis": {
+      "message": "กำลังโหลดผลวิเคราะห์ที่บันทึกไว้…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "ไม่ได้ร้องขอข้อมูลใดจาก Instagram"
+   },
+   "login": {
+      "message": "เข้าสู่ระบบ"
+   },
+   "loginFailed": {
+      "message": "เข้าสู่ระบบล้มเหลว: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "ข้อผิดพลาดไม่ทราบ"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "ต้องเข้าสู่ระบบ"
+   },
+   "loginSuccessful": {
+      "message": "เข้าสู่ระบบสำเร็จ!"
+   },
+   "loginWithGoogle": {
+      "message": "เข้าด้วย Google"
+   },
+   "logout": {
+      "message": "ออกจากระบบ"
+   },
+   "logoutError": {
+      "message": "ออกจากระบบผิดพลาด: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "ข้อผิดพลาดไม่ทราบ"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "จัดการสมาชิก"
+   },
+   "membership": {
+      "message": "สมาชิก"
+   },
+   "menuBotScan": {
+      "message": "สแกนบอท"
+   },
+   "menuHome": {
+      "message": "หน้าแรก"
+   },
+   "menuProfile": {
+      "message": "โปรไฟล์"
+   },
+   "menuUpgrade": {
+      "message": "อัปเกรด"
+   },
+   "minutesTest": {
+      "message": "$1 นาที (ทดสอบ)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "บัญชี $1 รายการเพิ่มเติมพร้อมใช้งาน"
+   },
+   "moreInHours": {
+      "message": "ใน $2 ชั่วโมงคุณจะสามารถเห็นผู้ติดตามเพิ่มเติม +$1 คน"
+   },
+   "nextCheckTime": {
+      "message": "การตรวจสอบครั้งถัดไป: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "การตรวจสอบครั้งถัดไป: พรุ่งนี้"
+   },
+   "nextInSeconds": {
+      "message": "ถัดไปใน $SECONDS$ วิ",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "ไม่มีคนที่ไม่ติดตามกลับ"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "ไม่มีคนที่ไม่ติดตามกลับให้เลิกติดตาม"
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "ไม่มีบัญชีให้เลิกติดตาม"
+   },
+   "notFollowingYouBadge": {
+      "message": "ไม่ติดตาม"
+   },
+   "notProvided": {
+      "message": "ไม่ระบุ"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "กำลังเปิด..."
+   },
+   "openingInNewTab": {
+      "message": "เปิดในแท็บใหม่..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/เดือน"
+   },
+   "perYear": {
+      "message": "/ปี"
+   },
+   "planFree": {
+      "message": "ฟรี"
+   },
+   "planPopular": {
+      "message": "ยอดนิยม"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "พรีเมียมรายปี"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "เข้าสู่ระบบเพื่อสมัคร"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "เข้าสู่ระบบ Instagram ก่อน"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "เข้าสู่ระบบเพื่ออัปเกรด"
+   },
+   "pleaseSignInToView": {
+      "message": "เข้าสู่ระบบเพื่อดูข้อมูล"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "ด้วยพรีเมียม ดูบัญชีทั้งหมด $COUNT$ บัญชีตอนนี้ ไม่มีขีดจำกัด!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "ความเป็นส่วนตัวปลอดภัย"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "กำลังประมวลผล..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram ขอให้หยุดพัก — จะทำต่อใน $1 วิ"
+   },
+   "rating": {
+      "message": "คะแนน"
+   },
+   "reAnalyze": {
+      "message": "วิเคราะห์ใหม่"
+   },
+   "reAnalyzing": {
+      "message": "กำลังวิเคราะห์ใหม่..."
+   },
+   "removeFromWhitelist": {
+      "message": "นำออกจากรายการยกเว้น"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "ลด 50% Premium"
+   },
+   "saveSettings": {
+      "message": "บันทึก"
+   },
+   "scanBlockedBody": {
+      "message": "เรื่องนี้พบได้บ่อย หายได้เอง และไม่มีอะไรผิดปกติกับบัญชีหรือส่วนขยายของคุณ เราหยุดทันทีแทนที่จะลองใหม่ เพราะการลองซ้ำ ๆ ยิ่งทำให้ต้องรอนานขึ้น ลองอีกครั้งในวันนี้ภายหลัง"
+   },
+   "scanBlockedListFollowers": {
+      "message": "ตอนนี้ยังอ่านรายชื่อผู้ติดตามไม่ได้"
+   },
+   "scanBlockedListFollowing": {
+      "message": "ตอนนี้ยังอ่านรายชื่อที่กำลังติดตามไม่ได้"
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram ขอพักสักครู่"
+   },
+   "scanPartialBody": {
+      "message": "ได้มาบางส่วนแล้ว Instagram ก็สั่งให้เราหยุด ผลลัพธ์จึงยังไม่ครบพอที่จะดำเนินการ ไม่มีอะไรถูกเปลี่ยนแปลง กรุณากลับมาภายหลังแล้วรันการวิเคราะห์ใหม่ — อาจใช้เวลาหลายชั่วโมง และการลองตอนนี้ทำให้นานขึ้น"
+   },
+   "scanPartialTitle": {
+      "message": "รายชื่อที่ได้กลับมาไม่ครบ"
+   },
+   "scanPaused": {
+      "message": "Instagram ขอให้เราช้าลง — กำลังรอ…"
+   },
+   "scanRemaining": {
+      "message": "เหลืออีก $1 บัญชี"
+   },
+   "scanShortBody": {
+      "message": "การสแกนเสร็จแล้ว แต่ได้บัญชีกลับมาน้อยกว่าจำนวนที่ Instagram ระบุ การดำเนินการต่ออาจเลิกติดตามคนที่ติดตามคุณอยู่ จึงไม่แสดงอะไรเลย กรุณาเรียกใช้การวิเคราะห์ใหม่"
+   },
+   "scanShortTitle": {
+      "message": "บางบัญชีขาดหายไป"
+   },
+   "seconds": {
+      "message": "วินาที"
+   },
+   "secure": {
+      "message": "ปลอดภัย"
+   },
+   "secureLogin": {
+      "message": "เข้าสู่ระบบปลอดภัย"
+   },
+   "sessionExpiredTitle": {
+      "message": "เซสชัน Instagram ของคุณสิ้นสุดแล้ว"
+   },
+   "showOnlyNonFollowers": {
+      "message": "แสดงเฉพาะไม่ติดตาม"
+   },
+   "showingFirstAccounts": {
+      "message": "แสดง $COUNT$ บัญชีแรก",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "ข้ามผู้ติดตาม"
+   },
+   "skipVerifiedAccounts": {
+      "message": "ข้ามบัญชียืนยัน"
+   },
+   "startAnalysis": {
+      "message": "เริ่มวิเคราะห์"
+   },
+   "startBotScan": {
+      "message": "เริ่มสแกนบอท"
+   },
+   "startUnfollow": {
+      "message": "เริ่มเลิกติดตาม"
+   },
+   "startingAnalysis": {
+      "message": "เริ่มวิเคราะห์..."
+   },
+   "statFailed": {
+      "message": "ล้มเหลว"
+   },
+   "statFollowers": {
+      "message": "ผู้ติดตาม"
+   },
+   "statFollowing": {
+      "message": "กำลังติดตาม"
+   },
+   "statNonFollowers": {
+      "message": "ไม่ติดตาม"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "เลิกติดตาม"
+   },
+   "stop": {
+      "message": "หยุด"
+   },
+   "stopping": {
+      "message": "กำลังหยุด…"
+   },
+   "support": {
+      "message": "สนับสนุน"
+   },
+   "tableAction": {
+      "message": "การกระทำ"
+   },
+   "tableFollowingYou": {
+      "message": "ติดตามคุณ"
+   },
+   "tableFullName": {
+      "message": "ชื่อ"
+   },
+   "tablePrivate": {
+      "message": "ส่วนตัว"
+   },
+   "tableProfile": {
+      "message": "โปรไฟล์"
+   },
+   "tableUsername": {
+      "message": "ชื่อผู้ใช้"
+   },
+   "tableVerified": {
+      "message": "ยืนยัน"
+   },
+   "testNow": {
+      "message": "ทดสอบตอนนี้"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ การกระทำนี้ย้อนกลับไม่ได้!"
+   },
+   "toRemoveLimits": {
+      "message": "เพื่อลบข้อจำกัด"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "เหลืออีก $COUNT$ วัน",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "หมดระยะเวลาทดลองใช้"
+   },
+   "tryAgain": {
+      "message": "ลองอีกครั้ง"
+   },
+   "tryAnyway": {
+      "message": "ลองต่อไป"
+   },
+   "unfollow": {
+      "message": "เลิกติดตาม"
+   },
+   "unfollowDelayLabel": {
+      "message": "หน่วงเวลา (วินาที)"
+   },
+   "unfollowEveryone": {
+      "message": "เลิกติดตามทุกคน"
+   },
+   "unfollowFailed": {
+      "message": "ล้มเหลว"
+   },
+   "unfollowNonFollowers": {
+      "message": "เลิกติดตามผู้ที่ไม่ติดตาม"
+   },
+   "unfollowProcessStarted": {
+      "message": "เริ่มการเลิกติดตามแล้ว"
+   },
+   "unfollowSettings": {
+      "message": "ตั้งค่าเลิกติดตาม"
+   },
+   "unfollowWaitDetail": {
+      "message": "รอ $1 วินาทีระหว่างการเลิกติดตามแต่ละครั้ง"
+   },
+   "unfollowedSuccess": {
+      "message": "เลิกติดตามแล้ว"
+   },
+   "unfollowing": {
+      "message": "กำลังเลิก..."
+   },
+   "unknownError": {
+      "message": "ข้อผิดพลาดไม่ทราบ"
+   },
+   "upgradeToPremium": {
+      "message": "อัปเกรด Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "อัปเกรดเป็นพรีเมียม"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium ดูทั้งหมด!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "บัญชีจะถูกเลิกติดตาม"
+   },
+   "waitingSeconds": {
+      "message": "รอ $SECONDS$ วิ",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "เวลารอ (3-300 วินาที)"
+   },
+   "welcomeFunText1": {
+      "message": "อยากรู้ใครไม่ติดตามกลับ? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "เลิกติดตามง่ายมากแล้ว 😊"
+   },
+   "welcomeTitle": {
+      "message": "ยินดีต้อนรับ! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "เข้าด้วย Google ข้อมูลปลอดภัย!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 จะปลดล็อกพรุ่งนี้"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram หยุดรับการเลิกติดตามอัตโนมัติของบัญชีนี้ชั่วคราว เป็นเรื่องชั่วคราวและบัญชีของคุณไม่มีปัญหาอะไร\n\nระหว่างนี้คุณยังเลิกติดตามด้วยตัวเองจากหน้าโปรไฟล์ได้ และรายชื่อของคุณยังอยู่ที่นี่ — ไม่มีอะไรถูกใช้ไป"
+   },
+   "writeBlockedTitle": {
+      "message": "ตอนนี้ Instagram กำลังจำกัดการเลิกติดตาม"
+   },
+   "yesUnfollow": {
+      "message": "ใช่ เลิกติดตาม"
+   },
+   "yesUnfollowAll": {
+      "message": "ใช่ เลิกติดตามทั้งหมด"
+   }
+}

@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Kontouppgifter"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ fler konton tillgängliga. För att se alla",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Aktiva användare"
+   },
+   "addToWhitelist": {
+      "message": "Lägg till i vitlista"
+   },
+   "allAccountsUnlocked": {
+      "message": "Alla konton upplåsta!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "användare kommer att avföljas."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram returnerade din följarlista utan profilbildsdata, så alla poäng här är lägre än de borde vara och en del bottar missas. Öppna Instagram i en flik och kör skanningen igen för ett fullständigt resultat."
+   },
+   "botBlindTitle": {
+      "message": "Kontrollen av profilbild kunde inte göras"
+   },
+   "botCleared": {
+      "message": "Talar för det"
+   },
+   "botDeepAllChecked": {
+      "message": "Alla flaggade konton kontrollerade"
+   },
+   "botDeepChecked": {
+      "message": "Profil kontrollerad"
+   },
+   "botDeepChecksFor": {
+      "message": "Djupkontrollera $1 konton"
+   },
+   "botDeepChecksRemaining": {
+      "message": "$1 kvar ($2 redan klara)"
+   },
+   "botDeepDone": {
+      "message": "Djupkontrollerna klara — $1 konton kontrollerade."
+   },
+   "botDeepNoTargets": {
+      "message": "Inget konto behöver en djupkontroll."
+   },
+   "botDeepPausedBody": {
+      "message": "$1 konton hann kontrolleras innan det stoppade och $2 gjorde det inte. Utlåtandena nedan bygger bara på det som hann läsas. Det finns ingen fast väntetid — det kan ta timmar, eller till i morgon. Kom tillbaka senare i stället för att försöka nu, vilket bara förlänger den."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram pausade profilkontrollerna"
+   },
+   "botDeepRemaining": {
+      "message": "$1 blev inte kontrollerade."
+   },
+   "botDeepSubtitle": {
+      "message": "En förfrågan per konto, i säkert tempo."
+   },
+   "botFilterAll": {
+      "message": "Alla skannade"
+   },
+   "botFilterLikely": {
+      "message": "Troliga bottar"
+   },
+   "botFilterSuspicious": {
+      "message": "Misstänkta"
+   },
+   "botFreeHeadline": {
+      "message": "fler flaggade konton är låsta"
+   },
+   "botFreeWithheld": {
+      "message": "$1 till hittades — uppgradera för att se alla."
+   },
+   "botIntroHeading": {
+      "message": "Hitta kontona som inte är riktiga människor"
+   },
+   "botIntroLead": {
+      "message": "Varje följare får poäng efter hur sannolikt det är att det är en bot eller ett slasktratt-konto."
+   },
+   "botIntroReasons": {
+      "message": "Varje poäng kommer med skälen bakom den, så att du ser varför ett konto flaggades i stället för att lita på en siffra. Inget tas bort automatiskt — listan finns här för att du ska titta och bestämma."
+   },
+   "botNoFlagged": {
+      "message": "Inget flaggat — din följarlista ser ren ut."
+   },
+   "botNoRowsForFilter": {
+      "message": "Inget i den här gruppen."
+   },
+   "botNoSignals": {
+      "message": "Inget ovanligt"
+   },
+   "botNotRunYet": {
+      "message": "Kör en skanning för att se dina följare med poäng här."
+   },
+   "botPopupBody": {
+      "message": "Ger varje följare poäng efter hur sannolikt det är att det är en bot eller ett slasktratt-konto: ingen profilbild, inga inlägg, ett användarnamn som ser genererat ut, följer tusentals medan nästan ingen följer tillbaka."
+   },
+   "botPopupReasons": {
+      "message": "Varje poäng kommer med skälen bakom den. Inget tas bort automatiskt."
+   },
+   "botProvisionalBody": {
+      "message": "$1 flaggade konton har ännu inte fått profilen kontrollerad. De flesta bottar bekräftas först av den kontrollen — kör den innan du litar på antalet troliga bottar."
+   },
+   "botProvisionalTitle": {
+      "message": "Dessa utlåtanden är inte slutgiltiga än"
+   },
+   "botReadSubtitle": {
+      "message": "Läses direkt från din följarlista — inga extra förfrågningar."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Ingen profilbild"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Balanserad följarkvot"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Många siffror i användarnamnet"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Inget namn"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Följer många fler än som följer tillbaka"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Har ett kontomärke"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Följer extremt många konton"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Har inga följare"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Har aldrig publicerat"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Publicerar regelbundet"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Användarnamnet slutar med siffror"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Ovanligt mönster av understreck"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Verifierat konto"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Ovanligt långt användarnamn"
+   },
+   "botRunDeepChecks": {
+      "message": "Kör djupkontroller"
+   },
+   "botScanCached": {
+      "message": "Senaste skanning $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram pausade profilkontrollerna. Resultaten nedan kommer från det som hann läsas."
+   },
+   "botScanDeepProgress": {
+      "message": "Kontrollerar profiler… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Skanning klar."
+   },
+   "botScanNoData": {
+      "message": "Din följarlista kunde inte läsas. Instagram håller oss tillbaka — det går över av sig självt, men utan fast väntetid. Försök igen senare."
+   },
+   "botScanPartial": {
+      "message": "Skanningen är klar, men följarlistan kom tillbaka ofullständig — vissa konton saknas."
+   },
+   "botScanReading": {
+      "message": "Läser dina följare…"
+   },
+   "botScanReadingCount": {
+      "message": "Läser följare… $1"
+   },
+   "botScanTitle": {
+      "message": "Skanning av botföljare"
+   },
+   "botScoreRaw": {
+      "message": "Råpoäng"
+   },
+   "botSignalName": {
+      "message": "Användarnamn som ser genererat ut"
+   },
+   "botSignalPhoto": {
+      "message": "Ingen profilbild"
+   },
+   "botSignalPosts": {
+      "message": "Inga inlägg"
+   },
+   "botSignalRatio": {
+      "message": "Följer tusentals, nästan ingen följer tillbaka"
+   },
+   "botSignalsUnavailable": {
+      "message": "Vissa kontroller kunde inte göras för det här kontot, så dess poäng bygger på färre hållpunkter än de andras."
+   },
+   "botStatFlagged": {
+      "message": "Flaggade"
+   },
+   "botStatFollowers": {
+      "message": "Följare"
+   },
+   "botStatFollowing": {
+      "message": "Följer"
+   },
+   "botStatLikely": {
+      "message": "Troliga bottar"
+   },
+   "botStatPosts": {
+      "message": "Inlägg"
+   },
+   "botStatScanned": {
+      "message": "Skannade"
+   },
+   "botStatSuspicious": {
+      "message": "Misstänkta"
+   },
+   "botStatsGone": {
+      "message": "Kontot är borta"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram returnerade ingen profil — kontot är raderat eller avaktiverat, dess siffror går inte att läsa."
+   },
+   "botStatsNotChecked": {
+      "message": "Inte kontrollerad"
+   },
+   "botStepDeep": {
+      "message": "Kontrollerar profiler"
+   },
+   "botStepReading": {
+      "message": "Läser följare"
+   },
+   "botTableReasons": {
+      "message": "Varför"
+   },
+   "botTableScore": {
+      "message": "Poäng"
+   },
+   "botTableStats": {
+      "message": "Profilsiffror"
+   },
+   "botTableVerdict": {
+      "message": "Utlåtande"
+   },
+   "botVerdictClean": {
+      "message": "Verkar äkta"
+   },
+   "botVerdictLikely": {
+      "message": "Trolig bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Misstänkt"
+   },
+   "cacheExpiryWarning": {
+      "message": "Profilbilder kanske inte visas eftersom din senaste analys var för $DAYS$ dagar sedan. Analysera igen för uppdaterade resultat.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Senaste analys $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Avbryt"
+   },
+   "checkingBeforeStart": {
+      "message": "Kontrollerar…"
+   },
+   "checkingLoginStatus": {
+      "message": "Kontrollerar inloggningsstatus..."
+   },
+   "chooseMonthly": {
+      "message": "Välj månadsvis"
+   },
+   "chooseYearly": {
+      "message": "Välj årsvis"
+   },
+   "comeBackTomorrow": {
+      "message": "Kom tillbaka imorgon"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Du kan analysera +20 fler följare varje dag. Om du är otålig, byt till Premium och se alla nu. Om du är tålmodig, kom tillbaka imorgon, du kan se +20 fler följare. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Kom tillbaka imorgon för att se $1 fler konton (+$2 nya upplåsningar)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Varning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Är du säker på att du vill avfölja ALLA?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Bekräfta åtgärd"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Är du säker på att du vill avfölja alla icke-följare?"
+   },
+   "connected": {
+      "message": "Ansluten"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Kunde inte hämta följelistan. Försök igen senare."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$t $MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "senare"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "senare"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Imorgon kan du se +20 fler konton ($COUNTDOWN$). +20 konton läggs till varje dag, gränser ackumuleras!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5t 30m senare"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Daglig gräns"
+   },
+   "dailyScanLimit": {
+      "message": "Daglig skanningsgräns"
+   },
+   "dataLoading": {
+      "message": "Data laddas..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Data laddas: $COUNT$ följare hittade",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Data laddas: $COUNT$ följningar hittade",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "50% RABATT"
+   },
+   "email": {
+      "message": "E-post"
+   },
+   "errorFetchingData": {
+      "message": "Ett fel uppstod vid hämtning av data. Försök igen senare."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram är tillfälligt otillgängligt. Försök igen senare."
+   },
+   "errorNetwork": {
+      "message": "Kunde inte nå Instagram. Kontrollera din anslutning — inget har gått förlorat och körningen fortsätter."
+   },
+   "errorNetworkConnection": {
+      "message": "Anslutningsfel. Kontrollera din internetanslutning och försök igen."
+   },
+   "errorOccurred": {
+      "message": "Ett fel uppstod. Försök igen."
+   },
+   "errorRateLimit": {
+      "message": "Instagram har pausat våra förfrågningar. Det går över av sig självt, men det finns ingen fast väntetid — beroende på hur mycket som gjorts kan det ta timmar, eller till i morgon. Att försöka direkt förlänger den."
+   },
+   "errorSessionExpired": {
+      "message": "Din Instagram-session har gått ut. Logga in på Instagram och försök igen."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "För många avföljningsförfrågningar. Väntar 5 minuter innan nytt försök..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min kvar"
+   },
+   "etaSeconds": {
+      "message": "~$1 sek kvar"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Avföljning misslyckades. Försök igen."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Avancerad filtrering"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Avancerad filtrering och rapportering"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Avancerat notifieringssystem"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Avancerade avföljningsfunktioner"
+   },
+   "featureBasicUnfollow": {
+      "message": "Grundläggande avföljningsfunktioner"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/dag)"
+   },
+   "featureMax50Analysis": {
+      "message": "Max 40 följningsanalyser"
+   },
+   "featureSpamDetector": {
+      "message": "Spamkontodetektor"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Obegränsad analys"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Obegränsad följningsanalys"
+   },
+   "finalizingAnalysis": {
+      "message": "Slutför..."
+   },
+   "firstDayBonus": {
+      "message": "Första dagens bonus"
+   },
+   "firstDayBonusMessage": {
+      "message": "Första dagens bonus: 40 konton! Imorgon kan du se +20 fler konton ($COUNTDOWN$). +20 konton läggs till varje dag.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5t 30m senare"
+         }
+      }
+   },
+   "followers": {
+      "message": "Följare"
+   },
+   "following": {
+      "message": "Följer"
+   },
+   "followingYouBadge": {
+      "message": "Följer dig"
+   },
+   "freePlanLimitDescription": {
+      "message": "Du har nått gränsen på 40 analyser. Uppgradera till Premium för obegränsad analys!"
+   },
+   "freePlanLimitReached": {
+      "message": "Gratisplanens gräns nådd"
+   },
+   "freePlanTodayMessage": {
+      "message": "Med gratisplanen kan du se $DISPLAYED$ konton idag. Det finns $HIDDEN$ fler konton men du kan inte se dem.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Med gratisplanen kan du se $COUNT$ konton idag.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Du kan bara avfölja upp till $COUNT$ användare med gratisplanen. Välj bara de första $COUNT$ användarna eller uppgradera till Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Du kan bara avfölja upp till $COUNT$ användare med gratisplanen. Uppgradera till Premium för obegränsad avföljning!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Fullständigt namn"
+   },
+   "getStartedWithGoogle": {
+      "message": "Kom igång med Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Gå till Instagram-inloggning"
+   },
+   "gotIt": {
+      "message": "OK"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram slutade skicka data innan hela listan kommit fram, så vissa konton saknas. Att agera nu kan sluta följa personer som faktiskt följer dig. Kör analysen igen först."
+   },
+   "incompleteDataTitle": {
+      "message": "Listan är ofullständig"
+   },
+   "instagramLimitedBody": {
+      "message": "Du är fortfarande inloggad och det är inget fel på ditt konto. Det går över av sig självt, men det finns ingen fast väntetid — beroende på hur mycket som gjorts kan det ta timmar, eller till i morgon. Upprepade försök gör den längre."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram begränsar förfrågningar just nu"
+   },
+   "instagramLoginAlert": {
+      "message": "Logga in på Instagram först!"
+   },
+   "invalidWaitingTime": {
+      "message": "Ange en giltig väntetid mellan 3 och 300 sekunder"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Ogiltig väntetid"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 sekunder ligger utanför tillåtet intervall. Ange ett värde mellan $2 och $3 sekunder."
+   },
+   "later": {
+      "message": "senare"
+   },
+   "limitedTimeOffer": {
+      "message": "Tidsbegränsat erbjudande"
+   },
+   "liveCounterPrefix": {
+      "message": "Under de senaste 24 timmarna"
+   },
+   "liveCounterSuffix": {
+      "message": "personer uppgraderade till Premium!"
+   },
+   "loading": {
+      "message": "Laddar..."
+   },
+   "loadingProfile": {
+      "message": "Laddar profil"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Läser in din sparade analys…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Ingenting begärs från Instagram."
+   },
+   "login": {
+      "message": "Logga in"
+   },
+   "loginFailed": {
+      "message": "Inloggningen misslyckades: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Okänt fel"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Inloggning krävs"
+   },
+   "loginSuccessful": {
+      "message": "Inloggningen lyckades!"
+   },
+   "loginWithGoogle": {
+      "message": "Logga in med Google"
+   },
+   "logout": {
+      "message": "Logga ut"
+   },
+   "logoutError": {
+      "message": "Ett fel uppstod vid utloggning: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Okänt fel"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Hantera prenumeration"
+   },
+   "membership": {
+      "message": "Medlemskap"
+   },
+   "menuBotScan": {
+      "message": "Botskanning"
+   },
+   "menuHome": {
+      "message": "Hem"
+   },
+   "menuProfile": {
+      "message": "Profil"
+   },
+   "menuUpgrade": {
+      "message": "Uppgradera"
+   },
+   "minutesTest": {
+      "message": "$1 minuter (Test)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 fler konton tillgängliga"
+   },
+   "moreInHours": {
+      "message": "Om $2 timmar kan du se +$1 fler följare"
+   },
+   "nextCheckTime": {
+      "message": "Nästa kontroll: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Nästa kontroll: Imorgon"
+   },
+   "nextInSeconds": {
+      "message": "Nästa om $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Inga icke-följare"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Inga icke-följare att avfölja."
+   },
+   "noUsers": {
+      "message": "Inga användare"
+   },
+   "noUsersToUnfollow": {
+      "message": "Inga användare att avfölja."
+   },
+   "notFollowingYouBadge": {
+      "message": "Följer dig inte"
+   },
+   "notProvided": {
+      "message": "Ej angivet"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Öppnar..."
+   },
+   "openingInNewTab": {
+      "message": "Öppnar i ny flik..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/månad"
+   },
+   "perYear": {
+      "message": "/år"
+   },
+   "planFree": {
+      "message": "Gratis"
+   },
+   "planPopular": {
+      "message": "Populär"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Årsvis"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Logga in igen för att prenumerera"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Logga in på Instagram först"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Logga in för att uppgradera till Premium"
+   },
+   "pleaseSignInToView": {
+      "message": "Logga in för att se dina kontouppgifter"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Med Premium kan du se alla $COUNT$ konton nu, inga begränsningar!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Integritet skyddad"
+   },
+   "processStarted": {
+      "message": "Process startad"
+   },
+   "processing": {
+      "message": "Bearbetar..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram bad oss pausa — fortsätter om $1 s"
+   },
+   "rating": {
+      "message": "Betyg"
+   },
+   "reAnalyze": {
+      "message": "Analysera igen"
+   },
+   "reAnalyzing": {
+      "message": "Analyserar igen..."
+   },
+   "removeFromWhitelist": {
+      "message": "Ta bort från vitlista"
+   },
+   "retryIn": {
+      "message": "Försöker igen om $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Spara 50% på Premium - Bästa värdet"
+   },
+   "saveSettings": {
+      "message": "Spara inställningar"
+   },
+   "scanBlockedBody": {
+      "message": "Det här är vanligt, det löser sig av sig självt, och det är inget fel på vare sig ditt konto eller tillägget. Vi slutade direkt i stället för att försöka igen, eftersom upprepade försök gör väntan längre. Försök igen senare i dag."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Följarlistan kunde inte läsas just nu."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Följer-listan kunde inte läsas just nu."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram vill ha en kort paus"
+   },
+   "scanPartialBody": {
+      "message": "En del kom in och sedan pausade Instagram oss, så resultaten är inte tillräckligt fullständiga för att agera på. Inget har ändrats. Kom tillbaka senare och kör analysen igen — det kan ta timmar och att försöka nu förlänger det."
+   },
+   "scanPartialTitle": {
+      "message": "Listan kom tillbaka ofullständig"
+   },
+   "scanPaused": {
+      "message": "Instagram bad oss sakta ner — väntar…"
+   },
+   "scanRemaining": {
+      "message": "$1 konton kvar"
+   },
+   "scanShortBody": {
+      "message": "Skanningen är klar, men färre konton kom tillbaka än vad Instagram uppger att listan innehåller. Att agera på det kan sluta följa personer som följer dig, så inget visas. Kör analysen igen."
+   },
+   "scanShortTitle": {
+      "message": "Vissa konton saknas"
+   },
+   "seconds": {
+      "message": "sekunder"
+   },
+   "secure": {
+      "message": "Säker"
+   },
+   "secureLogin": {
+      "message": "Säker inloggning"
+   },
+   "sessionExpiredTitle": {
+      "message": "Din Instagram-session har avslutats"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Visa bara icke-följare"
+   },
+   "showingFirstAccounts": {
+      "message": "Visar de första $COUNT$ kontona.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Hoppa över konton som följer dig"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Hoppa över verifierade konton"
+   },
+   "startAnalysis": {
+      "message": "Starta analys"
+   },
+   "startBotScan": {
+      "message": "Starta botskanning"
+   },
+   "startUnfollow": {
+      "message": "Starta avföljning"
+   },
+   "startingAnalysis": {
+      "message": "Startar analys..."
+   },
+   "statFailed": {
+      "message": "Misslyckades"
+   },
+   "statFollowers": {
+      "message": "Följare"
+   },
+   "statFollowing": {
+      "message": "Följer"
+   },
+   "statNonFollowers": {
+      "message": "Följer inte"
+   },
+   "statRemaining": {
+      "message": "Följer inte"
+   },
+   "statUnfollowed": {
+      "message": "Avföljd"
+   },
+   "stop": {
+      "message": "Stoppa"
+   },
+   "stopping": {
+      "message": "Stoppar…"
+   },
+   "support": {
+      "message": "Support"
+   },
+   "tableAction": {
+      "message": "Åtgärd"
+   },
+   "tableFollowingYou": {
+      "message": "Följer dig"
+   },
+   "tableFullName": {
+      "message": "Fullständigt namn"
+   },
+   "tablePrivate": {
+      "message": "Privat"
+   },
+   "tableProfile": {
+      "message": "Profil"
+   },
+   "tableUsername": {
+      "message": "Användarnamn"
+   },
+   "tableVerified": {
+      "message": "Verifierad"
+   },
+   "testNow": {
+      "message": "Testa nu"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Denna åtgärd kan inte ångras!"
+   },
+   "toRemoveLimits": {
+      "message": "för att ta bort begränsningar"
+   },
+   "trendDown": {
+      "message": "$COUNT$ sedan senaste analysen",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "Ingen förändring"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ sedan senaste analysen",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ dagar kvar",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Imorgon kan du se +20 fler konton ($COUNTDOWN$). +20 konton läggs till varje dag, gränser ackumuleras!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "11t 13m 14s senare"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Din gratis provperiod har avslutats. Du kan se $COUNT$ konton idag.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Provperioden har avslutats"
+   },
+   "tryAgain": {
+      "message": "Försök igen"
+   },
+   "tryAnyway": {
+      "message": "Försök ändå"
+   },
+   "unfollow": {
+      "message": "Avfölj"
+   },
+   "unfollowDelayLabel": {
+      "message": "Avföljningsfördröjning (sekunder)"
+   },
+   "unfollowEveryone": {
+      "message": "Avfölj alla"
+   },
+   "unfollowFailed": {
+      "message": "Misslyckades"
+   },
+   "unfollowNonFollowers": {
+      "message": "Avfölj icke-följare"
+   },
+   "unfollowProcessStarted": {
+      "message": "Avföljningsprocessen har startats."
+   },
+   "unfollowSettings": {
+      "message": "Avföljningsinställningar"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 sekunder mellan varje avföljning."
+   },
+   "unfollowedSuccess": {
+      "message": "Avföljd"
+   },
+   "unfollowing": {
+      "message": "Avföljer..."
+   },
+   "unknownError": {
+      "message": "Okänt fel"
+   },
+   "upgradeToPremium": {
+      "message": "Uppgradera till Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Uppgradera till Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Uppgradera till Premium för att se alla konton!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "användare kommer att avföljas."
+   },
+   "waitingSeconds": {
+      "message": "Väntar $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Väntetid i sekunder (3-300)"
+   },
+   "welcomeFunText1": {
+      "message": "Vill du se vem som inte följer dig tillbaka? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Avföljning är nu mycket enklare 😊"
+   },
+   "welcomeTitle": {
+      "message": "Välkommen! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Logga bara in med ditt Google-konto, dina data är säkra!"
+   },
+   "whitelist": {
+      "message": "Vitlista"
+   },
+   "whitelisted": {
+      "message": "Skyddad"
+   },
+   "whitelistedSkipped": {
+      "message": "Hoppades över (vitlistad)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 låses upp imorgon"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram tar tillfälligt inte emot automatiska avföljningar på det här kontot. Det är tillfälligt och det är inget fel på ditt konto.\n\nDu kan fortfarande sluta följa för hand från en profilsida under tiden, och din lista finns kvar här — inget har förbrukats."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram begränsar avföljningar just nu"
+   },
+   "yesUnfollow": {
+      "message": "Ja, avfölj"
+   },
+   "yesUnfollowAll": {
+      "message": "Ja, avfölj alla"
+   }
+}

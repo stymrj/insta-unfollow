@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Hesap Bilgileri"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ hesap daha var. Tümünü görmek için",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Aktif Kullanıcı"
+   },
+   "addToWhitelist": {
+      "message": "Korumaya al"
+   },
+   "allAccountsUnlocked": {
+      "message": "Tüm hesaplar açıldı!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "kullanıcı takipten çıkarılacak."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram takipçi listenizi profil fotoğrafı bilgisi olmadan gönderdi; bu yüzden buradaki tüm puanlar olması gerekenden düşük ve bazı botlar gözden kaçacak. Tam sonuç için bir sekmede Instagram açıkken taramayı tekrar başlatın."
+   },
+   "botBlindTitle": {
+      "message": "Profil fotoğrafı kontrolü yapılamadı"
+   },
+   "botCleared": {
+      "message": "Lehine"
+   },
+   "botDeepAllChecked": {
+      "message": "İşaretlenen tüm hesaplar incelendi"
+   },
+   "botDeepChecked": {
+      "message": "Profili kontrol edildi"
+   },
+   "botDeepChecksFor": {
+      "message": "$1 hesabı derin kontrol et"
+   },
+   "botDeepChecksRemaining": {
+      "message": "$1 hesap kaldı ($2 zaten incelendi)"
+   },
+   "botDeepDone": {
+      "message": "Derin kontrol bitti — $1 hesap incelendi."
+   },
+   "botDeepNoTargets": {
+      "message": "Derin kontrol gerektiren hesap yok."
+   },
+   "botDeepPausedBody": {
+      "message": "Durmadan önce $1 hesap incelendi, $2 hesap incelenmeden kaldı. Aşağıdaki sonuçlar yalnızca okunabilenlere dayanıyor. Belirli bir bekleme süresi yok — saatler sürebilir, yarına da sarkabilir. Şimdi tekrar denemek yerine daha sonra dönün; denemek süreyi uzatıyor."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram profil incelemelerine ara verdirdi"
+   },
+   "botDeepRemaining": {
+      "message": "$1 hesap incelenmeden kaldı."
+   },
+   "botDeepSubtitle": {
+      "message": "Hesap başına tek istek, güvenli kalacak hızda."
+   },
+   "botFilterAll": {
+      "message": "Taranan hepsi"
+   },
+   "botFilterLikely": {
+      "message": "Muhtemel bot"
+   },
+   "botFilterSuspicious": {
+      "message": "Şüpheli"
+   },
+   "botFreeHeadline": {
+      "message": "işaretlenen hesap daha kilitli"
+   },
+   "botFreeWithheld": {
+      "message": "$1 hesap daha bulundu — hepsini görmek için yükseltin."
+   },
+   "botIntroHeading": {
+      "message": "Gerçek kişi olmayan hesapları bulun"
+   },
+   "botIntroLead": {
+      "message": "Her takipçi, bot ya da sahte hesap olma ihtimaline göre puanlanır."
+   },
+   "botIntroReasons": {
+      "message": "Her puanın yanında gerekçesi yazar; böylece bir sayıya güvenmek yerine hesabın neden işaretlendiğini görürsünüz. Hiçbir hesap kendiliğinden kaldırılmaz — liste bakıp karar vermeniz için burada."
+   },
+   "botNoFlagged": {
+      "message": "İşaretlenen yok — takipçi listeniz temiz görünüyor."
+   },
+   "botNoRowsForFilter": {
+      "message": "Bu grupta kayıt yok."
+   },
+   "botNoSignals": {
+      "message": "Olağandışı bir şey yok"
+   },
+   "botNotRunYet": {
+      "message": "Takipçilerinizin puanlarını görmek için bir tarama başlatın."
+   },
+   "botPopupBody": {
+      "message": "Her takipçiyi bot ya da sahte hesap olma ihtimaline göre puanlar — profil fotoğrafı yok, gönderisi yok, üretilmiş görünen kullanıcı adı, binlerce kişiyi takip edip neredeyse hiç geri takip almamak."
+   },
+   "botPopupReasons": {
+      "message": "Her puanın yanında gerekçesi yazar. Hiçbir hesap kendiliğinden kaldırılmaz."
+   },
+   "botProvisionalBody": {
+      "message": "İşaretlenen $1 hesabın profili henüz incelenmedi. Botların çoğu ancak bu incelemeyle kesinleşir; \"muhtemel bot\" sayısına güvenmeden önce incelemeyi çalıştırın."
+   },
+   "botProvisionalTitle": {
+      "message": "Bu sonuçlar henüz kesin değil"
+   },
+   "botReadSubtitle": {
+      "message": "Doğrudan takipçi listenizden okunuyor — ek istek yok."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Profil fotoğrafı yok"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Dengeli takipçi oranı"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Kullanıcı adında çok rakam"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Ad soyad yok"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Takipçisinden çok daha fazlasını takip ediyor"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Hesap rozeti var"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Aşırı sayıda hesabı takip ediyor"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Hiç takipçisi yok"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Hiç gönderi paylaşmamış"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Düzenli paylaşıyor"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Kullanıcı adı rakamla bitiyor"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Sıra dışı alt çizgi dizilimi"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Onaylı hesap"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Alışılmadık kadar uzun kullanıcı adı"
+   },
+   "botRunDeepChecks": {
+      "message": "Derin kontrol yap"
+   },
+   "botScanCached": {
+      "message": "Son tarama $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram profil incelemelerine ara verdirdi. Aşağıdaki sonuçlar okunabilenlerden."
+   },
+   "botScanDeepProgress": {
+      "message": "Profiller inceleniyor… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Tarama tamamlandı."
+   },
+   "botScanNoData": {
+      "message": "Takipçi listeniz okunamadı. Instagram bizi geri tutuyor — kendiliğinden geçer ama belirli bir süresi yok. Daha sonra tekrar deneyin."
+   },
+   "botScanPartial": {
+      "message": "Tarama bitti ama takipçi listesi eksik geldi — bazı hesaplar listede yok."
+   },
+   "botScanReading": {
+      "message": "Takipçileriniz okunuyor…"
+   },
+   "botScanReadingCount": {
+      "message": "Takipçiler okunuyor… $1"
+   },
+   "botScanTitle": {
+      "message": "Bot Takipçi Taraması"
+   },
+   "botScoreRaw": {
+      "message": "Ham puan"
+   },
+   "botSignalName": {
+      "message": "Üretilmiş görünen kullanıcı adı"
+   },
+   "botSignalPhoto": {
+      "message": "Profil fotoğrafı yok"
+   },
+   "botSignalPosts": {
+      "message": "Gönderisi yok"
+   },
+   "botSignalRatio": {
+      "message": "Binlerce kişiyi takip ediyor, neredeyse kimse onu takip etmiyor"
+   },
+   "botSignalsUnavailable": {
+      "message": "Bu hesap için bazı kontroller yapılamadı; puanı diğerlerine göre daha az veriye dayanıyor."
+   },
+   "botStatFlagged": {
+      "message": "İşaretlenen"
+   },
+   "botStatFollowers": {
+      "message": "Takipçi"
+   },
+   "botStatFollowing": {
+      "message": "Takip"
+   },
+   "botStatLikely": {
+      "message": "Muhtemel bot"
+   },
+   "botStatPosts": {
+      "message": "Gönderi"
+   },
+   "botStatScanned": {
+      "message": "Taranan"
+   },
+   "botStatSuspicious": {
+      "message": "Şüpheli"
+   },
+   "botStatsGone": {
+      "message": "Hesap yok"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram bu hesap için profil döndürmedi — silinmiş ya da kapatılmış, dolayısıyla sayıları hiçbir zaman okunamaz."
+   },
+   "botStatsNotChecked": {
+      "message": "İncelenmedi"
+   },
+   "botStepDeep": {
+      "message": "Profiller inceleniyor"
+   },
+   "botStepReading": {
+      "message": "Takipçiler okunuyor"
+   },
+   "botTableReasons": {
+      "message": "Neden"
+   },
+   "botTableScore": {
+      "message": "Puan"
+   },
+   "botTableStats": {
+      "message": "Profil sayıları"
+   },
+   "botTableVerdict": {
+      "message": "Sonuç"
+   },
+   "botVerdictClean": {
+      "message": "Gerçek görünüyor"
+   },
+   "botVerdictLikely": {
+      "message": "Muhtemel bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Şüpheli"
+   },
+   "cacheExpiryWarning": {
+      "message": "Son analiziniz $DAYS$ gün önce yapıldığı için profil görselleri görüntülenemeyebilir. Güncel sonuçlar için yeniden analiz yapın.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Son analiz $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "İptal"
+   },
+   "checkingBeforeStart": {
+      "message": "Kontrol ediliyor…"
+   },
+   "checkingLoginStatus": {
+      "message": "Giriş durumu kontrol ediliyor..."
+   },
+   "chooseMonthly": {
+      "message": "Aylık Seç"
+   },
+   "chooseYearly": {
+      "message": "Yıllık Seç"
+   },
+   "comeBackTomorrow": {
+      "message": "Yarın tekrar gel"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Her gün +20 takipçini daha analiz edebilirsin. Sabırsızsan Premium'a geç, hepsini şimdi gör. Sabırlıysan yarın tekrar gel, +20 takipçini daha görebilirsin. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Yarın tekrar gelerek $1 hesap daha görebilirsin (+$2 yeni açılacak)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Uyarı!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Herkesi takipten çıkarmak istediğinizden emin misiniz?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Onayla"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Takip etmeyen tüm kullanıcıları takipten çıkarmak istediğinizden emin misiniz?"
+   },
+   "connected": {
+      "message": "Bağlı"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Takip listesi alınamadı. Daha sonra tekrar deneyin."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$h $MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "sonra"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "sonra"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Yarın +20 hesap daha görebilirsiniz ($COUNTDOWN$). Her gün +20 hesap eklenir, limitler birikir!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5sa 30dk sonra"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Günlük Limit"
+   },
+   "dailyScanLimit": {
+      "message": "Günlük Tarama Limiti"
+   },
+   "dataLoading": {
+      "message": "Veri Yükleniyor..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Yükleniyor: $COUNT$ takipçi bulundu",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Yükleniyor: $COUNT$ takip bulundu",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "%50 İNDİRİM"
+   },
+   "email": {
+      "message": "E-posta"
+   },
+   "errorFetchingData": {
+      "message": "Veri alınırken hata oluştu. Tekrar deneyin."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin."
+   },
+   "errorNetwork": {
+      "message": "Instagram'a ulaşılamadı. Bağlantınızı kontrol edin — hiçbir şey kaybolmadı, işlem kaldığı yerden devam edecek."
+   },
+   "errorNetworkConnection": {
+      "message": "Bağlantı hatası. İnternet bağlantınızı kontrol edip tekrar deneyin."
+   },
+   "errorOccurred": {
+      "message": "Bir hata oluştu. Tekrar deneyin."
+   },
+   "errorRateLimit": {
+      "message": "Instagram isteklerimizi durdurdu. Kendiliğinden geçer ama sabit bir süresi yok — yapılan işlem miktarına göre saatler sürebilir, yarına da sarkabilir. Hemen tekrar denemek bu süreyi uzatır."
+   },
+   "errorSessionExpired": {
+      "message": "Instagram oturumunuz sona erdi. Lütfen Instagram'a giriş yapıp tekrar deneyin."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Instagram yavaşlamamızı istedi. İşlem duraklatıldı, kendiliğinden devam edecek."
+   },
+   "etaMinutes": {
+      "message": "~$1 dk kaldı"
+   },
+   "etaSeconds": {
+      "message": "~$1 sn kaldı"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Takip bırakılamadı. Tekrar deneyin."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Gelişmiş filtreleme"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Gelişmiş filtreleme ve rapor"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Gelişmiş Bildirim Sistemi"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Gelişmiş takip bırakma"
+   },
+   "featureBasicUnfollow": {
+      "message": "Temel takip bırakma"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/gün)"
+   },
+   "featureMax50Analysis": {
+      "message": "Maks. 40 takip analizi"
+   },
+   "featureSpamDetector": {
+      "message": "Spam hesap tespiti"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Sınırsız analiz"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Sınırsız takip analizi"
+   },
+   "finalizingAnalysis": {
+      "message": "Tamamlanıyor..."
+   },
+   "firstDayBonus": {
+      "message": "İlk Gün Bonusu"
+   },
+   "firstDayBonusMessage": {
+      "message": "İlk gün bonusu: 40 hesap! Yarın +20 hesap daha görebilirsiniz ($COUNTDOWN$). Her gün +20 hesap eklenir.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5sa 30dk sonra"
+         }
+      }
+   },
+   "followers": {
+      "message": "Takipçi"
+   },
+   "following": {
+      "message": "Takip"
+   },
+   "followingYouBadge": {
+      "message": "Takip Ediyor"
+   },
+   "freePlanLimitDescription": {
+      "message": "40 analiz limitine ulaştınız. Sınırsız için Premium'a yükseltin!"
+   },
+   "freePlanLimitReached": {
+      "message": "Ücretsiz Plan Limiti Doldu"
+   },
+   "freePlanTodayMessage": {
+      "message": "Ücretsiz planda bugün $DISPLAYED$ hesap görebilirsiniz. $HIDDEN$ hesap daha var ama göremiyorsunuz.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Ücretsiz planda bugün $COUNT$ hesap görebilirsiniz.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Ücretsiz planda maksimum $COUNT$ kullanıcıyı takipten çıkarabilirsiniz. Lütfen ilk $COUNT$ kullanıcıyı seçin veya Premium'a yükseltin.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Ücretsiz planda maksimum $COUNT$ kullanıcıyı takipten çıkarabilirsiniz. Sınırsız takip bırakma için Premium'a yükseltin!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Ad Soyad"
+   },
+   "getStartedWithGoogle": {
+      "message": "Google ile Kayıt Ol"
+   },
+   "goToInstagramLogin": {
+      "message": "Instagram'a Git"
+   },
+   "gotIt": {
+      "message": "Anladım"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram liste tamamlanmadan veri göndermeyi kesti, bu yüzden bazı hesaplar eksik. Şimdi işlem yapmak, sizi gerçekten takip eden kişileri takipten çıkarabilir. Lütfen önce analizi tekrar çalıştırın."
+   },
+   "incompleteDataTitle": {
+      "message": "Liste eksik"
+   },
+   "instagramLimitedBody": {
+      "message": "Girişiniz hâlâ açık ve hesabınızda bir sorun yok. Bu durum kendiliğinden geçer ama sabit bir süresi yok — yapılan işlem miktarına göre saatler sürebilir, yarına da sarkabilir. Üst üste denemek süreyi uzatır."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram şu anda istekleri sınırlıyor"
+   },
+   "instagramLoginAlert": {
+      "message": "Önce Instagram'a giriş yapın!"
+   },
+   "invalidWaitingTime": {
+      "message": "Lütfen 3-300 arası geçerli bir süre girin"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Geçersiz bekleme süresi"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 saniye izin verilen aralığın dışında. Lütfen $2 ile $3 saniye arasında bir değer girin."
+   },
+   "later": {
+      "message": "sonra"
+   },
+   "limitedTimeOffer": {
+      "message": "Sınırlı Süre Fırsatı"
+   },
+   "liveCounterPrefix": {
+      "message": "Son 24 saatte"
+   },
+   "liveCounterSuffix": {
+      "message": "kişi Premium'a geçti!"
+   },
+   "loading": {
+      "message": "Yükleniyor..."
+   },
+   "loadingProfile": {
+      "message": "Profil yükleniyor"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Kayıtlı analiziniz yükleniyor…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Instagram’dan hiçbir şey istenmiyor."
+   },
+   "login": {
+      "message": "Giriş"
+   },
+   "loginFailed": {
+      "message": "Giriş başarısız: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Bilinmeyen hata"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Giriş Gerekli"
+   },
+   "loginSuccessful": {
+      "message": "Giriş başarılı!"
+   },
+   "loginWithGoogle": {
+      "message": "Google ile giriş yap"
+   },
+   "logout": {
+      "message": "Çıkış"
+   },
+   "logoutError": {
+      "message": "Çıkış yapılırken hata: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Bilinmeyen hata"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Aboneliği Yönet"
+   },
+   "membership": {
+      "message": "Üyelik"
+   },
+   "menuBotScan": {
+      "message": "Bot Tarama"
+   },
+   "menuHome": {
+      "message": "Ana Sayfa"
+   },
+   "menuProfile": {
+      "message": "Profil"
+   },
+   "menuUpgrade": {
+      "message": "Yükselt"
+   },
+   "minutesTest": {
+      "message": "$1 dakika (Test)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 hesap daha mevcut"
+   },
+   "moreInHours": {
+      "message": "$2 saat sonra +$1 takipçini daha görebilirsin"
+   },
+   "nextCheckTime": {
+      "message": "Sonraki kontrol: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Sonraki kontrol: Yarın"
+   },
+   "nextInSeconds": {
+      "message": "Sonraki: $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Takip Etmeyen Yok"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Takipten çıkarılacak takip etmeyen kullanıcı bulunamadı."
+   },
+   "noUsers": {
+      "message": "Kullanıcı Yok"
+   },
+   "noUsersToUnfollow": {
+      "message": "Takipten çıkarılacak kullanıcı bulunamadı."
+   },
+   "notFollowingYouBadge": {
+      "message": "Takip Etmiyor"
+   },
+   "notProvided": {
+      "message": "Belirtilmemiş"
+   },
+   "ok": {
+      "message": "Tamam"
+   },
+   "opening": {
+      "message": "Açılıyor..."
+   },
+   "openingInNewTab": {
+      "message": "Yeni sekmede açılıyor..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/ay"
+   },
+   "perYear": {
+      "message": "/yıl"
+   },
+   "planFree": {
+      "message": "Ücretsiz"
+   },
+   "planPopular": {
+      "message": "Popüler"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Yıllık"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Abone olmak için tekrar giriş yapın"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Önce Instagram'a giriş yapın"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Yükseltmek için giriş yapın"
+   },
+   "pleaseSignInToView": {
+      "message": "Hesap bilgilerinizi görmek için giriş yapın"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Premium ile tüm $COUNT$ hesabı şimdi görün, limit yok!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Gizlilik Korumalı"
+   },
+   "processStarted": {
+      "message": "İşlem Başlatıldı"
+   },
+   "processing": {
+      "message": "İşleniyor..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram kısa bir mola istedi — $1 sn içinde devam edecek"
+   },
+   "rating": {
+      "message": "Puan"
+   },
+   "reAnalyze": {
+      "message": "Yeniden Analiz Et"
+   },
+   "reAnalyzing": {
+      "message": "Yeniden analiz ediliyor..."
+   },
+   "removeFromWhitelist": {
+      "message": "Korumadan çıkar"
+   },
+   "retryIn": {
+      "message": "$SECONDS$ saniye sonra tekrar denenecek...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Premium'da %50 İndirim"
+   },
+   "saveSettings": {
+      "message": "Ayarları Kaydet"
+   },
+   "scanBlockedBody": {
+      "message": "Bu sık karşılaşılan ve kendiliğinden geçen bir durum — hesabınızda da eklentide de bir sorun yok. Tekrar denemek yerine hemen durduk, çünkü üst üste denemek bekleme süresini uzatıyor. Biraz sonra tekrar deneyin."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Takipçi listesi şu an alınamadı."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Takip edilenler listesi şu an alınamadı."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram kısa bir ara istiyor"
+   },
+   "scanPartialBody": {
+      "message": "Bir kısmı geldi, sonra Instagram bizi durdurdu; sonuçlar üzerine işlem yapılacak kadar tam değil. Hiçbir şey değiştirilmedi. Daha sonra dönüp analizi tekrar çalıştırın — bu durumun geçmesi saatler sürebilir ve şimdi denemek süreyi uzatır."
+   },
+   "scanPartialTitle": {
+      "message": "Liste eksik geldi"
+   },
+   "scanPaused": {
+      "message": "Instagram yavaşlamamızı istedi — bekleniyor…"
+   },
+   "scanRemaining": {
+      "message": "$1 hesap kaldı"
+   },
+   "scanShortBody": {
+      "message": "Tarama bitti ama Instagram'ın bildirdiği sayıdan daha az hesap geldi. Bu veriyle işlem yapmak, sizi gerçekten takip eden kişileri takipten çıkarabilir; bu yüzden liste gösterilmiyor. Lütfen analizi tekrar çalıştırın."
+   },
+   "scanShortTitle": {
+      "message": "Bazı hesaplar eksik"
+   },
+   "seconds": {
+      "message": "saniye"
+   },
+   "secure": {
+      "message": "Güvenli"
+   },
+   "secureLogin": {
+      "message": "Güvenli Giriş"
+   },
+   "sessionExpiredTitle": {
+      "message": "Instagram oturumunuz sonlandı"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Sadece takip etmeyenleri göster"
+   },
+   "showingFirstAccounts": {
+      "message": "İlk $COUNT$ hesap gösteriliyor.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Seni Takip Edenleri Atla"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Onaylı Hesapları Atla"
+   },
+   "startAnalysis": {
+      "message": "Analizi Başlat"
+   },
+   "startBotScan": {
+      "message": "Bot Taramasını Başlat"
+   },
+   "startUnfollow": {
+      "message": "Takibi Bırak"
+   },
+   "startingAnalysis": {
+      "message": "Analiz başlıyor..."
+   },
+   "statFailed": {
+      "message": "Başarısız"
+   },
+   "statFollowers": {
+      "message": "Takipçi Sayısı"
+   },
+   "statFollowing": {
+      "message": "Takip Edilen Sayısı"
+   },
+   "statNonFollowers": {
+      "message": "Takip Etmeyen Sayısı"
+   },
+   "statRemaining": {
+      "message": "Takip Etmeyen"
+   },
+   "statUnfollowed": {
+      "message": "Takipten Çıkılan"
+   },
+   "stop": {
+      "message": "Durdur"
+   },
+   "stopping": {
+      "message": "Durduruluyor…"
+   },
+   "support": {
+      "message": "Destek"
+   },
+   "tableAction": {
+      "message": "İşlem"
+   },
+   "tableFollowingYou": {
+      "message": "Seni Takip"
+   },
+   "tableFullName": {
+      "message": "Ad Soyad"
+   },
+   "tablePrivate": {
+      "message": "Gizli"
+   },
+   "tableProfile": {
+      "message": "Profil"
+   },
+   "tableUsername": {
+      "message": "Kullanıcı Adı"
+   },
+   "tableVerified": {
+      "message": "Onaylı"
+   },
+   "testNow": {
+      "message": "Şimdi Test Et"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Bu işlem geri alınamaz!"
+   },
+   "toRemoveLimits": {
+      "message": "limitleri kaldırmak için"
+   },
+   "trendDown": {
+      "message": "Son analizden bu yana $COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "Değişiklik yok"
+   },
+   "trendUp": {
+      "message": "Son analizden bu yana +$COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ gün kaldı",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Yarın +20 hesap daha görebilirsiniz ($COUNTDOWN$). Her gün +20 hesap eklenir, limitler birikir!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "11sa 13dk 14sn sonra"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Ücretsiz deneme süreniz sona erdi. Bugün $COUNT$ hesap görebilirsiniz.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Deneme Süresi Bitti"
+   },
+   "tryAgain": {
+      "message": "Tekrar dene"
+   },
+   "tryAnyway": {
+      "message": "Yine de dene"
+   },
+   "unfollow": {
+      "message": "Bırak"
+   },
+   "unfollowDelayLabel": {
+      "message": "Bekleme Süresi (saniye)"
+   },
+   "unfollowEveryone": {
+      "message": "Herkesi Takipten Çıkar"
+   },
+   "unfollowFailed": {
+      "message": "Başarısız"
+   },
+   "unfollowNonFollowers": {
+      "message": "Takip Etmeyenleri Takipten Çıkar"
+   },
+   "unfollowProcessStarted": {
+      "message": "Takipten çıkarma işlemi başlatıldı."
+   },
+   "unfollowSettings": {
+      "message": "Takip Bırakma Ayarları"
+   },
+   "unfollowWaitDetail": {
+      "message": "Her takipten çıkarma arasında $1 saniye beklenecek."
+   },
+   "unfollowedSuccess": {
+      "message": "Bırakıldı"
+   },
+   "unfollowing": {
+      "message": "Bırakılıyor..."
+   },
+   "unknownError": {
+      "message": "Bilinmeyen hata"
+   },
+   "upgradeToPremium": {
+      "message": "Premium'a Yükselt"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Premium'a Geç"
+   },
+   "upgradeToSeeAll": {
+      "message": "Tümünü görmek için Premium'a yükseltin!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "kullanıcı takipten çıkarılacak."
+   },
+   "waitingSeconds": {
+      "message": "Bekleniyor $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Bekleme süresi (3-300 saniye)"
+   },
+   "welcomeFunText1": {
+      "message": "Seni takip etmeyenleri görmek ister misin? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Takipten çıkmak artık çok kolay 😊"
+   },
+   "welcomeTitle": {
+      "message": "Hoş Geldin! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Google hesabınla giriş yap, verilerin güvende!"
+   },
+   "whitelist": {
+      "message": "Koruma Listesi"
+   },
+   "whitelisted": {
+      "message": "Korumalı"
+   },
+   "whitelistedSkipped": {
+      "message": "Atlandı (korumalı)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 yarın açılacak"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram bu hesapta otomatik takipten çıkarmayı geçici olarak kabul etmiyor. Bu geçici bir durum ve hesabınızda bir sorun olduğu anlamına gelmiyor.\n\nBu sürede profil sayfasından elle takipten çıkabilirsiniz, o çalışıyor. Listeniz burada duruyor ve hakkınızdan hiçbir şey harcanmadı."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram şu anda takipten çıkarmayı kısıtlıyor"
+   },
+   "yesUnfollow": {
+      "message": "Evet, Takipten Çıkar"
+   },
+   "yesUnfollowAll": {
+      "message": "Evet, Herkesi Takipten Çıkar"
+   }
+}

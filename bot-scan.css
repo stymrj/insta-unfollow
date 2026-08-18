@@ -1,0 +1,566 @@
+/* Bot scan page ------------------------------------------------------------
+   Rides on content.css for the shell, header, control panel and table; only what
+   is specific to scoring lives here. */
+
+/* Intro -------------------------------------------------------------------
+   A tinted card rather than a wall of prose. The four signals are lifted out of
+   the paragraph into their own row: they are the entire method, and a score is
+   only readable once you can see what produced it. */
+.bot-intro {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5f9ff 0%, #eef4ff 100%);
+    border: 1px solid #dbeafe;
+    border-radius: 20px;
+    padding: 26px 28px 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 14px rgba(37, 99, 235, .05);
+}
+
+/* A soft bloom in the corner, kept well behind the text. */
+.bot-intro::after {
+    content: '';
+    position: absolute;
+    top: -70px;
+    right: -50px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, .09), transparent 68%);
+    pointer-events: none;
+}
+
+.bot-intro-top {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    position: relative;
+}
+
+.bot-intro-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, .28);
+}
+
+.bot-intro h2 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 650;
+    letter-spacing: -.02em;
+    color: #191823;
+}
+
+.bot-intro-lead {
+    margin: 5px 0 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #5f5b6b;
+}
+
+.bot-signals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 0;
+    position: relative;
+}
+
+.bot-signal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, .8);
+    border: 1px solid #dbeafe;
+    border-radius: 10px;
+    padding: 8px 13px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #475569;
+}
+
+.bot-signal-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex: none;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+}
+
+.bot-intro-note {
+    margin: 16px 0 0;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: #7d7889;
+    max-width: 82ch;
+    position: relative;
+}
+
+/* Score --------------------------------------------------------------------
+   Shown as a percentage, capped at 99. Underneath it is a sum of weights that
+   can run past 100, so the raw figure stays in the title attribute and is what
+   the sort actually uses — the cap is a display decision, not a scoring one. */
+.bot-score {
+    display: inline-block;
+    min-width: 52px;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 9px;
+    font-size: 14.5px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.bot-score-high { background: #eff6ff; color: #1d4ed8; }
+.bot-score-mid  { background: #fef3e2; color: #1d4ed8; }
+.bot-score-low  { background: #eef8f1; color: #2f8f54; }
+
+.bot-chip {
+    display: inline-block;
+    padding: 4px 11px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.bot-chip-high { background: #eff6ff; color: #1d4ed8; }
+.bot-chip-mid  { background: #fef3e2; color: #1d4ed8; }
+.bot-chip-low  { background: #eef8f1; color: #2f8f54; }
+
+/* Marks a row whose profile was actually fetched, so a high score backed by real
+   counts is distinguishable from one guessed from the username alone. */
+.bot-deep {
+    margin-left: 7px;
+    color: #2563eb;
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.bot-fullname {
+    margin-top: 3px;
+    font-size: 11.5px;
+    color: #8e8e8e;
+}
+
+.bot-reasons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-width: 420px;
+}
+
+.bot-reasons i {
+    font-style: normal;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: #5f5b6b;
+    background: #f1f5f9;
+    border: 1px solid #dbeafe;
+    border-radius: 6px;
+    padding: 3px 8px;
+}
+
+.bot-reason-none {
+    background: transparent !important;
+    border: 0 !important;
+    color: #9691a3 !important;
+    padding-left: 0 !important;
+}
+
+.bot-cleared {
+    margin-top: 6px;
+    font-size: 10.5px;
+    color: #2f8f54;
+}
+
+/* "+3" — opens the rest of the reasons rather than letting the row grow. */
+.bot-more {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 6px;
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: background .15s ease;
+}
+
+.bot-more:hover { background: #dbeafe; }
+
+/* Reason modal -------------------------------------------------------------- */
+.bot-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(24, 22, 33, .45);
+    backdrop-filter: blur(3px);
+    padding: 20px;
+}
+
+.bot-modal-card {
+    background: #fff;
+    border-radius: 18px;
+    width: min(460px, 100%);
+    max-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .22);
+    animation: botModalIn .18s ease;
+}
+
+@keyframes botModalIn {
+    from { opacity: 0; transform: translateY(10px) scale(.98); }
+    to   { opacity: 1; transform: none; }
+}
+
+.bot-modal-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid #eef4ff;
+}
+
+.bot-modal-title {
+    font-size: 16px;
+    font-weight: 650;
+    color: #191823;
+    letter-spacing: -.01em;
+}
+
+.bot-modal-sub {
+    margin: 3px 0 0;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.bot-modal-score {
+    margin-left: auto;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1d4ed8;
+    font-variant-numeric: tabular-nums;
+}
+
+.bot-modal-close {
+    background: none;
+    border: 0;
+    font-size: 24px;
+    line-height: 1;
+    color: #9691a3;
+    cursor: pointer;
+    padding: 0 2px;
+}
+
+.bot-modal-close:hover { color: #191823; }
+
+.bot-modal-body {
+    padding: 14px 22px 22px;
+    overflow-y: auto;
+}
+
+.bot-reason-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bot-reason-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 13px;
+}
+
+.bot-reason-row:last-child { border-bottom: 0; }
+.bot-reason-label { color: #334155; }
+
+.bot-reason-weight {
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.bot-reason-row.against .bot-reason-weight { color: #1d4ed8; }
+.bot-reason-row.for .bot-reason-weight { color: #2f8f54; }
+
+.bot-modal-missing {
+    margin: 14px 0 0;
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: #64748b;
+}
+
+/* Profile counts fetched by the deep check ---------------------------------
+   Shown as evidence, not decoration: half the score comes from these numbers,
+   and a row that carries none is one the deep check has not reached yet. */
+.bot-stats {
+    display: flex;
+    gap: 14px;
+    font-variant-numeric: tabular-nums;
+}
+
+.bot-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 42px;
+}
+
+.bot-stat-value {
+    font-size: 13px;
+    font-weight: 650;
+    color: #334155;
+}
+
+.bot-stat-label {
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    color: #9691a3;
+}
+
+/* Zero posts or no audience is the finding, so it is not greyed into the noise. */
+.bot-stat-value.is-zero { color: #1d4ed8; }
+
+.bot-stats-missing {
+    font-size: 11.5px;
+    color: #94a3b8;
+}
+
+@media (max-width: 900px) {
+    .bot-reasons { max-width: none; }
+    .bot-signal { font-size: 12px; padding: 7px 11px; }
+}
+
+/* Verdict filter -----------------------------------------------------------
+   Replaces a single "show only flagged" toggle. The table opens on the likely
+   bots: in a list of thousands the ordinary accounts are the vast majority, and
+   leading with them buries the few the page exists to surface. The counts sit on
+   the buttons so the split is readable without switching between them. */
+.bot-filter {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    background: #f1f5f9;
+    border: 1px solid #dbeafe;
+    border-radius: 12px;
+}
+
+.bot-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border: 0;
+    background: transparent;
+    border-radius: 9px;
+    padding: 8px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #5f5b6b;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+}
+
+.bot-filter-btn:hover { background: #eef4ff; }
+
+.bot-filter-btn.active {
+    background: #fff;
+    color: #191823;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .09);
+}
+
+.bot-filter-count {
+    font-size: 11px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    background: #dbeafe;
+    color: #5f5b6b;
+    border-radius: 20px;
+    padding: 1px 7px;
+}
+
+.bot-filter-btn.active .bot-filter-count { background: #dbeafe; color: #2563eb; }
+
+@media (max-width: 900px) {
+    .bot-filter { width: 100%; justify-content: space-between; }
+    .bot-filter-btn { flex: 1; justify-content: center; padding: 8px 6px; }
+}
+
+/* Free-plan notice under the table -----------------------------------------
+   Sits where the next row would have been, so the table visibly stops rather
+   than trailing off.
+
+   The withheld count leads, at the weight of the numbers in the cards above:
+   the first version put it in small grey type under a bold heading, which reads
+   as a footnote about the plan rather than "there are 78 more of these and you
+   cannot see them". That number is the whole message. */
+.bot-free-notice {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 22px 26px;
+    background: linear-gradient(120deg, #eff6ff 0%, #eef4ff 55%, #f8fafc 100%);
+    border-top: 2px solid #2563eb;
+}
+
+/* Soft bloom behind the count, tying it to the page's own accent. */
+.bot-free-notice::after {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -40px;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37, 99, 235, .10), transparent 70%);
+    pointer-events: none;
+}
+
+.bot-free-lock {
+    width: 46px;
+    height: 46px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(37, 99, 235, .3);
+    position: relative;
+}
+
+.bot-free-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 260px;
+    position: relative;
+}
+
+.bot-free-headline {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    flex-wrap: wrap;
+    font-size: 15px;
+    font-weight: 600;
+    color: #191823;
+}
+
+.bot-free-count {
+    font-size: 27px;
+    font-weight: 750;
+    line-height: 1;
+    letter-spacing: -.02em;
+    font-variant-numeric: tabular-nums;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bot-free-sub {
+    font-size: 12.5px;
+    color: #64748b;
+}
+
+.bot-free-cta {
+    position: relative;
+    flex: none;
+    height: 44px;
+    padding: 0 26px;
+    font-size: 14px;
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, .34);
+    animation: bot-free-cta-pulse 2.4s ease-in-out infinite;
+}
+
+.bot-free-cta:hover { filter: brightness(1.06); }
+
+@keyframes bot-free-cta-pulse {
+    0%, 100% { box-shadow: 0 6px 20px rgba(37, 99, 235, .34); }
+    50%      { box-shadow: 0 6px 26px rgba(59, 130, 246, .5); }
+}
+
+/* Attempted, and Instagram had no account to answer with — deleted or gone.
+   Kept apart from "not checked", which would imply work still to do. */
+.bot-stats-gone {
+    font-size: 11.5px;
+    color: #1d4ed8;
+    background: #fef3e2;
+    border-radius: 6px;
+    padding: 3px 8px;
+    cursor: help;
+}
+
+@media (max-width: 900px) {
+    .bot-free-notice { gap: 14px; padding: 18px; }
+    .bot-free-cta { width: 100%; }
+}
+
+/* "The strongest check could not be run" ------------------------------------
+   Sits above the table because it changes how every number below it should be
+   read. Amber rather than red: nothing failed, one input was unavailable. */
+.bot-signal-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin: 0 0 16px;
+    padding: 15px 18px;
+    background: #fffaf0;
+    border: 1px solid #fde3b8;
+    border-left: 4px solid #2563eb;
+    border-radius: 12px;
+}
+
+.bot-signal-notice-icon {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+}
+
+.bot-signal-notice strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 650;
+    color: #7c2d12;
+    margin-bottom: 3px;
+}
+
+.bot-signal-notice span:not(.bot-signal-notice-icon) {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #1e40af;
+}

@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Дані Акаунту"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ облікових записів ще доступно. Щоб побачити всі",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Активних Користувачів"
+   },
+   "addToWhitelist": {
+      "message": "Додати до білого списку"
+   },
+   "allAccountsUnlocked": {
+      "message": "Всі акаунти розблоковано!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "акаунтів буде відписано."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram повернув список підписників без даних про фото профілю, тож усі оцінки тут нижчі, ніж мають бути, і частину ботів буде пропущено. Відкрийте Instagram у вкладці та запустіть перевірку знову для повного результату."
+   },
+   "botBlindTitle": {
+      "message": "Перевірку фото профілю виконати не вдалося"
+   },
+   "botCleared": {
+      "message": "На його користь"
+   },
+   "botDeepAllChecked": {
+      "message": "Усі позначені акаунти перевірено"
+   },
+   "botDeepChecked": {
+      "message": "Профіль перевірено"
+   },
+   "botDeepChecksFor": {
+      "message": "Поглиблено перевірити $1 акаунтів"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Лишилось $1 ($2 вже перевірено)"
+   },
+   "botDeepDone": {
+      "message": "Поглиблену перевірку завершено — перевірено $1 акаунтів."
+   },
+   "botDeepNoTargets": {
+      "message": "Жоден акаунт не потребує поглибленої перевірки."
+   },
+   "botDeepPausedBody": {
+      "message": "До зупинки перевірено $1 акаунтів, а $2 — ні. Висновки нижче спираються лише на прочитане. Фіксованого часу очікування немає — може минути кілька годин або до завтра. Поверніться пізніше, а не пробуйте зараз: це лише подовжує очікування."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram призупинив перевірку профілів"
+   },
+   "botDeepRemaining": {
+      "message": "$1 лишилися неперевіреними."
+   },
+   "botDeepSubtitle": {
+      "message": "Один запит на акаунт, у безпечному темпі."
+   },
+   "botFilterAll": {
+      "message": "Усі перевірені"
+   },
+   "botFilterLikely": {
+      "message": "Імовірні боти"
+   },
+   "botFilterSuspicious": {
+      "message": "Підозрілі"
+   },
+   "botFreeHeadline": {
+      "message": "позначених акаунтів заблоковано"
+   },
+   "botFreeWithheld": {
+      "message": "Знайдено ще $1 — перейдіть на Premium, щоб побачити всі."
+   },
+   "botIntroHeading": {
+      "message": "Знайдіть акаунти, за якими немає живих людей"
+   },
+   "botIntroLead": {
+      "message": "Кожен підписник оцінюється за ймовірністю того, що це бот або одноразовий акаунт."
+   },
+   "botIntroReasons": {
+      "message": "До кожної оцінки додаються причини, щоб ви бачили, чому акаунт позначено, а не довіряли цифрі. Нічого не видаляється автоматично — список тут, щоб ви подивилися й вирішили самі."
+   },
+   "botNoFlagged": {
+      "message": "Нічого не позначено — ваш список підписників має чистий вигляд."
+   },
+   "botNoRowsForFilter": {
+      "message": "У цій групі нічого немає."
+   },
+   "botNoSignals": {
+      "message": "Нічого незвичного"
+   },
+   "botNotRunYet": {
+      "message": "Запустіть перевірку, щоб побачити тут оцінки підписників."
+   },
+   "botPopupBody": {
+      "message": "Оцінює кожного підписника за ймовірністю того, що це бот або одноразовий акаунт: немає фото профілю, немає дописів, згенероване на вигляд ім’я користувача, підписаний на тисячі, а на нього — майже ніхто."
+   },
+   "botPopupReasons": {
+      "message": "До кожної оцінки додаються причини. Нічого не видаляється автоматично."
+   },
+   "botProvisionalBody": {
+      "message": "У $1 позначених акаунтів профіль ще не перевірено. Більшість ботів підтверджується лише цією перевіркою — виконайте її, перш ніж довіряти числу ймовірних ботів."
+   },
+   "botProvisionalTitle": {
+      "message": "Ці висновки ще не остаточні"
+   },
+   "botReadSubtitle": {
+      "message": "Читається прямо з вашого списку підписників — без додаткових запитів."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Немає фото профілю"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Збалансоване співвідношення підписників"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Багато цифр в імені користувача"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Немає імені"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Підписок набагато більше, ніж підписників"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Має значок акаунта"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Підписаний на дуже багато акаунтів"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Немає підписників"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Жодного допису"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Дописує регулярно"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Ім’я користувача закінчується цифрами"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Незвичний шаблон підкреслень"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Верифікований акаунт"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Незвично довге ім’я користувача"
+   },
+   "botRunDeepChecks": {
+      "message": "Виконати поглиблену перевірку"
+   },
+   "botScanCached": {
+      "message": "Остання перевірка $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram призупинив перевірку профілів. Результати нижче — з того, що встигли прочитати."
+   },
+   "botScanDeepProgress": {
+      "message": "Перевіряємо профілі… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Перевірку завершено."
+   },
+   "botScanNoData": {
+      "message": "Не вдалося прочитати список підписників. Instagram нас стримує — це минає саме, але без фіксованого часу. Спробуйте пізніше."
+   },
+   "botScanPartial": {
+      "message": "Перевірку завершено, але список підписників повернувся неповним — бракує частини акаунтів."
+   },
+   "botScanReading": {
+      "message": "Читаємо ваших підписників…"
+   },
+   "botScanReadingCount": {
+      "message": "Читаємо підписників… $1"
+   },
+   "botScanTitle": {
+      "message": "Перевірка підписників на ботів"
+   },
+   "botScoreRaw": {
+      "message": "Початкова оцінка"
+   },
+   "botSignalName": {
+      "message": "Ім’я користувача має згенерований вигляд"
+   },
+   "botSignalPhoto": {
+      "message": "Немає фото профілю"
+   },
+   "botSignalPosts": {
+      "message": "Немає дописів"
+   },
+   "botSignalRatio": {
+      "message": "Підписаний на тисячі, на нього — майже ніхто"
+   },
+   "botSignalsUnavailable": {
+      "message": "Для цього акаунта частину перевірок виконати не вдалося, тож його оцінка спирається на менше ознак, ніж в інших."
+   },
+   "botStatFlagged": {
+      "message": "Позначено"
+   },
+   "botStatFollowers": {
+      "message": "Підписники"
+   },
+   "botStatFollowing": {
+      "message": "Підписки"
+   },
+   "botStatLikely": {
+      "message": "Імовірні боти"
+   },
+   "botStatPosts": {
+      "message": "Дописи"
+   },
+   "botStatScanned": {
+      "message": "Перевірено"
+   },
+   "botStatSuspicious": {
+      "message": "Підозрілі"
+   },
+   "botStatsGone": {
+      "message": "Акаунта немає"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram не повернув профіль — акаунт видалено або вимкнено, його показники прочитати неможливо."
+   },
+   "botStatsNotChecked": {
+      "message": "Не перевірено"
+   },
+   "botStepDeep": {
+      "message": "Перевіряємо профілі"
+   },
+   "botStepReading": {
+      "message": "Читаємо підписників"
+   },
+   "botTableReasons": {
+      "message": "Чому"
+   },
+   "botTableScore": {
+      "message": "Оцінка"
+   },
+   "botTableStats": {
+      "message": "Дані профілю"
+   },
+   "botTableVerdict": {
+      "message": "Вердикт"
+   },
+   "botVerdictClean": {
+      "message": "Схожий на справжнього"
+   },
+   "botVerdictLikely": {
+      "message": "Імовірно бот"
+   },
+   "botVerdictSuspicious": {
+      "message": "Підозрілий"
+   },
+   "cacheExpiryWarning": {
+      "message": "Фото профілів можуть не відображатися, оскільки останній аналіз був $DAYS$ днів тому. Будь ласка, проведіть повторний аналіз для актуальних результатів.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Останній аналіз $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Перевіряємо…"
+   },
+   "checkingLoginStatus": {
+      "message": "Перевірка статусу входу..."
+   },
+   "chooseMonthly": {
+      "message": "Вибрати Місячний"
+   },
+   "chooseYearly": {
+      "message": "Вибрати Річний"
+   },
+   "comeBackTomorrow": {
+      "message": "Поверніться завтра"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Ви можете аналізувати +20 підписників більше щодня. Якщо ви нетерплячі, перейдіть на Premium, побачте всіх зараз. Якщо ви терплячі, поверніться завтра, ви зможете побачити +20 підписників більше. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Поверніться завтра, щоб побачити $1 акаунтів більше (+$2 нових розблокувань)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Ви впевнені, що хочете відписатися від УСІХ?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Підтвердьте дію"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Ви впевнені, що хочете відписатися від усіх, хто не підписаний на вас?"
+   },
+   "connected": {
+      "message": "Підключено"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Не вдалося отримати список. Спробуйте пізніше."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$год $MINUTES$хв $SECONDS$с $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "пізніше"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$хв $SECONDS$с $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "пізніше"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Завтра ви зможете побачити +20 облікових записів ($COUNTDOWN$). Щодня додається +20 облікових записів, ліміти накопичуються!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5год 30хв пізніше"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Денний Ліміт"
+   },
+   "dailyScanLimit": {
+      "message": "Денний Ліміт Сканування"
+   },
+   "dataLoading": {
+      "message": "Завантаження даних..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Завантаження: знайдено $COUNT$ підписників",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Завантаження: знайдено $COUNT$ підписок",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "-50%"
+   },
+   "email": {
+      "message": "E-mail"
+   },
+   "errorFetchingData": {
+      "message": "Помилка отримання даних. Спробуйте знову."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram тимчасово недоступний. Спробуйте пізніше."
+   },
+   "errorNetwork": {
+      "message": "Не вдалося зв’язатися з Instagram. Перевірте з’єднання — нічого не втрачено, процес триватиме."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "Сталася помилка. Спробуйте знову."
+   },
+   "errorRateLimit": {
+      "message": "Instagram призупинив наші запити. Це минає саме, але фіксованого часу очікування немає — залежно від обсягу зробленого може минути кілька годин або до завтра. Негайна повторна спроба подовжує його."
+   },
+   "errorSessionExpired": {
+      "message": "Ваш сеанс Instagram завершився. Увійдіть в Instagram і спробуйте ще раз."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 хв лишилось"
+   },
+   "etaSeconds": {
+      "message": "~$1 с лишилось"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Не вдалося відписатися. Спробуйте знову."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Розширені фільтри"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Фільтри та звіти"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Розширена Система Сповіщень"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Розширена відписка"
+   },
+   "featureBasicUnfollow": {
+      "message": "Базова відписка"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/день)"
+   },
+   "featureMax50Analysis": {
+      "message": "Макс. 40 аналізів"
+   },
+   "featureSpamDetector": {
+      "message": "Детектор спаму"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Безлімітний аналіз"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Безлімітний аналіз"
+   },
+   "finalizingAnalysis": {
+      "message": "Завершення..."
+   },
+   "firstDayBonus": {
+      "message": "Бонус Першого Дня"
+   },
+   "firstDayBonusMessage": {
+      "message": "Бонус першого дня: 40 облікових записів! Завтра ви зможете побачити +20 облікових записів ($COUNTDOWN$). Щодня додається +20 облікових записів.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5год 30хв пізніше"
+         }
+      }
+   },
+   "followers": {
+      "message": "Підписники"
+   },
+   "following": {
+      "message": "Підписки"
+   },
+   "followingYouBadge": {
+      "message": "Підписаний"
+   },
+   "freePlanLimitDescription": {
+      "message": "Досягнуто ліміт 40. Перейдіть на Premium!"
+   },
+   "freePlanLimitReached": {
+      "message": "Ліміт Досягнуто"
+   },
+   "freePlanTodayMessage": {
+      "message": "У безкоштовному плані ви можете сьогодні побачити $DISPLAYED$ облікових записів. Є ще $HIDDEN$ облікових записів, але ви не можете їх побачити.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "У безкоштовному плані ви можете сьогодні побачити $COUNT$ облікових записів.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "У безкоштовному плані ви можете відписатися лише від $COUNT$ користувачів. Будь ласка, виберіть лише перших $COUNT$ користувачів або оновіть до Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "У безкоштовному плані ви можете відписатися лише від $COUNT$ користувачів. Оновіть до Premium для необмеженої відписки!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Ім'я"
+   },
+   "getStartedWithGoogle": {
+      "message": "Реєстрація з Google"
+   },
+   "goToInstagramLogin": {
+      "message": "До Instagram"
+   },
+   "gotIt": {
+      "message": "Гаразд"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram припинив надсилати дані, перш ніж прийшов увесь список, тож частини акаунтів бракує. Дія зараз може відписати людей, які насправді на вас підписані. Спершу запустіть аналіз знову."
+   },
+   "incompleteDataTitle": {
+      "message": "Список неповний"
+   },
+   "instagramLimitedBody": {
+      "message": "Ви все ще в акаунті, і з ним усе гаразд. Це минає саме, але фіксованого часу очікування немає — залежно від обсягу зробленого може минути кілька годин або до завтра. Повторні спроби подовжують його."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram зараз обмежує запити"
+   },
+   "instagramLoginAlert": {
+      "message": "Спочатку увійдіть в Instagram!"
+   },
+   "invalidWaitingTime": {
+      "message": "Введіть час від 3 до 300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Некоректний час очікування"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 секунд — поза дозволеним діапазоном. Введіть значення від $2 до $3 секунд."
+   },
+   "later": {
+      "message": "пізніше"
+   },
+   "limitedTimeOffer": {
+      "message": "Обмежена Пропозиція"
+   },
+   "liveCounterPrefix": {
+      "message": "За останні 24 години"
+   },
+   "liveCounterSuffix": {
+      "message": "людей оновили до Premium!"
+   },
+   "loading": {
+      "message": "Завантаження..."
+   },
+   "loadingProfile": {
+      "message": "Завантаження профілю"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Завантажуємо збережений аналіз…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "До Instagram не надсилається жодного запиту."
+   },
+   "login": {
+      "message": "Увійти"
+   },
+   "loginFailed": {
+      "message": "Помилка входу: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Невідома помилка"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Потрібен Вхід"
+   },
+   "loginSuccessful": {
+      "message": "Вхід виконано!"
+   },
+   "loginWithGoogle": {
+      "message": "Увійти через Google"
+   },
+   "logout": {
+      "message": "Вийти"
+   },
+   "logoutError": {
+      "message": "Помилка виходу: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Невідома помилка"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Керувати Підпискою"
+   },
+   "membership": {
+      "message": "Підписка"
+   },
+   "menuBotScan": {
+      "message": "Перевірка на ботів"
+   },
+   "menuHome": {
+      "message": "Головна"
+   },
+   "menuProfile": {
+      "message": "Профіль"
+   },
+   "menuUpgrade": {
+      "message": "Покращити"
+   },
+   "minutesTest": {
+      "message": "$1 хвилин (Тест)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 акаунтів більше доступно"
+   },
+   "moreInHours": {
+      "message": "Через $2 години ви зможете побачити +$1 підписників більше"
+   },
+   "nextCheckTime": {
+      "message": "Наступна перевірка: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Наступна перевірка: Завтра"
+   },
+   "nextInSeconds": {
+      "message": "Наступне через $SECONDS$с",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Немає непідписників"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Немає тих, хто не підписаний у відповідь, щоб відписатися."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Немає акаунтів для відписки."
+   },
+   "notFollowingYouBadge": {
+      "message": "Не Підписаний"
+   },
+   "notProvided": {
+      "message": "Не вказано"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Відкриття..."
+   },
+   "openingInNewTab": {
+      "message": "Відкриття в новій вкладці..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/місяць"
+   },
+   "perYear": {
+      "message": "/рік"
+   },
+   "planFree": {
+      "message": "Безкоштовно"
+   },
+   "planPopular": {
+      "message": "Популярно"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Річний"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Увійдіть для підписки"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Спочатку увійдіть в Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Увійдіть для покращення"
+   },
+   "pleaseSignInToView": {
+      "message": "Увійдіть для перегляду інформації"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "З Premium побачте всі $COUNT$ облікових записів зараз, без лімітів!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Конфіденційність"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Обробка..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram попросив паузу — продовжимо за $1 с"
+   },
+   "rating": {
+      "message": "Рейтинг"
+   },
+   "reAnalyze": {
+      "message": "Повторний аналіз"
+   },
+   "reAnalyzing": {
+      "message": "Повторний аналіз..."
+   },
+   "removeFromWhitelist": {
+      "message": "Видалити з білого списку"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Знижка 50% на Premium"
+   },
+   "saveSettings": {
+      "message": "Зберегти"
+   },
+   "scanBlockedBody": {
+      "message": "Це звична річ, минає саме, і ні з вашим акаунтом, ні з розширенням нічого не негаразд. Ми зупинилися одразу, а не повторювали запити: повторні спроби лише подовжують очікування. Спробуйте пізніше сьогодні."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Список підписників зараз прочитати не вдалося."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Список підписок зараз прочитати не вдалося."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram просить коротку паузу"
+   },
+   "scanPartialBody": {
+      "message": "Частина надійшла, а потім Instagram нас призупинив, тож результати недостатньо повні, щоб на них діяти. Нічого не змінено. Поверніться пізніше та запустіть аналіз знову — це може тривати години, а спроба зараз подовжує очікування."
+   },
+   "scanPartialTitle": {
+      "message": "Список повернувся неповним"
+   },
+   "scanPaused": {
+      "message": "Instagram попросив сповільнитися — чекаємо…"
+   },
+   "scanRemaining": {
+      "message": "Залишилось $1 акаунтів"
+   },
+   "scanShortBody": {
+      "message": "Сканування завершено, але повернулося менше акаунтів, ніж Instagram вказує для цього списку. Дія може відписати тих, хто на вас підписаний, тож нічого не показано. Запустіть аналіз знову."
+   },
+   "scanShortTitle": {
+      "message": "Бракує частини акаунтів"
+   },
+   "seconds": {
+      "message": "секунд"
+   },
+   "secure": {
+      "message": "Безпечно"
+   },
+   "secureLogin": {
+      "message": "Безпечний Вхід"
+   },
+   "sessionExpiredTitle": {
+      "message": "Ваш сеанс Instagram завершено"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Тільки непідписані"
+   },
+   "showingFirstAccounts": {
+      "message": "Показані перші $COUNT$ акаунтів.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Пропустити підписників"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Пропустити верифікованих"
+   },
+   "startAnalysis": {
+      "message": "Почати Аналіз"
+   },
+   "startBotScan": {
+      "message": "Почати перевірку на ботів"
+   },
+   "startUnfollow": {
+      "message": "Почати Відписку"
+   },
+   "startingAnalysis": {
+      "message": "Початок аналізу..."
+   },
+   "statFailed": {
+      "message": "Помилка"
+   },
+   "statFollowers": {
+      "message": "Підписники"
+   },
+   "statFollowing": {
+      "message": "Підписки"
+   },
+   "statNonFollowers": {
+      "message": "Не підписуються"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Відписано"
+   },
+   "stop": {
+      "message": "Стоп"
+   },
+   "stopping": {
+      "message": "Зупиняємо…"
+   },
+   "support": {
+      "message": "Підтримка"
+   },
+   "tableAction": {
+      "message": "Дія"
+   },
+   "tableFollowingYou": {
+      "message": "Підписаний"
+   },
+   "tableFullName": {
+      "message": "Ім'я"
+   },
+   "tablePrivate": {
+      "message": "Приватний"
+   },
+   "tableProfile": {
+      "message": "Профіль"
+   },
+   "tableUsername": {
+      "message": "Користувач"
+   },
+   "tableVerified": {
+      "message": "Верифікований"
+   },
+   "testNow": {
+      "message": "Тестувати зараз"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Цю дію неможливо скасувати!"
+   },
+   "toRemoveLimits": {
+      "message": "щоб прибрати обмеження"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Залишилось $COUNT$ днів",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Пробний період завершено"
+   },
+   "tryAgain": {
+      "message": "Спробувати ще раз"
+   },
+   "tryAnyway": {
+      "message": "Усе одно спробувати"
+   },
+   "unfollow": {
+      "message": "Відписатися"
+   },
+   "unfollowDelayLabel": {
+      "message": "Затримка (секунди)"
+   },
+   "unfollowEveryone": {
+      "message": "Відписатися від усіх"
+   },
+   "unfollowFailed": {
+      "message": "Не вдалося"
+   },
+   "unfollowNonFollowers": {
+      "message": "Відписатися від непідписників"
+   },
+   "unfollowProcessStarted": {
+      "message": "Відписку розпочато."
+   },
+   "unfollowSettings": {
+      "message": "Налаштування Відписки"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 секунд між відписками."
+   },
+   "unfollowedSuccess": {
+      "message": "Відписано"
+   },
+   "unfollowing": {
+      "message": "Відписка..."
+   },
+   "unknownError": {
+      "message": "Невідома помилка"
+   },
+   "upgradeToPremium": {
+      "message": "До Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Оновити до Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium для перегляду всіх!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "акаунтів буде відписано."
+   },
+   "waitingSeconds": {
+      "message": "Очікування $SECONDS$с",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Час очікування (3-300 сек)"
+   },
+   "welcomeFunText1": {
+      "message": "Хочете дізнатися хто не підписаний? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Відписатися тепер легко 😊"
+   },
+   "welcomeTitle": {
+      "message": "Ласкаво просимо! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Увійдіть через Google, ваші дані в безпеці!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 буде розблоковано завтра"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram тимчасово перестав приймати автоматичні відписки для цього акаунта. Це тимчасово, і з вашим акаунтом усе гаразд.\n\nПоки це триває, ви можете відписуватися вручну зі сторінки профілю, а ваш список лишається тут — нічого не витрачено."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram зараз обмежує відписки"
+   },
+   "yesUnfollow": {
+      "message": "Так, відписатися"
+   },
+   "yesUnfollowAll": {
+      "message": "Так, відписатися від усіх"
+   }
+}

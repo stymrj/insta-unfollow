@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "帳戶詳情"
+   },
+   "accountsRemaining": {
+      "message": "還有$COUNT$個帳戶可用。要查看全部",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "活躍用戶"
+   },
+   "addToWhitelist": {
+      "message": "新增到白名單"
+   },
+   "allAccountsUnlocked": {
+      "message": "所有帳戶已解鎖！"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "個用戶將被取消追蹤。"
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram 回傳的粉絲清單不含大頭貼資料，因此這裡的每個分數都低於應有值，部分機器人會被漏掉。請在分頁中開啟 Instagram，然後重新執行掃描以取得完整結果。"
+   },
+   "botBlindTitle": {
+      "message": "無法執行大頭貼查核"
+   },
+   "botCleared": {
+      "message": "有利依據"
+   },
+   "botDeepAllChecked": {
+      "message": "已標記的帳號全部查核完畢"
+   },
+   "botDeepChecked": {
+      "message": "已查核檔案"
+   },
+   "botDeepChecksFor": {
+      "message": "深度查核 $1 個帳號"
+   },
+   "botDeepChecksRemaining": {
+      "message": "還剩 $1 個（$2 個已完成）"
+   },
+   "botDeepDone": {
+      "message": "深度查核完成 — 已查核 $1 個帳號。"
+   },
+   "botDeepNoTargets": {
+      "message": "沒有帳號需要深度查核。"
+   },
+   "botDeepPausedBody": {
+      "message": "停止前查核了 $1 個帳號，$2 個未查核。以下判定僅根據已讀取的部分。沒有固定等待時間——可能需要數小時，甚至到明天。請稍後再來，而不是現在重試，那只會延長時間。"
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram 暫停了檔案查核"
+   },
+   "botDeepRemaining": {
+      "message": "$1 個未查核。"
+   },
+   "botDeepSubtitle": {
+      "message": "每個帳號一次請求，以安全的節奏進行。"
+   },
+   "botFilterAll": {
+      "message": "全部已掃描"
+   },
+   "botFilterLikely": {
+      "message": "可能是機器人"
+   },
+   "botFilterSuspicious": {
+      "message": "可疑"
+   },
+   "botFreeHeadline": {
+      "message": "個標記帳號已鎖定"
+   },
+   "botFreeWithheld": {
+      "message": "另外發現 $1 個 — 升級後可檢視全部。"
+   },
+   "botIntroHeading": {
+      "message": "找出並非真人的帳號"
+   },
+   "botIntroLead": {
+      "message": "為每位粉絲評估其是機器人或分身帳號的可能性。"
+   },
+   "botIntroReasons": {
+      "message": "每個分數都附上依據，讓你看到帳號為何被標記，而不必只相信一個數字。系統不會自動移除任何人 — 這份清單是給你查看並自行決定的。"
+   },
+   "botNoFlagged": {
+      "message": "沒有標記 — 你的粉絲清單看起來很乾淨。"
+   },
+   "botNoRowsForFilter": {
+      "message": "這個分組中沒有內容。"
+   },
+   "botNoSignals": {
+      "message": "沒有異常"
+   },
+   "botNotRunYet": {
+      "message": "執行一次掃描，即可在此看到粉絲的評分。"
+   },
+   "botPopupBody": {
+      "message": "為每位粉絲評估其是機器人或分身帳號的可能性：沒有大頭貼、沒有貼文、看起來像自動產生的使用者名稱、追蹤了數千人卻幾乎無人回追。"
+   },
+   "botPopupReasons": {
+      "message": "每個分數都附上依據。系統不會自動移除任何人。"
+   },
+   "botProvisionalBody": {
+      "message": "已標記的 $1 個帳號還沒有做檔案查核。多數機器人只有透過這項查核才能確認，請先執行它，再相信「可能是機器人」的數量。"
+   },
+   "botProvisionalTitle": {
+      "message": "這些判定尚未最終確定"
+   },
+   "botReadSubtitle": {
+      "message": "直接從你的粉絲清單讀取 — 不產生額外請求。"
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "沒有大頭貼"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "粉絲比例均衡"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "用戶名數字過多"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "沒有姓名"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "追蹤數遠多於粉絲數"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "擁有帳號徽章"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "追蹤了極多帳號"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "沒有粉絲"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "從未發過貼文"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "定期發貼文"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "用戶名以數字結尾"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "底線排列異常"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "認證帳號"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "用戶名異常長"
+   },
+   "botRunDeepChecks": {
+      "message": "執行深度查核"
+   },
+   "botScanCached": {
+      "message": "上次掃描 $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram 暫停了檔案查核。以下結果來自已讀取的部分。"
+   },
+   "botScanDeepProgress": {
+      "message": "正在查核檔案… $1/$2"
+   },
+   "botScanDone": {
+      "message": "掃描完成。"
+   },
+   "botScanNoData": {
+      "message": "無法讀取你的粉絲清單。Instagram 正在限制我們——會自行解除，但沒有固定等待時間。請稍後再試。"
+   },
+   "botScanPartial": {
+      "message": "掃描結束，但粉絲清單回傳不完整 — 缺少部分帳號。"
+   },
+   "botScanReading": {
+      "message": "正在讀取你的粉絲…"
+   },
+   "botScanReadingCount": {
+      "message": "正在讀取粉絲… $1"
+   },
+   "botScanTitle": {
+      "message": "機器人粉絲掃描"
+   },
+   "botScoreRaw": {
+      "message": "原始分數"
+   },
+   "botSignalName": {
+      "message": "看起來像自動產生的使用者名稱"
+   },
+   "botSignalPhoto": {
+      "message": "沒有大頭貼"
+   },
+   "botSignalPosts": {
+      "message": "沒有貼文"
+   },
+   "botSignalRatio": {
+      "message": "追蹤數千人，幾乎無人回追"
+   },
+   "botSignalsUnavailable": {
+      "message": "該帳號有部分檢查無法完成，因此它的分數所依據的資訊比其他帳號少。"
+   },
+   "botStatFlagged": {
+      "message": "已標記"
+   },
+   "botStatFollowers": {
+      "message": "粉絲"
+   },
+   "botStatFollowing": {
+      "message": "追蹤中"
+   },
+   "botStatLikely": {
+      "message": "可能是機器人"
+   },
+   "botStatPosts": {
+      "message": "貼文"
+   },
+   "botStatScanned": {
+      "message": "已掃描"
+   },
+   "botStatSuspicious": {
+      "message": "可疑"
+   },
+   "botStatsGone": {
+      "message": "帳號已不存在"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram 未回傳任何檔案 — 該帳號已刪除或停用，其數據無法再讀取。"
+   },
+   "botStatsNotChecked": {
+      "message": "未查核"
+   },
+   "botStepDeep": {
+      "message": "正在查核檔案"
+   },
+   "botStepReading": {
+      "message": "正在讀取粉絲"
+   },
+   "botTableReasons": {
+      "message": "原因"
+   },
+   "botTableScore": {
+      "message": "分數"
+   },
+   "botTableStats": {
+      "message": "檔案數據"
+   },
+   "botTableVerdict": {
+      "message": "判定"
+   },
+   "botVerdictClean": {
+      "message": "看起來是真人"
+   },
+   "botVerdictLikely": {
+      "message": "可能是機器人"
+   },
+   "botVerdictSuspicious": {
+      "message": "可疑"
+   },
+   "cacheExpiryWarning": {
+      "message": "由於您上次分析是在 $DAYS$ 天前，大頭貼可能無法顯示。請重新分析以取得最新結果。",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "上次分析 $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "取消"
+   },
+   "checkingBeforeStart": {
+      "message": "正在檢查…"
+   },
+   "checkingLoginStatus": {
+      "message": "正在檢查登入狀態..."
+   },
+   "chooseMonthly": {
+      "message": "選擇月度"
+   },
+   "chooseYearly": {
+      "message": "選擇年度"
+   },
+   "comeBackTomorrow": {
+      "message": "明天再來"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "您每天可以分析更多20個追蹤者。如果您不耐煩，請切換到Premium，立即查看所有內容。如果您有耐心，請明天再來，您可以查看更多20個追蹤者。 ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "明天再來查看$1個帳戶（+$2個新解鎖）"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ 警告！"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "確定要取消追蹤所有人嗎？"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "確認操作"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "確定要取消追蹤所有未回追的用戶嗎？"
+   },
+   "connected": {
+      "message": "已連線"
+   },
+   "couldNotFetchFollowing": {
+      "message": "無法取得清單。請稍後重試。"
+   },
+   "countdownFormat": {
+      "message": "$HOURS$小時 $MINUTES$分鐘 $SECONDS$秒 $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "後"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$分鐘 $SECONDS$秒 $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "後"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "明天您可以查看+20個帳戶（$COUNTDOWN$）。每天新增+20個帳戶，限制會累積！",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5小時30分鐘後"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "每日限制"
+   },
+   "dailyScanLimit": {
+      "message": "每日掃描限制"
+   },
+   "dataLoading": {
+      "message": "資料載入中..."
+   },
+   "dataLoadingFollowers": {
+      "message": "載入中: 發現$COUNT$個粉絲",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "載入中: 發現$COUNT$個追蹤",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "5折"
+   },
+   "email": {
+      "message": "電子郵件"
+   },
+   "errorFetchingData": {
+      "message": "取得資料出錯。請重試。"
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram暫時無法使用。請稍後重試。"
+   },
+   "errorNetwork": {
+      "message": "無法連線 Instagram。請檢查網路 — 沒有任何遺失，處理會繼續。"
+   },
+   "errorNetworkConnection": {
+      "message": "連線錯誤。請檢查您的網路連線。"
+   },
+   "errorOccurred": {
+      "message": "發生錯誤。請重試。"
+   },
+   "errorRateLimit": {
+      "message": "Instagram 暫停了我們的請求。會自行解除，但沒有固定等待時間——取決於先前的操作量，可能需要數小時，甚至到明天。立刻重試會讓它更久。"
+   },
+   "errorSessionExpired": {
+      "message": "Instagram工作階段已過期。請重新登入。"
+   },
+   "errorUnfollowRateLimit": {
+      "message": "取消追蹤請求過多。等待5分鐘..."
+   },
+   "etaMinutes": {
+      "message": "約剩 $1 分鐘"
+   },
+   "etaSeconds": {
+      "message": "約剩 $1 秒"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "取追失敗。請重試。"
+   },
+   "featureAdvancedFiltering": {
+      "message": "進階篩選"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "篩選和報告"
+   },
+   "featureAdvancedNotifications": {
+      "message": "進階通知系統"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "進階取追功能"
+   },
+   "featureBasicUnfollow": {
+      "message": "基礎取追功能"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/天)"
+   },
+   "featureMax50Analysis": {
+      "message": "最多40個分析"
+   },
+   "featureSpamDetector": {
+      "message": "垃圾帳號偵測"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "無限分析"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "無限追蹤分析"
+   },
+   "finalizingAnalysis": {
+      "message": "完成中..."
+   },
+   "firstDayBonus": {
+      "message": "首日獎勵"
+   },
+   "firstDayBonusMessage": {
+      "message": "首日獎勵：40個帳戶！明天您可以查看+20個帳戶（$COUNTDOWN$）。每天新增+20個帳戶。",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5小時30分鐘後"
+         }
+      }
+   },
+   "followers": {
+      "message": "粉絲"
+   },
+   "following": {
+      "message": "追蹤中"
+   },
+   "followingYouBadge": {
+      "message": "追蹤你"
+   },
+   "freePlanLimitDescription": {
+      "message": "已達40個上限。升級Premium無限制！"
+   },
+   "freePlanLimitReached": {
+      "message": "免費額度已用完"
+   },
+   "freePlanTodayMessage": {
+      "message": "在免費方案中，您今天可以查看$DISPLAYED$個帳戶。還有$HIDDEN$個帳戶，但您無法查看。",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "在免費方案中，您今天可以查看$COUNT$個帳戶。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "免費方案最多只能取消追蹤 $COUNT$ 個用戶。請僅選擇前 $COUNT$ 個用戶或升級到進階版。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "免費方案最多只能取消追蹤 $COUNT$ 個用戶。升級到進階版可無限取消追蹤！",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "姓名"
+   },
+   "getStartedWithGoogle": {
+      "message": "用Google註冊"
+   },
+   "goToInstagramLogin": {
+      "message": "前往Instagram"
+   },
+   "gotIt": {
+      "message": "好"
+   },
+   "incompleteDataMessage": {
+      "message": "整份清單還沒傳完，Instagram 就停止傳送資料了，因此缺少部分帳號。現在動作可能會取消追蹤那些確實追蹤你的人。請先重新執行分析。"
+   },
+   "incompleteDataTitle": {
+      "message": "清單不完整"
+   },
+   "instagramLimitedBody": {
+      "message": "你仍處於登入狀態，帳號也沒有任何問題。這會自行解除，但沒有固定的等待時間——取決於先前的操作量，可能需要數小時，甚至到明天。反覆嘗試只會讓它更久。"
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram 目前正在限制請求"
+   },
+   "instagramLoginAlert": {
+      "message": "請先登入Instagram！"
+   },
+   "invalidWaitingTime": {
+      "message": "請輸入3-300之間的有效時間"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "等待時間無效"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 秒超出允許範圍。請輸入 $2 到 $3 秒之間的值。"
+   },
+   "later": {
+      "message": "後"
+   },
+   "limitedTimeOffer": {
+      "message": "限時優惠"
+   },
+   "liveCounterPrefix": {
+      "message": "過去24小時內"
+   },
+   "liveCounterSuffix": {
+      "message": "人升級到進階版！"
+   },
+   "loading": {
+      "message": "載入中..."
+   },
+   "loadingProfile": {
+      "message": "載入個人資料"
+   },
+   "loadingSavedAnalysis": {
+      "message": "正在載入你儲存的分析…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "沒有向 Instagram 發出任何請求。"
+   },
+   "login": {
+      "message": "登入"
+   },
+   "loginFailed": {
+      "message": "登入失敗: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "未知錯誤"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "需要登入"
+   },
+   "loginSuccessful": {
+      "message": "登入成功！"
+   },
+   "loginWithGoogle": {
+      "message": "用Google登入"
+   },
+   "logout": {
+      "message": "登出"
+   },
+   "logoutError": {
+      "message": "登出錯誤: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "未知錯誤"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "管理訂閱"
+   },
+   "membership": {
+      "message": "會員"
+   },
+   "menuBotScan": {
+      "message": "機器人掃描"
+   },
+   "menuHome": {
+      "message": "首頁"
+   },
+   "menuProfile": {
+      "message": "個人資料"
+   },
+   "menuUpgrade": {
+      "message": "升級"
+   },
+   "minutesTest": {
+      "message": "$1分鐘（測試）",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1個帳戶可用"
+   },
+   "moreInHours": {
+      "message": "$2小時後，您可以查看更多$1個追蹤者"
+   },
+   "nextCheckTime": {
+      "message": "下次檢查: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "下次檢查: 明天"
+   },
+   "nextInSeconds": {
+      "message": "下次在 $SECONDS$秒",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "沒有未回追者"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "沒有可取消追蹤的未回追用戶。"
+   },
+   "noUsers": {
+      "message": "沒有用戶"
+   },
+   "noUsersToUnfollow": {
+      "message": "沒有可取消追蹤的用戶。"
+   },
+   "notFollowingYouBadge": {
+      "message": "未追蹤你"
+   },
+   "notProvided": {
+      "message": "未提供"
+   },
+   "ok": {
+      "message": "確定"
+   },
+   "opening": {
+      "message": "開啟中..."
+   },
+   "openingInNewTab": {
+      "message": "在新分頁開啟..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/月"
+   },
+   "perYear": {
+      "message": "/年"
+   },
+   "planFree": {
+      "message": "免費"
+   },
+   "planPopular": {
+      "message": "熱門"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "進階年度"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "登入以訂閱"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "請先登入Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "登入以升級"
+   },
+   "pleaseSignInToView": {
+      "message": "登入以檢視您的資訊"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "使用進階版，立即查看所有$COUNT$個帳戶，無限制！",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "隱私保護"
+   },
+   "processStarted": {
+      "message": "流程已開始"
+   },
+   "processing": {
+      "message": "處理中..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram 要求暫停 — $1 秒後繼續"
+   },
+   "rating": {
+      "message": "評分"
+   },
+   "reAnalyze": {
+      "message": "重新分析"
+   },
+   "reAnalyzing": {
+      "message": "重新分析中..."
+   },
+   "removeFromWhitelist": {
+      "message": "從白名單移除"
+   },
+   "retryIn": {
+      "message": "$SECONDS$秒後重試...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Premium 50%折扣"
+   },
+   "saveSettings": {
+      "message": "儲存"
+   },
+   "scanBlockedBody": {
+      "message": "這很常見，會自行恢復，你的帳號和擴充功能都沒有問題。我們立刻停止而不是重試，因為反覆嘗試只會讓等待更久。請今天稍晚再試。"
+   },
+   "scanBlockedListFollowers": {
+      "message": "目前無法讀取粉絲清單。"
+   },
+   "scanBlockedListFollowing": {
+      "message": "目前無法讀取追蹤中清單。"
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram 需要短暫休息"
+   },
+   "scanPartialBody": {
+      "message": "讀到一部分後 Instagram 暫停了我們，因此結果不足以據此動作。什麼都沒有更動。請稍後再來重新執行分析——解除可能需要數小時，現在重試會延長時間。"
+   },
+   "scanPartialTitle": {
+      "message": "回傳的清單不完整"
+   },
+   "scanPaused": {
+      "message": "Instagram 要求我們放慢速度 — 等待中…"
+   },
+   "scanRemaining": {
+      "message": "還剩 $1 個帳號"
+   },
+   "scanShortBody": {
+      "message": "掃描已結束，但回傳的帳號數少於 Instagram 給出的數量。據此動作可能會取消追蹤那些追蹤你的人，因此不顯示任何內容。請重新執行分析。"
+   },
+   "scanShortTitle": {
+      "message": "缺少部分帳號"
+   },
+   "seconds": {
+      "message": "秒"
+   },
+   "secure": {
+      "message": "安全"
+   },
+   "secureLogin": {
+      "message": "安全登入"
+   },
+   "sessionExpiredTitle": {
+      "message": "你的 Instagram 工作階段已結束"
+   },
+   "showOnlyNonFollowers": {
+      "message": "只顯示未回追"
+   },
+   "showingFirstAccounts": {
+      "message": "顯示前$COUNT$個帳號。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "跳過粉絲"
+   },
+   "skipVerifiedAccounts": {
+      "message": "跳過認證帳號"
+   },
+   "startAnalysis": {
+      "message": "開始分析"
+   },
+   "startBotScan": {
+      "message": "開始機器人掃描"
+   },
+   "startUnfollow": {
+      "message": "開始取追"
+   },
+   "startingAnalysis": {
+      "message": "開始分析..."
+   },
+   "statFailed": {
+      "message": "失敗"
+   },
+   "statFollowers": {
+      "message": "追蹤者"
+   },
+   "statFollowing": {
+      "message": "正在追蹤"
+   },
+   "statNonFollowers": {
+      "message": "未追蹤"
+   },
+   "statRemaining": {
+      "message": "未追蹤"
+   },
+   "statUnfollowed": {
+      "message": "已取追"
+   },
+   "stop": {
+      "message": "停止"
+   },
+   "stopping": {
+      "message": "正在停止…"
+   },
+   "support": {
+      "message": "支援"
+   },
+   "tableAction": {
+      "message": "操作"
+   },
+   "tableFollowingYou": {
+      "message": "追蹤你"
+   },
+   "tableFullName": {
+      "message": "姓名"
+   },
+   "tablePrivate": {
+      "message": "私密"
+   },
+   "tableProfile": {
+      "message": "資料"
+   },
+   "tableUsername": {
+      "message": "用戶名"
+   },
+   "tableVerified": {
+      "message": "認證"
+   },
+   "testNow": {
+      "message": "立即測試"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ 此操作無法撤消！"
+   },
+   "toRemoveLimits": {
+      "message": "以移除限制"
+   },
+   "trendDown": {
+      "message": "自上次分析 $COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "無變化"
+   },
+   "trendUp": {
+      "message": "自上次分析 +$COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "剩餘 $COUNT$ 天",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "明天您可以查看+20個帳戶（$COUNTDOWN$）。每天新增+20個帳戶，限制會累積！",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5小時30分鐘後"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "免費試用已結束。今天可以查看 $COUNT$ 個帳戶。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "試用期已結束"
+   },
+   "tryAgain": {
+      "message": "重試"
+   },
+   "tryAnyway": {
+      "message": "仍要嘗試"
+   },
+   "unfollow": {
+      "message": "取追"
+   },
+   "unfollowDelayLabel": {
+      "message": "延遲（秒）"
+   },
+   "unfollowEveryone": {
+      "message": "取追所有人"
+   },
+   "unfollowFailed": {
+      "message": "失敗"
+   },
+   "unfollowNonFollowers": {
+      "message": "取追未追蹤者"
+   },
+   "unfollowProcessStarted": {
+      "message": "取消追蹤流程已開始。"
+   },
+   "unfollowSettings": {
+      "message": "取追設定"
+   },
+   "unfollowWaitDetail": {
+      "message": "每次取消追蹤之間等待 $1 秒。"
+   },
+   "unfollowedSuccess": {
+      "message": "已取追"
+   },
+   "unfollowing": {
+      "message": "取追中..."
+   },
+   "unknownError": {
+      "message": "未知錯誤"
+   },
+   "upgradeToPremium": {
+      "message": "升級Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "升級到進階版"
+   },
+   "upgradeToSeeAll": {
+      "message": "升級Premium查看全部！"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "個用戶將被取消追蹤。"
+   },
+   "waitingSeconds": {
+      "message": "等待 $SECONDS$秒",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "等待時間 (3-300秒)"
+   },
+   "welcomeFunText1": {
+      "message": "想看看誰沒回追你？😏"
+   },
+   "welcomeFunText2": {
+      "message": "取消追蹤現在更簡單 😊"
+   },
+   "welcomeTitle": {
+      "message": "歡迎！👋"
+   },
+   "welcomeTrustText": {
+      "message": "用Google登入，資料安全！"
+   },
+   "whitelist": {
+      "message": "白名單"
+   },
+   "whitelisted": {
+      "message": "已保護"
+   },
+   "whitelistedSkipped": {
+      "message": "已跳過（白名單）"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1個將於明天解鎖"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram 暫時不再接受此帳號的自動取消追蹤。這是暫時的，你的帳號沒有任何問題。\n\n在此期間你仍可在個人檔案頁手動取消追蹤，你的清單會留在這裡 — 沒有任何消耗。"
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram 目前正在限制取消追蹤"
+   },
+   "yesUnfollow": {
+      "message": "是，取消追蹤"
+   },
+   "yesUnfollowAll": {
+      "message": "是，取消追蹤所有"
+   }
+}

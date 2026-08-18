@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title data-i18n="pageTitle">Unfollow Manager</title>
+    <link rel="stylesheet" href="assets/inter/inter.css">
+    <link rel="stylesheet" href="content.css">
+    <link rel="stylesheet" href="premium-modal.css">
+    <link rel="stylesheet" href="theme.css">
+    <script src="assets/swert.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-content">
+            <h1 data-i18n="appTitle">Insta Unfollow</h1>
+            <div class="user-info">
+                <div class="user-profile">
+                    <img id="userAvatar" alt="Profile" class="user-avatar">
+                    <div class="user-details">
+                        <span id="userName" class="user-name"></span>
+                        <span id="userEmail" class="user-email"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="panel-header">
+                <div class="action-buttons">
+                
+                <div class="button-group">
+                    <button id="unfollowNonFollowers" class="btn btn-primary">
+                        <div class="button-content">
+                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="8.5" cy="7" r="4"></circle>
+                                <line x1="18" y1="8" x2="23" y2="8"></line>
+                                <line x1="20.5" y1="5.5" x2="20.5" y2="10.5"></line>
+                            </svg>
+                            <span class="button-text" data-i18n="unfollowNonFollowers"></span>
+                        </div>
+                    </button>
+                    <button id="unfollowEveryone" class="btn btn-secondary">
+                        <div class="button-content">
+                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                <line x1="18" y1="10" x2="23" y2="10"></line>
+                                <line x1="20.5" y1="7.5" x2="20.5" y2="12.5"></line>
+                            </svg>
+                            <span class="button-text" data-i18n="unfollowEveryone"></span>
+                        </div>
+                    </button>
+                    <button id="stopUnfollow" class="btn btn-danger" disabled>
+                        <div class="button-content">
+                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                            </svg>
+                            <span class="button-text" data-i18n="stop">Stop</span>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="timer-settings">
+                    <svg class="timer-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <input type="number" 
+                        id="waitingTime" 
+                        min="3" 
+                        max="300" 
+                        value="120" 
+                        class="timer-input"
+                        data-i18n-title="waitingTimeTitle">
+                    <span class="timer-label" data-i18n="seconds">seconds</span>
+                </div>
+                
+                <div id="countdownDisplay" class="countdown-display" style="display: none;">
+                    <svg class="countdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span class="countdown-text" id="countdownText">Sonraki: 120s</span>
+                </div>
+
+                
+                <div id="reAnalyzeGroup" class="reanalyze-group" style="display: none;">
+                    <span id="cacheInfoText" class="reanalyze-time"></span>
+                    <button id="reAnalyzeBtn" class="btn-reanalyze">
+                        <svg class="btn-reanalyze-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                        <span class="btn-reanalyze-text" data-i18n="reAnalyze">Re-analyze</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingIndicator" class="loading-overlay" style="display: none;">
+            <div class="scan-panel">
+                <div class="scan-head">
+                    <div class="scan-ring">
+                        <svg viewBox="0 0 120 120">
+                            <defs><linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs>
+                            <circle class="scan-ring-bg" cx="60" cy="60" r="52"/>
+                            <circle id="scanRingArc" class="scan-ring-arc" cx="60" cy="60" r="52"/>
+                        </svg>
+                        <div id="scanRingText" class="scan-ring-text">--</div>
+                    </div>
+                    <div class="scan-head-text">
+                        <div id="loadingCount" class="scan-title">Analyzing...</div>
+                        <div id="scanBigCount" class="scan-big"></div>
+                        <div id="loadingDetail" class="scan-sub"></div>
+                    </div>
+                </div>
+
+                <div id="loadingProgress" class="scan-progress" style="display:none">
+                    <div class="scan-bar"><div id="loadingBar" class="scan-bar-fill"></div></div>
+                    <div class="scan-meta"><span id="loadingPercent"></span><span id="loadingEta"></span></div>
+                </div>
+
+                <div class="scan-steps">
+                    <div id="scanStepFollowers" class="scan-step">
+                        <span class="scan-dot"></span><span data-i18n="statFollowers">Followers</span>
+                    </div>
+                    <div class="scan-step-line"></div>
+                    <div id="scanStepFollowing" class="scan-step">
+                        <span class="scan-dot"></span><span data-i18n="statFollowing">Following</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cache Expiry Warning -->
+        <div id="cacheExpiryWarning" class="cache-expiry-banner" style="display: none;">
+            <div class="cache-expiry-content">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span id="cacheExpiryText"></span>
+                <button id="cacheExpiryReanalyze" class="cache-expiry-btn" data-i18n="reAnalyze">Re-analyze</button>
+            </div>
+        </div>
+
+        <!-- Daily Limit Info Banner -->
+        <div id="limitMessageContainer" class="daily-limit-banner" style="display: none;"></div>
+
+        <!-- Premium Limit Warning -->
+        <div id="premiumLimitWarning" class="premium-limit-warning" style="display: none;">
+            <div class="warning-content">
+                <div class="warning-icon">⚠️</div>
+                <div class="warning-text">
+                    <strong data-i18n="freePlanLimitReached">Free Plan Limit Reached</strong>
+                    <span data-i18n="freePlanLimitDescription">You've reached the 40 analysis limit. Upgrade to Premium for unlimited analysis!</span>
+                </div>
+                <button id="upgradeToPremiumBtn" class="upgrade-btn" data-i18n="upgradeToPremium">Upgrade to Premium</button>
+            </div>
+        </div>
+
+        <!-- Filter Controls - Table'dan önce ekleyin -->
+        <div class="filter-controls">
+            <label class="filter-switch">
+                <input type="checkbox" id="showOnlyNonFollowers">
+                <span class="switch-slider"></span>
+                <span class="switch-label" data-i18n="showOnlyNonFollowers">Show only non-followers</span>
+            </label>
+            
+
+            <div class="stats-grid">
+                <div class="stat-card stat-followers">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="followersCount">0</div>
+                        <div class="stat-label" data-i18n="statFollowers"></div>
+                    </div>
+                </div>
+                <div class="stat-card stat-following">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <polyline points="17 11 19 13 23 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="followingCount">0</div>
+                        <div class="stat-label" data-i18n="statFollowing"></div>
+                    </div>
+                </div>
+                <div class="stat-card stat-nonfollowers">
+                    <div class="stat-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <line x1="18" y1="8" x2="23" y2="13"></line>
+                            <line x1="23" y1="8" x2="18" y2="13"></line>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="nonFollowersCount">0</div>
+                        <div class="stat-label" data-i18n="statNonFollowers"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Container -->
+        <div class="table-container">
+            <table class="following-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th data-i18n="tableProfile">Profile</th>
+                        <th data-i18n="tableUsername">Username</th>
+                        <th data-i18n="tableFullName">Full Name</th>
+                        <th data-i18n="tableVerified">Verified</th>
+                        <th data-i18n="tableFollowingYou">Following You</th>
+                        <th data-i18n="tableAction">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="followingList">
+                  <tr>
+                    <td colspan="7" class="no-data-message" data-i18n="dataLoading">Data Loading...</td>
+                  </tr>
+                </tbody>
+            </table>
+            <!-- Pagination Controls -->
+            <div id="paginationControls" class="pagination-controls" style="display: none;"></div>
+        </div>
+
+        <!-- List Footer Info -->
+        <div id="listFooterInfo" class="list-footer-info" style="display: none;"></div>
+
+    </main>
+
+    <!-- Premium Modal -->
+    <div id="premiumModal" class="premium-modal">
+        <div class="premium-modal-overlay"></div>
+        <div class="premium-modal-content">
+            <button class="premium-modal-close">&times;</button>
+            
+            <!-- Live Counter -->
+            <div class="premium-live-counter">
+                <div class="premium-counter-icon">⚡</div>
+                <div class="premium-counter-content">
+                    <strong class="premium-counter-main"><span data-i18n="liveCounterPrefix">Son 24 saatte</span> <span class="premium-counter-number" id="premiumLiveCounter">150</span> <span data-i18n="liveCounterSuffix">kişi Premium'a geçti!</span></strong>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="premium-pricing-cards">
+                <!-- Free Plan -->
+                <div class="premium-pricing-card premium-free-card">
+                    <div class="premium-plan-header">
+                        <h3 class="premium-plan-name" data-i18n="planFree">Free</h3>
+                        <div class="premium-plan-price">$0<span class="premium-price-period" data-i18n="perMonth">/month</span></div>
+                    </div>
+                    <ul class="premium-features-list">
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text">
+                                <span data-i18n="featureMax50Analysis">Max 40 following analysis</span>
+                                <span class="premium-feature-detail" data-i18n="featureDetailDaily"> (+20/gün)</span>
+                            </span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureBasicUnfollow">Basic unfollow features</span>
+                        </li>
+                        <li class="premium-feature-item premium-disabled">
+                            <span class="premium-feature-icon">✗</span>
+                            <span class="premium-feature-text" data-i18n="featureSpamDetector">Spam account detector</span>
+                        </li>
+                        <li class="premium-feature-item premium-disabled">
+                            <span class="premium-feature-icon">✗</span>
+                            <span class="premium-feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
+                        </li>
+                        <li class="premium-feature-item premium-disabled">
+                            <span class="premium-feature-icon">✗</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedFiltering">Advanced filtering</span>
+                        </li>
+                        <li class="premium-feature-item premium-disabled">
+                            <span class="premium-feature-icon">✗</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Premium Monthly Plan (Featured) -->
+                <div class="premium-pricing-card premium-premium-card premium-featured">
+                    <div class="premium-plan-badge" data-i18n="planPopular">Popular</div>
+                    <div class="premium-plan-header">
+                        <h3 class="premium-plan-name" data-i18n="planPremium">Premium</h3>
+                        <div class="premium-plan-price">
+                            <span class="premium-old-price" id="premiumOldPrice">$25</span>
+                            <span class="premium-new-price" id="premiumNewPrice">$6.99</span>
+                            <span class="premium-price-period" data-i18n="perMonth">/month</span>
+                        </div>
+                        <div class="premium-discount-badge">
+                            <span id="premiumDiscountText" data-i18n="discountOff">72% OFF</span>
+                        </div>
+                    </div>
+                    <ul class="premium-features-list">
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureUnlimitedFollowingAnalysis">Unlimited following analysis</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedUnfollow">Advanced unfollow features</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureSpamDetector">Spam account detector</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedFilteringReporting">Advanced filtering and reporting</span>
+                        </li>
+                        <li class="premium-feature-item premium-highlight">
+                            <span class="premium-feature-icon">✨</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
+                        </li>
+                    </ul>
+                    <button class="premium-card-subscribe-button premium-featured-button" data-plan="monthly" data-i18n="chooseMonthly">
+                        Choose Monthly
+                    </button>
+                </div>
+
+                <!-- Premium Yearly Plan -->
+                <div class="premium-pricing-card premium-yearly-card">
+                    <div class="premium-plan-header">
+                        <h3 class="premium-plan-name" data-i18n="planPremiumYearly">Premium Yearly</h3>
+                        <div class="premium-plan-price">
+                            <span class="premium-old-price" id="premiumYearlyOldPrice">$129.99</span>
+                            <span class="premium-new-price" id="premiumYearlyNewPrice">$74.99</span>
+                            <span class="premium-price-period" data-i18n="perYear">/year</span>
+                        </div>
+                        <div class="premium-discount-badge">
+                            <span id="premiumYearlyDiscountText">42% OFF</span>
+                        </div>
+                        <div class="premium-yearly-savings">
+                        </div>
+                    </div>
+                    <ul class="premium-features-list">
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureUnlimitedFollowingAnalysis">Unlimited following analysis</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedUnfollow">Advanced unfollow features</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureSpamDetector">Spam account detector</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedFilteringReporting">Advanced filtering and reporting</span>
+                        </li>
+                        <li class="premium-feature-item premium-highlight">
+                            <span class="premium-feature-icon">✨</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
+                        </li>
+                    </ul>
+                    <button class="premium-card-subscribe-button" data-plan="yearly" data-i18n="chooseYearly">
+                        Choose Yearly
+                    </button>
+                </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="premium-trust-indicators">
+                <div class="premium-trust-item">
+                    <div class="premium-trust-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="premium-trust-content">
+                        <div class="premium-trust-value">10,000+</div>
+                        <div class="premium-trust-label" data-i18n="activeUsers">Active Users</div>
+                    </div>
+                </div>
+                <div class="premium-trust-item">
+                    <div class="premium-trust-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="premium-trust-content">
+                        <div class="premium-trust-value">4.8/5</div>
+                        <div class="premium-trust-label" data-i18n="rating">Rating</div>
+                    </div>
+                </div>
+                <div class="premium-trust-item">
+                    <div class="premium-trust-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="premium-trust-content">
+                        <div class="premium-trust-value">24/7</div>
+                        <div class="premium-trust-label" data-i18n="support">Support</div>
+                    </div>
+                </div>
+                <div class="premium-trust-item">
+                    <div class="premium-trust-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="premium-trust-content">
+                        <div class="premium-trust-value">100%</div>
+                        <div class="premium-trust-label" data-i18n="secure">Secure</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <details id="scanDiagnosticsBox" style="display:none; margin: 14px 24px 24px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 14px;">
+        <summary style="cursor: pointer; font-weight: 600; font-size: 13px; color: #1d4ed8;">Scan details (for support)</summary>
+        <pre id="scanDiagnosticsPre" style="white-space: pre-wrap; margin: 8px 0 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #475569; overflow-x: auto;"></pre>
+    </details>
+
+    <script src="unfollow-bridge.js"></script>
+    <script src="ig-client.js"></script>
+    <script src="premium-config.js"></script>
+    <script src="premium.js"></script>
+<script src="analyzer.js"></script>
+</body>
+</html>

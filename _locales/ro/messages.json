@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Detalii Cont"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ conturi mai disponibile. Pentru a vedea toate",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Utilizatori Activi"
+   },
+   "addToWhitelist": {
+      "message": "Adaugă în lista albă"
+   },
+   "allAccountsUnlocked": {
+      "message": "Toate conturile deblocate!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "conturi cărora li se va anula urmărirea."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram a returnat lista ta de urmăritori fără datele de poză de profil, așa că fiecare scor de aici este mai mic decât ar trebui și unii boți vor scăpa. Deschide Instagram într-o filă și rulează scanarea din nou pentru un rezultat complet."
+   },
+   "botBlindTitle": {
+      "message": "Verificarea pozei de profil nu a putut fi făcută"
+   },
+   "botCleared": {
+      "message": "În favoarea lui"
+   },
+   "botDeepAllChecked": {
+      "message": "Toate conturile marcate au fost verificate"
+   },
+   "botDeepChecked": {
+      "message": "Profil verificat"
+   },
+   "botDeepChecksFor": {
+      "message": "Verifică în profunzime $1 conturi"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Au rămas $1 ($2 deja făcute)"
+   },
+   "botDeepDone": {
+      "message": "Verificările aprofundate s-au încheiat — $1 conturi verificate."
+   },
+   "botDeepNoTargets": {
+      "message": "Niciun cont nu are nevoie de verificare aprofundată."
+   },
+   "botDeepPausedBody": {
+      "message": "$1 conturi au fost verificate înainte să se oprească, iar $2 nu. Verdictele de mai jos se bazează doar pe ce s-a citit. Nu există o așteptare fixă — poate dura ore sau până mâine. Revino mai târziu în loc să încerci acum, ceea ce doar prelungește."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram a pus pe pauză verificările de profil"
+   },
+   "botDeepRemaining": {
+      "message": "$1 au rămas neverificate."
+   },
+   "botDeepSubtitle": {
+      "message": "O cerere pe cont, într-un ritm sigur."
+   },
+   "botFilterAll": {
+      "message": "Toate scanate"
+   },
+   "botFilterLikely": {
+      "message": "Boți probabili"
+   },
+   "botFilterSuspicious": {
+      "message": "Suspecte"
+   },
+   "botFreeHeadline": {
+      "message": "alte conturi marcate sunt blocate"
+   },
+   "botFreeWithheld": {
+      "message": "Au fost găsite încă $1 — treci la Premium ca să le vezi pe toate."
+   },
+   "botIntroHeading": {
+      "message": "Găsește conturile care nu sunt oameni reali"
+   },
+   "botIntroLead": {
+      "message": "Fiecare urmăritor primește un scor după cât de probabil e să fie bot sau cont de unică folosință."
+   },
+   "botIntroReasons": {
+      "message": "Fiecare scor vine cu motivele din spatele lui, ca să vezi de ce a fost marcat un cont în loc să te încrezi într-un număr. Nimic nu este eliminat automat — lista e aici ca să te uiți și să decizi."
+   },
+   "botNoFlagged": {
+      "message": "Nimic marcat — lista ta de urmăritori pare curată."
+   },
+   "botNoRowsForFilter": {
+      "message": "Nimic în acest grup."
+   },
+   "botNoSignals": {
+      "message": "Nimic neobișnuit"
+   },
+   "botNotRunYet": {
+      "message": "Pornește o scanare ca să-ți vezi aici urmăritorii cu scor."
+   },
+   "botPopupBody": {
+      "message": "Dă fiecărui urmăritor un scor după cât de probabil e să fie bot sau cont de unică folosință: fără poză de profil, fără postări, nume de utilizator care pare generat, urmărește mii în timp ce aproape nimeni nu îl urmărește."
+   },
+   "botPopupReasons": {
+      "message": "Fiecare scor vine cu motivele din spatele lui. Nimic nu este eliminat automat."
+   },
+   "botProvisionalBody": {
+      "message": "La $1 conturi marcate profilul nu a fost încă verificat. Majoritatea boților se confirmă doar prin această verificare — rulează-o înainte să te încrezi în numărul de boți probabili."
+   },
+   "botProvisionalTitle": {
+      "message": "Aceste verdicte nu sunt încă definitive"
+   },
+   "botReadSubtitle": {
+      "message": "Citit direct din lista ta de urmăritori — fără cereri suplimentare."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Fără poză de profil"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Raport de urmăritori echilibrat"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Multe cifre în numele de utilizator"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Fără nume afișat"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Urmărește mult mai mulți decât îl urmăresc"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Are insignă de cont"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Urmărește foarte multe conturi"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Fără urmăritori"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Nu a postat niciodată"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Postează regulat"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Numele de utilizator se termină în cifre"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Model neobișnuit de underscore-uri"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Cont verificat"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Nume de utilizator neobișnuit de lung"
+   },
+   "botRunDeepChecks": {
+      "message": "Rulează verificări aprofundate"
+   },
+   "botScanCached": {
+      "message": "Ultima scanare $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram a pus pe pauză verificarea profilurilor. Rezultatele de mai jos sunt din ce s-a apucat să citească."
+   },
+   "botScanDeepProgress": {
+      "message": "Se verifică profilurile… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Scanare completă."
+   },
+   "botScanNoData": {
+      "message": "Nu am putut citi lista ta de urmăritori. Instagram ne ține pe loc — trece de la sine, dar fără o așteptare fixă. Încearcă mai târziu."
+   },
+   "botScanPartial": {
+      "message": "Scanarea s-a încheiat, dar lista de urmăritori a venit incompletă — unele conturi lipsesc."
+   },
+   "botScanReading": {
+      "message": "Se citesc urmăritorii tăi…"
+   },
+   "botScanReadingCount": {
+      "message": "Se citesc urmăritorii… $1"
+   },
+   "botScanTitle": {
+      "message": "Scanare urmăritori boți"
+   },
+   "botScoreRaw": {
+      "message": "Scor brut"
+   },
+   "botSignalName": {
+      "message": "Nume de utilizator care pare generat"
+   },
+   "botSignalPhoto": {
+      "message": "Fără poză de profil"
+   },
+   "botSignalPosts": {
+      "message": "Fără postări"
+   },
+   "botSignalRatio": {
+      "message": "Urmărește mii, aproape nimeni nu îl urmărește"
+   },
+   "botSignalsUnavailable": {
+      "message": "Pentru acest cont unele verificări nu au putut fi făcute, așa că scorul lui se sprijină pe mai puține indicii decât celelalte."
+   },
+   "botStatFlagged": {
+      "message": "Marcate"
+   },
+   "botStatFollowers": {
+      "message": "Urmăritori"
+   },
+   "botStatFollowing": {
+      "message": "Urmăriri"
+   },
+   "botStatLikely": {
+      "message": "Boți probabili"
+   },
+   "botStatPosts": {
+      "message": "Postări"
+   },
+   "botStatScanned": {
+      "message": "Scanate"
+   },
+   "botStatSuspicious": {
+      "message": "Suspecte"
+   },
+   "botStatsGone": {
+      "message": "Cont dispărut"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram nu a returnat niciun profil — contul a fost șters sau dezactivat, cifrele lui nu mai pot fi citite."
+   },
+   "botStatsNotChecked": {
+      "message": "Neverificat"
+   },
+   "botStepDeep": {
+      "message": "Se verifică profilurile"
+   },
+   "botStepReading": {
+      "message": "Se citesc urmăritorii"
+   },
+   "botTableReasons": {
+      "message": "De ce"
+   },
+   "botTableScore": {
+      "message": "Scor"
+   },
+   "botTableStats": {
+      "message": "Cifrele profilului"
+   },
+   "botTableVerdict": {
+      "message": "Verdict"
+   },
+   "botVerdictClean": {
+      "message": "Pare real"
+   },
+   "botVerdictLikely": {
+      "message": "Probabil bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Suspect"
+   },
+   "cacheExpiryWarning": {
+      "message": "Imaginile de profil s-ar putea să nu fie afișate deoarece ultima analiză a fost acum $DAYS$ zile. Vă rugăm să reanalizați pentru rezultate actualizate.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Ultima analiză $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Se verifică…"
+   },
+   "checkingLoginStatus": {
+      "message": "Se verifică starea de conectare..."
+   },
+   "chooseMonthly": {
+      "message": "Alege Lunar"
+   },
+   "chooseYearly": {
+      "message": "Alege Anual"
+   },
+   "comeBackTomorrow": {
+      "message": "Revino mâine"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Poți analiza +20 urmăritori în plus în fiecare zi. Dacă ești nerăbdător, treci la Premium, vezi-i pe toți acum. Dacă ești răbdător, revino mâine, vei putea vedea +20 urmăritori în plus. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Revino mâine pentru a vedea $1 conturi în plus (+$2 deblocări noi)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Sigur vrei să anulezi urmărirea TUTUROR?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Confirmă acțiunea"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Sigur vrei să anulezi urmărirea tuturor celor care nu te urmăresc înapoi?"
+   },
+   "connected": {
+      "message": "Conectat"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Nu s-a putut obține lista. Încearcă mai târziu."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$h $MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "mai târziu"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "mai târziu"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Mâine poți vedea +20 conturi în plus ($COUNTDOWN$). În fiecare zi se adaugă +20 conturi, limitele se acumulează!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m mai târziu"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Limită Zilnică"
+   },
+   "dailyScanLimit": {
+      "message": "Limita de Scanare Zilnică"
+   },
+   "dataLoading": {
+      "message": "Se încarcă datele..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Încărcare: $COUNT$ urmăritori găsiți",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Încărcare: $COUNT$ urmăriți găsiți",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "-50%"
+   },
+   "email": {
+      "message": "Email"
+   },
+   "errorFetchingData": {
+      "message": "Eroare la obținerea datelor. Încearcă din nou."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram este temporar indisponibil. Încearcă din nou mai târziu."
+   },
+   "errorNetwork": {
+      "message": "Nu am putut contacta Instagram. Verifică-ți conexiunea — nu s-a pierdut nimic, iar procesul va continua."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "A apărut o eroare. Încearcă din nou."
+   },
+   "errorRateLimit": {
+      "message": "Instagram a pus pe pauză cererile noastre. Trece de la sine, dar nu există o așteptare fixă — în funcție de cât s-a făcut, poate dura ore sau până mâine. Încercarea imediată o prelungește."
+   },
+   "errorSessionExpired": {
+      "message": "Sesiunea ta Instagram a expirat. Autentifică-te pe Instagram și încearcă din nou."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min rămase"
+   },
+   "etaSeconds": {
+      "message": "~$1 s rămase"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Unfollow eșuat. Încearcă din nou."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Filtrare avansată"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Filtre și rapoarte"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Sistem de Notificări Avansat"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Unfollow avansat"
+   },
+   "featureBasicUnfollow": {
+      "message": "Unfollow de bază"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/zi)"
+   },
+   "featureMax50Analysis": {
+      "message": "Max 40 analize"
+   },
+   "featureSpamDetector": {
+      "message": "Detector spam"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Analize nelimitate"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Analiză nelimitată"
+   },
+   "finalizingAnalysis": {
+      "message": "Se finalizează..."
+   },
+   "firstDayBonus": {
+      "message": "Bonusul Primei Zile"
+   },
+   "firstDayBonusMessage": {
+      "message": "Bonus prima zi: 40 conturi! Mâine poți vedea +20 conturi în plus ($COUNTDOWN$). În fiecare zi se adaugă +20 conturi.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m mai târziu"
+         }
+      }
+   },
+   "followers": {
+      "message": "Urmăritori"
+   },
+   "following": {
+      "message": "Urmărești"
+   },
+   "followingYouBadge": {
+      "message": "Te Urmărește"
+   },
+   "freePlanLimitDescription": {
+      "message": "Ai atins 40 analize. Premium pentru nelimitat!"
+   },
+   "freePlanLimitReached": {
+      "message": "Limită Gratuită Atinsă"
+   },
+   "freePlanTodayMessage": {
+      "message": "Cu planul gratuit, poți vedea $DISPLAYED$ conturi astăzi. Mai sunt $HIDDEN$ conturi dar nu le poți vedea.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Cu planul gratuit, poți vedea $COUNT$ conturi astăzi.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Cu planul gratuit poți renunța la urmărire doar până la $COUNT$ utilizatori. Te rugăm să selectezi doar primii $COUNT$ utilizatori sau să faci upgrade la Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Cu planul gratuit poți renunța la urmărire doar până la $COUNT$ utilizatori. Fă upgrade la Premium pentru renunțare nelimitată!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Nume"
+   },
+   "getStartedWithGoogle": {
+      "message": "Înregistrare cu Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Mergi la Instagram"
+   },
+   "gotIt": {
+      "message": "OK"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram a încetat să trimită date înainte să sosească toată lista, așa că unele conturi lipsesc. A acționa acum ar putea anula urmărirea unor persoane care chiar te urmăresc. Rulează mai întâi analiza din nou."
+   },
+   "incompleteDataTitle": {
+      "message": "Lista este incompletă"
+   },
+   "instagramLimitedBody": {
+      "message": "Ești în continuare autentificat și contul tău nu are nicio problemă. Trece de la sine, dar nu există o așteptare fixă — în funcție de cât s-a făcut, poate dura ore sau până mâine. Încercările repetate o prelungesc."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram limitează cererile în acest moment"
+   },
+   "instagramLoginAlert": {
+      "message": "Conectează-te întâi la Instagram!"
+   },
+   "invalidWaitingTime": {
+      "message": "Introdu timp valid între 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Timp de așteptare nevalid"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 secunde este în afara intervalului permis. Introdu o valoare între $2 și $3 secunde."
+   },
+   "later": {
+      "message": "mai târziu"
+   },
+   "limitedTimeOffer": {
+      "message": "Ofertă Limitată"
+   },
+   "liveCounterPrefix": {
+      "message": "În ultimele 24 de ore"
+   },
+   "liveCounterSuffix": {
+      "message": "persoane au actualizat la Premium!"
+   },
+   "loading": {
+      "message": "Se încarcă..."
+   },
+   "loadingProfile": {
+      "message": "Se încarcă profilul"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Se încarcă analiza ta salvată…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Nu se cere nimic de la Instagram."
+   },
+   "login": {
+      "message": "Conectare"
+   },
+   "loginFailed": {
+      "message": "Conectare eșuată: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Eroare necunoscută"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Conectare Necesară"
+   },
+   "loginSuccessful": {
+      "message": "Conectare reușită!"
+   },
+   "loginWithGoogle": {
+      "message": "Conectare cu Google"
+   },
+   "logout": {
+      "message": "Deconectare"
+   },
+   "logoutError": {
+      "message": "Eroare la deconectare: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Eroare necunoscută"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Gestionează Abonamentul"
+   },
+   "membership": {
+      "message": "Abonament"
+   },
+   "menuBotScan": {
+      "message": "Scanare boți"
+   },
+   "menuHome": {
+      "message": "Acasă"
+   },
+   "menuProfile": {
+      "message": "Profil"
+   },
+   "menuUpgrade": {
+      "message": "Upgrade"
+   },
+   "minutesTest": {
+      "message": "$1 minute (Test)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 conturi în plus disponibile"
+   },
+   "moreInHours": {
+      "message": "În $2 ore vei putea vedea +$1 urmăritori în plus"
+   },
+   "nextCheckTime": {
+      "message": "Următoarea verificare: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Următoarea verificare: Mâine"
+   },
+   "nextInSeconds": {
+      "message": "Următorul în $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Niciun cont care nu te urmărește"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Nu există conturi care nu te urmăresc pentru a le anula urmărirea."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Nu există conturi cărora să le anulezi urmărirea."
+   },
+   "notFollowingYouBadge": {
+      "message": "Nu Te Urmărește"
+   },
+   "notProvided": {
+      "message": "Nespecificat"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Se deschide..."
+   },
+   "openingInNewTab": {
+      "message": "Se deschide în tab nou..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/lună"
+   },
+   "perYear": {
+      "message": "/an"
+   },
+   "planFree": {
+      "message": "Gratuit"
+   },
+   "planPopular": {
+      "message": "Popular"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Anual"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Conectează-te pentru abonare"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Conectează-te întâi la Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Conectează-te pentru upgrade"
+   },
+   "pleaseSignInToView": {
+      "message": "Conectează-te pentru a vedea informațiile"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Cu Premium, vezi toate $COUNT$ conturile acum, fără limite!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Confidențialitate Protejată"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Se procesează..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram ne-a cerut o pauză — reluăm în $1 s"
+   },
+   "rating": {
+      "message": "Rating"
+   },
+   "reAnalyze": {
+      "message": "Reanalizează"
+   },
+   "reAnalyzing": {
+      "message": "Se reanalizează..."
+   },
+   "removeFromWhitelist": {
+      "message": "Elimină din lista albă"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "50% reducere Premium"
+   },
+   "saveSettings": {
+      "message": "Salvează"
+   },
+   "scanBlockedBody": {
+      "message": "Se întâmplă des, trece de la sine și nu e nimic în neregulă nici cu contul tău, nici cu extensia. Ne-am oprit imediat în loc să reîncercăm, pentru că încercările repetate lungesc așteptarea. Încearcă mai târziu astăzi."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Lista de urmăritori nu a putut fi citită acum."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Lista de urmăriri nu a putut fi citită acum."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram vrea o scurtă pauză"
+   },
+   "scanPartialBody": {
+      "message": "O parte a sosit, apoi Instagram ne-a pus pe pauză, deci rezultatele nu sunt destul de complete ca să acționezi. Nu s-a modificat nimic. Revino mai târziu și rulează analiza din nou — poate dura ore, iar încercarea acum o prelungește."
+   },
+   "scanPartialTitle": {
+      "message": "Lista a venit incompletă"
+   },
+   "scanPaused": {
+      "message": "Instagram ne-a cerut să încetinim — așteptăm…"
+   },
+   "scanRemaining": {
+      "message": "Au mai rămas $1 conturi"
+   },
+   "scanShortBody": {
+      "message": "Scanarea s-a încheiat, dar au venit mai puține conturi decât spune Instagram că are lista. A acționa pe baza ei ar putea anula urmărirea unor persoane care te urmăresc, așa că nu se afișează nimic. Rulează analiza din nou."
+   },
+   "scanShortTitle": {
+      "message": "Unele conturi lipsesc"
+   },
+   "seconds": {
+      "message": "secunde"
+   },
+   "secure": {
+      "message": "Sigur"
+   },
+   "secureLogin": {
+      "message": "Conectare Sigură"
+   },
+   "sessionExpiredTitle": {
+      "message": "Sesiunea ta Instagram s-a încheiat"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Doar non-urmăritori"
+   },
+   "showingFirstAccounts": {
+      "message": "Se afișează primele $COUNT$ conturi.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Omite urmăritorii"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Omite verificații"
+   },
+   "startAnalysis": {
+      "message": "Începe Analiza"
+   },
+   "startBotScan": {
+      "message": "Pornește scanarea de boți"
+   },
+   "startUnfollow": {
+      "message": "Începe Unfollow"
+   },
+   "startingAnalysis": {
+      "message": "Se începe analiza..."
+   },
+   "statFailed": {
+      "message": "Eșuat"
+   },
+   "statFollowers": {
+      "message": "Urmăritori"
+   },
+   "statFollowing": {
+      "message": "Urmăriți"
+   },
+   "statNonFollowers": {
+      "message": "Nu Urmăresc"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Unfollowed"
+   },
+   "stop": {
+      "message": "Stop"
+   },
+   "stopping": {
+      "message": "Se oprește…"
+   },
+   "support": {
+      "message": "Suport"
+   },
+   "tableAction": {
+      "message": "Acțiune"
+   },
+   "tableFollowingYou": {
+      "message": "Te Urmărește"
+   },
+   "tableFullName": {
+      "message": "Nume"
+   },
+   "tablePrivate": {
+      "message": "Privat"
+   },
+   "tableProfile": {
+      "message": "Profil"
+   },
+   "tableUsername": {
+      "message": "Utilizator"
+   },
+   "tableVerified": {
+      "message": "Verificat"
+   },
+   "testNow": {
+      "message": "Testează acum"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Această acțiune nu poate fi anulată!"
+   },
+   "toRemoveLimits": {
+      "message": "pentru a elimina limitele"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ zile rămase",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Perioada de probă a expirat"
+   },
+   "tryAgain": {
+      "message": "Încearcă din nou"
+   },
+   "tryAnyway": {
+      "message": "Încearcă oricum"
+   },
+   "unfollow": {
+      "message": "Unfollow"
+   },
+   "unfollowDelayLabel": {
+      "message": "Întârziere (secunde)"
+   },
+   "unfollowEveryone": {
+      "message": "Încetează Să Urmărești Pe Toți"
+   },
+   "unfollowFailed": {
+      "message": "Eșuat"
+   },
+   "unfollowNonFollowers": {
+      "message": "Încetează Să Urmărești Non-Urmăritori"
+   },
+   "unfollowProcessStarted": {
+      "message": "Procesul de anulare a urmăririi a început."
+   },
+   "unfollowSettings": {
+      "message": "Setări Unfollow"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 secunde între fiecare anulare a urmăririi."
+   },
+   "unfollowedSuccess": {
+      "message": "Unfollowed"
+   },
+   "unfollowing": {
+      "message": "Unfollow..."
+   },
+   "unknownError": {
+      "message": "Eroare necunoscută"
+   },
+   "upgradeToPremium": {
+      "message": "Treci la Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Actualizează la Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium pentru toate!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "conturi cărora li se va anula urmărirea."
+   },
+   "waitingSeconds": {
+      "message": "Așteptare $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Timp de așteptare (3-300 sec)"
+   },
+   "welcomeFunText1": {
+      "message": "Vrei să vezi cine nu te urmărește? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Unfollow e acum simplu 😊"
+   },
+   "welcomeTitle": {
+      "message": "Bine ai venit! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Conectează-te cu Google, datele sunt sigure!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 vor fi deblocate mâine"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram a încetat temporar să accepte anulări automate de urmărire pe acest cont. Este temporar și nu e nimic în neregulă cu contul tău.\n\nÎntre timp poți anula urmărirea manual din pagina de profil, iar lista ta rămâne aici — nu s-a consumat nimic."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram limitează acum anulările de urmărire"
+   },
+   "yesUnfollow": {
+      "message": "Da, anulează urmărirea"
+   },
+   "yesUnfollowAll": {
+      "message": "Da, anulează urmărirea tuturor"
+   }
+}

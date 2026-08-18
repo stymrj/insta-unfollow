@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "تفاصيل الحساب"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ حسابًا متاحًا. لعرض الكل",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "مستخدم نشط"
+   },
+   "addToWhitelist": {
+      "message": "أضف إلى القائمة البيضاء"
+   },
+   "allAccountsUnlocked": {
+      "message": "تم فتح جميع الحسابات!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "مستخدماً ستُلغى متابعتهم."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "أعاد Instagram قائمة متابِعيك دون بيانات صورة الملف الشخصي، لذا كل الدرجات هنا أقل مما ينبغي وستفوت بعض البوتات. افتح Instagram في تبويب وأعد تشغيل الفحص للحصول على نتيجة كاملة."
+   },
+   "botBlindTitle": {
+      "message": "تعذّر إجراء فحص صورة الملف الشخصي"
+   },
+   "botCleared": {
+      "message": "في صالحه"
+   },
+   "botDeepAllChecked": {
+      "message": "تم فحص جميع الحسابات الموسومة"
+   },
+   "botDeepChecked": {
+      "message": "تم فحص الملف الشخصي"
+   },
+   "botDeepChecksFor": {
+      "message": "افحص $1 حساباً بعمق"
+   },
+   "botDeepChecksRemaining": {
+      "message": "بقي $1 ($2 تم بالفعل)"
+   },
+   "botDeepDone": {
+      "message": "انتهى الفحص المعمّق — تم فحص $1 حساباً."
+   },
+   "botDeepNoTargets": {
+      "message": "لا يحتاج أي حساب إلى فحص معمّق."
+   },
+   "botDeepPausedBody": {
+      "message": "تم فحص $1 حساباً قبل التوقّف ولم يُفحص $2. الأحكام أدناه تستند فقط إلى ما أمكن قراءته. لا توجد مدة انتظار ثابتة — قد يستغرق ساعات أو حتى الغد. عد لاحقاً بدل المحاولة الآن، فهي تطيل المدة فقط."
+   },
+   "botDeepPausedTitle": {
+      "message": "أوقف Instagram فحوص الملفات الشخصية"
+   },
+   "botDeepRemaining": {
+      "message": "$1 بقيت دون فحص."
+   },
+   "botDeepSubtitle": {
+      "message": "طلب واحد لكل حساب، بوتيرة آمنة."
+   },
+   "botFilterAll": {
+      "message": "كل ما تم فحصه"
+   },
+   "botFilterLikely": {
+      "message": "بوتات مرجّحة"
+   },
+   "botFilterSuspicious": {
+      "message": "مشبوهة"
+   },
+   "botFreeHeadline": {
+      "message": "حسابات موسومة أخرى مقفلة"
+   },
+   "botFreeWithheld": {
+      "message": "تم العثور على $1 أخرى — قم بالترقية لرؤيتها كلها."
+   },
+   "botIntroHeading": {
+      "message": "اعثر على الحسابات التي ليست لأشخاص حقيقيين"
+   },
+   "botIntroLead": {
+      "message": "يُمنح كل متابِع درجة بحسب احتمال أن يكون بوتاً أو حساباً مؤقتاً."
+   },
+   "botIntroReasons": {
+      "message": "كل درجة تأتي مع أسبابها، لترى لماذا وُسم حساب بدل الوثوق برقم. لا يُحذف شيء تلقائياً — القائمة هنا لتنظر فيها وتقرّر بنفسك."
+   },
+   "botNoFlagged": {
+      "message": "لا شيء موسوم — قائمة متابِعيك تبدو نظيفة."
+   },
+   "botNoRowsForFilter": {
+      "message": "لا شيء في هذه المجموعة."
+   },
+   "botNoSignals": {
+      "message": "لا شيء غير معتاد"
+   },
+   "botNotRunYet": {
+      "message": "شغّل فحصاً لترى درجات متابِعيك هنا."
+   },
+   "botPopupBody": {
+      "message": "يمنح كل متابِع درجة بحسب احتمال أن يكون بوتاً أو حساباً مؤقتاً: لا صورة شخصية، لا منشورات، اسم مستخدم يبدو مُولَّداً، يتابع الآلاف بينما لا يتابعه أحد تقريباً."
+   },
+   "botPopupReasons": {
+      "message": "كل درجة تأتي مع أسبابها. لا يُحذف شيء تلقائياً."
+   },
+   "botProvisionalBody": {
+      "message": "هناك $1 حساباً موسوماً لم يُفحص ملفها الشخصي بعد. معظم البوتات لا تتأكد إلا بهذا الفحص — شغّله قبل أن تثق بعدد البوتات المرجّحة."
+   },
+   "botProvisionalTitle": {
+      "message": "هذه الأحكام ليست نهائية بعد"
+   },
+   "botReadSubtitle": {
+      "message": "تُقرأ مباشرة من قائمة متابِعيك — دون أي طلبات إضافية."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "لا صورة شخصية"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "نسبة متابعين متوازنة"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "أرقام كثيرة في اسم المستخدم"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "لا اسم معروض"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "يتابع أكثر بكثير مما يتابعه"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "يحمل شارة حساب"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "يتابع عدداً هائلاً من الحسابات"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "لا متابعين"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "لم ينشر أبداً"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "ينشر بانتظام"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "اسم المستخدم ينتهي بأرقام"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "نمط شرطات سفلية غير معتاد"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "حساب موثق"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "اسم مستخدم طويل بشكل غير معتاد"
+   },
+   "botRunDeepChecks": {
+      "message": "شغّل الفحص المعمّق"
+   },
+   "botScanCached": {
+      "message": "آخر فحص $1"
+   },
+   "botScanDeepPaused": {
+      "message": "أوقف Instagram فحص الملفات الشخصية. النتائج أدناه مما أمكن قراءته."
+   },
+   "botScanDeepProgress": {
+      "message": "جارٍ فحص الملفات الشخصية… $1/$2"
+   },
+   "botScanDone": {
+      "message": "اكتمل الفحص."
+   },
+   "botScanNoData": {
+      "message": "تعذّرت قراءة قائمة متابِعيك. Instagram يمنعنا — يزول من تلقاء نفسه، لكن دون مدة انتظار ثابتة. حاول لاحقاً."
+   },
+   "botScanPartial": {
+      "message": "انتهى الفحص، لكن قائمة المتابِعين عادت ناقصة — بعض الحسابات مفقودة."
+   },
+   "botScanReading": {
+      "message": "جارٍ قراءة متابِعيك…"
+   },
+   "botScanReadingCount": {
+      "message": "جارٍ قراءة المتابِعين… $1"
+   },
+   "botScanTitle": {
+      "message": "فحص المتابِعين البوتات"
+   },
+   "botScoreRaw": {
+      "message": "الدرجة الخام"
+   },
+   "botSignalName": {
+      "message": "اسم مستخدم يبدو مُولَّداً"
+   },
+   "botSignalPhoto": {
+      "message": "لا صورة شخصية"
+   },
+   "botSignalPosts": {
+      "message": "لا منشورات"
+   },
+   "botSignalRatio": {
+      "message": "يتابع الآلاف، ولا يتابعه أحد تقريباً"
+   },
+   "botSignalsUnavailable": {
+      "message": "تعذّر إجراء بعض الفحوص لهذا الحساب، لذا تستند درجته إلى أدلّة أقلّ من غيره."
+   },
+   "botStatFlagged": {
+      "message": "موسومة"
+   },
+   "botStatFollowers": {
+      "message": "المتابِعون"
+   },
+   "botStatFollowing": {
+      "message": "يتابع"
+   },
+   "botStatLikely": {
+      "message": "بوتات مرجّحة"
+   },
+   "botStatPosts": {
+      "message": "المنشورات"
+   },
+   "botStatScanned": {
+      "message": "تم فحصها"
+   },
+   "botStatSuspicious": {
+      "message": "مشبوهة"
+   },
+   "botStatsGone": {
+      "message": "الحساب غير موجود"
+   },
+   "botStatsGoneHint": {
+      "message": "لم يُرجع Instagram أي ملف شخصي — الحساب محذوف أو معطّل، ولا يمكن قراءة أرقامه."
+   },
+   "botStatsNotChecked": {
+      "message": "لم يُفحص"
+   },
+   "botStepDeep": {
+      "message": "جارٍ فحص الملفات الشخصية"
+   },
+   "botStepReading": {
+      "message": "جارٍ قراءة المتابِعين"
+   },
+   "botTableReasons": {
+      "message": "لماذا"
+   },
+   "botTableScore": {
+      "message": "الدرجة"
+   },
+   "botTableStats": {
+      "message": "أرقام الملف الشخصي"
+   },
+   "botTableVerdict": {
+      "message": "الحكم"
+   },
+   "botVerdictClean": {
+      "message": "يبدو حقيقياً"
+   },
+   "botVerdictLikely": {
+      "message": "بوت مرجّح"
+   },
+   "botVerdictSuspicious": {
+      "message": "مشبوه"
+   },
+   "cacheExpiryWarning": {
+      "message": "قد لا تظهر صور الملفات الشخصية لأن آخر تحليل تم قبل $DAYS$ أيام. يرجى إعادة التحليل للحصول على نتائج محدثة.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "آخر تحليل $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "إلغاء"
+   },
+   "checkingBeforeStart": {
+      "message": "جارٍ التحقق…"
+   },
+   "checkingLoginStatus": {
+      "message": "جارٍ التحقق من حالة تسجيل الدخول..."
+   },
+   "chooseMonthly": {
+      "message": "اختر شهري"
+   },
+   "chooseYearly": {
+      "message": "اختر سنوي"
+   },
+   "comeBackTomorrow": {
+      "message": "عد غدًا"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "يمكنك تحليل +20 متابع إضافي كل يوم. إذا كنت غير صبور، انتقل إلى Premium، شاهدهم جميعًا الآن. إذا كنت صبورًا، عد غدًا، يمكنك رؤية +20 متابع إضافي. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "عد غدًا لمشاهدة $1 حسابًا إضافيًا (+$2 فتح جديد)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "هل تريد فعلاً إلغاء متابعة الجميع؟"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "أكّد الإجراء"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "هل تريد فعلاً إلغاء متابعة كل من لا يتابعك؟"
+   },
+   "connected": {
+      "message": "متصل"
+   },
+   "couldNotFetchFollowing": {
+      "message": "تعذر جلب القائمة. حاول لاحقاً."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$س $MINUTES$د $SECONDS$ث $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "بعد"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$د $SECONDS$ث $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "بعد"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "غدًا يمكنك رؤية +20 حسابًا إضافيًا ($COUNTDOWN$). يتم إضافة +20 حسابًا كل يوم، تتراكم الحدود!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5س 30د بعد"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "الحد اليومي"
+   },
+   "dailyScanLimit": {
+      "message": "حد المسح اليومي"
+   },
+   "dataLoading": {
+      "message": "جاري التحميل..."
+   },
+   "dataLoadingFollowers": {
+      "message": "تحميل: تم إيجاد $COUNT$ متابِع",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "تحميل: تم إيجاد $COUNT$ متابَع",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "خصم 50%"
+   },
+   "email": {
+      "message": "البريد"
+   },
+   "errorFetchingData": {
+      "message": "خطأ في جلب البيانات. حاول مجدداً."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram غير متاح مؤقتاً. حاول مرة أخرى لاحقاً."
+   },
+   "errorNetwork": {
+      "message": "تعذّر الوصول إلى Instagram. تحقّق من اتصالك — لم يُفقد شيء وستستمر العملية."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "حدث خطأ. حاول مجدداً."
+   },
+   "errorRateLimit": {
+      "message": "أوقف Instagram طلباتنا. يزول من تلقاء نفسه، لكن لا توجد مدة انتظار ثابتة — حسب حجم ما تم، قد يستغرق ساعات أو حتى الغد. المحاولة الفورية تطيله."
+   },
+   "errorSessionExpired": {
+      "message": "انتهت جلسة Instagram الخاصة بك. سجّل الدخول إلى Instagram وحاول مرة أخرى."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 دقيقة متبقية"
+   },
+   "etaSeconds": {
+      "message": "~$1 ثانية متبقية"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "فشل الإلغاء. حاول مجدداً."
+   },
+   "featureAdvancedFiltering": {
+      "message": "تصفية متقدمة"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "تصفية وتقارير متقدمة"
+   },
+   "featureAdvancedNotifications": {
+      "message": "نظام الإشعارات المتقدم"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "إلغاء متابعة متقدم"
+   },
+   "featureBasicUnfollow": {
+      "message": "إلغاء متابعة أساسي"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/يوم)"
+   },
+   "featureMax50Analysis": {
+      "message": "تحليل 40 متابَع كحد أقصى"
+   },
+   "featureSpamDetector": {
+      "message": "كشف الحسابات المزعجة"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "تحليل غير محدود"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "تحليل متابَعين غير محدود"
+   },
+   "finalizingAnalysis": {
+      "message": "جاري الإنهاء..."
+   },
+   "firstDayBonus": {
+      "message": "مكافأة اليوم الأول"
+   },
+   "firstDayBonusMessage": {
+      "message": "مكافأة اليوم الأول: 40 حسابًا! غدًا يمكنك رؤية +20 حسابًا إضافيًا ($COUNTDOWN$). يتم إضافة +20 حسابًا كل يوم.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5س 30د بعد"
+         }
+      }
+   },
+   "followers": {
+      "message": "المتابعون"
+   },
+   "following": {
+      "message": "المتابَعون"
+   },
+   "followingYouBadge": {
+      "message": "يتابعك"
+   },
+   "freePlanLimitDescription": {
+      "message": "وصلت لحد 40 تحليل. ترقّ لـ Premium للتحليل اللامحدود!"
+   },
+   "freePlanLimitReached": {
+      "message": "انتهى حد الخطة المجانية"
+   },
+   "freePlanTodayMessage": {
+      "message": "في الخطة المجانية، يمكنك رؤية $DISPLAYED$ حسابًا اليوم. هناك $HIDDEN$ حسابًا إضافيًا لكن لا يمكنك رؤيتهم.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "في الخطة المجانية، يمكنك رؤية $COUNT$ حسابًا اليوم.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "في الخطة المجانية يمكنك إلغاء متابعة ما يصل إلى $COUNT$ مستخدم فقط. يرجى اختيار أول $COUNT$ مستخدم فقط أو الترقية إلى Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "في الخطة المجانية يمكنك إلغاء متابعة ما يصل إلى $COUNT$ مستخدم فقط. قم بالترقية إلى Premium لإلغاء المتابعة بدون حدود!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "الاسم"
+   },
+   "getStartedWithGoogle": {
+      "message": "سجّل مع Google"
+   },
+   "goToInstagramLogin": {
+      "message": "اذهب لـ Instagram"
+   },
+   "gotIt": {
+      "message": "حسناً"
+   },
+   "incompleteDataMessage": {
+      "message": "توقّف Instagram عن إرسال البيانات قبل وصول القائمة كاملة، لذا هناك حسابات ناقصة. التصرّف الآن قد يُلغي متابعة أشخاص يتابعونك فعلاً. أعد تشغيل التحليل أولاً."
+   },
+   "incompleteDataTitle": {
+      "message": "القائمة غير مكتملة"
+   },
+   "instagramLimitedBody": {
+      "message": "ما زلت مسجّل الدخول ولا خلل في حسابك. يزول هذا من تلقاء نفسه، لكن لا توجد مدة انتظار ثابتة — حسب حجم ما تم، قد يستغرق ساعات أو حتى الغد. المحاولة المتكرّرة تطيله."
+   },
+   "instagramLimitedTitle": {
+      "message": "يحدّ Instagram من الطلبات حالياً"
+   },
+   "instagramLoginAlert": {
+      "message": "سجّل دخول Instagram أولاً!"
+   },
+   "invalidWaitingTime": {
+      "message": "أدخل وقت صالح بين 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "مدة انتظار غير صالحة"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 ثانية خارج النطاق المسموح. أدخل قيمة بين $2 و$3 ثانية."
+   },
+   "later": {
+      "message": "بعد"
+   },
+   "limitedTimeOffer": {
+      "message": "عرض محدود"
+   },
+   "liveCounterPrefix": {
+      "message": "خلال آخر 24 ساعة"
+   },
+   "liveCounterSuffix": {
+      "message": "شخصًا قام بالترقية إلى بريميوم!"
+   },
+   "loading": {
+      "message": "جاري التحميل..."
+   },
+   "loadingProfile": {
+      "message": "جاري التحميل"
+   },
+   "loadingSavedAnalysis": {
+      "message": "جارٍ تحميل تحليلك المحفوظ…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "لا يُطلب أي شيء من Instagram."
+   },
+   "login": {
+      "message": "دخول"
+   },
+   "loginFailed": {
+      "message": "فشل الدخول: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "خطأ غير معروف"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "تسجيل مطلوب"
+   },
+   "loginSuccessful": {
+      "message": "تم الدخول بنجاح!"
+   },
+   "loginWithGoogle": {
+      "message": "تسجيل بـ Google"
+   },
+   "logout": {
+      "message": "خروج"
+   },
+   "logoutError": {
+      "message": "خطأ في الخروج: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "خطأ غير معروف"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "إدارة الاشتراك"
+   },
+   "membership": {
+      "message": "العضوية"
+   },
+   "menuBotScan": {
+      "message": "فحص البوتات"
+   },
+   "menuHome": {
+      "message": "الرئيسية"
+   },
+   "menuProfile": {
+      "message": "الملف"
+   },
+   "menuUpgrade": {
+      "message": "ترقية"
+   },
+   "minutesTest": {
+      "message": "$1 دقيقة (اختبار)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 حسابًا إضافيًا متاحًا"
+   },
+   "moreInHours": {
+      "message": "خلال $2 ساعة يمكنك رؤية +$1 متابع إضافي"
+   },
+   "nextCheckTime": {
+      "message": "الفحص التالي: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "الفحص التالي: غدًا"
+   },
+   "nextInSeconds": {
+      "message": "التالي في $SECONDS$ث",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "لا يوجد من لا يتابعك"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "لا يوجد من لا يتابعك لإلغاء متابعته."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "لا يوجد مستخدمون لإلغاء متابعتهم."
+   },
+   "notFollowingYouBadge": {
+      "message": "لا يتابعك"
+   },
+   "notProvided": {
+      "message": "غير محدد"
+   },
+   "ok": {
+      "message": "موافق"
+   },
+   "opening": {
+      "message": "جاري الفتح..."
+   },
+   "openingInNewTab": {
+      "message": "فتح في تبويب جديد..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/شهر"
+   },
+   "perYear": {
+      "message": "/سنة"
+   },
+   "planFree": {
+      "message": "مجاني"
+   },
+   "planPopular": {
+      "message": "شائع"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "بريميوم سنوي"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "سجّل دخول للاشتراك"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "سجّل دخول Instagram أولاً"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "سجّل دخول للترقية"
+   },
+   "pleaseSignInToView": {
+      "message": "سجّل دخول لعرض معلومات حسابك"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "مع بريميوم، شاهد جميع $COUNT$ حسابًا الآن، بدون حدود!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "خصوصية محمية"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "جاري المعالجة..."
+   },
+   "rateLimitWaiting": {
+      "message": "طلب Instagram توقّفاً قصيراً — سنتابع بعد $1 ثانية"
+   },
+   "rating": {
+      "message": "التقييم"
+   },
+   "reAnalyze": {
+      "message": "إعادة التحليل"
+   },
+   "reAnalyzing": {
+      "message": "إعادة التحليل..."
+   },
+   "removeFromWhitelist": {
+      "message": "أزل من القائمة البيضاء"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "خصم 50% على Premium"
+   },
+   "saveSettings": {
+      "message": "حفظ الإعدادات"
+   },
+   "scanBlockedBody": {
+      "message": "هذا أمر شائع، ويزول من تلقاء نفسه، ولا خلل في حسابك ولا في الإضافة. توقّفنا فوراً بدل إعادة المحاولة، لأن المحاولات المتكررة تُطيل الانتظار. جرّب لاحقاً اليوم."
+   },
+   "scanBlockedListFollowers": {
+      "message": "تعذّرت قراءة قائمة المتابِعين الآن."
+   },
+   "scanBlockedListFollowing": {
+      "message": "تعذّرت قراءة قائمة المتابَعين الآن."
+   },
+   "scanBlockedTitle": {
+      "message": "يريد Instagram استراحة قصيرة"
+   },
+   "scanPartialBody": {
+      "message": "وصل جزء منها ثم أوقفنا Instagram، لذا النتائج ليست مكتملة بما يكفي للتصرّف. لم يتغيّر شيء. عد لاحقاً وأعد تشغيل التحليل — قد يستغرق ساعات، والمحاولة الآن تطيل المدة."
+   },
+   "scanPartialTitle": {
+      "message": "عادت القائمة ناقصة"
+   },
+   "scanPaused": {
+      "message": "طلب Instagram أن نُبطئ — في الانتظار…"
+   },
+   "scanRemaining": {
+      "message": "بقي $1 حساب"
+   },
+   "scanShortBody": {
+      "message": "انتهى الفحص، لكن عدد الحسابات العائدة أقلّ مما يذكره Instagram. التصرّف بناءً عليه قد يُلغي متابعة أشخاص يتابعونك، لذا لم يُعرض شيء. أعد تشغيل التحليل من فضلك."
+   },
+   "scanShortTitle": {
+      "message": "بعض الحسابات ناقصة"
+   },
+   "seconds": {
+      "message": "ثانية"
+   },
+   "secure": {
+      "message": "آمن"
+   },
+   "secureLogin": {
+      "message": "تسجيل آمن"
+   },
+   "sessionExpiredTitle": {
+      "message": "انتهت جلسة Instagram الخاصة بك"
+   },
+   "showOnlyNonFollowers": {
+      "message": "عرض غير المتابعين فقط"
+   },
+   "showingFirstAccounts": {
+      "message": "عرض أول $COUNT$ حساب.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "تخطي من يتابعك"
+   },
+   "skipVerifiedAccounts": {
+      "message": "تخطي الحسابات الموثقة"
+   },
+   "startAnalysis": {
+      "message": "بدء التحليل"
+   },
+   "startBotScan": {
+      "message": "ابدأ فحص البوتات"
+   },
+   "startUnfollow": {
+      "message": "إلغاء المتابعة"
+   },
+   "startingAnalysis": {
+      "message": "بدء التحليل..."
+   },
+   "statFailed": {
+      "message": "فاشل"
+   },
+   "statFollowers": {
+      "message": "المتابعين"
+   },
+   "statFollowing": {
+      "message": "تتابع"
+   },
+   "statNonFollowers": {
+      "message": "لا يتابعونك"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "ملغى"
+   },
+   "stop": {
+      "message": "إيقاف"
+   },
+   "stopping": {
+      "message": "جارٍ الإيقاف…"
+   },
+   "support": {
+      "message": "الدعم"
+   },
+   "tableAction": {
+      "message": "إجراء"
+   },
+   "tableFollowingYou": {
+      "message": "يتابعك"
+   },
+   "tableFullName": {
+      "message": "الاسم"
+   },
+   "tablePrivate": {
+      "message": "خاص"
+   },
+   "tableProfile": {
+      "message": "الملف"
+   },
+   "tableUsername": {
+      "message": "المستخدم"
+   },
+   "tableVerified": {
+      "message": "موثق"
+   },
+   "testNow": {
+      "message": "اختبار الآن"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ لا يمكن التراجع عن هذا الإجراء!"
+   },
+   "toRemoveLimits": {
+      "message": "لإزالة الحدود"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "لا تغيير"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "متبقي $COUNT$ أيام",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "انتهت الفترة التجريبية المجانية. يمكنك رؤية $COUNT$ حسابات اليوم.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "انتهت الفترة التجريبية"
+   },
+   "tryAgain": {
+      "message": "حاول مرة أخرى"
+   },
+   "tryAnyway": {
+      "message": "حاول على أي حال"
+   },
+   "unfollow": {
+      "message": "إلغاء"
+   },
+   "unfollowDelayLabel": {
+      "message": "التأخير (ثانية)"
+   },
+   "unfollowEveryone": {
+      "message": "إلغاء متابعة الجميع"
+   },
+   "unfollowFailed": {
+      "message": "فشل"
+   },
+   "unfollowNonFollowers": {
+      "message": "إلغاء متابعة غير المتابعين"
+   },
+   "unfollowProcessStarted": {
+      "message": "بدأت عملية إلغاء المتابعة."
+   },
+   "unfollowSettings": {
+      "message": "إعدادات إلغاء المتابعة"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 ثانية بين كل عملية إلغاء متابعة."
+   },
+   "unfollowedSuccess": {
+      "message": "تم الإلغاء"
+   },
+   "unfollowing": {
+      "message": "جاري الإلغاء..."
+   },
+   "unknownError": {
+      "message": "خطأ غير معروف"
+   },
+   "upgradeToPremium": {
+      "message": "ترقية لـ Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "الترقية إلى بريميوم"
+   },
+   "upgradeToSeeAll": {
+      "message": "ترقّ لـ Premium لعرض الكل!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "مستخدماً ستُلغى متابعتهم."
+   },
+   "waitingSeconds": {
+      "message": "انتظار $SECONDS$ث",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "وقت الانتظار (3-300 ثانية)"
+   },
+   "welcomeFunText1": {
+      "message": "هل تريد معرفة من لا يتابعك؟ 😏"
+   },
+   "welcomeFunText2": {
+      "message": "إلغاء المتابعة أصبح سهلاً 😊"
+   },
+   "welcomeTitle": {
+      "message": "مرحباً! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "سجّل بحساب Google، بياناتك آمنة!"
+   },
+   "whitelist": {
+      "message": "القائمة البيضاء"
+   },
+   "whitelisted": {
+      "message": "محمي"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "سيتم فتح $1 غدًا"
+   },
+   "writeBlockedMessage": {
+      "message": "أوقف Instagram مؤقتاً قبول عمليات إلغاء المتابعة التلقائية على هذا الحساب. هذا مؤقّت ولا خلل في حسابك.\n\nيمكنك في هذه الأثناء إلغاء المتابعة يدوياً من صفحة الملف الشخصي، وقائمتك تبقى هنا — لم يُستهلك شيء."
+   },
+   "writeBlockedTitle": {
+      "message": "يحدّ Instagram حالياً من إلغاء المتابعة"
+   },
+   "yesUnfollow": {
+      "message": "نعم، ألغِ المتابعة"
+   },
+   "yesUnfollowAll": {
+      "message": "نعم، ألغِ متابعة الجميع"
+   }
+}

@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "جزئیات حساب"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ حساب دیگر در دسترس است. برای دیدن همه",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "کاربران فعال"
+   },
+   "addToWhitelist": {
+      "message": "افزودن به لیست سفید"
+   },
+   "allAccountsUnlocked": {
+      "message": "همه حساب‌ها باز شدند!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "کاربر آنفالو خواهند شد."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "اینستاگرام فهرست دنبال‌کننده‌های شما را بدون داده‌های عکس پروفایل برگرداند، بنابراین همهٔ امتیازهای اینجا کمتر از مقدار واقعی است و برخی ربات‌ها از قلم می‌افتند. اینستاگرام را در یک تب باز کنید و اسکن را دوباره اجرا کنید تا نتیجهٔ کامل بگیرید."
+   },
+   "botBlindTitle": {
+      "message": "بررسی عکس پروفایل انجام نشد"
+   },
+   "botCleared": {
+      "message": "به نفع آن"
+   },
+   "botDeepAllChecked": {
+      "message": "همهٔ حساب‌های علامت‌خورده بررسی شدند"
+   },
+   "botDeepChecked": {
+      "message": "پروفایل بررسی شد"
+   },
+   "botDeepChecksFor": {
+      "message": "بررسی عمیق $1 حساب"
+   },
+   "botDeepChecksRemaining": {
+      "message": "$1 باقی مانده ($2 قبلاً انجام شده)"
+   },
+   "botDeepDone": {
+      "message": "بررسی عمیق تمام شد — $1 حساب بررسی شد."
+   },
+   "botDeepNoTargets": {
+      "message": "هیچ حسابی به بررسی عمیق نیاز ندارد."
+   },
+   "botDeepPausedBody": {
+      "message": "پیش از توقف $1 حساب بررسی شد و $2 حساب بررسی نشد. نتیجه‌های زیر فقط بر پایهٔ چیزی است که خوانده شد. زمان انتظار مشخصی وجود ندارد — ممکن است ساعت‌ها یا تا فردا طول بکشد. به‌جای تلاش دوباره در همین لحظه، بعداً برگردید؛ تلاش فقط آن را طولانی‌تر می‌کند."
+   },
+   "botDeepPausedTitle": {
+      "message": "اینستاگرام بررسی پروفایل‌ها را متوقف کرد"
+   },
+   "botDeepRemaining": {
+      "message": "$1 مورد بررسی‌نشده باقی ماند."
+   },
+   "botDeepSubtitle": {
+      "message": "یک درخواست برای هر حساب، با سرعتی امن."
+   },
+   "botFilterAll": {
+      "message": "همهٔ اسکن‌شده‌ها"
+   },
+   "botFilterLikely": {
+      "message": "احتمالاً ربات"
+   },
+   "botFilterSuspicious": {
+      "message": "مشکوک"
+   },
+   "botFreeHeadline": {
+      "message": "حساب علامت‌خوردهٔ دیگر قفل است"
+   },
+   "botFreeWithheld": {
+      "message": "$1 مورد دیگر پیدا شد — برای دیدن همه ارتقا دهید."
+   },
+   "botIntroHeading": {
+      "message": "حساب‌هایی را که آدم واقعی نیستند پیدا کنید"
+   },
+   "botIntroLead": {
+      "message": "به هر دنبال‌کننده بر اساس احتمال ربات یا حساب یک‌بارمصرف بودن امتیاز داده می‌شود."
+   },
+   "botIntroReasons": {
+      "message": "هر امتیاز همراه با دلایلش می‌آید، تا به‌جای اعتماد به یک عدد ببینید چرا یک حساب علامت خورده است. چیزی به‌صورت خودکار حذف نمی‌شود — این فهرست برای آن است که خودتان ببینید و تصمیم بگیرید."
+   },
+   "botNoFlagged": {
+      "message": "چیزی علامت نخورد — فهرست دنبال‌کننده‌های شما تمیز به نظر می‌رسد."
+   },
+   "botNoRowsForFilter": {
+      "message": "در این گروه چیزی نیست."
+   },
+   "botNoSignals": {
+      "message": "چیز غیرعادی‌ای نیست"
+   },
+   "botNotRunYet": {
+      "message": "برای دیدن امتیاز دنبال‌کننده‌هایتان در اینجا، یک اسکن اجرا کنید."
+   },
+   "botPopupBody": {
+      "message": "به هر دنبال‌کننده بر اساس احتمال ربات یا حساب یک‌بارمصرف بودن امتیاز می‌دهد: بدون عکس پروفایل، بدون پست، نام کاربری که ساختگی به نظر می‌رسد، هزاران نفر را دنبال می‌کند در حالی که تقریباً هیچ‌کس او را دنبال نمی‌کند."
+   },
+   "botPopupReasons": {
+      "message": "هر امتیاز همراه با دلایلش می‌آید. چیزی به‌صورت خودکار حذف نمی‌شود."
+   },
+   "botProvisionalBody": {
+      "message": "پروفایل $1 حساب علامت‌خورده هنوز بررسی نشده است. بیشتر ربات‌ها فقط با همین بررسی تأیید می‌شوند — پیش از اعتماد به تعداد «احتمالاً ربات» آن را اجرا کنید."
+   },
+   "botProvisionalTitle": {
+      "message": "این نتیجه‌ها هنوز قطعی نیستند"
+   },
+   "botReadSubtitle": {
+      "message": "مستقیماً از فهرست دنبال‌کننده‌های شما خوانده می‌شود — بدون درخواست اضافی."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "بدون عکس پروفایل"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "نسبت فالوور متعادل"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "عدد زیاد در نام کاربری"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "بدون نام"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "خیلی بیشتر از فالوورهایش فالو می‌کند"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "دارای نشان حساب"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "تعداد بسیار زیادی حساب را فالو می‌کند"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "بدون فالوور"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "بدون پست"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "منظم پست می‌گذارد"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "نام کاربری با عدد تمام می‌شود"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "الگوی غیرعادی زیرخط"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "حساب تأیید شده"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "نام کاربری بسیار بلند"
+   },
+   "botRunDeepChecks": {
+      "message": "اجرای بررسی عمیق"
+   },
+   "botScanCached": {
+      "message": "آخرین اسکن $1"
+   },
+   "botScanDeepPaused": {
+      "message": "اینستاگرام بررسی پروفایل‌ها را متوقف کرد. نتایج زیر از همان مقداری است که خوانده شد."
+   },
+   "botScanDeepProgress": {
+      "message": "در حال بررسی پروفایل‌ها… $1/$2"
+   },
+   "botScanDone": {
+      "message": "اسکن کامل شد."
+   },
+   "botScanNoData": {
+      "message": "فهرست دنبال‌کننده‌های شما خوانده نشد. اینستاگرام ما را نگه داشته — خودبه‌خود برطرف می‌شود، اما بدون زمان انتظار مشخص. بعداً تلاش کنید."
+   },
+   "botScanPartial": {
+      "message": "اسکن تمام شد، اما فهرست دنبال‌کننده‌ها ناقص برگشت — برخی حساب‌ها جا مانده‌اند."
+   },
+   "botScanReading": {
+      "message": "در حال خواندن دنبال‌کننده‌های شما…"
+   },
+   "botScanReadingCount": {
+      "message": "در حال خواندن دنبال‌کننده‌ها… $1"
+   },
+   "botScanTitle": {
+      "message": "اسکن دنبال‌کننده‌های ربات"
+   },
+   "botScoreRaw": {
+      "message": "امتیاز خام"
+   },
+   "botSignalName": {
+      "message": "نام کاربری ساختگی به نظر می‌رسد"
+   },
+   "botSignalPhoto": {
+      "message": "بدون عکس پروفایل"
+   },
+   "botSignalPosts": {
+      "message": "بدون پست"
+   },
+   "botSignalRatio": {
+      "message": "هزاران نفر را دنبال می‌کند، تقریباً هیچ‌کس او را"
+   },
+   "botSignalsUnavailable": {
+      "message": "برای این حساب برخی بررسی‌ها انجام نشد، بنابراین امتیازش بر شواهد کمتری نسبت به بقیه استوار است."
+   },
+   "botStatFlagged": {
+      "message": "علامت‌خورده"
+   },
+   "botStatFollowers": {
+      "message": "دنبال‌کننده"
+   },
+   "botStatFollowing": {
+      "message": "دنبال‌شونده"
+   },
+   "botStatLikely": {
+      "message": "احتمالاً ربات"
+   },
+   "botStatPosts": {
+      "message": "پست"
+   },
+   "botStatScanned": {
+      "message": "اسکن‌شده"
+   },
+   "botStatSuspicious": {
+      "message": "مشکوک"
+   },
+   "botStatsGone": {
+      "message": "حساب وجود ندارد"
+   },
+   "botStatsGoneHint": {
+      "message": "اینستاگرام هیچ پروفایلی برنگرداند — حساب حذف یا غیرفعال شده و اعدادش دیگر خواندنی نیست."
+   },
+   "botStatsNotChecked": {
+      "message": "بررسی‌نشده"
+   },
+   "botStepDeep": {
+      "message": "در حال بررسی پروفایل‌ها"
+   },
+   "botStepReading": {
+      "message": "در حال خواندن دنبال‌کننده‌ها"
+   },
+   "botTableReasons": {
+      "message": "چرا"
+   },
+   "botTableScore": {
+      "message": "امتیاز"
+   },
+   "botTableStats": {
+      "message": "اعداد پروفایل"
+   },
+   "botTableVerdict": {
+      "message": "حکم"
+   },
+   "botVerdictClean": {
+      "message": "واقعی به نظر می‌رسد"
+   },
+   "botVerdictLikely": {
+      "message": "احتمالاً ربات"
+   },
+   "botVerdictSuspicious": {
+      "message": "مشکوک"
+   },
+   "cacheExpiryWarning": {
+      "message": "تصاویر پروفایل ممکن است نمایش داده نشوند زیرا آخرین تحلیل شما $DAYS$ روز پیش بود. لطفاً برای نتایج به‌روز، دوباره تحلیل کنید.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "آخرین تحلیل $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "لغو"
+   },
+   "checkingBeforeStart": {
+      "message": "در حال بررسی…"
+   },
+   "checkingLoginStatus": {
+      "message": "بررسی وضعیت ورود..."
+   },
+   "chooseMonthly": {
+      "message": "انتخاب ماهانه"
+   },
+   "chooseYearly": {
+      "message": "انتخاب سالانه"
+   },
+   "comeBackTomorrow": {
+      "message": "فردا برگردید"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "هر روز می‌توانید +۲۰ فالوور بیشتر تحلیل کنید. اگر عجله دارید، به Premium بروید و همه را الان ببینید. اگر صبور هستید، فردا برگردید، می‌توانید +۲۰ فالوور بیشتر ببینید. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "فردا برگردید تا $1 حساب بیشتر ببینید (+$2 باز شدن جدید)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ هشدار!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "آیا مطمئن هستید که می‌خواهید همه را آنفالو کنید؟"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "تأیید عملیات"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "آیا مطمئن هستید که می‌خواهید همه غیرفالوورها را آنفالو کنید؟"
+   },
+   "connected": {
+      "message": "متصل"
+   },
+   "couldNotFetchFollowing": {
+      "message": "دریافت لیست فالویینگ ممکن نشد. لطفاً بعداً دوباره تلاش کنید."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$ ساعت $MINUTES$ دقیقه $SECONDS$ ثانیه $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "بعد"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$ دقیقه $SECONDS$ ثانیه $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "بعد"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "فردا می‌توانید +۲۰ حساب بیشتر ببینید ($COUNTDOWN$). هر روز +۲۰ حساب اضافه می‌شود، محدودیت‌ها انباشته می‌شوند!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "۵ ساعت ۳۰ دقیقه بعد"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "محدودیت روزانه"
+   },
+   "dailyScanLimit": {
+      "message": "محدودیت اسکن روزانه"
+   },
+   "dataLoading": {
+      "message": "بارگذاری داده‌ها..."
+   },
+   "dataLoadingFollowers": {
+      "message": "بارگذاری داده: $COUNT$ فالوور یافت شد",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "بارگذاری داده: $COUNT$ فالویینگ یافت شد",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "۵۰٪ تخفیف"
+   },
+   "email": {
+      "message": "ایمیل"
+   },
+   "errorFetchingData": {
+      "message": "خطایی در دریافت داده‌ها رخ داد. لطفاً بعداً دوباره تلاش کنید."
+   },
+   "errorInstagramUnavailable": {
+      "message": "اینستاگرام موقتاً در دسترس نیست. لطفاً بعداً دوباره تلاش کنید."
+   },
+   "errorNetwork": {
+      "message": "دسترسی به اینستاگرام ممکن نشد. اتصال خود را بررسی کنید — چیزی از دست نرفته و کار ادامه خواهد یافت."
+   },
+   "errorNetworkConnection": {
+      "message": "خطای اتصال. لطفاً اینترنت خود را بررسی کنید و دوباره تلاش کنید."
+   },
+   "errorOccurred": {
+      "message": "خطایی رخ داد. لطفاً دوباره تلاش کنید."
+   },
+   "errorRateLimit": {
+      "message": "اینستاگرام درخواست‌های ما را متوقف کرد. خودبه‌خود برطرف می‌شود، اما زمان انتظار مشخصی ندارد — بسته به میزان کار انجام‌شده ممکن است ساعت‌ها یا تا فردا طول بکشد. تلاش فوری آن را طولانی‌تر می‌کند."
+   },
+   "errorSessionExpired": {
+      "message": "نشست اینستاگرام شما منقضی شده است. لطفاً وارد اینستاگرام شوید و دوباره تلاش کنید."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "درخواست‌های آنفالو بیش از حد. ۵ دقیقه قبل از تلاش مجدد صبر می‌کند..."
+   },
+   "etaMinutes": {
+      "message": "~$1 دقیقه مانده"
+   },
+   "etaSeconds": {
+      "message": "~$1 ثانیه مانده"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "آنفالو ناموفق بود. لطفاً دوباره تلاش کنید."
+   },
+   "featureAdvancedFiltering": {
+      "message": "فیلتر پیشرفته"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "فیلتر و گزارش پیشرفته"
+   },
+   "featureAdvancedNotifications": {
+      "message": "سیستم اعلان پیشرفته"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "ویژگی‌های آنفالو پیشرفته"
+   },
+   "featureBasicUnfollow": {
+      "message": "ویژگی‌های آنفالو پایه"
+   },
+   "featureDetailDaily": {
+      "message": " (+۲۰/روز)"
+   },
+   "featureMax50Analysis": {
+      "message": "حداکثر ۴۰ تحلیل فالویینگ"
+   },
+   "featureSpamDetector": {
+      "message": "شناسایی حساب‌های اسپم"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "تحلیل نامحدود"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "تحلیل نامحدود فالویینگ"
+   },
+   "finalizingAnalysis": {
+      "message": "در حال نهایی‌سازی..."
+   },
+   "firstDayBonus": {
+      "message": "پاداش روز اول"
+   },
+   "firstDayBonusMessage": {
+      "message": "پاداش روز اول: ۴۰ حساب! فردا می‌توانید +۲۰ حساب بیشتر ببینید ($COUNTDOWN$). هر روز +۲۰ حساب اضافه می‌شود.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "۵ ساعت ۳۰ دقیقه بعد"
+         }
+      }
+   },
+   "followers": {
+      "message": "فالوورها"
+   },
+   "following": {
+      "message": "فالویینگ"
+   },
+   "followingYouBadge": {
+      "message": "شما را فالو می‌کند"
+   },
+   "freePlanLimitDescription": {
+      "message": "به محدودیت ۴۰ تحلیل رسیده‌اید. برای تحلیل نامحدود به Premium ارتقا دهید!"
+   },
+   "freePlanLimitReached": {
+      "message": "محدودیت طرح رایگان تمام شد"
+   },
+   "freePlanTodayMessage": {
+      "message": "در طرح رایگان، امروز می‌توانید $DISPLAYED$ حساب ببینید. $HIDDEN$ حساب دیگر وجود دارد اما نمی‌توانید آنها را ببینید.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "در طرح رایگان، امروز می‌توانید $COUNT$ حساب ببینید.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "در طرح رایگان فقط می‌توانید حداکثر $COUNT$ کاربر را آنفالو کنید. لطفاً فقط $COUNT$ کاربر اول را انتخاب کنید یا به Premium ارتقا دهید.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "در طرح رایگان فقط می‌توانید حداکثر $COUNT$ کاربر را آنفالو کنید. برای آنفالو نامحدود به Premium ارتقا دهید!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "نام کامل"
+   },
+   "getStartedWithGoogle": {
+      "message": "شروع با Google"
+   },
+   "goToInstagramLogin": {
+      "message": "رفتن به ورود اینستاگرام"
+   },
+   "gotIt": {
+      "message": "باشه"
+   },
+   "incompleteDataMessage": {
+      "message": "اینستاگرام پیش از رسیدن کل فهرست، ارسال داده را متوقف کرد، بنابراین برخی حساب‌ها جا مانده‌اند. اقدام در این وضعیت ممکن است کسانی را که واقعاً شما را دنبال می‌کنند آنفالو کند. ابتدا تحلیل را دوباره اجرا کنید."
+   },
+   "incompleteDataTitle": {
+      "message": "فهرست ناقص است"
+   },
+   "instagramLimitedBody": {
+      "message": "شما همچنان وارد حساب هستید و حسابتان هیچ مشکلی ندارد. این وضعیت خودبه‌خود برطرف می‌شود، اما زمان انتظار مشخصی ندارد — بسته به میزان کار انجام‌شده ممکن است ساعت‌ها یا تا فردا طول بکشد. تلاش پی‌درپی آن را طولانی‌تر می‌کند."
+   },
+   "instagramLimitedTitle": {
+      "message": "اینستاگرام در حال حاضر درخواست‌ها را محدود می‌کند"
+   },
+   "instagramLoginAlert": {
+      "message": "لطفاً ابتدا وارد اینستاگرام شوید!"
+   },
+   "invalidWaitingTime": {
+      "message": "لطفاً یک زمان انتظار معتبر بین ۳ تا ۳۰۰ ثانیه وارد کنید"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "زمان انتظار نامعتبر"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 ثانیه خارج از محدودهٔ مجاز است. مقداری بین $2 تا $3 ثانیه وارد کنید."
+   },
+   "later": {
+      "message": "بعد"
+   },
+   "limitedTimeOffer": {
+      "message": "پیشنهاد محدود"
+   },
+   "liveCounterPrefix": {
+      "message": "در ۲۴ ساعت گذشته"
+   },
+   "liveCounterSuffix": {
+      "message": "نفر به Premium ارتقا دادند!"
+   },
+   "loading": {
+      "message": "بارگذاری..."
+   },
+   "loadingProfile": {
+      "message": "بارگذاری پروفایل"
+   },
+   "loadingSavedAnalysis": {
+      "message": "در حال بارگذاری تحلیل ذخیره‌شدهٔ شما…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "هیچ درخواستی به اینستاگرام ارسال نمی‌شود."
+   },
+   "login": {
+      "message": "ورود"
+   },
+   "loginFailed": {
+      "message": "ورود ناموفق: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "خطای ناشناخته"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "ورود الزامی است"
+   },
+   "loginSuccessful": {
+      "message": "ورود موفق!"
+   },
+   "loginWithGoogle": {
+      "message": "ورود با Google"
+   },
+   "logout": {
+      "message": "خروج"
+   },
+   "logoutError": {
+      "message": "خطایی هنگام خروج رخ داد: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "خطای ناشناخته"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "مدیریت اشتراک"
+   },
+   "membership": {
+      "message": "عضویت"
+   },
+   "menuBotScan": {
+      "message": "اسکن ربات"
+   },
+   "menuHome": {
+      "message": "خانه"
+   },
+   "menuProfile": {
+      "message": "پروفایل"
+   },
+   "menuUpgrade": {
+      "message": "ارتقا"
+   },
+   "minutesTest": {
+      "message": "$1 دقیقه (آزمایش)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 حساب دیگر در دسترس است"
+   },
+   "moreInHours": {
+      "message": "در $2 ساعت می‌توانید +$1 فالوور بیشتر ببینید"
+   },
+   "nextCheckTime": {
+      "message": "بررسی بعدی: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "بررسی بعدی: فردا"
+   },
+   "nextInSeconds": {
+      "message": "بعدی در $SECONDS$ ثانیه",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "بدون غیرفالوور"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "غیرفالووری برای آنفالو وجود ندارد."
+   },
+   "noUsers": {
+      "message": "بدون کاربر"
+   },
+   "noUsersToUnfollow": {
+      "message": "کاربری برای آنفالو وجود ندارد."
+   },
+   "notFollowingYouBadge": {
+      "message": "شما را فالو نمی‌کند"
+   },
+   "notProvided": {
+      "message": "ارائه نشده"
+   },
+   "ok": {
+      "message": "تأیید"
+   },
+   "opening": {
+      "message": "در حال باز کردن..."
+   },
+   "openingInNewTab": {
+      "message": "در حال باز کردن در تب جدید..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/ماه"
+   },
+   "perYear": {
+      "message": "/سال"
+   },
+   "planFree": {
+      "message": "رایگان"
+   },
+   "planPopular": {
+      "message": "محبوب"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium سالانه"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "لطفاً دوباره وارد شوید تا اشتراک بگیرید"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "لطفاً ابتدا وارد اینستاگرام شوید"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "لطفاً برای ارتقا به Premium وارد شوید"
+   },
+   "pleaseSignInToView": {
+      "message": "لطفاً برای مشاهده اطلاعات حساب خود وارد شوید"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "با Premium، همه $COUNT$ حساب را الان ببینید، بدون محدودیت!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "حریم خصوصی محافظت شده"
+   },
+   "processStarted": {
+      "message": "فرآیند شروع شد"
+   },
+   "processing": {
+      "message": "در حال پردازش..."
+   },
+   "rateLimitWaiting": {
+      "message": "اینستاگرام درخواست مکث کرد — ادامه تا $1 ثانیه دیگر"
+   },
+   "rating": {
+      "message": "امتیاز"
+   },
+   "reAnalyze": {
+      "message": "تحلیل مجدد"
+   },
+   "reAnalyzing": {
+      "message": "در حال تحلیل مجدد..."
+   },
+   "removeFromWhitelist": {
+      "message": "حذف از لیست سفید"
+   },
+   "retryIn": {
+      "message": "تلاش مجدد در $SECONDS$ ثانیه...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "۵۰٪ تخفیف Premium - بهترین ارزش"
+   },
+   "saveSettings": {
+      "message": "ذخیره تنظیمات"
+   },
+   "scanBlockedBody": {
+      "message": "این اتفاق رایج است، خودبه‌خود برطرف می‌شود، و نه حساب شما و نه افزونه مشکلی ندارند. به جای تلاش دوباره فوراً متوقف شدیم، چون تلاش‌های مکرر انتظار را طولانی‌تر می‌کند. کمی بعد در همین امروز دوباره امتحان کنید."
+   },
+   "scanBlockedListFollowers": {
+      "message": "فهرست دنبال‌کننده‌ها اکنون خوانده نشد."
+   },
+   "scanBlockedListFollowing": {
+      "message": "فهرست دنبال‌شونده‌ها اکنون خوانده نشد."
+   },
+   "scanBlockedTitle": {
+      "message": "اینستاگرام کمی مکث می‌خواهد"
+   },
+   "scanPartialBody": {
+      "message": "بخشی رسید و سپس اینستاگرام ما را متوقف کرد، بنابراین نتایج برای اقدام کافی نیستند. چیزی تغییر نکرده است. بعداً برگردید و تحلیل را دوباره اجرا کنید — ممکن است ساعت‌ها طول بکشد و تلاش در این لحظه آن را طولانی‌تر می‌کند."
+   },
+   "scanPartialTitle": {
+      "message": "فهرست ناقص برگشت"
+   },
+   "scanPaused": {
+      "message": "اینستاگرام خواست آهسته‌تر پیش برویم — در انتظار…"
+   },
+   "scanRemaining": {
+      "message": "$1 حساب باقی مانده"
+   },
+   "scanShortBody": {
+      "message": "اسکن تمام شد، اما تعداد حساب‌های بازگشتی کمتر از چیزی است که اینستاگرام اعلام می‌کند. اقدام بر این اساس ممکن است کسانی را که شما را دنبال می‌کنند آنفالو کند، بنابراین چیزی نمایش داده نشد. لطفاً تحلیل را دوباره اجرا کنید."
+   },
+   "scanShortTitle": {
+      "message": "برخی حساب‌ها جا مانده‌اند"
+   },
+   "seconds": {
+      "message": "ثانیه"
+   },
+   "secure": {
+      "message": "امن"
+   },
+   "secureLogin": {
+      "message": "ورود امن"
+   },
+   "sessionExpiredTitle": {
+      "message": "نشست اینستاگرام شما به پایان رسید"
+   },
+   "showOnlyNonFollowers": {
+      "message": "فقط نمایش غیرفالوورها"
+   },
+   "showingFirstAccounts": {
+      "message": "نمایش $COUNT$ حساب اول.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "رد شدن از حساب‌هایی که شما را فالو می‌کنند"
+   },
+   "skipVerifiedAccounts": {
+      "message": "رد شدن از حساب‌های تأیید شده"
+   },
+   "startAnalysis": {
+      "message": "شروع تحلیل"
+   },
+   "startBotScan": {
+      "message": "شروع اسکن ربات"
+   },
+   "startUnfollow": {
+      "message": "شروع آنفالو"
+   },
+   "startingAnalysis": {
+      "message": "شروع تحلیل..."
+   },
+   "statFailed": {
+      "message": "ناموفق"
+   },
+   "statFollowers": {
+      "message": "فالوورها"
+   },
+   "statFollowing": {
+      "message": "فالویینگ"
+   },
+   "statNonFollowers": {
+      "message": "فالو نکرده"
+   },
+   "statRemaining": {
+      "message": "فالو نکرده"
+   },
+   "statUnfollowed": {
+      "message": "آنفالو شده"
+   },
+   "stop": {
+      "message": "توقف"
+   },
+   "stopping": {
+      "message": "در حال توقف…"
+   },
+   "support": {
+      "message": "پشتیبانی"
+   },
+   "tableAction": {
+      "message": "عملیات"
+   },
+   "tableFollowingYou": {
+      "message": "شما را فالو می‌کند"
+   },
+   "tableFullName": {
+      "message": "نام کامل"
+   },
+   "tablePrivate": {
+      "message": "خصوصی"
+   },
+   "tableProfile": {
+      "message": "پروفایل"
+   },
+   "tableUsername": {
+      "message": "نام کاربری"
+   },
+   "tableVerified": {
+      "message": "تأیید شده"
+   },
+   "testNow": {
+      "message": "آزمایش الان"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ این عملیات قابل بازگشت نیست!"
+   },
+   "toRemoveLimits": {
+      "message": "برای حذف محدودیت‌ها"
+   },
+   "trendDown": {
+      "message": "$COUNT$ از آخرین تحلیل",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "بدون تغییر"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ از آخرین تحلیل",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ روز باقی‌مانده",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "فردا می‌توانید +۲۰ حساب بیشتر ببینید ($COUNTDOWN$). هر روز +۲۰ حساب اضافه می‌شود، محدودیت‌ها انباشته می‌شوند!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "۱۱ ساعت ۱۳ دقیقه ۱۴ ثانیه بعد"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "دوره آزمایشی رایگان شما به پایان رسیده است. امروز می‌توانید $COUNT$ حساب ببینید.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "دوره آزمایشی به پایان رسید"
+   },
+   "tryAgain": {
+      "message": "تلاش دوباره"
+   },
+   "tryAnyway": {
+      "message": "با این حال تلاش کن"
+   },
+   "unfollow": {
+      "message": "آنفالو"
+   },
+   "unfollowDelayLabel": {
+      "message": "تأخیر آنفالو (ثانیه)"
+   },
+   "unfollowEveryone": {
+      "message": "آنفالو همه"
+   },
+   "unfollowFailed": {
+      "message": "ناموفق"
+   },
+   "unfollowNonFollowers": {
+      "message": "آنفالو غیرفالوورها"
+   },
+   "unfollowProcessStarted": {
+      "message": "فرآیند آنفالو شروع شده است."
+   },
+   "unfollowSettings": {
+      "message": "تنظیمات آنفالو"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 ثانیه بین هر آنفالو."
+   },
+   "unfollowedSuccess": {
+      "message": "آنفالو شد"
+   },
+   "unfollowing": {
+      "message": "در حال آنفالو..."
+   },
+   "unknownError": {
+      "message": "خطای ناشناخته"
+   },
+   "upgradeToPremium": {
+      "message": "ارتقا به Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "ارتقا به Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "برای دیدن همه حساب‌ها به Premium ارتقا دهید!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "کاربر آنفالو خواهند شد."
+   },
+   "waitingSeconds": {
+      "message": "انتظار $SECONDS$ ثانیه",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "زمان انتظار به ثانیه (۳-۳۰۰)"
+   },
+   "welcomeFunText1": {
+      "message": "می‌خواهید ببینید چه کسی شما را فالو نکرده؟ 😏"
+   },
+   "welcomeFunText2": {
+      "message": "فرآیند آنفالو حالا خیلی راحت‌تر شده 😊"
+   },
+   "welcomeTitle": {
+      "message": "!خوش آمدید 👋"
+   },
+   "welcomeTrustText": {
+      "message": "فقط با حساب Google خود وارد شوید، داده‌های شما امن است!"
+   },
+   "whitelist": {
+      "message": "لیست سفید"
+   },
+   "whitelisted": {
+      "message": "محافظت شده"
+   },
+   "whitelistedSkipped": {
+      "message": "رد شده (لیست سفید)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 فردا باز می‌شود"
+   },
+   "writeBlockedMessage": {
+      "message": "اینستاگرام به‌طور موقت پذیرش آنفالوی خودکار روی این حساب را متوقف کرده است. این موقتی است و حساب شما هیچ مشکلی ندارد.\n\nدر این مدت همچنان می‌توانید از صفحهٔ پروفایل به‌صورت دستی آنفالو کنید، و فهرست شما همین‌جا می‌ماند — چیزی مصرف نشده است."
+   },
+   "writeBlockedTitle": {
+      "message": "اینستاگرام در حال حاضر آنفالو را محدود می‌کند"
+   },
+   "yesUnfollow": {
+      "message": "بله، آنفالو کن"
+   },
+   "yesUnfollowAll": {
+      "message": "بله، همه را آنفالو کن"
+   }
+}

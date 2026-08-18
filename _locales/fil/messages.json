@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Detalye ng Account"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ account pa ang available. Para makita lahat",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Aktibong Users"
+   },
+   "addToWhitelist": {
+      "message": "Idagdag sa whitelist"
+   },
+   "allAccountsUnlocked": {
+      "message": "Lahat ng account na-unlock!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "user ang mai-a-unfollow."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Ibinalik ng Instagram ang listahan ng followers mo nang walang datos ng profile photo, kaya mas mababa ang lahat ng marka rito kaysa dapat at may mga bot na makakalusot. Buksan ang Instagram sa isang tab at patakbuhin ulit ang scan para sa kumpletong resulta."
+   },
+   "botBlindTitle": {
+      "message": "Hindi naisagawa ang pagsusuri ng profile photo"
+   },
+   "botCleared": {
+      "message": "Pabor dito"
+   },
+   "botDeepAllChecked": {
+      "message": "Nasuri na lahat ng na-flag na account"
+   },
+   "botDeepChecked": {
+      "message": "Nasuri ang profile"
+   },
+   "botDeepChecksFor": {
+      "message": "Suriing mabuti ang $1 account"
+   },
+   "botDeepChecksRemaining": {
+      "message": "$1 pa ang natitira ($2 tapos na)"
+   },
+   "botDeepDone": {
+      "message": "Tapos na ang malalim na pagsusuri — $1 account ang nasuri."
+   },
+   "botDeepNoTargets": {
+      "message": "Walang account na nangangailangan ng malalim na pagsusuri."
+   },
+   "botDeepPausedBody": {
+      "message": "$1 account ang nasuri bago ito huminto at $2 ang hindi. Ang mga hatol sa ibaba ay nakabatay lang sa nabasa. Walang tiyak na oras ng paghihintay — maaaring umabot ng ilang oras o hanggang bukas. Bumalik ka na lang mamaya sa halip na subukan ngayon, na nagpapatagal lang nito."
+   },
+   "botDeepPausedTitle": {
+      "message": "Pinahinto ng Instagram ang pagsusuri ng profile"
+   },
+   "botDeepRemaining": {
+      "message": "$1 ang hindi nasuri."
+   },
+   "botDeepSubtitle": {
+      "message": "Isang request bawat account, sa ligtas na bilis."
+   },
+   "botFilterAll": {
+      "message": "Lahat ng na-scan"
+   },
+   "botFilterLikely": {
+      "message": "Malamang na bot"
+   },
+   "botFilterSuspicious": {
+      "message": "Kahina-hinala"
+   },
+   "botFreeHeadline": {
+      "message": "pang na-flag na account ang naka-lock"
+   },
+   "botFreeWithheld": {
+      "message": "$1 pa ang nakita — mag-upgrade para makita lahat."
+   },
+   "botIntroHeading": {
+      "message": "Hanapin ang mga account na hindi totoong tao"
+   },
+   "botIntroLead": {
+      "message": "Minamarkahan ang bawat follower ayon sa posibilidad na bot o pansamantalang account ito."
+   },
+   "botIntroReasons": {
+      "message": "May kasamang dahilan ang bawat marka, para makita mo kung bakit na-flag ang isang account sa halip na basta magtiwala sa numero. Walang awtomatikong inaalis — nariyan ang listahan para tingnan mo at ikaw ang magpasya."
+   },
+   "botNoFlagged": {
+      "message": "Walang na-flag — mukhang malinis ang listahan ng followers mo."
+   },
+   "botNoRowsForFilter": {
+      "message": "Walang laman ang grupong ito."
+   },
+   "botNoSignals": {
+      "message": "Walang kakaiba"
+   },
+   "botNotRunYet": {
+      "message": "Magpatakbo ng scan para makita rito ang marka ng mga follower mo."
+   },
+   "botPopupBody": {
+      "message": "Minamarkahan ang bawat follower ayon sa posibilidad na bot o pansamantalang account ito: walang profile photo, walang post, username na mukhang binuo lang, sumusunod sa libu-libo habang halos walang sumusunod pabalik."
+   },
+   "botPopupReasons": {
+      "message": "May kasamang dahilan ang bawat marka. Walang awtomatikong inaalis."
+   },
+   "botProvisionalBody": {
+      "message": "$1 na-flag na account ang hindi pa nasusuri ang profile. Karamihan sa mga bot ay nakukumpirma lang sa pagsusuring iyon — patakbuhin ito bago magtiwala sa bilang na \"malamang na bot\"."
+   },
+   "botProvisionalTitle": {
+      "message": "Hindi pa pinal ang mga hatol na ito"
+   },
+   "botReadSubtitle": {
+      "message": "Direktang binabasa mula sa listahan ng followers mo — walang dagdag na request."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Walang profile photo"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Balanseng ratio ng follower"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Maraming numero sa username"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Walang pangalan"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Mas marami ang sinusundan kaysa sumusunod"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "May badge ang account"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Napakaraming account ang sinusundan"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Walang follower"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Walang post"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Regular na nagpo-post"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Nagtatapos sa numero ang username"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Kakaibang pattern ng underscore"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Verified na account"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Sobrang haba ng username"
+   },
+   "botRunDeepChecks": {
+      "message": "Magpatakbo ng malalim na pagsusuri"
+   },
+   "botScanCached": {
+      "message": "Huling scan $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Pinahinto ng Instagram ang pagsusuri ng profile. Ang mga resulta sa ibaba ay mula sa nabasa na."
+   },
+   "botScanDeepProgress": {
+      "message": "Sinusuri ang mga profile… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Tapos na ang scan."
+   },
+   "botScanNoData": {
+      "message": "Hindi mabasa ang listahan ng followers mo. Pinipigilan kami ng Instagram — nawawala ito nang kusa, pero walang tiyak na oras. Subukan mamaya."
+   },
+   "botScanPartial": {
+      "message": "Tapos na ang scan, pero hindi kumpleto ang bumalik na listahan ng followers — may mga account na nawawala."
+   },
+   "botScanReading": {
+      "message": "Binabasa ang mga follower mo…"
+   },
+   "botScanReadingCount": {
+      "message": "Binabasa ang mga follower… $1"
+   },
+   "botScanTitle": {
+      "message": "Pag-scan ng Bot Follower"
+   },
+   "botScoreRaw": {
+      "message": "Hilaw na marka"
+   },
+   "botSignalName": {
+      "message": "Username na mukhang binuo lang"
+   },
+   "botSignalPhoto": {
+      "message": "Walang profile photo"
+   },
+   "botSignalPosts": {
+      "message": "Walang post"
+   },
+   "botSignalRatio": {
+      "message": "Sumusunod sa libu-libo, halos walang sumusunod pabalik"
+   },
+   "botSignalsUnavailable": {
+      "message": "May ilang pagsusuri na hindi naisagawa para sa account na ito, kaya nakabatay ang marka nito sa mas kaunting ebidensiya kaysa sa iba."
+   },
+   "botStatFlagged": {
+      "message": "Na-flag"
+   },
+   "botStatFollowers": {
+      "message": "Followers"
+   },
+   "botStatFollowing": {
+      "message": "Sinusundan"
+   },
+   "botStatLikely": {
+      "message": "Malamang na bot"
+   },
+   "botStatPosts": {
+      "message": "Mga post"
+   },
+   "botStatScanned": {
+      "message": "Na-scan"
+   },
+   "botStatSuspicious": {
+      "message": "Kahina-hinala"
+   },
+   "botStatsGone": {
+      "message": "Wala na ang account"
+   },
+   "botStatsGoneHint": {
+      "message": "Walang ibinalik na profile ang Instagram — tinanggal o na-deactivate ang account, kaya hindi na mababasa ang mga bilang nito."
+   },
+   "botStatsNotChecked": {
+      "message": "Hindi nasuri"
+   },
+   "botStepDeep": {
+      "message": "Sinusuri ang mga profile"
+   },
+   "botStepReading": {
+      "message": "Binabasa ang mga follower"
+   },
+   "botTableReasons": {
+      "message": "Bakit"
+   },
+   "botTableScore": {
+      "message": "Marka"
+   },
+   "botTableStats": {
+      "message": "Bilang sa profile"
+   },
+   "botTableVerdict": {
+      "message": "Hatol"
+   },
+   "botVerdictClean": {
+      "message": "Mukhang totoo"
+   },
+   "botVerdictLikely": {
+      "message": "Malamang na bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Kahina-hinala"
+   },
+   "cacheExpiryWarning": {
+      "message": "Maaaring hindi lumabas ang mga profile picture dahil ang huling pagsusuri mo ay $DAYS$ araw na ang nakalipas. Paki-analyze ulit para sa updated na resulta.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Huling pagsusuri $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Sinusuri…"
+   },
+   "checkingLoginStatus": {
+      "message": "Sinusuri ang login status..."
+   },
+   "chooseMonthly": {
+      "message": "Pumili ng Buwanan"
+   },
+   "chooseYearly": {
+      "message": "Pumili ng Taunan"
+   },
+   "comeBackTomorrow": {
+      "message": "Bumalik bukas"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Maaari mong suriin ang +20 tagasunod pa araw-araw. Kung ikaw ay walang pasensya, lumipat sa Premium, tingnan ang lahat ngayon. Kung ikaw ay may pasensya, bumalik bukas, makikita mo ang +20 tagasunod pa. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Bumalik bukas upang makita ang $1 account pa (+$2 bagong unlock)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Sigurado kang gusto mong i-unfollow ang LAHAT?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Kumpirmahin ang aksyon"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Sigurado kang gusto mong i-unfollow ang lahat ng hindi sumusunod pabalik?"
+   },
+   "connected": {
+      "message": "Nakakonekta"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Hindi makuha ang listahan. Subukan mamaya."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$o $MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "mamaya"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "mamaya"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Bukas makikita mo ang +20 account pa ($COUNTDOWN$). Araw-araw may +20 account na idinagdag, nag-iipon ang mga limit!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5o 30m mamaya"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Araw-araw na Limit"
+   },
+   "dailyScanLimit": {
+      "message": "Limitasyon sa Pag-scan Araw-araw"
+   },
+   "dataLoading": {
+      "message": "Nilo-load ang data..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Nilo-load: $COUNT$ followers nahanap",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Nilo-load: $COUNT$ sinusundan nahanap",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "50% OFF"
+   },
+   "email": {
+      "message": "Email"
+   },
+   "errorFetchingData": {
+      "message": "Error sa pagkuha ng data. Subukan ulit."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Pansamantalang hindi available ang Instagram. Subukan ulit mamaya."
+   },
+   "errorNetwork": {
+      "message": "Hindi ma-abot ang Instagram. Suriin ang koneksyon mo — walang nawala at magpapatuloy ang takbo."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "May error na nangyari. Subukan ulit."
+   },
+   "errorRateLimit": {
+      "message": "Pinahinto ng Instagram ang mga request namin. Nawawala ito nang kusa, pero walang tiyak na oras ng paghihintay — depende sa dami ng nagawa, maaaring umabot ng ilang oras o hanggang bukas. Ang agarang pagsubok ay nagpapatagal nito."
+   },
+   "errorSessionExpired": {
+      "message": "Nag-expire na ang Instagram session mo. Mag-log in sa Instagram at subukan ulit."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min na lang"
+   },
+   "etaSeconds": {
+      "message": "~$1 seg na lang"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Hindi na-unfollow. Subukan ulit."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Advanced na pag-filter"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Filters at reports"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Advanced na Sistema ng Notification"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Advanced unfollow"
+   },
+   "featureBasicUnfollow": {
+      "message": "Basic unfollow"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/araw)"
+   },
+   "featureMax50Analysis": {
+      "message": "Max 40 analysis"
+   },
+   "featureSpamDetector": {
+      "message": "Spam detector"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Walang limitasyong analysis"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Walang limitasyong analysis"
+   },
+   "finalizingAnalysis": {
+      "message": "Tinapos na..."
+   },
+   "firstDayBonus": {
+      "message": "Bonus ng Unang Araw"
+   },
+   "firstDayBonusMessage": {
+      "message": "Unang araw na bonus: 40 account! Bukas makikita mo ang +20 account pa ($COUNTDOWN$). Araw-araw may +20 account na idinagdag.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5o 30m mamaya"
+         }
+      }
+   },
+   "followers": {
+      "message": "Mga Follower"
+   },
+   "following": {
+      "message": "Sinusundan"
+   },
+   "followingYouBadge": {
+      "message": "Sumusunod sa Iyo"
+   },
+   "freePlanLimitDescription": {
+      "message": "Naabot ang 40 analysis. I-upgrade sa Premium!"
+   },
+   "freePlanLimitReached": {
+      "message": "Naabot ang Libreng Limit"
+   },
+   "freePlanTodayMessage": {
+      "message": "Sa libreng plan, makikita mo ang $DISPLAYED$ account ngayon. May $HIDDEN$ account pa pero hindi mo sila makikita.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Sa libreng plan, makikita mo ang $COUNT$ account ngayon.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Sa libreng plano, hanggang $COUNT$ na user lang ang pwedeng i-unfollow. Paki-pili lang ang unang $COUNT$ na user o i-upgrade sa Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Sa libreng plano, hanggang $COUNT$ na user lang ang pwedeng i-unfollow. I-upgrade sa Premium para sa unlimited unfollow!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Pangalan"
+   },
+   "getStartedWithGoogle": {
+      "message": "Mag-register sa Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Pumunta sa Instagram"
+   },
+   "gotIt": {
+      "message": "OK"
+   },
+   "incompleteDataMessage": {
+      "message": "Tumigil ang Instagram sa pagpapadala ng data bago pa dumating ang buong listahan, kaya may mga account na nawawala. Ang pagkilos ngayon ay maaaring mag-unfollow ng mga taong talagang sumusunod sa iyo. Patakbuhin muna ulit ang pagsusuri."
+   },
+   "incompleteDataTitle": {
+      "message": "Hindi kumpleto ang listahan"
+   },
+   "instagramLimitedBody": {
+      "message": "Naka-log in ka pa rin at walang problema ang account mo. Nawawala ito nang kusa, pero walang tiyak na oras ng paghihintay — depende sa dami ng nagawa, maaaring umabot ng ilang oras o hanggang bukas. Ang paulit-ulit na pagsubok ay nagpapatagal nito."
+   },
+   "instagramLimitedTitle": {
+      "message": "Nililimitahan ngayon ng Instagram ang mga request"
+   },
+   "instagramLoginAlert": {
+      "message": "Mag-login muna sa Instagram!"
+   },
+   "invalidWaitingTime": {
+      "message": "Maglagay ng valid na oras 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Hindi wastong oras ng paghihintay"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "Ang $1 segundo ay wala sa pinapayagang saklaw. Maglagay ng halaga sa pagitan ng $2 at $3 segundo."
+   },
+   "later": {
+      "message": "mamaya"
+   },
+   "limitedTimeOffer": {
+      "message": "Limited Offer"
+   },
+   "liveCounterPrefix": {
+      "message": "Sa huling 24 na oras"
+   },
+   "liveCounterSuffix": {
+      "message": "mga tao ang nag-upgrade sa Premium!"
+   },
+   "loading": {
+      "message": "Nilo-load..."
+   },
+   "loadingProfile": {
+      "message": "Nilo-load ang profile"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Nilo-load ang naka-save mong pagsusuri…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Walang hinihingi sa Instagram."
+   },
+   "login": {
+      "message": "Mag-login"
+   },
+   "loginFailed": {
+      "message": "Hindi na-login: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Hindi kilalang error"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Kailangan Mag-login"
+   },
+   "loginSuccessful": {
+      "message": "Matagumpay na nag-login!"
+   },
+   "loginWithGoogle": {
+      "message": "Mag-login sa Google"
+   },
+   "logout": {
+      "message": "Mag-logout"
+   },
+   "logoutError": {
+      "message": "Error sa logout: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Hindi kilalang error"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Pamahalaan ang Subscription"
+   },
+   "membership": {
+      "message": "Membership"
+   },
+   "menuBotScan": {
+      "message": "Bot Scan"
+   },
+   "menuHome": {
+      "message": "Home"
+   },
+   "menuProfile": {
+      "message": "Profile"
+   },
+   "menuUpgrade": {
+      "message": "I-upgrade"
+   },
+   "minutesTest": {
+      "message": "$1 minuto (Test)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 account pa ang available"
+   },
+   "moreInHours": {
+      "message": "Sa loob ng $2 oras makikita mo ang +$1 tagasunod pa"
+   },
+   "nextCheckTime": {
+      "message": "Susunod na tseke: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Susunod na tseke: Bukas"
+   },
+   "nextInSeconds": {
+      "message": "Susunod sa $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Walang hindi sumusunod"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Walang hindi sumusunod na maaaring i-unfollow."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Walang user na maaaring i-unfollow."
+   },
+   "notFollowingYouBadge": {
+      "message": "Hindi Sumusunod"
+   },
+   "notProvided": {
+      "message": "Hindi naibigay"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Binubuksan..."
+   },
+   "openingInNewTab": {
+      "message": "Binubuksan sa bagong tab..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/buwan"
+   },
+   "perYear": {
+      "message": "/taon"
+   },
+   "planFree": {
+      "message": "Libre"
+   },
+   "planPopular": {
+      "message": "Popular"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Taunan"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Mag-login para mag-subscribe"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Mag-login muna sa Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Mag-login para mag-upgrade"
+   },
+   "pleaseSignInToView": {
+      "message": "Mag-login para makita ang impormasyon"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Sa Premium, makita mo na lahat ng $COUNT$ account ngayon, walang limit!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Protektadong Privacy"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Pinoproseso..."
+   },
+   "rateLimitWaiting": {
+      "message": "Humingi ng saglit na pahinga ang Instagram — magpapatuloy sa $1 s"
+   },
+   "rating": {
+      "message": "Rating"
+   },
+   "reAnalyze": {
+      "message": "Suriin muli"
+   },
+   "reAnalyzing": {
+      "message": "Sinusuri muli..."
+   },
+   "removeFromWhitelist": {
+      "message": "Alisin sa whitelist"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "50% discount sa Premium"
+   },
+   "saveSettings": {
+      "message": "I-save"
+   },
+   "scanBlockedBody": {
+      "message": "Karaniwan ito, nawawala nang kusa, at walang problema sa account mo o sa extension. Tumigil kami agad sa halip na subukan ulit, dahil ang paulit-ulit na pagsubok ay lalo lang nagpapatagal ng paghihintay. Subukan ulit mamaya ngayong araw."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Hindi mabasa ang listahan ng followers ngayon."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Hindi mabasa ang listahan ng sinusundan ngayon."
+   },
+   "scanBlockedTitle": {
+      "message": "Gusto ng Instagram ng maikling pahinga"
+   },
+   "scanPartialBody": {
+      "message": "May bahaging dumating tapos pinahinto kami ng Instagram, kaya hindi sapat ang kumpleto ng resulta para pagbatayan. Walang binago. Bumalik mamaya at patakbuhin ulit ang pagsusuri — maaari itong umabot ng ilang oras, at ang pagsubok ngayon ay nagpapatagal nito."
+   },
+   "scanPartialTitle": {
+      "message": "Hindi kumpleto ang bumalik na listahan"
+   },
+   "scanPaused": {
+      "message": "Hiniling ng Instagram na bumagal kami — naghihintay…"
+   },
+   "scanRemaining": {
+      "message": "$1 account pa ang natitira"
+   },
+   "scanShortBody": {
+      "message": "Tapos na ang pag-scan, pero mas kaunti ang bumalik na account kaysa sa sinasabi ng Instagram. Ang pagkilos dito ay maaaring mag-unfollow ng mga sumusunod sa iyo, kaya walang ipinapakita. Patakbuhin ulit ang pagsusuri."
+   },
+   "scanShortTitle": {
+      "message": "May mga account na nawawala"
+   },
+   "seconds": {
+      "message": "segundo"
+   },
+   "secure": {
+      "message": "Ligtas"
+   },
+   "secureLogin": {
+      "message": "Ligtas na Login"
+   },
+   "sessionExpiredTitle": {
+      "message": "Natapos na ang Instagram session mo"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Hindi sumusunod lang"
+   },
+   "showingFirstAccounts": {
+      "message": "Ipinapakita ang unang $COUNT$ accounts.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Laktawan ang followers"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Laktawan ang verified"
+   },
+   "startAnalysis": {
+      "message": "Simulan ang Analysis"
+   },
+   "startBotScan": {
+      "message": "Simulan ang Bot Scan"
+   },
+   "startUnfollow": {
+      "message": "Simulan Unfollow"
+   },
+   "startingAnalysis": {
+      "message": "Nagsisimula ng analysis..."
+   },
+   "statFailed": {
+      "message": "Nabigo"
+   },
+   "statFollowers": {
+      "message": "Followers"
+   },
+   "statFollowing": {
+      "message": "Following"
+   },
+   "statNonFollowers": {
+      "message": "Hindi sumusunod"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Na-unfollow"
+   },
+   "stop": {
+      "message": "Itigil"
+   },
+   "stopping": {
+      "message": "Hinihinto…"
+   },
+   "support": {
+      "message": "Suporta"
+   },
+   "tableAction": {
+      "message": "Aksyon"
+   },
+   "tableFollowingYou": {
+      "message": "Sumusunod sa Iyo"
+   },
+   "tableFullName": {
+      "message": "Pangalan"
+   },
+   "tablePrivate": {
+      "message": "Private"
+   },
+   "tableProfile": {
+      "message": "Profile"
+   },
+   "tableUsername": {
+      "message": "Username"
+   },
+   "tableVerified": {
+      "message": "Verified"
+   },
+   "testNow": {
+      "message": "Test Ngayon"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Hindi na maibabalik ang aksyong ito!"
+   },
+   "toRemoveLimits": {
+      "message": "para alisin ang mga limitasyon"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ araw na lang",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Natapos na ang trial period"
+   },
+   "tryAgain": {
+      "message": "Subukan ulit"
+   },
+   "tryAnyway": {
+      "message": "Subukan pa rin"
+   },
+   "unfollow": {
+      "message": "I-unfollow"
+   },
+   "unfollowDelayLabel": {
+      "message": "Delay (segundo)"
+   },
+   "unfollowEveryone": {
+      "message": "I-unfollow ang Lahat"
+   },
+   "unfollowFailed": {
+      "message": "Nabigo"
+   },
+   "unfollowNonFollowers": {
+      "message": "I-unfollow ang Hindi Followers"
+   },
+   "unfollowProcessStarted": {
+      "message": "Nagsimula na ang pag-unfollow."
+   },
+   "unfollowSettings": {
+      "message": "Unfollow Settings"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 segundo sa pagitan ng bawat pag-unfollow."
+   },
+   "unfollowedSuccess": {
+      "message": "Na-unfollow"
+   },
+   "unfollowing": {
+      "message": "Ina-unfollow..."
+   },
+   "unknownError": {
+      "message": "Hindi kilalang error"
+   },
+   "upgradeToPremium": {
+      "message": "I-upgrade sa Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "I-upgrade sa Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium para sa lahat!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "user ang mai-a-unfollow."
+   },
+   "waitingSeconds": {
+      "message": "Naghihintay $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Oras ng paghihintay (3-300 seg)"
+   },
+   "welcomeFunText1": {
+      "message": "Gusto mong malaman sino hindi follow back? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Madali na ang pag-unfollow 😊"
+   },
+   "welcomeTitle": {
+      "message": "Maligayang pagdating! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Mag-login sa Google, ligtas ang data mo!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 ay ma-u-unlock bukas"
+   },
+   "writeBlockedMessage": {
+      "message": "Pansamantalang hindi tumatanggap ang Instagram ng awtomatikong pag-unfollow sa account na ito. Pansamantala lang ito at walang problema sa account mo.\n\nHabang tumatagal ito, maaari ka pa ring mag-unfollow nang manu-mano mula sa profile page, at nananatili rito ang listahan mo — walang naubos."
+   },
+   "writeBlockedTitle": {
+      "message": "Nililimitahan ngayon ng Instagram ang pag-unfollow"
+   },
+   "yesUnfollow": {
+      "message": "Oo, i-unfollow"
+   },
+   "yesUnfollowAll": {
+      "message": "Oo, i-unfollow lahat"
+   }
+}

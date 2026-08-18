@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "פרטי חשבון"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ חשבונות נוספים זמינים. כדי לראות הכל",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "משתמשים פעילים"
+   },
+   "addToWhitelist": {
+      "message": "הוסף לרשימה הלבנה"
+   },
+   "allAccountsUnlocked": {
+      "message": "כל החשבונות נפתחו!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "משתמשים יבוטל המעקב אחריהם."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram החזיר את רשימת העוקבים שלך ללא נתוני תמונת פרופיל, ולכן כל הציונים כאן נמוכים ממה שהם אמורים להיות וחלק מהבוטים יתפספסו. פתח את Instagram בלשונית והרץ את הסריקה שוב לתוצאה מלאה."
+   },
+   "botBlindTitle": {
+      "message": "לא ניתן היה לבצע את בדיקת תמונת הפרופיל"
+   },
+   "botCleared": {
+      "message": "לזכותו"
+   },
+   "botDeepAllChecked": {
+      "message": "כל החשבונות המסומנים נבדקו"
+   },
+   "botDeepChecked": {
+      "message": "הפרופיל נבדק"
+   },
+   "botDeepChecksFor": {
+      "message": "בדוק לעומק $1 חשבונות"
+   },
+   "botDeepChecksRemaining": {
+      "message": "נותרו $1 ($2 כבר נבדקו)"
+   },
+   "botDeepDone": {
+      "message": "הבדיקות המעמיקות הסתיימו — $1 חשבונות נבדקו."
+   },
+   "botDeepNoTargets": {
+      "message": "אף חשבון אינו זקוק לבדיקה מעמיקה."
+   },
+   "botDeepPausedBody": {
+      "message": "$1 חשבונות נבדקו לפני שזה נעצר ו‑$2 לא. הפסיקות למטה מבוססות רק על מה שהספקנו לקרוא. אין זמן המתנה קבוע — זה יכול לקחת שעות או עד מחר. חזור מאוחר יותר במקום לנסות עכשיו, מה שרק מאריך את זה."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram השהה את בדיקות הפרופיל"
+   },
+   "botDeepRemaining": {
+      "message": "$1 נותרו ללא בדיקה."
+   },
+   "botDeepSubtitle": {
+      "message": "בקשה אחת לכל חשבון, בקצב בטוח."
+   },
+   "botFilterAll": {
+      "message": "כל מה שנסרק"
+   },
+   "botFilterLikely": {
+      "message": "ככל הנראה בוטים"
+   },
+   "botFilterSuspicious": {
+      "message": "חשודים"
+   },
+   "botFreeHeadline": {
+      "message": "חשבונות מסומנים נוספים נעולים"
+   },
+   "botFreeWithheld": {
+      "message": "נמצאו עוד $1 — שדרגו כדי לראות את כולם."
+   },
+   "botIntroHeading": {
+      "message": "מצא את החשבונות שאינם אנשים אמיתיים"
+   },
+   "botIntroLead": {
+      "message": "כל עוקב מקבל ציון לפי הסבירות שהוא בוט או חשבון חד‑פעמי."
+   },
+   "botIntroReasons": {
+      "message": "לכל ציון מצורפות הסיבות שמאחוריו, כדי שתראה למה חשבון סומן במקום לסמוך על מספר. שום דבר לא מוסר אוטומטית — הרשימה כאן כדי שתסתכל ותחליט."
+   },
+   "botNoFlagged": {
+      "message": "שום דבר לא סומן — רשימת העוקבים שלך נראית נקייה."
+   },
+   "botNoRowsForFilter": {
+      "message": "אין כלום בקבוצה הזו."
+   },
+   "botNoSignals": {
+      "message": "שום דבר חריג"
+   },
+   "botNotRunYet": {
+      "message": "הרץ סריקה כדי לראות כאן את הציונים של העוקבים שלך."
+   },
+   "botPopupBody": {
+      "message": "נותן לכל עוקב ציון לפי הסבירות שהוא בוט או חשבון חד‑פעמי: אין תמונת פרופיל, אין פוסטים, שם משתמש שנראה מיוצר, עוקב אחרי אלפים בזמן שכמעט אף אחד לא עוקב אחריו."
+   },
+   "botPopupReasons": {
+      "message": "לכל ציון מצורפות הסיבות שמאחוריו. שום דבר לא מוסר אוטומטית."
+   },
+   "botProvisionalBody": {
+      "message": "ב‑$1 חשבונות מסומנים עדיין לא נבדק הפרופיל. רוב הבוטים מתאשרים רק בבדיקה הזו — הרץ אותה לפני שתסמוך על מספר הבוטים המשוערים."
+   },
+   "botProvisionalTitle": {
+      "message": "הפסיקות האלה עדיין לא סופיות"
+   },
+   "botReadSubtitle": {
+      "message": "נקרא ישירות מרשימת העוקבים שלך — בלי בקשות נוספות."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "אין תמונת פרופיל"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "יחס עוקבים מאוזן"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "הרבה ספרות בשם המשתמש"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "אין שם תצוגה"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "עוקב אחרי הרבה יותר ממי שעוקבים אחריו"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "יש תג לחשבון"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "עוקב אחרי מספר עצום של חשבונות"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "אין עוקבים"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "מעולם לא פרסם"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "מפרסם באופן קבוע"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "שם המשתמש מסתיים ברצף ספרות"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "תבנית קו תחתון חריגה"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "חשבון מאומת"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "שם משתמש ארוך בצורה חריגה"
+   },
+   "botRunDeepChecks": {
+      "message": "הרץ בדיקות מעמיקות"
+   },
+   "botScanCached": {
+      "message": "הסריקה האחרונה $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram השהה את בדיקת הפרופילים. התוצאות למטה הן ממה שהספקנו לקרוא."
+   },
+   "botScanDeepProgress": {
+      "message": "בודק פרופילים… $1/$2"
+   },
+   "botScanDone": {
+      "message": "הסריקה הושלמה."
+   },
+   "botScanNoData": {
+      "message": "לא ניתן היה לקרוא את רשימת העוקבים שלך. Instagram עוצר אותנו — זה חולף מעצמו, אבל בלי זמן המתנה קבוע. נסה מאוחר יותר."
+   },
+   "botScanPartial": {
+      "message": "הסריקה הסתיימה, אבל רשימת העוקבים חזרה חלקית — חסרים כמה חשבונות."
+   },
+   "botScanReading": {
+      "message": "קורא את העוקבים שלך…"
+   },
+   "botScanReadingCount": {
+      "message": "קורא עוקבים… $1"
+   },
+   "botScanTitle": {
+      "message": "סריקת עוקבים בוטים"
+   },
+   "botScoreRaw": {
+      "message": "ציון גולמי"
+   },
+   "botSignalName": {
+      "message": "שם משתמש שנראה מיוצר"
+   },
+   "botSignalPhoto": {
+      "message": "אין תמונת פרופיל"
+   },
+   "botSignalPosts": {
+      "message": "אין פוסטים"
+   },
+   "botSignalRatio": {
+      "message": "עוקב אחרי אלפים, כמעט אף אחד לא אחריו"
+   },
+   "botSignalsUnavailable": {
+      "message": "עבור החשבון הזה חלק מהבדיקות לא בוצעו, ולכן הציון שלו נשען על פחות ראיות מהאחרים."
+   },
+   "botStatFlagged": {
+      "message": "מסומנים"
+   },
+   "botStatFollowers": {
+      "message": "עוקבים"
+   },
+   "botStatFollowing": {
+      "message": "עוקב"
+   },
+   "botStatLikely": {
+      "message": "ככל הנראה בוטים"
+   },
+   "botStatPosts": {
+      "message": "פוסטים"
+   },
+   "botStatScanned": {
+      "message": "נסרקו"
+   },
+   "botStatSuspicious": {
+      "message": "חשודים"
+   },
+   "botStatsGone": {
+      "message": "החשבון נעלם"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram לא החזיר פרופיל — החשבון נמחק או הושבת, ולא ניתן לקרוא את המספרים שלו."
+   },
+   "botStatsNotChecked": {
+      "message": "לא נבדק"
+   },
+   "botStepDeep": {
+      "message": "בודק פרופילים"
+   },
+   "botStepReading": {
+      "message": "קורא עוקבים"
+   },
+   "botTableReasons": {
+      "message": "למה"
+   },
+   "botTableScore": {
+      "message": "ציון"
+   },
+   "botTableStats": {
+      "message": "נתוני הפרופיל"
+   },
+   "botTableVerdict": {
+      "message": "פסיקה"
+   },
+   "botVerdictClean": {
+      "message": "נראה אמיתי"
+   },
+   "botVerdictLikely": {
+      "message": "ככל הנראה בוט"
+   },
+   "botVerdictSuspicious": {
+      "message": "חשוד"
+   },
+   "cacheExpiryWarning": {
+      "message": "תמונות פרופיל עשויות לא להופיע כי הניתוח האחרון שלך היה לפני $DAYS$ ימים. נא לנתח מחדש לתוצאות מעודכנות.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "ניתוח אחרון $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "ביטול"
+   },
+   "checkingBeforeStart": {
+      "message": "בודק…"
+   },
+   "checkingLoginStatus": {
+      "message": "בודק סטטוס התחברות..."
+   },
+   "chooseMonthly": {
+      "message": "בחר חודשי"
+   },
+   "chooseYearly": {
+      "message": "בחר שנתי"
+   },
+   "comeBackTomorrow": {
+      "message": "חזור מחר"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "אתה יכול לנתח +20 עוקבים נוספים כל יום. אם אתה חסר סבלנות, עבור ל-Premium וראה הכל עכשיו. אם יש לך סבלנות, חזור מחר, תוכל לראות +20 עוקבים נוספים. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "חזור מחר כדי לראות $1 חשבונות נוספים (+$2 פתיחות חדשות)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ אזהרה!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "האם אתה בטוח שברצונך לבטל מעקב אחרי כולם?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "אשר פעולה"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "האם אתה בטוח שברצונך לבטל מעקב אחרי כל הלא-עוקבים?"
+   },
+   "connected": {
+      "message": "מחובר"
+   },
+   "couldNotFetchFollowing": {
+      "message": "לא ניתן לשלוף את רשימת הנעקבים. אנא נסה שוב מאוחר יותר."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$ שעות $MINUTES$ דקות $SECONDS$ שניות $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "מאוחר יותר"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$ דקות $SECONDS$ שניות $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "מאוחר יותר"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "מחר תוכל לראות +20 חשבונות נוספים ($COUNTDOWN$). +20 חשבונות מתווספים כל יום, המגבלות מצטברות!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5 שעות 30 דקות מאוחר יותר"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "מגבלה יומית"
+   },
+   "dailyScanLimit": {
+      "message": "מגבלת סריקה יומית"
+   },
+   "dataLoading": {
+      "message": "טוען נתונים..."
+   },
+   "dataLoadingFollowers": {
+      "message": "טוען נתונים: $COUNT$ עוקבים נמצאו",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "טוען נתונים: $COUNT$ נעקבים נמצאו",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "50% הנחה"
+   },
+   "email": {
+      "message": "דוא\"ל"
+   },
+   "errorFetchingData": {
+      "message": "אירעה שגיאה בשליפת הנתונים. אנא נסה שוב מאוחר יותר."
+   },
+   "errorInstagramUnavailable": {
+      "message": "אינסטגרם אינו זמין זמנית. אנא נסה שוב מאוחר יותר."
+   },
+   "errorNetwork": {
+      "message": "לא הצלחנו להגיע ל‑Instagram. בדוק את החיבור שלך — שום דבר לא אבד וההרצה תימשך."
+   },
+   "errorNetworkConnection": {
+      "message": "שגיאת חיבור. אנא בדוק את האינטרנט שלך ונסה שוב."
+   },
+   "errorOccurred": {
+      "message": "אירעה שגיאה. אנא נסה שוב."
+   },
+   "errorRateLimit": {
+      "message": "Instagram השהה את הבקשות שלנו. זה חולף מעצמו, אבל אין זמן המתנה קבוע — תלוי בכמה נעשה, זה יכול לקחת שעות או עד מחר. ניסיון מיידי מאריך את זה."
+   },
+   "errorSessionExpired": {
+      "message": "הפעלת האינסטגרם שלך פגה. אנא התחבר לאינסטגרם ונסה שוב."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "יותר מדי בקשות ביטול מעקב. ממתין 5 דקות לפני ניסיון חוזר..."
+   },
+   "etaMinutes": {
+      "message": "~$1 דק׳ נותרו"
+   },
+   "etaSeconds": {
+      "message": "~$1 שנ׳ נותרו"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "ביטול המעקב נכשל. אנא נסה שוב."
+   },
+   "featureAdvancedFiltering": {
+      "message": "סינון מתקדם"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "סינון ודיווח מתקדמים"
+   },
+   "featureAdvancedNotifications": {
+      "message": "מערכת התראות מתקדמת"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "תכונות ביטול מעקב מתקדמות"
+   },
+   "featureBasicUnfollow": {
+      "message": "תכונות ביטול מעקב בסיסיות"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/יום)"
+   },
+   "featureMax50Analysis": {
+      "message": "ניתוח עד 40 נעקבים"
+   },
+   "featureSpamDetector": {
+      "message": "גלאי חשבונות ספאם"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "ניתוח ללא הגבלה"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "ניתוח נעקבים ללא הגבלה"
+   },
+   "finalizingAnalysis": {
+      "message": "מסיים..."
+   },
+   "firstDayBonus": {
+      "message": "בונוס יום ראשון"
+   },
+   "firstDayBonusMessage": {
+      "message": "בונוס יום ראשון: 40 חשבונות! מחר תוכל לראות +20 חשבונות נוספים ($COUNTDOWN$). +20 חשבונות מתווספים כל יום.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5 שעות 30 דקות מאוחר יותר"
+         }
+      }
+   },
+   "followers": {
+      "message": "עוקבים"
+   },
+   "following": {
+      "message": "עוקב"
+   },
+   "followingYouBadge": {
+      "message": "עוקב אחריך"
+   },
+   "freePlanLimitDescription": {
+      "message": "הגעת למגבלה של 40 ניתוחים. שדרג ל-Premium לניתוח ללא הגבלה!"
+   },
+   "freePlanLimitReached": {
+      "message": "הגעת למגבלת התוכנית החינמית"
+   },
+   "freePlanTodayMessage": {
+      "message": "בתוכנית החינמית, אתה יכול לראות $DISPLAYED$ חשבונות היום. יש $HIDDEN$ חשבונות נוספים אך אינך יכול לראותם.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "בתוכנית החינמית, אתה יכול לראות $COUNT$ חשבונות היום.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "ניתן לבטל מעקב של עד $COUNT$ משתמשים בתוכנית החינמית. אנא בחר רק את $COUNT$ המשתמשים הראשונים או שדרג ל-Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "ניתן לבטל מעקב של עד $COUNT$ משתמשים בתוכנית החינמית. שדרג ל-Premium לביטול מעקב ללא הגבלה!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "שם מלא"
+   },
+   "getStartedWithGoogle": {
+      "message": "התחל עם Google"
+   },
+   "goToInstagramLogin": {
+      "message": "עבור להתחברות לאינסטגרם"
+   },
+   "gotIt": {
+      "message": "אישור"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram הפסיק לשלוח נתונים לפני שכל הרשימה הגיעה, ולכן חסרים חשבונות. פעולה עכשיו עלולה לבטל מעקב אחרי אנשים שבאמת עוקבים אחריך. הרץ את הניתוח שוב קודם."
+   },
+   "incompleteDataTitle": {
+      "message": "הרשימה אינה מלאה"
+   },
+   "instagramLimitedBody": {
+      "message": "אתה עדיין מחובר ואין שום בעיה בחשבון שלך. זה חולף מעצמו, אבל אין זמן המתנה קבוע — תלוי בכמה נעשה, זה יכול לקחת שעות או עד מחר. ניסיונות חוזרים מאריכים את זה."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram מגביל בקשות כרגע"
+   },
+   "instagramLoginAlert": {
+      "message": "אנא התחבר לאינסטגרם קודם!"
+   },
+   "invalidWaitingTime": {
+      "message": "אנא הזן זמן המתנה תקין בין 3 ל-300 שניות"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "זמן המתנה לא תקין"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 שניות מחוץ לטווח המותר. הזן ערך בין $2 ל‑$3 שניות."
+   },
+   "later": {
+      "message": "מאוחר יותר"
+   },
+   "limitedTimeOffer": {
+      "message": "מבצע לזמן מוגבל"
+   },
+   "liveCounterPrefix": {
+      "message": "ב-24 השעות האחרונות"
+   },
+   "liveCounterSuffix": {
+      "message": "אנשים שדרגו ל-Premium!"
+   },
+   "loading": {
+      "message": "טוען..."
+   },
+   "loadingProfile": {
+      "message": "טוען פרופיל"
+   },
+   "loadingSavedAnalysis": {
+      "message": "טוען את הניתוח השמור שלך…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "לא מתבצעת שום בקשה ל‑Instagram."
+   },
+   "login": {
+      "message": "התחברות"
+   },
+   "loginFailed": {
+      "message": "ההתחברות נכשלה: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "שגיאה לא ידועה"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "נדרשת התחברות"
+   },
+   "loginSuccessful": {
+      "message": "ההתחברות הצליחה!"
+   },
+   "loginWithGoogle": {
+      "message": "התחבר עם Google"
+   },
+   "logout": {
+      "message": "התנתקות"
+   },
+   "logoutError": {
+      "message": "אירעה שגיאה במהלך ההתנתקות: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "שגיאה לא ידועה"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "נהל מנוי"
+   },
+   "membership": {
+      "message": "חברות"
+   },
+   "menuBotScan": {
+      "message": "סריקת בוטים"
+   },
+   "menuHome": {
+      "message": "דף הבית"
+   },
+   "menuProfile": {
+      "message": "פרופיל"
+   },
+   "menuUpgrade": {
+      "message": "שדרוג"
+   },
+   "minutesTest": {
+      "message": "$1 דקות (בדיקה)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 חשבונות נוספים זמינים"
+   },
+   "moreInHours": {
+      "message": "בעוד $2 שעות תוכל לראות +$1 עוקבים נוספים"
+   },
+   "nextCheckTime": {
+      "message": "בדיקה הבאה: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "בדיקה הבאה: מחר"
+   },
+   "nextInSeconds": {
+      "message": "הבא בעוד $SECONDS$ שניות",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "אין לא-עוקבים"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "אין לא-עוקבים לביטול מעקב."
+   },
+   "noUsers": {
+      "message": "אין משתמשים"
+   },
+   "noUsersToUnfollow": {
+      "message": "אין משתמשים לביטול מעקב."
+   },
+   "notFollowingYouBadge": {
+      "message": "לא עוקב אחריך"
+   },
+   "notProvided": {
+      "message": "לא סופק"
+   },
+   "ok": {
+      "message": "אישור"
+   },
+   "opening": {
+      "message": "פותח..."
+   },
+   "openingInNewTab": {
+      "message": "פותח בלשונית חדשה..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/חודש"
+   },
+   "perYear": {
+      "message": "/שנה"
+   },
+   "planFree": {
+      "message": "חינם"
+   },
+   "planPopular": {
+      "message": "פופולרי"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium שנתי"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "אנא התחבר שוב כדי להירשם"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "אנא התחבר לאינסטגרם קודם"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "אנא התחבר כדי לשדרג ל-Premium"
+   },
+   "pleaseSignInToView": {
+      "message": "אנא התחבר כדי לצפות בפרטי החשבון שלך"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "עם Premium, ראה את כל $COUNT$ החשבונות עכשיו, ללא מגבלות!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "פרטיות מוגנת"
+   },
+   "processStarted": {
+      "message": "התהליך התחיל"
+   },
+   "processing": {
+      "message": "מעבד..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram ביקש הפסקה — ממשיכים בעוד $1 שנ׳"
+   },
+   "rating": {
+      "message": "דירוג"
+   },
+   "reAnalyze": {
+      "message": "נתח מחדש"
+   },
+   "reAnalyzing": {
+      "message": "מנתח מחדש..."
+   },
+   "removeFromWhitelist": {
+      "message": "הסר מהרשימה הלבנה"
+   },
+   "retryIn": {
+      "message": "מנסה שוב בעוד $SECONDS$ שניות...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "חסוך 50% על Premium - הערך הטוב ביותר"
+   },
+   "saveSettings": {
+      "message": "שמור הגדרות"
+   },
+   "scanBlockedBody": {
+      "message": "זה נפוץ, זה מסתדר מעצמו, ואין שום בעיה בחשבון שלך או בתוסף. עצרנו מיד במקום לנסות שוב, כי ניסיונות חוזרים רק מאריכים את ההמתנה. נסה שוב מאוחר יותר היום."
+   },
+   "scanBlockedListFollowers": {
+      "message": "לא ניתן היה לקרוא את רשימת העוקבים כרגע."
+   },
+   "scanBlockedListFollowing": {
+      "message": "לא ניתן היה לקרוא את רשימת הנעקבים כרגע."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram רוצה הפסקה קצרה"
+   },
+   "scanPartialBody": {
+      "message": "חלק ממנה הגיע ואז Instagram עצר אותנו, ולכן התוצאות אינן שלמות מספיק כדי לפעול לפיהן. שום דבר לא שונה. חזור מאוחר יותר והרץ את הניתוח שוב — זה יכול לקחת שעות, וניסיון עכשיו מאריך את זה."
+   },
+   "scanPartialTitle": {
+      "message": "הרשימה חזרה חלקית"
+   },
+   "scanPaused": {
+      "message": "Instagram ביקש שנאט — ממתינים…"
+   },
+   "scanRemaining": {
+      "message": "נותרו $1 חשבונות"
+   },
+   "scanShortBody": {
+      "message": "הסריקה הסתיימה, אבל חזרו פחות חשבונות ממה ש‑Instagram מציין. פעולה לפי זה עלולה לבטל מעקב אחרי אנשים שעוקבים אחריך, ולכן לא מוצג דבר. אנא הרץ את הניתוח שוב."
+   },
+   "scanShortTitle": {
+      "message": "חסרים כמה חשבונות"
+   },
+   "seconds": {
+      "message": "שניות"
+   },
+   "secure": {
+      "message": "מאובטח"
+   },
+   "secureLogin": {
+      "message": "התחברות מאובטחת"
+   },
+   "sessionExpiredTitle": {
+      "message": "ההפעלה שלך ב‑Instagram הסתיימה"
+   },
+   "showOnlyNonFollowers": {
+      "message": "הצג רק לא-עוקבים"
+   },
+   "showingFirstAccounts": {
+      "message": "מציג $COUNT$ חשבונות ראשונים.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "דלג על חשבונות שעוקבים אחריך"
+   },
+   "skipVerifiedAccounts": {
+      "message": "דלג על חשבונות מאומתים"
+   },
+   "startAnalysis": {
+      "message": "התחל ניתוח"
+   },
+   "startBotScan": {
+      "message": "התחל סריקת בוטים"
+   },
+   "startUnfollow": {
+      "message": "התחל ביטול מעקב"
+   },
+   "startingAnalysis": {
+      "message": "מתחיל ניתוח..."
+   },
+   "statFailed": {
+      "message": "נכשל"
+   },
+   "statFollowers": {
+      "message": "עוקבים"
+   },
+   "statFollowing": {
+      "message": "עוקב"
+   },
+   "statNonFollowers": {
+      "message": "לא עוקבים"
+   },
+   "statRemaining": {
+      "message": "לא עוקבים"
+   },
+   "statUnfollowed": {
+      "message": "בוטל מעקב"
+   },
+   "stop": {
+      "message": "עצור"
+   },
+   "stopping": {
+      "message": "עוצר…"
+   },
+   "support": {
+      "message": "תמיכה"
+   },
+   "tableAction": {
+      "message": "פעולה"
+   },
+   "tableFollowingYou": {
+      "message": "עוקב אחריך"
+   },
+   "tableFullName": {
+      "message": "שם מלא"
+   },
+   "tablePrivate": {
+      "message": "פרטי"
+   },
+   "tableProfile": {
+      "message": "פרופיל"
+   },
+   "tableUsername": {
+      "message": "שם משתמש"
+   },
+   "tableVerified": {
+      "message": "מאומת"
+   },
+   "testNow": {
+      "message": "בדוק עכשיו"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ לא ניתן לבטל פעולה זו!"
+   },
+   "toRemoveLimits": {
+      "message": "כדי להסיר מגבלות"
+   },
+   "trendDown": {
+      "message": "$COUNT$ מאז הניתוח האחרון",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "ללא שינוי"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ מאז הניתוח האחרון",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ ימים נותרו",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "מחר תוכל לראות +20 חשבונות נוספים ($COUNTDOWN$). +20 חשבונות מתווספים כל יום, המגבלות מצטברות!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "11 שעות 13 דקות 14 שניות מאוחר יותר"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "תקופת הניסיון החינמית שלך הסתיימה. אתה יכול לראות $COUNT$ חשבונות היום.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "תקופת הניסיון הסתיימה"
+   },
+   "tryAgain": {
+      "message": "נסה שוב"
+   },
+   "tryAnyway": {
+      "message": "נסה בכל זאת"
+   },
+   "unfollow": {
+      "message": "בטל מעקב"
+   },
+   "unfollowDelayLabel": {
+      "message": "השהיית ביטול מעקב (שניות)"
+   },
+   "unfollowEveryone": {
+      "message": "בטל מעקב אחרי כולם"
+   },
+   "unfollowFailed": {
+      "message": "נכשל"
+   },
+   "unfollowNonFollowers": {
+      "message": "בטל מעקב אחרי לא-עוקבים"
+   },
+   "unfollowProcessStarted": {
+      "message": "תהליך ביטול המעקב התחיל."
+   },
+   "unfollowSettings": {
+      "message": "הגדרות ביטול מעקב"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 שניות בין כל ביטול מעקב."
+   },
+   "unfollowedSuccess": {
+      "message": "בוטל מעקב"
+   },
+   "unfollowing": {
+      "message": "מבטל מעקב..."
+   },
+   "unknownError": {
+      "message": "שגיאה לא ידועה"
+   },
+   "upgradeToPremium": {
+      "message": "שדרג ל-Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "שדרג ל-Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "שדרג ל-Premium כדי לראות את כל החשבונות!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "משתמשים יבוטל המעקב אחריהם."
+   },
+   "waitingSeconds": {
+      "message": "ממתין $SECONDS$ שניות",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "זמן המתנה בשניות (3-300)"
+   },
+   "welcomeFunText1": {
+      "message": "רוצה לראות מי לא עוקב אחריך בחזרה? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "תהליך ביטול המעקב הרבה יותר קל עכשיו 😊"
+   },
+   "welcomeTitle": {
+      "message": "!ברוכים הבאים 👋"
+   },
+   "welcomeTrustText": {
+      "message": "פשוט התחבר עם חשבון Google שלך, הנתונים שלך בטוחים!"
+   },
+   "whitelist": {
+      "message": "רשימה לבנה"
+   },
+   "whitelisted": {
+      "message": "מוגן"
+   },
+   "whitelistedSkipped": {
+      "message": "דילוג (ברשימה הלבנה)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 ייפתחו מחר"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram הפסיק זמנית לקבל ביטולי מעקב אוטומטיים בחשבון הזה. זה זמני ואין שום בעיה בחשבון שלך.\n\nבינתיים עדיין אפשר לבטל מעקב ידנית מדף הפרופיל, והרשימה שלך נשארת כאן — שום דבר לא נוצל."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram מגביל כרגע ביטולי מעקב"
+   },
+   "yesUnfollow": {
+      "message": "כן, בטל מעקב"
+   },
+   "yesUnfollowAll": {
+      "message": "כן, בטל מעקב אחרי כולם"
+   }
+}

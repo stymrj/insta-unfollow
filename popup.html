@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html style="width: 580px; min-width: 580px;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="no-referrer" />
+    <link rel="stylesheet" href="popup.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="assets/inter/inter.css">
+    <link rel="stylesheet" href="assets/fontawesome/all.min.css">
+  </head>
+  <body style="width: 580px; min-width: 580px; margin: 0; padding: 0;">
+    <div class="container" style="width: 580px; min-width: 580px;">
+      <div class="header">
+        <div class="logo-container">
+          <div class="logo-icon">
+            <img src="img/48.png" alt="Insta Unfollow Logo" class="logo-img">
+          </div>
+          <div class="logo-text">
+            <h1 data-i18n="appTitle">Insta Unfollow</h1>
+            <span class="tagline" data-i18n="appTagline">Smart Unfollow Manager</span>
+          </div>
+        </div>
+        <div class="auth-buttons">
+          <button id="googleLoginBtn" class="google-login-btn">
+            <svg class="google-icon" width="18" height="18" viewBox="0 0 18 18">
+              <path
+                fill="#4285F4"
+                d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"
+              />
+              <path
+                fill="#34A853"
+                d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"
+              />
+              <path
+                fill="#FBBC05"
+                d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.192 0 7.56 0 9s.348 2.808.957 4.039l3.007-2.332z"
+              />
+              <path
+                fill="#EA4335"
+                d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"
+              />
+            </svg>
+            <span data-i18n="login">Login</span>
+          </button>
+          <div id="userInfoContainer" class="user-info-container" style="display: none;">
+            <div class="user-info-card">
+              <img id="userInfoAvatar" class="user-info-avatar" src="" alt="Profile">
+              <div class="user-info-details">
+                <span id="userInfoName" class="user-info-name"></span>
+                <span id="userInfoBadge" class="user-info-badge"></span>
+              </div>
+            </div>
+            <button id="logoutBtn" class="logout-btn">
+              <svg
+                class="logout-icon"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-container">
+        <nav class="main-menu">
+          <a href="#" class="menu-item active" data-page="home">
+            <svg class="menu-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span data-i18n="menuHome">Home</span>
+          </a>
+          <a href="#" class="menu-item" data-page="botscan">
+            <svg class="menu-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="8" width="18" height="12" rx="3"></rect>
+              <path d="M12 8V4"></path><circle cx="12" cy="3" r="1"></circle>
+              <circle cx="8.5" cy="14" r="1.2"></circle><circle cx="15.5" cy="14" r="1.2"></circle>
+            </svg>
+            <span data-i18n="menuBotScan">Bot Scan</span>
+          </a>
+          <a href="#" class="menu-item" data-page="upgrade">
+            <svg class="menu-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <span data-i18n="menuUpgrade">Upgrade</span>
+          </a>
+          <a href="#" class="menu-item" data-page="admin" id="adminMenuItem" style="display: none;">
+            <svg class="menu-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span data-i18n="menuAdmin">Admin</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="content-section" id="homeContent">
+        <div class="form-container">
+          <!-- Initial Loading Screen -->
+          <div id="initialLoading" class="gmail-login-required" style="display: none;">
+            <div class="login-required-content">
+              <div class="loading-spinner-large">
+                <svg viewBox="0 0 50 50" class="spinner">
+                  <defs>
+                    <linearGradient id="loadingGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#93c5fd;stop-opacity:1" />
+                      <stop offset="25%" style="stop-color:#60a5fa;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+                      <stop offset="75%" style="stop-color:#2563eb;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+                </svg>
+              </div>
+              <div class="loading-text-center" data-i18n="checkingLoginStatus">Checking login status...</div>
+            </div>
+          </div>
+
+          <!-- Gmail Login Required Screen -->
+          <div id="gmailLoginRequired" class="gmail-login-required" style="display: none;">
+            <div class="login-required-content">
+              <div class="login-icon-wrapper">
+                <svg class="login-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+              </div>
+              <h2 class="login-title" data-i18n="welcomeTitle">Welcome! 👋</h2>
+              <p class="login-description">
+                <span class="fun-text" data-i18n="welcomeFunText1">Want to see who's not following you back? 😏</span>
+                <span class="trust-text" data-i18n="welcomeTrustText">Just sign in with your Google account, your data is safe!</span>
+                <span class="fun-text" data-i18n="welcomeFunText2">Unfollow process is now much easier 😊</span>
+              </p>
+              <div class="security-badges">
+                <div class="security-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                  </svg>
+                  <span data-i18n="secureLogin">Secure Login</span>
+                </div>
+                <div class="security-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span data-i18n="privacyProtected">Privacy Protected</span>
+                </div>
+              </div>
+              <button id="gmailLoginRequiredBtn" class="gmail-login-required-btn">
+                <svg class="google-icon" width="20" height="20" viewBox="0 0 18 18">
+                  <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+                  <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
+                  <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.192 0 7.56 0 9s.348 2.808.957 4.039l3.007-2.332z"/>
+                  <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/>
+                </svg>
+                <span data-i18n="getStartedWithGoogle">Get Started with Google</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Main Content (shown after login) -->
+          <div id="mainContent" style="display: none">
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="loading-container">
+              <div class="loading-spinner">
+                <svg viewBox="0 0 50 50" class="spinner">
+                  <defs>
+                    <linearGradient id="loadingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#93c5fd;stop-opacity:1" />
+                      <stop offset="25%" style="stop-color:#60a5fa;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+                      <stop offset="75%" style="stop-color:#2563eb;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+                </svg>
+              </div>
+              <div class="loading-text" data-i18n="loadingProfile">Loading profile</div>
+            </div>
+
+            <!-- Instagram Profile Info -->
+            <div id="instagramInfo" style="display: none">
+              <div class="instagram-profile">
+                <div class="profile-content">
+                  <div class="profile-header">
+                    <div class="profile-avatar">
+                      <img id="profileImage" src="" alt="Profile">
+                    </div>
+                    <div class="profile-info">
+                      <span class="profile-username" id="igUsername"></span>
+                      <span class="profile-status">• <span data-i18n="connected">Connected</span></span>
+                    </div>
+                  </div>
+                  <div class="profile-stats">
+                    <div class="stat-item">
+                      <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                      </div>
+                      <div class="stat-content">
+                        <div class="stat-value" id="igFollowers">-</div>
+                        <div class="stat-label" data-i18n="followers">Followers</div>
+                      </div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                      <div class="stat-icon">
+                        <i class="fas fa-user-plus"></i>
+                      </div>
+                      <div class="stat-content">
+                        <div class="stat-value" id="igFollowing">-</div>
+                        <div class="stat-label" data-i18n="following">Following</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Instagram Login Alert -->
+            <div id="instagramLoginAlert" style="display: none">
+              <div class="login-alert">
+                <svg class="alert-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <p class="alert-message" data-i18n="instagramLoginAlert">Please login to Instagram first!</p>
+                <button id="loginRedirectBtn" class="login-redirect-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  <span data-i18n="goToInstagramLogin">Go to Instagram Login</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Instagram is throttling us. Deliberately separate from the sign-in panel: telling a
+                 signed-in user to sign in sends them somewhere that cannot help, and hides the one
+                 thing that would — waiting. -->
+            <div id="instagramLimitedAlert" style="display: none">
+              <div class="login-alert">
+                <svg class="alert-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <polyline points="12 7 12 12 15 14"></polyline>
+                </svg>
+                <p class="alert-message" data-i18n="instagramLimitedTitle">Instagram is limiting requests right now</p>
+                <p class="alert-note" data-i18n="instagramLimitedBody">You are still signed in and there is nothing wrong
+                  with your account. This lifts on its own, but there is no fixed wait — it can be hours, or into
+                  tomorrow, depending on how much was done. Trying repeatedly makes it longer.</p>
+                <button id="limitedRetryBtn" class="login-redirect-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12a9 9 0 1 1-3-6.7"></path><polyline points="21 3 21 9 15 9"></polyline>
+                  </svg>
+                  <span data-i18n="tryAgain">Try again</span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Action Button -->
+            <button id="analyzeBtn" class="action-button">
+              <div class="button-content">
+                <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                <span class="button-text" data-i18n="startAnalysis">Start Analysis</span>
+                <svg class="button-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section" id="botscanContent" style="display: none;">
+        <div class="form-container">
+          <div class="botscan-card">
+            <div class="botscan-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="8" width="18" height="12" rx="3"></rect>
+                <path d="M12 8V4"></path><circle cx="12" cy="3" r="1"></circle>
+                <circle cx="8.5" cy="14" r="1.2"></circle><circle cx="15.5" cy="14" r="1.2"></circle>
+              </svg>
+            </div>
+            <h3 data-i18n="botIntroHeading">Find the accounts that aren't real people</h3>
+            <p data-i18n="botPopupBody">Scores every follower on how likely it is to be a bot or a throwaway account — no profile photo, no posts, a generated-looking username, following thousands while almost nobody follows back.</p>
+            <p data-i18n="botPopupReasons">Each score comes with the reasons behind it. Nothing is removed automatically.</p>
+          </div>
+          <button id="openBotScan" class="action-button">
+            <div class="button-content">
+              <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>
+              </svg>
+              <span class="button-text" data-i18n="startBotScan">Start Bot Scan</span>
+              <svg class="button-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="content-section" id="upgradeContent">
+        <div class="upgrade-container">
+          <!-- Campaign Banner -->
+          <div class="campaign-banner">
+            <div class="campaign-icon">🎉</div>
+            <div class="campaign-text">
+              <strong data-i18n="limitedTimeOffer">Limited Time Offer</strong>
+              <span data-i18n="savePremiumOffer">Save 50% on Premium - Best Value</span>
+            </div>
+          </div>
+
+          <!-- Pricing Cards -->
+          <div class="pricing-cards">
+            <!-- Free Plan -->
+            <div class="pricing-card free-card">
+              <div class="plan-header">
+                <h3 class="plan-name" data-i18n="planFree">Free</h3>
+                <div class="plan-price">$0<span class="price-period" data-i18n="perMonth">/month</span></div>
+              </div>
+              <ul class="features-list">
+                <li class="feature-item">
+                  <span class="feature-icon">✓</span>
+                  <span class="feature-text">
+                    <span data-i18n="featureMax50Analysis">Max 40 following analysis</span>
+                    <span class="feature-detail" data-i18n="featureDetailDaily"> (+20/gün)</span>
+                  </span>
+                </li>
+                <li class="feature-item">
+                  <span class="feature-icon">✓</span>
+                  <span class="feature-text" data-i18n="featureBasicUnfollow">Basic unfollow features</span>
+                </li>
+                <li class="feature-item disabled">
+                  <span class="feature-icon">✗</span>
+                  <span class="feature-text" data-i18n="featureSpamDetector">Spam account detector</span>
+                </li>
+                <li class="feature-item disabled">
+                  <span class="feature-icon">✗</span>
+                  <span class="feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
+                </li>
+                <li class="feature-item disabled">
+                  <span class="feature-icon">✗</span>
+                  <span class="feature-text" data-i18n="featureAdvancedFiltering">Advanced filtering</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="pricing-card premium-card featured">
+              <div class="plan-badge" data-i18n="planPopular">Popular</div>
+              <div class="plan-header">
+                <h3 class="plan-name" data-i18n="planPremium">Premium</h3>
+                <div class="plan-price">
+                  <span class="old-price" id="oldPrice">$25</span>
+                  <span class="new-price" id="newPrice">$6.99</span>
+                  <span class="price-period" data-i18n="perMonth">/month</span>
+                </div>
+                <div class="discount-badge">
+                  <span id="discountText" data-i18n="discountOff">50% OFF</span>
+                </div>
+              </div>
+              <ul class="features-list">
+                <li class="feature-item">
+                  <span class="feature-icon">✓</span>
+                  <span class="feature-text" data-i18n="featureUnlimitedFollowingAnalysis">Unlimited following analysis</span>
+                </li>
+                <li class="feature-item">
+                  <span class="feature-icon">✓</span>
+                  <span class="feature-text" data-i18n="featureAdvancedUnfollow">Advanced unfollow features</span>
+                </li>
+                <li class="feature-item">
+                  <span class="feature-icon">✓</span>
+                  <span class="feature-text" data-i18n="featureSpamDetector">Spam account detector</span>
+                </li>
+                <li class="feature-item">
+                  <span class="feature-icon">✓</span>
+                  <span class="feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
+                </li>
+                <li class="feature-item">
+                  <span class="feature-icon">✓</span>
+                  <span class="feature-text" data-i18n="featureAdvancedFilteringReporting">Advanced filtering and reporting</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Subscribe Section -->
+          <div id="subscribeSection" class="subscribe-section">
+            <button
+              id="subscribeButton"
+              class="subscribe-button"
+              style="display: none"
+              data-i18n="upgradeToPremium"
+            >
+              Upgrade to Premium
+            </button>
+            <div id="loginMessage" class="login-message" style="display: none">
+              <p data-i18n="pleaseLoginToUpgrade">Please log in to upgrade to Premium</p>
+            </div>
+          </div>
+
+          <!-- Trust Indicators -->
+          <div class="trust-indicators">
+            <div class="trust-item">
+              <div class="trust-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="trust-content">
+                <div class="trust-value">10,000+</div>
+                <div class="trust-label" data-i18n="activeUsers">Active Users</div>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="trust-content">
+                <div class="trust-value">4.8/5</div>
+                <div class="trust-label" data-i18n="rating">Rating</div>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">
+                <i class="fas fa-headset"></i>
+              </div>
+              <div class="trust-content">
+                <div class="trust-value">24/7</div>
+                <div class="trust-label" data-i18n="support">Support</div>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="trust-content">
+                <div class="trust-value">100%</div>
+                <div class="trust-label" data-i18n="secure">Secure</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section" id="adminContent" style="display: none;">
+        <div class="form-container">
+          <div class="botscan-card">
+            <div class="botscan-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h3 data-i18n="adminIntroHeading">Member console</h3>
+            <p data-i18n="adminPopupBody">List every user of the extension, see their membership, and
+              control it: grant premium, revoke, ban or remove accounts.</p>
+          </div>
+          <button id="openAdminPanel" class="action-button">
+            <div class="button-content">
+              <svg class="button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm10-10V7a4 4 0 0 0-8 0v4h8z"></path>
+              </svg>
+              <span class="button-text" data-i18n="openAdminPanel">Open Admin Panel</span>
+              <svg class="button-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="premium-config.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

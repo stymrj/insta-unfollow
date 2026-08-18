@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "એકાઉન્ટ વિગતો"
+   },
+   "accountsRemaining": {
+      "message": "વધુ $COUNT$ એકાઉન્ટ્સ ઉપલબ્ધ. બધું જોવા",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "સક્રિય વપરાશકર્તાઓ"
+   },
+   "addToWhitelist": {
+      "message": "વ્હાઇટલિસ્ટમાં ઉમેરો"
+   },
+   "allAccountsUnlocked": {
+      "message": "બધા એકાઉન્ટ્સ અનલૉક થયા!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "વપરાશકર્તાઓને અનફોલો કરવામાં આવશે."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram એ તમારી ફૉલોઅર યાદી પ્રોફાઇલ ફોટોની માહિતી વગર મોકલી, તેથી અહીંનો દરેક સ્કોર હોવો જોઈએ તેના કરતાં ઓછો છે અને કેટલાક બૉટ છટકી જશે. પૂરા પરિણામ માટે એક ટૅબમાં Instagram ખોલીને સ્કૅન ફરી ચલાવો."
+   },
+   "botBlindTitle": {
+      "message": "પ્રોફાઇલ ફોટોની તપાસ થઈ શકી નહીં"
+   },
+   "botCleared": {
+      "message": "તેની તરફેણમાં"
+   },
+   "botDeepAllChecked": {
+      "message": "ચિહ્નિત બધાં ખાતાં તપાસાયાં"
+   },
+   "botDeepChecked": {
+      "message": "પ્રોફાઇલ તપાસી"
+   },
+   "botDeepChecksFor": {
+      "message": "$1 ખાતાંની ઊંડી તપાસ કરો"
+   },
+   "botDeepChecksRemaining": {
+      "message": "$1 બાકી ($2 પહેલેથી થઈ ગયા)"
+   },
+   "botDeepDone": {
+      "message": "ઊંડી તપાસ પૂરી — $1 ખાતાં તપાસ્યાં."
+   },
+   "botDeepNoTargets": {
+      "message": "કોઈ ખાતાને ઊંડી તપાસની જરૂર નથી."
+   },
+   "botDeepPausedBody": {
+      "message": "થોભતાં પહેલાં $1 ખાતાં તપાસાયાં અને $2 નહીં. નીચેના ચુકાદા ફક્ત જે વંચાયું તેના પર આધારિત છે. કોઈ નિશ્ચિત રાહ સમય નથી — કલાકો લાગી શકે, અથવા કાલ સુધી. અત્યારે ફરી પ્રયાસ કરવાને બદલે પછી આવો; પ્રયાસ કરવાથી સમય માત્ર વધે છે."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram એ પ્રોફાઇલ તપાસ થોભાવી"
+   },
+   "botDeepRemaining": {
+      "message": "$1 તપાસ્યા વગર રહ્યાં."
+   },
+   "botDeepSubtitle": {
+      "message": "ખાતા દીઠ એક વિનંતી, સલામત ગતિએ."
+   },
+   "botFilterAll": {
+      "message": "બધાં સ્કૅન થયેલાં"
+   },
+   "botFilterLikely": {
+      "message": "સંભવિત બૉટ"
+   },
+   "botFilterSuspicious": {
+      "message": "શંકાસ્પદ"
+   },
+   "botFreeHeadline": {
+      "message": "વધુ ચિહ્નિત ખાતાં લૉક છે"
+   },
+   "botFreeWithheld": {
+      "message": "બીજા $1 મળ્યા — બધા જોવા માટે અપગ્રેડ કરો."
+   },
+   "botIntroHeading": {
+      "message": "જે ખાતાં ખરા લોકો નથી તે શોધો"
+   },
+   "botIntroLead": {
+      "message": "દરેક ફૉલોઅરને તે બૉટ કે વાપરીને ફેંકી દેવાનું ખાતું હોવાની શક્યતા પ્રમાણે સ્કોર મળે છે."
+   },
+   "botIntroReasons": {
+      "message": "દરેક સ્કોર સાથે તેની પાછળનાં કારણો પણ આવે છે, જેથી તમે આંકડા પર ભરોસો કરવાને બદલે જોઈ શકો કે ખાતું કેમ ચિહ્નિત થયું. કશું આપોઆપ દૂર થતું નથી — યાદી તમે જોઈને નક્કી કરો તે માટે છે."
+   },
+   "botNoFlagged": {
+      "message": "કશું ચિહ્નિત નથી — તમારી ફૉલોઅર યાદી સ્વચ્છ લાગે છે."
+   },
+   "botNoRowsForFilter": {
+      "message": "આ જૂથમાં કશું નથી."
+   },
+   "botNoSignals": {
+      "message": "અસામાન્ય કશું નથી"
+   },
+   "botNotRunYet": {
+      "message": "તમારા ફૉલોઅર્સના સ્કોર અહીં જોવા માટે સ્કૅન ચલાવો."
+   },
+   "botPopupBody": {
+      "message": "દરેક ફૉલોઅરને તે બૉટ કે વાપરીને ફેંકી દેવાનું ખાતું હોવાની શક્યતા પ્રમાણે સ્કોર આપે છે: પ્રોફાઇલ ફોટો નથી, પોસ્ટ નથી, બનાવેલું લાગતું યુઝરનેમ, હજારોને ફૉલો કરે છે પણ તેને લગભગ કોઈ નહીં."
+   },
+   "botPopupReasons": {
+      "message": "દરેક સ્કોર સાથે તેની પાછળનાં કારણો પણ આવે છે. કશું આપોઆપ દૂર થતું નથી."
+   },
+   "botProvisionalBody": {
+      "message": "ચિહ્નિત $1 ખાતાંની પ્રોફાઇલ હજી તપાસાઈ નથી. મોટા ભાગના બૉટ આ તપાસથી જ નક્કી થાય છે — \"સંભવિત બૉટ\" સંખ્યા પર ભરોસો કરતાં પહેલાં તે ચલાવો."
+   },
+   "botProvisionalTitle": {
+      "message": "આ ચુકાદા હજી આખરી નથી"
+   },
+   "botReadSubtitle": {
+      "message": "સીધું તમારી ફૉલોઅર યાદીમાંથી વાંચ્યું — કોઈ વધારાની વિનંતી નહીં."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "પ્રોફાઇલ ફોટો નથી"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "સંતુલિત ફૉલોઅર ગુણોત્તર"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "યુઝરનેમમાં ઘણા આંકડા"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "નામ નથી"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "ફૉલોઅર્સ કરતાં ઘણા વધુને ફૉલો કરે છે"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "ખાતા પર બૅજ છે"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "ખૂબ મોટી સંખ્યામાં ખાતાં ફૉલો કરે છે"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "કોઈ ફૉલોઅર્સ નથી"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "ક્યારેય પોસ્ટ કરી નથી"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "નિયમિત પોસ્ટ કરે છે"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "યુઝરનેમ આંકડાઓથી પૂરું થાય છે"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "અસામાન્ય અન્ડરસ્કોર પૅટર્ન"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "ચકાસાયેલ ખાતું"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "અસામાન્ય રીતે લાંબું યુઝરનેમ"
+   },
+   "botRunDeepChecks": {
+      "message": "ઊંડી તપાસ ચલાવો"
+   },
+   "botScanCached": {
+      "message": "છેલ્લું સ્કૅન $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram એ પ્રોફાઇલ તપાસ થોભાવી. નીચેનાં પરિણામો જેટલું વાંચી શકાયું તેમાંથી છે."
+   },
+   "botScanDeepProgress": {
+      "message": "પ્રોફાઇલ તપાસી રહ્યા છીએ… $1/$2"
+   },
+   "botScanDone": {
+      "message": "સ્કૅન પૂરું થયું."
+   },
+   "botScanNoData": {
+      "message": "તમારી ફૉલોઅર યાદી વાંચી શકાઈ નહીં. Instagram અમને રોકી રહ્યું છે — જાતે જ ઠીક થાય છે, પણ નિશ્ચિત સમય નથી. પછી પ્રયાસ કરો."
+   },
+   "botScanPartial": {
+      "message": "સ્કૅન પૂરું થયું, પણ ફૉલોઅર યાદી અધૂરી પાછી આવી — કેટલાક ખાતાં ખૂટે છે."
+   },
+   "botScanReading": {
+      "message": "તમારા ફૉલોઅર્સ વાંચી રહ્યા છીએ…"
+   },
+   "botScanReadingCount": {
+      "message": "ફૉલોઅર્સ વાંચી રહ્યા છીએ… $1"
+   },
+   "botScanTitle": {
+      "message": "બૉટ ફૉલોઅર સ્કૅન"
+   },
+   "botScoreRaw": {
+      "message": "કાચો સ્કોર"
+   },
+   "botSignalName": {
+      "message": "બનાવેલું લાગતું યુઝરનેમ"
+   },
+   "botSignalPhoto": {
+      "message": "પ્રોફાઇલ ફોટો નથી"
+   },
+   "botSignalPosts": {
+      "message": "પોસ્ટ નથી"
+   },
+   "botSignalRatio": {
+      "message": "હજારોને ફૉલો કરે છે, તેને લગભગ કોઈ નહીં"
+   },
+   "botSignalsUnavailable": {
+      "message": "આ ખાતા માટે કેટલીક તપાસ થઈ શકી નહીં, તેથી તેનો સ્કોર બીજાં કરતાં ઓછા પુરાવા પર ટકેલો છે."
+   },
+   "botStatFlagged": {
+      "message": "ચિહ્નિત"
+   },
+   "botStatFollowers": {
+      "message": "ફૉલોઅર્સ"
+   },
+   "botStatFollowing": {
+      "message": "ફૉલોઇંગ"
+   },
+   "botStatLikely": {
+      "message": "સંભવિત બૉટ"
+   },
+   "botStatPosts": {
+      "message": "પોસ્ટ"
+   },
+   "botStatScanned": {
+      "message": "સ્કૅન થયેલાં"
+   },
+   "botStatSuspicious": {
+      "message": "શંકાસ્પદ"
+   },
+   "botStatsGone": {
+      "message": "ખાતું નથી"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram એ કોઈ પ્રોફાઇલ પરત કરી નથી — ખાતું કાઢી નાખ્યું કે બંધ કરી દીધું છે, તેના આંકડા હવે વાંચી શકાતા નથી."
+   },
+   "botStatsNotChecked": {
+      "message": "તપાસ્યું નથી"
+   },
+   "botStepDeep": {
+      "message": "પ્રોફાઇલ તપાસી રહ્યા છીએ"
+   },
+   "botStepReading": {
+      "message": "ફૉલોઅર્સ વાંચી રહ્યા છીએ"
+   },
+   "botTableReasons": {
+      "message": "કેમ"
+   },
+   "botTableScore": {
+      "message": "સ્કોર"
+   },
+   "botTableStats": {
+      "message": "પ્રોફાઇલ આંકડા"
+   },
+   "botTableVerdict": {
+      "message": "ચુકાદો"
+   },
+   "botVerdictClean": {
+      "message": "ખરું લાગે છે"
+   },
+   "botVerdictLikely": {
+      "message": "સંભવિત બૉટ"
+   },
+   "botVerdictSuspicious": {
+      "message": "શંકાસ્પદ"
+   },
+   "cacheExpiryWarning": {
+      "message": "પ્રોફાઇલ ચિત્રો દેખાઈ શકશે નહીં કારણ કે તમારું છેલ્લું વિશ્લેષણ $DAYS$ દિવસ પહેલાં હતું. અપડેટ પરિણામો માટે ફરીથી વિશ્લેષણ કરો.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "છેલ્લું વિશ્લેષણ $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "રદ કરો"
+   },
+   "checkingBeforeStart": {
+      "message": "તપાસી રહ્યા છીએ…"
+   },
+   "checkingLoginStatus": {
+      "message": "લોગિન સ્ટેટસ તપાસી રહ્યા છે..."
+   },
+   "chooseMonthly": {
+      "message": "માસિક પસંદ કરો"
+   },
+   "chooseYearly": {
+      "message": "વાર્ષિક પસંદ કરો"
+   },
+   "comeBackTomorrow": {
+      "message": "આવતીકાલે પાછા આવો"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "તમે દરરોજ +20 વધુ ફોલોઅર્સનું વિશ્લેષણ કરી શકો છો. અધીરા હો તો પ્રીમિયમમાં જાઓ, અત્યારે બધું જુઓ. ધીરજ હોય તો આવતીકાલે પાછા આવો, +20 વધુ ફોલોઅર્સ જોઈ શકો છો. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "વધુ $1 એકાઉન્ટ્સ જોવા આવતીકાલે પાછા આવો (+$2 નવા અનલૉક)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ ચેતવણી!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "શું તમે ખરેખર બધાને અનફોલો કરવા માગો છો?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "ક્રિયા પુષ્ટિ કરો"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "શું તમે ખરેખર બધા નોન-ફોલોઅર્સને અનફોલો કરવા માગો છો?"
+   },
+   "connected": {
+      "message": "જોડાયેલ"
+   },
+   "couldNotFetchFollowing": {
+      "message": "ફોલોઇંગ લિસ્ટ મેળવી શકાઈ નહીં. કૃપા કરીને પછી ફરી પ્રયાસ કરો."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$ક $MINUTES$મિ $SECONDS$સે $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "later"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$મિ $SECONDS$સે $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "later"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "આવતીકાલે +20 વધુ એકાઉન્ટ્સ જોઈ શકો છો ($COUNTDOWN$). દરરોજ +20 એકાઉન્ટ્સ ઉમેરાય છે, મર્યાદાઓ ભેગી થાય છે!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "દૈનિક મર્યાદા"
+   },
+   "dailyScanLimit": {
+      "message": "દૈનિક સ્કેન મર્યાદા"
+   },
+   "dataLoading": {
+      "message": "ડેટા લોડ થઈ રહ્યો છે..."
+   },
+   "dataLoadingFollowers": {
+      "message": "ડેટા લોડ: $COUNT$ ફોલોઅર્સ મળ્યા",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "ડેટા લોડ: $COUNT$ ફોલોઇંગ મળ્યા",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "50% છૂટ"
+   },
+   "email": {
+      "message": "ઇમેઇલ"
+   },
+   "errorFetchingData": {
+      "message": "ડેટા મેળવતી વખતે ભૂલ આવી. કૃપા કરીને પછી ફરી પ્રયાસ કરો."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram અસ્થાયી રૂપે અનુપલબ્ધ છે. કૃપા કરીને પછી ફરી પ્રયાસ કરો."
+   },
+   "errorNetwork": {
+      "message": "Instagram સુધી પહોંચી શકાયું નહીં. તમારું કનેક્શન તપાસો — કશું ખોવાયું નથી અને કામ ચાલુ રહેશે."
+   },
+   "errorNetworkConnection": {
+      "message": "જોડાણ ભૂલ. કૃપા કરીને તમારું ઇન્ટરનેટ તપાસો અને ફરી પ્રયાસ કરો."
+   },
+   "errorOccurred": {
+      "message": "એક ભૂલ આવી. કૃપા કરીને ફરી પ્રયાસ કરો."
+   },
+   "errorRateLimit": {
+      "message": "Instagram એ અમારી વિનંતીઓ થોભાવી. જાતે જ ઠીક થાય છે, પણ કોઈ નિશ્ચિત રાહ સમય નથી — કેટલું કામ થયું તેના પર આધાર રાખીને કલાકો લાગી શકે, અથવા કાલ સુધી. તરત પ્રયાસ કરવાથી તે વધે છે."
+   },
+   "errorSessionExpired": {
+      "message": "તમારું Instagram સેશન સમાપ્ત થયું છે. કૃપા કરીને Instagram પર લોગિન કરો અને ફરી પ્રયાસ કરો."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "ઘણી વધારે અનફોલો વિનંતીઓ. ફરી પ્રયાસ કરતા પહેલા 5 મિનિટ રાહ જોવામાં આવી રહી છે..."
+   },
+   "etaMinutes": {
+      "message": "~$1 મિનિટ બાકી"
+   },
+   "etaSeconds": {
+      "message": "~$1 સેકન્ડ બાકી"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "અનફોલો કરવામાં નિષ્ફળ. કૃપા કરીને ફરી પ્રયાસ કરો."
+   },
+   "featureAdvancedFiltering": {
+      "message": "અદ્યતન ફિલ્ટરિંગ"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "અદ્યતન ફિલ્ટરિંગ અને રિપોર્ટિંગ"
+   },
+   "featureAdvancedNotifications": {
+      "message": "અદ્યતન સૂચના સિસ્ટમ"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "અદ્યતન અનફોલો ફીચર્સ"
+   },
+   "featureBasicUnfollow": {
+      "message": "બેસિક અનફોલો ફીચર્સ"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/દિવસ)"
+   },
+   "featureMax50Analysis": {
+      "message": "મહત્તમ 40 ફોલોઇંગ વિશ્લેષણ"
+   },
+   "featureSpamDetector": {
+      "message": "સ્પામ એકાઉન્ટ ડિટેક્ટર"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "અમર્યાદિત વિશ્લેષણ"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "અમર્યાદિત ફોલોઇંગ વિશ્લેષણ"
+   },
+   "finalizingAnalysis": {
+      "message": "અંતિમ તબક્કો..."
+   },
+   "firstDayBonus": {
+      "message": "પ્રથમ દિવસનો બોનસ"
+   },
+   "firstDayBonusMessage": {
+      "message": "પ્રથમ દિવસનો બોનસ: 40 એકાઉન્ટ્સ! આવતીકાલે +20 વધુ એકાઉન્ટ્સ જોઈ શકો છો ($COUNTDOWN$). દરરોજ +20 એકાઉન્ટ્સ ઉમેરાય છે.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "followers": {
+      "message": "ફોલોઅર્સ"
+   },
+   "following": {
+      "message": "ફોલોઇંગ"
+   },
+   "followingYouBadge": {
+      "message": "તમને ફોલો કરે છે"
+   },
+   "freePlanLimitDescription": {
+      "message": "તમે 40 વિશ્લેષણની મર્યાદા સુધી પહોંચી ગયા છો. અમર્યાદિત વિશ્લેષણ માટે પ્રીમિયમમાં અપગ્રેડ કરો!"
+   },
+   "freePlanLimitReached": {
+      "message": "મફત પ્લાનની મર્યાદા પૂરી"
+   },
+   "freePlanTodayMessage": {
+      "message": "મફત પ્લાનમાં તમે આજે $DISPLAYED$ એકાઉન્ટ્સ જોઈ શકો છો. વધુ $HIDDEN$ એકાઉન્ટ્સ છે પરંતુ તમે તે જોઈ શકતા નથી.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "મફત પ્લાનમાં તમે આજે $COUNT$ એકાઉન્ટ્સ જોઈ શકો છો.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "મફત પ્લાન સાથે તમે ફક્ત $COUNT$ વપરાશકર્તાઓને અનફોલો કરી શકો છો. કૃપા કરીને ફક્ત પ્રથમ $COUNT$ વપરાશકર્તાઓ પસંદ કરો અથવા પ્રીમિયમમાં અપગ્રેડ કરો.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "મફત પ્લાન સાથે તમે ફક્ત $COUNT$ વપરાશકર્તાઓને અનફોલો કરી શકો છો. અમર્યાદિત અનફોલો માટે પ્રીમિયમમાં અપગ્રેડ કરો!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "પૂરું નામ"
+   },
+   "getStartedWithGoogle": {
+      "message": "Google સાથે શરૂ કરો"
+   },
+   "goToInstagramLogin": {
+      "message": "Instagram લોગિન પર જાઓ"
+   },
+   "gotIt": {
+      "message": "ઠીક છે"
+   },
+   "incompleteDataMessage": {
+      "message": "આખી યાદી આવે તે પહેલાં જ Instagram એ ડેટા મોકલવાનું બંધ કરી દીધું, તેથી કેટલાક ખાતાં ખૂટે છે. અત્યારે પગલું લેવાથી જે લોકો ખરેખર તમને ફૉલો કરે છે તેમને અનફૉલો થઈ શકે છે. પહેલાં વિશ્લેષણ ફરી ચલાવો."
+   },
+   "incompleteDataTitle": {
+      "message": "યાદી અધૂરી છે"
+   },
+   "instagramLimitedBody": {
+      "message": "તમે હજી લૉગ ઇન છો અને તમારા ખાતામાં કશું ખોટું નથી. આ જાતે જ ઠીક થાય છે, પણ કોઈ નિશ્ચિત રાહ સમય નથી — કેટલું કામ થયું તેના પર આધાર રાખીને કલાકો લાગી શકે, અથવા કાલ સુધી. વારંવાર પ્રયાસ કરવાથી તે લંબાય છે."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram અત્યારે વિનંતીઓ મર્યાદિત કરી રહ્યું છે"
+   },
+   "instagramLoginAlert": {
+      "message": "કૃપા કરીને પહેલા Instagram પર લોગિન કરો!"
+   },
+   "invalidWaitingTime": {
+      "message": "કૃપા કરીને 3 થી 300 સેકન્ડ વચ્ચે માન્ય રાહ સમય દાખલ કરો"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "અમાન્ય રાહ સમય"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 સેકન્ડ મંજૂર મર્યાદાની બહાર છે. $2 થી $3 સેકન્ડ વચ્ચેનું મૂલ્ય દાખલ કરો."
+   },
+   "later": {
+      "message": "પછી"
+   },
+   "limitedTimeOffer": {
+      "message": "મર્યાદિત સમયની ઑફર"
+   },
+   "liveCounterPrefix": {
+      "message": "છેલ્લા 24 કલાકમાં"
+   },
+   "liveCounterSuffix": {
+      "message": "લોકોએ પ્રીમિયમમાં અપગ્રેડ કર્યું!"
+   },
+   "loading": {
+      "message": "લોડ થઈ રહ્યું છે..."
+   },
+   "loadingProfile": {
+      "message": "પ્રોફાઇલ લોડ થઈ રહી છે"
+   },
+   "loadingSavedAnalysis": {
+      "message": "તમારું સાચવેલું વિશ્લેષણ લોડ થઈ રહ્યું છે…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Instagram પાસેથી કશું માગવામાં આવતું નથી."
+   },
+   "login": {
+      "message": "લોગિન"
+   },
+   "loginFailed": {
+      "message": "લોગિન નિષ્ફળ: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Unknown error"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "લોગિન જરૂરી"
+   },
+   "loginSuccessful": {
+      "message": "લોગિન સફળ!"
+   },
+   "loginWithGoogle": {
+      "message": "Google સાથે સાઇન ઇન કરો"
+   },
+   "logout": {
+      "message": "લોગઆઉટ"
+   },
+   "logoutError": {
+      "message": "લોગઆઉટ કરતી વખતે ભૂલ આવી: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Unknown error"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "સબ્સ્ક્રિપ્શન મેનેજ કરો"
+   },
+   "membership": {
+      "message": "સભ્યપદ"
+   },
+   "menuBotScan": {
+      "message": "બૉટ સ્કૅન"
+   },
+   "menuHome": {
+      "message": "હોમ"
+   },
+   "menuProfile": {
+      "message": "પ્રોફાઇલ"
+   },
+   "menuUpgrade": {
+      "message": "અપગ્રેડ"
+   },
+   "minutesTest": {
+      "message": "$1 મિનિટ (ટેસ્ટ)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "વધુ $1 એકાઉન્ટ્સ ઉપલબ્ધ"
+   },
+   "moreInHours": {
+      "message": "$2 કલાકમાં તમે +$1 વધુ ફોલોઅર્સ જોઈ શકો છો"
+   },
+   "nextCheckTime": {
+      "message": "આગામી ચેક: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "2:30 PM"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "આગામી ચેક: આવતીકાલે"
+   },
+   "nextInSeconds": {
+      "message": "આગામી $SECONDS$s માં",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "કોઈ નોન-ફોલોઅર્સ નથી"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "અનફોલો કરવા માટે કોઈ નોન-ફોલોઅર્સ નથી."
+   },
+   "noUsers": {
+      "message": "કોઈ વપરાશકર્તા નથી"
+   },
+   "noUsersToUnfollow": {
+      "message": "અનફોલો કરવા માટે કોઈ વપરાશકર્તા નથી."
+   },
+   "notFollowingYouBadge": {
+      "message": "તમને ફોલો કરતા નથી"
+   },
+   "notProvided": {
+      "message": "પ્રદાન કરવામાં આવ્યું નથી"
+   },
+   "ok": {
+      "message": "ઠીક"
+   },
+   "opening": {
+      "message": "ખોલી રહ્યા છે..."
+   },
+   "openingInNewTab": {
+      "message": "નવી ટેબમાં ખોલી રહ્યા છે..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/મહિનો"
+   },
+   "perYear": {
+      "message": "/વર્ષ"
+   },
+   "planFree": {
+      "message": "મફત"
+   },
+   "planPopular": {
+      "message": "લોકપ્રિય"
+   },
+   "planPremium": {
+      "message": "પ્રીમિયમ"
+   },
+   "planPremiumYearly": {
+      "message": "પ્રીમિયમ વાર્ષિક"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "સબ્સ્ક્રાઇબ કરવા કૃપા કરીને ફરી લોગિન કરો"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "કૃપા કરીને પહેલા Instagram પર લોગિન કરો"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "પ્રીમિયમમાં અપગ્રેડ કરવા કૃપા કરીને લોગિન કરો"
+   },
+   "pleaseSignInToView": {
+      "message": "તમારી એકાઉન્ટ માહિતી જોવા કૃપા કરીને સાઇન ઇન કરો"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "પ્રીમિયમ સાથે અત્યારે બધા $COUNT$ એકાઉન્ટ્સ જુઓ, કોઈ મર્યાદા નહીં!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "ગોપનીયતા સુરક્ષિત"
+   },
+   "processStarted": {
+      "message": "પ્રક્રિયા શરૂ થઈ"
+   },
+   "processing": {
+      "message": "પ્રક્રિયા થઈ રહી છે..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram એ થોભવાનું કહ્યું — $1 સેકન્ડમાં ફરી શરૂ"
+   },
+   "rating": {
+      "message": "રેટિંગ"
+   },
+   "reAnalyze": {
+      "message": "ફરી વિશ્લેષણ કરો"
+   },
+   "reAnalyzing": {
+      "message": "ફરી વિશ્લેષણ થઈ રહ્યું છે..."
+   },
+   "removeFromWhitelist": {
+      "message": "વ્હાઇટલિસ્ટમાંથી દૂર કરો"
+   },
+   "retryIn": {
+      "message": "$SECONDS$s માં ફરી પ્રયાસ...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "પ્રીમિયમ પર 50% બચાવો - શ્રેષ્ઠ મૂલ્ય"
+   },
+   "saveSettings": {
+      "message": "સેટિંગ્સ સેવ કરો"
+   },
+   "scanBlockedBody": {
+      "message": "આ સામાન્ય છે, જાતે જ ઠીક થઈ જાય છે, અને તમારા ખાતામાં કે એક્સ્ટેંશનમાં કશું ખોટું નથી. ફરી પ્રયાસ કરવાને બદલે અમે તરત જ અટકી ગયા, કારણ કે વારંવાર પ્રયાસ કરવાથી રાહ વધુ લાંબી થાય છે. આજે થોડી વાર પછી ફરી પ્રયાસ કરો."
+   },
+   "scanBlockedListFollowers": {
+      "message": "ફૉલોઅર યાદી અત્યારે વાંચી શકાઈ નહીં."
+   },
+   "scanBlockedListFollowing": {
+      "message": "ફૉલોઇંગ યાદી અત્યારે વાંચી શકાઈ નહીં."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram ને થોડો વિરામ જોઈએ છે"
+   },
+   "scanPartialBody": {
+      "message": "થોડો ભાગ આવ્યો અને પછી Instagram એ અમને થોભાવ્યા, તેથી પરિણામો પગલું લેવા જેટલાં પૂરાં નથી. કશું બદલાયું નથી. પછી આવીને વિશ્લેષણ ફરી ચલાવો — આમાં કલાકો લાગી શકે અને અત્યારે પ્રયાસ કરવાથી સમય વધે છે."
+   },
+   "scanPartialTitle": {
+      "message": "યાદી અધૂરી પાછી આવી"
+   },
+   "scanPaused": {
+      "message": "Instagram એ ધીમે જવાનું કહ્યું — રાહ જોઈ રહ્યા છીએ…"
+   },
+   "scanRemaining": {
+      "message": "$1 ખાતાં બાકી"
+   },
+   "scanShortBody": {
+      "message": "સ્કૅન પૂરું થયું, પણ Instagram કહે છે તેના કરતાં ઓછાં ખાતાં પાછાં આવ્યાં. તેના પર પગલું લેવાથી તમને ફૉલો કરતા લોકોને અનફૉલો થઈ શકે છે, તેથી કશું બતાવ્યું નથી. કૃપા કરી વિશ્લેષણ ફરી ચલાવો."
+   },
+   "scanShortTitle": {
+      "message": "કેટલાક ખાતાં ખૂટે છે"
+   },
+   "seconds": {
+      "message": "સેકન્ડ"
+   },
+   "secure": {
+      "message": "સુરક્ષિત"
+   },
+   "secureLogin": {
+      "message": "સુરક્ષિત લોગિન"
+   },
+   "sessionExpiredTitle": {
+      "message": "તમારું Instagram સત્ર પૂરું થયું"
+   },
+   "showOnlyNonFollowers": {
+      "message": "ફક્ત નોન-ફોલોઅર્સ બતાવો"
+   },
+   "showingFirstAccounts": {
+      "message": "પ્રથમ $COUNT$ એકાઉન્ટ્સ બતાવી રહ્યા છે.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "તમને ફોલો કરતા એકાઉન્ટ્સ છોડો"
+   },
+   "skipVerifiedAccounts": {
+      "message": "ચકાસાયેલ એકાઉન્ટ્સ છોડો"
+   },
+   "startAnalysis": {
+      "message": "વિશ્લેષણ શરૂ કરો"
+   },
+   "startBotScan": {
+      "message": "બૉટ સ્કૅન શરૂ કરો"
+   },
+   "startUnfollow": {
+      "message": "અનફોલો શરૂ કરો"
+   },
+   "startingAnalysis": {
+      "message": "વિશ્લેષણ શરૂ થઈ રહ્યું છે..."
+   },
+   "statFailed": {
+      "message": "નિષ્ફળ"
+   },
+   "statFollowers": {
+      "message": "ફોલોઅર્સ"
+   },
+   "statFollowing": {
+      "message": "ફોલોઇંગ"
+   },
+   "statNonFollowers": {
+      "message": "ફોલો કરતા નથી"
+   },
+   "statRemaining": {
+      "message": "ફોલો કરતા નથી"
+   },
+   "statUnfollowed": {
+      "message": "અનફોલો કર્યું"
+   },
+   "stop": {
+      "message": "રોકો"
+   },
+   "stopping": {
+      "message": "રોકી રહ્યા છીએ…"
+   },
+   "support": {
+      "message": "સપોર્ટ"
+   },
+   "tableAction": {
+      "message": "ક્રિયા"
+   },
+   "tableFollowingYou": {
+      "message": "તમને ફોલો કરે છે"
+   },
+   "tableFullName": {
+      "message": "પૂરું નામ"
+   },
+   "tablePrivate": {
+      "message": "ખાનગી"
+   },
+   "tableProfile": {
+      "message": "પ્રોફાઇલ"
+   },
+   "tableUsername": {
+      "message": "યુઝરનેમ"
+   },
+   "tableVerified": {
+      "message": "ચકાસાયેલ"
+   },
+   "testNow": {
+      "message": "અત્યારે ટેસ્ટ કરો"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ આ ક્રિયા પાછી ફેરવી શકાતી નથી!"
+   },
+   "toRemoveLimits": {
+      "message": "મર્યાદાઓ દૂર કરવા"
+   },
+   "trendDown": {
+      "message": "છેલ્લા વિશ્લેષણથી $COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "કોઈ ફેરફાર નથી"
+   },
+   "trendUp": {
+      "message": "છેલ્લા વિશ્લેષણથી +$COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ દિવસ બાકી",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "આવતીકાલે +20 વધુ એકાઉન્ટ્સ જોઈ શકો છો ($COUNTDOWN$). દરરોજ +20 એકાઉન્ટ્સ ઉમેરાય છે, મર્યાદાઓ ભેગી થાય છે!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "11h 13m 14s later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "તમારો મફત ટ્રાયલ સમાપ્ત થયો. આજે તમે $COUNT$ એકાઉન્ટ્સ જોઈ શકો છો.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "ટ્રાયલ પિરિયડ સમાપ્ત"
+   },
+   "tryAgain": {
+      "message": "ફરી પ્રયાસ કરો"
+   },
+   "tryAnyway": {
+      "message": "તોય પ્રયાસ કરો"
+   },
+   "unfollow": {
+      "message": "અનફોલો"
+   },
+   "unfollowDelayLabel": {
+      "message": "અનફોલો વિલંબ (સેકન્ડ)"
+   },
+   "unfollowEveryone": {
+      "message": "બધાને અનફોલો કરો"
+   },
+   "unfollowFailed": {
+      "message": "નિષ્ફળ"
+   },
+   "unfollowNonFollowers": {
+      "message": "નોન-ફોલોઅર્સને અનફોલો કરો"
+   },
+   "unfollowProcessStarted": {
+      "message": "અનફોલો પ્રક્રિયા શરૂ થઈ ગઈ છે."
+   },
+   "unfollowSettings": {
+      "message": "અનફોલો સેટિંગ્સ"
+   },
+   "unfollowWaitDetail": {
+      "message": "દરેક અનફૉલો વચ્ચે $1 સેકન્ડ."
+   },
+   "unfollowedSuccess": {
+      "message": "અનફોલો થયું"
+   },
+   "unfollowing": {
+      "message": "અનફોલો થઈ રહ્યું છે..."
+   },
+   "unknownError": {
+      "message": "અજ્ઞાત ભૂલ"
+   },
+   "upgradeToPremium": {
+      "message": "પ્રીમિયમમાં અપગ્રેડ કરો"
+   },
+   "upgradeToPremiumButton": {
+      "message": "પ્રીમિયમમાં અપગ્રેડ કરો"
+   },
+   "upgradeToSeeAll": {
+      "message": "બધા એકાઉન્ટ્સ જોવા પ્રીમિયમમાં અપગ્રેડ કરો!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "વપરાશકર્તાઓને અનફોલો કરવામાં આવશે."
+   },
+   "waitingSeconds": {
+      "message": "$SECONDS$s રાહ જોઈ રહ્યા છે",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "સેકન્ડમાં રાહ જોવાનો સમય (3-300)"
+   },
+   "welcomeFunText1": {
+      "message": "કોણ તમને ફોલો બેક નથી કરતું જોવું છે? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "અનફોલો પ્રક્રિયા હવે ઘણી સરળ છે 😊"
+   },
+   "welcomeTitle": {
+      "message": "સ્વાગત છે! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "ફક્ત તમારા Google એકાઉન્ટ સાથે સાઇન ઇન કરો, તમારો ડેટા સુરક્ષિત છે!"
+   },
+   "whitelist": {
+      "message": "વ્હાઇટલિસ્ટ"
+   },
+   "whitelisted": {
+      "message": "સુરક્ષિત"
+   },
+   "whitelistedSkipped": {
+      "message": "છોડ્યું (વ્હાઇટલિસ્ટેડ)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 આવતીકાલે અનલૉક થશે"
+   },
+   "writeBlockedMessage": {
+      "message": "આ ખાતા પર સ્વયંસંચાલિત અનફૉલો સ્વીકારવાનું Instagram એ થોડા સમય માટે બંધ કર્યું છે. આ કામચલાઉ છે અને તમારા ખાતામાં કશું ખોટું નથી.\n\nત્યાં સુધી તમે પ્રોફાઇલ પેજ પરથી હાથે અનફૉલો કરી શકો છો, અને તમારી યાદી અહીં જ રહેશે — કશું વપરાયું નથી."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram અત્યારે અનફૉલો મર્યાદિત કરી રહ્યું છે"
+   },
+   "yesUnfollow": {
+      "message": "હા, અનફોલો કરો"
+   },
+   "yesUnfollowAll": {
+      "message": "હા, બધાને અનફોલો કરો"
+   }
+}

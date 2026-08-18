@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Maelezo ya Akaunti"
+   },
+   "accountsRemaining": {
+      "message": "Akaunti $COUNT$ zaidi zinapatikana. Kuona zote",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Watumiaji Hai"
+   },
+   "addToWhitelist": {
+      "message": "Ongeza kwenye orodha nyeupe"
+   },
+   "allAccountsUnlocked": {
+      "message": "Akaunti zote zimefunguliwa!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "watumiaji wataachwa kufuatwa."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram ilirudisha orodha yako ya wafuasi bila data ya picha ya wasifu, hivyo kila alama hapa iko chini kuliko inavyostahili na baadhi ya boti zitakosekana. Fungua Instagram kwenye kichupo kisha uendeshe uchunguzi tena kwa matokeo kamili."
+   },
+   "botBlindTitle": {
+      "message": "Ukaguzi wa picha ya wasifu haukuweza kufanyika"
+   },
+   "botCleared": {
+      "message": "Kwa manufaa yake"
+   },
+   "botDeepAllChecked": {
+      "message": "Akaunti zote zilizowekewa alama zimekaguliwa"
+   },
+   "botDeepChecked": {
+      "message": "Wasifu umekaguliwa"
+   },
+   "botDeepChecksFor": {
+      "message": "Kagua kwa kina akaunti $1"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Zimebaki $1 ($2 tayari zimefanyika)"
+   },
+   "botDeepDone": {
+      "message": "Ukaguzi wa kina umekamilika — akaunti $1 zimekaguliwa."
+   },
+   "botDeepNoTargets": {
+      "message": "Hakuna akaunti inayohitaji ukaguzi wa kina."
+   },
+   "botDeepPausedBody": {
+      "message": "Kabla ya kusimama, akaunti $1 zilikaguliwa na $2 hazikukaguliwa. Maamuzi yaliyo hapa chini yanategemea tu kile kilichosomwa. Hakuna muda maalum wa kusubiri — inaweza kuchukua saa kadhaa, au hadi kesho. Rudi baadaye badala ya kujaribu sasa; kujaribu huongeza muda tu."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram ilisitisha ukaguzi wa wasifu"
+   },
+   "botDeepRemaining": {
+      "message": "$1 hazikukaguliwa."
+   },
+   "botDeepSubtitle": {
+      "message": "Ombi moja kwa kila akaunti, kwa mwendo salama."
+   },
+   "botFilterAll": {
+      "message": "Zote zilizochunguzwa"
+   },
+   "botFilterLikely": {
+      "message": "Yawezekana ni boti"
+   },
+   "botFilterSuspicious": {
+      "message": "Zenye shaka"
+   },
+   "botFreeHeadline": {
+      "message": "akaunti nyingine zilizowekewa alama zimefungwa"
+   },
+   "botFreeWithheld": {
+      "message": "Zimepatikana nyingine $1 — pandisha daraja ili uzione zote."
+   },
+   "botIntroHeading": {
+      "message": "Tafuta akaunti ambazo si watu halisi"
+   },
+   "botIntroLead": {
+      "message": "Kila mfuasi hupimwa kwa uwezekano wa kuwa boti au akaunti ya kutupa."
+   },
+   "botIntroReasons": {
+      "message": "Kila alama huja na sababu zake, ili uone kwa nini akaunti iliwekewa alama badala ya kuamini namba tu. Hakuna kinachoondolewa kiotomatiki — orodha ipo hapa uiangalie na uamue mwenyewe."
+   },
+   "botNoFlagged": {
+      "message": "Hakuna iliyowekewa alama — orodha yako ya wafuasi inaonekana safi."
+   },
+   "botNoRowsForFilter": {
+      "message": "Hakuna kitu katika kundi hili."
+   },
+   "botNoSignals": {
+      "message": "Hakuna kisicho cha kawaida"
+   },
+   "botNotRunYet": {
+      "message": "Endesha uchunguzi ili uone alama za wafuasi wako hapa."
+   },
+   "botPopupBody": {
+      "message": "Hupima kila mfuasi kwa uwezekano wa kuwa boti au akaunti ya kutupa: hakuna picha ya wasifu, hakuna machapisho, jina la mtumiaji linaloonekana limetengenezwa, anafuata maelfu wakati karibu hakuna anayemfuata."
+   },
+   "botPopupReasons": {
+      "message": "Kila alama huja na sababu zake. Hakuna kinachoondolewa kiotomatiki."
+   },
+   "botProvisionalBody": {
+      "message": "Akaunti $1 zilizowekewa alama bado hazijakaguliwa wasifu. Boti nyingi huthibitishwa tu kwa ukaguzi huo — uendeshe kabla ya kuamini idadi ya \"yawezekana ni boti\"."
+   },
+   "botProvisionalTitle": {
+      "message": "Maamuzi haya bado si ya mwisho"
+   },
+   "botReadSubtitle": {
+      "message": "Inasomwa moja kwa moja kutoka orodha yako ya wafuasi — hakuna maombi ya ziada."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Hakuna picha ya wasifu"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Uwiano sawa wa wafuasi"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Tarakimu nyingi kwenye jina la mtumiaji"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Hakuna jina"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Anafuata wengi kuliko wanaomfuata"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Ina beji ya akaunti"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Anafuata akaunti nyingi mno"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Hakuna wafuasi"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Haijawahi kuchapisha"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Anachapisha mara kwa mara"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Jina la mtumiaji linaishia na tarakimu"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Mpangilio usio wa kawaida wa mistari ya chini"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Akaunti imethibitishwa"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Jina la mtumiaji refu kupita kiasi"
+   },
+   "botRunDeepChecks": {
+      "message": "Endesha ukaguzi wa kina"
+   },
+   "botScanCached": {
+      "message": "Uchunguzi wa mwisho $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram ilisitisha ukaguzi wa wasifu. Matokeo yaliyo hapa chini yanatoka kwenye kile kilichosomwa."
+   },
+   "botScanDeepProgress": {
+      "message": "Tunakagua wasifu… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Uchunguzi umekamilika."
+   },
+   "botScanNoData": {
+      "message": "Orodha yako ya wafuasi haikuweza kusomwa. Instagram inatuzuia — hujirekebisha yenyewe, lakini hakuna muda maalum. Jaribu baadaye."
+   },
+   "botScanPartial": {
+      "message": "Uchunguzi umeisha, lakini orodha ya wafuasi ilirudi haijakamilika — baadhi ya akaunti hazipo."
+   },
+   "botScanReading": {
+      "message": "Tunasoma wafuasi wako…"
+   },
+   "botScanReadingCount": {
+      "message": "Tunasoma wafuasi… $1"
+   },
+   "botScanTitle": {
+      "message": "Uchunguzi wa Wafuasi Boti"
+   },
+   "botScoreRaw": {
+      "message": "Alama ghafi"
+   },
+   "botSignalName": {
+      "message": "Jina la mtumiaji linaloonekana limetengenezwa"
+   },
+   "botSignalPhoto": {
+      "message": "Hakuna picha ya wasifu"
+   },
+   "botSignalPosts": {
+      "message": "Hakuna machapisho"
+   },
+   "botSignalRatio": {
+      "message": "Anafuata maelfu, karibu hakuna anayemfuata"
+   },
+   "botSignalsUnavailable": {
+      "message": "Kwa akaunti hii baadhi ya ukaguzi haukuweza kufanyika, hivyo alama yake inategemea ushahidi mdogo kuliko nyingine."
+   },
+   "botStatFlagged": {
+      "message": "Zilizowekewa alama"
+   },
+   "botStatFollowers": {
+      "message": "Wafuasi"
+   },
+   "botStatFollowing": {
+      "message": "Anafuata"
+   },
+   "botStatLikely": {
+      "message": "Yawezekana ni boti"
+   },
+   "botStatPosts": {
+      "message": "Machapisho"
+   },
+   "botStatScanned": {
+      "message": "Zilizochunguzwa"
+   },
+   "botStatSuspicious": {
+      "message": "Zenye shaka"
+   },
+   "botStatsGone": {
+      "message": "Akaunti haipo"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram hairudishi wasifu wowote — akaunti imefutwa au kuzimwa, namba zake haziwezi kusomwa tena."
+   },
+   "botStatsNotChecked": {
+      "message": "Haijakaguliwa"
+   },
+   "botStepDeep": {
+      "message": "Tunakagua wasifu"
+   },
+   "botStepReading": {
+      "message": "Tunasoma wafuasi"
+   },
+   "botTableReasons": {
+      "message": "Kwa nini"
+   },
+   "botTableScore": {
+      "message": "Alama"
+   },
+   "botTableStats": {
+      "message": "Namba za wasifu"
+   },
+   "botTableVerdict": {
+      "message": "Uamuzi"
+   },
+   "botVerdictClean": {
+      "message": "Inaonekana halisi"
+   },
+   "botVerdictLikely": {
+      "message": "Yawezekana ni boti"
+   },
+   "botVerdictSuspicious": {
+      "message": "Yenye shaka"
+   },
+   "cacheExpiryWarning": {
+      "message": "Picha za wasifu huenda zisionekane kwa sababu uchambuzi wako wa mwisho ulikuwa siku $DAYS$ zilizopita. Tafadhali chambua tena kwa matokeo yaliyosasishwa.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Uchambuzi wa mwisho $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Tunakagua…"
+   },
+   "checkingLoginStatus": {
+      "message": "Inaangalia hali ya kuingia..."
+   },
+   "chooseMonthly": {
+      "message": "Chagua Kila Mwezi"
+   },
+   "chooseYearly": {
+      "message": "Chagua Kila Mwaka"
+   },
+   "comeBackTomorrow": {
+      "message": "Rudi kesho"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Unaweza kuchambua +20 wafuatiliaji zaidi kila siku. Ikiwa huna subira, badilisha kwa Premium, waone wote sasa. Ikiwa una subira, rudi kesho, utaweza kuona +20 wafuatiliaji zaidi. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Rudi kesho ili uone akaunti $1 zaidi (+$2 ufunguzi mpya)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Una uhakika unataka kuacha kufuata WOTE?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Thibitisha kitendo"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Una uhakika unataka kuacha kufuata wote wasiokufuata?"
+   },
+   "connected": {
+      "message": "Imeunganishwa"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Haiwezekani kupata orodha. Jaribu baadaye."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$saa $MINUTES$dak $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "baadaye"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$dak $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "baadaye"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Kesho unaweza kuona +20 akaunti zaidi ($COUNTDOWN$). Kila siku +20 akaunti huongezwa, mipaka inaongezeka!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5saa 30dak baadaye"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Kikomo cha Kila Siku"
+   },
+   "dailyScanLimit": {
+      "message": "Kikomo cha Uchunguzi wa Kila Siku"
+   },
+   "dataLoading": {
+      "message": "Inapakia data..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Inapakia: $COUNT$ wafuasi wamepatikana",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Inapakia: $COUNT$ wanaofuatwa wamepatikana",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "PUNGUZO 50%"
+   },
+   "email": {
+      "message": "Barua pepe"
+   },
+   "errorFetchingData": {
+      "message": "Hitilafu kupata data. Jaribu tena."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram haipatikani kwa muda. Jaribu tena baadaye."
+   },
+   "errorNetwork": {
+      "message": "Haikuweza kufikia Instagram. Angalia muunganisho wako — hakuna kilichopotea na kazi itaendelea."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "Hitilafu imetokea. Jaribu tena."
+   },
+   "errorRateLimit": {
+      "message": "Instagram ilisitisha maombi yetu. Hujirekebisha yenyewe, lakini hakuna muda maalum wa kusubiri — kutegemea kiasi kilichofanyika, inaweza kuchukua saa kadhaa, au hadi kesho. Kujaribu mara moja huongeza muda."
+   },
+   "errorSessionExpired": {
+      "message": "Kipindi chako cha Instagram kimeisha. Ingia kwenye Instagram kisha ujaribu tena."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~dakika $1 zimebaki"
+   },
+   "etaSeconds": {
+      "message": "~sekunde $1 zimebaki"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Unfollow imeshindikana. Jaribu tena."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Kuchuja kwa hali ya juu"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Vichujio na ripoti"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Mfumo wa Arifa wa Hali ya Juu"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Unfollow wa hali ya juu"
+   },
+   "featureBasicUnfollow": {
+      "message": "Unfollow wa msingi"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/siku)"
+   },
+   "featureMax50Analysis": {
+      "message": "Upeo 40 uchambuzi"
+   },
+   "featureSpamDetector": {
+      "message": "Kugundua spam"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Uchambuzi usio na kikomo"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Uchambuzi usio na kikomo"
+   },
+   "finalizingAnalysis": {
+      "message": "Inamalizia..."
+   },
+   "firstDayBonus": {
+      "message": "Zawadi ya Siku ya Kwanza"
+   },
+   "firstDayBonusMessage": {
+      "message": "Bonasi ya siku ya kwanza: akaunti 40! Kesho unaweza kuona +20 akaunti zaidi ($COUNTDOWN$). Kila siku +20 akaunti huongezwa.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5saa 30dak baadaye"
+         }
+      }
+   },
+   "followers": {
+      "message": "Wafuasi"
+   },
+   "following": {
+      "message": "Unafuata"
+   },
+   "followingYouBadge": {
+      "message": "Anakufuata"
+   },
+   "freePlanLimitDescription": {
+      "message": "Umefikiwa uchambuzi 40. Boresha Premium!"
+   },
+   "freePlanLimitReached": {
+      "message": "Kikomo cha Bure Kimefikiwa"
+   },
+   "freePlanTodayMessage": {
+      "message": "Kwa mpango wa bure, unaweza kuona akaunti $DISPLAYED$ leo. Kuna akaunti $HIDDEN$ zaidi lakini huwezi kuona.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Kwa mpango wa bure, unaweza kuona akaunti $COUNT$ leo.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Kwa mpango wa bure unaweza tu kuacha kufuata hadi watumiaji $COUNT$. Tafadhali chagua watumiaji $COUNT$ wa kwanza tu au sasisha kwa Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Kwa mpango wa bure unaweza tu kuacha kufuata hadi watumiaji $COUNT$. Sasisha kwa Premium kwa kuacha kufuata bila kikomo!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Jina"
+   },
+   "getStartedWithGoogle": {
+      "message": "Jisajili na Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Nenda Instagram"
+   },
+   "gotIt": {
+      "message": "Sawa"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram iliacha kutuma data kabla orodha nzima haijafika, hivyo baadhi ya akaunti hazipo. Kuchukua hatua sasa kunaweza kuacha kufuata watu ambao kwa kweli wanakufuata. Endesha uchambuzi tena kwanza."
+   },
+   "incompleteDataTitle": {
+      "message": "Orodha haijakamilika"
+   },
+   "instagramLimitedBody": {
+      "message": "Bado umeingia na hakuna tatizo lolote kwenye akaunti yako. Hii hujirekebisha yenyewe, lakini hakuna muda maalum wa kusubiri — kutegemea kiasi kilichofanyika, inaweza kuchukua saa kadhaa, au hadi kesho. Kujaribu mara kwa mara huongeza muda."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram inazuia maombi kwa sasa"
+   },
+   "instagramLoginAlert": {
+      "message": "Ingia Instagram kwanza!"
+   },
+   "invalidWaitingTime": {
+      "message": "Weka muda halali 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Muda wa kusubiri si sahihi"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "Sekunde $1 ziko nje ya kiwango kinachoruhusiwa. Weka thamani kati ya sekunde $2 na $3."
+   },
+   "later": {
+      "message": "baadaye"
+   },
+   "limitedTimeOffer": {
+      "message": "Ofa ya Muda"
+   },
+   "liveCounterPrefix": {
+      "message": "Katika masaa 24 yaliyopita"
+   },
+   "liveCounterSuffix": {
+      "message": "watu wamekuboresha hadi Premium!"
+   },
+   "loading": {
+      "message": "Inapakia..."
+   },
+   "loadingProfile": {
+      "message": "Inapakia wasifu"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Tunapakia uchambuzi wako uliohifadhiwa…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Hakuna kinachoombwa kutoka Instagram."
+   },
+   "login": {
+      "message": "Ingia"
+   },
+   "loginFailed": {
+      "message": "Kuingia kumeshindikana: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Hitilafu isiyojulikana"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Kuingia Kunahitajika"
+   },
+   "loginSuccessful": {
+      "message": "Kuingia kumefanikiwa!"
+   },
+   "loginWithGoogle": {
+      "message": "Ingia na Google"
+   },
+   "logout": {
+      "message": "Toka"
+   },
+   "logoutError": {
+      "message": "Hitilafu ya kutoka: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Hitilafu isiyojulikana"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Simamia Usajili"
+   },
+   "membership": {
+      "message": "Uanachama"
+   },
+   "menuBotScan": {
+      "message": "Uchunguzi wa Boti"
+   },
+   "menuHome": {
+      "message": "Nyumbani"
+   },
+   "menuProfile": {
+      "message": "Wasifu"
+   },
+   "menuUpgrade": {
+      "message": "Boresha"
+   },
+   "minutesTest": {
+      "message": "Dakika $1 (Jaribio)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "Akaunti $1 zaidi zinapatikana"
+   },
+   "moreInHours": {
+      "message": "Baada ya $2 masaa utaweza kuona +$1 wafuatiliaji zaidi"
+   },
+   "nextCheckTime": {
+      "message": "Ukaguzi unaofuata: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Ukaguzi unaofuata: Kesho"
+   },
+   "nextInSeconds": {
+      "message": "Inayofuata baada ya $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Hakuna wasiokufuata"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Hakuna wasiokufuata wa kuacha kufuata."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Hakuna watumiaji wa kuacha kufuata."
+   },
+   "notFollowingYouBadge": {
+      "message": "Hakufuati"
+   },
+   "notProvided": {
+      "message": "Haijatolewa"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Inafungua..."
+   },
+   "openingInNewTab": {
+      "message": "Inafungua kwenye tab mpya..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/mwezi"
+   },
+   "perYear": {
+      "message": "/mwaka"
+   },
+   "planFree": {
+      "message": "Bure"
+   },
+   "planPopular": {
+      "message": "Maarufu"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Kila Mwaka"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Ingia kwa usajili"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Ingia Instagram kwanza"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Ingia ili kuboresha"
+   },
+   "pleaseSignInToView": {
+      "message": "Ingia kuona maelezo"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Kwa Premium, ona akaunti zote $COUNT$ sasa, hakuna mipaka!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Faragha Inalindwa"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Inachakata..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram iliomba tusimame kidogo — tutaendelea baada ya sekunde $1"
+   },
+   "rating": {
+      "message": "Ukadiriaji"
+   },
+   "reAnalyze": {
+      "message": "Changanua tena"
+   },
+   "reAnalyzing": {
+      "message": "Inachanganua tena..."
+   },
+   "removeFromWhitelist": {
+      "message": "Ondoa kwenye orodha nyeupe"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Punguzo 50% Premium"
+   },
+   "saveSettings": {
+      "message": "Hifadhi"
+   },
+   "scanBlockedBody": {
+      "message": "Hili ni la kawaida, hujirekebisha lenyewe, na hakuna tatizo lolote kwenye akaunti yako wala kwenye kiendelezi. Tulisimama mara moja badala ya kujaribu tena, kwa sababu majaribio ya kurudia hurefusha usubiri. Jaribu tena baadaye leo."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Orodha ya wafuasi haikuweza kusomwa kwa sasa."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Orodha ya unaowafuata haikuweza kusomwa kwa sasa."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram inataka mapumziko mafupi"
+   },
+   "scanPartialBody": {
+      "message": "Sehemu ilifika kisha Instagram ikatusimamisha, hivyo matokeo hayajakamilika vya kutosha kuchukulia hatua. Hakuna kilichobadilishwa. Rudi baadaye kisha uendeshe uchambuzi tena — hii inaweza kuchukua saa kadhaa, na kujaribu sasa huongeza muda."
+   },
+   "scanPartialTitle": {
+      "message": "Orodha ilirudi haijakamilika"
+   },
+   "scanPaused": {
+      "message": "Instagram iliomba tupunguze kasi — tunasubiri…"
+   },
+   "scanRemaining": {
+      "message": "Zimebaki akaunti $1"
+   },
+   "scanShortBody": {
+      "message": "Uchunguzi umeisha, lakini akaunti zilizorudi ni chache kuliko Instagram inavyosema. Kuchukua hatua kwa hili kunaweza kuacha kufuata watu wanaokufuata, hivyo hakuna kinachooneshwa. Tafadhali endesha uchambuzi tena."
+   },
+   "scanShortTitle": {
+      "message": "Baadhi ya akaunti hazipo"
+   },
+   "seconds": {
+      "message": "sekunde"
+   },
+   "secure": {
+      "message": "Salama"
+   },
+   "secureLogin": {
+      "message": "Kuingia Salama"
+   },
+   "sessionExpiredTitle": {
+      "message": "Kipindi chako cha Instagram kimeisha"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Wasiofuata tu"
+   },
+   "showingFirstAccounts": {
+      "message": "Inaonyesha akaunti $COUNT$ za kwanza.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Ruka wafuasi"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Ruka zilizothibitishwa"
+   },
+   "startAnalysis": {
+      "message": "Anza Uchambuzi"
+   },
+   "startBotScan": {
+      "message": "Anza Uchunguzi wa Boti"
+   },
+   "startUnfollow": {
+      "message": "Anza Unfollow"
+   },
+   "startingAnalysis": {
+      "message": "Inaanza uchambuzi..."
+   },
+   "statFailed": {
+      "message": "Imeshindikana"
+   },
+   "statFollowers": {
+      "message": "Wafuasi"
+   },
+   "statFollowing": {
+      "message": "Unafuata"
+   },
+   "statNonFollowers": {
+      "message": "Hawafuati"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Imefuatwa"
+   },
+   "stop": {
+      "message": "Simama"
+   },
+   "stopping": {
+      "message": "Tunasimamisha…"
+   },
+   "support": {
+      "message": "Msaada"
+   },
+   "tableAction": {
+      "message": "Kitendo"
+   },
+   "tableFollowingYou": {
+      "message": "Anakufuata"
+   },
+   "tableFullName": {
+      "message": "Jina"
+   },
+   "tablePrivate": {
+      "message": "Faragha"
+   },
+   "tableProfile": {
+      "message": "Wasifu"
+   },
+   "tableUsername": {
+      "message": "Mtumiaji"
+   },
+   "tableVerified": {
+      "message": "Imethibitishwa"
+   },
+   "testNow": {
+      "message": "Jaribu Sasa"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Kitendo hiki hakiwezi kutenduliwa!"
+   },
+   "toRemoveLimits": {
+      "message": "ili kuondoa vikomo"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Siku $COUNT$ zimebaki",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Kipindi cha majaribio kimekwisha"
+   },
+   "tryAgain": {
+      "message": "Jaribu tena"
+   },
+   "tryAnyway": {
+      "message": "Jaribu hata hivyo"
+   },
+   "unfollow": {
+      "message": "Unfollow"
+   },
+   "unfollowDelayLabel": {
+      "message": "Kuchelewa (sekunde)"
+   },
+   "unfollowEveryone": {
+      "message": "Acha Kufuata Wote"
+   },
+   "unfollowFailed": {
+      "message": "Imeshindwa"
+   },
+   "unfollowNonFollowers": {
+      "message": "Acha Kufuata Wasiokuwa Wafuasi"
+   },
+   "unfollowProcessStarted": {
+      "message": "Mchakato wa kuacha kufuata umeanza."
+   },
+   "unfollowSettings": {
+      "message": "Mipangilio ya Unfollow"
+   },
+   "unfollowWaitDetail": {
+      "message": "Sekunde $1 kati ya kila kuacha kufuata."
+   },
+   "unfollowedSuccess": {
+      "message": "Imefuatwa"
+   },
+   "unfollowing": {
+      "message": "Unfollow..."
+   },
+   "unknownError": {
+      "message": "Hitilafu isiyojulikana"
+   },
+   "upgradeToPremium": {
+      "message": "Boresha hadi Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Kuboresha hadi Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium kwa wote!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "watumiaji wataachwa kufuatwa."
+   },
+   "waitingSeconds": {
+      "message": "Inasubiri $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Muda wa kusubiri (sekunde 3-300)"
+   },
+   "welcomeFunText1": {
+      "message": "Unataka kuona nani hakufuati? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Kuacha kufuata sasa ni rahisi 😊"
+   },
+   "welcomeTitle": {
+      "message": "Karibu! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Ingia na Google, data yako ni salama!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 zitafunguliwa kesho"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram imesitisha kwa muda kupokea vitendo vya kuacha kufuata kiotomatiki kwenye akaunti hii. Ni jambo la muda na hakuna tatizo kwenye akaunti yako.\n\nWakati huo bado unaweza kuacha kufuata kwa mkono kutoka ukurasa wa wasifu, na orodha yako inabaki hapa — hakuna kilichotumika."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram inazuia kuacha kufuata kwa sasa"
+   },
+   "yesUnfollow": {
+      "message": "Ndiyo, acha kufuata"
+   },
+   "yesUnfollowAll": {
+      "message": "Ndiyo, acha kufuata wote"
+   }
+}

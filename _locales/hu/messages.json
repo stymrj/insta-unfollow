@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Fiók Részletei"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ fiók még elérhető. Az összes megtekintéséhez",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Aktív Felhasználók"
+   },
+   "addToWhitelist": {
+      "message": "Hozzáadás a fehérlistához"
+   },
+   "allAccountsUnlocked": {
+      "message": "Minden fiók feloldva!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "fiókot fogunk lekövetni."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Az Instagram profilkép-adatok nélkül adta vissza a követői listádat, így itt minden pontszám alacsonyabb a kelleténél, és néhány bot elkerüli a figyelmet. Nyisd meg az Instagramot egy lapon, és futtasd újra a vizsgálatot a teljes eredményért."
+   },
+   "botBlindTitle": {
+      "message": "A profilkép-ellenőrzést nem lehetett elvégezni"
+   },
+   "botCleared": {
+      "message": "Mellette szól"
+   },
+   "botDeepAllChecked": {
+      "message": "Minden megjelölt fiók ellenőrizve"
+   },
+   "botDeepChecked": {
+      "message": "Profil ellenőrizve"
+   },
+   "botDeepChecksFor": {
+      "message": "$1 fiók mélyellenőrzése"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Még $1 van hátra ($2 kész)"
+   },
+   "botDeepDone": {
+      "message": "A mélyellenőrzés befejeződött — $1 fiók ellenőrizve."
+   },
+   "botDeepNoTargets": {
+      "message": "Egyetlen fiók sem igényel mélyellenőrzést."
+   },
+   "botDeepPausedBody": {
+      "message": "A leállás előtt $1 fiók lett ellenőrizve, $2 pedig nem. Az alábbi ítéletek csak azon alapulnak, amit sikerült beolvasni. Nincs fix várakozási idő — órákig is eltarthat, vagy holnapig. Gyere vissza később, ahelyett hogy most újrapróbálkoznál, ami csak meghosszabbítja."
+   },
+   "botDeepPausedTitle": {
+      "message": "Az Instagram szüneteltette a profilellenőrzéseket"
+   },
+   "botDeepRemaining": {
+      "message": "$1 maradt ellenőrizetlenül."
+   },
+   "botDeepSubtitle": {
+      "message": "Fiókonként egy lekérés, biztonságos ütemben."
+   },
+   "botFilterAll": {
+      "message": "Összes megvizsgált"
+   },
+   "botFilterLikely": {
+      "message": "Valószínű botok"
+   },
+   "botFilterSuspicious": {
+      "message": "Gyanús"
+   },
+   "botFreeHeadline": {
+      "message": "további megjelölt fiók zárolva"
+   },
+   "botFreeWithheld": {
+      "message": "Még $1 található — válts Premiumra, hogy mindet lásd."
+   },
+   "botIntroHeading": {
+      "message": "Találd meg a fiókokat, amelyek mögött nincs valódi ember"
+   },
+   "botIntroLead": {
+      "message": "Minden követő pontot kap aszerint, mennyire valószínű, hogy bot vagy eldobható fiók."
+   },
+   "botIntroReasons": {
+      "message": "Minden pontszám mellett ott vannak az indokai is, hogy lásd, miért lett megjelölve egy fiók, ahelyett hogy egy számban kellene bíznod. Semmi nem törlődik automatikusan — a lista azért van itt, hogy megnézd és eldöntsd."
+   },
+   "botNoFlagged": {
+      "message": "Semmi megjelölve — a követői listád tisztának tűnik."
+   },
+   "botNoRowsForFilter": {
+      "message": "Ebben a csoportban nincs semmi."
+   },
+   "botNoSignals": {
+      "message": "Semmi szokatlan"
+   },
+   "botNotRunYet": {
+      "message": "Indíts vizsgálatot, hogy itt lásd a követőid pontszámait."
+   },
+   "botPopupBody": {
+      "message": "Minden követőt pontoz aszerint, mennyire valószínű, hogy bot vagy eldobható fiók: nincs profilkép, nincs bejegyzés, generáltnak tűnő felhasználónév, ezreket követ, miközben őt szinte senki."
+   },
+   "botPopupReasons": {
+      "message": "Minden pontszám mellett ott vannak az indokai is. Semmi nem törlődik automatikusan."
+   },
+   "botProvisionalBody": {
+      "message": "$1 megjelölt fióknál még nem történt profilellenőrzés. A botok többsége csak ezzel az ellenőrzéssel igazolódik — futtasd le, mielőtt a valószínű botok számában megbíznál."
+   },
+   "botProvisionalTitle": {
+      "message": "Ezek az ítéletek még nem véglegesek"
+   },
+   "botReadSubtitle": {
+      "message": "Közvetlenül a követői listádból olvasva — nincs plusz lekérés."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Nincs profilkép"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Kiegyensúlyozott követőarány"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Sok számjegy a felhasználónévben"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Nincs megjelenített név"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Sokkal többet követ, mint ahányan őt"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Van fiókjelvénye"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Nagyon sok fiókot követ"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Nincsenek követői"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Soha nem posztolt"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Rendszeresen posztol"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "A felhasználónév számsorral végződik"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Szokatlan aláhúzásminta"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Ellenőrzött fiók"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Szokatlanul hosszú felhasználónév"
+   },
+   "botRunDeepChecks": {
+      "message": "Mélyellenőrzés futtatása"
+   },
+   "botScanCached": {
+      "message": "Utolsó vizsgálat $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Az Instagram szüneteltette a profilellenőrzést. Az alábbi eredmények abból származnak, amit sikerült beolvasni."
+   },
+   "botScanDeepProgress": {
+      "message": "Profilok ellenőrzése… $1/$2"
+   },
+   "botScanDone": {
+      "message": "A vizsgálat kész."
+   },
+   "botScanNoData": {
+      "message": "A követői listád nem volt beolvasható. Az Instagram visszatart minket — magától elmúlik, de fix várakozási idő nélkül. Próbáld később."
+   },
+   "botScanPartial": {
+      "message": "A vizsgálat befejeződött, de a követői lista hiányosan érkezett vissza — néhány fiók hiányzik."
+   },
+   "botScanReading": {
+      "message": "Követőid beolvasása…"
+   },
+   "botScanReadingCount": {
+      "message": "Követők beolvasása… $1"
+   },
+   "botScanTitle": {
+      "message": "Bot követők vizsgálata"
+   },
+   "botScoreRaw": {
+      "message": "Nyers pontszám"
+   },
+   "botSignalName": {
+      "message": "Generáltnak tűnő felhasználónév"
+   },
+   "botSignalPhoto": {
+      "message": "Nincs profilkép"
+   },
+   "botSignalPosts": {
+      "message": "Nincs bejegyzés"
+   },
+   "botSignalRatio": {
+      "message": "Ezreket követ, őt szinte senki"
+   },
+   "botSignalsUnavailable": {
+      "message": "Ennél a fióknál néhány ellenőrzést nem lehetett elvégezni, így a pontszáma kevesebb adatra támaszkodik, mint a többié."
+   },
+   "botStatFlagged": {
+      "message": "Megjelölve"
+   },
+   "botStatFollowers": {
+      "message": "Követők"
+   },
+   "botStatFollowing": {
+      "message": "Követve"
+   },
+   "botStatLikely": {
+      "message": "Valószínű botok"
+   },
+   "botStatPosts": {
+      "message": "Bejegyzések"
+   },
+   "botStatScanned": {
+      "message": "Megvizsgálva"
+   },
+   "botStatSuspicious": {
+      "message": "Gyanús"
+   },
+   "botStatsGone": {
+      "message": "A fiók nincs meg"
+   },
+   "botStatsGoneHint": {
+      "message": "Az Instagram nem adott vissza profilt — a fiókot törölték vagy deaktiválták, a számai már nem olvashatók."
+   },
+   "botStatsNotChecked": {
+      "message": "Nincs ellenőrizve"
+   },
+   "botStepDeep": {
+      "message": "Profilok ellenőrzése"
+   },
+   "botStepReading": {
+      "message": "Követők beolvasása"
+   },
+   "botTableReasons": {
+      "message": "Miért"
+   },
+   "botTableScore": {
+      "message": "Pontszám"
+   },
+   "botTableStats": {
+      "message": "Profiladatok"
+   },
+   "botTableVerdict": {
+      "message": "Ítélet"
+   },
+   "botVerdictClean": {
+      "message": "Valódinak tűnik"
+   },
+   "botVerdictLikely": {
+      "message": "Valószínűleg bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Gyanús"
+   },
+   "cacheExpiryWarning": {
+      "message": "A profilképek nem jelenhetnek meg, mert az utolsó elemzés $DAYS$ napja volt. Kérjük, elemezzen újra a frissített eredményekért.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Utolsó elemzés $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Ellenőrzés…"
+   },
+   "checkingLoginStatus": {
+      "message": "Bejelentkezési állapot ellenőrzése..."
+   },
+   "chooseMonthly": {
+      "message": "Válassz Havi"
+   },
+   "chooseYearly": {
+      "message": "Válassz Éves"
+   },
+   "comeBackTomorrow": {
+      "message": "Gyere vissza holnap"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Minden nap +20 követőt többet elemezhetsz. Ha türelmetlen vagy, válts Premiumra, lásd mindet most. Ha türelmes vagy, gyere vissza holnap, +20 követőt többet láthatsz. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Gyere vissza holnap, hogy $1 további fiókot láss (+$2 új feloldás)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Biztosan lekövetsz MINDENKIT?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Művelet megerősítése"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Biztosan lekövetsz mindenkit, aki nem követ vissza?"
+   },
+   "connected": {
+      "message": "Csatlakozva"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Lista lekérése sikertelen. Próbáld később."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$ó $MINUTES$p $SECONDS$m $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "később"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$p $SECONDS$m $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "később"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Holnap +20 fiókot láthatsz ($COUNTDOWN$). Minden nap +20 fiók kerül hozzáadásra, a limitek halmozódnak!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5ó 30p később"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Napi Limit"
+   },
+   "dailyScanLimit": {
+      "message": "Napi Scan Limit"
+   },
+   "dataLoading": {
+      "message": "Adatok betöltése..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Betöltés: $COUNT$ követő találva",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Betöltés: $COUNT$ követett találva",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "-50%"
+   },
+   "email": {
+      "message": "E-mail"
+   },
+   "errorFetchingData": {
+      "message": "Adatlekérési hiba. Próbáld újra."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Az Instagram átmenetileg nem érhető el. Próbáld újra később."
+   },
+   "errorNetwork": {
+      "message": "Nem sikerült elérni az Instagramot. Ellenőrizd a kapcsolatot — semmi nem veszett el, a folyamat folytatódik."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "Hiba történt. Próbáld újra."
+   },
+   "errorRateLimit": {
+      "message": "Az Instagram szüneteltette a kéréseinket. Magától elmúlik, de nincs fix várakozási idő — attól függően, mennyi történt, órákig is eltarthat, vagy holnapig. Az azonnali újrapróbálkozás meghosszabbítja."
+   },
+   "errorSessionExpired": {
+      "message": "Az Instagram-munkameneted lejárt. Jelentkezz be az Instagramra, és próbáld újra."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 perc maradt"
+   },
+   "etaSeconds": {
+      "message": "~$1 mp maradt"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Törlés sikertelen. Próbáld újra."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Haladó szűrés"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Szűrők és riportok"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Fejlett Értesítési Rendszer"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Haladó törlés"
+   },
+   "featureBasicUnfollow": {
+      "message": "Alap követés törlés"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/nap)"
+   },
+   "featureMax50Analysis": {
+      "message": "Max 40 elemzés"
+   },
+   "featureSpamDetector": {
+      "message": "Spam észlelés"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Korlátlan elemzés"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Korlátlan elemzés"
+   },
+   "finalizingAnalysis": {
+      "message": "Befejezés..."
+   },
+   "firstDayBonus": {
+      "message": "Első Nap Bónusz"
+   },
+   "firstDayBonusMessage": {
+      "message": "Első nap bónusz: 40 fiók! Holnap +20 fiókot láthatsz ($COUNTDOWN$). Minden nap +20 fiók kerül hozzáadásra.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5ó 30p később"
+         }
+      }
+   },
+   "followers": {
+      "message": "Követők"
+   },
+   "following": {
+      "message": "Követett"
+   },
+   "followingYouBadge": {
+      "message": "Követ"
+   },
+   "freePlanLimitDescription": {
+      "message": "Elérted az 40-es limitet. Premium a korlátlanhoz!"
+   },
+   "freePlanLimitReached": {
+      "message": "Ingyenes Limit Elérve"
+   },
+   "freePlanTodayMessage": {
+      "message": "Az ingyenes csomaggal ma $DISPLAYED$ fiókot láthatsz. Van még $HIDDEN$ fiók, de nem láthatod őket.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Az ingyenes csomaggal ma $COUNT$ fiókot láthatsz.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Az ingyenes csomagban csak $COUNT$ felhasználóig törölhetsz. Kérjük, válassz csak az első $COUNT$ felhasználót vagy frissíts Premiumra.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Az ingyenes csomagban csak $COUNT$ felhasználóig törölhetsz. Frissíts Premiumra korlátlan törléshez!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Név"
+   },
+   "getStartedWithGoogle": {
+      "message": "Regisztráció Google-lal"
+   },
+   "goToInstagramLogin": {
+      "message": "Ugrás Instagramra"
+   },
+   "gotIt": {
+      "message": "OK"
+   },
+   "incompleteDataMessage": {
+      "message": "Az Instagram abbahagyta az adatküldést, mielőtt a teljes lista megérkezett volna, így néhány fiók hiányzik. Most cselekedni azt jelentheti, hogy olyanokat követsz vissza le, akik valóban követnek. Előbb futtasd le újra az elemzést."
+   },
+   "incompleteDataTitle": {
+      "message": "A lista hiányos"
+   },
+   "instagramLimitedBody": {
+      "message": "Továbbra is be vagy jelentkezve, és a fiókoddal semmi baj nincs. Ez magától elmúlik, de nincs fix várakozási idő — attól függően, mennyi történt, órákig is eltarthat, vagy holnapig. Az ismételt próbálkozás meghosszabbítja."
+   },
+   "instagramLimitedTitle": {
+      "message": "Az Instagram jelenleg korlátozza a kéréseket"
+   },
+   "instagramLoginAlert": {
+      "message": "Először jelentkezz be az Instagramba!"
+   },
+   "invalidWaitingTime": {
+      "message": "Adj meg érvényes időt 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Érvénytelen várakozási idő"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 másodperc kívül esik a megengedett tartományon. Adj meg egy értéket $2 és $3 másodperc között."
+   },
+   "later": {
+      "message": "később"
+   },
+   "limitedTimeOffer": {
+      "message": "Korlátozott Ajánlat"
+   },
+   "liveCounterPrefix": {
+      "message": "Az elmúlt 24 órában"
+   },
+   "liveCounterSuffix": {
+      "message": "ember frissített Premium-ra!"
+   },
+   "loading": {
+      "message": "Betöltés..."
+   },
+   "loadingProfile": {
+      "message": "Profil betöltése"
+   },
+   "loadingSavedAnalysis": {
+      "message": "A mentett elemzésed betöltése…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Semmit nem kérünk le az Instagramról."
+   },
+   "login": {
+      "message": "Bejelentkezés"
+   },
+   "loginFailed": {
+      "message": "Bejelentkezés sikertelen: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Ismeretlen hiba"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Bejelentkezés Szükséges"
+   },
+   "loginSuccessful": {
+      "message": "Sikeres bejelentkezés!"
+   },
+   "loginWithGoogle": {
+      "message": "Belépés Google-lal"
+   },
+   "logout": {
+      "message": "Kijelentkezés"
+   },
+   "logoutError": {
+      "message": "Kijelentkezési hiba: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Ismeretlen hiba"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Előfizetés Kezelése"
+   },
+   "membership": {
+      "message": "Tagság"
+   },
+   "menuBotScan": {
+      "message": "Botvizsgálat"
+   },
+   "menuHome": {
+      "message": "Kezdőlap"
+   },
+   "menuProfile": {
+      "message": "Profil"
+   },
+   "menuUpgrade": {
+      "message": "Frissítés"
+   },
+   "minutesTest": {
+      "message": "$1 perc (Teszt)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 további fiók elérhető"
+   },
+   "moreInHours": {
+      "message": "$2 óra múlva +$1 követőt többet láthatsz"
+   },
+   "nextCheckTime": {
+      "message": "Következő ellenőrzés: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Következő ellenőrzés: Holnap"
+   },
+   "nextInSeconds": {
+      "message": "Következő $SECONDS$mp múlva",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Nincs visszakövetés nélküli fiók"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Nincs visszakövetés nélküli fiók, amit le lehetne követni."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Nincs fiók, amit le lehetne követni."
+   },
+   "notFollowingYouBadge": {
+      "message": "Nem Követ"
+   },
+   "notProvided": {
+      "message": "Nincs megadva"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Megnyitás..."
+   },
+   "openingInNewTab": {
+      "message": "Megnyitás új lapon..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/hó"
+   },
+   "perYear": {
+      "message": "/év"
+   },
+   "planFree": {
+      "message": "Ingyenes"
+   },
+   "planPopular": {
+      "message": "Népszerű"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Éves"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Jelentkezz be az előfizetéshez"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Először jelentkezz be az Instagramba"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Jelentkezz be a frissítéshez"
+   },
+   "pleaseSignInToView": {
+      "message": "Jelentkezz be az adatok megtekintéséhez"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Premium-mal most az összes $COUNT$ fiókot lásd, nincs limit!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Védett Magánélet"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Feldolgozás..."
+   },
+   "rateLimitWaiting": {
+      "message": "Az Instagram szünetet kért — folytatás $1 mp múlva"
+   },
+   "rating": {
+      "message": "Értékelés"
+   },
+   "reAnalyze": {
+      "message": "Újraelemzés"
+   },
+   "reAnalyzing": {
+      "message": "Újraelemzés..."
+   },
+   "removeFromWhitelist": {
+      "message": "Eltávolítás a fehérlistáról"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "50% kedvezmény Premium"
+   },
+   "saveSettings": {
+      "message": "Mentés"
+   },
+   "scanBlockedBody": {
+      "message": "Ez gyakori, magától elmúlik, és sem a fiókoddal, sem a bővítménnyel nincs semmi baj. Azonnal megálltunk ahelyett, hogy újrapróbálkoztunk volna, mert az ismételt próbálkozás csak hosszabbítja a várakozást. Próbáld később ma."
+   },
+   "scanBlockedListFollowers": {
+      "message": "A követők listáját most nem sikerült beolvasni."
+   },
+   "scanBlockedListFollowing": {
+      "message": "A követettek listáját most nem sikerült beolvasni."
+   },
+   "scanBlockedTitle": {
+      "message": "Az Instagram rövid szünetet kér"
+   },
+   "scanPartialBody": {
+      "message": "Egy része megérkezett, aztán az Instagram szüneteltetett minket, így az eredmények nem elég teljesek ahhoz, hogy cselekedj rajtuk. Semmi nem változott. Gyere vissza később, és futtasd újra az elemzést — ez órákig is eltarthat, és a most újrapróbálkozás meghosszabbítja."
+   },
+   "scanPartialTitle": {
+      "message": "A lista hiányosan érkezett vissza"
+   },
+   "scanPaused": {
+      "message": "Az Instagram lassítást kért — várunk…"
+   },
+   "scanRemaining": {
+      "message": "Még $1 fiók"
+   },
+   "scanShortBody": {
+      "message": "A vizsgálat befejeződött, de kevesebb fiók érkezett vissza, mint amennyit az Instagram a listához megad. Cselekedni rajta olyanokat követhetne vissza le, akik követnek, ezért semmi nem jelenik meg. Futtasd újra az elemzést."
+   },
+   "scanShortTitle": {
+      "message": "Néhány fiók hiányzik"
+   },
+   "seconds": {
+      "message": "másodperc"
+   },
+   "secure": {
+      "message": "Biztonságos"
+   },
+   "secureLogin": {
+      "message": "Biztonságos Belépés"
+   },
+   "sessionExpiredTitle": {
+      "message": "Az Instagram-munkameneted véget ért"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Csak nem követők"
+   },
+   "showingFirstAccounts": {
+      "message": "Első $COUNT$ fiók megjelenítve.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Követők kihagyása"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Ellenőrzöttek kihagyása"
+   },
+   "startAnalysis": {
+      "message": "Elemzés Indítása"
+   },
+   "startBotScan": {
+      "message": "Botvizsgálat indítása"
+   },
+   "startUnfollow": {
+      "message": "Törlés Indítása"
+   },
+   "startingAnalysis": {
+      "message": "Elemzés indítása..."
+   },
+   "statFailed": {
+      "message": "Sikertelen"
+   },
+   "statFollowers": {
+      "message": "Követők"
+   },
+   "statFollowing": {
+      "message": "Követve"
+   },
+   "statNonFollowers": {
+      "message": "Nem követ vissz"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Törölve"
+   },
+   "stop": {
+      "message": "Leállítás"
+   },
+   "stopping": {
+      "message": "Leállítás…"
+   },
+   "support": {
+      "message": "Támogatás"
+   },
+   "tableAction": {
+      "message": "Művelet"
+   },
+   "tableFollowingYou": {
+      "message": "Követ Téged"
+   },
+   "tableFullName": {
+      "message": "Név"
+   },
+   "tablePrivate": {
+      "message": "Privát"
+   },
+   "tableProfile": {
+      "message": "Profil"
+   },
+   "tableUsername": {
+      "message": "Felhasználó"
+   },
+   "tableVerified": {
+      "message": "Ellenőrzött"
+   },
+   "testNow": {
+      "message": "Tesztelés most"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Ezt a műveletet nem lehet visszavonni!"
+   },
+   "toRemoveLimits": {
+      "message": "a korlátok eltávolításához"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Még $COUNT$ nap",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "A próbaidőszak lejárt"
+   },
+   "tryAgain": {
+      "message": "Újra"
+   },
+   "tryAnyway": {
+      "message": "Mindenképp megpróbálom"
+   },
+   "unfollow": {
+      "message": "Törlés"
+   },
+   "unfollowDelayLabel": {
+      "message": "Késleltetés (mp)"
+   },
+   "unfollowEveryone": {
+      "message": "Mindenki Követésének Megszüntetése"
+   },
+   "unfollowFailed": {
+      "message": "Sikertelen"
+   },
+   "unfollowNonFollowers": {
+      "message": "Nem Követők Követésének Megszüntetése"
+   },
+   "unfollowProcessStarted": {
+      "message": "A lekövetés elindult."
+   },
+   "unfollowSettings": {
+      "message": "Törlés Beállítások"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 másodperc két követés-visszavonás között."
+   },
+   "unfollowedSuccess": {
+      "message": "Törölve"
+   },
+   "unfollowing": {
+      "message": "Törlés..."
+   },
+   "unknownError": {
+      "message": "Ismeretlen hiba"
+   },
+   "upgradeToPremium": {
+      "message": "Premium-ra Váltás"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Frissítés Premium-ra"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium az összeshez!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "fiókot fogunk lekövetni."
+   },
+   "waitingSeconds": {
+      "message": "Várakozás $SECONDS$mp",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Várakozási idő (3-300 mp)"
+   },
+   "welcomeFunText1": {
+      "message": "Látni akarod, ki nem követ vissza? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "A követés törlése most egyszerű 😊"
+   },
+   "welcomeTitle": {
+      "message": "Üdvözöljük! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Jelentkezz be Google-lal, adataid biztonságban!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 holnap lesz feloldva"
+   },
+   "writeBlockedMessage": {
+      "message": "Az Instagram ezen a fiókon átmenetileg nem fogad el automatikus követés-visszavonást. Ez átmeneti, és a fiókoddal semmi baj nincs.\n\nAddig is kézzel továbbra is le tudsz követni a profiloldalról, a listád pedig itt marad — semmi nem használódott el."
+   },
+   "writeBlockedTitle": {
+      "message": "Az Instagram most korlátozza a követés visszavonását"
+   },
+   "yesUnfollow": {
+      "message": "Igen, lekövetem"
+   },
+   "yesUnfollowAll": {
+      "message": "Igen, mindenkit lekövetek"
+   }
+}

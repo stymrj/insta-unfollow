@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "账户详情"
+   },
+   "accountsRemaining": {
+      "message": "还有$COUNT$个账户可用。要查看全部",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "活跃用户"
+   },
+   "addToWhitelist": {
+      "message": "添加到白名单"
+   },
+   "allAccountsUnlocked": {
+      "message": "所有账户已解锁！"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "个用户将被取消关注。"
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram 返回的粉丝列表不含头像数据，因此这里的每个分数都低于应有值，部分机器人会被漏掉。请在标签页中打开 Instagram，然后重新运行扫描以获得完整结果。"
+   },
+   "botBlindTitle": {
+      "message": "无法执行头像核查"
+   },
+   "botCleared": {
+      "message": "有利依据"
+   },
+   "botDeepAllChecked": {
+      "message": "已标记的账号全部核查完毕"
+   },
+   "botDeepChecked": {
+      "message": "已核查主页"
+   },
+   "botDeepChecksFor": {
+      "message": "深度核查 $1 个账号"
+   },
+   "botDeepChecksRemaining": {
+      "message": "还剩 $1 个（$2 个已完成）"
+   },
+   "botDeepDone": {
+      "message": "深度核查完成 — 已核查 $1 个账号。"
+   },
+   "botDeepNoTargets": {
+      "message": "没有账号需要深度核查。"
+   },
+   "botDeepPausedBody": {
+      "message": "停止前核查了 $1 个账号，$2 个未核查。以下判定仅基于已读取的部分。没有固定等待时间——可能需要数小时，甚至到明天。请稍后再来，而不是现在重试，那只会延长时间。"
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram 暂停了主页核查"
+   },
+   "botDeepRemaining": {
+      "message": "$1 个未核查。"
+   },
+   "botDeepSubtitle": {
+      "message": "每个账号一次请求，按安全节奏进行。"
+   },
+   "botFilterAll": {
+      "message": "全部已扫描"
+   },
+   "botFilterLikely": {
+      "message": "可能是机器人"
+   },
+   "botFilterSuspicious": {
+      "message": "可疑"
+   },
+   "botFreeHeadline": {
+      "message": "个标记账号已锁定"
+   },
+   "botFreeWithheld": {
+      "message": "另外发现 $1 个 — 升级后可查看全部。"
+   },
+   "botIntroHeading": {
+      "message": "找出并非真人的账号"
+   },
+   "botIntroLead": {
+      "message": "为每位粉丝评估其是机器人或小号的可能性。"
+   },
+   "botIntroReasons": {
+      "message": "每个分数都附带其依据，让你看到账号为何被标记，而不必只相信一个数字。系统不会自动移除任何人 — 这份列表是给你查看并自行决定的。"
+   },
+   "botNoFlagged": {
+      "message": "没有标记 — 你的粉丝列表看起来很干净。"
+   },
+   "botNoRowsForFilter": {
+      "message": "该分组中没有内容。"
+   },
+   "botNoSignals": {
+      "message": "没有异常"
+   },
+   "botNotRunYet": {
+      "message": "运行一次扫描，即可在此看到粉丝的评分。"
+   },
+   "botPopupBody": {
+      "message": "为每位粉丝评估其是机器人或小号的可能性：没有头像、没有帖子、看起来像自动生成的用户名、关注了数千人却几乎无人回关。"
+   },
+   "botPopupReasons": {
+      "message": "每个分数都附带其依据。系统不会自动移除任何人。"
+   },
+   "botProvisionalBody": {
+      "message": "已标记的 $1 个账号还没有做主页核查。多数机器人只有通过这项核查才能确认，请先运行它，再相信\"可能是机器人\"的数量。"
+   },
+   "botProvisionalTitle": {
+      "message": "这些判定尚未最终确定"
+   },
+   "botReadSubtitle": {
+      "message": "直接从你的粉丝列表读取 — 不产生额外请求。"
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "没有头像"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "粉丝比例均衡"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "用户名数字过多"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "没有姓名"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "关注数远多于粉丝数"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "拥有账号徽章"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "关注了极多账号"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "没有粉丝"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "从未发过帖"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "定期发帖"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "用户名以数字结尾"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "下划线排列异常"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "认证账号"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "用户名异常长"
+   },
+   "botRunDeepChecks": {
+      "message": "运行深度核查"
+   },
+   "botScanCached": {
+      "message": "上次扫描 $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram 暂停了主页核查。以下结果来自已读取的部分。"
+   },
+   "botScanDeepProgress": {
+      "message": "正在核查主页… $1/$2"
+   },
+   "botScanDone": {
+      "message": "扫描完成。"
+   },
+   "botScanNoData": {
+      "message": "无法读取你的粉丝列表。Instagram 正在限制我们——会自行解除，但没有固定等待时间。请稍后再试。"
+   },
+   "botScanPartial": {
+      "message": "扫描结束，但粉丝列表返回不完整 — 缺少部分账号。"
+   },
+   "botScanReading": {
+      "message": "正在读取你的粉丝…"
+   },
+   "botScanReadingCount": {
+      "message": "正在读取粉丝… $1"
+   },
+   "botScanTitle": {
+      "message": "机器人粉丝扫描"
+   },
+   "botScoreRaw": {
+      "message": "原始分数"
+   },
+   "botSignalName": {
+      "message": "看起来像自动生成的用户名"
+   },
+   "botSignalPhoto": {
+      "message": "没有头像"
+   },
+   "botSignalPosts": {
+      "message": "没有帖子"
+   },
+   "botSignalRatio": {
+      "message": "关注数千人，几乎无人回关"
+   },
+   "botSignalsUnavailable": {
+      "message": "该账号有部分检查无法完成，因此它的分数所依据的信息比其他账号少。"
+   },
+   "botStatFlagged": {
+      "message": "已标记"
+   },
+   "botStatFollowers": {
+      "message": "粉丝"
+   },
+   "botStatFollowing": {
+      "message": "关注"
+   },
+   "botStatLikely": {
+      "message": "可能是机器人"
+   },
+   "botStatPosts": {
+      "message": "帖子"
+   },
+   "botStatScanned": {
+      "message": "已扫描"
+   },
+   "botStatSuspicious": {
+      "message": "可疑"
+   },
+   "botStatsGone": {
+      "message": "账号已不存在"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram 未返回任何主页 — 该账号已删除或停用，其数据无法再读取。"
+   },
+   "botStatsNotChecked": {
+      "message": "未核查"
+   },
+   "botStepDeep": {
+      "message": "正在核查主页"
+   },
+   "botStepReading": {
+      "message": "正在读取粉丝"
+   },
+   "botTableReasons": {
+      "message": "原因"
+   },
+   "botTableScore": {
+      "message": "分数"
+   },
+   "botTableStats": {
+      "message": "主页数据"
+   },
+   "botTableVerdict": {
+      "message": "判定"
+   },
+   "botVerdictClean": {
+      "message": "看起来是真人"
+   },
+   "botVerdictLikely": {
+      "message": "可能是机器人"
+   },
+   "botVerdictSuspicious": {
+      "message": "可疑"
+   },
+   "cacheExpiryWarning": {
+      "message": "由于您上次分析是在 $DAYS$ 天前，头像可能无法显示。请重新分析以获取最新结果。",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "上次分析 $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "取消"
+   },
+   "checkingBeforeStart": {
+      "message": "正在检查…"
+   },
+   "checkingLoginStatus": {
+      "message": "正在检查登录状态..."
+   },
+   "chooseMonthly": {
+      "message": "选择月度"
+   },
+   "chooseYearly": {
+      "message": "选择年度"
+   },
+   "comeBackTomorrow": {
+      "message": "明天再来"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "您每天可以分析更多20个关注者。如果您不耐烦，请切换到Premium，立即查看所有内容。如果您有耐心，请明天再来，您可以查看更多20个关注者。 ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "明天再来查看$1个账户（+$2个新解锁）"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ 警告！"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "确定要取消关注所有人吗？"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "确认操作"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "确定要取消关注所有未回关的用户吗？"
+   },
+   "connected": {
+      "message": "已连接"
+   },
+   "couldNotFetchFollowing": {
+      "message": "无法获取列表。请稍后重试。"
+   },
+   "countdownFormat": {
+      "message": "$HOURS$小时 $MINUTES$分钟 $SECONDS$秒 $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "后"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$分钟 $SECONDS$秒 $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "后"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "明天您可以查看+20个账户（$COUNTDOWN$）。每天添加+20个账户，限制会累积！",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5小时30分钟后"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "每日限制"
+   },
+   "dailyScanLimit": {
+      "message": "每日扫描限制"
+   },
+   "dataLoading": {
+      "message": "数据加载中..."
+   },
+   "dataLoadingFollowers": {
+      "message": "加载中: 发现$COUNT$个粉丝",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "加载中: 发现$COUNT$个关注",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "5折"
+   },
+   "email": {
+      "message": "邮箱"
+   },
+   "errorFetchingData": {
+      "message": "获取数据出错。请重试。"
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram暂时不可用。请稍后重试。"
+   },
+   "errorNetwork": {
+      "message": "无法连接 Instagram。请检查网络 — 没有任何丢失，处理会继续。"
+   },
+   "errorNetworkConnection": {
+      "message": "连接错误。请检查您的网络连接。"
+   },
+   "errorOccurred": {
+      "message": "发生错误。请重试。"
+   },
+   "errorRateLimit": {
+      "message": "Instagram 暂停了我们的请求。会自行解除，但没有固定等待时间——取决于此前操作量，可能需要数小时，甚至到明天。立刻重试会让它更久。"
+   },
+   "errorSessionExpired": {
+      "message": "Instagram会话已过期。请重新登录。"
+   },
+   "errorUnfollowRateLimit": {
+      "message": "取消关注请求过多。等待5分钟..."
+   },
+   "etaMinutes": {
+      "message": "约剩 $1 分钟"
+   },
+   "etaSeconds": {
+      "message": "约剩 $1 秒"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "取关失败。请重试。"
+   },
+   "featureAdvancedFiltering": {
+      "message": "高级筛选"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "筛选和报告"
+   },
+   "featureAdvancedNotifications": {
+      "message": "高级通知系统"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "高级取关功能"
+   },
+   "featureBasicUnfollow": {
+      "message": "基础取关功能"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/天)"
+   },
+   "featureMax50Analysis": {
+      "message": "最多40个分析"
+   },
+   "featureSpamDetector": {
+      "message": "垃圾账号检测"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "无限分析"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "无限关注分析"
+   },
+   "finalizingAnalysis": {
+      "message": "完成中..."
+   },
+   "firstDayBonus": {
+      "message": "首日奖励"
+   },
+   "firstDayBonusMessage": {
+      "message": "首日奖励：40个账户！明天您可以查看+20个账户（$COUNTDOWN$）。每天添加+20个账户。",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5小时30分钟后"
+         }
+      }
+   },
+   "followers": {
+      "message": "粉丝"
+   },
+   "following": {
+      "message": "关注"
+   },
+   "followingYouBadge": {
+      "message": "关注你"
+   },
+   "freePlanLimitDescription": {
+      "message": "已达40个上限。升级Premium无限制！"
+   },
+   "freePlanLimitReached": {
+      "message": "免费额度已用完"
+   },
+   "freePlanTodayMessage": {
+      "message": "在免费计划中，您今天可以查看$DISPLAYED$个账户。还有$HIDDEN$个账户，但您无法查看。",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "在免费计划中，您今天可以查看$COUNT$个账户。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "免费计划最多只能取消关注 $COUNT$ 个用户。请仅选择前 $COUNT$ 个用户或升级到高级版。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "免费计划最多只能取消关注 $COUNT$ 个用户。升级到高级版可无限取消关注！",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "姓名"
+   },
+   "getStartedWithGoogle": {
+      "message": "用Google注册"
+   },
+   "goToInstagramLogin": {
+      "message": "去Instagram"
+   },
+   "gotIt": {
+      "message": "好"
+   },
+   "incompleteDataMessage": {
+      "message": "整份列表还没传完，Instagram 就停止发送数据了，因此缺少部分账号。现在操作可能会取消关注那些确实关注你的人。请先重新运行分析。"
+   },
+   "incompleteDataTitle": {
+      "message": "列表不完整"
+   },
+   "instagramLimitedBody": {
+      "message": "你仍处于登录状态，账号也没有任何问题。这会自行解除，但没有固定的等待时间——取决于此前操作量，可能需要数小时，甚至到明天。反复尝试只会让它更久。"
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram 目前正在限制请求"
+   },
+   "instagramLoginAlert": {
+      "message": "请先登录Instagram！"
+   },
+   "invalidWaitingTime": {
+      "message": "请输入3-300之间的有效时间"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "等待时间无效"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 秒超出允许范围。请输入 $2 到 $3 秒之间的值。"
+   },
+   "later": {
+      "message": "后"
+   },
+   "limitedTimeOffer": {
+      "message": "限时优惠"
+   },
+   "liveCounterPrefix": {
+      "message": "过去24小时内"
+   },
+   "liveCounterSuffix": {
+      "message": "人升级到高级版！"
+   },
+   "loading": {
+      "message": "加载中..."
+   },
+   "loadingProfile": {
+      "message": "加载个人资料"
+   },
+   "loadingSavedAnalysis": {
+      "message": "正在载入你保存的分析…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "没有向 Instagram 发出任何请求。"
+   },
+   "login": {
+      "message": "登录"
+   },
+   "loginFailed": {
+      "message": "登录失败: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "未知错误"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "需要登录"
+   },
+   "loginSuccessful": {
+      "message": "登录成功！"
+   },
+   "loginWithGoogle": {
+      "message": "用Google登录"
+   },
+   "logout": {
+      "message": "登出"
+   },
+   "logoutError": {
+      "message": "登出错误: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "未知错误"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "管理订阅"
+   },
+   "membership": {
+      "message": "会员"
+   },
+   "menuBotScan": {
+      "message": "机器人扫描"
+   },
+   "menuHome": {
+      "message": "首页"
+   },
+   "menuProfile": {
+      "message": "个人资料"
+   },
+   "menuUpgrade": {
+      "message": "升级"
+   },
+   "minutesTest": {
+      "message": "$1分钟（测试）",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1个账户可用"
+   },
+   "moreInHours": {
+      "message": "$2小时后，您可以查看更多$1个关注者"
+   },
+   "nextCheckTime": {
+      "message": "下次检查: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "下次检查: 明天"
+   },
+   "nextInSeconds": {
+      "message": "下次在 $SECONDS$秒",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "没有未回关者"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "没有可取消关注的未回关用户。"
+   },
+   "noUsers": {
+      "message": "没有用户"
+   },
+   "noUsersToUnfollow": {
+      "message": "没有可取消关注的用户。"
+   },
+   "notFollowingYouBadge": {
+      "message": "未关注你"
+   },
+   "notProvided": {
+      "message": "未提供"
+   },
+   "ok": {
+      "message": "确定"
+   },
+   "opening": {
+      "message": "打开中..."
+   },
+   "openingInNewTab": {
+      "message": "在新标签页打开..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/月"
+   },
+   "perYear": {
+      "message": "/年"
+   },
+   "planFree": {
+      "message": "免费"
+   },
+   "planPopular": {
+      "message": "热门"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "高级年度"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "登录以订阅"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "请先登录Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "登录以升级"
+   },
+   "pleaseSignInToView": {
+      "message": "登录以查看您的信息"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "使用高级版，立即查看所有$COUNT$个账户，无限制！",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "隐私保护"
+   },
+   "processStarted": {
+      "message": "流程已开始"
+   },
+   "processing": {
+      "message": "处理中..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram 要求暂停 — $1 秒后继续"
+   },
+   "rating": {
+      "message": "评分"
+   },
+   "reAnalyze": {
+      "message": "重新分析"
+   },
+   "reAnalyzing": {
+      "message": "重新分析中..."
+   },
+   "removeFromWhitelist": {
+      "message": "从白名单移除"
+   },
+   "retryIn": {
+      "message": "$SECONDS$秒后重试...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Premium 50%折扣"
+   },
+   "saveSettings": {
+      "message": "保存"
+   },
+   "scanBlockedBody": {
+      "message": "这很常见，会自行恢复，你的账号和扩展都没有问题。我们立刻停止而不是重试，因为反复尝试只会让等待更久。请今天晚些时候再试。"
+   },
+   "scanBlockedListFollowers": {
+      "message": "目前无法读取粉丝列表。"
+   },
+   "scanBlockedListFollowing": {
+      "message": "目前无法读取关注列表。"
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram 需要短暂休息"
+   },
+   "scanPartialBody": {
+      "message": "读到一部分后 Instagram 暂停了我们，因此结果不足以据此操作。什么都没有改动。请稍后再来重新运行分析——解除可能需要数小时，现在重试会延长时间。"
+   },
+   "scanPartialTitle": {
+      "message": "返回的列表不完整"
+   },
+   "scanPaused": {
+      "message": "Instagram 要求我们放慢速度 — 等待中…"
+   },
+   "scanRemaining": {
+      "message": "还剩 $1 个账号"
+   },
+   "scanShortBody": {
+      "message": "扫描已结束，但返回的账号数少于 Instagram 给出的数量。据此操作可能会取消关注那些关注你的人，因此不显示任何内容。请重新运行分析。"
+   },
+   "scanShortTitle": {
+      "message": "缺少部分账号"
+   },
+   "seconds": {
+      "message": "秒"
+   },
+   "secure": {
+      "message": "安全"
+   },
+   "secureLogin": {
+      "message": "安全登录"
+   },
+   "sessionExpiredTitle": {
+      "message": "你的 Instagram 会话已结束"
+   },
+   "showOnlyNonFollowers": {
+      "message": "只显示未回关"
+   },
+   "showingFirstAccounts": {
+      "message": "显示前$COUNT$个账号。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "跳过粉丝"
+   },
+   "skipVerifiedAccounts": {
+      "message": "跳过认证账号"
+   },
+   "startAnalysis": {
+      "message": "开始分析"
+   },
+   "startBotScan": {
+      "message": "开始机器人扫描"
+   },
+   "startUnfollow": {
+      "message": "开始取关"
+   },
+   "startingAnalysis": {
+      "message": "开始分析..."
+   },
+   "statFailed": {
+      "message": "失败"
+   },
+   "statFollowers": {
+      "message": "关注者"
+   },
+   "statFollowing": {
+      "message": "正在关注"
+   },
+   "statNonFollowers": {
+      "message": "未关注"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "已取关"
+   },
+   "stop": {
+      "message": "停止"
+   },
+   "stopping": {
+      "message": "正在停止…"
+   },
+   "support": {
+      "message": "支持"
+   },
+   "tableAction": {
+      "message": "操作"
+   },
+   "tableFollowingYou": {
+      "message": "关注你"
+   },
+   "tableFullName": {
+      "message": "姓名"
+   },
+   "tablePrivate": {
+      "message": "私密"
+   },
+   "tableProfile": {
+      "message": "资料"
+   },
+   "tableUsername": {
+      "message": "用户名"
+   },
+   "tableVerified": {
+      "message": "认证"
+   },
+   "testNow": {
+      "message": "立即测试"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ 此操作无法撤消！"
+   },
+   "toRemoveLimits": {
+      "message": "以移除限制"
+   },
+   "trendDown": {
+      "message": "自上次分析 $COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "无变化"
+   },
+   "trendUp": {
+      "message": "自上次分析 +$COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "剩余 $COUNT$ 天",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "免费试用已结束。今天可以查看 $COUNT$ 个账户。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "试用期已结束"
+   },
+   "tryAgain": {
+      "message": "重试"
+   },
+   "tryAnyway": {
+      "message": "仍要尝试"
+   },
+   "unfollow": {
+      "message": "取关"
+   },
+   "unfollowDelayLabel": {
+      "message": "延迟（秒）"
+   },
+   "unfollowEveryone": {
+      "message": "取关所有人"
+   },
+   "unfollowFailed": {
+      "message": "失败"
+   },
+   "unfollowNonFollowers": {
+      "message": "取关未关注者"
+   },
+   "unfollowProcessStarted": {
+      "message": "取消关注流程已开始。"
+   },
+   "unfollowSettings": {
+      "message": "取关设置"
+   },
+   "unfollowWaitDetail": {
+      "message": "每次取消关注之间等待 $1 秒。"
+   },
+   "unfollowedSuccess": {
+      "message": "已取关"
+   },
+   "unfollowing": {
+      "message": "取关中..."
+   },
+   "unknownError": {
+      "message": "未知错误"
+   },
+   "upgradeToPremium": {
+      "message": "升级Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "升级到高级版"
+   },
+   "upgradeToSeeAll": {
+      "message": "升级Premium查看全部！"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "个用户将被取消关注。"
+   },
+   "waitingSeconds": {
+      "message": "等待 $SECONDS$秒",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "等待时间 (3-300秒)"
+   },
+   "welcomeFunText1": {
+      "message": "想看看谁没回关你？😏"
+   },
+   "welcomeFunText2": {
+      "message": "取消关注现在更简单 😊"
+   },
+   "welcomeTitle": {
+      "message": "欢迎！👋"
+   },
+   "welcomeTrustText": {
+      "message": "用Google登录，数据安全！"
+   },
+   "whitelist": {
+      "message": "白名单"
+   },
+   "whitelisted": {
+      "message": "已保护"
+   },
+   "whitelistedSkipped": {
+      "message": "已跳过（白名单）"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1个将于明天解锁"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram 暂时不再接受此账号的自动取消关注。这是暂时的，你的账号没有任何问题。\n\n在此期间你仍可以在个人主页手动取消关注，你的列表会留在这里 — 没有任何消耗。"
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram 目前正在限制取消关注"
+   },
+   "yesUnfollow": {
+      "message": "是，取消关注"
+   },
+   "yesUnfollowAll": {
+      "message": "是，取消关注所有"
+   }
+}

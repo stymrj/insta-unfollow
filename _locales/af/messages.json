@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Rekening Besonderhede"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ rekeninge meer beskikbaar. Om almal te sien",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Aktiewe Gebruikers"
+   },
+   "addToWhitelist": {
+      "message": "Voeg by witlys"
+   },
+   "allAccountsUnlocked": {
+      "message": "Alle rekeninge oopgemaak!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "gebruikers sal ontvolg word."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram het jou volgerlys sonder profielfoto-data teruggegee, dus is elke telling hier laer as wat dit behoort te wees en sommige bots sal gemis word. Maak Instagram in ’n oortjie oop en voer die skandering weer uit vir ’n volledige resultaat."
+   },
+   "botBlindTitle": {
+      "message": "Die profielfoto-kontrole kon nie uitgevoer word nie"
+   },
+   "botCleared": {
+      "message": "In sy guns"
+   },
+   "botDeepAllChecked": {
+      "message": "Alle gemerkte rekeninge nagegaan"
+   },
+   "botDeepChecked": {
+      "message": "Profiel nagegaan"
+   },
+   "botDeepChecksFor": {
+      "message": "Kontroleer $1 rekeninge diepgaande"
+   },
+   "botDeepChecksRemaining": {
+      "message": "$1 oor ($2 reeds gedoen)"
+   },
+   "botDeepDone": {
+      "message": "Diepgaande kontroles klaar — $1 rekeninge nagegaan."
+   },
+   "botDeepNoTargets": {
+      "message": "Geen rekening het ’n diepgaande kontrole nodig nie."
+   },
+   "botDeepPausedBody": {
+      "message": "$1 rekeninge is nagegaan voordat dit gestop het en $2 nie. Die uitsprake hieronder berus net op wat gelees is. Daar is geen vaste wagtyd nie — dit kan ure neem, of tot môre. Kom later terug eerder as om nou weer te probeer, wat dit net verleng."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram het die profielkontroles gepouseer"
+   },
+   "botDeepRemaining": {
+      "message": "$1 is nie nagegaan nie."
+   },
+   "botDeepSubtitle": {
+      "message": "Een versoek per rekening, teen ’n veilige tempo."
+   },
+   "botFilterAll": {
+      "message": "Almal geskandeer"
+   },
+   "botFilterLikely": {
+      "message": "Waarskynlike bots"
+   },
+   "botFilterSuspicious": {
+      "message": "Verdag"
+   },
+   "botFreeHeadline": {
+      "message": "meer gemerkte rekeninge is gesluit"
+   },
+   "botFreeWithheld": {
+      "message": "Nog $1 gevind — gradeer op om almal te sien."
+   },
+   "botIntroHeading": {
+      "message": "Vind die rekeninge wat nie regte mense is nie"
+   },
+   "botIntroLead": {
+      "message": "Elke volger kry ’n telling vir hoe waarskynlik dit ’n bot of ’n weggooirekening is."
+   },
+   "botIntroReasons": {
+      "message": "Elke telling kom met die redes daaragter, sodat jy kan sien waarom ’n rekening gemerk is in plaas daarvan om ’n getal te vertrou. Niks word outomaties verwyder nie — die lys is hier sodat jy kan kyk en besluit."
+   },
+   "botNoFlagged": {
+      "message": "Niks gemerk nie — jou volgerlys lyk skoon."
+   },
+   "botNoRowsForFilter": {
+      "message": "Niks in hierdie groep nie."
+   },
+   "botNoSignals": {
+      "message": "Niks ongewoons nie"
+   },
+   "botNotRunYet": {
+      "message": "Voer ’n skandering uit om jou volgers hier met tellings te sien."
+   },
+   "botPopupBody": {
+      "message": "Gee elke volger ’n telling vir hoe waarskynlik dit ’n bot of ’n weggooirekening is: geen profielfoto, geen plasings, ’n gebruikersnaam wat gegenereer lyk, volg duisende terwyl byna niemand terug volg nie."
+   },
+   "botPopupReasons": {
+      "message": "Elke telling kom met die redes daaragter. Niks word outomaties verwyder nie."
+   },
+   "botProvisionalBody": {
+      "message": "$1 gemerkte rekeninge se profiel is nog nie nagegaan nie. Die meeste bots word eers deur daardie kontrole bevestig — voer dit uit voordat jy die getal waarskynlike bots vertrou."
+   },
+   "botProvisionalTitle": {
+      "message": "Hierdie uitsprake is nog nie finaal nie"
+   },
+   "botReadSubtitle": {
+      "message": "Word reguit uit jou volgerlys gelees — geen ekstra versoeke nie."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Geen profielfoto"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Gebalanseerde volgerverhouding"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Baie syfers in gebruikersnaam"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Geen naam"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Volg baie meer as wat terugvolg"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Het ’n rekeningkenteken"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Volg baie rekeninge"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Geen volgers"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Nog nooit geplaas"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Plaas gereeld"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Gebruikersnaam eindig op syfers"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Ongewone onderstreep-patroon"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Geverifieerde rekening"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Ongewoon lang gebruikersnaam"
+   },
+   "botRunDeepChecks": {
+      "message": "Voer diepgaande kontroles uit"
+   },
+   "botScanCached": {
+      "message": "Laaste skandering $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram het die profielkontroles gepouseer. Die resultate hieronder kom van wat gelees kon word."
+   },
+   "botScanDeepProgress": {
+      "message": "Gaan profiele na… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Skandering voltooi."
+   },
+   "botScanNoData": {
+      "message": "Jou volgerlys kon nie gelees word nie. Instagram hou ons terug — dit gaan vanself oor, maar sonder ’n vaste wagtyd. Probeer later weer."
+   },
+   "botScanPartial": {
+      "message": "Die skandering is klaar, maar die volgerlys het onvolledig teruggekom — sommige rekeninge ontbreek."
+   },
+   "botScanReading": {
+      "message": "Lees jou volgers…"
+   },
+   "botScanReadingCount": {
+      "message": "Lees volgers… $1"
+   },
+   "botScanTitle": {
+      "message": "Bot-volger-skandering"
+   },
+   "botScoreRaw": {
+      "message": "Rou telling"
+   },
+   "botSignalName": {
+      "message": "Gebruikersnaam wat gegenereer lyk"
+   },
+   "botSignalPhoto": {
+      "message": "Geen profielfoto"
+   },
+   "botSignalPosts": {
+      "message": "Geen plasings"
+   },
+   "botSignalRatio": {
+      "message": "Volg duisende, byna niemand volg terug nie"
+   },
+   "botSignalsUnavailable": {
+      "message": "Vir hierdie rekening kon sommige kontroles nie uitgevoer word nie, so die telling berus op minder bewyse as die ander."
+   },
+   "botStatFlagged": {
+      "message": "Gemerk"
+   },
+   "botStatFollowers": {
+      "message": "Volgers"
+   },
+   "botStatFollowing": {
+      "message": "Volg"
+   },
+   "botStatLikely": {
+      "message": "Waarskynlike bots"
+   },
+   "botStatPosts": {
+      "message": "Plasings"
+   },
+   "botStatScanned": {
+      "message": "Geskandeer"
+   },
+   "botStatSuspicious": {
+      "message": "Verdag"
+   },
+   "botStatsGone": {
+      "message": "Rekening weg"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram het geen profiel teruggegee nie — die rekening is geskrap of gedeaktiveer, sy syfers kan nie meer gelees word nie."
+   },
+   "botStatsNotChecked": {
+      "message": "Nie nagegaan nie"
+   },
+   "botStepDeep": {
+      "message": "Gaan profiele na"
+   },
+   "botStepReading": {
+      "message": "Lees volgers"
+   },
+   "botTableReasons": {
+      "message": "Hoekom"
+   },
+   "botTableScore": {
+      "message": "Telling"
+   },
+   "botTableStats": {
+      "message": "Profielsyfers"
+   },
+   "botTableVerdict": {
+      "message": "Uitspraak"
+   },
+   "botVerdictClean": {
+      "message": "Lyk eg"
+   },
+   "botVerdictLikely": {
+      "message": "Waarskynlik ’n bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Verdag"
+   },
+   "cacheExpiryWarning": {
+      "message": "Profielfoto's word moontlik nie vertoon nie omdat jou laaste ontleding $DAYS$ dae gelede was. Ontleed asseblief weer vir opgedateerde resultate.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Laaste analise $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Gaan na…"
+   },
+   "checkingLoginStatus": {
+      "message": "Tekenstatus word gekontroleer..."
+   },
+   "chooseMonthly": {
+      "message": "Kies Maandeliks"
+   },
+   "chooseYearly": {
+      "message": "Kies Jaarliks"
+   },
+   "comeBackTomorrow": {
+      "message": "Kom môre terug"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Jy kan elke dag +20 volgers meer analiseer. As jy ongeduldig is, skakel oor na Premium, sien hulle almal nou. As jy geduldig is, kom môre terug, sal jy +20 volgers meer kan sien. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Kom môre terug om $1 rekeninge meer te sien (+$2 nuwe oopmaak)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Is jy seker jy wil ALMAL ontvolg?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Bevestig aksie"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Is jy seker jy wil almal ontvolg wat jou nie terug volg nie?"
+   },
+   "connected": {
+      "message": "Gekoppel"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Kon lys nie kry nie. Probeer later."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$u $MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "later"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "later"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Môre kan jy +20 rekeninge meer sien ($COUNTDOWN$). Elke dag word +20 rekeninge bygevoeg, perke bou op!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5u 30m later"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Daaglikse Limiet"
+   },
+   "dailyScanLimit": {
+      "message": "Daaglikse Skandeer Limiet"
+   },
+   "dataLoading": {
+      "message": "Laai data..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Laai: $COUNT$ volgers gevind",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Laai: $COUNT$ gevolg gevind",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "50% AF"
+   },
+   "email": {
+      "message": "E-pos"
+   },
+   "errorFetchingData": {
+      "message": "Fout met data ophaal. Probeer weer."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram is tydelik nie beskikbaar nie. Probeer later weer."
+   },
+   "errorNetwork": {
+      "message": "Kon nie Instagram bereik nie. Kontroleer jou verbinding — niks is verloor nie en die lopie gaan voort."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "'n Fout het voorgekom. Probeer weer."
+   },
+   "errorRateLimit": {
+      "message": "Instagram het ons versoeke gepouseer. Dit gaan vanself oor, maar daar is geen vaste wagtyd nie — afhangend van hoeveel gedoen is, kan dit ure neem, of tot môre. Om dadelik weer te probeer maak dit langer."
+   },
+   "errorSessionExpired": {
+      "message": "Jou Instagram-sessie het verval. Meld by Instagram aan en probeer weer."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min oor"
+   },
+   "etaSeconds": {
+      "message": "~$1 sek oor"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Ontvolg misluk. Probeer weer."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Gevorderde filter"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Filters en verslae"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Gevorderde Kennisgewingstelsel"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Gevorderde ontvolg"
+   },
+   "featureBasicUnfollow": {
+      "message": "Basiese ontvolg"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/dag)"
+   },
+   "featureMax50Analysis": {
+      "message": "Maks 40 analises"
+   },
+   "featureSpamDetector": {
+      "message": "Spam opsporing"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Onbeperkte analises"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Onbeperkte analise"
+   },
+   "finalizingAnalysis": {
+      "message": "Finaliseer..."
+   },
+   "firstDayBonus": {
+      "message": "Eerste Dag Bonus"
+   },
+   "firstDayBonusMessage": {
+      "message": "Eerste dag bonus: 40 rekeninge! Môre kan jy +20 rekeninge meer sien ($COUNTDOWN$). Elke dag word +20 rekeninge bygevoeg.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5u 30m later"
+         }
+      }
+   },
+   "followers": {
+      "message": "Volgers"
+   },
+   "following": {
+      "message": "Volg"
+   },
+   "followingYouBadge": {
+      "message": "Volg Jou"
+   },
+   "freePlanLimitDescription": {
+      "message": "40 analises bereik. Opgradeer na Premium!"
+   },
+   "freePlanLimitReached": {
+      "message": "Gratis Limiet Bereik"
+   },
+   "freePlanTodayMessage": {
+      "message": "Met die gratis plan kan jy vandag $DISPLAYED$ rekeninge sien. Daar is $HIDDEN$ rekeninge meer, maar jy kan hulle nie sien nie.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Met die gratis plan kan jy vandag $COUNT$ rekeninge sien.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Met die gratis plan kan jy slegs tot $COUNT$ gebruikers ontvolg. Kies asseblief net die eerste $COUNT$ gebruikers of gradeer op na Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Met die gratis plan kan jy slegs tot $COUNT$ gebruikers ontvolg. Gradeer op na Premium vir onbeperkte ontvolging!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Naam"
+   },
+   "getStartedWithGoogle": {
+      "message": "Registreer met Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Gaan na Instagram"
+   },
+   "gotIt": {
+      "message": "Goed"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram het opgehou om data te stuur voordat die hele lys aangekom het, so sommige rekeninge ontbreek. Om nou op te tree kan mense ontvolg wat jou werklik volg. Voer eers die ontleding weer uit."
+   },
+   "incompleteDataTitle": {
+      "message": "Die lys is onvolledig"
+   },
+   "instagramLimitedBody": {
+      "message": "Jy is steeds aangemeld en daar is niks fout met jou rekening nie. Dit gaan vanself oor, maar daar is geen vaste wagtyd nie — afhangend van hoeveel gedoen is, kan dit ure neem, of tot môre. Herhaalde pogings maak dit langer."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram beperk tans versoeke"
+   },
+   "instagramLoginAlert": {
+      "message": "Teken eers by Instagram in!"
+   },
+   "invalidWaitingTime": {
+      "message": "Voer geldige tyd in 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Ongeldige wagtyd"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 sekondes val buite die toegelate reeks. Voer ’n waarde tussen $2 en $3 sekondes in."
+   },
+   "later": {
+      "message": "later"
+   },
+   "limitedTimeOffer": {
+      "message": "Beperkte Aanbod"
+   },
+   "liveCounterPrefix": {
+      "message": "In die afgelope 24 uur"
+   },
+   "liveCounterSuffix": {
+      "message": "mense het opgegradeer na Premium!"
+   },
+   "loading": {
+      "message": "Laai..."
+   },
+   "loadingProfile": {
+      "message": "Laai profiel"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Laai jou gestoorde ontleding…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Daar word niks by Instagram aangevra nie."
+   },
+   "login": {
+      "message": "Teken In"
+   },
+   "loginFailed": {
+      "message": "Inteken misluk: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Onbekende fout"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Inteken Nodig"
+   },
+   "loginSuccessful": {
+      "message": "Suksesvol ingeteken!"
+   },
+   "loginWithGoogle": {
+      "message": "Teken in met Google"
+   },
+   "logout": {
+      "message": "Teken Uit"
+   },
+   "logoutError": {
+      "message": "Uitteken fout: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Onbekende fout"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Bestuur Intekening"
+   },
+   "membership": {
+      "message": "Lidmaatskap"
+   },
+   "menuBotScan": {
+      "message": "Bot-skandering"
+   },
+   "menuHome": {
+      "message": "Tuis"
+   },
+   "menuProfile": {
+      "message": "Profiel"
+   },
+   "menuUpgrade": {
+      "message": "Opgradeer"
+   },
+   "minutesTest": {
+      "message": "$1 minute (Toets)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 rekeninge meer beskikbaar"
+   },
+   "moreInHours": {
+      "message": "Oor $2 uur sal jy +$1 volgers meer kan sien"
+   },
+   "nextCheckTime": {
+      "message": "Volgende kontrole: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Volgende kontrole: Môre"
+   },
+   "nextInSeconds": {
+      "message": "Volgende in $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Geen nie-volgers"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Geen nie-volgers om te ontvolg nie."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Geen gebruikers om te ontvolg nie."
+   },
+   "notFollowingYouBadge": {
+      "message": "Volg Nie"
+   },
+   "notProvided": {
+      "message": "Nie verskaf"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Oopmaak..."
+   },
+   "openingInNewTab": {
+      "message": "Oopmaak in nuwe oortjie..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/maand"
+   },
+   "perYear": {
+      "message": "/jaar"
+   },
+   "planFree": {
+      "message": "Gratis"
+   },
+   "planPopular": {
+      "message": "Gewild"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Jaarliks"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Teken in om in te teken"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Teken eers by Instagram in"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Teken in om op te gradeer"
+   },
+   "pleaseSignInToView": {
+      "message": "Teken in om inligting te sien"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Met Premium, sien al $COUNT$ rekeninge nou, geen perke nie!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Privaatheid Beskerm"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Verwerk..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram het ’n pouse gevra — gaan voort oor $1 s"
+   },
+   "rating": {
+      "message": "Gradering"
+   },
+   "reAnalyze": {
+      "message": "Herontleed"
+   },
+   "reAnalyzing": {
+      "message": "Herontleed..."
+   },
+   "removeFromWhitelist": {
+      "message": "Verwyder uit witlys"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "50% af op Premium"
+   },
+   "saveSettings": {
+      "message": "Stoor"
+   },
+   "scanBlockedBody": {
+      "message": "Dit is algemeen, dit gaan vanself oor, en daar is niks fout met jou rekening of met die uitbreiding nie. Ons het dadelik gestop eerder as om weer te probeer, want herhaalde pogings maak die wag net langer. Probeer later vandag weer."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Die volgerlys kon nie nou gelees word nie."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Die volg-lys kon nie nou gelees word nie."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram wil ’n kort ruk rus"
+   },
+   "scanPartialBody": {
+      "message": "’n Deel het aangekom en toe het Instagram ons gepouseer, so die resultate is nie volledig genoeg om op te tree nie. Niks is verander nie. Kom later terug en voer die ontleding weer uit — dit kan ure neem, en om nou te probeer verleng dit."
+   },
+   "scanPartialTitle": {
+      "message": "Die lys het onvolledig teruggekom"
+   },
+   "scanPaused": {
+      "message": "Instagram het gevra dat ons stadiger gaan — wag…"
+   },
+   "scanRemaining": {
+      "message": "$1 rekeninge oor"
+   },
+   "scanShortBody": {
+      "message": "Die skandering is klaar, maar minder rekeninge het teruggekom as wat Instagram sê die lys bevat. Om daarop op te tree kan mense ontvolg wat jou volg, dus word niks gewys nie. Voer die ontleding asseblief weer uit."
+   },
+   "scanShortTitle": {
+      "message": "Sommige rekeninge ontbreek"
+   },
+   "seconds": {
+      "message": "sekondes"
+   },
+   "secure": {
+      "message": "Veilig"
+   },
+   "secureLogin": {
+      "message": "Veilige Inteken"
+   },
+   "sessionExpiredTitle": {
+      "message": "Jou Instagram-sessie het geëindig"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Net nie-volgers"
+   },
+   "showingFirstAccounts": {
+      "message": "Wys eerste $COUNT$ rekeninge.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Slaan volgers oor"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Slaan geverifieerdes oor"
+   },
+   "startAnalysis": {
+      "message": "Begin Analise"
+   },
+   "startBotScan": {
+      "message": "Begin bot-skandering"
+   },
+   "startUnfollow": {
+      "message": "Begin Ontvolg"
+   },
+   "startingAnalysis": {
+      "message": "Begin analise..."
+   },
+   "statFailed": {
+      "message": "Misluk"
+   },
+   "statFollowers": {
+      "message": "Volgers"
+   },
+   "statFollowing": {
+      "message": "Volg"
+   },
+   "statNonFollowers": {
+      "message": "Volg Nie Terug"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Ontvolg"
+   },
+   "stop": {
+      "message": "Stop"
+   },
+   "stopping": {
+      "message": "Stop tans…"
+   },
+   "support": {
+      "message": "Ondersteuning"
+   },
+   "tableAction": {
+      "message": "Aksie"
+   },
+   "tableFollowingYou": {
+      "message": "Volg Jou"
+   },
+   "tableFullName": {
+      "message": "Naam"
+   },
+   "tablePrivate": {
+      "message": "Privaat"
+   },
+   "tableProfile": {
+      "message": "Profiel"
+   },
+   "tableUsername": {
+      "message": "Gebruiker"
+   },
+   "tableVerified": {
+      "message": "Geverifieer"
+   },
+   "testNow": {
+      "message": "Toets Nou"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Hierdie aksie kan nie ongedaan gemaak word nie!"
+   },
+   "toRemoveLimits": {
+      "message": "om limiete te verwyder"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Nog $COUNT$ dae",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Proeftydperk beëindig"
+   },
+   "tryAgain": {
+      "message": "Probeer weer"
+   },
+   "tryAnyway": {
+      "message": "Probeer in elk geval"
+   },
+   "unfollow": {
+      "message": "Ontvolg"
+   },
+   "unfollowDelayLabel": {
+      "message": "Vertraging (sekondes)"
+   },
+   "unfollowEveryone": {
+      "message": "Ontvolg Almal"
+   },
+   "unfollowFailed": {
+      "message": "Misluk"
+   },
+   "unfollowNonFollowers": {
+      "message": "Ontvolg Nie-Volgers"
+   },
+   "unfollowProcessStarted": {
+      "message": "Die ontvolgproses het begin."
+   },
+   "unfollowSettings": {
+      "message": "Ontvolg Instellings"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 sekondes tussen elke ontvolging."
+   },
+   "unfollowedSuccess": {
+      "message": "Ontvolg"
+   },
+   "unfollowing": {
+      "message": "Ontvolg..."
+   },
+   "unknownError": {
+      "message": "Onbekende fout"
+   },
+   "upgradeToPremium": {
+      "message": "Opgradeer na Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Gradeer op na Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium vir almal!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "gebruikers sal ontvolg word."
+   },
+   "waitingSeconds": {
+      "message": "Wag $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Wagtyd (3-300 sek)"
+   },
+   "welcomeFunText1": {
+      "message": "Wil jy sien wie volg jou nie? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Ontvolg is nou maklik 😊"
+   },
+   "welcomeTitle": {
+      "message": "Welkom! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Teken in met Google, jou data is veilig!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 sal môre oopgemaak word"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram aanvaar tydelik nie meer outomatiese ontvolgings op hierdie rekening nie. Dit is tydelik en daar is niks fout met jou rekening nie.\n\nJy kan intussen steeds met die hand ontvolg vanaf ’n profielblad, en jou lys bly hier — niks is opgebruik nie."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram beperk tans ontvolgings"
+   },
+   "yesUnfollow": {
+      "message": "Ja, ontvolg"
+   },
+   "yesUnfollowAll": {
+      "message": "Ja, ontvolg almal"
+   }
+}

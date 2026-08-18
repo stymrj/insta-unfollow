@@ -1,0 +1,1096 @@
+{
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "menuHome": {
+      "message": "Hasiera"
+   },
+   "menuUpgrade": {
+      "message": "Berritu"
+   },
+   "menuProfile": {
+      "message": "Profila"
+   },
+   "login": {
+      "message": "Saioa hasi"
+   },
+   "logout": {
+      "message": "Saioa itxi"
+   },
+   "loginWithGoogle": {
+      "message": "Google-rekin saioa hasi"
+   },
+   "getStartedWithGoogle": {
+      "message": "Google-rekin erregistratu"
+   },
+   "welcomeTitle": {
+      "message": "Ongi etorri! 👋"
+   },
+   "welcomeFunText1": {
+      "message": "Nork ez zaitu jarraitzen ikusi nahi? 😏"
+   },
+   "welcomeTrustText": {
+      "message": "Google-rekin saioa hasi, zure datuak seguru daude!"
+   },
+   "welcomeFunText2": {
+      "message": "Jarraitzea uztea orain erraza da 😊"
+   },
+   "secureLogin": {
+      "message": "Saio Segurua"
+   },
+   "privacyProtected": {
+      "message": "Pribatutasun Babestua"
+   },
+   "loadingProfile": {
+      "message": "Profila kargatzen"
+   },
+   "loading": {
+      "message": "Kargatzen..."
+   },
+   "connected": {
+      "message": "Konektatuta"
+   },
+   "followers": {
+      "message": "Jarraitzaileak"
+   },
+   "following": {
+      "message": "Jarraitzen"
+   },
+   "instagramLoginAlert": {
+      "message": "Lehenik Instagram-en saioa hasi!"
+   },
+   "goToInstagramLogin": {
+      "message": "Instagram-era joan"
+   },
+   "startAnalysis": {
+      "message": "Analisia hasi"
+   },
+   "limitedTimeOffer": {
+      "message": "Eskaintza Mugatua"
+   },
+   "savePremiumOffer": {
+      "message": "%50 deskontua Premium"
+   },
+   "planFree": {
+      "message": "Doakoa"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPopular": {
+      "message": "Ezaguna"
+   },
+   "perMonth": {
+      "message": "/hilabete"
+   },
+   "discountOff": {
+      "message": "-%50"
+   },
+   "featureMax50Analysis": {
+      "message": "Geh. 40 analisi"
+   },
+   "featureBasicUnfollow": {
+      "message": "Oinarrizko unfollow"
+   },
+   "featureSpamDetector": {
+      "message": "Spam detektagailua"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Analisi mugagabea"
+   },
+   "featureAdvancedFiltering": {
+      "message": "Iragazki aurreratua"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Analisi mugagabea"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Unfollow aurreratua"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Iragazkiak eta txostenak"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Jakinarazpen Sistema Aurreratua"
+   },
+   "upgradeToPremium": {
+      "message": "Premium-era berritu"
+   },
+   "manageSubscription": {
+      "message": "Harpidetza kudeatu"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Saioa hasi berritzeko"
+   },
+   "activeUsers": {
+      "message": "Erabiltzaile aktiboak"
+   },
+   "rating": {
+      "message": "Balorazioa"
+   },
+   "support": {
+      "message": "Laguntza"
+   },
+   "secure": {
+      "message": "Segurua"
+   },
+   "accountDetails": {
+      "message": "Kontuaren xehetasunak"
+   },
+   "email": {
+      "message": "E-posta"
+   },
+   "fullName": {
+      "message": "Izena"
+   },
+   "membership": {
+      "message": "Bazkidetza"
+   },
+   "notProvided": {
+      "message": "Ez da eman"
+   },
+   "loginRequired": {
+      "message": "Saioa behar da"
+   },
+   "pleaseSignInToView": {
+      "message": "Saioa hasi informazioa ikusteko"
+   },
+   "opening": {
+      "message": "Irekitzen..."
+   },
+   "openingInNewTab": {
+      "message": "Fitxa berrian irekitzen..."
+   },
+   "loginSuccessful": {
+      "message": "Saio arrakastatsua!"
+   },
+   "loginFailed": {
+      "message": "Saioa huts egin du: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Errore ezezaguna"
+         }
+      }
+   },
+   "unknownError": {
+      "message": "Errore ezezaguna"
+   },
+   "logoutError": {
+      "message": "Saioa ixteko errorea: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Errore ezezaguna"
+         }
+      }
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Saioa hasi harpidetzeko"
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "startUnfollow": {
+      "message": "Unfollow hasi"
+   },
+   "unfollowNonFollowers": {
+      "message": "Ez Jarraitzaileen Jarraitzea Utzi"
+   },
+   "unfollowEveryone": {
+      "message": "Guztien Jarraitzea Utzi"
+   },
+   "stop": {
+      "message": "Gelditu"
+   },
+   "seconds": {
+      "message": "segundo"
+   },
+   "waitingTimeTitle": {
+      "message": "Itxaron denbora (3-300 seg)"
+   },
+   "statUnfollowed": {
+      "message": "Unfollowed"
+   },
+   "statFailed": {
+      "message": "Huts egin du"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "freePlanLimitReached": {
+      "message": "Doako muga iritsi da"
+   },
+   "freePlanLimitDescription": {
+      "message": "40 analisi iritsi dira. Berritu Premium-era!"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Jarraitzen ez dutenak soilik"
+   },
+   "tableProfile": {
+      "message": "Profila"
+   },
+   "tableUsername": {
+      "message": "Erabiltzailea"
+   },
+   "tableFullName": {
+      "message": "Izena"
+   },
+   "tableVerified": {
+      "message": "Egiaztatuta"
+   },
+   "tablePrivate": {
+      "message": "Pribatua"
+   },
+   "tableFollowingYou": {
+      "message": "Jarraitzen zaitu"
+   },
+   "tableAction": {
+      "message": "Ekintza"
+   },
+   "dataLoading": {
+      "message": "Datuak kargatzen..."
+   },
+   "unfollowSettings": {
+      "message": "Unfollow ezarpenak"
+   },
+   "unfollowDelayLabel": {
+      "message": "Atzerapena (segundoak)"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Egiaztatu gainera pasa"
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Jarraitzaileak gainera pasa"
+   },
+   "saveSettings": {
+      "message": "Gorde"
+   },
+   "startingAnalysis": {
+      "message": "Analisia hasten..."
+   },
+   "finalizingAnalysis": {
+      "message": "Amaitzen..."
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Lehenik Instagram-en saioa hasi"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Ezin izan da zerrenda lortu. Saiatu beranduago."
+   },
+   "errorFetchingData": {
+      "message": "Errorea datuak lortzerakoan. Saiatu berriro."
+   },
+   "dataLoadingFollowing": {
+      "message": "Kargatzen: $COUNT$ jarraitzen aurkituta",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowers": {
+      "message": "Kargatzen: $COUNT$ jarraitzaile aurkituta",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "showingFirstAccounts": {
+      "message": "Lehen $COUNT$ kontuak erakusten.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium guztientzat!"
+   },
+   "followingYouBadge": {
+      "message": "Jarraitzen zaitu"
+   },
+   "notFollowingYouBadge": {
+      "message": "Ez jarraitzen"
+   },
+   "unfollow": {
+      "message": "Unfollow"
+   },
+   "unfollowing": {
+      "message": "Jarraitzeari uzten..."
+   },
+   "unfollowedSuccess": {
+      "message": "Unfollowed"
+   },
+   "failedToUnfollow": {
+      "message": "Unfollow-ek huts egin du. Saiatu berriro."
+   },
+   "errorOccurred": {
+      "message": "Errore bat gertatu da. Saiatu berriro."
+   },
+   "invalidWaitingTime": {
+      "message": "Sartu denbora baliozkoa 3-300"
+   },
+   "waitingSeconds": {
+      "message": "Itxaroten $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "nextInSeconds": {
+      "message": "Hurrengoa $SECONDS$s barru",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Plano doanarekin soilik $COUNT$ erabiltzaile arte jarraitu dezakezu. Mesedez, aukeratu lehenengo $COUNT$ erabiltzaileak bakarrik edo eguneratu Premium-era.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Plano doanarekin soilik $COUNT$ erabiltzaile arte jarraitu dezakezu. Eguneratu Premium-era jarraitzeko mugarik gabe!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "processing": {
+      "message": "Prozesatzen..."
+   },
+   "unfollowFailed": {
+      "message": "Huts egin du"
+   },
+   "checkingLoginStatus": {
+      "message": "Saio-hasierako egoera egiaztatzen..."
+   },
+   "minutesTest": {
+      "message": "$1 minutu (Proba)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "testNow": {
+      "message": "Probatu orain"
+   },
+   "firstDayBonus": {
+      "message": "Lehen Eguneko Bonus"
+   },
+   "dailyScanLimit": {
+      "message": "Eguneko Eskaneatze Muga"
+   },
+   "allAccountsUnlocked": {
+      "message": "Kontu guztiak desblokeatuta!"
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 kontu gehiago eskuragarri"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 bihar desblokeatuko dira"
+   },
+   "moreInHours": {
+      "message": "$2 ordutan +$1 jarraitzaile gehiago ikus ditzakezu"
+   },
+   "comeBackTomorrow": {
+      "message": "Itzuli bihar"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Egunero +20 jarraitzaile gehiago analiza ditzakezu. Pazientzia ez baduzu, aldatu Premiumera, ikus ditzazun denak orain. Pazientzia baduzu, itzuli bihar, +20 jarraitzaile gehiago ikus ditzakezu. ✨"
+   },
+   "toRemoveLimits": {
+      "message": "mugak kentzeko"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Itzuli bihar $1 kontu gehiago ikusteko (+$2 desblokeo berri)"
+   },
+   "nextCheckTime": {
+      "message": "Hurrengo egiaztapena: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Hurrengo egiaztapena: Bihar"
+   },
+   "chooseMonthly": {
+      "message": "Aukeratu Hilabetekoa"
+   },
+   "chooseYearly": {
+      "message": "Aukeratu Urtekoa"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Urtekoa"
+   },
+   "perYear": {
+      "message": "/urte"
+   },
+   "liveCounterPrefix": {
+      "message": "Azken 24 orduetan"
+   },
+   "liveCounterSuffix": {
+      "message": "pertsonek Premium-era eguneratu dute!"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Premium-era Eguneratu"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ kontu gehiago eskuragarri. Guztiak ikusteko",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Eguneko Muga"
+   },
+   "freePlanTodayMessage": {
+      "message": "Plangratuitoarekin, gaur $DISPLAYED$ kontu ikus ditzakezu. $HIDDEN$ kontu gehiago daude baina ezin dituzu ikusi.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Plangratuitoarekin, gaur $COUNT$ kontu ikus ditzakezu.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "firstDayBonusMessage": {
+      "message": "Lehen eguneko bonusa: 40 kontu! Bihar +20 kontu gehiago ikus ditzakezu ($COUNTDOWN$). Egunero +20 kontu gehitzen dira.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5o 30m geroago"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Bihar +20 kontu gehiago ikus ditzakezu ($COUNTDOWN$). Egunero +20 kontu gehitzen dira, mugak metatzen dira!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5o 30m geroago"
+         }
+      }
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Premium-ekin, ikus itzazu orain $COUNT$ kontu guztiak, mugarik gabe!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "featureDetailDaily": {
+      "message": " (+20/egun)"
+   },
+   "later": {
+      "message": "geroago"
+   },
+   "countdownFormat": {
+      "message": "$HOURS$o $MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         },
+         "later": {
+            "content": "$4",
+            "example": "geroago"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         },
+         "later": {
+            "content": "$3",
+            "example": "geroago"
+         }
+      }
+   },
+   "statFollowers": {
+      "message": "Jarraitzaileak"
+   },
+   "statFollowing": {
+      "message": "Jarraitzen"
+   },
+   "statNonFollowers": {
+      "message": "Ez Jarraitzen"
+   },
+   "cachedDataInfo": {
+      "message": "Azken analisia $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cacheExpiryWarning": {
+      "message": "Baliteke profil-irudiak ez erakustea, zure azken analisia duela $DAYS$ egun egin zelako. Mesedez, berranalizatu emaitza eguneratuak lortzeko.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "reAnalyze": {
+      "message": "Berranalizatu"
+   },
+   "reAnalyzing": {
+      "message": "Berranalizatzen..."
+   },
+   "trialExpiredTitle": {
+      "message": "Proba epea amaitu da"
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ egun geratzen dira",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "errorRateLimit": {
+      "message": "Instagramek gure eskaerak eten ditu. Berez konpontzen da, baina ez dago itxaronaldi finkorik — zenbat egin den araberakoa da: orduak izan daitezke, edo biharko. Berehala saiatzeak luzatu egiten du."
+   },
+   "errorSessionExpired": {
+      "message": "Zure Instagram saioa iraungi da. Hasi saioa Instagramen eta saiatu berriro."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram ez dago erabilgarri aldi baterako. Saiatu geroago."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "addToWhitelist": {
+      "message": "Gehitu zerrenda zurira"
+   },
+   "removeFromWhitelist": {
+      "message": "Kendu zerrenda zuritik"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "konturi jarraitzeari utziko zaio."
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Ziur zaude GUZTIAK jarraitzeari utzi nahi diezula?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Berretsi ekintza"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Ziur zaude jarraitzen ez zaituzten guztiak jarraitzeari utzi nahi diezula?"
+   },
+   "noNonFollowers": {
+      "message": "Ez dago jarraitzen ez zaituenik"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Ez dago jarraitzen ez zaituenik jarraitzeari uzteko."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Ez dago konturik jarraitzeari uzteko."
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Ekintza hau ezin da desegin!"
+   },
+   "unfollowProcessStarted": {
+      "message": "Jarraitzeari uzteko prozesua hasi da."
+   },
+   "usersWillBeUnfollowed": {
+      "message": "konturi jarraitzeari utziko zaio."
+   },
+   "yesUnfollow": {
+      "message": "Bai, utzi jarraitzeari"
+   },
+   "yesUnfollowAll": {
+      "message": "Bai, utzi guztiak jarraitzeari"
+   },
+   "incompleteDataTitle": {
+      "message": "Zerrenda osatu gabe dago"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagramek datuak bidaltzeari utzi dio zerrenda osoa iritsi baino lehen, beraz kontu batzuk falta dira. Orain ekiteak benetan jarraitzen zaituzten pertsonak jarraitzeari uztea ekar dezake. Exekutatu analisia berriro lehenengo."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagramek etenaldia eskatu du — $1 s barru jarraituko dugu"
+   },
+   "scanRemaining": {
+      "message": "$1 kontu geratzen dira"
+   },
+   "scanBlockedTitle": {
+      "message": "Instagramek etenaldi labur bat nahi du"
+   },
+   "scanBlockedListFollowers": {
+      "message": "Ezin izan da jarraitzaileen zerrenda irakurri orain."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Ezin izan da jarraitutakoen zerrenda irakurri orain."
+   },
+   "scanBlockedBody": {
+      "message": "Hau ohikoa da, berez konpontzen da, eta ez dago ezer txarrik ez zure kontuan ez luzapenean. Berehala gelditu gara berriro saiatu beharrean, saiakera errepikatuek itxaronaldia luzatzen baitute. Saiatu geroago gaur."
+   },
+   "scanPartialTitle": {
+      "message": "Zerrenda osatu gabe itzuli da"
+   },
+   "scanPartialBody": {
+      "message": "Zati bat iritsi zen eta gero Instagramek gelditu gintuen, beraz emaitzak ez daude nahikoa osatuta jarduteko. Ez da ezer aldatu. Itzuli geroago eta exekutatu analisia berriro — honek orduak har ditzake eta orain saiatzeak luzatu egiten du."
+   },
+   "scanShortTitle": {
+      "message": "Kontu batzuk falta dira"
+   },
+   "scanShortBody": {
+      "message": "Eskaneatzea amaitu da, baina Instagramek dioena baino kontu gutxiago itzuli dira. Horren arabera jardutean zu jarraitzen zaituzten pertsonak jarraitzeari utz diezaiekezu, beraz ez da ezer erakusten. Exekutatu analisia berriro."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram jarraitzeari uztea mugatzen ari da orain"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagramek aldi baterako utzi dio kontu honetan jarraitzeari uzte automatikoak onartzeari. Aldi baterakoa da eta ez dago ezer txarrik zure kontuan.\n\nBitartean eskuz utz diezaiokezu jarraitzeari profil orritik, eta zure zerrenda hemen geratzen da — ez da ezer kontsumitu."
+   },
+   "gotIt": {
+      "message": "Ados"
+   },
+   "menuBotScan": {
+      "message": "Bot eskaneatzea"
+   },
+   "botScanTitle": {
+      "message": "Bot jarraitzaileen eskaneatzea"
+   },
+   "botIntroHeading": {
+      "message": "Aurkitu benetako pertsonak ez diren kontuak"
+   },
+   "botIntroReasons": {
+      "message": "Puntuazio bakoitzak bere arrazoiak ditu ondoan, zenbaki batean fidatu beharrean kontua zergatik markatu den ikus dezazun. Ez da ezer automatikoki kentzen — zerrenda hemen dago zuk begiratu eta erabaki dezazun."
+   },
+   "botPopupBody": {
+      "message": "Jarraitzaile bakoitzari puntuazioa ematen dio bot edo behin erabiltzeko kontu izateko probabilitatearen arabera: profil argazkirik ez, argitalpenik ez, sortua dirudien erabiltzaile-izena, milaka jarraitzen ditu baina ia inork ez du bera jarraitzen."
+   },
+   "botPopupReasons": {
+      "message": "Puntuazio bakoitzak bere arrazoiak ditu ondoan. Ez da ezer automatikoki kentzen."
+   },
+   "startBotScan": {
+      "message": "Hasi bot eskaneatzea"
+   },
+   "botStatScanned": {
+      "message": "Eskaneatuak"
+   },
+   "botStatLikely": {
+      "message": "Litekeen botak"
+   },
+   "botStatSuspicious": {
+      "message": "Susmagarriak"
+   },
+   "botTableScore": {
+      "message": "Puntuazioa"
+   },
+   "botTableVerdict": {
+      "message": "Epaia"
+   },
+   "botTableReasons": {
+      "message": "Zergatik"
+   },
+   "botNotRunYet": {
+      "message": "Exekutatu eskaneatze bat zure jarraitzaileen puntuazioak hemen ikusteko."
+   },
+   "botVerdictLikely": {
+      "message": "Litekeen bota"
+   },
+   "botVerdictSuspicious": {
+      "message": "Susmagarria"
+   },
+   "botVerdictClean": {
+      "message": "Benetakoa dirudi"
+   },
+   "botNoSignals": {
+      "message": "Ezer ezohikorik ez"
+   },
+   "botCleared": {
+      "message": "Bere alde"
+   },
+   "botDeepChecked": {
+      "message": "Profila egiaztatuta"
+   },
+   "botNoFlagged": {
+      "message": "Ezer ez da markatu — zure jarraitzaileen zerrenda garbi dirudi."
+   },
+   "botScanReading": {
+      "message": "Zure jarraitzaileak irakurtzen…"
+   },
+   "botScanReadingCount": {
+      "message": "Jarraitzaileak irakurtzen… $1"
+   },
+   "botScanDeepProgress": {
+      "message": "Profilak egiaztatzen… $1/$2"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagramek profilen egiaztapena eten du. Beheko emaitzak irakurri ahal izan denetik datoz."
+   },
+   "botScanDone": {
+      "message": "Eskaneatzea osatuta."
+   },
+   "botScanPartial": {
+      "message": "Eskaneatzea amaitu da, baina jarraitzaileen zerrenda osatu gabe itzuli da — kontu batzuk falta dira."
+   },
+   "botScanNoData": {
+      "message": "Zure jarraitzaileen zerrenda ezin izan da irakurri. Instagramek atzera eusten digu — berez konpontzen da, baina itxaronaldi finkorik gabe. Saiatu geroago."
+   },
+   "stopping": {
+      "message": "Gelditzen…"
+   },
+   "botStepReading": {
+      "message": "Jarraitzaileak irakurtzen"
+   },
+   "botStepDeep": {
+      "message": "Profilak egiaztatzen"
+   },
+   "scanPaused": {
+      "message": "Instagramek moteltzeko eskatu digu — itxaroten…"
+   },
+   "botScoreRaw": {
+      "message": "Puntuazio gordina"
+   },
+   "botSignalsUnavailable": {
+      "message": "Kontu honetarako egiaztapen batzuk ezin izan dira egin, beraz bere puntuazioa besteena baino froga gutxiagotan oinarritzen da."
+   },
+   "botReadSubtitle": {
+      "message": "Zuzenean zure jarraitzaileen zerrendatik irakurrita — eskaera gehigarririk gabe."
+   },
+   "botDeepSubtitle": {
+      "message": "Eskaera bat kontu bakoitzeko, erritmo seguruan."
+   },
+   "botScanCached": {
+      "message": "Azken eskaneatzea $1"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Itxaron-denbora baliogabea"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 segundo baimendutako tartetik kanpo dago. Sartu $2 eta $3 segundo arteko balio bat."
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 segundo jarraitzeari uzte bakoitzaren artean."
+   },
+   "checkingBeforeStart": {
+      "message": "Egiaztatzen…"
+   },
+   "botRunDeepChecks": {
+      "message": "Exekutatu egiaztapen sakonak"
+   },
+   "botDeepChecksFor": {
+      "message": "Egiaztatu sakonki $1 kontu"
+   },
+   "botFilterLikely": {
+      "message": "Litekeen botak"
+   },
+   "botFilterSuspicious": {
+      "message": "Susmagarriak"
+   },
+   "botFilterAll": {
+      "message": "Eskaneatutako guztiak"
+   },
+   "botNoRowsForFilter": {
+      "message": "Ez dago ezer talde honetan."
+   },
+   "botDeepDone": {
+      "message": "Egiaztapen sakonak amaituta — $1 kontu egiaztatu dira."
+   },
+   "botDeepNoTargets": {
+      "message": "Kontu batek ere ez du egiaztapen sakonik behar."
+   },
+   "errorNetwork": {
+      "message": "Ezin izan da Instagramera iritsi. Egiaztatu zure konexioa — ez da ezer galdu eta lanak aurrera jarraituko du."
+   },
+   "tryAnyway": {
+      "message": "Saiatu hala ere"
+   },
+   "sessionExpiredTitle": {
+      "message": "Zure Instagram saioa amaitu da"
+   },
+   "botDeepRemaining": {
+      "message": "$1 egiaztatu gabe geratu dira."
+   },
+   "botTableStats": {
+      "message": "Profilaren zenbakiak"
+   },
+   "botStatFollowers": {
+      "message": "Jarraitzaileak"
+   },
+   "botStatFollowing": {
+      "message": "Jarraitzen"
+   },
+   "botStatPosts": {
+      "message": "Argitalpenak"
+   },
+   "botStatsNotChecked": {
+      "message": "Egiaztatu gabe"
+   },
+   "botDeepAllChecked": {
+      "message": "Markatutako kontu guztiak egiaztatuta"
+   },
+   "botIntroLead": {
+      "message": "Jarraitzaile bakoitzari puntuazioa ematen zaio bot edo behin erabiltzeko kontu izateko probabilitatearen arabera."
+   },
+   "botSignalPhoto": {
+      "message": "Profil argazkirik ez"
+   },
+   "botSignalPosts": {
+      "message": "Argitalpenik ez"
+   },
+   "botSignalName": {
+      "message": "Sortua dirudien erabiltzaile-izena"
+   },
+   "botSignalRatio": {
+      "message": "Milaka jarraitzen ditu, ia inork ez du bera"
+   },
+   "botStatFlagged": {
+      "message": "Markatuak"
+   },
+   "etaMinutes": {
+      "message": "~$1 min geratzen dira"
+   },
+   "etaSeconds": {
+      "message": "~$1 s geratzen dira"
+   },
+   "botDeepChecksRemaining": {
+      "message": "$1 falta dira ($2 eginda)"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Zure gordetako analisia kargatzen…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Instagrami ez zaio ezer eskatzen."
+   },
+   "botFreeWithheld": {
+      "message": "Beste $1 aurkitu dira — bertsio-berritu guztiak ikusteko."
+   },
+   "botFreeHeadline": {
+      "message": "markatutako kontu gehiago blokeatuta daude"
+   },
+   "botStatsGone": {
+      "message": "Konturik ez"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagramek ez du profilik itzuli — kontua ezabatu edo desaktibatu da, bere zenbakiak ezin dira irakurri."
+   },
+   "botProvisionalTitle": {
+      "message": "Erabaki hauek ez dira behin betikoak oraindik"
+   },
+   "botProvisionalBody": {
+      "message": "Markatutako $1 konturen profila oraindik ez da egiaztatu. Bot gehienak egiaztapen horrekin baino ez dira baieztatzen — exekutatu ezazu \"litekeen botak\" kopuruan fidatu aurretik."
+   },
+   "botBlindTitle": {
+      "message": "Profil argazkiaren egiaztapena ezin izan da egin"
+   },
+   "botBlindBody": {
+      "message": "Instagramek zure jarraitzaileen zerrenda profil argazkiaren daturik gabe itzuli du, beraz hemengo puntuazio guztiak izan beharko luketena baino baxuagoak dira eta bot batzuk ihes egingo dute. Emaitza osoa lortzeko, ireki Instagram fitxa batean eta exekutatu eskaneatzea berriro."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram eskaerak mugatzen ari da une honetan"
+   },
+   "instagramLimitedBody": {
+      "message": "Oraindik saioa hasita duzu eta zure kontuan ez dago ezer txarrik. Berez konpontzen da, baina ez dago itxaronaldi finkorik — zenbat egin den araberakoa da: orduak izan daitezke, edo biharko. Behin eta berriz saiatzeak luzatu egiten du."
+   },
+   "tryAgain": {
+      "message": "Saiatu berriro"
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagramek profil egiaztapenak eten ditu"
+   },
+   "botDeepPausedBody": {
+      "message": "Gelditu aurretik $1 kontu egiaztatu ziren eta $2 ez. Beheko erabakiak irakurri ahal izan denean bakarrik oinarritzen dira. Ez dago itxaronaldi finkorik — orduak izan daitezke, edo biharko. Itzuli geroago orain saiatu beharrean; saiatzeak luzatu baino ez du egiten."
+   },
+   "botReason_anonymous_picture": {
+      "message": "Profil argazkirik ez",
+      "description": "The account uses the default grey avatar instead of a profile photo."
+   },
+   "botReason_empty_name": {
+      "message": "Izenik ez",
+      "description": "The account has no full name / display name set."
+   },
+   "botReason_digit_heavy": {
+      "message": "Zenbaki asko erabiltzaile-izenean",
+      "description": "The username contains an unusually high proportion of digits."
+   },
+   "botReason_trailing_digits": {
+      "message": "Erabiltzaile-izena zenbakiz amaitzen da",
+      "description": "The username ends with a run of digits, e.g. user82736."
+   },
+   "botReason_underscore_run": {
+      "message": "Azpimarra-eredu ezohikoa",
+      "description": "The username has an unusual pattern of underscores."
+   },
+   "botReason_very_long_username": {
+      "message": "Ezohiko erabiltzaile-izen luzea",
+      "description": "The username is far longer than a person normally chooses."
+   },
+   "botReason_verified": {
+      "message": "Kontu egiaztatua",
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour."
+   },
+   "botReason_has_badge": {
+      "message": "Kontuak bereizgarria du",
+      "description": "The account carries a badge from Instagram. Counts in the account's favour."
+   },
+   "botReason_no_posts": {
+      "message": "Argitalpenik ez",
+      "description": "The account has zero posts."
+   },
+   "botReason_follows_far_more": {
+      "message": "Jarraitzaileak baino askoz gehiago jarraitzen ditu",
+      "description": "The account follows many more accounts than follow it back."
+   },
+   "botReason_mass_following": {
+      "message": "Kontu kopuru izugarria jarraitzen du",
+      "description": "The account follows an extremely large number of accounts."
+   },
+   "botReason_no_followers": {
+      "message": "Jarraitzailerik ez",
+      "description": "The account has no followers at all."
+   },
+   "botReason_posts_regularly": {
+      "message": "Erregulartasunez argitaratzen du",
+      "description": "The account posts regularly. Counts in the account's favour."
+   },
+   "botReason_balanced_audience": {
+      "message": "Jarraitzaile-ratio orekatua",
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour."
+   }
+}

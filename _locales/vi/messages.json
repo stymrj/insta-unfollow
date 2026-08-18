@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Chi Tiết Tài Khoản"
+   },
+   "accountsRemaining": {
+      "message": "Còn $COUNT$ tài khoản khả dụng. Để xem tất cả",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Người Dùng Hoạt Động"
+   },
+   "addToWhitelist": {
+      "message": "Thêm vào danh sách trắng"
+   },
+   "allAccountsUnlocked": {
+      "message": "Tất cả tài khoản đã mở khóa!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "tài khoản sẽ bị bỏ theo dõi."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram trả về danh sách người theo dõi mà không kèm dữ liệu ảnh đại diện, nên mọi điểm số ở đây đều thấp hơn mức đáng có và một số bot sẽ bị bỏ sót. Hãy mở Instagram trong một tab rồi chạy lại lượt quét để có kết quả đầy đủ."
+   },
+   "botBlindTitle": {
+      "message": "Không thể thực hiện kiểm tra ảnh đại diện"
+   },
+   "botCleared": {
+      "message": "Điểm có lợi"
+   },
+   "botDeepAllChecked": {
+      "message": "Đã kiểm tra tất cả tài khoản bị đánh dấu"
+   },
+   "botDeepChecked": {
+      "message": "Đã kiểm tra hồ sơ"
+   },
+   "botDeepChecksFor": {
+      "message": "Kiểm tra chuyên sâu $1 tài khoản"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Còn $1 ($2 đã xong)"
+   },
+   "botDeepDone": {
+      "message": "Kiểm tra chuyên sâu đã xong — đã kiểm tra $1 tài khoản."
+   },
+   "botDeepNoTargets": {
+      "message": "Không tài khoản nào cần kiểm tra chuyên sâu."
+   },
+   "botDeepPausedBody": {
+      "message": "$1 tài khoản đã được kiểm tra trước khi dừng và $2 thì chưa. Các kết luận bên dưới chỉ dựa trên phần đã đọc được. Không có thời gian chờ cố định — có thể mất vài giờ hoặc sang ngày mai. Hãy quay lại sau thay vì thử ngay bây giờ, vì điều đó chỉ kéo dài thêm."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram đã tạm dừng việc kiểm tra hồ sơ"
+   },
+   "botDeepRemaining": {
+      "message": "$1 tài khoản chưa được kiểm tra."
+   },
+   "botDeepSubtitle": {
+      "message": "Mỗi tài khoản một yêu cầu, ở nhịp độ an toàn."
+   },
+   "botFilterAll": {
+      "message": "Tất cả đã quét"
+   },
+   "botFilterLikely": {
+      "message": "Nhiều khả năng là bot"
+   },
+   "botFilterSuspicious": {
+      "message": "Đáng ngờ"
+   },
+   "botFreeHeadline": {
+      "message": "tài khoản bị đánh dấu nữa đang bị khóa"
+   },
+   "botFreeWithheld": {
+      "message": "Tìm thấy thêm $1 — nâng cấp để xem tất cả."
+   },
+   "botIntroHeading": {
+      "message": "Tìm những tài khoản không phải người thật"
+   },
+   "botIntroLead": {
+      "message": "Mỗi người theo dõi được chấm điểm theo khả năng là bot hoặc tài khoản dùng một lần."
+   },
+   "botIntroReasons": {
+      "message": "Mỗi điểm số đều kèm theo lý do đằng sau nó, để bạn thấy vì sao một tài khoản bị đánh dấu thay vì phải tin vào một con số. Không có gì bị xóa tự động — danh sách ở đây để bạn xem và tự quyết định."
+   },
+   "botNoFlagged": {
+      "message": "Không có gì bị đánh dấu — danh sách người theo dõi của bạn trông sạch."
+   },
+   "botNoRowsForFilter": {
+      "message": "Nhóm này không có gì."
+   },
+   "botNoSignals": {
+      "message": "Không có gì bất thường"
+   },
+   "botNotRunYet": {
+      "message": "Chạy một lượt quét để xem điểm của người theo dõi tại đây."
+   },
+   "botPopupBody": {
+      "message": "Chấm điểm từng người theo dõi theo khả năng là bot hoặc tài khoản dùng một lần: không ảnh đại diện, không bài đăng, tên người dùng trông như được tạo tự động, theo dõi hàng nghìn người trong khi gần như không ai theo dõi lại."
+   },
+   "botPopupReasons": {
+      "message": "Mỗi điểm số đều kèm theo lý do đằng sau nó. Không có gì bị xóa tự động."
+   },
+   "botProvisionalBody": {
+      "message": "$1 tài khoản bị đánh dấu vẫn chưa được kiểm tra hồ sơ. Phần lớn bot chỉ được xác nhận qua bước kiểm tra đó — hãy chạy nó trước khi tin vào số \"nhiều khả năng là bot\"."
+   },
+   "botProvisionalTitle": {
+      "message": "Những kết luận này chưa phải là cuối cùng"
+   },
+   "botReadSubtitle": {
+      "message": "Đọc thẳng từ danh sách người theo dõi của bạn — không có yêu cầu phát sinh."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Không có ảnh đại diện"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Tỷ lệ người theo dõi cân đối"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Nhiều chữ số trong tên người dùng"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Không có tên hiển thị"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Theo dõi nhiều hơn hẳn số người theo dõi lại"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Có huy hiệu tài khoản"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Theo dõi cực nhiều tài khoản"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Không có người theo dõi"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Chưa từng đăng bài"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Đăng bài đều đặn"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Tên người dùng kết thúc bằng dãy số"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Mẫu gạch dưới bất thường"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Tài khoản đã xác minh"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Tên người dùng dài bất thường"
+   },
+   "botRunDeepChecks": {
+      "message": "Chạy kiểm tra chuyên sâu"
+   },
+   "botScanCached": {
+      "message": "Lần quét gần nhất $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram đã tạm dừng việc kiểm tra hồ sơ. Kết quả bên dưới lấy từ phần đã đọc được."
+   },
+   "botScanDeepProgress": {
+      "message": "Đang kiểm tra hồ sơ… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Quét xong."
+   },
+   "botScanNoData": {
+      "message": "Không đọc được danh sách người theo dõi của bạn. Instagram đang giữ chúng tôi lại — việc này tự hết, nhưng không có thời gian chờ cố định. Hãy thử lại sau."
+   },
+   "botScanPartial": {
+      "message": "Quét xong, nhưng danh sách người theo dõi trả về chưa đầy đủ — thiếu một số tài khoản."
+   },
+   "botScanReading": {
+      "message": "Đang đọc người theo dõi của bạn…"
+   },
+   "botScanReadingCount": {
+      "message": "Đang đọc người theo dõi… $1"
+   },
+   "botScanTitle": {
+      "message": "Quét người theo dõi là bot"
+   },
+   "botScoreRaw": {
+      "message": "Điểm thô"
+   },
+   "botSignalName": {
+      "message": "Tên người dùng trông như được tạo tự động"
+   },
+   "botSignalPhoto": {
+      "message": "Không có ảnh đại diện"
+   },
+   "botSignalPosts": {
+      "message": "Không có bài đăng"
+   },
+   "botSignalRatio": {
+      "message": "Theo dõi hàng nghìn người, gần như không ai theo dõi lại"
+   },
+   "botSignalsUnavailable": {
+      "message": "Với tài khoản này có một số kiểm tra không thực hiện được, nên điểm của nó dựa trên ít căn cứ hơn các tài khoản khác."
+   },
+   "botStatFlagged": {
+      "message": "Bị đánh dấu"
+   },
+   "botStatFollowers": {
+      "message": "Người theo dõi"
+   },
+   "botStatFollowing": {
+      "message": "Đang theo dõi"
+   },
+   "botStatLikely": {
+      "message": "Nhiều khả năng là bot"
+   },
+   "botStatPosts": {
+      "message": "Bài đăng"
+   },
+   "botStatScanned": {
+      "message": "Đã quét"
+   },
+   "botStatSuspicious": {
+      "message": "Đáng ngờ"
+   },
+   "botStatsGone": {
+      "message": "Tài khoản không còn"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram không trả về hồ sơ nào — tài khoản đã bị xóa hoặc vô hiệu hóa, không thể đọc số liệu của nó."
+   },
+   "botStatsNotChecked": {
+      "message": "Chưa kiểm tra"
+   },
+   "botStepDeep": {
+      "message": "Đang kiểm tra hồ sơ"
+   },
+   "botStepReading": {
+      "message": "Đang đọc người theo dõi"
+   },
+   "botTableReasons": {
+      "message": "Vì sao"
+   },
+   "botTableScore": {
+      "message": "Điểm"
+   },
+   "botTableStats": {
+      "message": "Số liệu hồ sơ"
+   },
+   "botTableVerdict": {
+      "message": "Kết luận"
+   },
+   "botVerdictClean": {
+      "message": "Trông như thật"
+   },
+   "botVerdictLikely": {
+      "message": "Nhiều khả năng là bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Đáng ngờ"
+   },
+   "cacheExpiryWarning": {
+      "message": "Ảnh hồ sơ có thể không hiển thị vì lần phân tích cuối cùng của bạn là $DAYS$ ngày trước. Vui lòng phân tích lại để có kết quả cập nhật.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Phân tích gần nhất $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Đang kiểm tra…"
+   },
+   "checkingLoginStatus": {
+      "message": "Đang kiểm tra trạng thái đăng nhập..."
+   },
+   "chooseMonthly": {
+      "message": "Chọn Hàng Tháng"
+   },
+   "chooseYearly": {
+      "message": "Chọn Hàng Năm"
+   },
+   "comeBackTomorrow": {
+      "message": "Quay lại vào ngày mai"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Bạn có thể phân tích thêm +20 người theo dõi mỗi ngày. Nếu bạn thiếu kiên nhẫn, chuyển sang Premium, xem tất cả ngay bây giờ. Nếu bạn kiên nhẫn, quay lại vào ngày mai, bạn có thể xem thêm +20 người theo dõi. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Quay lại vào ngày mai để xem $1 tài khoản nữa (+$2 mở khóa mới)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Bạn có chắc muốn bỏ theo dõi TẤT CẢ?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Xác nhận hành động"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Bạn có chắc muốn bỏ theo dõi tất cả những người không theo dõi lại bạn?"
+   },
+   "connected": {
+      "message": "Đã kết nối"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Không thể lấy danh sách. Thử lại sau."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$h $MINUTES$p $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "sau"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$p $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "sau"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Ngày mai bạn có thể xem thêm +20 tài khoản ($COUNTDOWN$). Mỗi ngày thêm +20 tài khoản, giới hạn tích lũy!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30p sau"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Giới Hạn Hàng Ngày"
+   },
+   "dailyScanLimit": {
+      "message": "Giới Hạn Quét Hàng Ngày"
+   },
+   "dataLoading": {
+      "message": "Đang tải dữ liệu..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Đang tải: Tìm thấy $COUNT$ người theo dõi",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Đang tải: Tìm thấy $COUNT$ đang theo dõi",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "GIẢM 50%"
+   },
+   "email": {
+      "message": "Email"
+   },
+   "errorFetchingData": {
+      "message": "Lỗi lấy dữ liệu. Thử lại."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram tạm thời không khả dụng. Vui lòng thử lại sau."
+   },
+   "errorNetwork": {
+      "message": "Không kết nối được tới Instagram. Hãy kiểm tra kết nối — không mất gì cả và tiến trình sẽ tiếp tục."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "Đã xảy ra lỗi. Thử lại."
+   },
+   "errorRateLimit": {
+      "message": "Instagram đã tạm dừng các yêu cầu của chúng tôi. Việc này tự hết, nhưng không có thời gian chờ cố định — tùy vào khối lượng đã làm, có thể mất vài giờ hoặc sang ngày mai. Thử lại ngay sẽ khiến nó lâu hơn."
+   },
+   "errorSessionExpired": {
+      "message": "Phiên Instagram của bạn đã hết hạn. Hãy đăng nhập Instagram rồi thử lại."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "Còn khoảng $1 phút"
+   },
+   "etaSeconds": {
+      "message": "Còn khoảng $1 giây"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Bỏ theo dõi thất bại. Thử lại."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Lọc nâng cao"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Lọc và báo cáo"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Hệ Thống Thông Báo Nâng Cao"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Bỏ theo dõi nâng cao"
+   },
+   "featureBasicUnfollow": {
+      "message": "Bỏ theo dõi cơ bản"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/ngày)"
+   },
+   "featureMax50Analysis": {
+      "message": "Tối đa 40 phân tích"
+   },
+   "featureSpamDetector": {
+      "message": "Phát hiện spam"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Phân tích không giới hạn"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Phân tích không giới hạn"
+   },
+   "finalizingAnalysis": {
+      "message": "Đang hoàn tất..."
+   },
+   "firstDayBonus": {
+      "message": "Thưởng Ngày Đầu Tiên"
+   },
+   "firstDayBonusMessage": {
+      "message": "Phần thưởng ngày đầu: 40 tài khoản! Ngày mai bạn có thể xem thêm +20 tài khoản ($COUNTDOWN$). Mỗi ngày thêm +20 tài khoản.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30p sau"
+         }
+      }
+   },
+   "followers": {
+      "message": "Người theo dõi"
+   },
+   "following": {
+      "message": "Đang theo dõi"
+   },
+   "followingYouBadge": {
+      "message": "Theo Dõi Bạn"
+   },
+   "freePlanLimitDescription": {
+      "message": "Đã đạt 40 phân tích. Nâng cấp Premium!"
+   },
+   "freePlanLimitReached": {
+      "message": "Đạt Giới Hạn Miễn Phí"
+   },
+   "freePlanTodayMessage": {
+      "message": "Với gói miễn phí, bạn có thể xem $DISPLAYED$ tài khoản hôm nay. Còn $HIDDEN$ tài khoản nữa nhưng bạn không thể xem chúng.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Với gói miễn phí, bạn có thể xem $COUNT$ tài khoản hôm nay.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Với gói miễn phí bạn chỉ có thể bỏ theo dõi tối đa $COUNT$ người dùng. Vui lòng chọn chỉ $COUNT$ người dùng đầu tiên hoặc nâng cấp lên Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Với gói miễn phí bạn chỉ có thể bỏ theo dõi tối đa $COUNT$ người dùng. Nâng cấp lên Premium để bỏ theo dõi không giới hạn!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Họ tên"
+   },
+   "getStartedWithGoogle": {
+      "message": "Đăng ký với Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Đến Instagram"
+   },
+   "gotIt": {
+      "message": "OK"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram đã ngừng gửi dữ liệu trước khi toàn bộ danh sách về đến nơi, nên thiếu một số tài khoản. Hành động lúc này có thể bỏ theo dõi những người thực sự đang theo dõi bạn. Hãy chạy lại phân tích trước."
+   },
+   "incompleteDataTitle": {
+      "message": "Danh sách chưa đầy đủ"
+   },
+   "instagramLimitedBody": {
+      "message": "Bạn vẫn đang đăng nhập và tài khoản không có vấn đề gì. Việc này tự hết, nhưng không có thời gian chờ cố định — tùy vào khối lượng đã làm, có thể mất vài giờ hoặc sang ngày mai. Thử đi thử lại chỉ khiến nó lâu hơn."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram đang hạn chế yêu cầu ngay lúc này"
+   },
+   "instagramLoginAlert": {
+      "message": "Đăng nhập Instagram trước!"
+   },
+   "invalidWaitingTime": {
+      "message": "Nhập thời gian hợp lệ 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Thời gian chờ không hợp lệ"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 giây nằm ngoài khoảng cho phép. Hãy nhập giá trị từ $2 đến $3 giây."
+   },
+   "later": {
+      "message": "sau"
+   },
+   "limitedTimeOffer": {
+      "message": "Ưu Đãi Có Hạn"
+   },
+   "liveCounterPrefix": {
+      "message": "Trong 24 giờ qua"
+   },
+   "liveCounterSuffix": {
+      "message": "người đã nâng cấp lên Premium!"
+   },
+   "loading": {
+      "message": "Đang tải..."
+   },
+   "loadingProfile": {
+      "message": "Đang tải hồ sơ"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Đang tải phân tích đã lưu của bạn…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Không có yêu cầu nào gửi tới Instagram."
+   },
+   "login": {
+      "message": "Đăng nhập"
+   },
+   "loginFailed": {
+      "message": "Đăng nhập thất bại: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Lỗi không xác định"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Cần Đăng Nhập"
+   },
+   "loginSuccessful": {
+      "message": "Đăng nhập thành công!"
+   },
+   "loginWithGoogle": {
+      "message": "Đăng nhập Google"
+   },
+   "logout": {
+      "message": "Đăng xuất"
+   },
+   "logoutError": {
+      "message": "Lỗi đăng xuất: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Lỗi không xác định"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Quản Lý Đăng Ký"
+   },
+   "membership": {
+      "message": "Thành viên"
+   },
+   "menuBotScan": {
+      "message": "Quét bot"
+   },
+   "menuHome": {
+      "message": "Trang chủ"
+   },
+   "menuProfile": {
+      "message": "Hồ sơ"
+   },
+   "menuUpgrade": {
+      "message": "Nâng cấp"
+   },
+   "minutesTest": {
+      "message": "$1 phút (Thử nghiệm)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 tài khoản nữa có sẵn"
+   },
+   "moreInHours": {
+      "message": "Sau $2 giờ bạn có thể xem thêm +$1 người theo dõi"
+   },
+   "nextCheckTime": {
+      "message": "Lần kiểm tra tiếp theo: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Lần kiểm tra tiếp theo: Ngày mai"
+   },
+   "nextInSeconds": {
+      "message": "Tiếp theo sau $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Không có ai không theo dõi lại"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Không có ai không theo dõi lại để bỏ theo dõi."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Không có tài khoản nào để bỏ theo dõi."
+   },
+   "notFollowingYouBadge": {
+      "message": "Không Theo Dõi"
+   },
+   "notProvided": {
+      "message": "Chưa cung cấp"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Đang mở..."
+   },
+   "openingInNewTab": {
+      "message": "Mở trong tab mới..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/tháng"
+   },
+   "perYear": {
+      "message": "/năm"
+   },
+   "planFree": {
+      "message": "Miễn phí"
+   },
+   "planPopular": {
+      "message": "Phổ biến"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Hàng Năm"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Đăng nhập để đăng ký"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Đăng nhập Instagram trước"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Đăng nhập để nâng cấp"
+   },
+   "pleaseSignInToView": {
+      "message": "Đăng nhập để xem thông tin"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Với Premium, xem tất cả $COUNT$ tài khoản ngay bây giờ, không giới hạn!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Bảo Mật Riêng Tư"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Đang xử lý..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram yêu cầu tạm dừng — tiếp tục sau $1 giây"
+   },
+   "rating": {
+      "message": "Đánh giá"
+   },
+   "reAnalyze": {
+      "message": "Phân tích lại"
+   },
+   "reAnalyzing": {
+      "message": "Đang phân tích lại..."
+   },
+   "removeFromWhitelist": {
+      "message": "Xóa khỏi danh sách trắng"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Giảm 50% Premium"
+   },
+   "saveSettings": {
+      "message": "Lưu"
+   },
+   "scanBlockedBody": {
+      "message": "Chuyện này thường gặp, sẽ tự hết, và không có gì sai với tài khoản của bạn hay tiện ích. Chúng tôi dừng ngay thay vì thử lại, vì thử lại nhiều lần chỉ khiến phải chờ lâu hơn. Hãy thử lại muộn hơn trong hôm nay."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Hiện chưa đọc được danh sách người theo dõi."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Hiện chưa đọc được danh sách đang theo dõi."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram cần nghỉ một chút"
+   },
+   "scanPartialBody": {
+      "message": "Một phần đã về rồi Instagram tạm dừng chúng tôi, nên kết quả chưa đủ đầy đủ để hành động. Không có gì bị thay đổi. Hãy quay lại sau và chạy lại phân tích — việc này có thể mất vài giờ, và thử ngay bây giờ sẽ kéo dài thêm."
+   },
+   "scanPartialTitle": {
+      "message": "Danh sách trả về chưa đầy đủ"
+   },
+   "scanPaused": {
+      "message": "Instagram yêu cầu chúng tôi chậm lại — đang chờ…"
+   },
+   "scanRemaining": {
+      "message": "Còn $1 tài khoản"
+   },
+   "scanShortBody": {
+      "message": "Quá trình quét đã xong, nhưng số tài khoản trả về ít hơn con số Instagram đưa ra. Hành động dựa trên đó có thể bỏ theo dõi những người đang theo dõi bạn, nên không hiển thị gì cả. Hãy chạy lại phân tích."
+   },
+   "scanShortTitle": {
+      "message": "Thiếu một số tài khoản"
+   },
+   "seconds": {
+      "message": "giây"
+   },
+   "secure": {
+      "message": "An toàn"
+   },
+   "secureLogin": {
+      "message": "Đăng Nhập An Toàn"
+   },
+   "sessionExpiredTitle": {
+      "message": "Phiên Instagram của bạn đã kết thúc"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Chỉ hiện không theo dõi"
+   },
+   "showingFirstAccounts": {
+      "message": "Hiển thị $COUNT$ tài khoản đầu.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Bỏ qua người theo dõi"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Bỏ qua tài khoản xác minh"
+   },
+   "startAnalysis": {
+      "message": "Bắt Đầu Phân Tích"
+   },
+   "startBotScan": {
+      "message": "Bắt đầu quét bot"
+   },
+   "startUnfollow": {
+      "message": "Bắt Đầu Bỏ Theo Dõi"
+   },
+   "startingAnalysis": {
+      "message": "Bắt đầu phân tích..."
+   },
+   "statFailed": {
+      "message": "Thất bại"
+   },
+   "statFollowers": {
+      "message": "Người theo dõi"
+   },
+   "statFollowing": {
+      "message": "Đang theo dõi"
+   },
+   "statNonFollowers": {
+      "message": "Không theo dõi"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Đã bỏ"
+   },
+   "stop": {
+      "message": "Dừng"
+   },
+   "stopping": {
+      "message": "Đang dừng…"
+   },
+   "support": {
+      "message": "Hỗ trợ"
+   },
+   "tableAction": {
+      "message": "Hành động"
+   },
+   "tableFollowingYou": {
+      "message": "Theo Dõi Bạn"
+   },
+   "tableFullName": {
+      "message": "Họ tên"
+   },
+   "tablePrivate": {
+      "message": "Riêng tư"
+   },
+   "tableProfile": {
+      "message": "Hồ sơ"
+   },
+   "tableUsername": {
+      "message": "Tên người dùng"
+   },
+   "tableVerified": {
+      "message": "Xác minh"
+   },
+   "testNow": {
+      "message": "Thử nghiệm ngay"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Hành động này không thể hoàn tác!"
+   },
+   "toRemoveLimits": {
+      "message": "để gỡ bỏ giới hạn"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Còn $COUNT$ ngày",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Thời gian dùng thử đã kết thúc"
+   },
+   "tryAgain": {
+      "message": "Thử lại"
+   },
+   "tryAnyway": {
+      "message": "Vẫn cứ thử"
+   },
+   "unfollow": {
+      "message": "Bỏ theo dõi"
+   },
+   "unfollowDelayLabel": {
+      "message": "Độ trễ (giây)"
+   },
+   "unfollowEveryone": {
+      "message": "Bỏ Theo Dõi Tất Cả"
+   },
+   "unfollowFailed": {
+      "message": "Thất bại"
+   },
+   "unfollowNonFollowers": {
+      "message": "Bỏ Theo Dõi Người Không Theo Dõi"
+   },
+   "unfollowProcessStarted": {
+      "message": "Đã bắt đầu quá trình bỏ theo dõi."
+   },
+   "unfollowSettings": {
+      "message": "Cài Đặt Bỏ Theo Dõi"
+   },
+   "unfollowWaitDetail": {
+      "message": "Chờ $1 giây giữa mỗi lần bỏ theo dõi."
+   },
+   "unfollowedSuccess": {
+      "message": "Đã bỏ theo dõi"
+   },
+   "unfollowing": {
+      "message": "Đang bỏ..."
+   },
+   "unknownError": {
+      "message": "Lỗi không xác định"
+   },
+   "upgradeToPremium": {
+      "message": "Nâng Cấp Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Nâng cấp lên Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium để xem tất cả!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "tài khoản sẽ bị bỏ theo dõi."
+   },
+   "waitingSeconds": {
+      "message": "Chờ $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Thời gian chờ (3-300 giây)"
+   },
+   "welcomeFunText1": {
+      "message": "Muốn xem ai không theo dõi lại? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Bỏ theo dõi giờ rất dễ 😊"
+   },
+   "welcomeTitle": {
+      "message": "Chào mừng! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Đăng nhập Google, dữ liệu an toàn!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 sẽ được mở khóa vào ngày mai"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram tạm thời ngừng nhận các thao tác bỏ theo dõi tự động trên tài khoản này. Đây là tạm thời và tài khoản của bạn không có vấn đề gì.\n\nTrong lúc đó bạn vẫn có thể bỏ theo dõi thủ công từ trang hồ sơ, và danh sách của bạn vẫn ở đây — không có gì bị tiêu tốn."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram đang hạn chế việc bỏ theo dõi"
+   },
+   "yesUnfollow": {
+      "message": "Có, bỏ theo dõi"
+   },
+   "yesUnfollowAll": {
+      "message": "Có, bỏ theo dõi tất cả"
+   }
+}

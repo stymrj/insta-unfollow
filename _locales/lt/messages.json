@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Paskyros Duomenys"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ paskyrų daugiau prieinama. Norint pamatyti visas",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Aktyvių Vartotojų"
+   },
+   "addToWhitelist": {
+      "message": "Įtraukti į baltąjį sąrašą"
+   },
+   "allAccountsUnlocked": {
+      "message": "Visi paskyros atrakintos!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "paskyrų bus nustota sekti."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "„Instagram“ grąžino jūsų sekėjų sąrašą be profilio nuotraukos duomenų, todėl visi įvertinimai čia yra mažesni nei turėtų būti ir dalis botų liks nepastebėta. Atidarykite „Instagram“ kortelėje ir paleiskite patikrą iš naujo, kad gautumėte pilną rezultatą."
+   },
+   "botBlindTitle": {
+      "message": "Profilio nuotraukos patikrinimo atlikti nepavyko"
+   },
+   "botCleared": {
+      "message": "Jos naudai"
+   },
+   "botDeepAllChecked": {
+      "message": "Visos pažymėtos paskyros patikrintos"
+   },
+   "botDeepChecked": {
+      "message": "Profilis patikrintas"
+   },
+   "botDeepChecksFor": {
+      "message": "Nuodugniai patikrinti $1 paskyrų"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Liko $1 ($2 jau patikrinta)"
+   },
+   "botDeepDone": {
+      "message": "Nuodugnios patikros baigtos — patikrinta $1 paskyrų."
+   },
+   "botDeepNoTargets": {
+      "message": "Nė vienai paskyrai nereikia nuodugnios patikros."
+   },
+   "botDeepPausedBody": {
+      "message": "Prieš sustojant buvo patikrinta $1 paskyrų, o $2 ne. Toliau pateiktos išvados remiasi tik tuo, ką spėta perskaityti. Fiksuoto laukimo laiko nėra — tai gali užtrukti valandas arba iki rytojaus. Grįžkite vėliau, o ne bandykite dabar, nes tai tik prailgina."
+   },
+   "botDeepPausedTitle": {
+      "message": "„Instagram“ pristabdė profilių tikrinimą"
+   },
+   "botDeepRemaining": {
+      "message": "$1 liko nepatikrintos."
+   },
+   "botDeepSubtitle": {
+      "message": "Viena užklausa vienai paskyrai, saugiu tempu."
+   },
+   "botFilterAll": {
+      "message": "Visos patikrintos"
+   },
+   "botFilterLikely": {
+      "message": "Tikėtini botai"
+   },
+   "botFilterSuspicious": {
+      "message": "Įtartinos"
+   },
+   "botFreeHeadline": {
+      "message": "daugiau pažymėtų paskyrų užrakinta"
+   },
+   "botFreeWithheld": {
+      "message": "Rasta dar $1 — pereikite į Premium, kad matytumėte visus."
+   },
+   "botIntroHeading": {
+      "message": "Raskite paskyras, už kurių nėra tikrų žmonių"
+   },
+   "botIntroLead": {
+      "message": "Kiekvienas sekėjas įvertinamas pagal tai, kiek tikėtina, kad tai botas ar vienkartinė paskyra."
+   },
+   "botIntroReasons": {
+      "message": "Prie kiekvieno įvertinimo pateikiamos jo priežastys, kad matytumėte, kodėl paskyra pažymėta, užuot pasitikėję skaičiumi. Niekas nešalinama automatiškai — sąrašas čia tam, kad pažiūrėtumėte ir nuspręstumėte."
+   },
+   "botNoFlagged": {
+      "message": "Nieko nepažymėta — jūsų sekėjų sąrašas atrodo švarus."
+   },
+   "botNoRowsForFilter": {
+      "message": "Šioje grupėje nieko nėra."
+   },
+   "botNoSignals": {
+      "message": "Nieko neįprasto"
+   },
+   "botNotRunYet": {
+      "message": "Paleiskite patikrą, kad čia pamatytumėte įvertintus sekėjus."
+   },
+   "botPopupBody": {
+      "message": "Įvertina kiekvieną sekėją pagal tai, kiek tikėtina, kad tai botas ar vienkartinė paskyra: nėra profilio nuotraukos, nėra įrašų, sugeneruotai atrodantis vardas, seka tūkstančius, o jį seka beveik niekas."
+   },
+   "botPopupReasons": {
+      "message": "Prie kiekvieno įvertinimo pateikiamos jo priežastys. Niekas nešalinama automatiškai."
+   },
+   "botProvisionalBody": {
+      "message": "$1 pažymėtų paskyrų profilis dar nepatikrintas. Dauguma botų patvirtinami tik šiuo patikrinimu — atlikite jį, prieš pasitikėdami tikėtinų botų skaičiumi."
+   },
+   "botProvisionalTitle": {
+      "message": "Šios išvados dar nėra galutinės"
+   },
+   "botReadSubtitle": {
+      "message": "Skaitoma tiesiai iš jūsų sekėjų sąrašo — jokių papildomų užklausų."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Nėra profilio nuotraukos"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Subalansuotas sekėjų santykis"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Daug skaitmenų vartotojo varde"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Nėra vardo"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Seka daug daugiau nei seka jį"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Turi paskyros ženklelį"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Seka labai daug paskyrų"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Neturi sekėjų"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Niekada nepaskelbė įrašų"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Skelbia reguliariai"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Vardas baigiasi skaitmenimis"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Neįprasti apatiniai brūkšniai"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Patvirtinta paskyra"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Neįprastai ilgas vardas"
+   },
+   "botRunDeepChecks": {
+      "message": "Atlikti nuodugnias patikras"
+   },
+   "botScanCached": {
+      "message": "Paskutinė patikra $1"
+   },
+   "botScanDeepPaused": {
+      "message": "„Instagram“ pristabdė profilių tikrinimą. Toliau pateikti rezultatai yra iš to, ką spėta nuskaityti."
+   },
+   "botScanDeepProgress": {
+      "message": "Tikrinami profiliai… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Patikra baigta."
+   },
+   "botScanNoData": {
+      "message": "Nepavyko nuskaityti jūsų sekėjų sąrašo. „Instagram“ mus stabdo — tai praeina savaime, bet be fiksuoto laukimo laiko. Pabandykite vėliau."
+   },
+   "botScanPartial": {
+      "message": "Patikra baigta, bet sekėjų sąrašas grįžo nepilnas — trūksta dalies paskyrų."
+   },
+   "botScanReading": {
+      "message": "Skaitomi jūsų sekėjai…"
+   },
+   "botScanReadingCount": {
+      "message": "Skaitomi sekėjai… $1"
+   },
+   "botScanTitle": {
+      "message": "Botų sekėjų patikra"
+   },
+   "botScoreRaw": {
+      "message": "Neapdorotas įvertinimas"
+   },
+   "botSignalName": {
+      "message": "Sugeneruotai atrodantis vardas"
+   },
+   "botSignalPhoto": {
+      "message": "Nėra profilio nuotraukos"
+   },
+   "botSignalPosts": {
+      "message": "Nėra įrašų"
+   },
+   "botSignalRatio": {
+      "message": "Seka tūkstančius, jį seka beveik niekas"
+   },
+   "botSignalsUnavailable": {
+      "message": "Šiai paskyrai dalies patikrinimų atlikti nepavyko, todėl jos įvertinimas remiasi mažiau duomenų nei kitų."
+   },
+   "botStatFlagged": {
+      "message": "Pažymėtos"
+   },
+   "botStatFollowers": {
+      "message": "Sekėjai"
+   },
+   "botStatFollowing": {
+      "message": "Seka"
+   },
+   "botStatLikely": {
+      "message": "Tikėtini botai"
+   },
+   "botStatPosts": {
+      "message": "Įrašai"
+   },
+   "botStatScanned": {
+      "message": "Patikrinta"
+   },
+   "botStatSuspicious": {
+      "message": "Įtartinos"
+   },
+   "botStatsGone": {
+      "message": "Paskyros nebėra"
+   },
+   "botStatsGoneHint": {
+      "message": "„Instagram“ negrąžino profilio — paskyra ištrinta arba išjungta, jos skaičių perskaityti nebeįmanoma."
+   },
+   "botStatsNotChecked": {
+      "message": "Nepatikrinta"
+   },
+   "botStepDeep": {
+      "message": "Tikrinami profiliai"
+   },
+   "botStepReading": {
+      "message": "Skaitomi sekėjai"
+   },
+   "botTableReasons": {
+      "message": "Kodėl"
+   },
+   "botTableScore": {
+      "message": "Įvertinimas"
+   },
+   "botTableStats": {
+      "message": "Profilio skaičiai"
+   },
+   "botTableVerdict": {
+      "message": "Išvada"
+   },
+   "botVerdictClean": {
+      "message": "Atrodo tikra"
+   },
+   "botVerdictLikely": {
+      "message": "Tikėtinas botas"
+   },
+   "botVerdictSuspicious": {
+      "message": "Įtartina"
+   },
+   "cacheExpiryWarning": {
+      "message": "Profilio nuotraukos gali būti nerodomos, nes paskutinė analizė buvo prieš $DAYS$ dienų. Prašome iš naujo analizuoti naujausių rezultatų gavimui.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Paskutinė analizė $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Tikrinama…"
+   },
+   "checkingLoginStatus": {
+      "message": "Tikrinamas prisijungimo būsena..."
+   },
+   "chooseMonthly": {
+      "message": "Pasirinkti Mėnesinis"
+   },
+   "chooseYearly": {
+      "message": "Pasirinkti Metinis"
+   },
+   "comeBackTomorrow": {
+      "message": "Grįžkite rytoj"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Gali analizuoti +20 sekėjų daugiau kiekvieną dieną. Jei esi neturintis kantrybės, pereik į Premium, pamatyk visus dabar. Jei esi kantrus, grįžk rytoj, galėsi matyti +20 sekėjų daugiau. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Grįžkite rytoj, kad pamatytumėte $1 paskyrų daugiau (+$2 naujų atrakinimų)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Ar tikrai norite nustoti sekti VISUS?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Patvirtinkite veiksmą"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Ar tikrai norite nustoti sekti visus, kurie jūsų neseka atgal?"
+   },
+   "connected": {
+      "message": "Prisijungta"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Nepavyko gauti sąrašo. Bandykite vėliau."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$val $MINUTES$min $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "vėliau"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$min $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "vėliau"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Rytoj galite matyti +20 paskyrų daugiau ($COUNTDOWN$). Kiekvieną dieną pridedama +20 paskyrų, limitai kaupiasi!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5val 30min vėliau"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Dienos Limitas"
+   },
+   "dailyScanLimit": {
+      "message": "Dienos Skenavimo Limitas"
+   },
+   "dataLoading": {
+      "message": "Kraunami duomenys..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Kraunama: $COUNT$ sekėjų rasta",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Kraunama: $COUNT$ sekamų rasta",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "-50%"
+   },
+   "email": {
+      "message": "El. paštas"
+   },
+   "errorFetchingData": {
+      "message": "Klaida gaunant duomenis. Bandykite dar kartą."
+   },
+   "errorInstagramUnavailable": {
+      "message": "„Instagram“ laikinai neprieinamas. Bandykite vėliau."
+   },
+   "errorNetwork": {
+      "message": "Nepavyko pasiekti „Instagram“. Patikrinkite ryšį — niekas neprarasta ir darbas tęsis."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "Įvyko klaida. Bandykite dar kartą."
+   },
+   "errorRateLimit": {
+      "message": "„Instagram“ pristabdė mūsų užklausas. Tai praeina savaime, bet fiksuoto laukimo laiko nėra — priklausomai nuo to, kiek buvo padaryta, tai gali užtrukti valandas arba iki rytojaus. Iškart bandant vėl, laikas pailgėja."
+   },
+   "errorSessionExpired": {
+      "message": "Jūsų „Instagram“ seansas baigėsi. Prisijunkite prie „Instagram“ ir bandykite dar kartą."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min liko"
+   },
+   "etaSeconds": {
+      "message": "~$1 s liko"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Nesekimas nepavyko. Bandykite dar kartą."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Išplėstinis filtravimas"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Filtrai ir ataskaitos"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Išplėstinė Pranešimų Sistema"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Išplėstinis nesekimas"
+   },
+   "featureBasicUnfollow": {
+      "message": "Pagrindinis nesekimas"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/dieną)"
+   },
+   "featureMax50Analysis": {
+      "message": "Maks 40 analizių"
+   },
+   "featureSpamDetector": {
+      "message": "Brukalų aptikimas"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Neribota analizė"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Neribota analizė"
+   },
+   "finalizingAnalysis": {
+      "message": "Užbaigiama..."
+   },
+   "firstDayBonus": {
+      "message": "Pirmos Dienos Bonusas"
+   },
+   "firstDayBonusMessage": {
+      "message": "Pirmos dienos bonusas: 40 paskyrų! Rytoj galite matyti +20 paskyrų daugiau ($COUNTDOWN$). Kiekvieną dieną pridedama +20 paskyrų.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5val 30min vėliau"
+         }
+      }
+   },
+   "followers": {
+      "message": "Sekėjai"
+   },
+   "following": {
+      "message": "Sekami"
+   },
+   "followingYouBadge": {
+      "message": "Seka Jus"
+   },
+   "freePlanLimitDescription": {
+      "message": "Pasiekta 40 analizių. Atnaujinkite į Premium!"
+   },
+   "freePlanLimitReached": {
+      "message": "Nemokamas Limitas Pasiektas"
+   },
+   "freePlanTodayMessage": {
+      "message": "Su nemokamu planu, šiandien galite matyti $DISPLAYED$ paskyrų. Yra dar $HIDDEN$ paskyrų, bet jūs negalite jų matyti.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Su nemokamu planu, šiandien galite matyti $COUNT$ paskyrų.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Nemokamame plane galite nustoti sekti tik iki $COUNT$ naudotojų. Pasirinkite tik pirmus $COUNT$ naudotojus arba atnaujinkite į Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Nemokamame plane galite nustoti sekti tik iki $COUNT$ naudotojų. Atnaujinkite į Premium, kad galėtumėte nustoti sekti be apribojimų!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Vardas"
+   },
+   "getStartedWithGoogle": {
+      "message": "Registruotis su Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Eiti į Instagram"
+   },
+   "gotIt": {
+      "message": "Gerai"
+   },
+   "incompleteDataMessage": {
+      "message": "„Instagram“ nustojo siųsti duomenis, kol dar neatkeliavo visas sąrašas, todėl dalies paskyrų trūksta. Veikti dabar galėtų reikšti, kad nustosite sekti žmones, kurie iš tiesų jus seka. Pirmiausia paleiskite analizę iš naujo."
+   },
+   "incompleteDataTitle": {
+      "message": "Sąrašas nepilnas"
+   },
+   "instagramLimitedBody": {
+      "message": "Jūs vis dar prisijungę ir su jūsų paskyra viskas gerai. Tai praeina savaime, bet fiksuoto laukimo laiko nėra — priklausomai nuo to, kiek buvo padaryta, tai gali užtrukti valandas arba iki rytojaus. Pakartotiniai bandymai jį prailgina."
+   },
+   "instagramLimitedTitle": {
+      "message": "„Instagram“ šiuo metu riboja užklausas"
+   },
+   "instagramLoginAlert": {
+      "message": "Pirmiausia prisijunkite prie Instagram!"
+   },
+   "invalidWaitingTime": {
+      "message": "Įveskite galiojantį laiką 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Netinkamas laukimo laikas"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 sekundžių yra už leidžiamo intervalo ribų. Įveskite reikšmę nuo $2 iki $3 sekundžių."
+   },
+   "later": {
+      "message": "vėliau"
+   },
+   "limitedTimeOffer": {
+      "message": "Ribotas Pasiūlymas"
+   },
+   "liveCounterPrefix": {
+      "message": "Per pastaruosius 24 valandas"
+   },
+   "liveCounterSuffix": {
+      "message": "žmonių atnaujino į Premium!"
+   },
+   "loading": {
+      "message": "Kraunama..."
+   },
+   "loadingProfile": {
+      "message": "Kraunamas profilis"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Įkeliame jūsų išsaugotą analizę…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Iš „Instagram“ nieko neprašoma."
+   },
+   "login": {
+      "message": "Prisijungti"
+   },
+   "loginFailed": {
+      "message": "Prisijungimas nepavyko: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Nežinoma klaida"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Reikia Prisijungti"
+   },
+   "loginSuccessful": {
+      "message": "Sėkmingai prisijungta!"
+   },
+   "loginWithGoogle": {
+      "message": "Prisijungti su Google"
+   },
+   "logout": {
+      "message": "Atsijungti"
+   },
+   "logoutError": {
+      "message": "Atsijungimo klaida: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Nežinoma klaida"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Valdyti Prenumeratą"
+   },
+   "membership": {
+      "message": "Narystė"
+   },
+   "menuBotScan": {
+      "message": "Botų patikra"
+   },
+   "menuHome": {
+      "message": "Pradžia"
+   },
+   "menuProfile": {
+      "message": "Profilis"
+   },
+   "menuUpgrade": {
+      "message": "Atnaujinti"
+   },
+   "minutesTest": {
+      "message": "$1 minutės (Testas)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 paskyrų daugiau prieinama"
+   },
+   "moreInHours": {
+      "message": "Po $2 valandų galėsi matyti +$1 sekėjų daugiau"
+   },
+   "nextCheckTime": {
+      "message": "Kitas patikrinimas: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Kitas patikrinimas: Rytoj"
+   },
+   "nextInSeconds": {
+      "message": "Kitas po $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Nėra nesekančių"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Nėra nesekančių, kurių būtų galima nustoti sekti."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Nėra paskyrų, kurių būtų galima nustoti sekti."
+   },
+   "notFollowingYouBadge": {
+      "message": "Neseka"
+   },
+   "notProvided": {
+      "message": "Nepateikta"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Atidaroma..."
+   },
+   "openingInNewTab": {
+      "message": "Atidaroma naujame skirtuke..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/mėn"
+   },
+   "perYear": {
+      "message": "/metai"
+   },
+   "planFree": {
+      "message": "Nemokama"
+   },
+   "planPopular": {
+      "message": "Populiarus"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Metinis"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Prisijunkite prenumeratai"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Pirmiausia prisijunkite prie Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Prisijunkite atnaujinimui"
+   },
+   "pleaseSignInToView": {
+      "message": "Prisijunkite informacijos peržiūrai"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Su Premium, dabar pamatykite visas $COUNT$ paskyras, be limitų!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Apsaugotas Privatumas"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Apdorojama..."
+   },
+   "rateLimitWaiting": {
+      "message": "„Instagram“ paprašė pauzės — tęsime po $1 s"
+   },
+   "rating": {
+      "message": "Reitingas"
+   },
+   "reAnalyze": {
+      "message": "Analizuoti iš naujo"
+   },
+   "reAnalyzing": {
+      "message": "Analizuojama iš naujo..."
+   },
+   "removeFromWhitelist": {
+      "message": "Pašalinti iš baltojo sąrašo"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "50% nuolaida Premium"
+   },
+   "saveSettings": {
+      "message": "Išsaugoti"
+   },
+   "scanBlockedBody": {
+      "message": "Tai dažnas dalykas, praeina savaime, ir nei su jūsų paskyra, nei su plėtiniu nieko blogo nėra. Sustojome iškart, o ne bandėme dar kartą, nes pakartotiniai bandymai tik ilgina laukimą. Pabandykite vėliau šiandien."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Sekėjų sąrašo dabar nepavyko nuskaityti."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Sekamų sąrašo dabar nepavyko nuskaityti."
+   },
+   "scanBlockedTitle": {
+      "message": "„Instagram“ nori trumpos pertraukos"
+   },
+   "scanPartialBody": {
+      "message": "Dalis atkeliavo, o tada „Instagram“ mus sustabdė, todėl rezultatai nėra pakankamai pilni, kad jais remtumėtės. Niekas nepakeista. Grįžkite vėliau ir paleiskite analizę iš naujo — tai gali užtrukti valandas, o bandymas dabar jį prailgina."
+   },
+   "scanPartialTitle": {
+      "message": "Sąrašas grįžo nepilnas"
+   },
+   "scanPaused": {
+      "message": "„Instagram“ paprašė sulėtinti — laukiama…"
+   },
+   "scanRemaining": {
+      "message": "Liko $1 paskyrų"
+   },
+   "scanShortBody": {
+      "message": "Nuskaitymas baigtas, bet grįžo mažiau paskyrų, nei „Instagram“ nurodo sąraše. Veikiant pagal tai galima nustoti sekti žmones, kurie jus seka, todėl niekas nerodoma. Paleiskite analizę iš naujo."
+   },
+   "scanShortTitle": {
+      "message": "Trūksta dalies paskyrų"
+   },
+   "seconds": {
+      "message": "sekundžių"
+   },
+   "secure": {
+      "message": "Saugus"
+   },
+   "secureLogin": {
+      "message": "Saugus Prisijungimas"
+   },
+   "sessionExpiredTitle": {
+      "message": "Jūsų „Instagram“ seansas baigėsi"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Tik nesekantys"
+   },
+   "showingFirstAccounts": {
+      "message": "Rodoma pirmų $COUNT$ paskyrų.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Praleisti sekėjus"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Praleisti patvirtintus"
+   },
+   "startAnalysis": {
+      "message": "Pradėti Analizę"
+   },
+   "startBotScan": {
+      "message": "Pradėti botų patikrą"
+   },
+   "startUnfollow": {
+      "message": "Pradėti Nesekimą"
+   },
+   "startingAnalysis": {
+      "message": "Pradedama analizė..."
+   },
+   "statFailed": {
+      "message": "Nepavyko"
+   },
+   "statFollowers": {
+      "message": "Sekėjai"
+   },
+   "statFollowing": {
+      "message": "Sekate"
+   },
+   "statNonFollowers": {
+      "message": "Neseka"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Nesekama"
+   },
+   "stop": {
+      "message": "Stabdyti"
+   },
+   "stopping": {
+      "message": "Stabdoma…"
+   },
+   "support": {
+      "message": "Palaikymas"
+   },
+   "tableAction": {
+      "message": "Veiksmas"
+   },
+   "tableFollowingYou": {
+      "message": "Seka Jus"
+   },
+   "tableFullName": {
+      "message": "Vardas"
+   },
+   "tablePrivate": {
+      "message": "Privatus"
+   },
+   "tableProfile": {
+      "message": "Profilis"
+   },
+   "tableUsername": {
+      "message": "Vartotojas"
+   },
+   "tableVerified": {
+      "message": "Patvirtintas"
+   },
+   "testNow": {
+      "message": "Testuoti dabar"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Šio veiksmo atšaukti nepavyks!"
+   },
+   "toRemoveLimits": {
+      "message": "limitų pašalinimui"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Liko $COUNT$ dienos",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Bandomasis laikotarpis baigėsi"
+   },
+   "tryAgain": {
+      "message": "Bandyti dar kartą"
+   },
+   "tryAnyway": {
+      "message": "Vis tiek bandyti"
+   },
+   "unfollow": {
+      "message": "Nesekti"
+   },
+   "unfollowDelayLabel": {
+      "message": "Vėlinimas (sekundės)"
+   },
+   "unfollowEveryone": {
+      "message": "Nustoti Sekti Visus"
+   },
+   "unfollowFailed": {
+      "message": "Nepavyko"
+   },
+   "unfollowNonFollowers": {
+      "message": "Nustoti Sekti Nesekančius"
+   },
+   "unfollowProcessStarted": {
+      "message": "Sekimo nutraukimas pradėtas."
+   },
+   "unfollowSettings": {
+      "message": "Nesekimo Nustatymai"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 sekundžių tarp kiekvieno sekimo nutraukimo."
+   },
+   "unfollowedSuccess": {
+      "message": "Nesekama"
+   },
+   "unfollowing": {
+      "message": "Nesekama..."
+   },
+   "unknownError": {
+      "message": "Nežinoma klaida"
+   },
+   "upgradeToPremium": {
+      "message": "Atnaujinti į Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Atnaujinti į Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium visiems!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "paskyrų bus nustota sekti."
+   },
+   "waitingSeconds": {
+      "message": "Laukiama $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Laukimo laikas (3-300 sek)"
+   },
+   "welcomeFunText1": {
+      "message": "Norite pamatyti, kas jūsų neseka? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Nebesekti dabar paprasta 😊"
+   },
+   "welcomeTitle": {
+      "message": "Sveiki! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Prisijunkite su Google, jūsų duomenys saugūs!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 bus atrakinta rytoj"
+   },
+   "writeBlockedMessage": {
+      "message": "„Instagram“ laikinai nustojo priimti automatinį sekimo nutraukimą šioje paskyroje. Tai laikina ir su jūsų paskyra viskas gerai.\n\nTuo tarpu vis dar galite nustoti sekti ranka iš profilio puslapio, o jūsų sąrašas lieka čia — niekas nebuvo išnaudota."
+   },
+   "writeBlockedTitle": {
+      "message": "„Instagram“ šiuo metu riboja sekimo nutraukimą"
+   },
+   "yesUnfollow": {
+      "message": "Taip, nustoti sekti"
+   },
+   "yesUnfollowAll": {
+      "message": "Taip, nustoti sekti visus"
+   }
+}

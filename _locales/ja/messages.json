@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "アカウント情報"
+   },
+   "accountsRemaining": {
+      "message": "あと$COUNT$アカウント利用可能。すべて表示するには",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "アクティブユーザー"
+   },
+   "addToWhitelist": {
+      "message": "ホワイトリストに追加"
+   },
+   "allAccountsUnlocked": {
+      "message": "すべてのアカウントがロック解除されました！"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "人のフォローを解除します。"
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram がプロフィール写真の情報を含めずにフォロワー一覧を返したため、ここのスコアはすべて本来より低く、見逃されるボットがあります。タブで Instagram を開いてからスキャンをやり直すと完全な結果が得られます。"
+   },
+   "botBlindTitle": {
+      "message": "プロフィール写真のチェックを実行できませんでした"
+   },
+   "botCleared": {
+      "message": "有利な材料"
+   },
+   "botDeepAllChecked": {
+      "message": "該当するアカウントはすべて確認済み"
+   },
+   "botDeepChecked": {
+      "message": "プロフィール確認済み"
+   },
+   "botDeepChecksFor": {
+      "message": "$1 件のアカウントを詳細チェック"
+   },
+   "botDeepChecksRemaining": {
+      "message": "残り $1 件（$2 件は確認済み）"
+   },
+   "botDeepDone": {
+      "message": "詳細チェックが完了しました。$1 件のアカウントを確認しました。"
+   },
+   "botDeepNoTargets": {
+      "message": "詳細チェックが必要なアカウントはありません。"
+   },
+   "botDeepPausedBody": {
+      "message": "停止までに $1 件を確認し、$2 件は未確認です。以下の判定は読み取れた分のみに基づいています。決まった待ち時間はなく、数時間または翌日までかかることがあります。いま再試行すると長引くだけなので、時間をおいてからお試しください。"
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram がプロフィール確認を一時停止しました"
+   },
+   "botDeepRemaining": {
+      "message": "$1 件は未確認のままです。"
+   },
+   "botDeepSubtitle": {
+      "message": "1 アカウントにつき 1 リクエスト、安全なペースで行います。"
+   },
+   "botFilterAll": {
+      "message": "検査済みすべて"
+   },
+   "botFilterLikely": {
+      "message": "ボットの可能性が高い"
+   },
+   "botFilterSuspicious": {
+      "message": "疑わしい"
+   },
+   "botFreeHeadline": {
+      "message": "件の該当アカウントがロック中"
+   },
+   "botFreeWithheld": {
+      "message": "さらに $1 件見つかりました。すべて見るにはアップグレードしてください。"
+   },
+   "botIntroHeading": {
+      "message": "実在の人物ではないアカウントを見つける"
+   },
+   "botIntroLead": {
+      "message": "各フォロワーがボットや捨てアカウントである可能性をスコア化します。"
+   },
+   "botIntroReasons": {
+      "message": "各スコアには判定の理由が添えられているので、数字を信じるのではなく、なぜそのアカウントが該当したのかを確認できます。自動的に削除されるものはありません。リストはあなたが見て判断するためにあります。"
+   },
+   "botNoFlagged": {
+      "message": "該当なし — フォロワーリストはきれいな状態です。"
+   },
+   "botNoRowsForFilter": {
+      "message": "このグループには何もありません。"
+   },
+   "botNoSignals": {
+      "message": "異常なし"
+   },
+   "botNotRunYet": {
+      "message": "スキャンを実行すると、フォロワーのスコアがここに表示されます。"
+   },
+   "botPopupBody": {
+      "message": "各フォロワーがボットや捨てアカウントである可能性をスコア化します。プロフィール写真がない、投稿がない、自動生成のようなユーザー名、数千人をフォローしているのにほとんど誰からもフォローされていない、といった点を見ます。"
+   },
+   "botPopupReasons": {
+      "message": "各スコアには判定の理由が添えられています。自動的に削除されるものはありません。"
+   },
+   "botProvisionalBody": {
+      "message": "該当した $1 件のアカウントはまだプロフィールを確認していません。ボットの多くはこの確認で初めて確定するため、「ボットの可能性が高い」件数を信じる前に実行してください。"
+   },
+   "botProvisionalTitle": {
+      "message": "この判定はまだ確定ではありません"
+   },
+   "botReadSubtitle": {
+      "message": "フォロワーリストから直接読み取ります。追加のリクエストはありません。"
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "プロフィール写真なし"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "フォロワー比率が自然"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "ユーザー名に数字が多い"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "表示名なし"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "フォロワーより極端に多くをフォロー"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "アカウントバッジあり"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "非常に多くのアカウントをフォロー"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "フォロワーなし"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "投稿したことがない"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "定期的に投稿している"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "ユーザー名が数字の羅列で終わる"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "不自然なアンダースコアの並び"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "認証済みアカウント"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "異常に長いユーザー名"
+   },
+   "botRunDeepChecks": {
+      "message": "詳細チェックを実行"
+   },
+   "botScanCached": {
+      "message": "最終スキャン $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram がプロフィール確認を一時停止しました。以下は読み取れた分の結果です。"
+   },
+   "botScanDeepProgress": {
+      "message": "プロフィールを確認中… $1/$2"
+   },
+   "botScanDone": {
+      "message": "スキャンが完了しました。"
+   },
+   "botScanNoData": {
+      "message": "フォロワー一覧を読み取れませんでした。Instagram に制限されています。自然に解除されますが決まった待ち時間はありません。時間をおいてお試しください。"
+   },
+   "botScanPartial": {
+      "message": "スキャンは終わりましたが、フォロワーリストが不完全な状態で返ってきました。一部のアカウントが欠けています。"
+   },
+   "botScanReading": {
+      "message": "フォロワーを読み込んでいます…"
+   },
+   "botScanReadingCount": {
+      "message": "フォロワーを読み込み中… $1"
+   },
+   "botScanTitle": {
+      "message": "ボットフォロワー検出"
+   },
+   "botScoreRaw": {
+      "message": "素点"
+   },
+   "botSignalName": {
+      "message": "自動生成のようなユーザー名"
+   },
+   "botSignalPhoto": {
+      "message": "プロフィール写真なし"
+   },
+   "botSignalPosts": {
+      "message": "投稿なし"
+   },
+   "botSignalRatio": {
+      "message": "数千人をフォロー、フォローバックはほぼゼロ"
+   },
+   "botSignalsUnavailable": {
+      "message": "このアカウントでは一部の確認ができなかったため、他より少ない材料に基づくスコアです。"
+   },
+   "botStatFlagged": {
+      "message": "該当"
+   },
+   "botStatFollowers": {
+      "message": "フォロワー"
+   },
+   "botStatFollowing": {
+      "message": "フォロー中"
+   },
+   "botStatLikely": {
+      "message": "ボットの可能性が高い"
+   },
+   "botStatPosts": {
+      "message": "投稿"
+   },
+   "botStatScanned": {
+      "message": "検査済み"
+   },
+   "botStatSuspicious": {
+      "message": "疑わしい"
+   },
+   "botStatsGone": {
+      "message": "アカウントなし"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram がプロフィールを返しませんでした。削除または停止されたアカウントで、数値を読み取ることはできません。"
+   },
+   "botStatsNotChecked": {
+      "message": "未確認"
+   },
+   "botStepDeep": {
+      "message": "プロフィールを確認中"
+   },
+   "botStepReading": {
+      "message": "フォロワーを読み込み中"
+   },
+   "botTableReasons": {
+      "message": "理由"
+   },
+   "botTableScore": {
+      "message": "スコア"
+   },
+   "botTableStats": {
+      "message": "プロフィールの数値"
+   },
+   "botTableVerdict": {
+      "message": "判定"
+   },
+   "botVerdictClean": {
+      "message": "本物のようです"
+   },
+   "botVerdictLikely": {
+      "message": "ボットの可能性が高い"
+   },
+   "botVerdictSuspicious": {
+      "message": "疑わしい"
+   },
+   "cacheExpiryWarning": {
+      "message": "最後の分析が$DAYS$日前のため、プロフィール画像が表示されない場合があります。最新の結果を得るには再分析してください。",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "最終分析 $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "キャンセル"
+   },
+   "checkingBeforeStart": {
+      "message": "確認中…"
+   },
+   "checkingLoginStatus": {
+      "message": "ログイン状態を確認中..."
+   },
+   "chooseMonthly": {
+      "message": "月額を選択"
+   },
+   "chooseYearly": {
+      "message": "年額を選択"
+   },
+   "comeBackTomorrow": {
+      "message": "明日また来てください"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "毎日+20人のフォロワーをさらに分析できます。せっかちな場合は、Premiumに切り替えて、今すぐすべてを確認してください。我慢強い場合は、明日また来て、+20人のフォロワーをさらに見ることができます。 ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "明日また来て、$1件のアカウントを確認してください（+$2件の新しいロック解除）"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ 警告！"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "全員のフォローを解除してもよろしいですか？"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "操作を確認"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "フォローバックしていない全員のフォローを解除しますか？"
+   },
+   "connected": {
+      "message": "接続済み"
+   },
+   "couldNotFetchFollowing": {
+      "message": "リストを取得できませんでした。後でお試しください。"
+   },
+   "countdownFormat": {
+      "message": "$HOURS$時間 $MINUTES$分 $SECONDS$秒 $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "後"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$分 $SECONDS$秒 $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "後"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "明日は+20アカウント追加で表示できます（$COUNTDOWN$）。毎日+20アカウントが追加され、制限が累積されます！",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5時間30分後"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "1日の制限"
+   },
+   "dailyScanLimit": {
+      "message": "1日のスキャン制限"
+   },
+   "dataLoading": {
+      "message": "データ読込中..."
+   },
+   "dataLoadingFollowers": {
+      "message": "読込中: $COUNT$件のフォロワー",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "読込中: $COUNT$件のフォロー中",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "50%オフ"
+   },
+   "email": {
+      "message": "メール"
+   },
+   "errorFetchingData": {
+      "message": "データ取得エラー。再試行してください。"
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagramは一時的に利用できません。後でもう一度お試しください。"
+   },
+   "errorNetwork": {
+      "message": "Instagram に接続できませんでした。接続をご確認ください。失われたものはなく、処理は続行されます。"
+   },
+   "errorNetworkConnection": {
+      "message": "接続エラー。インターネット接続を確認してください。"
+   },
+   "errorOccurred": {
+      "message": "エラーが発生しました。再試行してください。"
+   },
+   "errorRateLimit": {
+      "message": "Instagram がリクエストを一時停止しました。自然に解除されますが、決まった待ち時間はありません。実行した量によっては数時間、翌日までかかることもあります。すぐに再試行すると長くなります。"
+   },
+   "errorSessionExpired": {
+      "message": "Instagramのセッションが期限切れです。再ログインしてください。"
+   },
+   "errorUnfollowRateLimit": {
+      "message": "フォロー解除リクエストが多すぎます。5分間待機中..."
+   },
+   "etaMinutes": {
+      "message": "残り約 $1 分"
+   },
+   "etaSeconds": {
+      "message": "残り約 $1 秒"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "解除失敗。再試行してください。"
+   },
+   "featureAdvancedFiltering": {
+      "message": "高度なフィルター"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "フィルターとレポート"
+   },
+   "featureAdvancedNotifications": {
+      "message": "高度な通知システム"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "高度なアンフォロー"
+   },
+   "featureBasicUnfollow": {
+      "message": "基本的なアンフォロー"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/日)"
+   },
+   "featureMax50Analysis": {
+      "message": "最大40件の分析"
+   },
+   "featureSpamDetector": {
+      "message": "スパム検出"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "無制限の分析"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "無制限の分析"
+   },
+   "finalizingAnalysis": {
+      "message": "完了中..."
+   },
+   "firstDayBonus": {
+      "message": "初日ボーナス"
+   },
+   "firstDayBonusMessage": {
+      "message": "初日ボーナス：40アカウント！明日は+20アカウント追加で表示できます（$COUNTDOWN$）。毎日+20アカウントが追加されます。",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5時間30分後"
+         }
+      }
+   },
+   "followers": {
+      "message": "フォロワー"
+   },
+   "following": {
+      "message": "フォロー中"
+   },
+   "followingYouBadge": {
+      "message": "フォロー中"
+   },
+   "freePlanLimitDescription": {
+      "message": "40件の上限に達しました。Premiumで無制限に！"
+   },
+   "freePlanLimitReached": {
+      "message": "無料プラン上限"
+   },
+   "freePlanTodayMessage": {
+      "message": "無料プランでは、今日$DISPLAYED$アカウントを表示できます。さらに$HIDDEN$アカウントありますが、表示できません。",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "無料プランでは、今日$COUNT$アカウントを表示できます。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "無料プランでは最大$COUNT$人のユーザーのみフォロー解除できます。最初の$COUNT$人のユーザーのみを選択するか、Premiumにアップグレードしてください。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "無料プランでは最大$COUNT$人のユーザーのみフォロー解除できます。無制限のフォロー解除にはPremiumにアップグレードしてください！",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "名前"
+   },
+   "getStartedWithGoogle": {
+      "message": "Googleで登録"
+   },
+   "goToInstagramLogin": {
+      "message": "Instagramへ"
+   },
+   "gotIt": {
+      "message": "OK"
+   },
+   "incompleteDataMessage": {
+      "message": "リスト全体が届く前に Instagram がデータの送信を止めたため、一部のアカウントが欠けています。このまま実行すると、実際にはあなたをフォローしている人のフォローを解除してしまう可能性があります。先に分析をやり直してください。"
+   },
+   "incompleteDataTitle": {
+      "message": "リストが不完全です"
+   },
+   "instagramLimitedBody": {
+      "message": "ログインは有効で、アカウントに問題はありません。時間が経てば自然に解除されますが、決まった待ち時間はありません。実行した量によっては数時間、翌日までかかることもあります。繰り返し試すとその分長くなります。"
+   },
+   "instagramLimitedTitle": {
+      "message": "現在 Instagram がリクエストを制限しています"
+   },
+   "instagramLoginAlert": {
+      "message": "先にInstagramにログインしてください！"
+   },
+   "invalidWaitingTime": {
+      "message": "3〜300の有効な時間を入力してください"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "待機時間が正しくありません"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 秒は許容範囲外です。$2 〜 $3 秒の値を入力してください。"
+   },
+   "later": {
+      "message": "後"
+   },
+   "limitedTimeOffer": {
+      "message": "期間限定"
+   },
+   "liveCounterPrefix": {
+      "message": "過去24時間で"
+   },
+   "liveCounterSuffix": {
+      "message": "人がプレミアムにアップグレードしました！"
+   },
+   "loading": {
+      "message": "読込中..."
+   },
+   "loadingProfile": {
+      "message": "プロフィール読込中"
+   },
+   "loadingSavedAnalysis": {
+      "message": "保存された分析を読み込んでいます…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Instagram には何も要求していません。"
+   },
+   "login": {
+      "message": "ログイン"
+   },
+   "loginFailed": {
+      "message": "ログイン失敗: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "不明なエラー"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "ログインが必要"
+   },
+   "loginSuccessful": {
+      "message": "ログイン成功！"
+   },
+   "loginWithGoogle": {
+      "message": "Googleでログイン"
+   },
+   "logout": {
+      "message": "ログアウト"
+   },
+   "logoutError": {
+      "message": "ログアウトエラー: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "不明なエラー"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "サブスク管理"
+   },
+   "membership": {
+      "message": "メンバーシップ"
+   },
+   "menuBotScan": {
+      "message": "ボット検出"
+   },
+   "menuHome": {
+      "message": "ホーム"
+   },
+   "menuProfile": {
+      "message": "プロフィール"
+   },
+   "menuUpgrade": {
+      "message": "アップグレード"
+   },
+   "minutesTest": {
+      "message": "$1分（テスト）",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1件のアカウントが利用可能"
+   },
+   "moreInHours": {
+      "message": "$2時間後、+$1人のフォロワーをさらに見ることができます"
+   },
+   "nextCheckTime": {
+      "message": "次のチェック: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "次のチェック: 明日"
+   },
+   "nextInSeconds": {
+      "message": "次回まで $SECONDS$秒",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "非フォロワーなし"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "フォロー解除する非フォロワーがいません。"
+   },
+   "noUsers": {
+      "message": "ユーザーなし"
+   },
+   "noUsersToUnfollow": {
+      "message": "フォロー解除するユーザーがいません。"
+   },
+   "notFollowingYouBadge": {
+      "message": "未フォロー"
+   },
+   "notProvided": {
+      "message": "未設定"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "開いています..."
+   },
+   "openingInNewTab": {
+      "message": "新しいタブで開いています..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/月"
+   },
+   "perYear": {
+      "message": "/年"
+   },
+   "planFree": {
+      "message": "無料"
+   },
+   "planPopular": {
+      "message": "人気"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "プレミアム年額"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "登録するにはログインしてください"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "先にInstagramにログインしてください"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "ログインしてアップグレード"
+   },
+   "pleaseSignInToView": {
+      "message": "情報を見るにはログインしてください"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "プレミアムで、今すぐすべての$COUNT$アカウントを表示、制限なし！",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "プライバシー保護"
+   },
+   "processStarted": {
+      "message": "処理開始"
+   },
+   "processing": {
+      "message": "処理中..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram から一時停止を求められました。$1 秒後に再開します"
+   },
+   "rating": {
+      "message": "評価"
+   },
+   "reAnalyze": {
+      "message": "再分析"
+   },
+   "reAnalyzing": {
+      "message": "再分析中..."
+   },
+   "removeFromWhitelist": {
+      "message": "ホワイトリストから削除"
+   },
+   "retryIn": {
+      "message": "$SECONDS$秒後に再試行...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Premium 50%オフ"
+   },
+   "saveSettings": {
+      "message": "保存"
+   },
+   "scanBlockedBody": {
+      "message": "これはよくあることで自然に解消します。アカウントにも拡張機能にも問題はありません。再試行すると待ち時間が長くなるため、すぐに停止しました。今日のうちに時間をおいて再度お試しください。"
+   },
+   "scanBlockedListFollowers": {
+      "message": "現在、フォロワーリストを読み取れませんでした。"
+   },
+   "scanBlockedListFollowing": {
+      "message": "現在、フォロー中リストを読み取れませんでした。"
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram が少し休憩を求めています"
+   },
+   "scanPartialBody": {
+      "message": "一部は届きましたが Instagram に停止されたため、実行の判断ができるほど結果が揃っていません。何も変更していません。時間をおいてから分析をやり直してください。解除まで数時間かかることがあり、いま再試行すると長引きます。"
+   },
+   "scanPartialTitle": {
+      "message": "リストが不完全な状態で返ってきました"
+   },
+   "scanPaused": {
+      "message": "Instagram から速度を落とすよう求められました。待機中…"
+   },
+   "scanRemaining": {
+      "message": "残り $1 アカウント"
+   },
+   "scanShortBody": {
+      "message": "スキャンは終わりましたが、Instagram が示す件数より少ないアカウントしか返ってきませんでした。このまま実行すると、あなたをフォローしている人のフォローを解除する恐れがあるため、何も表示していません。分析をやり直してください。"
+   },
+   "scanShortTitle": {
+      "message": "一部のアカウントが欠けています"
+   },
+   "seconds": {
+      "message": "秒"
+   },
+   "secure": {
+      "message": "安全"
+   },
+   "secureLogin": {
+      "message": "安全なログイン"
+   },
+   "sessionExpiredTitle": {
+      "message": "Instagram のセッションが終了しました"
+   },
+   "showOnlyNonFollowers": {
+      "message": "フォロバなしのみ表示"
+   },
+   "showingFirstAccounts": {
+      "message": "最初の$COUNT$件を表示中。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "フォロワーをスキップ"
+   },
+   "skipVerifiedAccounts": {
+      "message": "認証済みをスキップ"
+   },
+   "startAnalysis": {
+      "message": "分析を開始"
+   },
+   "startBotScan": {
+      "message": "ボット検出を開始"
+   },
+   "startUnfollow": {
+      "message": "アンフォロー開始"
+   },
+   "startingAnalysis": {
+      "message": "分析を開始中..."
+   },
+   "statFailed": {
+      "message": "失敗"
+   },
+   "statFollowers": {
+      "message": "フォロワー"
+   },
+   "statFollowing": {
+      "message": "フォロー中"
+   },
+   "statNonFollowers": {
+      "message": "フォローバックなし"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "解除済み"
+   },
+   "stop": {
+      "message": "停止"
+   },
+   "stopping": {
+      "message": "停止しています…"
+   },
+   "support": {
+      "message": "サポート"
+   },
+   "tableAction": {
+      "message": "操作"
+   },
+   "tableFollowingYou": {
+      "message": "フォロー中"
+   },
+   "tableFullName": {
+      "message": "名前"
+   },
+   "tablePrivate": {
+      "message": "非公開"
+   },
+   "tableProfile": {
+      "message": "プロフィール"
+   },
+   "tableUsername": {
+      "message": "ユーザー名"
+   },
+   "tableVerified": {
+      "message": "認証済み"
+   },
+   "testNow": {
+      "message": "今すぐテスト"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ この操作は元に戻せません！"
+   },
+   "toRemoveLimits": {
+      "message": "制限を解除するには"
+   },
+   "trendDown": {
+      "message": "前回の分析から$COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "変化なし"
+   },
+   "trendUp": {
+      "message": "前回の分析から+$COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "残り$COUNT$日",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "無料トライアルが終了しました。今日は$COUNT$アカウントを表示できます。",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "試用期間終了"
+   },
+   "tryAgain": {
+      "message": "再試行"
+   },
+   "tryAnyway": {
+      "message": "それでも試す"
+   },
+   "unfollow": {
+      "message": "解除"
+   },
+   "unfollowDelayLabel": {
+      "message": "遅延（秒）"
+   },
+   "unfollowEveryone": {
+      "message": "全員をアンフォロー"
+   },
+   "unfollowFailed": {
+      "message": "失敗"
+   },
+   "unfollowNonFollowers": {
+      "message": "フォローバックしていない人をアンフォロー"
+   },
+   "unfollowProcessStarted": {
+      "message": "フォロー解除処理を開始しました。"
+   },
+   "unfollowSettings": {
+      "message": "アンフォロー設定"
+   },
+   "unfollowWaitDetail": {
+      "message": "フォロー解除ごとに $1 秒待機します。"
+   },
+   "unfollowedSuccess": {
+      "message": "解除済み"
+   },
+   "unfollowing": {
+      "message": "解除中..."
+   },
+   "unknownError": {
+      "message": "不明なエラー"
+   },
+   "upgradeToPremium": {
+      "message": "Premiumへ"
+   },
+   "upgradeToPremiumButton": {
+      "message": "プレミアムにアップグレード"
+   },
+   "upgradeToSeeAll": {
+      "message": "全件表示はPremiumで！"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "人のフォローを解除します。"
+   },
+   "waitingSeconds": {
+      "message": "待機中 $SECONDS$秒",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "待機時間 (3-300秒)"
+   },
+   "welcomeFunText1": {
+      "message": "フォロバしてない人を見たい？😏"
+   },
+   "welcomeFunText2": {
+      "message": "アンフォローが簡単に 😊"
+   },
+   "welcomeTitle": {
+      "message": "ようこそ！👋"
+   },
+   "welcomeTrustText": {
+      "message": "Googleでログイン、データは安全です！"
+   },
+   "whitelist": {
+      "message": "ホワイトリスト"
+   },
+   "whitelisted": {
+      "message": "保護済み"
+   },
+   "whitelistedSkipped": {
+      "message": "スキップ（ホワイトリスト）"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1件は明日ロック解除されます"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram はこのアカウントでの自動フォロー解除の受け付けを一時的に停止しています。一時的なもので、アカウントに問題はありません。\n\nその間もプロフィールページから手動でフォロー解除できます。リストはここに残っており、何も消費されていません。"
+   },
+   "writeBlockedTitle": {
+      "message": "現在 Instagram がフォロー解除を制限しています"
+   },
+   "yesUnfollow": {
+      "message": "はい、フォロー解除"
+   },
+   "yesUnfollowAll": {
+      "message": "はい、全員フォロー解除"
+   }
+}

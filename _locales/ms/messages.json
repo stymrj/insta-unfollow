@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Butiran Akaun"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ akaun lagi tersedia. Untuk melihat semua",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Pengguna Aktif"
+   },
+   "addToWhitelist": {
+      "message": "Tambah ke senarai putih"
+   },
+   "allAccountsUnlocked": {
+      "message": "Semua akaun dibuka kunci!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "pengguna akan dihentikan ikutan."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram memulangkan senarai pengikut anda tanpa data gambar profil, jadi semua skor di sini lebih rendah daripada sepatutnya dan sebahagian bot akan terlepas. Buka Instagram dalam satu tab kemudian jalankan imbasan semula untuk hasil lengkap."
+   },
+   "botBlindTitle": {
+      "message": "Pemeriksaan gambar profil tidak dapat dijalankan"
+   },
+   "botCleared": {
+      "message": "Memihak kepadanya"
+   },
+   "botDeepAllChecked": {
+      "message": "Semua akaun yang ditanda telah disemak"
+   },
+   "botDeepChecked": {
+      "message": "Profil disemak"
+   },
+   "botDeepChecksFor": {
+      "message": "Semak mendalam $1 akaun"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Tinggal $1 ($2 sudah siap)"
+   },
+   "botDeepDone": {
+      "message": "Semakan mendalam selesai — $1 akaun disemak."
+   },
+   "botDeepNoTargets": {
+      "message": "Tiada akaun memerlukan semakan mendalam."
+   },
+   "botDeepPausedBody": {
+      "message": "$1 akaun sempat diperiksa sebelum berhenti dan $2 tidak. Keputusan di bawah hanya berdasarkan apa yang sempat dibaca. Tiada masa menunggu tetap — ia boleh mengambil masa berjam-jam atau sehingga esok. Kembalilah kemudian dan bukannya mencuba sekarang, yang hanya memanjangkannya."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram menjeda pemeriksaan profil"
+   },
+   "botDeepRemaining": {
+      "message": "$1 tidak disemak."
+   },
+   "botDeepSubtitle": {
+      "message": "Satu permintaan bagi setiap akaun, pada rentak yang selamat."
+   },
+   "botFilterAll": {
+      "message": "Semua yang diimbas"
+   },
+   "botFilterLikely": {
+      "message": "Berkemungkinan bot"
+   },
+   "botFilterSuspicious": {
+      "message": "Mencurigakan"
+   },
+   "botFreeHeadline": {
+      "message": "lagi akaun bertanda dikunci"
+   },
+   "botFreeWithheld": {
+      "message": "Ditemui $1 lagi — naik taraf untuk melihat semuanya."
+   },
+   "botIntroHeading": {
+      "message": "Cari akaun yang bukan orang sebenar"
+   },
+   "botIntroLead": {
+      "message": "Setiap pengikut diberi skor berdasarkan kebarangkalian ia bot atau akaun sekali guna."
+   },
+   "botIntroReasons": {
+      "message": "Setiap skor disertakan sebab di sebaliknya, supaya anda nampak mengapa sesuatu akaun ditanda dan bukannya perlu mempercayai satu nombor. Tiada apa-apa dibuang secara automatik — senarai ini ada untuk anda lihat dan putuskan sendiri."
+   },
+   "botNoFlagged": {
+      "message": "Tiada yang ditanda — senarai pengikut anda nampak bersih."
+   },
+   "botNoRowsForFilter": {
+      "message": "Tiada apa-apa dalam kumpulan ini."
+   },
+   "botNoSignals": {
+      "message": "Tiada apa-apa luar biasa"
+   },
+   "botNotRunYet": {
+      "message": "Jalankan imbasan untuk melihat skor pengikut anda di sini."
+   },
+   "botPopupBody": {
+      "message": "Memberi skor kepada setiap pengikut berdasarkan kebarangkalian ia bot atau akaun sekali guna: tiada gambar profil, tiada catatan, nama pengguna yang nampak dijana, mengikuti beribu-ribu sedangkan hampir tiada siapa mengikuti kembali."
+   },
+   "botPopupReasons": {
+      "message": "Setiap skor disertakan sebab di sebaliknya. Tiada apa-apa dibuang secara automatik."
+   },
+   "botProvisionalBody": {
+      "message": "$1 akaun bertanda belum diperiksa profilnya. Kebanyakan bot hanya disahkan melalui pemeriksaan itu — jalankannya sebelum mempercayai angka \"berkemungkinan bot\"."
+   },
+   "botProvisionalTitle": {
+      "message": "Keputusan ini belum muktamad"
+   },
+   "botReadSubtitle": {
+      "message": "Dibaca terus daripada senarai pengikut anda — tiada permintaan tambahan."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Tiada gambar profil"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Nisbah pengikut seimbang"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Banyak digit dalam nama pengguna"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Tiada nama"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Mengikuti jauh lebih ramai daripada pengikutnya"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Ada lencana akaun"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Mengikuti terlalu banyak akaun"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Tiada pengikut"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Tidak pernah membuat catatan"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Kerap membuat catatan"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Nama pengguna berakhir dengan digit"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Corak garis bawah luar biasa"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Akaun disahkan"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Nama pengguna luar biasa panjang"
+   },
+   "botRunDeepChecks": {
+      "message": "Jalankan semakan mendalam"
+   },
+   "botScanCached": {
+      "message": "Imbasan terakhir $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram menjeda semakan profil. Keputusan di bawah adalah daripada yang sempat dibaca."
+   },
+   "botScanDeepProgress": {
+      "message": "Menyemak profil… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Imbasan selesai."
+   },
+   "botScanNoData": {
+      "message": "Senarai pengikut anda tidak dapat dibaca. Instagram sedang menahan kami — ia pulih sendiri, tetapi tanpa masa menunggu tetap. Cuba lagi kemudian."
+   },
+   "botScanPartial": {
+      "message": "Imbasan selesai, tetapi senarai pengikut kembali tidak lengkap — ada akaun yang tertinggal."
+   },
+   "botScanReading": {
+      "message": "Membaca pengikut anda…"
+   },
+   "botScanReadingCount": {
+      "message": "Membaca pengikut… $1"
+   },
+   "botScanTitle": {
+      "message": "Imbasan Pengikut Bot"
+   },
+   "botScoreRaw": {
+      "message": "Skor mentah"
+   },
+   "botSignalName": {
+      "message": "Nama pengguna yang nampak dijana"
+   },
+   "botSignalPhoto": {
+      "message": "Tiada gambar profil"
+   },
+   "botSignalPosts": {
+      "message": "Tiada catatan"
+   },
+   "botSignalRatio": {
+      "message": "Mengikuti beribu-ribu, hampir tiada siapa mengikuti kembali"
+   },
+   "botSignalsUnavailable": {
+      "message": "Bagi akaun ini sebahagian semakan tidak dapat dijalankan, jadi skornya bersandar pada bukti yang lebih sedikit berbanding yang lain."
+   },
+   "botStatFlagged": {
+      "message": "Ditanda"
+   },
+   "botStatFollowers": {
+      "message": "Pengikut"
+   },
+   "botStatFollowing": {
+      "message": "Mengikuti"
+   },
+   "botStatLikely": {
+      "message": "Berkemungkinan bot"
+   },
+   "botStatPosts": {
+      "message": "Catatan"
+   },
+   "botStatScanned": {
+      "message": "Diimbas"
+   },
+   "botStatSuspicious": {
+      "message": "Mencurigakan"
+   },
+   "botStatsGone": {
+      "message": "Akaun tiada"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram tidak memulangkan sebarang profil — akaun telah dipadam atau dinyahaktifkan, angkanya tidak boleh dibaca lagi."
+   },
+   "botStatsNotChecked": {
+      "message": "Belum disemak"
+   },
+   "botStepDeep": {
+      "message": "Menyemak profil"
+   },
+   "botStepReading": {
+      "message": "Membaca pengikut"
+   },
+   "botTableReasons": {
+      "message": "Sebab"
+   },
+   "botTableScore": {
+      "message": "Skor"
+   },
+   "botTableStats": {
+      "message": "Angka profil"
+   },
+   "botTableVerdict": {
+      "message": "Keputusan"
+   },
+   "botVerdictClean": {
+      "message": "Nampak tulen"
+   },
+   "botVerdictLikely": {
+      "message": "Berkemungkinan bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Mencurigakan"
+   },
+   "cacheExpiryWarning": {
+      "message": "Gambar profil mungkin tidak dipaparkan kerana analisis terakhir anda $DAYS$ hari yang lalu. Sila analisis semula untuk keputusan terkini.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Analisis terakhir $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Menyemak…"
+   },
+   "checkingLoginStatus": {
+      "message": "Menyemak status log masuk..."
+   },
+   "chooseMonthly": {
+      "message": "Pilih Bulanan"
+   },
+   "chooseYearly": {
+      "message": "Pilih Tahunan"
+   },
+   "comeBackTomorrow": {
+      "message": "Kembali esok"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Anda boleh menganalisis +20 pengikut lagi setiap hari. Jika anda tidak sabar, tukar ke Premium, lihat semuanya sekarang. Jika anda sabar, kembali esok, anda boleh melihat +20 pengikut lagi. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Kembali esok untuk melihat $1 akaun lagi (+$2 buka kunci baharu)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Anda pasti mahu berhenti mengikuti SEMUA ORANG?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Sahkan tindakan"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Anda pasti mahu berhenti mengikuti semua yang tidak mengikuti anda kembali?"
+   },
+   "connected": {
+      "message": "Bersambung"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Tidak dapat mendapatkan senarai. Cuba nanti."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$j $MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "kemudian"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "kemudian"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Esok anda boleh melihat +20 akaun lagi ($COUNTDOWN$). Setiap hari ditambah +20 akaun, had terkumpul!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5j 30m kemudian"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Had Harian"
+   },
+   "dailyScanLimit": {
+      "message": "Had Imbas Harian"
+   },
+   "dataLoading": {
+      "message": "Memuatkan data..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Memuatkan: $COUNT$ pengikut dijumpai",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Memuatkan: $COUNT$ mengikuti dijumpai",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "DISKAUN 50%"
+   },
+   "email": {
+      "message": "E-mel"
+   },
+   "errorFetchingData": {
+      "message": "Ralat mendapatkan data. Cuba lagi."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram tidak tersedia buat sementara. Cuba lagi nanti."
+   },
+   "errorNetwork": {
+      "message": "Tidak dapat menghubungi Instagram. Semak sambungan anda — tiada apa-apa hilang dan proses akan diteruskan."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "Ralat berlaku. Cuba lagi."
+   },
+   "errorRateLimit": {
+      "message": "Instagram menjeda permintaan kami. Ia pulih sendiri, tetapi tiada masa menunggu tetap — bergantung pada berapa banyak yang dilakukan, ia boleh mengambil masa berjam-jam atau sehingga esok. Mencuba serta-merta memanjangkannya."
+   },
+   "errorSessionExpired": {
+      "message": "Sesi Instagram anda telah tamat. Log masuk ke Instagram dan cuba lagi."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min lagi"
+   },
+   "etaSeconds": {
+      "message": "~$1 saat lagi"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Unfollow gagal. Cuba lagi."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Penapisan lanjutan"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Penapis dan laporan"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Sistem Pemberitahuan Lanjutan"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Unfollow lanjutan"
+   },
+   "featureBasicUnfollow": {
+      "message": "Unfollow asas"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/hari)"
+   },
+   "featureMax50Analysis": {
+      "message": "Maks 40 analisis"
+   },
+   "featureSpamDetector": {
+      "message": "Pengesan spam"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Analisis tanpa had"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Analisis tanpa had"
+   },
+   "finalizingAnalysis": {
+      "message": "Mengakhiri..."
+   },
+   "firstDayBonus": {
+      "message": "Bonus Hari Pertama"
+   },
+   "firstDayBonusMessage": {
+      "message": "Bonus hari pertama: 40 akaun! Esok anda boleh melihat +20 akaun lagi ($COUNTDOWN$). Setiap hari ditambah +20 akaun.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5j 30m kemudian"
+         }
+      }
+   },
+   "followers": {
+      "message": "Pengikut"
+   },
+   "following": {
+      "message": "Mengikuti"
+   },
+   "followingYouBadge": {
+      "message": "Mengikuti Anda"
+   },
+   "freePlanLimitDescription": {
+      "message": "Mencapai 40 analisis. Naik taraf Premium!"
+   },
+   "freePlanLimitReached": {
+      "message": "Had Percuma Dicapai"
+   },
+   "freePlanTodayMessage": {
+      "message": "Dengan pelan percuma, anda boleh melihat $DISPLAYED$ akaun hari ini. Terdapat $HIDDEN$ akaun lagi tetapi anda tidak dapat melihatnya.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Dengan pelan percuma, anda boleh melihat $COUNT$ akaun hari ini.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "Dengan pelan percuma anda hanya boleh unfollow sehingga $COUNT$ pengguna. Sila pilih hanya $COUNT$ pengguna pertama atau naik taraf ke Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "Dengan pelan percuma anda hanya boleh unfollow sehingga $COUNT$ pengguna. Naik taraf ke Premium untuk unfollow tanpa had!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Nama"
+   },
+   "getStartedWithGoogle": {
+      "message": "Daftar dengan Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Pergi ke Instagram"
+   },
+   "gotIt": {
+      "message": "OK"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram berhenti menghantar data sebelum seluruh senarai tiba, jadi ada akaun yang tertinggal. Bertindak sekarang boleh menyebabkan anda berhenti mengikuti orang yang sebenarnya mengikuti anda. Jalankan analisis semula dahulu."
+   },
+   "incompleteDataTitle": {
+      "message": "Senarai tidak lengkap"
+   },
+   "instagramLimitedBody": {
+      "message": "Anda masih log masuk dan tiada apa-apa yang tidak kena dengan akaun anda. Ini pulih dengan sendirinya, tetapi tiada masa menunggu tetap — bergantung pada berapa banyak yang dilakukan, ia boleh mengambil masa berjam-jam atau sehingga esok. Mencuba berulang kali memanjangkannya."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram sedang mengehadkan permintaan"
+   },
+   "instagramLoginAlert": {
+      "message": "Log masuk Instagram dulu!"
+   },
+   "invalidWaitingTime": {
+      "message": "Masukkan masa sah 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Masa menunggu tidak sah"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 saat berada di luar julat yang dibenarkan. Masukkan nilai antara $2 dan $3 saat."
+   },
+   "later": {
+      "message": "kemudian"
+   },
+   "limitedTimeOffer": {
+      "message": "Tawaran Terhad"
+   },
+   "liveCounterPrefix": {
+      "message": "Dalam 24 jam yang lalu"
+   },
+   "liveCounterSuffix": {
+      "message": "orang telah menaik taraf ke Premium!"
+   },
+   "loading": {
+      "message": "Memuatkan..."
+   },
+   "loadingProfile": {
+      "message": "Memuatkan profil"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Memuatkan analisis anda yang disimpan…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Tiada apa-apa diminta daripada Instagram."
+   },
+   "login": {
+      "message": "Log Masuk"
+   },
+   "loginFailed": {
+      "message": "Log masuk gagal: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Ralat tidak diketahui"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Log Masuk Diperlukan"
+   },
+   "loginSuccessful": {
+      "message": "Log masuk berjaya!"
+   },
+   "loginWithGoogle": {
+      "message": "Log Masuk Google"
+   },
+   "logout": {
+      "message": "Log Keluar"
+   },
+   "logoutError": {
+      "message": "Ralat log keluar: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Ralat tidak diketahui"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Urus Langganan"
+   },
+   "membership": {
+      "message": "Keahlian"
+   },
+   "menuBotScan": {
+      "message": "Imbasan Bot"
+   },
+   "menuHome": {
+      "message": "Utama"
+   },
+   "menuProfile": {
+      "message": "Profil"
+   },
+   "menuUpgrade": {
+      "message": "Naik Taraf"
+   },
+   "minutesTest": {
+      "message": "$1 minit (Ujian)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 akaun lagi tersedia"
+   },
+   "moreInHours": {
+      "message": "Dalam $2 jam anda boleh melihat +$1 pengikut lagi"
+   },
+   "nextCheckTime": {
+      "message": "Semakan seterusnya: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Semakan seterusnya: Esok"
+   },
+   "nextInSeconds": {
+      "message": "Seterusnya dalam $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Tiada bukan pengikut"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Tiada bukan pengikut untuk dihentikan."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Tiada pengguna untuk dihentikan ikutan."
+   },
+   "notFollowingYouBadge": {
+      "message": "Tidak Mengikuti"
+   },
+   "notProvided": {
+      "message": "Tidak disediakan"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Membuka..."
+   },
+   "openingInNewTab": {
+      "message": "Membuka dalam tab baru..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/bulan"
+   },
+   "perYear": {
+      "message": "/tahun"
+   },
+   "planFree": {
+      "message": "Percuma"
+   },
+   "planPopular": {
+      "message": "Popular"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Tahunan"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Log masuk untuk langgan"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Log masuk Instagram dulu"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Log masuk untuk naik taraf"
+   },
+   "pleaseSignInToView": {
+      "message": "Log masuk untuk melihat maklumat"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Dengan Premium, lihat semua $COUNT$ akaun sekarang, tiada had!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Privasi Dilindungi"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Memproses..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram meminta jeda — sambung dalam $1 saat"
+   },
+   "rating": {
+      "message": "Penilaian"
+   },
+   "reAnalyze": {
+      "message": "Analisis semula"
+   },
+   "reAnalyzing": {
+      "message": "Menganalisis semula..."
+   },
+   "removeFromWhitelist": {
+      "message": "Buang dari senarai putih"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Diskaun 50% Premium"
+   },
+   "saveSettings": {
+      "message": "Simpan"
+   },
+   "scanBlockedBody": {
+      "message": "Ini perkara biasa, ia pulih dengan sendirinya, dan tiada apa-apa yang tidak kena dengan akaun anda mahupun sambungan ini. Kami berhenti terus dan bukannya mencuba lagi, kerana percubaan berulang hanya memanjangkan penantian. Cuba lagi kemudian hari ini."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Senarai pengikut tidak dapat dibaca sekarang."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Senarai mengikuti tidak dapat dibaca sekarang."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram mahu rehat sebentar"
+   },
+   "scanPartialBody": {
+      "message": "Sebahagiannya sampai kemudian Instagram menjeda kami, jadi keputusannya tidak cukup lengkap untuk ditindak. Tiada apa-apa yang diubah. Kembalilah kemudian dan jalankan analisis semula — ini boleh mengambil masa berjam-jam, dan mencuba sekarang memanjangkannya."
+   },
+   "scanPartialTitle": {
+      "message": "Senarai kembali tidak lengkap"
+   },
+   "scanPaused": {
+      "message": "Instagram meminta kami perlahan — menunggu…"
+   },
+   "scanRemaining": {
+      "message": "Tinggal $1 akaun"
+   },
+   "scanShortBody": {
+      "message": "Imbasan selesai, tetapi akaun yang kembali kurang daripada jumlah yang dinyatakan Instagram. Bertindak atasnya boleh menyebabkan anda berhenti mengikuti orang yang mengikuti anda, jadi tiada apa-apa dipaparkan. Sila jalankan analisis semula."
+   },
+   "scanShortTitle": {
+      "message": "Ada akaun yang tertinggal"
+   },
+   "seconds": {
+      "message": "saat"
+   },
+   "secure": {
+      "message": "Selamat"
+   },
+   "secureLogin": {
+      "message": "Log Masuk Selamat"
+   },
+   "sessionExpiredTitle": {
+      "message": "Sesi Instagram anda telah tamat"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Hanya bukan pengikut"
+   },
+   "showingFirstAccounts": {
+      "message": "Menunjukkan $COUNT$ akaun pertama.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Langkau pengikut"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Langkau disahkan"
+   },
+   "startAnalysis": {
+      "message": "Mula Analisis"
+   },
+   "startBotScan": {
+      "message": "Mula Imbasan Bot"
+   },
+   "startUnfollow": {
+      "message": "Mula Unfollow"
+   },
+   "startingAnalysis": {
+      "message": "Memulakan analisis..."
+   },
+   "statFailed": {
+      "message": "Gagal"
+   },
+   "statFollowers": {
+      "message": "Pengikut"
+   },
+   "statFollowing": {
+      "message": "Mengikuti"
+   },
+   "statNonFollowers": {
+      "message": "Tidak Mengikuti"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Unfollowed"
+   },
+   "stop": {
+      "message": "Berhenti"
+   },
+   "stopping": {
+      "message": "Menghentikan…"
+   },
+   "support": {
+      "message": "Sokongan"
+   },
+   "tableAction": {
+      "message": "Tindakan"
+   },
+   "tableFollowingYou": {
+      "message": "Mengikuti Anda"
+   },
+   "tableFullName": {
+      "message": "Nama"
+   },
+   "tablePrivate": {
+      "message": "Peribadi"
+   },
+   "tableProfile": {
+      "message": "Profil"
+   },
+   "tableUsername": {
+      "message": "Nama Pengguna"
+   },
+   "tableVerified": {
+      "message": "Disahkan"
+   },
+   "testNow": {
+      "message": "Uji Sekarang"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Tindakan ini tidak boleh dibatalkan!"
+   },
+   "toRemoveLimits": {
+      "message": "untuk membuang had"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ hari lagi",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Tempoh percubaan tamat"
+   },
+   "tryAgain": {
+      "message": "Cuba lagi"
+   },
+   "tryAnyway": {
+      "message": "Cuba juga"
+   },
+   "unfollow": {
+      "message": "Unfollow"
+   },
+   "unfollowDelayLabel": {
+      "message": "Kelewatan (saat)"
+   },
+   "unfollowEveryone": {
+      "message": "Berhenti Ikut Semua"
+   },
+   "unfollowFailed": {
+      "message": "Gagal"
+   },
+   "unfollowNonFollowers": {
+      "message": "Berhenti Ikut Bukan Pengikut"
+   },
+   "unfollowProcessStarted": {
+      "message": "Proses berhenti mengikuti telah bermula."
+   },
+   "unfollowSettings": {
+      "message": "Tetapan Unfollow"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 saat antara setiap tindakan berhenti mengikuti."
+   },
+   "unfollowedSuccess": {
+      "message": "Unfollowed"
+   },
+   "unfollowing": {
+      "message": "Unfollow..."
+   },
+   "unknownError": {
+      "message": "Ralat tidak diketahui"
+   },
+   "upgradeToPremium": {
+      "message": "Naik Taraf Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Naik Taraf ke Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium untuk semua!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "pengguna akan dihentikan ikutan."
+   },
+   "waitingSeconds": {
+      "message": "Menunggu $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Masa tunggu (3-300 saat)"
+   },
+   "welcomeFunText1": {
+      "message": "Nak tahu siapa tak follow balik? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Unfollow kini mudah 😊"
+   },
+   "welcomeTitle": {
+      "message": "Selamat Datang! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Log masuk dengan Google, data anda selamat!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 akan dibuka kunci esok"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram buat sementara berhenti menerima tindakan berhenti mengikuti automatik pada akaun ini. Ia sementara dan tiada apa-apa yang tidak kena dengan akaun anda.\n\nSementara itu anda masih boleh berhenti mengikuti secara manual dari halaman profil, dan senarai anda kekal di sini — tiada apa-apa yang terpakai."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram sedang mengehadkan tindakan berhenti mengikuti"
+   },
+   "yesUnfollow": {
+      "message": "Ya, berhenti ikut"
+   },
+   "yesUnfollowAll": {
+      "message": "Ya, berhenti ikut semua"
+   }
+}

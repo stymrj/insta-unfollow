@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>Admin Console</title>
+    <link rel="stylesheet" href="assets/inter/inter.css">
+    <link rel="stylesheet" href="content.css">
+    <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+<header class="app-header">
+    <div class="header-content">
+        <h1>Admin Console</h1>
+        <div class="user-info">
+            <div class="user-profile">
+                <img id="adminAvatar" alt="Admin" class="user-avatar">
+                <div class="user-details">
+                    <span id="adminName" class="user-name"></span>
+                    <span id="adminEmail" class="user-email"></span>
+                </div>
+            </div>
+            <button id="adminSignOut" class="admin-signout-btn" style="display:none">Sign out</button>
+        </div>
+    </div>
+</header>
+
+<main class="app-container">
+
+    <section id="adminGate" class="admin-gate">
+
+        <div id="gateLogin" class="admin-gate-card" style="display:none">
+            <div class="admin-gate-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+            </div>
+            <h2 class="admin-gate-title">Sign in to the admin console</h2>
+            <p class="admin-gate-text">Only the account listed as <strong>ADMIN_EMAIL</strong> on the
+                payment worker may open this page. Your Google login stays in this extension.</p>
+            <button id="gateLoginBtn" class="btn btn-primary admin-gate-btn">Sign in with Google</button>
+        </div>
+
+        <div id="gateDenied" class="admin-gate-card" style="display:none">
+            <div class="admin-gate-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+            </div>
+            <h2 class="admin-gate-title">Access denied</h2>
+            <p class="admin-gate-text">You are signed in as <strong id="deniedEmail"></strong>, which is
+                not the admin account. This console is for the worker's <strong>ADMIN_EMAIL</strong> only.</p>
+        </div>
+
+        <div id="gateConfig" class="admin-gate-card" style="display:none">
+            <div class="admin-gate-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+            </div>
+            <h2 class="admin-gate-title">Worker not configured</h2>
+            <p class="admin-gate-text">Set <strong>PAYMENT_API_URL</strong> in premium-config.js to a
+                deployed copy of payments-worker.js (with <strong>ADMIN_EMAIL</strong> set) before the
+                console can list users.</p>
+        </div>
+
+        <div id="gateError" class="admin-gate-card" style="display:none">
+            <div class="admin-gate-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            </div>
+            <h2 class="admin-gate-title">Console unavailable</h2>
+            <p id="gateErrorText" class="admin-gate-text"></p>
+            <button id="gateRetryBtn" class="btn btn-primary admin-gate-btn">Try again</button>
+        </div>
+    </section>
+
+    <section id="adminPanel" style="display:none">
+
+        <div class="admin-stats">
+            <div class="admin-stat">
+                <div class="admin-stat-value" id="statTotal">–</div>
+                <div class="admin-stat-label">Total users</div>
+            </div>
+            <div class="admin-stat">
+                <div class="admin-stat-value" id="statPremium">–</div>
+                <div class="admin-stat-label">Premium</div>
+            </div>
+            <div class="admin-stat">
+                <div class="admin-stat-value" id="statFree">–</div>
+                <div class="admin-stat-label">Free</div>
+            </div>
+            <div class="admin-stat">
+                <div class="admin-stat-value" id="statBanned">–</div>
+                <div class="admin-stat-label">Banned</div>
+            </div>
+        </div>
+
+        <div class="admin-toolbar">
+            <input id="adminSearch" class="admin-search" type="search"
+                   placeholder="Search name, email or Google ID…" autocomplete="off">
+            <button id="adminRefresh" class="btn btn-secondary">Refresh</button>
+        </div>
+
+        <div class="table-container">
+            <table class="following-table admin-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>USER</th>
+                    <th>GOOGLE ID</th>
+                    <th>JOINED</th>
+                    <th>LAST SEEN</th>
+                    <th>MEMBERSHIP</th>
+                    <th>CONTROLS</th>
+                </tr>
+                </thead>
+                <tbody id="adminTableBody"></tbody>
+            </table>
+        </div>
+        <div id="adminEmpty" class="admin-empty" style="display:none">No users match this search.</div>
+
+        <div class="pagination-controls">
+            <button id="adminPrev" class="page-btn">← Prev</button>
+            <span id="adminPageInfo" class="page-info"></span>
+            <button id="adminNext" class="page-btn">Next →</button>
+        </div>
+    </section>
+
+    <div id="adminToast" class="admin-toast"></div>
+</main>
+
+<script src="premium-config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

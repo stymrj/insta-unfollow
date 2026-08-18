@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Данные Аккаунта"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ аккаунтов еще доступно. Чтобы увидеть все",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Активных Пользователей"
+   },
+   "addToWhitelist": {
+      "message": "Добавить в белый список"
+   },
+   "allAccountsUnlocked": {
+      "message": "Все аккаунты разблокированы!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "пользователей будет отписано."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram вернул список подписчиков без данных о фото профиля, поэтому все оценки здесь ниже, чем должны быть, и часть ботов будет пропущена. Откройте Instagram во вкладке и запустите проверку заново для полного результата."
+   },
+   "botBlindTitle": {
+      "message": "Проверку фото профиля выполнить не удалось"
+   },
+   "botCleared": {
+      "message": "В его пользу"
+   },
+   "botDeepAllChecked": {
+      "message": "Все отмеченные аккаунты проверены"
+   },
+   "botDeepChecked": {
+      "message": "Профиль проверен"
+   },
+   "botDeepChecksFor": {
+      "message": "Углублённо проверить $1 аккаунтов"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Осталось $1 ($2 уже проверено)"
+   },
+   "botDeepDone": {
+      "message": "Углублённая проверка завершена — проверено $1 аккаунтов."
+   },
+   "botDeepNoTargets": {
+      "message": "Ни один аккаунт не требует углублённой проверки."
+   },
+   "botDeepPausedBody": {
+      "message": "До остановки проверено $1 аккаунтов, а $2 — нет. Выводы ниже основаны только на прочитанном. Фиксированного времени ожидания нет — может пройти несколько часов или до завтра. Вернитесь позже, а не пробуйте сейчас: это только удлиняет ожидание."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram приостановил проверку профилей"
+   },
+   "botDeepRemaining": {
+      "message": "$1 остались непроверенными."
+   },
+   "botDeepSubtitle": {
+      "message": "Один запрос на аккаунт, в безопасном темпе."
+   },
+   "botFilterAll": {
+      "message": "Все проверенные"
+   },
+   "botFilterLikely": {
+      "message": "Вероятные боты"
+   },
+   "botFilterSuspicious": {
+      "message": "Подозрительные"
+   },
+   "botFreeHeadline": {
+      "message": "отмеченных аккаунтов заблокировано"
+   },
+   "botFreeWithheld": {
+      "message": "Найдено ещё $1 — перейдите на Premium, чтобы увидеть все."
+   },
+   "botIntroHeading": {
+      "message": "Найдите аккаунты, за которыми нет живых людей"
+   },
+   "botIntroLead": {
+      "message": "Каждый подписчик оценивается по вероятности того, что это бот или одноразовый аккаунт."
+   },
+   "botIntroReasons": {
+      "message": "К каждой оценке прилагаются причины, чтобы вы видели, почему аккаунт отмечен, а не доверяли цифре. Ничего не удаляется автоматически — список здесь, чтобы вы посмотрели и решили сами."
+   },
+   "botNoFlagged": {
+      "message": "Ничего не отмечено — ваш список подписчиков выглядит чистым."
+   },
+   "botNoRowsForFilter": {
+      "message": "В этой группе ничего нет."
+   },
+   "botNoSignals": {
+      "message": "Ничего необычного"
+   },
+   "botNotRunYet": {
+      "message": "Запустите проверку, чтобы увидеть здесь оценки подписчиков."
+   },
+   "botPopupBody": {
+      "message": "Оценивает каждого подписчика по вероятности того, что это бот или одноразовый аккаунт: нет фото профиля, нет публикаций, сгенерированное на вид имя пользователя, подписан на тысячи, а на него почти никто."
+   },
+   "botPopupReasons": {
+      "message": "К каждой оценке прилагаются причины. Ничего не удаляется автоматически."
+   },
+   "botProvisionalBody": {
+      "message": "У $1 отмеченных аккаунтов профиль ещё не проверен. Большинство ботов подтверждается только этой проверкой — выполните её, прежде чем доверять числу вероятных ботов."
+   },
+   "botProvisionalTitle": {
+      "message": "Эти выводы ещё не окончательные"
+   },
+   "botReadSubtitle": {
+      "message": "Читается прямо из вашего списка подписчиков — без дополнительных запросов."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Нет фото профиля"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Сбалансированное соотношение подписчиков"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Много цифр в имени пользователя"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Нет отображаемого имени"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Подписок намного больше, чем подписчиков"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Есть значок аккаунта"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Подписан на огромное число аккаунтов"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Нет подписчиков"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Ни одной публикации"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Публикует регулярно"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Имя пользователя заканчивается цифрами"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Необычные подчёркивания в имени"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Верифицированный аккаунт"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Необычно длинное имя пользователя"
+   },
+   "botRunDeepChecks": {
+      "message": "Выполнить углублённую проверку"
+   },
+   "botScanCached": {
+      "message": "Последняя проверка $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram приостановил проверку профилей. Результаты ниже — из того, что успели прочитать."
+   },
+   "botScanDeepProgress": {
+      "message": "Проверяем профили… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Проверка завершена."
+   },
+   "botScanNoData": {
+      "message": "Не удалось прочитать список подписчиков. Instagram нас сдерживает — это проходит само, но без фиксированного времени. Попробуйте позже."
+   },
+   "botScanPartial": {
+      "message": "Проверка завершена, но список подписчиков вернулся неполным — часть аккаунтов отсутствует."
+   },
+   "botScanReading": {
+      "message": "Читаем ваших подписчиков…"
+   },
+   "botScanReadingCount": {
+      "message": "Читаем подписчиков… $1"
+   },
+   "botScanTitle": {
+      "message": "Проверка подписчиков на ботов"
+   },
+   "botScoreRaw": {
+      "message": "Исходная оценка"
+   },
+   "botSignalName": {
+      "message": "Имя пользователя выглядит сгенерированным"
+   },
+   "botSignalPhoto": {
+      "message": "Нет фото профиля"
+   },
+   "botSignalPosts": {
+      "message": "Нет публикаций"
+   },
+   "botSignalRatio": {
+      "message": "Подписан на тысячи, на него — почти никто"
+   },
+   "botSignalsUnavailable": {
+      "message": "Для этого аккаунта часть проверок выполнить не удалось, поэтому его оценка опирается на меньшее число признаков, чем у остальных."
+   },
+   "botStatFlagged": {
+      "message": "Отмечено"
+   },
+   "botStatFollowers": {
+      "message": "Подписчики"
+   },
+   "botStatFollowing": {
+      "message": "Подписки"
+   },
+   "botStatLikely": {
+      "message": "Вероятные боты"
+   },
+   "botStatPosts": {
+      "message": "Публикации"
+   },
+   "botStatScanned": {
+      "message": "Проверено"
+   },
+   "botStatSuspicious": {
+      "message": "Подозрительные"
+   },
+   "botStatsGone": {
+      "message": "Аккаунта нет"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram не вернул профиль — аккаунт удалён или отключён, его показатели прочитать невозможно."
+   },
+   "botStatsNotChecked": {
+      "message": "Не проверен"
+   },
+   "botStepDeep": {
+      "message": "Проверяем профили"
+   },
+   "botStepReading": {
+      "message": "Читаем подписчиков"
+   },
+   "botTableReasons": {
+      "message": "Почему"
+   },
+   "botTableScore": {
+      "message": "Оценка"
+   },
+   "botTableStats": {
+      "message": "Данные профиля"
+   },
+   "botTableVerdict": {
+      "message": "Вердикт"
+   },
+   "botVerdictClean": {
+      "message": "Похож на живого"
+   },
+   "botVerdictLikely": {
+      "message": "Вероятно бот"
+   },
+   "botVerdictSuspicious": {
+      "message": "Подозрительный"
+   },
+   "cacheExpiryWarning": {
+      "message": "Фото профилей могут не отображаться, так как последний анализ был $DAYS$ дней назад. Пожалуйста, проведите повторный анализ для актуальных результатов.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Последний анализ $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Отмена"
+   },
+   "checkingBeforeStart": {
+      "message": "Проверяем…"
+   },
+   "checkingLoginStatus": {
+      "message": "Проверка статуса входа..."
+   },
+   "chooseMonthly": {
+      "message": "Выбрать Месячный"
+   },
+   "chooseYearly": {
+      "message": "Выбрать Годовой"
+   },
+   "comeBackTomorrow": {
+      "message": "Вернитесь завтра"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Вы можете анализировать +20 подписчиков каждый день. Если вы нетерпеливы, перейдите на Premium, увидьте всех сейчас. Если вы терпеливы, вернитесь завтра, вы сможете увидеть +20 подписчиков. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Вернитесь завтра, чтобы увидеть $1 аккаунтов (+$2 новых разблокировок)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Внимание!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Вы уверены, что хотите отписаться от ВСЕХ?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Подтвердить"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Отписаться от всех, кто не подписан на вас?"
+   },
+   "connected": {
+      "message": "Подключен"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Не удалось получить список. Попробуйте позже."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$ч $MINUTES$м $SECONDS$с $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "позже"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$м $SECONDS$с $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "позже"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Завтра вы сможете увидеть +20 аккаунтов ($COUNTDOWN$). Каждый день добавляется +20 аккаунтов, лимиты накапливаются!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5ч 30м позже"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Дневной Лимит"
+   },
+   "dailyScanLimit": {
+      "message": "Дневной Лимит Сканирования"
+   },
+   "dataLoading": {
+      "message": "Загрузка данных..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Загрузка: найдено $COUNT$ подписчиков",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Загрузка: найдено $COUNT$ подписок",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "-50%"
+   },
+   "email": {
+      "message": "E-mail"
+   },
+   "errorFetchingData": {
+      "message": "Ошибка получения данных. Попробуйте снова."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram временно недоступен. Попробуйте позже."
+   },
+   "errorNetwork": {
+      "message": "Не удалось связаться с Instagram. Проверьте соединение — ничего не потеряно, процесс продолжится."
+   },
+   "errorNetworkConnection": {
+      "message": "Ошибка подключения. Проверьте интернет-соединение."
+   },
+   "errorOccurred": {
+      "message": "Произошла ошибка. Попробуйте снова."
+   },
+   "errorRateLimit": {
+      "message": "Instagram приостановил наши запросы. Это проходит само, но фиксированного времени ожидания нет — в зависимости от объёма сделанного может пройти несколько часов или до завтра. Немедленная повторная попытка удлиняет его."
+   },
+   "errorSessionExpired": {
+      "message": "Сессия Instagram истекла. Войдите в Instagram снова."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Слишком много запросов на отписку. Ожидание 5 минут..."
+   },
+   "etaMinutes": {
+      "message": "~$1 мин осталось"
+   },
+   "etaSeconds": {
+      "message": "~$1 с осталось"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Не удалось отписаться. Попробуйте снова."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Расширенные фильтры"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Фильтры и отчеты"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Расширенная система уведомлений"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Расширенная отписка"
+   },
+   "featureBasicUnfollow": {
+      "message": "Базовая отписка"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/день)"
+   },
+   "featureMax50Analysis": {
+      "message": "Макс. 40 анализов"
+   },
+   "featureSpamDetector": {
+      "message": "Детектор спама"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Безлимитный анализ"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Безлимитный анализ"
+   },
+   "finalizingAnalysis": {
+      "message": "Завершение..."
+   },
+   "firstDayBonus": {
+      "message": "Бонус Первого Дня"
+   },
+   "firstDayBonusMessage": {
+      "message": "Бонус первого дня: 40 аккаунтов! Завтра вы сможете увидеть +20 аккаунтов ($COUNTDOWN$). Каждый день добавляется +20 аккаунтов.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5ч 30м позже"
+         }
+      }
+   },
+   "followers": {
+      "message": "Подписчики"
+   },
+   "following": {
+      "message": "Подписки"
+   },
+   "followingYouBadge": {
+      "message": "Подписан"
+   },
+   "freePlanLimitDescription": {
+      "message": "Достигнут лимит 40. Перейдите на Premium!"
+   },
+   "freePlanLimitReached": {
+      "message": "Лимит Достигнут"
+   },
+   "freePlanTodayMessage": {
+      "message": "На бесплатном плане вы можете увидеть $DISPLAYED$ аккаунтов сегодня. Есть еще $HIDDEN$ аккаунтов, но вы не можете их увидеть.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "На бесплатном плане вы можете увидеть $COUNT$ аккаунтов сегодня.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "В бесплатном плане вы можете отписаться только от $COUNT$ пользователей. Пожалуйста, выберите только первых $COUNT$ пользователей или обновитесь до Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "В бесплатном плане вы можете отписаться только от $COUNT$ пользователей. Обновитесь до Premium для неограниченной отписки!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Имя"
+   },
+   "getStartedWithGoogle": {
+      "message": "Регистрация с Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Перейти в Instagram"
+   },
+   "gotIt": {
+      "message": "ОК"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram перестал отдавать данные до того, как пришёл весь список, поэтому часть аккаунтов отсутствует. Действие сейчас может отписать людей, которые на вас действительно подписаны. Сначала запустите анализ заново."
+   },
+   "incompleteDataTitle": {
+      "message": "Список неполный"
+   },
+   "instagramLimitedBody": {
+      "message": "Вы по-прежнему в аккаунте, и с ним всё в порядке. Это проходит само, но фиксированного времени ожидания нет — в зависимости от объёма сделанного может пройти несколько часов или до завтра. Повторные попытки удлиняют его."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram сейчас ограничивает запросы"
+   },
+   "instagramLoginAlert": {
+      "message": "Сначала войдите в Instagram!"
+   },
+   "invalidWaitingTime": {
+      "message": "Введите время от 3 до 300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Недопустимое время ожидания"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 секунд — вне допустимого диапазона. Введите значение от $2 до $3 секунд."
+   },
+   "later": {
+      "message": "позже"
+   },
+   "limitedTimeOffer": {
+      "message": "Ограниченное Предложение"
+   },
+   "liveCounterPrefix": {
+      "message": "За последние 24 часа"
+   },
+   "liveCounterSuffix": {
+      "message": "человек перешли на Premium!"
+   },
+   "loading": {
+      "message": "Загрузка..."
+   },
+   "loadingProfile": {
+      "message": "Загрузка профиля"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Загружаем сохранённый анализ…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "К Instagram не отправляется ни одного запроса."
+   },
+   "login": {
+      "message": "Войти"
+   },
+   "loginFailed": {
+      "message": "Ошибка входа: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Неизвестная ошибка"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Требуется Вход"
+   },
+   "loginSuccessful": {
+      "message": "Вход выполнен!"
+   },
+   "loginWithGoogle": {
+      "message": "Войти через Google"
+   },
+   "logout": {
+      "message": "Выйти"
+   },
+   "logoutError": {
+      "message": "Ошибка выхода: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Неизвестная ошибка"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Управление Подпиской"
+   },
+   "membership": {
+      "message": "Подписка"
+   },
+   "menuBotScan": {
+      "message": "Проверка на ботов"
+   },
+   "menuHome": {
+      "message": "Главная"
+   },
+   "menuProfile": {
+      "message": "Профиль"
+   },
+   "menuUpgrade": {
+      "message": "Улучшить"
+   },
+   "minutesTest": {
+      "message": "$1 минут (Тест)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 аккаунтов доступно"
+   },
+   "moreInHours": {
+      "message": "Через $2 часа вы сможете увидеть +$1 подписчиков"
+   },
+   "nextCheckTime": {
+      "message": "Следующая проверка: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Следующая проверка: Завтра"
+   },
+   "nextInSeconds": {
+      "message": "Следующее через $SECONDS$с",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Нет неподписчиков"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Нет неподписчиков для отписки."
+   },
+   "noUsers": {
+      "message": "Нет пользователей"
+   },
+   "noUsersToUnfollow": {
+      "message": "Нет пользователей для отписки."
+   },
+   "notFollowingYouBadge": {
+      "message": "Не Подписан"
+   },
+   "notProvided": {
+      "message": "Не указано"
+   },
+   "ok": {
+      "message": "ОК"
+   },
+   "opening": {
+      "message": "Открытие..."
+   },
+   "openingInNewTab": {
+      "message": "Открытие в новой вкладке..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/месяц"
+   },
+   "perYear": {
+      "message": "/год"
+   },
+   "planFree": {
+      "message": "Бесплатно"
+   },
+   "planPopular": {
+      "message": "Популярно"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Годовой"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Войдите для подписки"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Сначала войдите в Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Войдите для улучшения"
+   },
+   "pleaseSignInToView": {
+      "message": "Войдите для просмотра информации"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "С Premium смотрите все $COUNT$ аккаунтов сейчас, без лимитов!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Конфиденциальность"
+   },
+   "processStarted": {
+      "message": "Процесс запущен"
+   },
+   "processing": {
+      "message": "Обработка..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram попросил сделать паузу — продолжим через $1 с"
+   },
+   "rating": {
+      "message": "Рейтинг"
+   },
+   "reAnalyze": {
+      "message": "Повторный анализ"
+   },
+   "reAnalyzing": {
+      "message": "Повторный анализ..."
+   },
+   "removeFromWhitelist": {
+      "message": "Удалить из белого списка"
+   },
+   "retryIn": {
+      "message": "Повтор через $SECONDS$ сек...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Скидка 50% на Premium"
+   },
+   "saveSettings": {
+      "message": "Сохранить"
+   },
+   "scanBlockedBody": {
+      "message": "Это обычное дело, проходит само, и ни с вашим аккаунтом, ни с расширением ничего не так. Мы сразу остановились, а не стали повторять запросы: повторные попытки только удлиняют ожидание. Попробуйте позже сегодня."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Список подписчиков сейчас прочитать не удалось."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Список подписок сейчас прочитать не удалось."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram просит короткую паузу"
+   },
+   "scanPartialBody": {
+      "message": "Часть пришла, а потом Instagram нас приостановил, поэтому результаты недостаточно полные, чтобы на них действовать. Ничего не изменено. Вернитесь позже и запустите анализ заново — это может занять часы, а попытка сейчас удлиняет ожидание."
+   },
+   "scanPartialTitle": {
+      "message": "Список вернулся неполным"
+   },
+   "scanPaused": {
+      "message": "Instagram попросил сбавить темп — ждём…"
+   },
+   "scanRemaining": {
+      "message": "Осталось $1 аккаунтов"
+   },
+   "scanShortBody": {
+      "message": "Сканирование завершено, но вернулось меньше аккаунтов, чем Instagram указывает для этого списка. Действие может отписать тех, кто на вас подписан, поэтому ничего не показано. Запустите анализ заново."
+   },
+   "scanShortTitle": {
+      "message": "Часть аккаунтов отсутствует"
+   },
+   "seconds": {
+      "message": "секунд"
+   },
+   "secure": {
+      "message": "Безопасно"
+   },
+   "secureLogin": {
+      "message": "Безопасный Вход"
+   },
+   "sessionExpiredTitle": {
+      "message": "Ваша сессия Instagram завершена"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Только неподписанные"
+   },
+   "showingFirstAccounts": {
+      "message": "Показаны первые $COUNT$ аккаунтов.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Пропустить подписчиков"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Пропустить верифицированных"
+   },
+   "startAnalysis": {
+      "message": "Начать Анализ"
+   },
+   "startBotScan": {
+      "message": "Начать проверку на ботов"
+   },
+   "startUnfollow": {
+      "message": "Начать Отписку"
+   },
+   "startingAnalysis": {
+      "message": "Начало анализа..."
+   },
+   "statFailed": {
+      "message": "Ошибка"
+   },
+   "statFollowers": {
+      "message": "Подписчики"
+   },
+   "statFollowing": {
+      "message": "Подписки"
+   },
+   "statNonFollowers": {
+      "message": "Не подписаны взаимно"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Отписано"
+   },
+   "stop": {
+      "message": "Стоп"
+   },
+   "stopping": {
+      "message": "Останавливаем…"
+   },
+   "support": {
+      "message": "Поддержка"
+   },
+   "tableAction": {
+      "message": "Действие"
+   },
+   "tableFollowingYou": {
+      "message": "Подписан"
+   },
+   "tableFullName": {
+      "message": "Имя"
+   },
+   "tablePrivate": {
+      "message": "Приватный"
+   },
+   "tableProfile": {
+      "message": "Профиль"
+   },
+   "tableUsername": {
+      "message": "Пользователь"
+   },
+   "tableVerified": {
+      "message": "Верифицирован"
+   },
+   "testNow": {
+      "message": "Тестировать сейчас"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Это действие нельзя отменить!"
+   },
+   "toRemoveLimits": {
+      "message": "чтобы убрать лимиты"
+   },
+   "trendDown": {
+      "message": "$COUNT$ с последнего анализа",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "Без изменений"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ с последнего анализа",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Осталось $COUNT$ дней",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Завтра вы сможете увидеть ещё +20 аккаунтов ($COUNTDOWN$). +20 аккаунтов добавляется каждый день!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Ваш пробный период завершён. Сегодня вы можете увидеть $COUNT$ аккаунтов.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Пробный период завершён"
+   },
+   "tryAgain": {
+      "message": "Повторить"
+   },
+   "tryAnyway": {
+      "message": "Всё равно попробовать"
+   },
+   "unfollow": {
+      "message": "Отписаться"
+   },
+   "unfollowDelayLabel": {
+      "message": "Задержка (секунды)"
+   },
+   "unfollowEveryone": {
+      "message": "Отписаться от всех"
+   },
+   "unfollowFailed": {
+      "message": "Не удалось"
+   },
+   "unfollowNonFollowers": {
+      "message": "Отписаться от неподписанных"
+   },
+   "unfollowProcessStarted": {
+      "message": "Процесс отписки запущен."
+   },
+   "unfollowSettings": {
+      "message": "Настройки Отписки"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 секунд между отписками."
+   },
+   "unfollowedSuccess": {
+      "message": "Отписано"
+   },
+   "unfollowing": {
+      "message": "Отписка..."
+   },
+   "unknownError": {
+      "message": "Неизвестная ошибка"
+   },
+   "upgradeToPremium": {
+      "message": "Перейти на Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Перейти на Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium для просмотра всех!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "пользователей будет отписано."
+   },
+   "waitingSeconds": {
+      "message": "Ожидание $SECONDS$с",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Время ожидания (3-300 сек)"
+   },
+   "welcomeFunText1": {
+      "message": "Хотите узнать кто не подписан? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Отписаться теперь легко 😊"
+   },
+   "welcomeTitle": {
+      "message": "Добро пожаловать! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Войдите через Google, ваши данные в безопасности!"
+   },
+   "whitelist": {
+      "message": "Белый список"
+   },
+   "whitelisted": {
+      "message": "Защищён"
+   },
+   "whitelistedSkipped": {
+      "message": "Пропущен (белый список)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 будут разблокированы завтра"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram временно перестал принимать автоматические отписки для этого аккаунта. Это временно, и с вашим аккаунтом всё в порядке.\n\nПока это длится, вы можете отписываться вручную со страницы профиля, а ваш список остаётся здесь — ничего не израсходовано."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram сейчас ограничивает отписки"
+   },
+   "yesUnfollow": {
+      "message": "Да, отписаться"
+   },
+   "yesUnfollowAll": {
+      "message": "Да, отписаться от всех"
+   }
+}

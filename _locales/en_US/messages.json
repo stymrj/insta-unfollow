@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Account Details"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ more accounts available. To see all",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Active Users"
+   },
+   "addToWhitelist": {
+      "message": "Add to whitelist"
+   },
+   "allAccountsUnlocked": {
+      "message": "All accounts unlocked!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "users will be unfollowed."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram returned your follower list without profile-photo data, so every score here is lower than it should be and some bots will be missed. Open Instagram in a tab and run the scan again for a complete result."
+   },
+   "botBlindTitle": {
+      "message": "The profile-photo check could not be run"
+   },
+   "botCleared": {
+      "message": "In its favour"
+   },
+   "botDeepAllChecked": {
+      "message": "All flagged accounts checked"
+   },
+   "botDeepChecked": {
+      "message": "Profile checked"
+   },
+   "botDeepChecksFor": {
+      "message": "Deep-check $1 accounts"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Deep-check $1 left ($2 already done)"
+   },
+   "botDeepDone": {
+      "message": "Deep checks finished — $1 accounts checked."
+   },
+   "botDeepNoTargets": {
+      "message": "No accounts need a deep check."
+   },
+   "botDeepPausedBody": {
+      "message": "$1 accounts were checked before it stopped and $2 were not. The verdicts below are based only on what was read. There is no set wait — it can be hours, or into tomorrow. Come back later rather than retrying now, which only extends it."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram paused the profile checks"
+   },
+   "botDeepRemaining": {
+      "message": "$1 were left unchecked."
+   },
+   "botDeepSubtitle": {
+      "message": "One request per account, paced so it stays safe."
+   },
+   "botFilterAll": {
+      "message": "All scanned"
+   },
+   "botFilterLikely": {
+      "message": "Likely bots"
+   },
+   "botFilterSuspicious": {
+      "message": "Suspicious"
+   },
+   "botFreeHeadline": {
+      "message": "more flagged accounts are locked"
+   },
+   "botFreeWithheld": {
+      "message": "$1 more found — upgrade to see them all."
+   },
+   "botIntroHeading": {
+      "message": "Find the accounts that aren't real people"
+   },
+   "botIntroLead": {
+      "message": "Every follower is scored on how likely it is to be a bot or a throwaway account."
+   },
+   "botIntroReasons": {
+      "message": "Every score comes with the reasons behind it, so you can see why an account was flagged instead of trusting a number. Nothing is removed automatically — the list is here for you to look at and decide."
+   },
+   "botNoFlagged": {
+      "message": "Nothing flagged — your follower list looks clean."
+   },
+   "botNoRowsForFilter": {
+      "message": "Nothing in this group."
+   },
+   "botNoSignals": {
+      "message": "Nothing unusual"
+   },
+   "botNotRunYet": {
+      "message": "Run a scan to see your followers scored here."
+   },
+   "botPopupBody": {
+      "message": "Scores every follower on how likely it is to be a bot or a throwaway account — no profile photo, no posts, a generated-looking username, following thousands while almost nobody follows back."
+   },
+   "botPopupReasons": {
+      "message": "Each score comes with the reasons behind it. Nothing is removed automatically."
+   },
+   "botProvisionalBody": {
+      "message": "$1 flagged accounts have not been profile-checked. Most bots are only confirmed by that check, so run it before trusting the \"likely bots\" count."
+   },
+   "botProvisionalTitle": {
+      "message": "These verdicts are not final yet"
+   },
+   "botReadSubtitle": {
+      "message": "Read straight from your follower list — no extra requests."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "No profile photo"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favor.",
+      "message": "Balanced follower ratio"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Many digits in username"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "No display name"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Follows far more people than follow back"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favor.",
+      "message": "Has an account badge"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Follows a very large number of accounts"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Has no followers"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Has never posted"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favor.",
+      "message": "Posts regularly"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Username ends in a number run"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Unusual underscore pattern"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favor.",
+      "message": "Verified account"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Unusually long username"
+   },
+   "botRunDeepChecks": {
+      "message": "Run deep checks"
+   },
+   "botScanCached": {
+      "message": "Last scan $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram paused the profile checks. The results below are from what was read."
+   },
+   "botScanDeepProgress": {
+      "message": "Checking profiles… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Scan complete."
+   },
+   "botScanNoData": {
+      "message": "Could not read your follower list. Please try again shortly."
+   },
+   "botScanPartial": {
+      "message": "Scan finished, but the follower list came back incomplete — some accounts are missing."
+   },
+   "botScanReading": {
+      "message": "Reading your followers…"
+   },
+   "botScanReadingCount": {
+      "message": "Reading followers… $1"
+   },
+   "botScanTitle": {
+      "message": "Bot Follower Scan"
+   },
+   "botScoreRaw": {
+      "message": "Raw score"
+   },
+   "botSignalName": {
+      "message": "Generated-looking username"
+   },
+   "botSignalPhoto": {
+      "message": "No profile photo"
+   },
+   "botSignalPosts": {
+      "message": "No posts"
+   },
+   "botSignalRatio": {
+      "message": "Follows thousands, followed by almost nobody"
+   },
+   "botSignalsUnavailable": {
+      "message": "Some checks could not be run for this account, so its score is based on less evidence than the others."
+   },
+   "botStatFlagged": {
+      "message": "Flagged"
+   },
+   "botStatFollowers": {
+      "message": "Followers"
+   },
+   "botStatFollowing": {
+      "message": "Following"
+   },
+   "botStatLikely": {
+      "message": "Likely bots"
+   },
+   "botStatPosts": {
+      "message": "Posts"
+   },
+   "botStatScanned": {
+      "message": "Scanned"
+   },
+   "botStatSuspicious": {
+      "message": "Suspicious"
+   },
+   "botStatsGone": {
+      "message": "Account gone"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram returned no profile for this account — it has been deleted or deactivated, so its counts can never be read."
+   },
+   "botStatsNotChecked": {
+      "message": "Not checked"
+   },
+   "botStepDeep": {
+      "message": "Checking profiles"
+   },
+   "botStepReading": {
+      "message": "Reading followers"
+   },
+   "botTableReasons": {
+      "message": "Why"
+   },
+   "botTableScore": {
+      "message": "Score"
+   },
+   "botTableStats": {
+      "message": "Profile stats"
+   },
+   "botTableVerdict": {
+      "message": "Verdict"
+   },
+   "botVerdictClean": {
+      "message": "Looks real"
+   },
+   "botVerdictLikely": {
+      "message": "Likely bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Suspicious"
+   },
+   "cacheExpiryWarning": {
+      "message": "Profile pictures may not display because your last analysis was $DAYS$ days ago. Please re-analyze for updated results.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Last analysis $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Checking…"
+   },
+   "checkingLoginStatus": {
+      "message": "Checking login status..."
+   },
+   "chooseMonthly": {
+      "message": "Choose Monthly"
+   },
+   "chooseYearly": {
+      "message": "Choose Yearly"
+   },
+   "comeBackTomorrow": {
+      "message": "Come back tomorrow"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "You can analyze +20 more followers every day. If you're impatient, switch to Premium, see them all now. If you're patient, come back tomorrow, you can see +20 more followers. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Come back tomorrow to see $1 more accounts (+$2 new unlocks)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Are you sure you want to unfollow EVERYONE?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Confirm Action"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Are you sure you want to unfollow all non-followers?"
+   },
+   "connected": {
+      "message": "Connected"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Could not fetch following list. Please try again later."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$h $MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "later"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "later"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Daily Limit"
+   },
+   "dailyScanLimit": {
+      "message": "Daily Scan Limit"
+   },
+   "dataLoading": {
+      "message": "Data Loading..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Data Loading: $COUNT$ followers found",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Data Loading: $COUNT$ following found",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "50% OFF"
+   },
+   "email": {
+      "message": "Email"
+   },
+   "errorFetchingData": {
+      "message": "An error occurred while fetching data. Please try again later."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram is temporarily unavailable. Please try again later."
+   },
+   "errorNetwork": {
+      "message": "Could not reach Instagram. Check your connection — nothing has been lost and the run will carry on."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "An error occurred. Please try again."
+   },
+   "errorRateLimit": {
+      "message": "Instagram rate limit reached. Please wait a few minutes and try again."
+   },
+   "errorSessionExpired": {
+      "message": "Your Instagram session has expired. Please log in to Instagram and try again."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min left"
+   },
+   "etaSeconds": {
+      "message": "~$1 sec left"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Failed to unfollow. Please try again."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Advanced filtering"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Advanced filtering and reporting"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Advanced Notification System"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Advanced unfollow features"
+   },
+   "featureBasicUnfollow": {
+      "message": "Basic unfollow features"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/day)"
+   },
+   "featureMax50Analysis": {
+      "message": "Max 40 following analysis"
+   },
+   "featureSpamDetector": {
+      "message": "Spam account detector"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Unlimited analysis"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Unlimited following analysis"
+   },
+   "finalizingAnalysis": {
+      "message": "Finalizing..."
+   },
+   "firstDayBonus": {
+      "message": "First Day Bonus"
+   },
+   "firstDayBonusMessage": {
+      "message": "First day bonus: 40 accounts! Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "followers": {
+      "message": "Followers"
+   },
+   "following": {
+      "message": "Following"
+   },
+   "followingYouBadge": {
+      "message": "Following You"
+   },
+   "freePlanLimitDescription": {
+      "message": "You've reached the 40 analysis limit. Upgrade to Premium for unlimited analysis!"
+   },
+   "freePlanLimitReached": {
+      "message": "Free Plan Limit Reached"
+   },
+   "freePlanTodayMessage": {
+      "message": "On the free plan, you can see $DISPLAYED$ accounts today. There are $HIDDEN$ more accounts but you can't see them.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "On the free plan, you can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "You can only unfollow up to $COUNT$ users with the free plan. Please select only the first $COUNT$ users or upgrade to Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "You can only unfollow up to $COUNT$ users with the free plan. Upgrade to Premium for unlimited unfollowing!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Full Name"
+   },
+   "getStartedWithGoogle": {
+      "message": "Get Started with Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Go to Instagram Login"
+   },
+   "gotIt": {
+      "message": "OK"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram stopped sending data before the whole list arrived, so some accounts are missing. Acting on it now could unfollow people who do follow you back. Please run the analysis again first."
+   },
+   "incompleteDataTitle": {
+      "message": "The list is incomplete"
+   },
+   "instagramLimitedBody": {
+      "message": "You are still signed in and there is nothing wrong with your account. This lifts on its own, but there is no fixed wait — it can be hours, or into tomorrow, depending on how much was done. Trying repeatedly makes it longer."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram is limiting requests right now"
+   },
+   "instagramLoginAlert": {
+      "message": "Please login to Instagram first!"
+   },
+   "invalidWaitingTime": {
+      "message": "Please enter a valid waiting time between 3 and 300 seconds"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Invalid waiting time"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 seconds is outside the allowed range. Please enter a value between $2 and $3 seconds."
+   },
+   "later": {
+      "message": "later"
+   },
+   "limitedTimeOffer": {
+      "message": "Limited Time Offer"
+   },
+   "liveCounterPrefix": {
+      "message": "In the last 24 hours"
+   },
+   "liveCounterSuffix": {
+      "message": "people upgraded to Premium!"
+   },
+   "loading": {
+      "message": "Loading..."
+   },
+   "loadingProfile": {
+      "message": "Loading profile"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Loading your saved analysis…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Nothing is being requested from Instagram."
+   },
+   "login": {
+      "message": "Login"
+   },
+   "loginFailed": {
+      "message": "Login failed: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Unknown error"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Login Required"
+   },
+   "loginSuccessful": {
+      "message": "Login successful!"
+   },
+   "loginWithGoogle": {
+      "message": "Sign in with Google"
+   },
+   "logout": {
+      "message": "Logout"
+   },
+   "logoutError": {
+      "message": "An error occurred while logging out: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Unknown error"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Manage Subscription"
+   },
+   "membership": {
+      "message": "Membership"
+   },
+   "menuBotScan": {
+      "message": "Bot Scan"
+   },
+   "menuHome": {
+      "message": "Home"
+   },
+   "menuProfile": {
+      "message": "Profile"
+   },
+   "menuUpgrade": {
+      "message": "Upgrade"
+   },
+   "minutesTest": {
+      "message": "$1 minutes (Test)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 more accounts available"
+   },
+   "moreInHours": {
+      "message": "In $2 hours you can see +$1 more followers"
+   },
+   "nextCheckTime": {
+      "message": "Next check: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "2:30 PM"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Next check: Tomorrow"
+   },
+   "nextInSeconds": {
+      "message": "Next in $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "No Non-Followers"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "No non-followers to unfollow."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "No users to unfollow."
+   },
+   "notFollowingYouBadge": {
+      "message": "Not Following You"
+   },
+   "notProvided": {
+      "message": "Not provided"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Opening..."
+   },
+   "openingInNewTab": {
+      "message": "Opening in new tab..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/month"
+   },
+   "perYear": {
+      "message": "/year"
+   },
+   "planFree": {
+      "message": "Free"
+   },
+   "planPopular": {
+      "message": "Popular"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Yearly"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Please log in again to subscribe"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Please log in to Instagram first"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Please log in to upgrade to Premium"
+   },
+   "pleaseSignInToView": {
+      "message": "Please sign in to view your account information"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "With Premium, see all $COUNT$ accounts now, no limits!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Privacy Protected"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Processing..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram asked us to pause — resuming in $1s"
+   },
+   "rating": {
+      "message": "Rating"
+   },
+   "reAnalyze": {
+      "message": "Re-analyze"
+   },
+   "reAnalyzing": {
+      "message": "Re-analyzing..."
+   },
+   "removeFromWhitelist": {
+      "message": "Remove from whitelist"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Save 50% on Premium - Best Value"
+   },
+   "saveSettings": {
+      "message": "Save Settings"
+   },
+   "scanBlockedBody": {
+      "message": "This is common, it clears up on its own, and there is nothing wrong with your account or the extension. We stopped straight away rather than retrying, because repeated attempts make the wait longer. Try again later today."
+   },
+   "scanBlockedListFollowers": {
+      "message": "The followers list could not be read right now."
+   },
+   "scanBlockedListFollowing": {
+      "message": "The following list could not be read right now."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram wants a short break"
+   },
+   "scanPartialBody": {
+      "message": "Part of it arrived and then Instagram paused us, so the results are not complete enough to act on. Nothing has been changed. Wait a few minutes and run the analysis again."
+   },
+   "scanPartialTitle": {
+      "message": "The list came back incomplete"
+   },
+   "scanPaused": {
+      "message": "Instagram asked us to slow down — waiting…"
+   },
+   "scanRemaining": {
+      "message": "$1 accounts left"
+   },
+   "scanShortBody": {
+      "message": "The scan finished, but fewer accounts came back than Instagram says the list holds. Acting on it could unfollow people who do follow you back, so nothing is shown. Please run the analysis again."
+   },
+   "scanShortTitle": {
+      "message": "Some accounts are missing"
+   },
+   "seconds": {
+      "message": "seconds"
+   },
+   "secure": {
+      "message": "Secure"
+   },
+   "secureLogin": {
+      "message": "Secure Login"
+   },
+   "sessionExpiredTitle": {
+      "message": "Your Instagram session has ended"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Show only non-followers"
+   },
+   "showingFirstAccounts": {
+      "message": "Showing first $COUNT$ accounts.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Skip Accounts Following You"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Skip Verified Accounts"
+   },
+   "startAnalysis": {
+      "message": "Start Analysis"
+   },
+   "startBotScan": {
+      "message": "Start Bot Scan"
+   },
+   "startUnfollow": {
+      "message": "Start Unfollow"
+   },
+   "startingAnalysis": {
+      "message": "Starting analysis..."
+   },
+   "statFailed": {
+      "message": "Failed"
+   },
+   "statFollowers": {
+      "message": "Followers"
+   },
+   "statFollowing": {
+      "message": "Following"
+   },
+   "statNonFollowers": {
+      "message": "Not Following"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Unfollowed"
+   },
+   "stop": {
+      "message": "Stop"
+   },
+   "stopping": {
+      "message": "Stopping…"
+   },
+   "support": {
+      "message": "Support"
+   },
+   "tableAction": {
+      "message": "Action"
+   },
+   "tableFollowingYou": {
+      "message": "Following You"
+   },
+   "tableFullName": {
+      "message": "Full Name"
+   },
+   "tablePrivate": {
+      "message": "Private"
+   },
+   "tableProfile": {
+      "message": "Profile"
+   },
+   "tableUsername": {
+      "message": "Username"
+   },
+   "tableVerified": {
+      "message": "Verified"
+   },
+   "testNow": {
+      "message": "Test Now"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ This action cannot be undone!"
+   },
+   "toRemoveLimits": {
+      "message": "to remove limits"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ days left",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "11h 13m 14s later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Trial Period Ended"
+   },
+   "tryAgain": {
+      "message": "Try again"
+   },
+   "tryAnyway": {
+      "message": "Try anyway"
+   },
+   "unfollow": {
+      "message": "Unfollow"
+   },
+   "unfollowDelayLabel": {
+      "message": "Unfollow Delay (seconds)"
+   },
+   "unfollowEveryone": {
+      "message": "Unfollow Everyone"
+   },
+   "unfollowFailed": {
+      "message": "Failed"
+   },
+   "unfollowNonFollowers": {
+      "message": "Unfollow Non-Followers"
+   },
+   "unfollowProcessStarted": {
+      "message": "Unfollow process has started."
+   },
+   "unfollowSettings": {
+      "message": "Unfollow Settings"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 seconds between each unfollow."
+   },
+   "unfollowedSuccess": {
+      "message": "Unfollowed"
+   },
+   "unfollowing": {
+      "message": "Unfollowing..."
+   },
+   "unknownError": {
+      "message": "Unknown error"
+   },
+   "upgradeToPremium": {
+      "message": "Upgrade to Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Upgrade to Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Upgrade to Premium to see all accounts!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "users will be unfollowed."
+   },
+   "waitingSeconds": {
+      "message": "Waiting $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Waiting time in seconds (3-300)"
+   },
+   "welcomeFunText1": {
+      "message": "Want to see who's not following you back? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Unfollow process is now much easier 😊"
+   },
+   "welcomeTitle": {
+      "message": "Welcome! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Just sign in with your Google account, your data is safe!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 will unlock tomorrow"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram has temporarily stopped accepting automatic unfollows on this account. This is temporary and there is nothing wrong with your account.\n\nYou can still unfollow from a profile page by hand while it lasts, and your list stays here — nothing has been used up."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram is limiting unfollows right now"
+   },
+   "yesUnfollow": {
+      "message": "Yes, Unfollow"
+   },
+   "yesUnfollowAll": {
+      "message": "Yes, Unfollow All"
+   }
+}

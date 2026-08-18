@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Podrobnosti Računa"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ računov več na voljo. Za prikaz vseh",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Aktivnih Uporabnikov"
+   },
+   "addToWhitelist": {
+      "message": "Dodaj na beli seznam"
+   },
+   "allAccountsUnlocked": {
+      "message": "Vsi računi odklenjeni!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "računom boste nehali slediti."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram je vrnil vaš seznam sledilcev brez podatkov o profilni sliki, zato so vse ocene tukaj nižje, kot bi morale biti, in nekaj botov bo spregledanih. Odprite Instagram v zavihku in znova zaženite pregled za popoln rezultat."
+   },
+   "botBlindTitle": {
+      "message": "Preverjanja profilne slike ni bilo mogoče izvesti"
+   },
+   "botCleared": {
+      "message": "V njegovo korist"
+   },
+   "botDeepAllChecked": {
+      "message": "Vsi označeni računi preverjeni"
+   },
+   "botDeepChecked": {
+      "message": "Profil preverjen"
+   },
+   "botDeepChecksFor": {
+      "message": "Poglobljeno preveri $1 računov"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Ostalo $1 ($2 že opravljenih)"
+   },
+   "botDeepDone": {
+      "message": "Poglobljena preverjanja končana — preverjenih $1 računov."
+   },
+   "botDeepNoTargets": {
+      "message": "Noben račun ne potrebuje poglobljenega preverjanja."
+   },
+   "botDeepPausedBody": {
+      "message": "Pred zaustavitvijo je bilo preverjenih $1 računov, $2 pa ne. Spodnje ocene temeljijo le na tem, kar je bilo prebrano. Določenega časa čakanja ni — lahko traja ure ali do jutri. Vrnite se pozneje, namesto da poskušate zdaj, kar ga le podaljša."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram je zaustavil preverjanje profilov"
+   },
+   "botDeepRemaining": {
+      "message": "$1 je ostalo nepreverjenih."
+   },
+   "botDeepSubtitle": {
+      "message": "Ena zahteva na račun, v varnem tempu."
+   },
+   "botFilterAll": {
+      "message": "Vsi pregledani"
+   },
+   "botFilterLikely": {
+      "message": "Verjetni boti"
+   },
+   "botFilterSuspicious": {
+      "message": "Sumljivi"
+   },
+   "botFreeHeadline": {
+      "message": "več označenih računov je zaklenjenih"
+   },
+   "botFreeWithheld": {
+      "message": "Najdenih še $1 — nadgradite, da vidite vse."
+   },
+   "botIntroHeading": {
+      "message": "Poiščite račune, za katerimi ni resničnih ljudi"
+   },
+   "botIntroLead": {
+      "message": "Vsak sledilec dobi oceno glede na to, kako verjetno je bot ali račun za enkratno uporabo."
+   },
+   "botIntroReasons": {
+      "message": "Vsaki oceni so priloženi razlogi zanjo, da vidite, zakaj je bil račun označen, namesto da bi zaupali številki. Nič se ne odstrani samodejno — seznam je tu, da ga pogledate in se odločite sami."
+   },
+   "botNoFlagged": {
+      "message": "Nič ni označeno — vaš seznam sledilcev je videti čist."
+   },
+   "botNoRowsForFilter": {
+      "message": "V tej skupini ni ničesar."
+   },
+   "botNoSignals": {
+      "message": "Nič nenavadnega"
+   },
+   "botNotRunYet": {
+      "message": "Zaženite pregled, da tukaj vidite ocene svojih sledilcev."
+   },
+   "botPopupBody": {
+      "message": "Vsakemu sledilcu dodeli oceno glede na to, kako verjetno je bot ali račun za enkratno uporabo: brez profilne slike, brez objav, uporabniško ime, ki deluje ustvarjeno, sledi tisočem, njemu pa skoraj nihče."
+   },
+   "botPopupReasons": {
+      "message": "Vsaki oceni so priloženi razlogi zanjo. Nič se ne odstrani samodejno."
+   },
+   "botProvisionalBody": {
+      "message": "Pri $1 označenih računih profil še ni bil preverjen. Večina botov se potrdi šele s tem preverjanjem — zaženite ga, preden zaupate številu verjetnih botov."
+   },
+   "botProvisionalTitle": {
+      "message": "Te ocene še niso dokončne"
+   },
+   "botReadSubtitle": {
+      "message": "Bere se neposredno z vašega seznama sledilcev — brez dodatnih zahtev."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Brez profilne slike"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Uravnoteženo razmerje sledilcev"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Veliko števk v uporabniškem imenu"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Brez prikaznega imena"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Sledi veliko več, kot sledijo njemu"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Ima značko računa"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Sledi zelo velikemu številu računov"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Brez sledilcev"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Nikoli ni objavil"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Objavlja redno"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Uporabniško ime se konča s števkami"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Nenavaden vzorec podčrtajev"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Potrjen račun"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Nenavadno dolgo uporabniško ime"
+   },
+   "botRunDeepChecks": {
+      "message": "Zaženi poglobljena preverjanja"
+   },
+   "botScanCached": {
+      "message": "Zadnji pregled $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram je zaustavil preverjanje profilov. Spodnji rezultati so iz tistega, kar smo uspeli prebrati."
+   },
+   "botScanDeepProgress": {
+      "message": "Preverjamo profile… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Pregled je končan."
+   },
+   "botScanNoData": {
+      "message": "Vašega seznama sledilcev ni bilo mogoče prebrati. Instagram nas zadržuje — mine samo od sebe, a brez določenega časa čakanja. Poskusite pozneje."
+   },
+   "botScanPartial": {
+      "message": "Pregled je končan, a seznam sledilcev se je vrnil nepopoln — nekateri računi manjkajo."
+   },
+   "botScanReading": {
+      "message": "Beremo vaše sledilce…"
+   },
+   "botScanReadingCount": {
+      "message": "Beremo sledilce… $1"
+   },
+   "botScanTitle": {
+      "message": "Pregled sledilcev botov"
+   },
+   "botScoreRaw": {
+      "message": "Surova ocena"
+   },
+   "botSignalName": {
+      "message": "Uporabniško ime, ki deluje ustvarjeno"
+   },
+   "botSignalPhoto": {
+      "message": "Brez profilne slike"
+   },
+   "botSignalPosts": {
+      "message": "Brez objav"
+   },
+   "botSignalRatio": {
+      "message": "Sledi tisočem, njemu skoraj nihče"
+   },
+   "botSignalsUnavailable": {
+      "message": "Za ta račun nekaterih preverjanj ni bilo mogoče opraviti, zato njegova ocena temelji na manj dokazih kot pri drugih."
+   },
+   "botStatFlagged": {
+      "message": "Označeni"
+   },
+   "botStatFollowers": {
+      "message": "Sledilci"
+   },
+   "botStatFollowing": {
+      "message": "Sledi"
+   },
+   "botStatLikely": {
+      "message": "Verjetni boti"
+   },
+   "botStatPosts": {
+      "message": "Objave"
+   },
+   "botStatScanned": {
+      "message": "Pregledano"
+   },
+   "botStatSuspicious": {
+      "message": "Sumljivi"
+   },
+   "botStatsGone": {
+      "message": "Računa ni več"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram ni vrnil profila — račun je izbrisan ali deaktiviran, njegovih številk ni več mogoče prebrati."
+   },
+   "botStatsNotChecked": {
+      "message": "Nepreverjeno"
+   },
+   "botStepDeep": {
+      "message": "Preverjamo profile"
+   },
+   "botStepReading": {
+      "message": "Beremo sledilce"
+   },
+   "botTableReasons": {
+      "message": "Zakaj"
+   },
+   "botTableScore": {
+      "message": "Ocena"
+   },
+   "botTableStats": {
+      "message": "Številke profila"
+   },
+   "botTableVerdict": {
+      "message": "Sodba"
+   },
+   "botVerdictClean": {
+      "message": "Deluje resnično"
+   },
+   "botVerdictLikely": {
+      "message": "Verjetno bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Sumljiv"
+   },
+   "cacheExpiryWarning": {
+      "message": "Profilne slike se morda ne prikažejo, ker je bila vaša zadnja analiza pred $DAYS$ dnevi. Znova analizirajte za posodobljene rezultate.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Zadnja analiza $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "checkingBeforeStart": {
+      "message": "Preverjamo…"
+   },
+   "checkingLoginStatus": {
+      "message": "Preverjanje stanja prijave..."
+   },
+   "chooseMonthly": {
+      "message": "Izberi Mesečni"
+   },
+   "chooseYearly": {
+      "message": "Izberi Letni"
+   },
+   "comeBackTomorrow": {
+      "message": "Pridi nazaj jutri"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Lahko analiziraš +20 sledilcev več vsak dan. Če si nestrpen, preklopi na Premium, vidi vse zdaj. Če si potrpežljiv, pridi nazaj jutri, boš videl +20 sledilcev več. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Pridi nazaj jutri, da vidiš $1 računov več (+$2 novih odklenitev)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Ste prepričani, da želite nehati slediti VSEM?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Potrdite dejanje"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Ste prepričani, da želite nehati slediti vsem, ki vam ne sledijo nazaj?"
+   },
+   "connected": {
+      "message": "Povezano"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Ni mogoče pridobiti seznama. Poskusite pozneje."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$h $MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "kasneje"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "kasneje"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Jutri lahko vidite +20 računov več ($COUNTDOWN$). Vsak dan se doda +20 računov, omejitve se kopičijo!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m kasneje"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Dnevna Omejitev"
+   },
+   "dailyScanLimit": {
+      "message": "Dnevna Omejitev Skeniranja"
+   },
+   "dataLoading": {
+      "message": "Nalaganje podatkov..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Nalaganje: $COUNT$ sledilcev najdenih",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Nalaganje: $COUNT$ sledenih najdenih",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "-50%"
+   },
+   "email": {
+      "message": "E-pošta"
+   },
+   "errorFetchingData": {
+      "message": "Napaka pri pridobivanju podatkov. Poskusite znova."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram je začasno nedosegljiv. Poskusite pozneje."
+   },
+   "errorNetwork": {
+      "message": "Instagrama ni bilo mogoče doseči. Preverite povezavo — nič ni izgubljeno in delo se bo nadaljevalo."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "Prišlo je do napake. Poskusite znova."
+   },
+   "errorRateLimit": {
+      "message": "Instagram je zaustavil naše zahteve. Mine samo od sebe, a določenega časa čakanja ni — odvisno od tega, koliko je bilo narejenega, lahko traja ure ali do jutri. Takojšen ponovni poskus ga podaljša."
+   },
+   "errorSessionExpired": {
+      "message": "Vaša seja Instagram je potekla. Prijavite se v Instagram in poskusite znova."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min preostalo"
+   },
+   "etaSeconds": {
+      "message": "~$1 s preostalo"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Unfollow ni uspel. Poskusite znova."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Napredno filtriranje"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Filtri in poročila"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Napredni Sistem Obvestil"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Napredno sledenje"
+   },
+   "featureBasicUnfollow": {
+      "message": "Osnovno sledenje"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/dan)"
+   },
+   "featureMax50Analysis": {
+      "message": "Maks 40 analiz"
+   },
+   "featureSpamDetector": {
+      "message": "Detektor neželene pošte"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Neomejene analize"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Neomejena analiza"
+   },
+   "finalizingAnalysis": {
+      "message": "Zaključujem..."
+   },
+   "firstDayBonus": {
+      "message": "Bonus Prvega Dneva"
+   },
+   "firstDayBonusMessage": {
+      "message": "Bonus prvega dne: 40 računov! Jutri lahko vidite +20 računov več ($COUNTDOWN$). Vsak dan se doda +20 računov.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m kasneje"
+         }
+      }
+   },
+   "followers": {
+      "message": "Sledilci"
+   },
+   "following": {
+      "message": "Sledim"
+   },
+   "followingYouBadge": {
+      "message": "Sledi Vam"
+   },
+   "freePlanLimitDescription": {
+      "message": "Doseženih 40 analiz. Premium za neomejeno!"
+   },
+   "freePlanLimitReached": {
+      "message": "Limit Dosežen"
+   },
+   "freePlanTodayMessage": {
+      "message": "Z brezplačnim načrtom lahko danes vidite $DISPLAYED$ računov. Še $HIDDEN$ računov je na voljo, vendar jih ne morete videti.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "Z brezplačnim načrtom lahko danes vidite $COUNT$ računov.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "V brezplačnem načrtu lahko prenehate slediti le do $COUNT$ uporabnikov. Prosimo, izberite le prvih $COUNT$ uporabnikov ali nadgradite na Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "V brezplačnem načrtu lahko prenehate slediti le do $COUNT$ uporabnikov. Nadgradite na Premium za neomejeno prenehanje sledenja!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Ime"
+   },
+   "getStartedWithGoogle": {
+      "message": "Registracija z Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Pojdi na Instagram"
+   },
+   "gotIt": {
+      "message": "V redu"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram je nehal pošiljati podatke, preden je prispel cel seznam, zato nekateri računi manjkajo. Če zdaj ukrepate, lahko nehate slediti ljudem, ki vam v resnici sledijo. Najprej znova zaženite analizo."
+   },
+   "incompleteDataTitle": {
+      "message": "Seznam je nepopoln"
+   },
+   "instagramLimitedBody": {
+      "message": "Še vedno ste prijavljeni in z vašim računom je vse v redu. To mine samo od sebe, a določenega časa čakanja ni — odvisno od tega, koliko je bilo narejenega, lahko traja ure ali do jutri. Ponavljajoči se poskusi ga podaljšujejo."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram trenutno omejuje zahteve"
+   },
+   "instagramLoginAlert": {
+      "message": "Najprej se prijavite v Instagram!"
+   },
+   "invalidWaitingTime": {
+      "message": "Vnesite veljaven čas 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Neveljaven čas čakanja"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 sekund je zunaj dovoljenega obsega. Vnesite vrednost med $2 in $3 sekundami."
+   },
+   "later": {
+      "message": "kasneje"
+   },
+   "limitedTimeOffer": {
+      "message": "Omejena Ponudba"
+   },
+   "liveCounterPrefix": {
+      "message": "V zadnjih 24 urah"
+   },
+   "liveCounterSuffix": {
+      "message": "ljudi je posodobilo na Premium!"
+   },
+   "loading": {
+      "message": "Nalaganje..."
+   },
+   "loadingProfile": {
+      "message": "Nalaganje profila"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Nalagamo vašo shranjeno analizo…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Od Instagrama se ne zahteva nič."
+   },
+   "login": {
+      "message": "Prijava"
+   },
+   "loginFailed": {
+      "message": "Prijava ni uspela: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Neznana napaka"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Potrebna Prijava"
+   },
+   "loginSuccessful": {
+      "message": "Uspešna prijava!"
+   },
+   "loginWithGoogle": {
+      "message": "Prijava z Google"
+   },
+   "logout": {
+      "message": "Odjava"
+   },
+   "logoutError": {
+      "message": "Napaka pri odjavi: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Neznana napaka"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Upravljanje Naročnine"
+   },
+   "membership": {
+      "message": "Članstvo"
+   },
+   "menuBotScan": {
+      "message": "Pregled botov"
+   },
+   "menuHome": {
+      "message": "Domov"
+   },
+   "menuProfile": {
+      "message": "Profil"
+   },
+   "menuUpgrade": {
+      "message": "Nadgradi"
+   },
+   "minutesTest": {
+      "message": "$1 minut (Test)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 računov več na voljo"
+   },
+   "moreInHours": {
+      "message": "Čez $2 uri boš videl +$1 sledilcev več"
+   },
+   "nextCheckTime": {
+      "message": "Naslednji pregled: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Naslednji pregled: Jutri"
+   },
+   "nextInSeconds": {
+      "message": "Naslednje čez $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Ni tistih, ki vam ne sledijo"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Ni tistih, ki vam ne sledijo, za prenehanje sledenja."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "Ni računov za prenehanje sledenja."
+   },
+   "notFollowingYouBadge": {
+      "message": "Ne Sledi"
+   },
+   "notProvided": {
+      "message": "Ni navedeno"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Odpiranje..."
+   },
+   "openingInNewTab": {
+      "message": "Odpiranje v novem zavihku..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/mesec"
+   },
+   "perYear": {
+      "message": "/leto"
+   },
+   "planFree": {
+      "message": "Brezplačno"
+   },
+   "planPopular": {
+      "message": "Priljubljeno"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Letni"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Prijavite se za naročnino"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Najprej se prijavite v Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Prijavite se za nadgradnjo"
+   },
+   "pleaseSignInToView": {
+      "message": "Prijavite se za ogled informacij"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Z Premium-om si oglejte vseh $COUNT$ računov zdaj, brez omejitev!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Zaščitena Zasebnost"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "processing": {
+      "message": "Obdelava..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram je zahteval premor — nadaljujemo čez $1 s"
+   },
+   "rating": {
+      "message": "Ocena"
+   },
+   "reAnalyze": {
+      "message": "Ponovna analiza"
+   },
+   "reAnalyzing": {
+      "message": "Ponovna analiza..."
+   },
+   "removeFromWhitelist": {
+      "message": "Odstrani z belega seznama"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "50% popust na Premium"
+   },
+   "saveSettings": {
+      "message": "Shrani"
+   },
+   "scanBlockedBody": {
+      "message": "To je pogosto, mine samo od sebe, in ni nič narobe ne z vašim računom ne z razširitvijo. Takoj smo se ustavili, namesto da bi poskušali znova, saj ponavljajoči se poskusi čakanje samo podaljšajo. Poskusite pozneje danes."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Seznama sledilcev trenutno ni bilo mogoče prebrati."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Seznama sledenih trenutno ni bilo mogoče prebrati."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram želi kratek premor"
+   },
+   "scanPartialBody": {
+      "message": "Del je prispel, nato nas je Instagram zaustavil, zato rezultati niso dovolj popolni za ukrepanje. Nič ni bilo spremenjeno. Vrnite se pozneje in znova zaženite analizo — to lahko traja ure, poskus zdaj pa ga podaljša."
+   },
+   "scanPartialTitle": {
+      "message": "Seznam se je vrnil nepopoln"
+   },
+   "scanPaused": {
+      "message": "Instagram je prosil, naj upočasnimo — čakamo…"
+   },
+   "scanRemaining": {
+      "message": "Ostalo $1 računov"
+   },
+   "scanShortBody": {
+      "message": "Pregled je končan, a vrnilo se je manj računov, kot jih navaja Instagram. Ukrepanje na tej podlagi bi lahko prekinilo sledenje ljudem, ki vam sledijo, zato ni prikazano nič. Prosimo, znova zaženite analizo."
+   },
+   "scanShortTitle": {
+      "message": "Nekateri računi manjkajo"
+   },
+   "seconds": {
+      "message": "sekund"
+   },
+   "secure": {
+      "message": "Varno"
+   },
+   "secureLogin": {
+      "message": "Varna Prijava"
+   },
+   "sessionExpiredTitle": {
+      "message": "Vaša seja Instagram se je končala"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Samo nesledilci"
+   },
+   "showingFirstAccounts": {
+      "message": "Prikazanih prvih $COUNT$ računov.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Preskoči sledilce"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Preskoči potrjene"
+   },
+   "startAnalysis": {
+      "message": "Začni Analizo"
+   },
+   "startBotScan": {
+      "message": "Začni pregled botov"
+   },
+   "startUnfollow": {
+      "message": "Začni Unfollow"
+   },
+   "startingAnalysis": {
+      "message": "Začenjam analizo..."
+   },
+   "statFailed": {
+      "message": "Ni uspelo"
+   },
+   "statFollowers": {
+      "message": "Sledilci"
+   },
+   "statFollowing": {
+      "message": "Sledite"
+   },
+   "statNonFollowers": {
+      "message": "Ne Sledijo"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "Unfollowed"
+   },
+   "stop": {
+      "message": "Ustavi"
+   },
+   "stopping": {
+      "message": "Ustavljamo…"
+   },
+   "support": {
+      "message": "Podpora"
+   },
+   "tableAction": {
+      "message": "Akcija"
+   },
+   "tableFollowingYou": {
+      "message": "Sledi Vam"
+   },
+   "tableFullName": {
+      "message": "Ime"
+   },
+   "tablePrivate": {
+      "message": "Zaseben"
+   },
+   "tableProfile": {
+      "message": "Profil"
+   },
+   "tableUsername": {
+      "message": "Uporabnik"
+   },
+   "tableVerified": {
+      "message": "Potrjen"
+   },
+   "testNow": {
+      "message": "Testiraj zdaj"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Tega dejanja ni mogoče razveljaviti!"
+   },
+   "toRemoveLimits": {
+      "message": "za odstranitev omejitev"
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Še $COUNT$ dni",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Preizkusno obdobje se je končalo"
+   },
+   "tryAgain": {
+      "message": "Poskusi znova"
+   },
+   "tryAnyway": {
+      "message": "Vseeno poskusi"
+   },
+   "unfollow": {
+      "message": "Unfollow"
+   },
+   "unfollowDelayLabel": {
+      "message": "Zamik (sekunde)"
+   },
+   "unfollowEveryone": {
+      "message": "Prenehaj Slediti Vse"
+   },
+   "unfollowFailed": {
+      "message": "Neuspešno"
+   },
+   "unfollowNonFollowers": {
+      "message": "Prenehaj Slediti Nesledilce"
+   },
+   "unfollowProcessStarted": {
+      "message": "Prenehanje sledenja se je začelo."
+   },
+   "unfollowSettings": {
+      "message": "Nastavitve Unfollow"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 sekund med posameznimi prenehanji sledenja."
+   },
+   "unfollowedSuccess": {
+      "message": "Unfollowed"
+   },
+   "unfollowing": {
+      "message": "Unfollow..."
+   },
+   "unknownError": {
+      "message": "Neznana napaka"
+   },
+   "upgradeToPremium": {
+      "message": "Nadgradi na Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Posodobi na Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium za vse!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "računom boste nehali slediti."
+   },
+   "waitingSeconds": {
+      "message": "Čakanje $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Čas čakanja (3-300 sek)"
+   },
+   "welcomeFunText1": {
+      "message": "Želite videti, kdo vas ne sledi? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Prenehati slediti je zdaj enostavno 😊"
+   },
+   "welcomeTitle": {
+      "message": "Dobrodošli! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Prijavite se z Google, vaši podatki so varni!"
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 bo odklenjenih jutri"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram je začasno nehal sprejemati samodejno prenehanje sledenja na tem računu. To je začasno in z vašim računom je vse v redu.\n\nMedtem lahko še vedno ročno nehate slediti s strani profila, vaš seznam pa ostane tukaj — nič ni bilo porabljeno."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram trenutno omejuje prenehanje sledenja"
+   },
+   "yesUnfollow": {
+      "message": "Da, nehaj slediti"
+   },
+   "yesUnfollowAll": {
+      "message": "Da, nehaj slediti vsem"
+   }
+}

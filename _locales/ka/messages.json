@@ -1,0 +1,1096 @@
+{
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "menuHome": {
+      "message": "მთავარი"
+   },
+   "menuUpgrade": {
+      "message": "განახლება"
+   },
+   "menuProfile": {
+      "message": "პროფილი"
+   },
+   "login": {
+      "message": "შესვლა"
+   },
+   "logout": {
+      "message": "გამოსვლა"
+   },
+   "loginWithGoogle": {
+      "message": "Google-ით შესვლა"
+   },
+   "getStartedWithGoogle": {
+      "message": "Google-ით რეგისტრაცია"
+   },
+   "welcomeTitle": {
+      "message": "კეთილი იყოს! 👋"
+   },
+   "welcomeFunText1": {
+      "message": "გინდა ნახო ვინ არ გადევნებს თვალს? 😏"
+   },
+   "welcomeTrustText": {
+      "message": "შედი Google-ით, მონაცემები უსაფრთხოა!"
+   },
+   "welcomeFunText2": {
+      "message": "გაუთვალება ახლა მარტივია 😊"
+   },
+   "secureLogin": {
+      "message": "უსაფრთხო შესვლა"
+   },
+   "privacyProtected": {
+      "message": "კონფიდენციალურობა დაცულია"
+   },
+   "loadingProfile": {
+      "message": "პროფილი იტვირთება"
+   },
+   "loading": {
+      "message": "იტვირთება..."
+   },
+   "connected": {
+      "message": "დაკავშირებული"
+   },
+   "followers": {
+      "message": "მიმდევრები"
+   },
+   "following": {
+      "message": "თვალს ადევნებ"
+   },
+   "instagramLoginAlert": {
+      "message": "ჯერ Instagram-ში შედი!"
+   },
+   "goToInstagramLogin": {
+      "message": "Instagram-ზე გადასვლა"
+   },
+   "startAnalysis": {
+      "message": "ანალიზის დაწყება"
+   },
+   "limitedTimeOffer": {
+      "message": "შეზღუდული შეთავაზება"
+   },
+   "savePremiumOffer": {
+      "message": "50% ფასდაკლება Premium"
+   },
+   "planFree": {
+      "message": "უფასო"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPopular": {
+      "message": "პოპულარული"
+   },
+   "perMonth": {
+      "message": "/თვე"
+   },
+   "discountOff": {
+      "message": "-50%"
+   },
+   "featureMax50Analysis": {
+      "message": "მაქს 40 ანალიზი"
+   },
+   "featureBasicUnfollow": {
+      "message": "ბაზისური გაუთვალება"
+   },
+   "featureSpamDetector": {
+      "message": "სპამის გამოვლინება"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "შეუზღუდავი ანალიზი"
+   },
+   "featureAdvancedFiltering": {
+      "message": "გაუმჯობესებული ფილტრაცია"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "შეუზღუდავი ანალიზი"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "გაუმჯობესებული გაუთვალება"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "ფილტრები და ანგარიშები"
+   },
+   "featureAdvancedNotifications": {
+      "message": "გაუმჯობესებული შეტყობინებების სისტემა"
+   },
+   "upgradeToPremium": {
+      "message": "Premium-ზე გადასვლა"
+   },
+   "manageSubscription": {
+      "message": "გამოწერის მართვა"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "შედი განახლებისთვის"
+   },
+   "activeUsers": {
+      "message": "აქტიური მომხმარებლები"
+   },
+   "rating": {
+      "message": "რეიტინგი"
+   },
+   "support": {
+      "message": "მხარდაჭერა"
+   },
+   "secure": {
+      "message": "უსაფრთხო"
+   },
+   "accountDetails": {
+      "message": "ანგარიშის დეტალები"
+   },
+   "email": {
+      "message": "ელფოსტა"
+   },
+   "fullName": {
+      "message": "სახელი"
+   },
+   "membership": {
+      "message": "წევრობა"
+   },
+   "notProvided": {
+      "message": "არ არის მითითებული"
+   },
+   "loginRequired": {
+      "message": "საჭიროა შესვლა"
+   },
+   "pleaseSignInToView": {
+      "message": "შედი ინფორმაციის სანახავად"
+   },
+   "opening": {
+      "message": "იხსნება..."
+   },
+   "openingInNewTab": {
+      "message": "ახალ ჩანართში იხსნება..."
+   },
+   "loginSuccessful": {
+      "message": "წარმატებით შესული!"
+   },
+   "loginFailed": {
+      "message": "შესვლა ვერ მოხერხდა: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "უცნობი შეცდომა"
+         }
+      }
+   },
+   "unknownError": {
+      "message": "უცნობი შეცდომა"
+   },
+   "logoutError": {
+      "message": "გამოსვლის შეცდომა: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "უცნობი შეცდომა"
+         }
+      }
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "შედი გამოწერისთვის"
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "startUnfollow": {
+      "message": "გაუთვალების დაწყება"
+   },
+   "unfollowNonFollowers": {
+      "message": "არ მიჰყვება მიმდევრების გაუთვალება"
+   },
+   "unfollowEveryone": {
+      "message": "ყველას გაუთვალება"
+   },
+   "stop": {
+      "message": "გაჩერება"
+   },
+   "seconds": {
+      "message": "წამი"
+   },
+   "waitingTimeTitle": {
+      "message": "ლოდინის დრო (3-300 წმ)"
+   },
+   "statUnfollowed": {
+      "message": "გაუთვალებული"
+   },
+   "statFailed": {
+      "message": "ვერ მოხერხდა"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "freePlanLimitReached": {
+      "message": "უფასო ლიმიტი მიღწეულია"
+   },
+   "freePlanLimitDescription": {
+      "message": "40 ანალიზი მიღწეულია. გადავიდე Premium-ზე!"
+   },
+   "showOnlyNonFollowers": {
+      "message": "მხოლოდ არა-მიმდევრები"
+   },
+   "tableProfile": {
+      "message": "პროფილი"
+   },
+   "tableUsername": {
+      "message": "მომხმარებელი"
+   },
+   "tableFullName": {
+      "message": "სახელი"
+   },
+   "tableVerified": {
+      "message": "დადასტურებული"
+   },
+   "tablePrivate": {
+      "message": "პირადი"
+   },
+   "tableFollowingYou": {
+      "message": "გადევნებს თვალს"
+   },
+   "tableAction": {
+      "message": "მოქმედება"
+   },
+   "dataLoading": {
+      "message": "მონაცემები იტვირთება..."
+   },
+   "unfollowSettings": {
+      "message": "გაუთვალების პარამეტრები"
+   },
+   "unfollowDelayLabel": {
+      "message": "დაყოვნება (წამი)"
+   },
+   "skipVerifiedAccounts": {
+      "message": "გამოტოვე დადასტურებულები"
+   },
+   "skipAccountsFollowingYou": {
+      "message": "გამოტოვე მიმდევრები"
+   },
+   "saveSettings": {
+      "message": "შენახვა"
+   },
+   "startingAnalysis": {
+      "message": "ანალიზი იწყება..."
+   },
+   "finalizingAnalysis": {
+      "message": "მთავრდება..."
+   },
+   "pleaseLoginToInstagram": {
+      "message": "ჯერ Instagram-ში შედი"
+   },
+   "couldNotFetchFollowing": {
+      "message": "სია ვერ მოვიძიე. სცადე მოგვიანებით."
+   },
+   "errorFetchingData": {
+      "message": "მონაცემთა მიღების შეცდომა. სცადე თავიდან."
+   },
+   "dataLoadingFollowing": {
+      "message": "იტვირთება: $COUNT$ თვალსადევნებადი ნაპოვნია",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowers": {
+      "message": "იტვირთება: $COUNT$ მიმდევარი ნაპოვნია",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "showingFirstAccounts": {
+      "message": "პირველი $COUNT$ ანგარიში ნაჩვენებია.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium ყველასთვის!"
+   },
+   "followingYouBadge": {
+      "message": "გადევნებს თვალს"
+   },
+   "notFollowingYouBadge": {
+      "message": "არ ადევნებს თვალს"
+   },
+   "unfollow": {
+      "message": "გაუთვალება"
+   },
+   "unfollowing": {
+      "message": "უთვალებს..."
+   },
+   "unfollowedSuccess": {
+      "message": "გაუთვალებული"
+   },
+   "failedToUnfollow": {
+      "message": "გაუთვალება ვერ მოხერხდა. სცადე თავიდან."
+   },
+   "errorOccurred": {
+      "message": "შეცდომა მოხდა. სცადე თავიდან."
+   },
+   "invalidWaitingTime": {
+      "message": "შეიყვანე სწორი დრო 3-300"
+   },
+   "waitingSeconds": {
+      "message": "ელოდება $SECONDS$წმ",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "nextInSeconds": {
+      "message": "შემდეგი $SECONDS$წმ-ში",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "უფასო გეგმაში შეგიძლიათ გაუთვალება მხოლოდ $COUNT$ მომხმარებლამდე. გთხოვთ აირჩიოთ მხოლოდ პირველი $COUNT$ მომხმარებელი ან განაახლოთ Premium-ზე.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "უფასო გეგმაში შეგიძლიათ გაუთვალება მხოლოდ $COUNT$ მომხმარებლამდე. განაახლეთ Premium-ზე შეუზღუდავი გაუთვალებისთვის!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "processing": {
+      "message": "მუშავდება..."
+   },
+   "unfollowFailed": {
+      "message": "ვერ მოხერხდა"
+   },
+   "checkingLoginStatus": {
+      "message": "შემოწმებულია შესვლის სტატუსი..."
+   },
+   "minutesTest": {
+      "message": "$1 წუთი (ტესტი)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "testNow": {
+      "message": "ტესტი ახლა"
+   },
+   "firstDayBonus": {
+      "message": "პირველი დღის ბონუსი"
+   },
+   "dailyScanLimit": {
+      "message": "ყოველდღიური სკანირების ლიმიტი"
+   },
+   "allAccountsUnlocked": {
+      "message": "ყველა ანგარიში განბლოკილია!"
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 ანგარიში მეტი ხელმისაწვდომია"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 ხვალ განბლოკდება"
+   },
+   "moreInHours": {
+      "message": "$2 საათში შეძლებთ ნახოთ +$1 მიმდევარი მეტი"
+   },
+   "comeBackTomorrow": {
+      "message": "დაბრუნდით ხვალ"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "ყოველდღე შეგიძლიათ გაანალიზოთ +20 მიმდევარი მეტი. თუ მოუთმენელი ხართ, გადადით Premium-ზე, ნახეთ ყველა ახლა. თუ მოთმენიანი ხართ, დაბრუნდით ხვალ, შეძლებთ ნახოთ +20 მიმდევარი მეტი. ✨"
+   },
+   "toRemoveLimits": {
+      "message": "ლიმიტების მოსაშორებლად"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "დაბრუნდით ხვალ, რომ ნახოთ $1 ანგარიში მეტი (+$2 ახალი განბლოკვა)"
+   },
+   "nextCheckTime": {
+      "message": "შემდეგი შემოწმება: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "შემდეგი შემოწმება: ხვალ"
+   },
+   "chooseMonthly": {
+      "message": "აირჩიეთ ყოველთვიური"
+   },
+   "chooseYearly": {
+      "message": "აირჩიეთ წლიური"
+   },
+   "planPremiumYearly": {
+      "message": "Premium წლიური"
+   },
+   "perYear": {
+      "message": "/წელი"
+   },
+   "liveCounterPrefix": {
+      "message": "ბოლო 24 საათში"
+   },
+   "liveCounterSuffix": {
+      "message": "ადამიანმა განაახლა Premium-ზე!"
+   },
+   "upgradeToPremiumButton": {
+      "message": "განახლება Premium-ზე"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ ანგარიში კიდევ ხელმისაწვდომია. ყველას სანახავად",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "დღიური ლიმიტი"
+   },
+   "freePlanTodayMessage": {
+      "message": "უფასო გეგმით, დღეს შეგიძლიათ ნახოთ $DISPLAYED$ ანგარიში. კიდევ $HIDDEN$ ანგარიშია, მაგრამ ვერ ნახავთ.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "უფასო გეგმით, დღეს შეგიძლიათ ნახოთ $COUNT$ ანგარიში.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "firstDayBonusMessage": {
+      "message": "პირველი დღის ბონუსი: 40 ანგარიში! ხვალ შეგიძლიათ ნახოთ +20 ანგარიში ($COUNTDOWN$). ყოველ დღეს ემატება +20 ანგარიში.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5სთ 30წთ შემდეგ"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "ხვალ შეგიძლიათ ნახოთ +20 ანგარიში ($COUNTDOWN$). ყოველ დღეს ემატება +20 ანგარიში, ლიმიტები გროვდება!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5სთ 30წთ შემდეგ"
+         }
+      }
+   },
+   "premiumUnlockAllMessage": {
+      "message": "Premium-ით, ნახეთ ყველა $COUNT$ ანგარიში ახლა, ლიმიტების გარეშე!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "featureDetailDaily": {
+      "message": " (+20/დღე)"
+   },
+   "later": {
+      "message": "შემდეგ"
+   },
+   "countdownFormat": {
+      "message": "$HOURS$სთ $MINUTES$წთ $SECONDS$წმ $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         },
+         "later": {
+            "content": "$4",
+            "example": "შემდეგ"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$წთ $SECONDS$წმ $LATER$",
+      "placeholders": {
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         },
+         "later": {
+            "content": "$3",
+            "example": "შემდეგ"
+         }
+      }
+   },
+   "statFollowers": {
+      "message": "მიმდევრები"
+   },
+   "statFollowing": {
+      "message": "მიჰყვებით"
+   },
+   "statNonFollowers": {
+      "message": "არ მიჰყვება"
+   },
+   "cachedDataInfo": {
+      "message": "ბოლო ანალიზი $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cacheExpiryWarning": {
+      "message": "პროფილის სურათები შეიძლება არ გამოჩნდეს, რადგან თქვენი ბოლო ანალიზი $DAYS$ დღის წინ იყო. გთხოვთ ხელახლა გააანალიზოთ განახლებული შედეგებისთვის.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "reAnalyze": {
+      "message": "ხელახალი ანალიზი"
+   },
+   "reAnalyzing": {
+      "message": "ხელახალი ანალიზი..."
+   },
+   "trialExpiredTitle": {
+      "message": "საცდელი პერიოდი დასრულდა"
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "დარჩა $COUNT$ დღე",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "errorRateLimit": {
+      "message": "Instagram-მა ჩვენი მოთხოვნები შეაჩერა. თავისით გაივლის, მაგრამ ფიქსირებული ლოდინის დრო არ არსებობს — შესრულებული სამუშაოს მოცულობის მიხედვით შეიძლება საათები დასჭირდეს, ან ხვალამდე. დაუყოვნებლივი ცდა მას აგრძელებს."
+   },
+   "errorSessionExpired": {
+      "message": "თქვენი Instagram სესია ამოიწურა. შედით Instagram-ში და სცადეთ ხელახლა."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram დროებით მიუწვდომელია. სცადეთ მოგვიანებით."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "whitelist": {
+      "message": "Whitelist"
+   },
+   "addToWhitelist": {
+      "message": "თეთრ სიაში დამატება"
+   },
+   "removeFromWhitelist": {
+      "message": "თეთრი სიიდან წაშლა"
+   },
+   "whitelisted": {
+      "message": "Protected"
+   },
+   "whitelistedSkipped": {
+      "message": "Skipped (whitelisted)"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trendDown": {
+      "message": "$COUNT$ since last analysis",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "No change"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "ანგარიში გამოიწერება."
+   },
+   "cancel": {
+      "message": "Cancel"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Warning!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "დარწმუნებული ხართ, რომ გსურთ ყველას გამოწერა?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "დაადასტურეთ მოქმედება"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "დარწმუნებული ხართ, რომ გსურთ ყველას გამოწერა, ვინც არ გყვებათ პასუხად?"
+   },
+   "noNonFollowers": {
+      "message": "არ არის ისეთი, ვინც არ გყვებათ"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "არ არის ისეთი, ვინც არ გყვებათ, რომ გამოეწეროთ."
+   },
+   "noUsers": {
+      "message": "No Users"
+   },
+   "noUsersToUnfollow": {
+      "message": "არ არის ანგარიშები გამოსაწერად."
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "processStarted": {
+      "message": "Process Started"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ ამ მოქმედების გაუქმება შეუძლებელია!"
+   },
+   "unfollowProcessStarted": {
+      "message": "გამოწერის პროცესი დაიწყო."
+   },
+   "usersWillBeUnfollowed": {
+      "message": "ანგარიში გამოიწერება."
+   },
+   "yesUnfollow": {
+      "message": "დიახ, გამოწერა"
+   },
+   "yesUnfollowAll": {
+      "message": "დიახ, ყველას გამოწერა"
+   },
+   "incompleteDataTitle": {
+      "message": "სია არასრულია"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram-მა მონაცემების გაგზავნა შეწყვიტა მთელი სიის მოსვლამდე, ამიტომ ზოგი ანგარიში აკლია. ახლა მოქმედებამ შეიძლება გამოგაწეროთ ისინი, ვინც ნამდვილად გყვებათ. ჯერ ხელახლა გაუშვით ანალიზი."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram-მა პაუზა მოითხოვა — გავაგრძელებთ $1 წმ-ში"
+   },
+   "scanRemaining": {
+      "message": "დარჩა $1 ანგარიში"
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram-ს მოკლე შესვენება სჭირდება"
+   },
+   "scanBlockedListFollowers": {
+      "message": "მიმდევრების სიის წაკითხვა ამჟამად ვერ მოხერხდა."
+   },
+   "scanBlockedListFollowing": {
+      "message": "გამოწერილების სიის წაკითხვა ამჟამად ვერ მოხერხდა."
+   },
+   "scanBlockedBody": {
+      "message": "ეს ხშირია, თავისით გადის, და არც თქვენს ანგარიშში და არც გაფართოებაში პრობლემა არ არის. მაშინვე შევჩერდით ხელახლა ცდის ნაცვლად, რადგან განმეორებითი მცდელობები ლოდინს მხოლოდ ახანგრძლივებს. სცადეთ დღეს მოგვიანებით."
+   },
+   "scanPartialTitle": {
+      "message": "სია არასრული დაბრუნდა"
+   },
+   "scanPartialBody": {
+      "message": "ნაწილი მოვიდა, შემდეგ Instagram-მა ჩვენ შეგვაჩერა, ამიტომ შედეგები საკმარისად სრული არ არის მოქმედებისთვის. არაფერი შეცვლილა. დაბრუნდით მოგვიანებით და ხელახლა გაუშვით ანალიზი — ამას შეიძლება საათები დასჭირდეს და ახლა ცდა მას აგრძელებს."
+   },
+   "scanShortTitle": {
+      "message": "ზოგი ანგარიში აკლია"
+   },
+   "scanShortBody": {
+      "message": "სკანირება დასრულდა, მაგრამ დაბრუნდა იმაზე ნაკლები ანგარიში, ვიდრე Instagram უთითებს. ამის საფუძველზე მოქმედებამ შეიძლება გამოგაწეროთ ისინი, ვინც გყვებათ, ამიტომ არაფერია ნაჩვენები. გთხოვთ, ხელახლა გაუშვათ ანალიზი."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram ამჟამად ზღუდავს გამოწერის გაუქმებას"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram-მა დროებით შეწყვიტა ავტომატური გამოწერის გაუქმების მიღება ამ ანგარიშზე. ეს დროებითია და თქვენს ანგარიშს არაფერი სჭირს.\n\nამასობაში კვლავ შეგიძლიათ ხელით გააუქმოთ გამოწერა პროფილის გვერდიდან, და თქვენი სია აქვე რჩება — არაფერი დახარჯულა."
+   },
+   "gotIt": {
+      "message": "კარგი"
+   },
+   "menuBotScan": {
+      "message": "ბოტების სკანირება"
+   },
+   "botScanTitle": {
+      "message": "ბოტი მიმდევრების სკანირება"
+   },
+   "botIntroHeading": {
+      "message": "იპოვეთ ანგარიშები, რომელთა უკან ნამდვილი ადამიანები არ დგანან"
+   },
+   "botIntroReasons": {
+      "message": "ყოველ ქულას თან ახლავს მისი მიზეზები, რომ დაინახოთ, რატომ მოინიშნა ანგარიში, ციფრის ნდობის ნაცვლად. არაფერი იშლება ავტომატურად — სია აქ იმისთვისაა, რომ შეხედოთ და თავად გადაწყვიტოთ."
+   },
+   "botPopupBody": {
+      "message": "თითოეულ მიმდევარს ანიჭებს ქულას იმის მიხედვით, რამდენად სავარაუდოა, რომ ის ბოტია ან ერთჯერადი ანგარიში: არ აქვს პროფილის ფოტო, არ აქვს პოსტები, გენერირებულად გამოიყურება მომხმარებლის სახელი, მიჰყვება ათასობით ანგარიშს, მას კი თითქმის არავინ."
+   },
+   "botPopupReasons": {
+      "message": "ყოველ ქულას თან ახლავს მისი მიზეზები. არაფერი იშლება ავტომატურად."
+   },
+   "startBotScan": {
+      "message": "ბოტების სკანირების დაწყება"
+   },
+   "botStatScanned": {
+      "message": "დასკანერებული"
+   },
+   "botStatLikely": {
+      "message": "სავარაუდო ბოტები"
+   },
+   "botStatSuspicious": {
+      "message": "საეჭვო"
+   },
+   "botTableScore": {
+      "message": "ქულა"
+   },
+   "botTableVerdict": {
+      "message": "დასკვნა"
+   },
+   "botTableReasons": {
+      "message": "რატომ"
+   },
+   "botNotRunYet": {
+      "message": "გაუშვით სკანირება, რომ აქ ნახოთ თქვენი მიმდევრების ქულები."
+   },
+   "botVerdictLikely": {
+      "message": "სავარაუდო ბოტი"
+   },
+   "botVerdictSuspicious": {
+      "message": "საეჭვო"
+   },
+   "botVerdictClean": {
+      "message": "ნამდვილს ჰგავს"
+   },
+   "botNoSignals": {
+      "message": "უჩვეულო არაფერია"
+   },
+   "botCleared": {
+      "message": "მის სასარგებლოდ"
+   },
+   "botDeepChecked": {
+      "message": "პროფილი შემოწმებულია"
+   },
+   "botNoFlagged": {
+      "message": "არაფერი მოინიშნა — თქვენი მიმდევრების სია სუფთად გამოიყურება."
+   },
+   "botScanReading": {
+      "message": "ვკითხულობთ თქვენს მიმდევრებს…"
+   },
+   "botScanReadingCount": {
+      "message": "ვკითხულობთ მიმდევრებს… $1"
+   },
+   "botScanDeepProgress": {
+      "message": "ვამოწმებთ პროფილებს… $1/$2"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram-მა პროფილების შემოწმება შეაჩერა. ქვემოთ მოცემული შედეგები იმისგანაა, რაც წაკითხვა მოვასწარით."
+   },
+   "botScanDone": {
+      "message": "სკანირება დასრულდა."
+   },
+   "botScanPartial": {
+      "message": "სკანირება დასრულდა, მაგრამ მიმდევრების სია არასრული დაბრუნდა — ზოგი ანგარიში აკლია."
+   },
+   "botScanNoData": {
+      "message": "თქვენი მიმდევრების სიის წაკითხვა ვერ მოხერხდა. Instagram გვაკავებს — თავისით გაივლის, მაგრამ ფიქსირებული დრო არ არსებობს. სცადეთ მოგვიანებით."
+   },
+   "stopping": {
+      "message": "ჩერდება…"
+   },
+   "botStepReading": {
+      "message": "ვკითხულობთ მიმდევრებს"
+   },
+   "botStepDeep": {
+      "message": "ვამოწმებთ პროფილებს"
+   },
+   "scanPaused": {
+      "message": "Instagram-მა შენელება მოგვთხოვა — ველოდებით…"
+   },
+   "botScoreRaw": {
+      "message": "დაუმუშავებელი ქულა"
+   },
+   "botSignalsUnavailable": {
+      "message": "ამ ანგარიშისთვის ზოგი შემოწმება ვერ შესრულდა, ამიტომ მისი ქულა სხვებზე ნაკლებ მონაცემს ეყრდნობა."
+   },
+   "botReadSubtitle": {
+      "message": "იკითხება პირდაპირ თქვენი მიმდევრების სიიდან — დამატებითი მოთხოვნების გარეშე."
+   },
+   "botDeepSubtitle": {
+      "message": "ერთი მოთხოვნა თითო ანგარიშზე, უსაფრთხო ტემპით."
+   },
+   "botScanCached": {
+      "message": "ბოლო სკანირება $1"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "არასწორი ლოდინის დრო"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 წამი დაშვებულ დიაპაზონს სცილდება. შეიყვანეთ მნიშვნელობა $2-დან $3 წამამდე."
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 წამი ყოველ გამოწერის გაუქმებას შორის."
+   },
+   "checkingBeforeStart": {
+      "message": "მოწმდება…"
+   },
+   "botRunDeepChecks": {
+      "message": "სიღრმისეული შემოწმების გაშვება"
+   },
+   "botDeepChecksFor": {
+      "message": "სიღრმისეულად შეამოწმე $1 ანგარიში"
+   },
+   "botFilterLikely": {
+      "message": "სავარაუდო ბოტები"
+   },
+   "botFilterSuspicious": {
+      "message": "საეჭვო"
+   },
+   "botFilterAll": {
+      "message": "ყველა დასკანერებული"
+   },
+   "botNoRowsForFilter": {
+      "message": "ამ ჯგუფში არაფერია."
+   },
+   "botDeepDone": {
+      "message": "სიღრმისეული შემოწმება დასრულდა — შემოწმდა $1 ანგარიში."
+   },
+   "botDeepNoTargets": {
+      "message": "არცერთ ანგარიშს არ სჭირდება სიღრმისეული შემოწმება."
+   },
+   "errorNetwork": {
+      "message": "Instagram-თან დაკავშირება ვერ მოხერხდა. შეამოწმეთ კავშირი — არაფერი დაკარგულა და პროცესი გაგრძელდება."
+   },
+   "tryAnyway": {
+      "message": "მაინც სცადე"
+   },
+   "sessionExpiredTitle": {
+      "message": "თქვენი Instagram სესია დასრულდა"
+   },
+   "botDeepRemaining": {
+      "message": "$1 შემოწმების გარეშე დარჩა."
+   },
+   "botTableStats": {
+      "message": "პროფილის რიცხვები"
+   },
+   "botStatFollowers": {
+      "message": "მიმდევრები"
+   },
+   "botStatFollowing": {
+      "message": "მიჰყვება"
+   },
+   "botStatPosts": {
+      "message": "პოსტები"
+   },
+   "botStatsNotChecked": {
+      "message": "შემოწმებული არ არის"
+   },
+   "botDeepAllChecked": {
+      "message": "ყველა მონიშნული ანგარიში შემოწმებულია"
+   },
+   "botIntroLead": {
+      "message": "თითოეულ მიმდევარს ენიჭება ქულა იმის მიხედვით, რამდენად სავარაუდოა, რომ ის ბოტია ან ერთჯერადი ანგარიში."
+   },
+   "botSignalPhoto": {
+      "message": "პროფილის ფოტო არ არის"
+   },
+   "botSignalPosts": {
+      "message": "პოსტები არ არის"
+   },
+   "botSignalName": {
+      "message": "გენერირებულად გამოიყურება მომხმარებლის სახელი"
+   },
+   "botSignalRatio": {
+      "message": "მიჰყვება ათასობით, მას თითქმის არავინ"
+   },
+   "botStatFlagged": {
+      "message": "მონიშნული"
+   },
+   "etaMinutes": {
+      "message": "~$1 წთ დარჩა"
+   },
+   "etaSeconds": {
+      "message": "~$1 წმ დარჩა"
+   },
+   "botDeepChecksRemaining": {
+      "message": "დარჩა $1 ($2 უკვე შემოწმდა)"
+   },
+   "loadingSavedAnalysis": {
+      "message": "იტვირთება თქვენი შენახული ანალიზი…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Instagram-ს არაფერი ეთხოვება."
+   },
+   "botFreeWithheld": {
+      "message": "ნაპოვნია კიდევ $1 — გადადით Premium-ზე ყველას სანახავად."
+   },
+   "botFreeHeadline": {
+      "message": "კიდევ მონიშნული ანგარიშია ჩაკეტილი"
+   },
+   "botStatsGone": {
+      "message": "ანგარიში აღარ არის"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram-მა პროფილი არ დააბრუნა — ანგარიში წაშლილია ან გათიშულია, მისი რიცხვები ვეღარ წაიკითხება."
+   },
+   "botProvisionalTitle": {
+      "message": "ეს დასკვნები ჯერ საბოლოო არ არის"
+   },
+   "botProvisionalBody": {
+      "message": "მონიშნული $1 ანგარიშის პროფილი ჯერ არ შემოწმებულა. ბოტების უმეტესობა სწორედ ამ შემოწმებით დასტურდება — გაუშვით, სანამ ენდობით „სავარაუდო ბოტების“ რაოდენობას."
+   },
+   "botBlindTitle": {
+      "message": "პროფილის ფოტოს შემოწმება ვერ შესრულდა"
+   },
+   "botBlindBody": {
+      "message": "Instagram-მა თქვენი მიმდევრების სია პროფილის ფოტოს მონაცემების გარეშე დააბრუნა, ამიტომ აქ ყველა ქულა იმაზე დაბალია, ვიდრე უნდა იყოს, და ზოგი ბოტი გამოგრჩებათ. სრული შედეგისთვის გახსენით Instagram ცალკე ჩანართში და ხელახლა გაუშვით სკანირება."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram ამჟამად ზღუდავს მოთხოვნებს"
+   },
+   "instagramLimitedBody": {
+      "message": "თქვენ კვლავ სისტემაში ხართ და თქვენს ანგარიშს არაფერი სჭირს. ეს თავისით გაივლის, მაგრამ ფიქსირებული ლოდინის დრო არ არსებობს — შესრულებული სამუშაოს მოცულობის მიხედვით შეიძლება საათები დასჭირდეს, ან ხვალამდე. განმეორებითი ცდები მას აგრძელებს."
+   },
+   "tryAgain": {
+      "message": "ხელახლა ცდა"
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram-მა პროფილების შემოწმება შეაჩერა"
+   },
+   "botDeepPausedBody": {
+      "message": "შეჩერებამდე შემოწმდა $1 ანგარიში, $2 კი არა. ქვემოთ მოცემული დასკვნები ეყრდნობა მხოლოდ იმას, რაც წაკითხვა მოვასწარით. ფიქსირებული ლოდინის დრო არ არსებობს — შეიძლება საათები დასჭირდეს, ან ხვალამდე. დაბრუნდით მოგვიანებით, ნაცვლად იმისა, რომ ახლა სცადოთ — ეს მხოლოდ აგრძელებს."
+   },
+   "botReason_anonymous_picture": {
+      "message": "პროფილის ფოტო არ არის",
+      "description": "The account uses the default grey avatar instead of a profile photo."
+   },
+   "botReason_empty_name": {
+      "message": "სახელი არ არის",
+      "description": "The account has no full name / display name set."
+   },
+   "botReason_digit_heavy": {
+      "message": "ბევრი ციფრი მომხმარებლის სახელში",
+      "description": "The username contains an unusually high proportion of digits."
+   },
+   "botReason_trailing_digits": {
+      "message": "მომხმარებლის სახელი ციფრებით მთავრდება",
+      "description": "The username ends with a run of digits, e.g. user82736."
+   },
+   "botReason_underscore_run": {
+      "message": "უჩვეულო ქვედა ტირეები",
+      "description": "The username has an unusual pattern of underscores."
+   },
+   "botReason_very_long_username": {
+      "message": "ძალიან გრძელი მომხმარებლის სახელი",
+      "description": "The username is far longer than a person normally chooses."
+   },
+   "botReason_verified": {
+      "message": "დადასტურებული ანგარიში",
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour."
+   },
+   "botReason_has_badge": {
+      "message": "აქვს ანგარიშის ნიშანი",
+      "description": "The account carries a badge from Instagram. Counts in the account's favour."
+   },
+   "botReason_no_posts": {
+      "message": "პოსტები არ აქვს",
+      "description": "The account has zero posts."
+   },
+   "botReason_follows_far_more": {
+      "message": "ბევრად მეტს მიჰყვება, ვიდრე მას",
+      "description": "The account follows many more accounts than follow it back."
+   },
+   "botReason_mass_following": {
+      "message": "უამრავ ანგარიშს მიჰყვება",
+      "description": "The account follows an extremely large number of accounts."
+   },
+   "botReason_no_followers": {
+      "message": "მიმდევრები არ ჰყავს",
+      "description": "The account has no followers at all."
+   },
+   "botReason_posts_regularly": {
+      "message": "რეგულარულად პოსტავს",
+      "description": "The account posts regularly. Counts in the account's favour."
+   },
+   "botReason_balanced_audience": {
+      "message": "დაბალანსებული მიმდევრების თანაფარდობა",
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour."
+   }
+}

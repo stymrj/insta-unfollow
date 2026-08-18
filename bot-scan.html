@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>Bot Follower Scan</title>
+    <link rel="stylesheet" href="assets/inter/inter.css">
+    <link rel="stylesheet" href="content.css">
+    <!-- Holds `.premium-modal { display: none }`. Without it the shared modal markup below is
+         simply visible, unstyled, from the moment the page paints. -->
+    <link rel="stylesheet" href="premium-modal.css">
+    <link rel="stylesheet" href="bot-scan.css">
+    <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+<!-- Scan panel. Same shell as the analyzer's, but the two stages here are different: reading the
+     follower list costs no extra requests, while the deep pass costs one per account — so they are
+     shown as separate steps rather than one undifferentiated wait. -->
+<div id="botLoading" class="loading-overlay" style="display: none;">
+    <div class="scan-panel">
+        <div class="scan-head">
+            <div class="scan-ring">
+                <svg viewBox="0 0 120 120">
+                    <defs>
+                        <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#2563eb"/>
+                            <stop offset="100%" stop-color="#3b82f6"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="scan-ring-bg" cx="60" cy="60" r="52"/>
+                    <circle id="botRingArc" class="scan-ring-arc" cx="60" cy="60" r="52"/>
+                </svg>
+                <div id="botRingText" class="scan-ring-text">--</div>
+            </div>
+            <div class="scan-head-text">
+                <div id="botStageTitle" class="scan-title">Followers</div>
+                <div id="botBigCount" class="scan-big">0</div>
+                <div id="botStageDetail" class="scan-sub"></div>
+            </div>
+        </div>
+
+        <div id="botProgress" class="scan-progress" style="display:none">
+            <div class="scan-bar"><div id="botBar" class="scan-bar-fill"></div></div>
+            <div class="scan-meta"><span id="botRemaining"></span><span id="botEta"></span></div>
+        </div>
+
+        <div class="scan-steps">
+            <div id="botStepRead" class="scan-step">
+                <span class="scan-dot"></span><span data-i18n="botStepReading">Reading followers</span>
+            </div>
+            <div class="scan-step-line"></div>
+            <div id="botStepDeep" class="scan-step">
+                <span class="scan-dot"></span><span data-i18n="botStepDeep">Checking profiles</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header class="app-header">
+    <div class="header-content">
+        <h1 data-i18n="botScanTitle">Bot Follower Scan</h1>
+        <div class="user-info">
+            <div class="user-profile">
+                <img id="userAvatar" alt="Profile" class="user-avatar">
+                <div class="user-details">
+                    <span id="userName" class="user-name"></span>
+                    <span id="userEmail" class="user-email"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="app-container">
+
+    <!-- What this does, before anything is run. The signals are shown as their own row rather than
+         buried in a sentence: they are the whole method, and seeing them is what makes a score
+         readable instead of something to take on trust. -->
+    <section id="botIntro" class="bot-intro">
+        <div class="bot-intro-top">
+            <div class="bot-intro-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="8" width="18" height="12" rx="3"></rect>
+                    <path d="M12 8V4"></path><circle cx="12" cy="3" r="1"></circle>
+                    <circle cx="8.5" cy="14" r="1.2"></circle><circle cx="15.5" cy="14" r="1.2"></circle>
+                </svg>
+            </div>
+            <div>
+                <h2 data-i18n="botIntroHeading">Find the accounts that aren't real people</h2>
+                <p class="bot-intro-lead" data-i18n="botIntroLead">Every follower is scored on how
+                    likely it is to be a bot or a throwaway account.</p>
+            </div>
+        </div>
+
+        <div class="bot-signals">
+            <div class="bot-signal">
+                <span class="bot-signal-dot"></span>
+                <span data-i18n="botSignalPhoto">No profile photo</span>
+            </div>
+            <div class="bot-signal">
+                <span class="bot-signal-dot"></span>
+                <span data-i18n="botSignalPosts">No posts</span>
+            </div>
+            <div class="bot-signal">
+                <span class="bot-signal-dot"></span>
+                <span data-i18n="botSignalName">Generated-looking username</span>
+            </div>
+            <div class="bot-signal">
+                <span class="bot-signal-dot"></span>
+                <span data-i18n="botSignalRatio">Follows thousands, followed by almost nobody</span>
+            </div>
+        </div>
+
+        <p class="bot-intro-note" data-i18n="botIntroReasons">Every score comes with the reasons
+            behind it, so you can see why an account was flagged instead of trusting a number.
+            Nothing is removed automatically — the list is here for you to look at and decide.</p>
+    </section>
+
+    <!-- Controls -->
+    <div class="control-panel">
+        <div class="panel-header">
+            <div class="action-buttons">
+                <div class="button-group">
+                    <button id="startBotScan" class="btn btn-primary">
+                        <div class="button-content">
+                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>
+                            </svg>
+                            <span class="button-text" data-i18n="startBotScan">Start Bot Scan</span>
+                        </div>
+                    </button>
+                    <button id="stopBotScan" class="btn btn-danger" disabled>
+                        <div class="button-content">
+                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle><rect x="9" y="9" width="6" height="6"></rect>
+                            </svg>
+                            <span class="button-text" data-i18n="stop">Stop</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- The deep pass costs one request per Instagram profile, so it is never part of
+                     the scan. One button, covering every flagged account — a number to tune was one
+                     decision too many, and a partial pass is hard to tell apart from a whole one.
+                     Appears only once a scan has produced accounts worth checking. -->
+                <div id="deepGroup" class="button-group" style="display:none">
+                    <button id="runDeepChecks" class="btn btn-secondary">
+                        <div class="button-content">
+                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>
+                                <path d="M11 8v6M8 11h6"></path>
+                            </svg>
+                            <span class="button-text" id="deepBtnText" data-i18n="botRunDeepChecks">Run deep checks</span>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="botScanStatus" class="reanalyze-time"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result summary. The table opens on the likely bots alone: a scan of five thousand followers
+         is mostly ordinary people, and listing them buries the handful the page exists to find. -->
+    <div class="filter-controls">
+        <div class="bot-filter" role="group">
+            <button type="button" class="bot-filter-btn active" data-filter="bot">
+                <span data-i18n="botFilterLikely">Likely bots</span>
+                <span class="bot-filter-count" id="botFilterCountBot">0</span>
+            </button>
+            <button type="button" class="bot-filter-btn" data-filter="suspicious">
+                <span data-i18n="botFilterSuspicious">Suspicious</span>
+                <span class="bot-filter-count" id="botFilterCountSuspicious">0</span>
+            </button>
+            <button type="button" class="bot-filter-btn" data-filter="all">
+                <span data-i18n="botFilterAll">All scanned</span>
+                <span class="bot-filter-count" id="botFilterCountAll">0</span>
+            </button>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card stat-followers">
+                <div class="stat-content">
+                    <div class="stat-value" id="botScanned">0</div>
+                    <div class="stat-label" data-i18n="botStatScanned">Scanned</div>
+                </div>
+            </div>
+            <div class="stat-card stat-nonfollowers">
+                <div class="stat-content">
+                    <div class="stat-value" id="botLikely">0</div>
+                    <div class="stat-label" data-i18n="botStatLikely">Likely bots</div>
+                </div>
+            </div>
+            <div class="stat-card stat-following">
+                <div class="stat-content">
+                    <div class="stat-value" id="botSuspicious">0</div>
+                    <div class="stat-label" data-i18n="botStatSuspicious">Suspicious</div>
+                </div>
+            </div>
+            <!-- The two above added together: the set the deep check covers. Without it that total
+                 appears on the deep-check button and nowhere else, with nothing to check it against. -->
+            <div class="stat-card stat-flagged">
+                <div class="stat-content">
+                    <div class="stat-value" id="botFlagged">0</div>
+                    <div class="stat-label" data-i18n="botStatFlagged">Flagged</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Says when the scan could not measure its heaviest signal, so "0 likely bots" is not
+         mistaken for a finding. -->
+    <div id="botSignalNotice" class="bot-signal-notice" style="display:none"></div>
+
+    <div class="table-container">
+        <table class="following-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th data-i18n="tableProfile">Profile</th>
+                    <th data-i18n="tableUsername">Username</th>
+                    <th data-i18n="botTableScore">Score</th>
+                    <th data-i18n="botTableVerdict">Verdict</th>
+                    <!-- The counts the deep check goes and gets. They are the evidence behind half
+                         the score, so they sit next to the verdict rather than being invisible. -->
+                    <th data-i18n="botTableStats">Profile stats</th>
+                    <th data-i18n="botTableReasons">Why</th>
+                </tr>
+            </thead>
+            <tbody id="botList">
+                <tr><td colspan="7" class="no-data-message" data-i18n="botNotRunYet">
+                    Run a scan to see your followers scored here.
+                </td></tr>
+            </tbody>
+        </table>
+        <!-- Free plan: the table stops early. What is held back is stated, never just missing. -->
+        <div id="botFreeNotice" class="bot-free-notice" style="display: none;"></div>
+        <div id="botPagination" class="pagination-controls" style="display: none;"></div>
+    </div>
+
+</main>
+
+<!-- Every reason behind one account's score, with the weight each one carried. The table shows two;
+     this is where the rest live, so a row stays one line tall. -->
+<div id="botModal" class="bot-modal" style="display:none">
+    <div class="bot-modal-card">
+        <div class="bot-modal-head">
+            <div>
+                <div id="botModalTitle" class="bot-modal-title"></div>
+                <div class="bot-modal-sub" data-i18n="botTableReasons">Why</div>
+            </div>
+            <div id="botModalScore" class="bot-modal-score"></div>
+            <button id="botModalClose" class="bot-modal-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div id="botModalBody" class="bot-modal-body"></div>
+    </div>
+</div>
+
+<div id="premiumModal" class="premium-modal">
+        <div class="premium-modal-overlay"></div>
+        <div class="premium-modal-content">
+            <button class="premium-modal-close">&times;</button>
+            
+            <!-- Live Counter -->
+            <div class="premium-live-counter">
+                <div class="premium-counter-icon">⚡</div>
+                <div class="premium-counter-content">
+                    <strong class="premium-counter-main"><span data-i18n="liveCounterPrefix">Son 24 saatte</span> <span class="premium-counter-number" id="premiumLiveCounter">150</span> <span data-i18n="liveCounterSuffix">kişi Premium'a geçti!</span></strong>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="premium-pricing-cards">
+                <!-- Free Plan -->
+                <div class="premium-pricing-card premium-free-card">
+                    <div class="premium-plan-header">
+                        <h3 class="premium-plan-name" data-i18n="planFree">Free</h3>
+                        <div class="premium-plan-price">$0<span class="premium-price-period" data-i18n="perMonth">/month</span></div>
+                    </div>
+                    <ul class="premium-features-list">
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text">
+                                <span data-i18n="featureMax50Analysis">Max 40 following analysis</span>
+                                <span class="premium-feature-detail" data-i18n="featureDetailDaily"> (+20/gün)</span>
+                            </span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureBasicUnfollow">Basic unfollow features</span>
+                        </li>
+                        <li class="premium-feature-item premium-disabled">
+                            <span class="premium-feature-icon">✗</span>
+                            <span class="premium-feature-text" data-i18n="featureSpamDetector">Spam account detector</span>
+                        </li>
+                        <li class="premium-feature-item premium-disabled">
+                            <span class="premium-feature-icon">✗</span>
+                            <span class="premium-feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
+                        </li>
+                        <li class="premium-feature-item premium-disabled">
+                            <span class="premium-feature-icon">✗</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedFiltering">Advanced filtering</span>
+                        </li>
+                        <li class="premium-feature-item premium-disabled">
+                            <span class="premium-feature-icon">✗</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Premium Monthly Plan (Featured) -->
+                <div class="premium-pricing-card premium-premium-card premium-featured">
+                    <div class="premium-plan-badge" data-i18n="planPopular">Popular</div>
+                    <div class="premium-plan-header">
+                        <h3 class="premium-plan-name" data-i18n="planPremium">Premium</h3>
+                        <div class="premium-plan-price">
+                            <span class="premium-old-price" id="premiumOldPrice">$25</span>
+                            <span class="premium-new-price" id="premiumNewPrice">$6.99</span>
+                            <span class="premium-price-period" data-i18n="perMonth">/month</span>
+                        </div>
+                        <div class="premium-discount-badge">
+                            <span id="premiumDiscountText" data-i18n="discountOff">72% OFF</span>
+                        </div>
+                    </div>
+                    <ul class="premium-features-list">
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureUnlimitedFollowingAnalysis">Unlimited following analysis</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedUnfollow">Advanced unfollow features</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureSpamDetector">Spam account detector</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedFilteringReporting">Advanced filtering and reporting</span>
+                        </li>
+                        <li class="premium-feature-item premium-highlight">
+                            <span class="premium-feature-icon">✨</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
+                        </li>
+                    </ul>
+                    <button class="premium-card-subscribe-button premium-featured-button" data-plan="monthly" data-i18n="chooseMonthly">
+                        Choose Monthly
+                    </button>
+                </div>
+
+                <!-- Premium Yearly Plan -->
+                <div class="premium-pricing-card premium-yearly-card">
+                    <div class="premium-plan-header">
+                        <h3 class="premium-plan-name" data-i18n="planPremiumYearly">Premium Yearly</h3>
+                        <div class="premium-plan-price">
+                            <span class="premium-old-price" id="premiumYearlyOldPrice">$129.99</span>
+                            <span class="premium-new-price" id="premiumYearlyNewPrice">$74.99</span>
+                            <span class="premium-price-period" data-i18n="perYear">/year</span>
+                        </div>
+                        <div class="premium-discount-badge">
+                            <span id="premiumYearlyDiscountText">42% OFF</span>
+                        </div>
+                        <div class="premium-yearly-savings">
+                        </div>
+                    </div>
+                    <ul class="premium-features-list">
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureUnlimitedFollowingAnalysis">Unlimited following analysis</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedUnfollow">Advanced unfollow features</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureSpamDetector">Spam account detector</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
+                        </li>
+                        <li class="premium-feature-item">
+                            <span class="premium-feature-icon">✓</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedFilteringReporting">Advanced filtering and reporting</span>
+                        </li>
+                        <li class="premium-feature-item premium-highlight">
+                            <span class="premium-feature-icon">✨</span>
+                            <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
+                        </li>
+                    </ul>
+                    <button class="premium-card-subscribe-button" data-plan="yearly" data-i18n="chooseYearly">
+                        Choose Yearly
+                    </button>
+                </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="premium-trust-indicators">
+                <div class="premium-trust-item">
+                    <div class="premium-trust-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="premium-trust-content">
+                        <div class="premium-trust-value">10,000+</div>
+                        <div class="premium-trust-label" data-i18n="activeUsers">Active Users</div>
+                    </div>
+                </div>
+                <div class="premium-trust-item">
+                    <div class="premium-trust-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="premium-trust-content">
+                        <div class="premium-trust-value">4.8/5</div>
+                        <div class="premium-trust-label" data-i18n="rating">Rating</div>
+                    </div>
+                </div>
+                <div class="premium-trust-item">
+                    <div class="premium-trust-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="premium-trust-content">
+                        <div class="premium-trust-value">24/7</div>
+                        <div class="premium-trust-label" data-i18n="support">Support</div>
+                    </div>
+                </div>
+                <div class="premium-trust-item">
+                    <div class="premium-trust-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="premium-trust-content">
+                        <div class="premium-trust-value">100%</div>
+                        <div class="premium-trust-label" data-i18n="secure">Secure</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="assets/swert.js"></script>
+<script src="unfollow-bridge.js"></script>
+<script src="ig-client.js"></script>
+<script src="bot-detector.js"></script>
+<script src="premium-config.js"></script>
+<script src="premium.js"></script>
+<script src="bot-scan.js"></script>
+</body>
+</html>

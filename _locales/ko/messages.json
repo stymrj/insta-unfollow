@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "계정 정보"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$개의 계정이 더 있습니다. 모두 보려면",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "활성 사용자"
+   },
+   "addToWhitelist": {
+      "message": "화이트리스트에 추가"
+   },
+   "allAccountsUnlocked": {
+      "message": "모든 계정 잠금 해제됨!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "명의 팔로우를 취소합니다."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram이 프로필 사진 정보 없이 팔로워 목록을 반환해서, 여기 모든 점수가 실제보다 낮고 일부 봇을 놓치게 됩니다. 탭에서 Instagram을 열고 검사를 다시 실행하면 완전한 결과를 얻을 수 있습니다."
+   },
+   "botBlindTitle": {
+      "message": "프로필 사진 확인을 실행하지 못했습니다"
+   },
+   "botCleared": {
+      "message": "유리한 근거"
+   },
+   "botDeepAllChecked": {
+      "message": "표시된 계정을 모두 확인함"
+   },
+   "botDeepChecked": {
+      "message": "프로필 확인함"
+   },
+   "botDeepChecksFor": {
+      "message": "$1개 계정 정밀 검사"
+   },
+   "botDeepChecksRemaining": {
+      "message": "$1개 남음 ($2개 완료)"
+   },
+   "botDeepDone": {
+      "message": "정밀 검사 완료 — $1개 계정을 확인했습니다."
+   },
+   "botDeepNoTargets": {
+      "message": "정밀 검사가 필요한 계정이 없습니다."
+   },
+   "botDeepPausedBody": {
+      "message": "중지되기 전 $1개를 확인했고 $2개는 하지 못했습니다. 아래 판정은 읽어낸 것만을 근거로 합니다. 정해진 대기 시간은 없고 몇 시간이 걸리거나 내일까지 갈 수도 있습니다. 지금 다시 시도하면 길어질 뿐이니 나중에 다시 오세요."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram이 프로필 확인을 일시 중지했습니다"
+   },
+   "botDeepRemaining": {
+      "message": "$1개는 확인하지 못했습니다."
+   },
+   "botDeepSubtitle": {
+      "message": "계정당 요청 한 번, 안전한 속도로 진행합니다."
+   },
+   "botFilterAll": {
+      "message": "검사된 전체"
+   },
+   "botFilterLikely": {
+      "message": "봇으로 추정"
+   },
+   "botFilterSuspicious": {
+      "message": "의심스러움"
+   },
+   "botFreeHeadline": {
+      "message": "개의 표시된 계정이 잠겨 있습니다"
+   },
+   "botFreeWithheld": {
+      "message": "$1개 더 찾았습니다 — 모두 보려면 업그레이드하세요."
+   },
+   "botIntroHeading": {
+      "message": "실제 사람이 아닌 계정 찾기"
+   },
+   "botIntroLead": {
+      "message": "각 팔로워가 봇이나 일회용 계정일 가능성을 점수로 매깁니다."
+   },
+   "botIntroReasons": {
+      "message": "모든 점수에는 그 근거가 함께 표시되어, 숫자를 믿는 대신 왜 그 계정이 표시되었는지 확인할 수 있습니다. 자동으로 삭제되는 것은 없습니다. 목록은 직접 보고 판단하시라고 있는 것입니다."
+   },
+   "botNoFlagged": {
+      "message": "표시된 계정 없음 — 팔로워 목록이 깨끗해 보입니다."
+   },
+   "botNoRowsForFilter": {
+      "message": "이 그룹에는 아무것도 없습니다."
+   },
+   "botNoSignals": {
+      "message": "특이 사항 없음"
+   },
+   "botNotRunYet": {
+      "message": "검사를 실행하면 팔로워 점수가 여기에 표시됩니다."
+   },
+   "botPopupBody": {
+      "message": "각 팔로워가 봇이나 일회용 계정일 가능성을 점수로 매깁니다. 프로필 사진 없음, 게시물 없음, 자동 생성된 듯한 사용자 이름, 수천 명을 팔로우하지만 맞팔은 거의 없음 등을 봅니다."
+   },
+   "botPopupReasons": {
+      "message": "모든 점수에는 그 근거가 함께 표시됩니다. 자동으로 삭제되는 것은 없습니다."
+   },
+   "botProvisionalBody": {
+      "message": "표시된 $1개 계정은 아직 프로필을 확인하지 않았습니다. 대부분의 봇은 이 확인으로만 확정되므로, \"봇으로 추정\" 수치를 믿기 전에 실행하세요."
+   },
+   "botProvisionalTitle": {
+      "message": "이 판정은 아직 최종이 아닙니다"
+   },
+   "botReadSubtitle": {
+      "message": "팔로워 목록에서 바로 읽습니다 — 추가 요청 없음."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "프로필 사진 없음"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "균형 잡힌 팔로워 비율"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "사용자명에 숫자 많음"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "이름 없음"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "맞팔보다 팔로잉이 훨씬 많음"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "계정 배지 있음"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "매우 많은 계정 팔로우"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "팔로워 없음"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "게시물 없음"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "꾸준히 게시"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "사용자명이 숫자로 끝남"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "특이한 밑줄 패턴"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "인증 계정"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "지나치게 긴 사용자명"
+   },
+   "botRunDeepChecks": {
+      "message": "정밀 검사 실행"
+   },
+   "botScanCached": {
+      "message": "마지막 검사 $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram이 프로필 확인을 일시 중지했습니다. 아래 결과는 읽어낸 만큼의 내용입니다."
+   },
+   "botScanDeepProgress": {
+      "message": "프로필 확인 중… $1/$2"
+   },
+   "botScanDone": {
+      "message": "검사가 완료되었습니다."
+   },
+   "botScanNoData": {
+      "message": "팔로워 목록을 읽지 못했습니다. Instagram이 막고 있습니다. 저절로 풀리지만 정해진 대기 시간은 없습니다. 나중에 시도하세요."
+   },
+   "botScanPartial": {
+      "message": "검사는 끝났지만 팔로워 목록이 불완전하게 돌아왔습니다 — 일부 계정이 빠졌습니다."
+   },
+   "botScanReading": {
+      "message": "팔로워를 읽는 중…"
+   },
+   "botScanReadingCount": {
+      "message": "팔로워 읽는 중… $1"
+   },
+   "botScanTitle": {
+      "message": "봇 팔로워 검사"
+   },
+   "botScoreRaw": {
+      "message": "원점수"
+   },
+   "botSignalName": {
+      "message": "자동 생성된 듯한 사용자 이름"
+   },
+   "botSignalPhoto": {
+      "message": "프로필 사진 없음"
+   },
+   "botSignalPosts": {
+      "message": "게시물 없음"
+   },
+   "botSignalRatio": {
+      "message": "수천 명을 팔로우, 맞팔은 거의 없음"
+   },
+   "botSignalsUnavailable": {
+      "message": "이 계정은 일부 확인을 할 수 없어서, 다른 계정보다 적은 근거로 점수가 매겨졌습니다."
+   },
+   "botStatFlagged": {
+      "message": "표시됨"
+   },
+   "botStatFollowers": {
+      "message": "팔로워"
+   },
+   "botStatFollowing": {
+      "message": "팔로잉"
+   },
+   "botStatLikely": {
+      "message": "봇으로 추정"
+   },
+   "botStatPosts": {
+      "message": "게시물"
+   },
+   "botStatScanned": {
+      "message": "검사됨"
+   },
+   "botStatSuspicious": {
+      "message": "의심스러움"
+   },
+   "botStatsGone": {
+      "message": "계정 없음"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram이 프로필을 반환하지 않았습니다 — 삭제되었거나 비활성화된 계정이라 수치를 읽을 수 없습니다."
+   },
+   "botStatsNotChecked": {
+      "message": "확인 안 됨"
+   },
+   "botStepDeep": {
+      "message": "프로필 확인 중"
+   },
+   "botStepReading": {
+      "message": "팔로워 읽는 중"
+   },
+   "botTableReasons": {
+      "message": "이유"
+   },
+   "botTableScore": {
+      "message": "점수"
+   },
+   "botTableStats": {
+      "message": "프로필 수치"
+   },
+   "botTableVerdict": {
+      "message": "판정"
+   },
+   "botVerdictClean": {
+      "message": "실제 계정으로 보임"
+   },
+   "botVerdictLikely": {
+      "message": "봇으로 추정"
+   },
+   "botVerdictSuspicious": {
+      "message": "의심스러움"
+   },
+   "cacheExpiryWarning": {
+      "message": "마지막 분석이 $DAYS$일 전이라 프로필 사진이 표시되지 않을 수 있습니다. 최신 결과를 위해 다시 분석해 주세요.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "마지막 분석 $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "취소"
+   },
+   "checkingBeforeStart": {
+      "message": "확인 중…"
+   },
+   "checkingLoginStatus": {
+      "message": "로그인 상태 확인 중..."
+   },
+   "chooseMonthly": {
+      "message": "월간 선택"
+   },
+   "chooseYearly": {
+      "message": "연간 선택"
+   },
+   "comeBackTomorrow": {
+      "message": "내일 다시 오세요"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "매일 +20명의 팔로워를 더 분석할 수 있습니다. 조급하시면 Premium으로 전환하여 지금 모두 보세요. 인내심이 있으시면 내일 다시 오세요, +20명의 팔로워를 더 볼 수 있습니다. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "내일 다시 오시면 $1개의 계정을 더 볼 수 있습니다 (+$2개 새로운 잠금 해제)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ 경고!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "정말 모든 사람의 팔로우를 취소하시겠습니까?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "작업 확인"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "맞팔로우하지 않는 모든 사용자의 팔로우를 취소하시겠습니까?"
+   },
+   "connected": {
+      "message": "연결됨"
+   },
+   "couldNotFetchFollowing": {
+      "message": "목록을 가져올 수 없습니다. 나중에 다시 시도하세요."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$시간 $MINUTES$분 $SECONDS$초 $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "후"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$분 $SECONDS$초 $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "후"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "내일 +20개 계정을 더 볼 수 있습니다 ($COUNTDOWN$). 매일 +20개 계정이 추가되고 제한이 누적됩니다!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5시간 30분 후"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "일일 제한"
+   },
+   "dailyScanLimit": {
+      "message": "일일 스캔 제한"
+   },
+   "dataLoading": {
+      "message": "데이터 로딩 중..."
+   },
+   "dataLoadingFollowers": {
+      "message": "로딩 중: $COUNT$명 팔로워 발견",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "로딩 중: $COUNT$명 팔로잉 발견",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "50% 할인"
+   },
+   "email": {
+      "message": "이메일"
+   },
+   "errorFetchingData": {
+      "message": "데이터 가져오기 오류. 다시 시도하세요."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram을 일시적으로 사용할 수 없습니다. 나중에 다시 시도하세요."
+   },
+   "errorNetwork": {
+      "message": "Instagram에 연결하지 못했습니다. 연결을 확인하세요 — 잃어버린 것은 없고 작업은 계속됩니다."
+   },
+   "errorNetworkConnection": {
+      "message": "연결 오류. 인터넷 연결을 확인하세요."
+   },
+   "errorOccurred": {
+      "message": "오류가 발생했습니다. 다시 시도하세요."
+   },
+   "errorRateLimit": {
+      "message": "Instagram이 요청을 일시 중지했습니다. 저절로 풀리지만 정해진 대기 시간은 없습니다. 얼마나 많이 했는지에 따라 몇 시간이 걸리거나 내일까지 갈 수도 있습니다. 바로 다시 시도하면 더 길어집니다."
+   },
+   "errorSessionExpired": {
+      "message": "Instagram 세션이 만료되었습니다. 다시 로그인하세요."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "언팔로우 요청이 너무 많습니다. 5분 대기 중..."
+   },
+   "etaMinutes": {
+      "message": "약 $1분 남음"
+   },
+   "etaSeconds": {
+      "message": "약 $1초 남음"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "언팔 실패. 다시 시도하세요."
+   },
+   "featureAdvancedFiltering": {
+      "message": "고급 필터링"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "필터 및 리포트"
+   },
+   "featureAdvancedNotifications": {
+      "message": "고급 알림 시스템"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "고급 언팔로우"
+   },
+   "featureBasicUnfollow": {
+      "message": "기본 언팔로우"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/일)"
+   },
+   "featureMax50Analysis": {
+      "message": "최대 40개 분석"
+   },
+   "featureSpamDetector": {
+      "message": "스팸 감지"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "무제한 분석"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "무제한 분석"
+   },
+   "finalizingAnalysis": {
+      "message": "마무리 중..."
+   },
+   "firstDayBonus": {
+      "message": "첫날 보너스"
+   },
+   "firstDayBonusMessage": {
+      "message": "첫날 보너스: 40개 계정! 내일 +20개 계정을 더 볼 수 있습니다 ($COUNTDOWN$). 매일 +20개 계정이 추가됩니다.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5시간 30분 후"
+         }
+      }
+   },
+   "followers": {
+      "message": "팔로워"
+   },
+   "following": {
+      "message": "팔로잉"
+   },
+   "followingYouBadge": {
+      "message": "팔로우 중"
+   },
+   "freePlanLimitDescription": {
+      "message": "40개 한도에 도달했습니다. Premium으로 무제한!"
+   },
+   "freePlanLimitReached": {
+      "message": "무료 한도 도달"
+   },
+   "freePlanTodayMessage": {
+      "message": "무료 플랜에서는 오늘 $DISPLAYED$개의 계정을 볼 수 있습니다. $HIDDEN$개의 계정이 더 있지만 볼 수 없습니다.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "무료 플랜에서는 오늘 $COUNT$개의 계정을 볼 수 있습니다.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "무료 플랜에서는 최대 $COUNT$명의 사용자만 언팔로우할 수 있습니다. 처음 $COUNT$명의 사용자만 선택하거나 Premium으로 업그레이드하세요.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "무료 플랜에서는 최대 $COUNT$명의 사용자만 언팔로우할 수 있습니다. 무제한 언팔로우를 위해 Premium으로 업그레이드하세요!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "이름"
+   },
+   "getStartedWithGoogle": {
+      "message": "Google로 가입"
+   },
+   "goToInstagramLogin": {
+      "message": "Instagram으로"
+   },
+   "gotIt": {
+      "message": "확인"
+   },
+   "incompleteDataMessage": {
+      "message": "전체 목록이 도착하기 전에 Instagram이 데이터 전송을 중단해서 일부 계정이 빠졌습니다. 지금 실행하면 실제로 나를 팔로우하는 사람을 언팔로우할 수 있습니다. 먼저 분석을 다시 실행하세요."
+   },
+   "incompleteDataTitle": {
+      "message": "목록이 완전하지 않습니다"
+   },
+   "instagramLimitedBody": {
+      "message": "로그인은 유지되고 있고 계정에는 아무 문제가 없습니다. 시간이 지나면 저절로 풀리지만 정해진 대기 시간은 없습니다. 얼마나 많이 했는지에 따라 몇 시간이 걸리거나 내일까지 갈 수도 있습니다. 반복해서 시도하면 더 길어집니다."
+   },
+   "instagramLimitedTitle": {
+      "message": "현재 Instagram이 요청을 제한하고 있습니다"
+   },
+   "instagramLoginAlert": {
+      "message": "먼저 Instagram에 로그인하세요!"
+   },
+   "invalidWaitingTime": {
+      "message": "3-300 사이의 유효한 시간을 입력하세요"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "대기 시간이 올바르지 않습니다"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1초는 허용 범위를 벗어납니다. $2초에서 $3초 사이의 값을 입력하세요."
+   },
+   "later": {
+      "message": "후"
+   },
+   "limitedTimeOffer": {
+      "message": "한정 혜택"
+   },
+   "liveCounterPrefix": {
+      "message": "지난 24시간 동안"
+   },
+   "liveCounterSuffix": {
+      "message": "명이 프리미엄으로 업그레이드했습니다!"
+   },
+   "loading": {
+      "message": "로딩 중..."
+   },
+   "loadingProfile": {
+      "message": "프로필 로딩 중"
+   },
+   "loadingSavedAnalysis": {
+      "message": "저장된 분석을 불러오는 중…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Instagram에 아무것도 요청하지 않습니다."
+   },
+   "login": {
+      "message": "로그인"
+   },
+   "loginFailed": {
+      "message": "로그인 실패: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "알 수 없는 오류"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "로그인 필요"
+   },
+   "loginSuccessful": {
+      "message": "로그인 성공!"
+   },
+   "loginWithGoogle": {
+      "message": "Google로 로그인"
+   },
+   "logout": {
+      "message": "로그아웃"
+   },
+   "logoutError": {
+      "message": "로그아웃 오류: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "알 수 없는 오류"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "구독 관리"
+   },
+   "membership": {
+      "message": "멤버십"
+   },
+   "menuBotScan": {
+      "message": "봇 검사"
+   },
+   "menuHome": {
+      "message": "홈"
+   },
+   "menuProfile": {
+      "message": "프로필"
+   },
+   "menuUpgrade": {
+      "message": "업그레이드"
+   },
+   "minutesTest": {
+      "message": "$1분 (테스트)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1개의 계정 더 사용 가능"
+   },
+   "moreInHours": {
+      "message": "$2시간 후 +$1명의 팔로워를 더 볼 수 있습니다"
+   },
+   "nextCheckTime": {
+      "message": "다음 확인: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "다음 확인: 내일"
+   },
+   "nextInSeconds": {
+      "message": "다음 $SECONDS$초 후",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "비팔로워 없음"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "언팔로우할 비팔로워가 없습니다."
+   },
+   "noUsers": {
+      "message": "사용자 없음"
+   },
+   "noUsersToUnfollow": {
+      "message": "언팔로우할 사용자가 없습니다."
+   },
+   "notFollowingYouBadge": {
+      "message": "팔로우 안 함"
+   },
+   "notProvided": {
+      "message": "미제공"
+   },
+   "ok": {
+      "message": "확인"
+   },
+   "opening": {
+      "message": "열는 중..."
+   },
+   "openingInNewTab": {
+      "message": "새 탭에서 열는 중..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/월"
+   },
+   "perYear": {
+      "message": "/년"
+   },
+   "planFree": {
+      "message": "무료"
+   },
+   "planPopular": {
+      "message": "인기"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "프리미엄 연간"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "구독하려면 로그인하세요"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "먼저 Instagram에 로그인하세요"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "업그레이드하려면 로그인"
+   },
+   "pleaseSignInToView": {
+      "message": "정보를 보려면 로그인하세요"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "프리미엄으로 모든 $COUNT$개 계정을 지금 보세요, 제한 없음!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "개인정보 보호"
+   },
+   "processStarted": {
+      "message": "프로세스 시작됨"
+   },
+   "processing": {
+      "message": "처리 중..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram이 잠시 멈춰 달라고 했습니다 — $1초 후 재개"
+   },
+   "rating": {
+      "message": "평점"
+   },
+   "reAnalyze": {
+      "message": "재분석"
+   },
+   "reAnalyzing": {
+      "message": "재분석 중..."
+   },
+   "removeFromWhitelist": {
+      "message": "화이트리스트에서 제거"
+   },
+   "retryIn": {
+      "message": "$SECONDS$초 후 재시도...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "Premium 50% 할인"
+   },
+   "saveSettings": {
+      "message": "저장"
+   },
+   "scanBlockedBody": {
+      "message": "흔한 일이며 저절로 해결됩니다. 계정이나 확장 프로그램에 문제가 있는 것이 아닙니다. 재시도하면 대기가 길어지기 때문에 바로 중단했습니다. 오늘 중 나중에 다시 시도해 보세요."
+   },
+   "scanBlockedListFollowers": {
+      "message": "지금은 팔로워 목록을 읽을 수 없었습니다."
+   },
+   "scanBlockedListFollowing": {
+      "message": "지금은 팔로잉 목록을 읽을 수 없었습니다."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram이 잠깐의 휴식을 원합니다"
+   },
+   "scanPartialBody": {
+      "message": "일부는 도착했지만 Instagram이 우리를 멈춰서, 실행을 판단하기에 결과가 충분하지 않습니다. 아무것도 변경되지 않았습니다. 나중에 다시 와서 분석을 실행하세요. 풀리는 데 몇 시간이 걸릴 수 있고 지금 시도하면 길어집니다."
+   },
+   "scanPartialTitle": {
+      "message": "목록이 불완전하게 돌아왔습니다"
+   },
+   "scanPaused": {
+      "message": "Instagram이 속도를 늦춰 달라고 했습니다 — 대기 중…"
+   },
+   "scanRemaining": {
+      "message": "$1개 계정 남음"
+   },
+   "scanShortBody": {
+      "message": "검사는 끝났지만 Instagram이 알려주는 수보다 적은 계정이 돌아왔습니다. 이대로 실행하면 나를 팔로우하는 사람을 언팔로우할 수 있어 아무것도 표시하지 않았습니다. 분석을 다시 실행하세요."
+   },
+   "scanShortTitle": {
+      "message": "일부 계정이 빠졌습니다"
+   },
+   "seconds": {
+      "message": "초"
+   },
+   "secure": {
+      "message": "안전"
+   },
+   "secureLogin": {
+      "message": "보안 로그인"
+   },
+   "sessionExpiredTitle": {
+      "message": "Instagram 세션이 종료되었습니다"
+   },
+   "showOnlyNonFollowers": {
+      "message": "맞팔 안 한 사람만"
+   },
+   "showingFirstAccounts": {
+      "message": "처음 $COUNT$개 계정 표시 중.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "팔로워 건너뛰기"
+   },
+   "skipVerifiedAccounts": {
+      "message": "인증 계정 건너뛰기"
+   },
+   "startAnalysis": {
+      "message": "분석 시작"
+   },
+   "startBotScan": {
+      "message": "봇 검사 시작"
+   },
+   "startUnfollow": {
+      "message": "언팔로우 시작"
+   },
+   "startingAnalysis": {
+      "message": "분석 시작 중..."
+   },
+   "statFailed": {
+      "message": "실패"
+   },
+   "statFollowers": {
+      "message": "팔로워"
+   },
+   "statFollowing": {
+      "message": "팔로잉"
+   },
+   "statNonFollowers": {
+      "message": "맞팔 아님"
+   },
+   "statRemaining": {
+      "message": "Not Following"
+   },
+   "statUnfollowed": {
+      "message": "언팔로우"
+   },
+   "stop": {
+      "message": "중지"
+   },
+   "stopping": {
+      "message": "중지하는 중…"
+   },
+   "support": {
+      "message": "지원"
+   },
+   "tableAction": {
+      "message": "작업"
+   },
+   "tableFollowingYou": {
+      "message": "팔로우 중"
+   },
+   "tableFullName": {
+      "message": "이름"
+   },
+   "tablePrivate": {
+      "message": "비공개"
+   },
+   "tableProfile": {
+      "message": "프로필"
+   },
+   "tableUsername": {
+      "message": "사용자명"
+   },
+   "tableVerified": {
+      "message": "인증"
+   },
+   "testNow": {
+      "message": "지금 테스트"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ 이 작업은 되돌릴 수 없습니다!"
+   },
+   "toRemoveLimits": {
+      "message": "제한을 제거하려면"
+   },
+   "trendDown": {
+      "message": "마지막 분석 이후 $COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "변동 없음"
+   },
+   "trendUp": {
+      "message": "마지막 분석 이후 +$COUNT$",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$일 남음",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "무료 체험이 종료되었습니다. 오늘 $COUNT$개 계정을 볼 수 있습니다.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "체험 기간 종료"
+   },
+   "tryAgain": {
+      "message": "다시 시도"
+   },
+   "tryAnyway": {
+      "message": "그래도 시도"
+   },
+   "unfollow": {
+      "message": "언팔"
+   },
+   "unfollowDelayLabel": {
+      "message": "지연 (초)"
+   },
+   "unfollowEveryone": {
+      "message": "모두 언팔로우"
+   },
+   "unfollowFailed": {
+      "message": "실패"
+   },
+   "unfollowNonFollowers": {
+      "message": "맞팔 안 한 사람 언팔로우"
+   },
+   "unfollowProcessStarted": {
+      "message": "언팔로우 프로세스가 시작되었습니다."
+   },
+   "unfollowSettings": {
+      "message": "언팔로우 설정"
+   },
+   "unfollowWaitDetail": {
+      "message": "언팔로우 사이에 $1초씩 기다립니다."
+   },
+   "unfollowedSuccess": {
+      "message": "언팔됨"
+   },
+   "unfollowing": {
+      "message": "언팔 중..."
+   },
+   "unknownError": {
+      "message": "알 수 없는 오류"
+   },
+   "upgradeToPremium": {
+      "message": "Premium으로"
+   },
+   "upgradeToPremiumButton": {
+      "message": "프리미엄으로 업그레이드"
+   },
+   "upgradeToSeeAll": {
+      "message": "전체 보기는 Premium에서!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "명의 팔로우를 취소합니다."
+   },
+   "waitingSeconds": {
+      "message": "대기 중 $SECONDS$초",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "대기 시간 (3-300초)"
+   },
+   "welcomeFunText1": {
+      "message": "맞팔 안 하는 사람 보고 싶어요? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "언팔로우가 쉬워졌어요 😊"
+   },
+   "welcomeTitle": {
+      "message": "환영합니다! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Google로 로그인하세요, 데이터는 안전합니다!"
+   },
+   "whitelist": {
+      "message": "화이트리스트"
+   },
+   "whitelisted": {
+      "message": "보호됨"
+   },
+   "whitelistedSkipped": {
+      "message": "건너뜀 (화이트리스트)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1개는 내일 잠금 해제됩니다"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram이 이 계정에서 자동 언팔로우를 일시적으로 받지 않고 있습니다. 일시적인 것이며 계정에는 아무 문제가 없습니다.\n\n그동안에도 프로필 페이지에서 직접 언팔로우할 수 있고, 목록은 여기 그대로 남아 있습니다. 소모된 것은 없습니다."
+   },
+   "writeBlockedTitle": {
+      "message": "현재 Instagram이 언팔로우를 제한하고 있습니다"
+   },
+   "yesUnfollow": {
+      "message": "예, 언팔로우"
+   },
+   "yesUnfollowAll": {
+      "message": "예, 모두 언팔로우"
+   }
+}

@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "የመለያ ዝርዝሮች"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ ተጨማሪ መለያዎች ይገኛሉ። ሁሉንም ለማየት",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "ንቁ ተጠቃሚዎች"
+   },
+   "addToWhitelist": {
+      "message": "ወደ ነጭ ዝርዝር ጨምር"
+   },
+   "allAccountsUnlocked": {
+      "message": "ሁሉም መለያዎች ተከፍተዋል!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "ተጠቃሚዎች ይቋረጣሉ።"
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram የተከታዮችዎን ዝርዝር ያለ መገለጫ ፎቶ መረጃ መልሷል፣ ስለዚህ እዚህ ያለው እያንዳንዱ ነጥብ ከሚገባው ያነሰ ነው እና አንዳንድ ቦቶች ይታለፋሉ። ሙሉ ውጤት ለማግኘት Instagram በአንድ ትር ከፍተው ቅኝቱን እንደገና ያሂዱ።"
+   },
+   "botBlindTitle": {
+      "message": "የመገለጫ ፎቶ ምርመራ ሊደረግ አልቻለም"
+   },
+   "botCleared": {
+      "message": "ለእሱ የሚደግፍ"
+   },
+   "botDeepAllChecked": {
+      "message": "ሁሉም የተመለከቱ መለያዎች ተመርምረዋል"
+   },
+   "botDeepChecked": {
+      "message": "መገለጫ ተመርምሯል"
+   },
+   "botDeepChecksFor": {
+      "message": "$1 መለያዎችን በጥልቀት መርምር"
+   },
+   "botDeepChecksRemaining": {
+      "message": "$1 ቀርተዋል ($2 አስቀድሞ ተጠናቋል)"
+   },
+   "botDeepDone": {
+      "message": "ጥልቅ ምርመራዎች ተጠናቀዋል — $1 መለያዎች ተመርምረዋል።"
+   },
+   "botDeepNoTargets": {
+      "message": "ማንኛውም መለያ ጥልቅ ምርመራ አያስፈልገውም።"
+   },
+   "botDeepPausedBody": {
+      "message": "ከመቆሙ በፊት $1 መለያዎች ተመርምረዋል፣ $2 ደግሞ አልተመረመሩም። ከታች ያሉት ውሳኔዎች ማንበብ በተቻለው ላይ ብቻ የተመሰረቱ ናቸው። የተወሰነ የመጠበቂያ ጊዜ የለም — ሰዓታት ሊወስድ ይችላል፣ ወይም እስከ ነገ። አሁን እንደገና ከመሞከር ይልቅ ቆይተው ይመለሱ፤ መሞከር ጊዜውን ብቻ ያራዝማል።"
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram የመገለጫ ምርመራዎችን አቆመ"
+   },
+   "botDeepRemaining": {
+      "message": "$1 ሳይመረመሩ ቀርተዋል።"
+   },
+   "botDeepSubtitle": {
+      "message": "በአንድ መለያ አንድ ጥያቄ፣ በአስተማማኝ ፍጥነት።"
+   },
+   "botFilterAll": {
+      "message": "ሁሉም የተቃኙ"
+   },
+   "botFilterLikely": {
+      "message": "ሊሆኑ የሚችሉ ቦቶች"
+   },
+   "botFilterSuspicious": {
+      "message": "አጠራጣሪ"
+   },
+   "botFreeHeadline": {
+      "message": "ተጨማሪ የተመለከቱ መለያዎች ተቆልፈዋል"
+   },
+   "botFreeWithheld": {
+      "message": "ተጨማሪ $1 ተገኝቷል — ሁሉንም ለማየት ያሻሽሉ።"
+   },
+   "botIntroHeading": {
+      "message": "እውነተኛ ሰዎች ያልሆኑ መለያዎችን ያግኙ"
+   },
+   "botIntroLead": {
+      "message": "እያንዳንዱ ተከታይ ቦት ወይም ጊዜያዊ መለያ የመሆን እድሉን መሠረት አድርጎ ነጥብ ይሰጠዋል።"
+   },
+   "botIntroReasons": {
+      "message": "እያንዳንዱ ነጥብ ከምክንያቶቹ ጋር ይመጣል፣ ስለዚህ በቁጥር ከመታመን ይልቅ መለያው ለምን እንደተመለከተ ማየት ይችላሉ። ምንም በራስ-ሰር አይወገድም — ዝርዝሩ እርስዎ ተመልክተው እንዲወስኑ እዚህ አለ።"
+   },
+   "botNoFlagged": {
+      "message": "ምንም አልተመለከተም — የተከታዮችዎ ዝርዝር ንጹህ ይመስላል።"
+   },
+   "botNoRowsForFilter": {
+      "message": "በዚህ ቡድን ውስጥ ምንም የለም።"
+   },
+   "botNoSignals": {
+      "message": "ያልተለመደ ነገር የለም"
+   },
+   "botNotRunYet": {
+      "message": "የተከታዮችዎን ነጥቦች እዚህ ለማየት ቅኝት ያሂዱ።"
+   },
+   "botPopupBody": {
+      "message": "እያንዳንዱን ተከታይ ቦት ወይም ጊዜያዊ መለያ የመሆን እድሉን መሠረት አድርጎ ነጥብ ይሰጣል፦ የመገለጫ ፎቶ የለም፣ ልጥፎች የሉም፣ የተፈጠረ የሚመስል የተጠቃሚ ስም፣ በሺዎች የሚቆጠሩትን ይከተላል ግን እሱን ማንም አይከተለውም።"
+   },
+   "botPopupReasons": {
+      "message": "እያንዳንዱ ነጥብ ከምክንያቶቹ ጋር ይመጣል። ምንም በራስ-ሰር አይወገድም።"
+   },
+   "botProvisionalBody": {
+      "message": "የተመለከቱ $1 መለያዎች መገለጫ ገና አልተመረመረም። አብዛኞቹ ቦቶች የሚረጋገጡት በዚህ ምርመራ ብቻ ነው — «ሊሆን የሚችል ቦት» ቁጥሩን ከማመንዎ በፊት ያሂዱት።"
+   },
+   "botProvisionalTitle": {
+      "message": "እነዚህ ውሳኔዎች ገና የመጨረሻ አይደሉም"
+   },
+   "botReadSubtitle": {
+      "message": "በቀጥታ ከተከታዮችዎ ዝርዝር ይነበባል — ተጨማሪ ጥያቄዎች የሉም።"
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "የመገለጫ ፎቶ የለም"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "ሚዛናዊ የተከታይ ጥምርታ"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "በተጠቃሚ ስም ብዙ ቁጥሮች"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "የሚታይ ስም የለም"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "ከሚከተሉት በጣም ብዙ ይከተላል"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "የመለያ ባጅ አለው"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "እጅግ ብዙ መለያዎችን ይከተላል"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "ተከታዮች የሉትም"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "ልጥፍ አድርጎ አያውቅም"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "በመደበኛነት ይለጥፋል"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "የተጠቃሚ ስም በቁጥሮች ያበቃል"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "ያልተለመደ የግርጌ ሰረዝ ስርዓት"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "የተረጋገጠ መለያ"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "ያልተለመደ ረጅም የተጠቃሚ ስም"
+   },
+   "botRunDeepChecks": {
+      "message": "ጥልቅ ምርመራዎችን አሂድ"
+   },
+   "botScanCached": {
+      "message": "የመጨረሻ ቅኝት $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram የመገለጫ ምርመራዎችን አቆመ። ከታች ያሉት ውጤቶች ማንበብ ከተቻለው ናቸው።"
+   },
+   "botScanDeepProgress": {
+      "message": "መገለጫዎችን በመመርመር ላይ… $1/$2"
+   },
+   "botScanDone": {
+      "message": "ቅኝቱ ተጠናቅቋል።"
+   },
+   "botScanNoData": {
+      "message": "የተከታዮችዎን ዝርዝር ማንበብ አልተቻለም። Instagram እየገታን ነው — በራሱ ይስተካከላል፣ ግን የተወሰነ ጊዜ የለም። ቆይተው ይሞክሩ።"
+   },
+   "botScanPartial": {
+      "message": "ቅኝቱ አልቋል፣ ነገር ግን የተከታዮች ዝርዝር ያልተሟላ ሆኖ ተመልሷል — አንዳንድ መለያዎች ጎድለዋል።"
+   },
+   "botScanReading": {
+      "message": "ተከታዮችዎን በማንበብ ላይ…"
+   },
+   "botScanReadingCount": {
+      "message": "ተከታዮችን በማንበብ ላይ… $1"
+   },
+   "botScanTitle": {
+      "message": "የቦት ተከታዮች ቅኝት"
+   },
+   "botScoreRaw": {
+      "message": "ጥሬ ነጥብ"
+   },
+   "botSignalName": {
+      "message": "የተፈጠረ የሚመስል የተጠቃሚ ስም"
+   },
+   "botSignalPhoto": {
+      "message": "የመገለጫ ፎቶ የለም"
+   },
+   "botSignalPosts": {
+      "message": "ልጥፎች የሉም"
+   },
+   "botSignalRatio": {
+      "message": "በሺዎች የሚቆጠሩትን ይከተላል፣ እሱን ማንም አይከተለውም"
+   },
+   "botSignalsUnavailable": {
+      "message": "ለዚህ መለያ አንዳንድ ምርመራዎች ሊደረጉ አልቻሉም፣ ስለዚህ ነጥቡ ከሌሎቹ ባነሰ ማስረጃ ላይ ተመስርቷል።"
+   },
+   "botStatFlagged": {
+      "message": "የተመለከቱ"
+   },
+   "botStatFollowers": {
+      "message": "ተከታዮች"
+   },
+   "botStatFollowing": {
+      "message": "ይከተላል"
+   },
+   "botStatLikely": {
+      "message": "ሊሆኑ የሚችሉ ቦቶች"
+   },
+   "botStatPosts": {
+      "message": "ልጥፎች"
+   },
+   "botStatScanned": {
+      "message": "የተቃኙ"
+   },
+   "botStatSuspicious": {
+      "message": "አጠራጣሪ"
+   },
+   "botStatsGone": {
+      "message": "መለያው የለም"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram ምንም መገለጫ አልመለሰም — መለያው ተሰርዟል ወይም ተዘግቷል፣ ቁጥሮቹ ከእንግዲህ ሊነበቡ አይችሉም።"
+   },
+   "botStatsNotChecked": {
+      "message": "አልተመረመረም"
+   },
+   "botStepDeep": {
+      "message": "መገለጫዎችን በመመርመር ላይ"
+   },
+   "botStepReading": {
+      "message": "ተከታዮችን በማንበብ ላይ"
+   },
+   "botTableReasons": {
+      "message": "ለምን"
+   },
+   "botTableScore": {
+      "message": "ነጥብ"
+   },
+   "botTableStats": {
+      "message": "የመገለጫ ቁጥሮች"
+   },
+   "botTableVerdict": {
+      "message": "ውሳኔ"
+   },
+   "botVerdictClean": {
+      "message": "እውነተኛ ይመስላል"
+   },
+   "botVerdictLikely": {
+      "message": "ሊሆን የሚችል ቦት"
+   },
+   "botVerdictSuspicious": {
+      "message": "አጠራጣሪ"
+   },
+   "cacheExpiryWarning": {
+      "message": "የመጨረሻ ትንተናዎ ከ$DAYS$ ቀናት በፊት ስለነበር የመገለጫ ስዕሎች ላይታዩ ይችላሉ። ለዘመናዊ ውጤቶች እባክዎ እንደገና ይተንትኑ።",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "የመጨረሻ ትንታኔ $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "ሰርዝ"
+   },
+   "checkingBeforeStart": {
+      "message": "በመመርመር ላይ…"
+   },
+   "checkingLoginStatus": {
+      "message": "የመግቢያ ሁኔታ በመፈተሽ ላይ..."
+   },
+   "chooseMonthly": {
+      "message": "ወርሃዊ ምረጥ"
+   },
+   "chooseYearly": {
+      "message": "ዓመታዊ ምረጥ"
+   },
+   "comeBackTomorrow": {
+      "message": "ነገ ተመለሱ"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "በየቀኑ +20 ተጨማሪ ተከታዮችን መተንተን ይችላሉ። ካልታገሱ ወደ Premium ቀይሩ ሁሉንም አሁን ይመልከቱ። ከታገሱ ነገ ተመለሱ +20 ተጨማሪ ተከታዮች ማየት ይችላሉ። ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "ነገ ተመለሱ $1 ተጨማሪ መለያዎችን ለማየት (+$2 አዲስ ክፍቶች)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ ማስጠንቀቂያ!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "ሁሉንም ማቋረጥ እንደሚፈልጉ እርግጠኛ ነዎት?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "ድርጊቱን ያረጋግጡ"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "ሁሉንም ያልተከተሉትን ማቋረጥ እንደሚፈልጉ እርግጠኛ ነዎት?"
+   },
+   "connected": {
+      "message": "ተገናኝቷል"
+   },
+   "couldNotFetchFollowing": {
+      "message": "የመከተል ዝርዝሩን ማምጣት አልተቻለም። እባክዎ ቆይተው ይሞክሩ።"
+   },
+   "countdownFormat": {
+      "message": "$HOURS$ሰ $MINUTES$ደ $SECONDS$ሰከ $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "በኋላ"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$ደ $SECONDS$ሰከ $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "በኋላ"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "ነገ +20 ተጨማሪ መለያዎችን ማየት ይችላሉ ($COUNTDOWN$)። በየቀኑ +20 መለያዎች ይታከላሉ፣ ገደቦች ይከማቻሉ!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5ሰ 30ደ በኋላ"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "ዕለታዊ ገደብ"
+   },
+   "dailyScanLimit": {
+      "message": "ዕለታዊ የፍተሻ ገደብ"
+   },
+   "dataLoading": {
+      "message": "ውሂብ በመጫን ላይ..."
+   },
+   "dataLoadingFollowers": {
+      "message": "ውሂብ በመጫን ላይ: $COUNT$ ተከታዮች ተገኝተዋል",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "ውሂብ በመጫን ላይ: $COUNT$ የሚከተሉ ተገኝተዋል",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "50% ቅናሽ"
+   },
+   "email": {
+      "message": "ኢሜይል"
+   },
+   "errorFetchingData": {
+      "message": "ውሂብ ሲወሰድ ስህተት ተፈጥሯል። እባክዎ ቆይተው ይሞክሩ።"
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram ለጊዜው አይገኝም። እባክዎ ቆይተው ይሞክሩ።"
+   },
+   "errorNetwork": {
+      "message": "Instagram ላይ መድረስ አልተቻለም። ግንኙነትዎን ይመልከቱ — ምንም አልጠፋም እና ሥራው ይቀጥላል።"
+   },
+   "errorNetworkConnection": {
+      "message": "የግንኙነት ስህተት። እባክዎ ኢንተርኔትዎን ያረጋግጡ እና እንደገና ይሞክሩ።"
+   },
+   "errorOccurred": {
+      "message": "ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።"
+   },
+   "errorRateLimit": {
+      "message": "Instagram ጥያቄዎቻችንን አቆመ። በራሱ ይስተካከላል፣ ግን የተወሰነ የመጠበቂያ ጊዜ የለም — ምን ያህል እንደተሰራ ላይ ተመስርቶ ሰዓታት ሊወስድ ይችላል፣ ወይም እስከ ነገ። ወዲያውኑ መሞከር ያራዝመዋል።"
+   },
+   "errorSessionExpired": {
+      "message": "የInstagram ክፍለ ጊዜዎ ጊዜው አልፏል። እባክዎ ወደ Instagram ይግቡ እና እንደገና ይሞክሩ።"
+   },
+   "errorUnfollowRateLimit": {
+      "message": "ብዙ የማቋረጥ ጥያቄዎች። ከ5 ደቂቃዎች በኋላ እንደገና ይሞክራል..."
+   },
+   "etaMinutes": {
+      "message": "~$1 ደቂቃ ቀርቷል"
+   },
+   "etaSeconds": {
+      "message": "~$1 ሰከንድ ቀርቷል"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "ማቋረጥ አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
+   },
+   "featureAdvancedFiltering": {
+      "message": "የላቀ ማጣሪያ"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "የላቀ ማጣሪያ እና ሪፖርት"
+   },
+   "featureAdvancedNotifications": {
+      "message": "የላቀ የማሳወቂያ ስርዓት"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "የላቀ የማቋረጥ ባህሪያት"
+   },
+   "featureBasicUnfollow": {
+      "message": "መሰረታዊ የማቋረጥ ባህሪያት"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/ቀን)"
+   },
+   "featureMax50Analysis": {
+      "message": "ቢበዛ 40 የመከተል ትንታኔ"
+   },
+   "featureSpamDetector": {
+      "message": "የስፓም መለያ ማወቂያ"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "ያልተገደበ ትንታኔ"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "ያልተገደበ የመከተል ትንታኔ"
+   },
+   "finalizingAnalysis": {
+      "message": "በማጠናቀቅ ላይ..."
+   },
+   "firstDayBonus": {
+      "message": "የመጀመሪያ ቀን ጉርሻ"
+   },
+   "firstDayBonusMessage": {
+      "message": "የመጀመሪያ ቀን ጉርሻ: 40 መለያዎች! ነገ +20 ተጨማሪ መለያዎችን ማየት ይችላሉ ($COUNTDOWN$)። በየቀኑ +20 መለያዎች ይታከላሉ።",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5ሰ 30ደ በኋላ"
+         }
+      }
+   },
+   "followers": {
+      "message": "ተከታዮች"
+   },
+   "following": {
+      "message": "የሚከተሉ"
+   },
+   "followingYouBadge": {
+      "message": "ይከተልዎታል"
+   },
+   "freePlanLimitDescription": {
+      "message": "ወደ 40 ትንታኔ ገደብ ደርሰዋል። ላልተገደበ ትንታኔ ወደ Premium ያሻሽሉ!"
+   },
+   "freePlanLimitReached": {
+      "message": "የነጻ እቅድ ገደብ ተደርሷል"
+   },
+   "freePlanTodayMessage": {
+      "message": "በነጻ እቅዱ ዛሬ $DISPLAYED$ መለያዎችን ማየት ይችላሉ። $HIDDEN$ ተጨማሪ መለያዎች አሉ ግን ማየት አይችሉም።",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "በነጻ እቅዱ ዛሬ $COUNT$ መለያዎችን ማየት ይችላሉ።",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "በነጻ እቅዱ እስከ $COUNT$ ተጠቃሚዎች ብቻ ማቋረጥ ይችላሉ። እባክዎ የመጀመሪያዎቹን $COUNT$ ተጠቃሚዎች ብቻ ይምረጡ ወይም ወደ Premium ያሻሽሉ።",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "በነጻ እቅዱ እስከ $COUNT$ ተጠቃሚዎች ብቻ ማቋረጥ ይችላሉ። ላልተገደበ ማቋረጥ ወደ Premium ያሻሽሉ!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "ሙሉ ስም"
+   },
+   "getStartedWithGoogle": {
+      "message": "በGoogle ጀምር"
+   },
+   "goToInstagramLogin": {
+      "message": "ወደ Instagram መግቢያ ሂድ"
+   },
+   "gotIt": {
+      "message": "እሺ"
+   },
+   "incompleteDataMessage": {
+      "message": "ሙሉ ዝርዝሩ ከመድረሱ በፊት Instagram መረጃ መላክ አቁሟል፣ ስለዚህ አንዳንድ መለያዎች ጎድለዋል። አሁን እርምጃ መውሰድ በእውነት የሚከተሉዎትን ሰዎች ማቋረጥ ሊያስከትል ይችላል። መጀመሪያ ትንታኔውን እንደገና ያሂዱ።"
+   },
+   "incompleteDataTitle": {
+      "message": "ዝርዝሩ ያልተሟላ ነው"
+   },
+   "instagramLimitedBody": {
+      "message": "አሁንም ገብተዋል እና በመለያዎ ላይ ምንም ችግር የለም። ይህ በራሱ ይስተካከላል፣ ግን የተወሰነ የመጠበቂያ ጊዜ የለም — ምን ያህል እንደተሰራ ላይ ተመስርቶ ሰዓታት ሊወስድ ይችላል፣ ወይም እስከ ነገ። ደጋግሞ መሞከር ያራዝመዋል።"
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram አሁን ጥያቄዎችን እየገደበ ነው"
+   },
+   "instagramLoginAlert": {
+      "message": "እባክዎ መጀመሪያ ወደ Instagram ይግቡ!"
+   },
+   "invalidWaitingTime": {
+      "message": "እባክዎ ከ3 እስከ 300 ሰከንዶች ያለ ትክክለኛ የመጠበቂያ ጊዜ ያስገቡ"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "ልክ ያልሆነ የመጠበቂያ ጊዜ"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 ሰከንድ ከተፈቀደው ክልል ውጭ ነው። ከ$2 እስከ $3 ሰከንድ መካከል ያለ እሴት ያስገቡ።"
+   },
+   "later": {
+      "message": "በኋላ"
+   },
+   "limitedTimeOffer": {
+      "message": "ለተወሰነ ጊዜ ቅናሽ"
+   },
+   "liveCounterPrefix": {
+      "message": "ባለፉት 24 ሰዓቶች"
+   },
+   "liveCounterSuffix": {
+      "message": "ሰዎች ወደ Premium አሻሽለዋል!"
+   },
+   "loading": {
+      "message": "በመጫን ላይ..."
+   },
+   "loadingProfile": {
+      "message": "መገለጫ በመጫን ላይ"
+   },
+   "loadingSavedAnalysis": {
+      "message": "የተቀመጠ ትንታኔዎን በመጫን ላይ…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "ከInstagram ምንም አይጠየቅም።"
+   },
+   "login": {
+      "message": "ግባ"
+   },
+   "loginFailed": {
+      "message": "መግቢያ አልተሳካም: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "ያልታወቀ ስህተት"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "መግቢያ ያስፈልጋል"
+   },
+   "loginSuccessful": {
+      "message": "መግቢያ ተሳክቷል!"
+   },
+   "loginWithGoogle": {
+      "message": "በGoogle ግባ"
+   },
+   "logout": {
+      "message": "ውጣ"
+   },
+   "logoutError": {
+      "message": "በመውጣት ጊዜ ስህተት ተፈጥሯል: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "ያልታወቀ ስህተት"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "ምዝገባ ያስተዳድሩ"
+   },
+   "membership": {
+      "message": "አባልነት"
+   },
+   "menuBotScan": {
+      "message": "የቦት ቅኝት"
+   },
+   "menuHome": {
+      "message": "መነሻ"
+   },
+   "menuProfile": {
+      "message": "መገለጫ"
+   },
+   "menuUpgrade": {
+      "message": "ማሻሻል"
+   },
+   "minutesTest": {
+      "message": "$1 ደቂቃዎች (ሙከራ)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 ተጨማሪ መለያዎች ይገኛሉ"
+   },
+   "moreInHours": {
+      "message": "በ$2 ሰዓቶች ውስጥ +$1 ተጨማሪ ተከታዮች ማየት ይችላሉ"
+   },
+   "nextCheckTime": {
+      "message": "ቀጣይ ፍተሻ: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "ቀጣይ ፍተሻ: ነገ"
+   },
+   "nextInSeconds": {
+      "message": "ቀጣይ በ$SECONDS$ሰ",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "ያልተከተሉ የሉም"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "የሚቋረጡ ያልተከተሉ የሉም።"
+   },
+   "noUsers": {
+      "message": "ተጠቃሚዎች የሉም"
+   },
+   "noUsersToUnfollow": {
+      "message": "የሚቋረጡ ተጠቃሚዎች የሉም።"
+   },
+   "notFollowingYouBadge": {
+      "message": "አይከተልዎትም"
+   },
+   "notProvided": {
+      "message": "አልቀረበም"
+   },
+   "ok": {
+      "message": "እሺ"
+   },
+   "opening": {
+      "message": "በመክፈት ላይ..."
+   },
+   "openingInNewTab": {
+      "message": "በአዲስ ትር በመክፈት ላይ..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/ወር"
+   },
+   "perYear": {
+      "message": "/ዓመት"
+   },
+   "planFree": {
+      "message": "ነጻ"
+   },
+   "planPopular": {
+      "message": "ታዋቂ"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium ዓመታዊ"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "ለመመዝገብ እባክዎ እንደገና ይግቡ"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "እባክዎ መጀመሪያ ወደ Instagram ይግቡ"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "ወደ Premium ለማሻሻል እባክዎ ይግቡ"
+   },
+   "pleaseSignInToView": {
+      "message": "የመለያ መረጃዎን ለማየት እባክዎ ይግቡ"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "በPremium ሁሉንም $COUNT$ መለያዎችን አሁን ይመልከቱ፣ ምንም ገደብ የለም!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "ግላዊነት የተጠበቀ"
+   },
+   "processStarted": {
+      "message": "ሂደት ተጀምሯል"
+   },
+   "processing": {
+      "message": "በማስኬድ ላይ..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram ማቆም ጠይቋል — በ$1 ሰከንድ ውስጥ ይቀጥላል"
+   },
+   "rating": {
+      "message": "ደረጃ"
+   },
+   "reAnalyze": {
+      "message": "እንደገና ተንትን"
+   },
+   "reAnalyzing": {
+      "message": "እንደገና በመተንተን ላይ..."
+   },
+   "removeFromWhitelist": {
+      "message": "ከነጭ ዝርዝር አስወግድ"
+   },
+   "retryIn": {
+      "message": "በ$SECONDS$ሰ ውስጥ እንደገና ይሞክራል...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "በPremium ላይ 50% ቆጥብ - ምርጥ ዋጋ"
+   },
+   "saveSettings": {
+      "message": "ቅንብሮችን አስቀምጥ"
+   },
+   "scanBlockedBody": {
+      "message": "ይህ የተለመደ ነው፣ በራሱ ይስተካከላል፣ እና በመለያዎ ወይም በተጨማሪው ላይ ምንም ችግር የለም። እንደገና ከመሞከር ይልቅ ወዲያውኑ አቆምን፣ ምክንያቱም ተደጋጋሚ ሙከራዎች ጥበቃውን ያራዝማሉ። ዛሬ ቆይተው እንደገና ይሞክሩ።"
+   },
+   "scanBlockedListFollowers": {
+      "message": "የተከታዮች ዝርዝር አሁን ማንበብ አልተቻለም።"
+   },
+   "scanBlockedListFollowing": {
+      "message": "የሚከተሉት ዝርዝር አሁን ማንበብ አልተቻለም።"
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram አጭር እረፍት ይፈልጋል"
+   },
+   "scanPartialBody": {
+      "message": "የተወሰነው ደረሰ ከዚያም Instagram አቆመን፣ ስለዚህ ውጤቶቹ እርምጃ ለመውሰድ በቂ ሙሉ አይደሉም። ምንም አልተቀየረም። ቆይተው ተመልሰው ትንታኔውን እንደገና ያሂዱ — ይህ ሰዓታት ሊወስድ ይችላል እና አሁን መሞከር ጊዜውን ያራዝማል።"
+   },
+   "scanPartialTitle": {
+      "message": "ዝርዝሩ ያልተሟላ ሆኖ ተመልሷል"
+   },
+   "scanPaused": {
+      "message": "Instagram ፍጥነት እንድንቀንስ ጠየቀ — በመጠበቅ ላይ…"
+   },
+   "scanRemaining": {
+      "message": "$1 መለያዎች ቀርተዋል"
+   },
+   "scanShortBody": {
+      "message": "ቅኝቱ አልቋል፣ ነገር ግን Instagram ከሚለው ያነሱ መለያዎች ተመልሰዋል። በዚህ ላይ እርምጃ መውሰድ የሚከተሉዎትን ሰዎች ማቋረጥ ሊያስከትል ይችላል፣ ስለዚህ ምንም አልታየም። እባክዎ ትንታኔውን እንደገና ያሂዱ።"
+   },
+   "scanShortTitle": {
+      "message": "አንዳንድ መለያዎች ጎድለዋል"
+   },
+   "seconds": {
+      "message": "ሰከንዶች"
+   },
+   "secure": {
+      "message": "ደህንነቱ የተጠበቀ"
+   },
+   "secureLogin": {
+      "message": "ደህንነቱ የተጠበቀ መግቢያ"
+   },
+   "sessionExpiredTitle": {
+      "message": "የእርስዎ Instagram ክፍለ ጊዜ አብቅቷል"
+   },
+   "showOnlyNonFollowers": {
+      "message": "ያልተከተሉትን ብቻ አሳይ"
+   },
+   "showingFirstAccounts": {
+      "message": "የመጀመሪያዎቹ $COUNT$ መለያዎች ይታያሉ።",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "የሚከተሉዎትን መለያዎች ዝለል"
+   },
+   "skipVerifiedAccounts": {
+      "message": "የተረጋገጡ መለያዎችን ዝለል"
+   },
+   "startAnalysis": {
+      "message": "ትንታኔ ጀምር"
+   },
+   "startBotScan": {
+      "message": "የቦት ቅኝት ጀምር"
+   },
+   "startUnfollow": {
+      "message": "ማቋረጥ ጀምር"
+   },
+   "startingAnalysis": {
+      "message": "ትንታኔ በመጀመር ላይ..."
+   },
+   "statFailed": {
+      "message": "አልተሳካም"
+   },
+   "statFollowers": {
+      "message": "ተከታዮች"
+   },
+   "statFollowing": {
+      "message": "የሚከተሉ"
+   },
+   "statNonFollowers": {
+      "message": "አይከተሉም"
+   },
+   "statRemaining": {
+      "message": "አይከተሉም"
+   },
+   "statUnfollowed": {
+      "message": "ተቋርጧል"
+   },
+   "stop": {
+      "message": "አቁም"
+   },
+   "stopping": {
+      "message": "በማቆም ላይ…"
+   },
+   "support": {
+      "message": "ድጋፍ"
+   },
+   "tableAction": {
+      "message": "ድርጊት"
+   },
+   "tableFollowingYou": {
+      "message": "ይከተልዎታል"
+   },
+   "tableFullName": {
+      "message": "ሙሉ ስም"
+   },
+   "tablePrivate": {
+      "message": "የግል"
+   },
+   "tableProfile": {
+      "message": "መገለጫ"
+   },
+   "tableUsername": {
+      "message": "የተጠቃሚ ስም"
+   },
+   "tableVerified": {
+      "message": "የተረጋገጠ"
+   },
+   "testNow": {
+      "message": "አሁን ሞክር"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ ይህ ድርጊት ሊቀለበስ አይችልም!"
+   },
+   "toRemoveLimits": {
+      "message": "ገደቦችን ለማስወገድ"
+   },
+   "trendDown": {
+      "message": "$COUNT$ ከመጨረሻው ትንታኔ ወዲህ",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "ምንም ለውጥ የለም"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ ከመጨረሻው ትንታኔ ወዲህ",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "$COUNT$ ቀናት ቀርተዋል",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "ነገ +20 ተጨማሪ መለያዎችን ማየት ይችላሉ ($COUNTDOWN$)። በየቀኑ +20 መለያዎች ይታከላሉ፣ ገደቦች ይከማቻሉ!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "11ሰ 13ደ 14ሰከ በኋላ"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "ነጻ የሙከራ ጊዜዎ አልቋል። ዛሬ $COUNT$ መለያዎችን ማየት ይችላሉ።",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "የሙከራ ጊዜ አልቋል"
+   },
+   "tryAgain": {
+      "message": "እንደገና ሞክር"
+   },
+   "tryAnyway": {
+      "message": "ለማንኛውም ሞክር"
+   },
+   "unfollow": {
+      "message": "አቋርጥ"
+   },
+   "unfollowDelayLabel": {
+      "message": "የማቋረጥ ዘግይት (ሰከንዶች)"
+   },
+   "unfollowEveryone": {
+      "message": "ሁሉንም አቋርጥ"
+   },
+   "unfollowFailed": {
+      "message": "አልተሳካም"
+   },
+   "unfollowNonFollowers": {
+      "message": "ያልተከተሉትን አቋርጥ"
+   },
+   "unfollowProcessStarted": {
+      "message": "የማቋረጥ ሂደት ተጀምሯል።"
+   },
+   "unfollowSettings": {
+      "message": "የማቋረጥ ቅንብሮች"
+   },
+   "unfollowWaitDetail": {
+      "message": "በእያንዳንዱ መከተል ማቋረጥ መካከል $1 ሰከንድ።"
+   },
+   "unfollowedSuccess": {
+      "message": "ተቋርጧል"
+   },
+   "unfollowing": {
+      "message": "በማቋረጥ ላይ..."
+   },
+   "unknownError": {
+      "message": "ያልታወቀ ስህተት"
+   },
+   "upgradeToPremium": {
+      "message": "ወደ Premium ማሻሻል"
+   },
+   "upgradeToPremiumButton": {
+      "message": "ወደ Premium ማሻሻል"
+   },
+   "upgradeToSeeAll": {
+      "message": "ሁሉንም መለያዎች ለማየት ወደ Premium ያሻሽሉ!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "ተጠቃሚዎች ይቋረጣሉ።"
+   },
+   "waitingSeconds": {
+      "message": "በመጠበቅ ላይ $SECONDS$ሰ",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "የመጠበቂያ ጊዜ በሰከንዶች (3-300)"
+   },
+   "welcomeFunText1": {
+      "message": "ተመልሰው ማን እንዳልተከተለዎት ማየት ይፈልጋሉ? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "የማቋረጥ ሂደት አሁን ብዙ ቀላል ነው 😊"
+   },
+   "welcomeTitle": {
+      "message": "እንኳን ደህና መጡ! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "በGoogle መለያዎ ብቻ ይግቡ፣ ውሂብዎ ደህና ነው!"
+   },
+   "whitelist": {
+      "message": "ነጭ ዝርዝር"
+   },
+   "whitelisted": {
+      "message": "የተጠበቀ"
+   },
+   "whitelistedSkipped": {
+      "message": "ተዘልሏል (ነጭ ዝርዝር)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 ነገ ይከፈታሉ"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram በዚህ መለያ ላይ ራስ-ሰር መከተል ማቋረጥን ለጊዜው መቀበል አቁሟል። ይህ ጊዜያዊ ነው እና በመለያዎ ላይ ምንም ችግር የለም።\n\nበዚህ ጊዜ ውስጥ አሁንም ከመገለጫ ገጹ በእጅ ማቋረጥ ይችላሉ፣ እና ዝርዝርዎ እዚህ ይቆያል — ምንም አልተጠቀመም።"
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram አሁን መከተል ማቋረጥን እየገደበ ነው"
+   },
+   "yesUnfollow": {
+      "message": "አዎ፣ አቋርጥ"
+   },
+   "yesUnfollowAll": {
+      "message": "አዎ፣ ሁሉንም አቋርጥ"
+   }
+}

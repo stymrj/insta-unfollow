@@ -1,0 +1,1096 @@
+{
+   "accountDetails": {
+      "message": "Detaily Účtu"
+   },
+   "accountsRemaining": {
+      "message": "$COUNT$ účtov viac dostupných. Pre zobrazenie všetkých",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "activeUsers": {
+      "message": "Aktívnych Používateľov"
+   },
+   "addToWhitelist": {
+      "message": "Pridať na biely zoznam"
+   },
+   "allAccountsUnlocked": {
+      "message": "Všetky účty odomknuté!"
+   },
+   "allUsersWillBeUnfollowed": {
+      "message": "používatelia budú odstránení."
+   },
+   "appTagline": {
+      "message": "Smart Unfollow Manager"
+   },
+   "appTitle": {
+      "message": "Insta Unfollow"
+   },
+   "botBlindBody": {
+      "message": "Instagram vrátil zoznam sledujúcich bez údajov o profilovej fotke, takže každé skóre je tu nižšie, než by malo byť, a časť botov unikne. Otvorte Instagram na karte a spustite kontrolu znova pre úplný výsledok."
+   },
+   "botBlindTitle": {
+      "message": "Kontrolu profilovej fotky sa nepodarilo vykonať"
+   },
+   "botCleared": {
+      "message": "V jeho prospech"
+   },
+   "botDeepAllChecked": {
+      "message": "Všetky označené účty skontrolované"
+   },
+   "botDeepChecked": {
+      "message": "Profil skontrolovaný"
+   },
+   "botDeepChecksFor": {
+      "message": "Hĺbkovo skontrolovať $1 účtov"
+   },
+   "botDeepChecksRemaining": {
+      "message": "Zostáva $1 ($2 už hotových)"
+   },
+   "botDeepDone": {
+      "message": "Hĺbková kontrola dokončená — skontrolovaných $1 účtov."
+   },
+   "botDeepNoTargets": {
+      "message": "Žiadny účet hĺbkovú kontrolu nepotrebuje."
+   },
+   "botDeepPausedBody": {
+      "message": "Než sa to zastavilo, skontrolovaných bolo $1 účtov a $2 nie. Závery nižšie stoja len na tom, čo sa stihlo načítať. Pevná čakacia doba neexistuje — môže to trvať hodiny alebo do zajtra. Vráťte sa neskôr namiesto opakovania teraz, ktoré to len predĺži."
+   },
+   "botDeepPausedTitle": {
+      "message": "Instagram pozastavil kontrolu profilov"
+   },
+   "botDeepRemaining": {
+      "message": "$1 zostalo neskontrolovaných."
+   },
+   "botDeepSubtitle": {
+      "message": "Jedna požiadavka na účet, v bezpečnom tempe."
+   },
+   "botFilterAll": {
+      "message": "Všetky skontrolované"
+   },
+   "botFilterLikely": {
+      "message": "Pravdepodobní boti"
+   },
+   "botFilterSuspicious": {
+      "message": "Podozrivé"
+   },
+   "botFreeHeadline": {
+      "message": "ďalších označených účtov je zamknutých"
+   },
+   "botFreeWithheld": {
+      "message": "Nájdených ďalších $1 — prejdite na Premium a uvidíte všetky."
+   },
+   "botIntroHeading": {
+      "message": "Nájdite účty, za ktorými nie sú skutoční ľudia"
+   },
+   "botIntroLead": {
+      "message": "Každý sledujúci je ohodnotený podľa toho, ako pravdepodobne ide o bota alebo jednorazový účet."
+   },
+   "botIntroReasons": {
+      "message": "Pri každom skóre sú aj dôvody, ktoré zaň stoja, aby ste videli, prečo bol účet označený, namiesto dôvery číslu. Nič sa neodstraňuje automaticky — zoznam je tu, aby ste sa pozreli a rozhodli."
+   },
+   "botNoFlagged": {
+      "message": "Nič označené — váš zoznam sledujúcich vyzerá čisto."
+   },
+   "botNoRowsForFilter": {
+      "message": "V tejto skupine nič nie je."
+   },
+   "botNoSignals": {
+      "message": "Nič nezvyčajné"
+   },
+   "botNotRunYet": {
+      "message": "Spustite kontrolu, aby ste tu videli svojich sledujúcich s hodnotením."
+   },
+   "botPopupBody": {
+      "message": "Ohodnotí každého sledujúceho podľa toho, ako pravdepodobne ide o bota alebo jednorazový účet: bez profilovej fotky, bez príspevkov, používateľské meno vyzerajúce vygenerovane, sleduje tisíce, kým jeho takmer nikto."
+   },
+   "botPopupReasons": {
+      "message": "Pri každom skóre sú aj dôvody, ktoré zaň stoja. Nič sa neodstraňuje automaticky."
+   },
+   "botProvisionalBody": {
+      "message": "Pri $1 označených účtoch zatiaľ nebol skontrolovaný profil. Väčšina botov sa potvrdí až touto kontrolou — spustite ju, kým začnete veriť počtu pravdepodobných botov."
+   },
+   "botProvisionalTitle": {
+      "message": "Tieto závery zatiaľ nie sú konečné"
+   },
+   "botReadSubtitle": {
+      "message": "Načítané priamo z vášho zoznamu sledujúcich — bez ďalších požiadaviek."
+   },
+   "botReason_anonymous_picture": {
+      "description": "The account uses the default grey avatar instead of a profile photo.",
+      "message": "Bez profilovej fotky"
+   },
+   "botReason_balanced_audience": {
+      "description": "The follower / following ratio looks like a real person's. Counts in the account's favour.",
+      "message": "Vyvážený pomer sledujúcich"
+   },
+   "botReason_digit_heavy": {
+      "description": "The username contains an unusually high proportion of digits.",
+      "message": "Veľa číslic v používateľskom mene"
+   },
+   "botReason_empty_name": {
+      "description": "The account has no full name / display name set.",
+      "message": "Bez zobrazovaného mena"
+   },
+   "botReason_follows_far_more": {
+      "description": "The account follows many more accounts than follow it back.",
+      "message": "Sleduje oveľa viac, než sledujú jeho"
+   },
+   "botReason_has_badge": {
+      "description": "The account carries a badge from Instagram. Counts in the account's favour.",
+      "message": "Má odznak účtu"
+   },
+   "botReason_mass_following": {
+      "description": "The account follows an extremely large number of accounts.",
+      "message": "Sleduje veľmi veľa účtov"
+   },
+   "botReason_no_followers": {
+      "description": "The account has no followers at all.",
+      "message": "Bez sledujúcich"
+   },
+   "botReason_no_posts": {
+      "description": "The account has zero posts.",
+      "message": "Nikdy nepridal príspevok"
+   },
+   "botReason_posts_regularly": {
+      "description": "The account posts regularly. Counts in the account's favour.",
+      "message": "Pridáva príspevky pravidelne"
+   },
+   "botReason_trailing_digits": {
+      "description": "The username ends with a run of digits, e.g. user82736.",
+      "message": "Používateľské meno končí číslicami"
+   },
+   "botReason_underscore_run": {
+      "description": "The username has an unusual pattern of underscores.",
+      "message": "Nezvyčajný vzor podčiarkovníkov"
+   },
+   "botReason_verified": {
+      "description": "The account carries Instagram's verified badge. Counts in the account's favour.",
+      "message": "Overený účet"
+   },
+   "botReason_very_long_username": {
+      "description": "The username is far longer than a person normally chooses.",
+      "message": "Nezvyčajne dlhé používateľské meno"
+   },
+   "botRunDeepChecks": {
+      "message": "Spustiť hĺbkovú kontrolu"
+   },
+   "botScanCached": {
+      "message": "Posledná kontrola $1"
+   },
+   "botScanDeepPaused": {
+      "message": "Instagram pozastavil kontrolu profilov. Výsledky nižšie sú z toho, čo sa stihlo načítať."
+   },
+   "botScanDeepProgress": {
+      "message": "Kontrolujeme profily… $1/$2"
+   },
+   "botScanDone": {
+      "message": "Kontrola dokončená."
+   },
+   "botScanNoData": {
+      "message": "Zoznam sledujúcich sa nepodarilo načítať. Instagram nás zdržiava — prejde to samo, ale bez pevnej čakacej doby. Skúste to neskôr."
+   },
+   "botScanPartial": {
+      "message": "Kontrola sa skončila, ale zoznam sledujúcich sa vrátil neúplný — časť účtov chýba."
+   },
+   "botScanReading": {
+      "message": "Načítavame vašich sledujúcich…"
+   },
+   "botScanReadingCount": {
+      "message": "Načítavame sledujúcich… $1"
+   },
+   "botScanTitle": {
+      "message": "Kontrola sledujúcich na botov"
+   },
+   "botScoreRaw": {
+      "message": "Hrubé skóre"
+   },
+   "botSignalName": {
+      "message": "Používateľské meno vyzerá vygenerovane"
+   },
+   "botSignalPhoto": {
+      "message": "Bez profilovej fotky"
+   },
+   "botSignalPosts": {
+      "message": "Bez príspevkov"
+   },
+   "botSignalRatio": {
+      "message": "Sleduje tisíce, jeho takmer nikto"
+   },
+   "botSignalsUnavailable": {
+      "message": "Pri tomto účte sa časť kontrol nepodarilo vykonať, takže jeho skóre stojí na menšom počte podkladov než pri ostatných."
+   },
+   "botStatFlagged": {
+      "message": "Označené"
+   },
+   "botStatFollowers": {
+      "message": "Sledujúci"
+   },
+   "botStatFollowing": {
+      "message": "Sleduje"
+   },
+   "botStatLikely": {
+      "message": "Pravdepodobní boti"
+   },
+   "botStatPosts": {
+      "message": "Príspevky"
+   },
+   "botStatScanned": {
+      "message": "Skontrolované"
+   },
+   "botStatSuspicious": {
+      "message": "Podozrivé"
+   },
+   "botStatsGone": {
+      "message": "Účet je preč"
+   },
+   "botStatsGoneHint": {
+      "message": "Instagram nevrátil žiadny profil — účet bol zmazaný alebo deaktivovaný, jeho čísla sa už nedajú prečítať."
+   },
+   "botStatsNotChecked": {
+      "message": "Neskontrolované"
+   },
+   "botStepDeep": {
+      "message": "Kontrolujeme profily"
+   },
+   "botStepReading": {
+      "message": "Načítavame sledujúcich"
+   },
+   "botTableReasons": {
+      "message": "Prečo"
+   },
+   "botTableScore": {
+      "message": "Skóre"
+   },
+   "botTableStats": {
+      "message": "Údaje profilu"
+   },
+   "botTableVerdict": {
+      "message": "Výsledok"
+   },
+   "botVerdictClean": {
+      "message": "Vyzerá skutočne"
+   },
+   "botVerdictLikely": {
+      "message": "Pravdepodobne bot"
+   },
+   "botVerdictSuspicious": {
+      "message": "Podozrivý"
+   },
+   "cacheExpiryWarning": {
+      "message": "Profilové obrázky sa nemusia zobrazovať, pretože vaša posledná analýza bola pred $DAYS$ dňami. Analyzujte znova pre aktuálne výsledky.",
+      "placeholders": {
+         "days": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "cachedDataInfo": {
+      "message": "Posledná analýza $TIME$",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "cancel": {
+      "message": "Zrušiť"
+   },
+   "checkingBeforeStart": {
+      "message": "Kontrolujeme…"
+   },
+   "checkingLoginStatus": {
+      "message": "Kontrola stavu prihlásenia..."
+   },
+   "chooseMonthly": {
+      "message": "Vybrať Mesačný"
+   },
+   "chooseYearly": {
+      "message": "Vybrať Ročný"
+   },
+   "comeBackTomorrow": {
+      "message": "Vráťte sa zajtra"
+   },
+   "comeBackTomorrowPremium": {
+      "message": "Môžeš analyzovať +20 sledovateľov viac každý deň. Ak si netrpezlivý, prepni sa na Premium, uvidíš všetkých teraz. Ak si trpezlivý, vráť sa zajtra, uvidíš +20 sledovateľov viac. ✨"
+   },
+   "comeBackTomorrowToSee": {
+      "message": "Vráťte sa zajtra a uvidíte $1 ďalších účtov (+$2 nových odomknutí)"
+   },
+   "confirmUnfollowEveryone": {
+      "message": "⚠️ Varovanie!"
+   },
+   "confirmUnfollowEveryoneText": {
+      "message": "Ste si istí, že chcete prestať sledovať VŠETKÝCH?"
+   },
+   "confirmUnfollowNonFollowers": {
+      "message": "Potvrdiť akciu"
+   },
+   "confirmUnfollowNonFollowersText": {
+      "message": "Ste si istí, že chcete prestať sledovať všetkých, ktorí vás nesledujú?"
+   },
+   "connected": {
+      "message": "Pripojené"
+   },
+   "couldNotFetchFollowing": {
+      "message": "Nepodarilo sa získať zoznam. Skúste neskôr."
+   },
+   "countdownFormat": {
+      "message": "$HOURS$h $MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "hours": {
+            "content": "$1",
+            "example": "5"
+         },
+         "later": {
+            "content": "$4",
+            "example": "neskôr"
+         },
+         "minutes": {
+            "content": "$2",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$3",
+            "example": "15"
+         }
+      }
+   },
+   "countdownFormatShort": {
+      "message": "$MINUTES$m $SECONDS$s $LATER$",
+      "placeholders": {
+         "later": {
+            "content": "$3",
+            "example": "neskôr"
+         },
+         "minutes": {
+            "content": "$1",
+            "example": "30"
+         },
+         "seconds": {
+            "content": "$2",
+            "example": "15"
+         }
+      }
+   },
+   "dailyLimitMessage": {
+      "message": "Zajtra môžete vidieť +20 účtov viac ($COUNTDOWN$). Každý deň sa pridáva +20 účtov, limity sa hromadia!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m neskôr"
+         }
+      }
+   },
+   "dailyLimitTitle": {
+      "message": "Denný Limit"
+   },
+   "dailyScanLimit": {
+      "message": "Denný Limit Skenovania"
+   },
+   "dataLoading": {
+      "message": "Načítanie dát..."
+   },
+   "dataLoadingFollowers": {
+      "message": "Načítanie: $COUNT$ sledovateľov nájdených",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "dataLoadingFollowing": {
+      "message": "Načítanie: $COUNT$ sledovaných nájdených",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "100"
+         }
+      }
+   },
+   "discountOff": {
+      "message": "-50%"
+   },
+   "email": {
+      "message": "E-mail"
+   },
+   "errorFetchingData": {
+      "message": "Chyba pri získavaní dát. Skúste znova."
+   },
+   "errorInstagramUnavailable": {
+      "message": "Instagram je dočasne nedostupný. Skúste to neskôr."
+   },
+   "errorNetwork": {
+      "message": "Nepodarilo sa spojiť s Instagramom. Skontrolujte pripojenie — nič sa nestratilo a proces bude pokračovať."
+   },
+   "errorNetworkConnection": {
+      "message": "Connection error. Please check your internet and try again."
+   },
+   "errorOccurred": {
+      "message": "Vyskytla sa chyba. Skúste znova."
+   },
+   "errorRateLimit": {
+      "message": "Instagram pozastavil naše požiadavky. Prejde to samo, ale pevná čakacia doba neexistuje — podľa toho, koľko sa toho urobilo, to môže trvať hodiny alebo do zajtra. Okamžité opakovanie to predlžuje."
+   },
+   "errorSessionExpired": {
+      "message": "Vaša relácia Instagramu vypršala. Prihláste sa na Instagram a skúste to znova."
+   },
+   "errorUnfollowRateLimit": {
+      "message": "Too many unfollow requests. Waiting 5 minutes before retrying..."
+   },
+   "etaMinutes": {
+      "message": "~$1 min zostáva"
+   },
+   "etaSeconds": {
+      "message": "~$1 s zostáva"
+   },
+   "extensionDescription": {
+      "message": "Insta Unfollow: Instagram follower tracker. Find who doesn't follow back on Instagram and unfollow them to clean your list."
+   },
+   "extensionName": {
+      "message": "Insta Unfollow - Followers & Unfollowers Tracker"
+   },
+   "failedToUnfollow": {
+      "message": "Unfollow zlyhal. Skúste znova."
+   },
+   "featureAdvancedFiltering": {
+      "message": "Pokročilé filtrovanie"
+   },
+   "featureAdvancedFilteringReporting": {
+      "message": "Filtre a reporty"
+   },
+   "featureAdvancedNotifications": {
+      "message": "Pokročilý Systém Oznámení"
+   },
+   "featureAdvancedUnfollow": {
+      "message": "Pokročilý unfollow"
+   },
+   "featureBasicUnfollow": {
+      "message": "Základný unfollow"
+   },
+   "featureDetailDaily": {
+      "message": " (+20/deň)"
+   },
+   "featureMax50Analysis": {
+      "message": "Max 40 analýz"
+   },
+   "featureSpamDetector": {
+      "message": "Detekcia spamu"
+   },
+   "featureUnlimitedAnalysis": {
+      "message": "Neobmedzené analýzy"
+   },
+   "featureUnlimitedFollowingAnalysis": {
+      "message": "Neobmedzená analýza"
+   },
+   "finalizingAnalysis": {
+      "message": "Dokončovanie..."
+   },
+   "firstDayBonus": {
+      "message": "Bonus Prvého Dňa"
+   },
+   "firstDayBonusMessage": {
+      "message": "Bonus prvého dňa: 40 účtov! Zajtra môžete vidieť +20 účtov viac ($COUNTDOWN$). Každý deň sa pridáva +20 účtov.",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m neskôr"
+         }
+      }
+   },
+   "followers": {
+      "message": "Sledovatelia"
+   },
+   "following": {
+      "message": "Sledovaní"
+   },
+   "followingYouBadge": {
+      "message": "Sleduje Vás"
+   },
+   "freePlanLimitDescription": {
+      "message": "Dosiahnutých 40 analýz. Premium pre neobmedzené!"
+   },
+   "freePlanLimitReached": {
+      "message": "Limit Dosiahnutý"
+   },
+   "freePlanTodayMessage": {
+      "message": "V bezplatnom pláne môžete dnes vidieť $DISPLAYED$ účtov. Je tu $HIDDEN$ účtov viac, ale nemôžete ich vidieť.",
+      "placeholders": {
+         "displayed": {
+            "content": "$1",
+            "example": "50"
+         },
+         "hidden": {
+            "content": "$2",
+            "example": "100"
+         }
+      }
+   },
+   "freePlanTodayMessageNoHidden": {
+      "message": "V bezplatnom pláne môžete dnes vidieť $COUNT$ účtov.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitExceeded": {
+      "message": "V bezplatnom pláne môžete prestať sledovať len do $COUNT$ používateľov. Prosím vyberte len prvých $COUNT$ používateľov alebo aktualizujte na Premium.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "freeUnfollowLimitReached": {
+      "message": "V bezplatnom pláne môžete prestať sledovať len do $COUNT$ používateľov. Aktualizujte na Premium pre neobmedzené prestanie sledovania!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "fullName": {
+      "message": "Meno"
+   },
+   "getStartedWithGoogle": {
+      "message": "Registrácia s Google"
+   },
+   "goToInstagramLogin": {
+      "message": "Ísť na Instagram"
+   },
+   "gotIt": {
+      "message": "OK"
+   },
+   "incompleteDataMessage": {
+      "message": "Instagram prestal posielať dáta skôr, než prišiel celý zoznam, takže časť účtov chýba. Zásah teraz by mohol prestať sledovať ľudí, ktorí vás naozaj sledujú. Najprv prosím spustite analýzu znova."
+   },
+   "incompleteDataTitle": {
+      "message": "Zoznam je neúplný"
+   },
+   "instagramLimitedBody": {
+      "message": "Stále ste prihlásení a s vaším účtom nie je nič zlé. Prejde to samo, ale pevná čakacia doba neexistuje — podľa toho, koľko sa toho urobilo, to môže trvať hodiny alebo do zajtra. Opakované pokusy to predlžujú."
+   },
+   "instagramLimitedTitle": {
+      "message": "Instagram teraz obmedzuje požiadavky"
+   },
+   "instagramLoginAlert": {
+      "message": "Najprv sa prihláste na Instagram!"
+   },
+   "invalidWaitingTime": {
+      "message": "Zadajte platný čas 3-300"
+   },
+   "invalidWaitingTimeTitle": {
+      "message": "Neplatný čas čakania"
+   },
+   "invalidWaitingTimeValue": {
+      "message": "$1 sekúnd je mimo povoleného rozsahu. Zadajte hodnotu medzi $2 a $3 sekundami."
+   },
+   "later": {
+      "message": "neskôr"
+   },
+   "limitedTimeOffer": {
+      "message": "Obmedzená Ponuka"
+   },
+   "liveCounterPrefix": {
+      "message": "Za posledných 24 hodín"
+   },
+   "liveCounterSuffix": {
+      "message": "ľudí aktualizovalo na Premium!"
+   },
+   "loading": {
+      "message": "Načítanie..."
+   },
+   "loadingProfile": {
+      "message": "Načítanie profilu"
+   },
+   "loadingSavedAnalysis": {
+      "message": "Načítavame uloženú analýzu…"
+   },
+   "loadingSavedAnalysisDetail": {
+      "message": "Od Instagramu sa nič nevyžaduje."
+   },
+   "login": {
+      "message": "Prihlásiť"
+   },
+   "loginFailed": {
+      "message": "Prihlásenie zlyhalo: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Neznáma chyba"
+         }
+      }
+   },
+   "loginRequired": {
+      "message": "Vyžadované Prihlásenie"
+   },
+   "loginSuccessful": {
+      "message": "Prihlásenie úspešné!"
+   },
+   "loginWithGoogle": {
+      "message": "Prihlásiť sa Google"
+   },
+   "logout": {
+      "message": "Odhlásiť"
+   },
+   "logoutError": {
+      "message": "Chyba odhlásenia: $ERROR$",
+      "placeholders": {
+         "error": {
+            "content": "$1",
+            "example": "Neznáma chyba"
+         }
+      }
+   },
+   "manageSubscription": {
+      "message": "Spravovať Predplatné"
+   },
+   "membership": {
+      "message": "Členstvo"
+   },
+   "menuBotScan": {
+      "message": "Kontrola botov"
+   },
+   "menuHome": {
+      "message": "Domov"
+   },
+   "menuProfile": {
+      "message": "Profil"
+   },
+   "menuUpgrade": {
+      "message": "Upgrade"
+   },
+   "minutesTest": {
+      "message": "$1 minút (Test)",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "moreAccountsAvailable": {
+      "message": "$1 ďalších účtov k dispozícii"
+   },
+   "moreInHours": {
+      "message": "Za $2 hodiny uvidíš +$1 sledovateľov viac"
+   },
+   "nextCheckTime": {
+      "message": "Ďalšia kontrola: $1",
+      "placeholders": {
+         "time": {
+            "content": "$1",
+            "example": "14:30"
+         }
+      }
+   },
+   "nextCheckTomorrow": {
+      "message": "Ďalšia kontrola: Zajtra"
+   },
+   "nextInSeconds": {
+      "message": "Ďalšie za $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "noNonFollowers": {
+      "message": "Žiadni nesledujúci"
+   },
+   "noNonFollowersToUnfollow": {
+      "message": "Žiadni nesledujúci na odstránenie."
+   },
+   "noUsers": {
+      "message": "Žiadni používatelia"
+   },
+   "noUsersToUnfollow": {
+      "message": "Žiadni používatelia na odstránenie."
+   },
+   "notFollowingYouBadge": {
+      "message": "Nesleduje"
+   },
+   "notProvided": {
+      "message": "Neuvedené"
+   },
+   "ok": {
+      "message": "OK"
+   },
+   "opening": {
+      "message": "Otváranie..."
+   },
+   "openingInNewTab": {
+      "message": "Otváranie v novej karte..."
+   },
+   "pageTitle": {
+      "message": "Instagram Unfollow Manager"
+   },
+   "perMonth": {
+      "message": "/mesiac"
+   },
+   "perYear": {
+      "message": "/rok"
+   },
+   "planFree": {
+      "message": "Zadarmo"
+   },
+   "planPopular": {
+      "message": "Obľúbený"
+   },
+   "planPremium": {
+      "message": "Premium"
+   },
+   "planPremiumYearly": {
+      "message": "Premium Ročný"
+   },
+   "pleaseLoginAgainToSubscribe": {
+      "message": "Prihláste sa pre predplatné"
+   },
+   "pleaseLoginToInstagram": {
+      "message": "Najprv sa prihláste na Instagram"
+   },
+   "pleaseLoginToUpgrade": {
+      "message": "Prihláste sa pre upgrade"
+   },
+   "pleaseSignInToView": {
+      "message": "Prihláste sa pre zobrazenie informácií"
+   },
+   "premiumUnlockAllMessage": {
+      "message": "S Premium uvidíte všetky $COUNT$ účty teraz, bez limitov!",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "500"
+         }
+      }
+   },
+   "privacyProtected": {
+      "message": "Chránené Súkromie"
+   },
+   "processStarted": {
+      "message": "Proces začal"
+   },
+   "processing": {
+      "message": "Spracováva sa..."
+   },
+   "rateLimitWaiting": {
+      "message": "Instagram nás požiadal o pauzu — pokračujeme o $1 s"
+   },
+   "rating": {
+      "message": "Hodnotenie"
+   },
+   "reAnalyze": {
+      "message": "Znovu analyzovať"
+   },
+   "reAnalyzing": {
+      "message": "Znovu sa analyzuje..."
+   },
+   "removeFromWhitelist": {
+      "message": "Odstrániť z bieleho zoznamu"
+   },
+   "retryIn": {
+      "message": "Retrying in $SECONDS$s...",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "30"
+         }
+      }
+   },
+   "savePremiumOffer": {
+      "message": "50% zľava na Premium"
+   },
+   "saveSettings": {
+      "message": "Uložiť"
+   },
+   "scanBlockedBody": {
+      "message": "Je to bežné, samo to prejde a ani s vaším účtom, ani s rozšírením nie je nič v neporiadku. Zastavili sme sa hneď namiesto opakovania, pretože opakované pokusy čakanie len predĺžia. Skúste to dnes neskôr."
+   },
+   "scanBlockedListFollowers": {
+      "message": "Zoznam sledujúcich sa teraz nepodarilo načítať."
+   },
+   "scanBlockedListFollowing": {
+      "message": "Zoznam sledovaných sa teraz nepodarilo načítať."
+   },
+   "scanBlockedTitle": {
+      "message": "Instagram chce krátku prestávku"
+   },
+   "scanPartialBody": {
+      "message": "Časť prišla a potom nás Instagram pozastavil, takže výsledky nie sú dosť úplné na to, aby sa podľa nich konalo. Nič sa nezmenilo. Vráťte sa neskôr a spustite analýzu znova — môže to trvať hodiny a opakovanie teraz to predĺži."
+   },
+   "scanPartialTitle": {
+      "message": "Zoznam sa vrátil neúplný"
+   },
+   "scanPaused": {
+      "message": "Instagram nás požiadal o spomalenie — čakáme…"
+   },
+   "scanRemaining": {
+      "message": "Zostáva $1 účtov"
+   },
+   "scanShortBody": {
+      "message": "Kontrola sa skončila, ale vrátilo sa menej účtov, než koľko Instagram pri zozname uvádza. Zásah by mohol prestať sledovať ľudí, ktorí vás sledujú, preto sa nič nezobrazuje. Spustite analýzu prosím znova."
+   },
+   "scanShortTitle": {
+      "message": "Časť účtov chýba"
+   },
+   "seconds": {
+      "message": "sekúnd"
+   },
+   "secure": {
+      "message": "Bezpečné"
+   },
+   "secureLogin": {
+      "message": "Bezpečné Prihlásenie"
+   },
+   "sessionExpiredTitle": {
+      "message": "Vaša relácia Instagramu sa skončila"
+   },
+   "showOnlyNonFollowers": {
+      "message": "Len nesledujúci"
+   },
+   "showingFirstAccounts": {
+      "message": "Zobrazených prvých $COUNT$ účtov.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "skipAccountsFollowingYou": {
+      "message": "Preskočiť sledovateľov"
+   },
+   "skipVerifiedAccounts": {
+      "message": "Preskočiť overených"
+   },
+   "startAnalysis": {
+      "message": "Spustiť Analýzu"
+   },
+   "startBotScan": {
+      "message": "Spustiť kontrolu botov"
+   },
+   "startUnfollow": {
+      "message": "Spustiť Unfollow"
+   },
+   "startingAnalysis": {
+      "message": "Spúšťanie analýzy..."
+   },
+   "statFailed": {
+      "message": "Zlyhalo"
+   },
+   "statFollowers": {
+      "message": "Sledovatelia"
+   },
+   "statFollowing": {
+      "message": "Sledovaní"
+   },
+   "statNonFollowers": {
+      "message": "Nesledujúci"
+   },
+   "statRemaining": {
+      "message": "Nesledujúci"
+   },
+   "statUnfollowed": {
+      "message": "Zrušené Sledovanie"
+   },
+   "stop": {
+      "message": "Stop"
+   },
+   "stopping": {
+      "message": "Zastavujeme…"
+   },
+   "support": {
+      "message": "Podpora"
+   },
+   "tableAction": {
+      "message": "Akcia"
+   },
+   "tableFollowingYou": {
+      "message": "Sleduje Vás"
+   },
+   "tableFullName": {
+      "message": "Meno"
+   },
+   "tablePrivate": {
+      "message": "Súkromný"
+   },
+   "tableProfile": {
+      "message": "Profil"
+   },
+   "tableUsername": {
+      "message": "Používateľ"
+   },
+   "tableVerified": {
+      "message": "Overený"
+   },
+   "testNow": {
+      "message": "Testovať teraz"
+   },
+   "thisActionCannotBeUndone": {
+      "message": "⚠️ Táto akcia sa nedá vrátiť späť!"
+   },
+   "toRemoveLimits": {
+      "message": "na odstránenie limitov"
+   },
+   "trendDown": {
+      "message": "$COUNT$ od poslednej analýzy",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "-3"
+         }
+      }
+   },
+   "trendNoChange": {
+      "message": "Žiadna zmena"
+   },
+   "trendUp": {
+      "message": "+$COUNT$ od poslednej analýzy",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "5"
+         }
+      }
+   },
+   "trialBannerDays": {
+      "message": "Zostáva $COUNT$ dní",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "2"
+         }
+      }
+   },
+   "trialExpiredDailyInfo": {
+      "message": "Tomorrow you can see +20 more accounts ($COUNTDOWN$). +20 accounts are added every day, limits accumulate!",
+      "placeholders": {
+         "countdown": {
+            "content": "$1",
+            "example": "5h 30m later"
+         }
+      }
+   },
+   "trialExpiredMessage": {
+      "message": "Your free trial has ended. You can see $COUNT$ accounts today.",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "50"
+         }
+      }
+   },
+   "trialExpiredTitle": {
+      "message": "Skúšobné obdobie skončilo"
+   },
+   "tryAgain": {
+      "message": "Skúsiť znova"
+   },
+   "tryAnyway": {
+      "message": "Aj tak skúsiť"
+   },
+   "unfollow": {
+      "message": "Prestať sledovať"
+   },
+   "unfollowDelayLabel": {
+      "message": "Oneskorenie (sekundy)"
+   },
+   "unfollowEveryone": {
+      "message": "Prestať Sledovať Všetkých"
+   },
+   "unfollowFailed": {
+      "message": "Zlyhalo"
+   },
+   "unfollowNonFollowers": {
+      "message": "Prestať Sledovať Nesledujúcich"
+   },
+   "unfollowProcessStarted": {
+      "message": "Proces odstraňovania sledovania začal."
+   },
+   "unfollowSettings": {
+      "message": "Nastavenia Unfollow"
+   },
+   "unfollowWaitDetail": {
+      "message": "$1 sekúnd medzi jednotlivými zrušeniami sledovania."
+   },
+   "unfollowedSuccess": {
+      "message": "Prestal sledovať"
+   },
+   "unfollowing": {
+      "message": "Prestáva sa sledovať..."
+   },
+   "unknownError": {
+      "message": "Neznáma chyba"
+   },
+   "upgradeToPremium": {
+      "message": "Prejsť na Premium"
+   },
+   "upgradeToPremiumButton": {
+      "message": "Aktualizovať na Premium"
+   },
+   "upgradeToSeeAll": {
+      "message": "Premium pre všetky!"
+   },
+   "usersWillBeUnfollowed": {
+      "message": "používatelia budú odstránení."
+   },
+   "waitingSeconds": {
+      "message": "Čakanie $SECONDS$s",
+      "placeholders": {
+         "seconds": {
+            "content": "$1",
+            "example": "120"
+         }
+      }
+   },
+   "waitingTimeTitle": {
+      "message": "Čakacia doba (3-300 sek)"
+   },
+   "welcomeFunText1": {
+      "message": "Chcete vidieť, kto vás nesleduje? 😏"
+   },
+   "welcomeFunText2": {
+      "message": "Prestať sledovať je teraz jednoduché 😊"
+   },
+   "welcomeTitle": {
+      "message": "Vitajte! 👋"
+   },
+   "welcomeTrustText": {
+      "message": "Prihláste sa s Google, vaše dáta sú v bezpečí!"
+   },
+   "whitelist": {
+      "message": "Biely zoznam"
+   },
+   "whitelisted": {
+      "message": "Chránený"
+   },
+   "whitelistedSkipped": {
+      "message": "Preskočené (biely zoznam)"
+   },
+   "willUnlockTomorrow": {
+      "message": "$1 bude odomknutých zajtra"
+   },
+   "writeBlockedMessage": {
+      "message": "Instagram na tomto účte dočasne prestal prijímať automatické zrušenia sledovania. Je to dočasné a s vaším účtom nie je nič zlé.\n\nMedzitým môžete stále zrušiť sledovanie ručne zo stránky profilu a váš zoznam zostáva tu — nič sa nespotrebovalo."
+   },
+   "writeBlockedTitle": {
+      "message": "Instagram teraz obmedzuje zrušenie sledovania"
+   },
+   "yesUnfollow": {
+      "message": "Áno, prestať sledovať"
+   },
+   "yesUnfollowAll": {
+      "message": "Áno, prestať sledovať všetkých"
+   }
+}
