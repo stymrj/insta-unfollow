@@ -13,7 +13,7 @@
 // be signed by the worker's private key.
 
 window.PAYMENT_API_URL = 'https://PASTE-YOUR-WORKER-URL.workers.dev';
-window.PREMIUM_PUBLIC_KEY = '5d3562758d5df669c332b90340a710e738960cb3d8ee6ac9ade37ff8ea582d77';
+window.PREMIUM_PUBLIC_KEY = '1ad6e3be3cdfab04e5078b78ab5da26adb2ba93d0b8ec2d0fe23f66f073671ad';
 // Owner bypass: this Google account is always premium (the person who deploys the worker).
 window.PREMIUM_ADMIN_EMAIL = 'sstymrj@gmail.com';
 // PREMIUM_BY_DEFAULT: everyone is premium until you deploy the payment worker.

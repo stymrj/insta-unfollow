@@ -7,7 +7,7 @@ const PREMIUM_ADMIN_EMAIL = 'sstymrj@gmail.com';
 const PREMIUM_BY_DEFAULT = true;
 // Public key that verifies premium tokens signed by the payment worker
 // (see premium-config.js in the extension pages for the same value).
-const PREMIUM_PUBLIC_KEY = '5d3562758d5df669c332b90340a710e738960cb3d8ee6ac9ade37ff8ea582d77';
+const PREMIUM_PUBLIC_KEY = '1ad6e3be3cdfab04e5078b78ab5da26adb2ba93d0b8ec2d0fe23f66f073671ad';
 
 function hexToBytes(hex) {
   const bytes = new Uint8Array(hex.length / 2);
