@@ -6,5 +6,5 @@ compatibility_date = "2026-08-18"
 # Create it first (dashboard → Workers & Pages → KV → Create namespace, or
 # `npx wrangler kv namespace create PAYMENTS_KV`), then paste its id below.
 kv_namespaces = [
-  { binding = "PAYMENTS_KV", id = "PASTE-KV-NAMESPACE-ID" }
+  { binding = "PAYMENTS_KV", id = "20f431cef12242fb8e794f0e555a084b" }
 ]
