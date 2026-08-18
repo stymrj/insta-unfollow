@@ -65,16 +65,32 @@
 
   async function adminLogin() {
     const { auth_token } = await chrome.storage.local.get('auth_token');
-    const response = await fetch(window.PAYMENT_API_URL + '/admin/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ googleToken: auth_token })
-    });
+    let response = await postAdminLogin(auth_token);
+
+    // Google access tokens expire after about an hour, and the stored one is reused
+    // until then. When the worker rejects it, run a fresh Google sign-in and retry once.
+    if (response.status === 401) {
+      const fresh = await chrome.runtime.sendMessage({ action: 'googleLogin' });
+      if (!fresh || !fresh.success) {
+        throw new Error('Google login expired — please sign in again.');
+      }
+      const { auth_token: freshToken } = await chrome.storage.local.get('auth_token');
+      response = await postAdminLogin(freshToken);
+    }
+
     const payload = await response.json().catch(() => ({}));
     if (!response.ok || !payload.token) {
       throw new Error(payload.error || ('admin login failed: ' + response.status));
     }
     state.adminToken = payload.token;
+  }
+
+  async function postAdminLogin(googleToken) {
+    return fetch(window.PAYMENT_API_URL + '/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ googleToken })
+    });
   }
 
   async function api(path, options = {}) {
