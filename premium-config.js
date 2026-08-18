@@ -12,7 +12,7 @@
 // chrome.storage cannot be forged by editing storage, because a valid token can only
 // be signed by the worker's private key.
 
-window.PAYMENT_API_URL = 'https://PASTE-YOUR-WORKER-URL.workers.dev';
+window.PAYMENT_API_URL = 'https://insta-unfollows.satyam-raj.workers.dev';
 window.PREMIUM_PUBLIC_KEY = '1ad6e3be3cdfab04e5078b78ab5da26adb2ba93d0b8ec2d0fe23f66f073671ad';
 // Owner bypass: this Google account is always premium (the person who deploys the worker).
 window.PREMIUM_ADMIN_EMAIL = 'sstymrj@gmail.com';
