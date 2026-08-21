@@ -1,20 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#feda75"/>
-      <stop offset="16%" stop-color="#fa7e1e"/>
-      <stop offset="40%" stop-color="#d62976"/>
-      <stop offset="72%" stop-color="#962fbf"/>
-      <stop offset="100%" stop-color="#4f5bd5"/>
-    </linearGradient>
-    <linearGradient id="lens" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#feda75"/>
-      <stop offset="55%" stop-color="#fa7e1e"/>
-      <stop offset="100%" stop-color="#d62976"/>
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
     </linearGradient>
   </defs>
   <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-  <rect x="120" y="120" width="272" height="272" rx="64" fill="none" stroke="#ffffff" stroke-width="36"/>
-  <circle cx="256" cy="256" r="56" fill="url(#lens)" stroke="#ffffff" stroke-width="18"/>
-  <circle cx="348" cy="176" r="13" fill="#ffffff"/>
+  <circle cx="225" cy="150" r="70" fill="#ffffff"/>
+  <path d="M100 400 C100 265 156 250 225 250 C294 250 350 265 350 400 Z" fill="#ffffff"/>
+  <circle cx="385" cy="125" r="55" fill="#ffffff"/>
+  <rect x="347" y="113" width="76" height="24" rx="12" fill="#1d4ed8"/>
 </svg>
