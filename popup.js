@@ -829,8 +829,41 @@ async function checkInstagramLogin() {
   }
 }
 
+// v2: show the last analysis summary (followers / following / not-following / date)
+// when the analyzer has stored one. Hidden cleanly when nothing exists yet.
+function loadLastAnalysisSummary() {
+  const card = document.getElementById('lastAnalysisCard');
+  if (!card) return;
+  chrome.storage.local.get(['lastAnalysisSummary'], (data) => {
+    const summary = data.lastAnalysisSummary;
+    if (!summary || typeof summary.nonFollowersCount !== 'number') {
+      card.style.display = 'none';
+      return;
+    }
+    document.getElementById('lastFollowers').textContent =
+      Number(summary.followersCount).toLocaleString();
+    document.getElementById('lastFollowing').textContent =
+      Number(summary.followingCount).toLocaleString();
+    document.getElementById('lastNonFollowers').textContent =
+      Number(summary.nonFollowersCount).toLocaleString();
+    const dateStr = new Date(summary.timestamp).toLocaleDateString([], { day: 'numeric', month: 'short', year: 'numeric' });
+    const dateEl = document.getElementById('lastAnalysisDate');
+    const msg = getMessage('lastAnalysisDate', [dateStr]);
+    dateEl.textContent = msg === 'lastAnalysisDate' ? `Scanned ${dateStr}` : msg;
+    card.style.display = 'block';
+  });
+  const viewBtn = document.getElementById('viewResultsBtn');
+  if (viewBtn && !viewBtn.dataset.wired) {
+    viewBtn.dataset.wired = '1';
+    viewBtn.addEventListener('click', () => {
+      chrome.tabs.create({ url: chrome.runtime.getURL('analyzer.html') });
+      window.close();
+    });
+  }
+}
+
 function updateInstagramUI(data) {
-  hideLoading(); // Loading'i gizle
+  hideLoading(); // Hide loading
   
   const infoDiv = document.getElementById('instagramInfo');
   const alertDiv = document.getElementById('instagramLoginAlert');
@@ -848,6 +881,7 @@ function updateInstagramUI(data) {
     
     infoDiv.style.display = 'block';
     alertDiv.style.display = 'none';
+    loadLastAnalysisSummary();
   } else {
     showInstagramLoginAlert();
   }

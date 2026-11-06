@@ -1,15 +1,24 @@
 Insta Unfollow — Followers & Unfollowers Tracker
 
-Who doesn't follow you back? Who's secretly a bot? Insta Unfollow analyses your Instagram account and answers both questions in seconds — then unfollows the accounts you choose, safely and politely.
+Who doesn't follow you back? Find out in seconds. Insta Unfollow is an unfollowers tracker for Instagram: it reads your followers and following lists, shows exactly who isn't following you back, and lets you unfollow them safely — with a bot / fake follower scan built in.
 
 Key features:
 • Non-followers finder — see exactly who isn't following you back, in one clean list
-• Bot & fake-account scanner — suspicious accounts flagged with a risk score, plus deep-scan checks
-• Safe unfollowing — respectful pacing so Instagram doesn't throttle you; pause or stop anytime
+• Search, sort and filter — find any account by name, sort A–Z or not-following-first, filter by following-back / whitelisted
+• Export CSV & copy usernames — take your non-followers list with you, no server involved
+• Bot & fake follower scan — suspicious accounts flagged with a risk score and the reasons behind it, plus deep-scan profile checks
+• Safe unfollowing — respectful pacing so Instagram doesn't throttle you; pause or stop anytime, with a countdown to the next unfollow
 • Whitelist — protect friends, family, and accounts you never want to touch
-• Growth tracking — see who unfollowed you since your last analysis
-• Free plan — 40 analyses on day one, +20 every day, 50 unfollows per day
+• Growth tracking — see how your not-following count changed since your last analysis
+• Free plan — 40 analyses on day 1, +20 every day, 50 unfollows per day
 • Premium (optional) — unlimited analysis and unlimited unfollowing
+
+What's new in 2.0:
+• Fresh, clean design — modern light theme with Instagram-style accents
+• Search, sort, filter chips, Export CSV and Copy usernames in the analyzer
+• Last-analysis summary in the popup, with a visible since-last-analysis trend
+• Export flagged accounts as CSV from the bot scan
+• Honest pricing — monthly Premium is 72% off ($25 → $6.99); yearly is 42% off ($129.99 → $74.99)
 
 How it works:
 1. Sign in with Google
@@ -17,6 +26,6 @@ How it works:
 3. Click Analyse — your followers and following lists are read
 4. Review, whitelist who you love, unfollow the rest
 
-Your data stays yours: results are stored on your device. We never touch your private messages, stories, or posts.
+Your data stays yours: results are stored on your device. We never touch your private messages, stories, or posts. No account is ever unfollowed without you choosing it.
 
 Made with ♥ by Satyam Raj

@@ -430,7 +430,7 @@
       }
    },
    "discountOff": {
-      "message": "50% OFF"
+      "message": "72% OFF"
    },
    "email": {
       "message": "Email"
@@ -493,7 +493,7 @@
       "message": " (+20/day)"
    },
    "featureMax50Analysis": {
-      "message": "Max 40 following analysis"
+      "message": "40 analyses on day 1"
    },
    "featureSpamDetector": {
       "message": "Spam account detector"
@@ -615,12 +615,6 @@
    },
    "limitedTimeOffer": {
       "message": "Limited Time Offer"
-   },
-   "liveCounterPrefix": {
-      "message": "In the last 24 hours"
-   },
-   "liveCounterSuffix": {
-      "message": "people upgraded to Premium!"
    },
    "loading": {
       "message": "Loading..."
@@ -827,7 +821,7 @@
       }
    },
    "savePremiumOffer": {
-      "message": "Save 50% on Premium - Best Value"
+      "message": "Save 72% on Premium - Best Value"
    },
    "saveSettings": {
       "message": "Save Settings"
@@ -1110,5 +1104,62 @@
    },
    "yesUnfollowAll": {
       "message": "Yes, Unfollow All"
+   },
+   "privacyNote": {
+      "message": "Your data stays on your device — nothing is uploaded."
+   },
+   "lastAnalysisTitle": {
+      "message": "Last analysis"
+   },
+   "viewResults": {
+      "message": "View results"
+   },
+   "lastAnalysisDate": {
+      "message": "Scanned $DATE$",
+      "placeholders": {
+         "date": {
+            "content": "$1",
+            "example": "4 Nov 2026"
+         }
+      }
+   },
+   "searchPlaceholder": {
+      "message": "Search username or name…"
+   },
+   "sortDefault": {
+      "message": "Default order"
+   },
+   "sortUsername": {
+      "message": "Username A–Z"
+   },
+   "sortNotFollowing": {
+      "message": "Not following first"
+   },
+   "chipAll": {
+      "message": "All"
+   },
+   "chipNotFollowing": {
+      "message": "Not following back"
+   },
+   "chipFollowing": {
+      "message": "Following back"
+   },
+   "chipWhitelisted": {
+      "message": "Whitelisted"
+   },
+   "exportCsv": {
+      "message": "Export CSV"
+   },
+   "copyUsernames": {
+      "message": "Copy usernames"
+   },
+   "copiedUsernames": {
+      "message": "$COUNT$ usernames copied"
+   },
+   "exportCsvEmpty": {
+      "message": "Nothing to export — the current filter is empty."
+   },
+   "botExportCsv": {
+      "message": "Export flagged CSV"
    }
 }

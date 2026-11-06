@@ -13,6 +13,14 @@ function initializeI18n() {
         }
     });
     
+    // Handle placeholder attributes (v2 search box)
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const message = getMessage(element.getAttribute('data-i18n-placeholder'));
+        if (message && message !== element.getAttribute('data-i18n-placeholder')) {
+            element.placeholder = message;
+        }
+    });
+
     // Handle title attributes
     document.querySelectorAll('[data-i18n-title]').forEach(element => {
         const key = element.getAttribute('data-i18n-title');
@@ -125,6 +133,15 @@ async function saveAnalysisSnapshot(userId, followersCount, followingCount, nonF
                 nonFollowersCount: prev.nonFollowersCount,
                 timestamp: prev.timestamp
             } : null
+        },
+        // v2: one small key the popup can read without knowing the Instagram user id,
+        // so it can show a "Last analysis" summary. Only counts + date, no user list.
+        lastAnalysisSummary: {
+            userId,
+            followersCount,
+            followingCount,
+            nonFollowersCount,
+            timestamp: Date.now()
         }
     });
 }
@@ -164,6 +181,10 @@ let allFollowersList = [];     // full followers list for comparison
 let allFollowingFull = [];
 let currentWhitelistSet = new Set();
 let showOnlyNonFollowersFilter = false;
+// v2 toolbar state (client-side only, over already-loaded data)
+let analyzerSearchQuery = '';
+let analyzerSortMode = 'default';
+let analyzerChipFilter = 'all';
 
 // Sekme geri geldiğinde timer'ı hemen güncelle (Chrome throttling fix)
 document.addEventListener('visibilitychange', () => {
@@ -923,13 +944,85 @@ function showTableMessage(message, isError = false) {
 }
 
 // Pagination functions
+// v2: search (username / full name), filter chips and sort, all client-side over the
+// already-loaded list. Pagination still slices the filtered result in renderCurrentPage.
 function getFilteredData() {
-    if (showOnlyNonFollowersFilter) {
-        return allDisplayData.filter(user =>
-            !allFollowersList.some(f => f.node.id === user.node.id)
-        );
+    const followerIds = new Set(allFollowersList.map(f => f.node.id));
+    let data = allDisplayData.filter(user => {
+        const isFollowing = followerIds.has(user.node.id);
+        const isWhitelisted = currentWhitelistSet.has(user.node.username);
+        if (showOnlyNonFollowersFilter && isFollowing) return false;
+        if (analyzerChipFilter === 'notFollowing' && isFollowing) return false;
+        if (analyzerChipFilter === 'following' && !isFollowing) return false;
+        if (analyzerChipFilter === 'whitelisted' && !isWhitelisted) return false;
+        if (analyzerSearchQuery) {
+            const haystack = ((user.node.username || '') + ' ' + (user.node.full_name || '')).toLowerCase();
+            if (!haystack.includes(analyzerSearchQuery)) return false;
+        }
+        return true;
+    });
+    if (analyzerSortMode === 'username') {
+        data = [...data].sort((a, b) => (a.node.username || '').localeCompare(b.node.username || ''));
+    } else if (analyzerSortMode === 'notFollowing') {
+        // Stable: not-following first, original order kept inside each group.
+        data = [...data].sort((a, b) => (followerIds.has(a.node.id) ? 1 : 0) - (followerIds.has(b.node.id) ? 1 : 0));
     }
-    return allDisplayData;
+    // NOTE: no "most followers" sort — the following-list data Instagram returns has no
+    // per-account follower count (see unfollow-bridge.js: only id/username/full_name/
+    // verified/pic). Sorting by it would need one profile request per account.
+    return data;
+}
+
+// v2: CSV of the current filter (username, full name, verified, following you, whitelisted).
+function downloadFilteredCsv() {
+    const rows = getFilteredData();
+    if (!rows.length) {
+        showToast(getMessage('exportCsvEmpty'), 'error');
+        return;
+    }
+    const followerIds = new Set(allFollowersList.map(f => f.node.id));
+    const esc = (v) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
+    const lines = [['username', 'full_name', 'verified', 'following_you', 'whitelisted'].join(',')];
+    for (const user of rows) {
+        const n = user.node;
+        lines.push([
+            esc(n.username), esc(n.full_name || ''), n.is_verified ? 'yes' : 'no',
+            followerIds.has(n.id) ? 'yes' : 'no',
+            currentWhitelistSet.has(n.username) ? 'yes' : 'no'
+        ].join(','));
+    }
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'insta-unfollow-nonfollowers.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// v2: copy the usernames of the current filter, one per line.
+async function copyFilteredUsernames() {
+    const rows = getFilteredData();
+    if (!rows.length) {
+        showToast(getMessage('exportCsvEmpty'), 'error');
+        return;
+    }
+    const text = rows.map(u => u.node.username).join('\n');
+    try {
+        await navigator.clipboard.writeText(text);
+    } catch (e) {
+        // Clipboard API needs a user gesture / focus; fall back to a hidden textarea.
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+    }
+    const msg = getMessage('copiedUsernames', [String(rows.length)]);
+    showToast(msg === 'copiedUsernames' ? `${rows.length} usernames copied` : msg);
 }
 
 function renderCurrentPage() {
@@ -1038,7 +1131,7 @@ function showTrend(statId, diff) {
     parent.appendChild(el);
 }
 
-// Filter kontrolü için event listener
+// Filter + toolbar event listeners (v2: search / sort / chips / export)
 function setupFilterListener() {
     const filterCheckbox = document.getElementById('showOnlyNonFollowers');
     if (filterCheckbox) {
@@ -1048,6 +1141,33 @@ function setupFilterListener() {
             renderCurrentPage();
         });
     }
+    const searchInput = document.getElementById('analyzerSearch');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            analyzerSearchQuery = this.value.trim().toLowerCase();
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    }
+    const sortSelect = document.getElementById('analyzerSort');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            analyzerSortMode = this.value;
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    }
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', function() {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            analyzerChipFilter = this.dataset.chip || 'all';
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    });
+    document.getElementById('exportCsvBtn')?.addEventListener('click', downloadFilteredCsv);
+    document.getElementById('copyUsernamesBtn')?.addEventListener('click', copyFilteredUsernames);
 }
 
 // Daily scan limit helper functions (per Instagram account) - CUMULATIVE LIMIT
@@ -1667,13 +1787,25 @@ async function initializeFollowingList(forceRefresh = false) {
             elements.nonFollowersCount.textContent = nonFollowersCount.toLocaleString('tr-TR');
         }
 
-        // Show trend comparison with previous analysis
+        // Show trend comparison with the last analysis (v2: was comparing with the
+        // analysis before that — prevSnapshot.previous — skipping the most recent one)
         const prevSnapshot = await getLastAnalysisSnapshot(userId);
-        if (prevSnapshot && prevSnapshot.previous) {
-            const prev = prevSnapshot.previous;
-            showTrend('followersCount', followersCount - prev.followersCount);
-            showTrend('followingCount', followingCount - prev.followingCount);
-            showTrend('nonFollowersCount', nonFollowersCount - prev.nonFollowersCount);
+        if (prevSnapshot) {
+            showTrend('followersCount', followersCount - prevSnapshot.followersCount);
+            showTrend('followingCount', followingCount - prevSnapshot.followingCount);
+            showTrend('nonFollowersCount', nonFollowersCount - prevSnapshot.nonFollowersCount);
+            const trendEl = document.getElementById('nonFollowersTrend');
+            if (trendEl) {
+                const diff = nonFollowersCount - prevSnapshot.nonFollowersCount;
+                const dateStr = new Date(prevSnapshot.timestamp).toLocaleDateString([], { day: 'numeric', month: 'short', year: 'numeric' });
+                // Uses the trendUp / trendDown / trendNoChange strings that already
+                // existed in _locales/en (v1 defined them but never displayed them).
+                let text;
+                if (diff === 0) text = getMessage('trendNoChange');
+                else if (diff > 0) text = getMessage('trendUp', [String(diff)]);
+                else text = getMessage('trendDown', [String(diff)]);
+                trendEl.textContent = text + ' · ' + dateStr;
+            }
         }
 
         // Save current snapshot (only on fresh analysis)
@@ -2765,7 +2897,7 @@ function updateTimerDisplay(seconds) {
             if (countdownText) {
                 const secondsInt = Math.floor(seconds);
                 // Placeholder'ı manuel olarak değiştir
-                let message = getMessage('nextInSeconds') || 'Sonraki: $SECONDS$s';
+                let message = getMessage('nextInSeconds') || 'Next in $SECONDS$s';
                 
                 // Önce $SECONDS$ formatını dene (messages.json'da bu format kullanılıyor)
                 if (message.includes('$SECONDS$')) {
@@ -2777,7 +2909,7 @@ function updateTimerDisplay(seconds) {
                 }
                 // Hiçbiri yoksa direkt ekle
                 else {
-                    message = `Sonraki: ${secondsInt}s`;
+                    message = `Next: ${secondsInt}s`;
                 }
                 
                 countdownText.textContent = message;

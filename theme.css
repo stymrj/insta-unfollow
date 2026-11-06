@@ -1,29 +1,34 @@
 :root {
-  --paper: #f3eddf;
-  --paper-2: #eae2cc;
-  --card: #faf6ea;
-  --card-hi: #fffdf6;
-  --ink: #262016;
-  --ink-2: #5d5440;
-  --ink-3: #998e73;
-  --rule: #dcd1b4;
-  --rule-strong: #c4b794;
-  --rust: #b04a2c;
-  --rust-deep: #8e3a21;
-  --rust-soft: #f1dfd2;
-  --mustard: #a87f16;
-  --mustard-deep: #7c5c0e;
-  --mustard-soft: #f2e7c8;
-  --olive: #5d6f3d;
-  --olive-deep: #45542c;
-  --olive-soft: #e6e9d3;
-  --oxblood: #a23a2d;
-  --oxblood-deep: #832e23;
-  --oxblood-soft: #f1ddd7;
-  --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', 'Times New Roman', serif;
-  --sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --shadow-hard: 3px 3px 0 rgba(38, 32, 22, 0.08);
-  --shadow-hard-sm: 2px 2px 0 rgba(38, 32, 22, 0.07);
+  /* v2.0.0 — modern clean light theme (Instagram-adjacent). Legacy variable names are
+     kept so the overrides below keep working; only their values changed. */
+  --paper: #fafafa;
+  --paper-2: #f4f4f5;
+  --card: #ffffff;
+  --card-hi: #ffffff;
+  --ink: #262626;
+  --ink-2: #525252;
+  --ink-3: #8e8e8e;
+  --rule: #e5e5e5;
+  --rule-strong: #d4d4d4;
+  --rust: #d62976;
+  --rust-deep: #962fbf;
+  --rust-soft: #fdf0f6;
+  --mustard: #fa7e1e;
+  --mustard-deep: #c85a10;
+  --mustard-soft: #fef3e8;
+  --olive: #15803d;
+  --olive-deep: #166534;
+  --olive-soft: #f0fdf4;
+  --oxblood: #ed4956;
+  --oxblood-deep: #c81e2b;
+  --oxblood-soft: #fef2f2;
+  --ig-gradient: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  --ig-accent: #d62976;
+  --ig-blue: #0095f6;
+  --serif: 'Inter', 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sans: 'Inter', 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --shadow-hard: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-hard-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 html, body {
@@ -3019,4 +3024,432 @@ body {
 
 .popup-footer .footer-heart {
   color: var(--rust);
+}
+
+/* ==========================================================================
+   v2.0.0 — modern clean light theme overrides.
+   Appended last so these win over the v1 editorial overrides above.
+   Primary actions use the Instagram gradient sparingly; everything else is
+   white / #fafafa with soft shadows and 12px radii. Light-only, no dark mode.
+   ========================================================================== */
+
+/* Hard offset "paper" shadows -> soft modern shadows */
+.google-login-btn,
+.gmail-login-required-btn,
+.login-redirect-btn,
+.scan-notice-btn,
+.test-button,
+.action-button,
+.subscribe-button,
+.btn-primary,
+.btn-danger,
+.btn-reanalyze,
+.premium-footer-button,
+.footer-premium-btn,
+.limit-upgrade-btn,
+.upgrade-btn,
+.custom-modal-btn-confirm,
+.swal2-confirm,
+.swal-custom-confirm,
+.campaign-banner,
+.pricing-card,
+.premium-limit-warning,
+.limit-banner-premium,
+.scan-panel,
+.custom-modal-content,
+.loading-popup,
+.bot-modal-card,
+.swal2-popup,
+.swal-custom-popup,
+.login-icon-wrapper,
+.bot-intro-icon {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* 12px rounded cards, panels, buttons and inputs */
+.pricing-card,
+.pricing-card.featured,
+.instagram-profile,
+.botscan-card,
+.control-panel,
+.filter-controls,
+.table-container,
+.user-info-card,
+.account-details-card,
+.settings-card,
+.profile-header-card,
+.premium-footer-card,
+.scan-panel,
+.custom-modal-content,
+.loading-popup,
+.bot-modal-card,
+.bot-intro,
+.cache-expiry-banner,
+.simple-limit-banner,
+.limit-banner-premium,
+.premium-limit-warning,
+.swal2-popup,
+.swal-custom-popup,
+.login-icon-wrapper,
+.logo-icon {
+  border-radius: 12px !important;
+}
+
+.google-login-btn,
+.gmail-login-required-btn,
+.login-redirect-btn,
+.action-button,
+.subscribe-button,
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-danger,
+.btn-reanalyze,
+.upgrade-btn,
+.premium-footer-button,
+.footer-premium-btn,
+.limit-upgrade-btn,
+.limit-banner-premium-btn,
+.custom-modal-btn-cancel,
+.custom-modal-btn-confirm,
+.swal2-confirm,
+.swal-custom-confirm,
+.swal2-cancel,
+.swal-custom-cancel,
+.logout-btn,
+.settings-action-button,
+.cache-expiry-btn,
+.unfollow-btn,
+.whitelist-btn,
+.page-btn,
+.page-nav-btn,
+.bot-more,
+.premium-card-subscribe-button {
+  border-radius: 12px !important;
+}
+
+.filter-controls .stat-card,
+.trust-item,
+.security-badge,
+.timer-settings,
+.countdown-display,
+.progress-bar,
+.scan-bar,
+.loading-bar {
+  border-radius: 12px !important;
+}
+
+/* Header: thin rule instead of the heavy 3px ink border + ruled-paper lines */
+.header {
+  border-bottom: 1px solid var(--rule) !important;
+}
+.header::before,
+.header::after {
+  display: none !important;
+}
+.app-header {
+  border-bottom: 1px solid var(--rule) !important;
+}
+
+/* Gradient primary actions (sparingly) */
+.btn-primary,
+.action-button,
+.gmail-login-required-btn,
+.login-redirect-btn,
+.subscribe-button,
+.premium-footer-button,
+.footer-premium-btn,
+.limit-upgrade-btn {
+  background: var(--ig-gradient) !important;
+  border: 0 !important;
+}
+.btn-primary:hover,
+.action-button:hover,
+.gmail-login-required-btn:hover,
+.login-redirect-btn:hover,
+.subscribe-button:hover,
+.premium-footer-button:hover,
+.footer-premium-btn:hover,
+.limit-upgrade-btn:hover {
+  background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf) !important;
+  filter: brightness(1.03) !important;
+}
+.btn-reanalyze {
+  background: var(--ig-gradient) !important;
+  color: #fff !important;
+}
+.btn-reanalyze:hover {
+  background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf) !important;
+  color: #fff !important;
+}
+.custom-modal-btn-confirm,
+.swal2-confirm,
+.swal-custom-confirm {
+  background: var(--ig-gradient) !important;
+}
+.custom-modal-btn-confirm:hover,
+.swal2-confirm:hover,
+.swal-custom-confirm:hover {
+  background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf) !important;
+}
+
+/* Active menu state: gradient accent instead of rust underline */
+.menu-item.active {
+  border-bottom-color: var(--ig-accent) !important;
+}
+.menu-item.active .menu-icon {
+  color: var(--ig-accent) !important;
+}
+
+/* Table header: light, not a solid ink bar */
+.following-table thead {
+  background: #fafafa !important;
+}
+.following-table thead th {
+  color: #737373 !important;
+  border-bottom: 1px solid var(--rule) !important;
+}
+.following-table tbody tr:hover {
+  background: #fdf0f6 !important;
+}
+
+/* Gradient logo tile */
+.logo-icon {
+  background: var(--ig-gradient) !important;
+  border: 0 !important;
+}
+.login-icon-wrapper {
+  background: var(--ig-gradient) !important;
+}
+.login-icon {
+  color: #fff !important;
+}
+.bot-intro-icon {
+  background: var(--ig-gradient) !important;
+  color: #fff !important;
+}
+
+/* Stat cards: white with a soft tint, Inter numerals (no serif) */
+.filter-controls .stat-followers,
+.filter-controls .stat-following,
+.filter-controls .stat-nonfollowers {
+  background: #fff !important;
+}
+.filter-controls .stat-followers .stat-value { color: var(--olive-deep) !important; }
+.filter-controls .stat-following .stat-value { color: var(--ig-accent) !important; }
+.filter-controls .stat-nonfollowers .stat-value { color: var(--oxblood-deep) !important; }
+
+/* Campaign + premium accents */
+.campaign-banner {
+  background: var(--ig-gradient) !important;
+  border-left: 0 !important;
+}
+.pricing-card.featured {
+  border: 2px solid var(--ig-accent) !important;
+}
+.plan-badge {
+  background: var(--ig-gradient) !important;
+  color: #fff !important;
+}
+.new-price {
+  color: var(--ig-accent) !important;
+  -webkit-text-fill-color: var(--ig-accent) !important;
+  text-fill-color: var(--ig-accent) !important;
+}
+.discount-badge span {
+  background: var(--rust-soft) !important;
+  color: var(--rust-deep) !important;
+}
+
+/* Toggles / progress use the accent, not rust-brown */
+.toggle-switch input:checked + .toggle-slider,
+.filter-switch input:checked + .switch-slider,
+.progress-fill,
+.scan-bar-fill,
+.loading-bar-fill,
+.scan-ring-arc,
+.loading-ring-progress {
+  background: var(--ig-accent) !important;
+  border-color: var(--ig-accent) !important;
+}
+.scan-ring-arc,
+.loading-ring-progress {
+  stroke: var(--ig-accent) !important;
+}
+.page-btn.active {
+  background: var(--ig-accent) !important;
+  border-color: var(--ig-accent) !important;
+}
+
+/* v2 toolbar (analyzer search / sort / chips / export) */
+.analyzer-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.analyzer-search {
+  flex: 1 1 220px;
+  min-width: 180px;
+  padding: 9px 12px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: #fafafa;
+  outline: none;
+}
+.analyzer-search:focus {
+  border-color: var(--ig-accent);
+  box-shadow: 0 0 0 3px rgba(214, 41, 118, 0.12);
+  background: #fff;
+}
+.analyzer-sort {
+  padding: 9px 10px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: #fff;
+  outline: none;
+}
+.analyzer-sort:focus {
+  border-color: var(--ig-accent);
+  box-shadow: 0 0 0 3px rgba(214, 41, 118, 0.12);
+}
+.filter-chip {
+  padding: 7px 12px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.filter-chip:hover {
+  border-color: var(--ig-accent);
+  color: var(--ig-accent);
+}
+.filter-chip.active {
+  background: var(--ig-gradient);
+  border-color: transparent;
+  color: #fff;
+}
+.analyzer-export {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+.analyzer-export .btn {
+  white-space: nowrap;
+}
+.stat-trend {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-top: 2px;
+}
+
+/* Last-analysis summary card (popup home) */
+.last-analysis-card {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.last-analysis-card h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.last-analysis-stats {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.last-analysis-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.last-analysis-stat b {
+  font-size: 17px;
+  color: var(--ink);
+}
+.last-analysis-stat span {
+  font-size: 11px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.last-analysis-date {
+  font-size: 12px;
+  color: var(--ink-2);
+  margin-bottom: 10px;
+}
+.last-analysis-card .btn-secondary {
+  width: 100%;
+}
+
+/* Honest privacy note replacing the old trust-indicator blocks */
+.privacy-note {
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #166534;
+  text-align: center;
+}
+
+/* v2 fix: theme's global .button-content is white, which made secondary (white)
+   buttons unreadable — white text on a white button. Seen in the v2 screenshots. */
+.btn-secondary .button-content {
+  color: var(--ink) !important;
+}
+.btn-secondary .button-icon {
+  color: var(--ink) !important;
+}
+
+/* Premium modal classes (analyzer.html / bot-scan.html use premium-* names) */
+.premium-modal-content {
+  border: 1px solid var(--rule) !important;
+  border-top: 1px solid var(--rule) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 8px 30px rgba(0, 0, 0, 0.1) !important;
+}
+.premium-pricing-card {
+  border-radius: 12px !important;
+}
+.premium-pricing-card.premium-featured {
+  border: 2px solid var(--ig-accent) !important;
+}
+.premium-plan-badge {
+  background: var(--ig-gradient) !important;
+  color: #fff !important;
+}
+.premium-card-subscribe-button {
+  border-radius: 12px !important;
+}
+.premium-card-subscribe-button.premium-featured-button {
+  background: var(--ig-gradient) !important;
+  color: #fff !important;
+}
+.premium-card-subscribe-button.premium-featured-button:hover {
+  background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf) !important;
 }

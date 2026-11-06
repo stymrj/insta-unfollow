@@ -603,6 +603,41 @@
    * followers the ordinary accounts are the overwhelming majority, and showing them first means
    * scrolling past hundreds of "Looks real" to reach the ones worth a decision.
    */
+  /**
+   * v2: download the flagged rows (current filter tab, likely-bot / suspicious only)
+   * as CSV. Uses the already-computed scores and reasons — no new requests.
+   * Columns: username, full name, verdict, score %, raw score, reasons, deep-checked.
+   */
+  function exportFlaggedCsv() {
+    const V = window.BotDetector.VERDICT;
+    const rows = visibleRows().filter((e) => e.verdict !== V.CLEAN);
+    if (!rows.length) {
+      setStatus(msg('botNoFlagged') || 'Nothing flagged — your follower list looks clean.');
+      return;
+    }
+    const esc = (v) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
+    const lines = [['username', 'full_name', 'verdict', 'score_percent', 'score_raw', 'reasons', 'deep_checked'].join(',')];
+    for (const entry of rows) {
+      const u = entry.user || {};
+      const reasons = entry.reasons.filter((r) => r.weight > 0).map(reasonLabel).join('; ');
+      lines.push([
+        esc(u.username), esc(u.full_name || ''),
+        esc(entry.verdict === V.BOT ? 'likely_bot' : 'suspicious'),
+        esc(asPercent(entry.score)), esc(entry.score),
+        esc(reasons), entry.deep ? 'yes' : 'no'
+      ].join(','));
+    }
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'insta-unfollow-flagged.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
   function visibleRows() {
     const V = window.BotDetector.VERDICT;
     if (filter === 'bot') return scored.filter((e) => e.verdict === V.BOT);
@@ -1027,6 +1062,7 @@
     await loadMembership();
     $('startBotScan').addEventListener('click', runScan);
     $('runDeepChecks').addEventListener('click', runDeepScan);
+    $('exportFlaggedCsv').addEventListener('click', exportFlaggedCsv);
     $('stopBotScan').addEventListener('click', () => { stopRequested = true; setStatus(msg('stopping') || 'Stopping…'); });
 
     document.querySelectorAll('.bot-filter-btn').forEach((b) => {

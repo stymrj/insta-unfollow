@@ -8,16 +8,6 @@
  * Both pages include the same markup block and load this file before their own script.
  */
 
-/**
- * Timer behind the "N people upgraded in the last 24 hours" counter.
- *
- * Declared here rather than in analyzer.js, where it used to sit: the live-counter code below is
- * the only thing that touches it, and analyzer.js is not loaded on the bot scan page. Left behind
- * during the extraction, it made this file depend on a variable that only existed on one of the two
- * pages — `initializeLiveCounter` reads it before assigning, and reading an undeclared name throws,
- * so opening the modal from the bot scan raised a ReferenceError.
- */
-let counterTimeoutId = null;
 function openPremiumModal() {
     const premiumModal = document.getElementById('premiumModal');
     if (premiumModal) {
@@ -38,22 +28,11 @@ function closePremiumModal() {
         premiumModal.classList.remove('active');
         document.body.style.overflow = '';
     }
-    
-    // Clear counter timeout when modal is closed (optional but good practice)
-    // Note: We keep it running in background, but this prevents leaks if modal is closed/reopened frequently
-    // Uncomment the line below if you want to stop counter when modal closes:
-    // if (counterTimeoutId !== null) {
-    //     clearTimeout(counterTimeoutId);
-    //     counterTimeoutId = null;
-    // }
 }
 
 function initializePremiumModal() {
     // Fetch prices from API
     fetchPremiumPrices();
-    
-    // Initialize live counter
-    initializeLiveCounter();
 }
 
 async function fetchPremiumPrices() {
@@ -83,136 +62,6 @@ async function fetchPremiumPrices() {
     const savingsEl = document.getElementById('premiumYearlySavings');
     if (savingsEl) {
         savingsEl.textContent = 'Save $8.89/year';
-    }
-}
-
-function initializeLiveCounter() {
-    // Clear any existing timeout before initializing
-    if (counterTimeoutId !== null) {
-        clearTimeout(counterTimeoutId);
-        counterTimeoutId = null;
-    }
-    
-    const counterEl = document.getElementById('premiumLiveCounter');
-    if (!counterEl) return;
-    
-    // Get or initialize counter data
-    chrome.storage.local.get(['premiumCounterData'], function(data) {
-        const today = new Date().toDateString();
-        let counterData = data.premiumCounterData || {};
-        
-        // Check if we need to reset (new day)
-        if (counterData.lastResetDate !== today) {
-            // New day - reset to 150
-            const startValue = 150;
-            counterData = {
-                lastResetDate: today,
-                currentValue: startValue,
-                lastUpdate: Date.now()
-            };
-            
-            // Save new data
-            chrome.storage.local.set({ premiumCounterData: counterData });
-            
-            // Update display
-            updateCounterDisplay(counterEl, startValue);
-        } else {
-            // Same day - use existing value
-            updateCounterDisplay(counterEl, counterData.currentValue || 150);
-        }
-        
-        // Start periodic updates
-        startCounterUpdates(counterEl, counterData);
-    });
-}
-
-function startCounterUpdates(counterEl, counterData) {
-    // Clear any existing timeout before starting a new one
-    if (counterTimeoutId !== null) {
-        clearTimeout(counterTimeoutId);
-        counterTimeoutId = null;
-    }
-    
-    // Update every 4-5 minutes (240000-300000 ms)
-    const updateInterval = () => {
-        // Check if element still exists in DOM
-        if (!counterEl || !document.getElementById('premiumLiveCounter')) {
-            // Element removed from DOM, stop updates
-            counterTimeoutId = null;
-            return;
-        }
-        
-        const interval = Math.floor(Math.random() * 60000) + 240000; // 4-5 minutes (240-300 seconds)
-        
-        counterTimeoutId = setTimeout(() => {
-            chrome.storage.local.get(['premiumCounterData'], function(data) {
-                // Check if element still exists before updating
-                const counterElement = document.getElementById('premiumLiveCounter');
-                if (!counterElement) {
-                    counterTimeoutId = null;
-                    return;
-                }
-                
-                const today = new Date().toDateString();
-                let currentData = data.premiumCounterData || {};
-                
-                // Check if still same day
-                if (currentData.lastResetDate === today) {
-                    // Always increase by +1
-                    let currentValue = currentData.currentValue || 150;
-                    let newValue = currentValue + 1;
-                    
-                    // Max at 350
-                    if (newValue > 350) {
-                        newValue = 350; // Max at 350
-                    }
-                    
-                    // Never go below current value
-                    if (newValue < currentValue) {
-                        newValue = currentValue; // Never decrease
-                    }
-                    
-                    currentData.currentValue = newValue;
-                    currentData.lastUpdate = Date.now();
-                    
-                    // Save updated data
-                    chrome.storage.local.set({ premiumCounterData: currentData });
-                    
-                    // Update display with animation
-                    updateCounterDisplay(counterElement, newValue, true);
-                } else {
-                    // New day - reset to 150
-                    const startValue = 150;
-                    currentData = {
-                        lastResetDate: today,
-                        currentValue: startValue,
-                        lastUpdate: Date.now()
-                    };
-                    chrome.storage.local.set({ premiumCounterData: currentData });
-                    updateCounterDisplay(counterElement, startValue);
-                }
-                
-                // Schedule next update
-                updateInterval();
-            });
-        }, interval);
-    };
-    
-    // Start first update
-    updateInterval();
-}
-
-function updateCounterDisplay(counterEl, value, animate = false) {
-    if (animate) {
-        counterEl.classList.add('updating');
-        setTimeout(() => {
-            counterEl.textContent = value;
-            setTimeout(() => {
-                counterEl.classList.remove('updating');
-            }, 500);
-        }, 100);
-    } else {
-        counterEl.textContent = value;
     }
 }
 

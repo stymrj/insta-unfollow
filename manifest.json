@@ -22,7 +22,7 @@
    "manifest_version": 3,
    "name": "__MSG_extensionName__",
    "permissions": [ "storage", "unlimitedStorage", "identity" ],
-   "version": "1.0.0",
+   "version": "2.0.0",
    "web_accessible_resources": [ {
       "matches": [ "https://*.instagram.com/*" ],
       "resources": [ "unfollow-bridge.js", "ig-inject.js" ]

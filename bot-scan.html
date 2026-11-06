@@ -158,6 +158,12 @@
                             <span class="button-text" id="deepBtnText" data-i18n="botRunDeepChecks">Run deep checks</span>
                         </div>
                     </button>
+                    <button id="exportFlaggedCsv" class="btn btn-secondary" type="button">
+                        <div class="button-content">
+                            <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <span class="button-text" data-i18n="botExportCsv">Export flagged CSV</span>
+                        </div>
+                    </button>
                 </div>
 
                 <div id="botScanStatus" class="reanalyze-time"></div>
@@ -266,13 +272,6 @@
         <div class="premium-modal-content">
             <button class="premium-modal-close">&times;</button>
             
-            <!-- Live Counter -->
-            <div class="premium-live-counter">
-                <div class="premium-counter-icon">⚡</div>
-                <div class="premium-counter-content">
-                    <strong class="premium-counter-main"><span data-i18n="liveCounterPrefix">Son 24 saatte</span> <span class="premium-counter-number" id="premiumLiveCounter">150</span> <span data-i18n="liveCounterSuffix">kişi Premium'a geçti!</span></strong>
-                </div>
-            </div>
 
             <!-- Pricing Cards -->
             <div class="premium-pricing-cards">
@@ -286,8 +285,8 @@
                         <li class="premium-feature-item">
                             <span class="premium-feature-icon">✓</span>
                             <span class="premium-feature-text">
-                                <span data-i18n="featureMax50Analysis">Max 40 following analysis</span>
-                                <span class="premium-feature-detail" data-i18n="featureDetailDaily"> (+20/gün)</span>
+                                <span data-i18n="featureMax50Analysis">40 analyses on day 1</span>
+                                <span class="premium-feature-detail" data-i18n="featureDetailDaily"> (+20/day)</span>
                             </span>
                         </li>
                         <li class="premium-feature-item">
@@ -410,31 +409,6 @@
                 <div class="premium-trust-item">
                     <div class="premium-trust-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <div class="premium-trust-content">
-                        <div class="premium-trust-value">10,000+</div>
-                        <div class="premium-trust-label" data-i18n="activeUsers">Active Users</div>
-                    </div>
-                </div>
-                <div class="premium-trust-item">
-                    <div class="premium-trust-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                        </svg>
-                    </div>
-                    <div class="premium-trust-content">
-                        <div class="premium-trust-value">4.8/5</div>
-                        <div class="premium-trust-label" data-i18n="rating">Rating</div>
-                    </div>
-                </div>
-                <div class="premium-trust-item">
-                    <div class="premium-trust-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                         </svg>
                     </div>
@@ -455,6 +429,7 @@
                     </div>
                 </div>
             </div>
+            <p class="privacy-note" data-i18n="privacyNote">Your data stays on your device — nothing is uploaded.</p>
         </div>
     </div>
 
