@@ -336,7 +336,7 @@
             <div class="campaign-icon">🎉</div>
             <div class="campaign-text">
               <strong data-i18n="limitedTimeOffer">Limited Time Offer</strong>
-              <span data-i18n="savePremiumOffer">Save 72% on Premium - Best Value</span>
+              <span>Save up to ₹89 on Premium</span>
             </div>
           </div>
 
@@ -381,12 +381,11 @@
               <div class="plan-header">
                 <h3 class="plan-name" data-i18n="planPremium">Premium</h3>
                 <div class="plan-price">
-                  <span class="old-price" id="oldPrice">₹699</span>
-                  <span class="new-price" id="newPrice">₹199</span>
-                  <span class="price-period" data-i18n="perMonth">/month</span>
+                  <span class="price-period">From</span>
+                  <span class="new-price" id="newPrice">₹49</span>
                 </div>
                 <div class="discount-badge">
-                  <span id="discountText" data-i18n="discountOff">72% OFF</span>
+                  <span id="discountText">Save up to ₹89</span>
                 </div>
               </div>
               <ul class="features-list">
@@ -416,17 +415,18 @@
 
           <!-- Subscribe Section -->
           <div id="subscribeSection" class="subscribe-section">
+            <div id="popupPlanPicker" class="popup-plan-picker" style="display: none" role="radiogroup" aria-label="Choose a plan"></div>
             <button
               id="subscribeButton"
               class="subscribe-button"
               style="display: none"
-              data-i18n="upgradeToPremium"
             >
-              Upgrade to Premium
+              Continue — 1 month · ₹49
             </button>
             <div id="loginMessage" class="login-message" style="display: none">
               <p data-i18n="pleaseLoginToUpgrade">Please log in to upgrade to Premium</p>
             </div>
+            <div id="paymentStep" class="popup-payment-step" style="display: none"></div>
           </div>
 
           <!-- Trust Indicators -->

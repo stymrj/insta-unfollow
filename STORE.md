@@ -57,7 +57,7 @@ Branch: `v2` (local only — merge to `main` after verifying, then publish from 
 - [x] `store-assets/description.txt` rewritten (keyword-rich first lines, What's New in 2.0,
       honest free/premium limits, no fake numbers)
 - [x] `CHANGELOG.md` added with the 2.0.0 entry
-- [x] Pricing fixed to 72% OFF monthly (₹699 → ₹199) everywhere; yearly 37% OFF (₹2,388 → ₹1,499)
+- [x] Pricing fixed to the five plans everywhere: 1 month ₹49 · 3 months ₹129 (save ₹18) · 6 months ₹249 (save ₹45) · 9 months ₹399 (save ₹42) · 12 months ₹499 (save ₹89)
 - [x] Fake social proof removed (10,000+ users, 4.8/5 rating, "150 upgraded in last 24h")
 - [ ] **Verify the live Store ID** (see the mismatch warning at the top of this file) and
       update "Item details" + the OAuth redirect list below if the live ID differs

@@ -907,7 +907,7 @@
     });
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('premium-card-subscribe-button')) {
-        handlePremiumSubscribe(e.target.getAttribute('data-plan') || 'monthly');
+        handlePremiumSubscribe(e.target.getAttribute('data-plan') || '1mo');
       }
     });
   }

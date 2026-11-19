@@ -12,13 +12,14 @@ Key features:
 • Growth tracking — see how your not-following count changed since your last analysis
 • Free plan — 40 analyses on day 1, +20 every day, 50 unfollows per day
 • Premium (optional) — unlimited analysis and unlimited unfollowing
+• Pay for Premium via UPI — scan the QR with any UPI app, upload your payment screenshot and Premium activates after approval
 
 What's new in 2.0:
 • Fresh, colourful bold design — navy header, solid indigo buttons and bold stat cards
 • Search, sort, filter chips, Export CSV and Copy usernames in the analyzer
 • Last-analysis summary in the popup, with a visible since-last-analysis trend
 • Export flagged accounts as CSV from the bot scan
-• Honest pricing — monthly Premium is 72% off (₹699 → ₹199); yearly is 37% off (₹2,388 → ₹1,499), saving ₹889/year vs monthly
+• Honest pricing — 1 month ₹49 · 3 months ₹129 (save ₹18) · 6 months ₹249 (save ₹45) · 9 months ₹399 (save ₹42) · 12 months ₹499 (save ₹89)
 
 How it works:
 1. Sign in with Google

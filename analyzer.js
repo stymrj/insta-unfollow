@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add click handlers for card subscribe buttons
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('premium-card-subscribe-button')) {
-            const planType = e.target.getAttribute('data-plan') || 'monthly';
+            const planType = e.target.getAttribute('data-plan') || '1mo';
             handlePremiumSubscribe(planType);
         }
     });

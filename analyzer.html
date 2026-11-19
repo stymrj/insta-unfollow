@@ -276,7 +276,7 @@
     </main>
 
     <!-- Premium Modal -->
-    <div id="premiumModal" class="premium-modal">
+<div id="premiumModal" class="premium-modal">
         <div class="premium-modal-overlay"></div>
         <div class="premium-modal-content">
             <button class="premium-modal-close">&times;</button>
@@ -321,19 +321,11 @@
                     </ul>
                 </div>
 
-                <!-- Premium Monthly Plan (Featured) -->
+                <!-- Premium Plan: one feature set, five durations to choose from -->
                 <div class="premium-pricing-card premium-premium-card premium-featured">
                     <div class="premium-plan-badge" data-i18n="planPopular">Popular</div>
                     <div class="premium-plan-header">
                         <h3 class="premium-plan-name" data-i18n="planPremium">Premium</h3>
-                        <div class="premium-plan-price">
-                            <span class="premium-old-price" id="premiumOldPrice">₹699</span>
-                            <span class="premium-new-price" id="premiumNewPrice">₹199</span>
-                            <span class="premium-price-period" data-i18n="perMonth">/month</span>
-                        </div>
-                        <div class="premium-discount-badge">
-                            <span id="premiumDiscountText" data-i18n="discountOff">72% OFF</span>
-                        </div>
                     </div>
                     <ul class="premium-features-list">
                         <li class="premium-feature-item">
@@ -361,57 +353,46 @@
                             <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
                         </li>
                     </ul>
-                    <button class="premium-card-subscribe-button premium-featured-button" data-plan="monthly" data-i18n="chooseMonthly">
-                        Choose Monthly
-                    </button>
-                </div>
-
-                <!-- Premium Yearly Plan -->
-                <div class="premium-pricing-card premium-yearly-card">
-                    <div class="premium-plan-header">
-                        <h3 class="premium-plan-name" data-i18n="planPremiumYearly">Premium Yearly</h3>
-                        <div class="premium-plan-price">
-                            <span class="premium-old-price" id="premiumYearlyOldPrice">₹2,388</span>
-                            <span class="premium-new-price" id="premiumYearlyNewPrice">₹1,499</span>
-                            <span class="premium-price-period" data-i18n="perYear">/year</span>
-                        </div>
-                        <div class="premium-discount-badge">
-                            <span id="premiumYearlyDiscountText">37% OFF</span>
-                        </div>
-                        <div class="premium-yearly-savings">
-                        </div>
+                    <div class="premium-plan-options" id="premiumPlanOptions" role="radiogroup" aria-label="Choose a plan">
+                        <button type="button" class="premium-plan-option selected" data-plan="1mo" role="radio" aria-checked="true">
+                            <span class="premium-plan-option-duration">1 month</span>
+                            <span class="premium-plan-option-price"><span class="premium-plan-option-new" id="premiumPlanPrice-1mo">₹49</span></span>
+                            <span class="premium-plan-option-save" id="premiumPlanSave-1mo">No discount</span>
+                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-1mo">₹49/mo</span>
+                        </button>
+                        <button type="button" class="premium-plan-option" data-plan="3mo" role="radio" aria-checked="false">
+                            <span class="premium-plan-option-duration">3 months</span>
+                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-3mo">₹147</span><span class="premium-plan-option-new" id="premiumPlanPrice-3mo">₹129</span></span>
+                            <span class="premium-plan-option-save" id="premiumPlanSave-3mo">Save ₹18</span>
+                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-3mo">₹43/mo</span>
+                        </button>
+                        <button type="button" class="premium-plan-option" data-plan="6mo" role="radio" aria-checked="false">
+                            <span class="premium-plan-option-duration">6 months</span>
+                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-6mo">₹294</span><span class="premium-plan-option-new" id="premiumPlanPrice-6mo">₹249</span></span>
+                            <span class="premium-plan-option-save" id="premiumPlanSave-6mo">Save ₹45</span>
+                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-6mo">₹42/mo</span>
+                        </button>
+                        <button type="button" class="premium-plan-option" data-plan="9mo" role="radio" aria-checked="false">
+                            <span class="premium-plan-option-duration">9 months</span>
+                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-9mo">₹441</span><span class="premium-plan-option-new" id="premiumPlanPrice-9mo">₹399</span></span>
+                            <span class="premium-plan-option-save" id="premiumPlanSave-9mo">Save ₹42</span>
+                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-9mo">₹44/mo</span>
+                        </button>
+                        <button type="button" class="premium-plan-option" data-plan="12mo" role="radio" aria-checked="false">
+                            <span class="premium-plan-option-duration">12 months</span>
+                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-12mo">₹588</span><span class="premium-plan-option-new" id="premiumPlanPrice-12mo">₹499</span></span>
+                            <span class="premium-plan-option-save" id="premiumPlanSave-12mo">Save ₹89</span>
+                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-12mo">₹42/mo</span>
+                        </button>
                     </div>
-                    <ul class="premium-features-list">
-                        <li class="premium-feature-item">
-                            <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureUnlimitedFollowingAnalysis">Unlimited following analysis</span>
-                        </li>
-                        <li class="premium-feature-item">
-                            <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureAdvancedUnfollow">Advanced unfollow features</span>
-                        </li>
-                        <li class="premium-feature-item">
-                            <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureSpamDetector">Spam account detector</span>
-                        </li>
-                        <li class="premium-feature-item">
-                            <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
-                        </li>
-                        <li class="premium-feature-item">
-                            <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureAdvancedFilteringReporting">Advanced filtering and reporting</span>
-                        </li>
-                        <li class="premium-feature-item premium-highlight">
-                            <span class="premium-feature-icon">✨</span>
-                            <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
-                        </li>
-                    </ul>
-                    <button class="premium-card-subscribe-button" data-plan="yearly" data-i18n="chooseYearly">
-                        Choose Yearly
+                    <button class="premium-card-subscribe-button premium-featured-button" id="premiumSubscribeButton" data-plan="1mo">
+                        Continue — 1 month · ₹49
                     </button>
                 </div>
             </div>
+
+            <!-- Manual-payment checkout step: method picker / UPI view / proof form (filled by premium.js) -->
+            <div id="premiumPaymentStep" class="premium-payment-step" style="display:none"></div>
 
             <!-- Trust Indicators -->
             <div class="premium-trust-indicators">
@@ -449,7 +430,7 @@
 
     <script src="unfollow-bridge.js"></script>
     <script src="ig-client.js"></script>
-    <script src="premium-config.js"></script>
+<script src="premium-config.js"></script>
     <script src="premium.js"></script>
 <script src="analyzer.js"></script>
 </body>

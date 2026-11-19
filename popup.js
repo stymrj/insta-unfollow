@@ -69,15 +69,212 @@ function setPremiumBadge(badge, membership) {
 // Function to update subscription button visibility based on login state
 function updateSubscribeButtonVisibility(isLoggedIn) {
     const subscribeButton = document.getElementById('subscribeButton');
+    const planPicker = document.getElementById('popupPlanPicker');
     const loginMessage = document.getElementById('loginMessage');
-    
+
     if (isLoggedIn) {
-        subscribeButton.style.display = 'block';
-        loginMessage.style.display = 'none';
+        if (subscribeButton) subscribeButton.style.display = 'block';
+        if (planPicker) planPicker.style.display = 'block';
+        if (loginMessage) loginMessage.style.display = 'none';
     } else {
-        subscribeButton.style.display = 'none';
-        loginMessage.style.display = 'block';
+        if (subscribeButton) subscribeButton.style.display = 'none';
+        if (planPicker) planPicker.style.display = 'none';
+        if (loginMessage) loginMessage.style.display = 'block';
     }
+}
+
+// --- Plan picker: the same five plans as the premium modal, from the shared
+// definition in premium-config.js. Default selected plan: 1 month. The
+// picker sits before the payment step; the selected plan drives the method
+// picker, UPI view and proof form exactly as the modal does.
+
+let popupSelectedPlan = '1mo';
+
+function getPopupSelectedPlan() {
+    if (typeof window.getPremiumPlan === 'function') {
+        return window.getPremiumPlan(popupSelectedPlan).key;
+    }
+    return popupSelectedPlan || '1mo';
+}
+
+function updatePopupContinueButton() {
+    const button = document.getElementById('subscribeButton');
+    if (!button) return;
+    if (typeof window.getPremiumPlan !== 'function') return;
+    const plan = window.getPremiumPlan(popupSelectedPlan);
+    button.textContent = 'Continue — ' + plan.label + ' · ₹' + plan.price;
+}
+
+function setPopupSelectedPlan(planKey) {
+    popupSelectedPlan = typeof window.getPremiumPlan === 'function'
+        ? window.getPremiumPlan(planKey).key : (planKey || '1mo');
+    renderPopupPlanPicker();
+}
+
+function renderPopupPlanPicker() {
+    const picker = document.getElementById('popupPlanPicker');
+    if (!picker || !Array.isArray(window.PREMIUM_PLANS)) return;
+    picker.innerHTML = '';
+    window.PREMIUM_PLANS.forEach((plan) => {
+        const selected = plan.key === getPopupSelectedPlan();
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('data-plan', plan.key);
+        btn.setAttribute('role', 'radio');
+        btn.setAttribute('aria-checked', selected ? 'true' : 'false');
+        btn.style.cssText = 'display:grid;grid-template-columns:1fr auto;grid-template-areas:' +
+            '"duration price" "save per-month";align-items:center;gap:2px 10px;width:100%;' +
+            'padding:9px 12px;margin:0 0 6px;background:' + (selected ? '#eff6ff' : '#fff') + ';' +
+            'border:1.5px solid ' + (selected ? '#2563eb' : '#e5e5e5') + ';border-radius:10px;' +
+            'color:#262626;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;';
+        const duration = document.createElement('span');
+        duration.textContent = plan.label;
+        duration.style.cssText = 'grid-area:duration;font-size:13px;font-weight:700;';
+        const price = document.createElement('span');
+        price.style.cssText = 'grid-area:price;display:flex;align-items:baseline;gap:6px;' +
+            'font-size:15px;font-weight:700;justify-self:end;';
+        if (plan.strike != null) {
+            const strike = document.createElement('span');
+            strike.textContent = '₹' + plan.strike;
+            strike.style.cssText = 'text-decoration:line-through;color:#8e8e8e;font-size:12px;font-weight:500;';
+            price.appendChild(strike);
+        }
+        const current = document.createElement('span');
+        current.textContent = '₹' + plan.price;
+        current.style.color = '#2563eb';
+        price.appendChild(current);
+        const save = document.createElement('span');
+        save.textContent = plan.save > 0 ? 'Save ₹' + plan.save : 'No discount';
+        save.style.cssText = 'grid-area:save;font-size:11px;font-weight:600;color:#1e40af;';
+        const perMonth = document.createElement('span');
+        perMonth.textContent = '₹' + plan.perMonth + '/mo';
+        perMonth.style.cssText = 'grid-area:per-month;font-size:11px;font-weight:600;color:#8e8e8e;justify-self:end;';
+        btn.appendChild(duration);
+        btn.appendChild(price);
+        btn.appendChild(save);
+        btn.appendChild(perMonth);
+        btn.addEventListener('click', () => setPopupSelectedPlan(plan.key));
+        picker.appendChild(btn);
+    });
+    updatePopupContinueButton();
+}
+
+// --- Manual-payment checkout (UPI), for the plan picked in the
+// plan picker above ----------------------------------------------
+// Shares the method picker, UPI view and proof form with the premium modal
+// (premium-config.js) so the two never drift apart. Nothing here promises
+// automatic activation for a manual payment: premium activates only once an
+// admin approves the submitted proof.
+
+function getPopupPaymentStep() {
+    return document.getElementById('paymentStep');
+}
+
+function showPopupPaymentStep() {
+    const step = getPopupPaymentStep();
+    if (step) {
+        step.style.display = 'block';
+        step.innerHTML = '';
+    }
+    return step;
+}
+
+function hidePopupPaymentStep() {
+    const step = getPopupPaymentStep();
+    if (step) {
+        step.style.display = 'none';
+        step.innerHTML = '';
+    }
+}
+
+function showPopupUnderReview() {
+    const subscribeButton = document.getElementById('subscribeButton');
+    if (subscribeButton) subscribeButton.style.display = 'none';
+    const planPicker = document.getElementById('popupPlanPicker');
+    if (planPicker) planPicker.style.display = 'none';
+    const step = showPopupPaymentStep();
+    if (step && typeof window.createUnderReviewNotice === 'function') {
+        step.appendChild(window.createUnderReviewNotice());
+    }
+}
+
+// When a proof is under review the popup shows that state instead of the
+// Subscribe button. Called after login / login-status checks.
+function refreshPopupPendingState(membership) {
+    if (!membership || membership.turu === 'premium' || !membership.pendingProof) return;
+    showPopupUnderReview();
+}
+
+async function showPopupPaymentFlow(plan) {
+    plan = typeof window.getPremiumPlan === 'function'
+        ? window.getPremiumPlan(plan).key : (plan || '1mo');
+    const subscribeButton = document.getElementById('subscribeButton');
+    const planPicker = document.getElementById('popupPlanPicker');
+    const apiUrl = window.PAYMENT_API_URL;
+    if (!apiUrl || typeof apiUrl !== 'string' || apiUrl.includes('PASTE-YOUR-WORKER')) {
+        showErrorMessage('Payment is not configured yet.');
+        return;
+    }
+    const data = await chrome.storage.local.get(['user_info']);
+    const userId = (data.user_info && data.user_info.id) || '';
+    const email = (data.user_info && data.user_info.email) || '';
+
+    if (subscribeButton) subscribeButton.style.display = 'none';
+    if (planPicker) planPicker.style.display = 'none';
+    const step = showPopupPaymentStep();
+    if (step) step.textContent = 'Loading payment methods…';
+    const methods = typeof window.getPaymentMethods === 'function'
+        ? await window.getPaymentMethods()
+        : { upi: true, razorpay: false };
+
+    const renderPicker = () => {
+        const stepEl = showPopupPaymentStep();
+        if (!stepEl || typeof window.createPaymentMethodPicker !== 'function') return;
+        stepEl.appendChild(window.createPaymentMethodPicker({
+            plan: plan,
+            methods,
+            onPick: (method) => onMethodPicked(method)
+        }));
+        const backBtn = document.createElement('button');
+        backBtn.type = 'button';
+        backBtn.textContent = 'Back';
+        backBtn.style.cssText = 'margin-top:8px;padding:8px 14px;background:transparent;' +
+            'border:1.5px solid #d4d4d4;border-radius:8px;color:#262626;font-size:13px;' +
+            'font-weight:600;cursor:pointer;';
+        backBtn.addEventListener('click', () => {
+            hidePopupPaymentStep();
+            if (planPicker) planPicker.style.display = 'block';
+            if (subscribeButton) subscribeButton.style.display = 'block';
+        });
+        stepEl.appendChild(backBtn);
+    };
+
+    const showProofForm = (method) => {
+        const stepEl = getPopupPaymentStep();
+        if (!stepEl || typeof window.createProofForm !== 'function') return;
+        stepEl.appendChild(window.createProofForm({
+            plan: plan,
+            method,
+            userId,
+            onSuccess: () => {
+                // Proof accepted for review: keep Subscribe hidden so the
+                // user cannot start a second checkout for the same plan.
+                if (subscribeButton) subscribeButton.style.display = 'none';
+            }
+        }));
+    };
+
+    const onMethodPicked = async (method) => {
+        if (method === 'upi') {
+            const stepEl = showPopupPaymentStep();
+            if (!stepEl) return;
+            stepEl.appendChild(window.createUpiPaymentView(plan));
+            showProofForm('upi');
+            return;
+        }
+    };
+
+    renderPicker();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -200,60 +397,18 @@ function setupMenuAndContent() {
                 showSuccessMessage(getMessage('premiumUnlockAllMessage'));
                 return;
             }
-            const originalText = subscribeButton.textContent;
-            const apiUrl = window.PAYMENT_API_URL;
-            if (!apiUrl || typeof apiUrl !== 'string' || apiUrl.includes('PASTE-YOUR-WORKER')) {
-                showErrorMessage('Payment is not configured yet.');
+            if (membership.pendingProof) {
+                // A proof is already under review: show that state instead of
+                // Subscribe, and do not start a poll for it.
+                showPopupUnderReview();
                 return;
             }
-            const data = await chrome.storage.local.get(['user_info']);
-            const userId = (data.user_info && data.user_info.id) || '';
-            const email = (data.user_info && data.user_info.email) || '';
-            let response;
-            try {
-                response = await fetch(apiUrl + '/create-link', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ plan: 'monthly', userId })
-                });
-            } catch (error) {
-                console.error('Payment link failed:', error);
-                showErrorMessage('Could not reach the payment server — check your connection and try again.');
-                return;
-            }
-            const payload = await response.json().catch(() => ({}));
-            if (!response.ok || !payload.short_url) {
-                // The worker answered with an error payload: show its text. A bare
-                // non-ok response means the server could not be reached usefully.
-                showErrorMessage(payload.error || 'Could not reach the payment server — check your connection and try again.');
-                return;
-            }
-            window.open(payload.short_url, '_blank');
-            if (typeof window.pollPremiumActivation !== 'function') {
-                showSuccessMessage('Complete the payment in the opened tab. Premium activates once the payment is confirmed.');
-                return;
-            }
-            subscribeButton.textContent = 'Waiting for payment…';
-            subscribeButton.disabled = true;
-            window.pollPremiumActivation({
-                userId,
-                email,
-                onActive: async () => {
-                    subscribeButton.disabled = false;
-                    showSuccessMessage('Premium active!');
-                    // Re-run the membership UI update path so the badge, expiry and
-                    // subscribe button all reflect the new premium state.
-                    const fresh = await getPremiumMembership();
-                    updateUIAfterLogin(data.user_info, fresh);
-                },
-                onTimeout: () => {
-                    subscribeButton.disabled = false;
-                    subscribeButton.textContent = originalText;
-                    showErrorMessage('Payment not confirmed yet — reopen the popup to check');
-                }
-            });
+            await showPopupPaymentFlow(getPopupSelectedPlan());
         });
     }
+
+    // Render the five-plan picker (default 1 month) in the Upgrade section.
+    renderPopupPlanPicker();
 
     // Analyze butonuna tıklandığında Instagram kontrolü yap
     const analyzeBtn = document.getElementById('analyzeBtn');
@@ -440,10 +595,15 @@ async function updateUIAfterLogin(userInfo, membership) {
         const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
         if (isPremium) {
             subscribeButton.textContent = getMessage('manageSubscription');
+            const planPicker = document.getElementById('popupPlanPicker');
+            if (planPicker) planPicker.style.display = 'none';
         } else {
-            subscribeButton.textContent = getMessage('upgradeToPremium');
+            updatePopupContinueButton();
         }
     }
+
+    // A proof under review replaces the Subscribe button with that state.
+    refreshPopupPendingState(membership);
 
 }
 
@@ -666,10 +826,18 @@ async function checkLoginStatus() {
                 const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
                 if (isPremium) {
                     subscribeButton.textContent = getMessage('manageSubscription');
+                    const planPicker = document.getElementById('popupPlanPicker');
+                    if (planPicker) planPicker.style.display = 'none';
                 } else {
-                    subscribeButton.textContent = getMessage('upgradeToPremium');
+                    updatePopupContinueButton();
                 }
             }
+
+            // A proof under review replaces the Subscribe button with that state.
+            // Re-read membership here: the background's copy may not carry
+            // pendingProof, while the popup's own getPremiumMembership does.
+            const freshMembership = await getPremiumMembership().catch(() => membership);
+            refreshPopupPendingState(freshMembership);
             
             // Instagram kontrolünü başlat
             checkInstagramLogin();
@@ -701,9 +869,18 @@ async function checkLoginStatus() {
 
 
 function fetchPrices() {
-  // Static pricing — no external server
-  document.getElementById('oldPrice').textContent = '₹699';
-  document.getElementById('newPrice').textContent = '₹199';
+  // Prices come from the shared plan definition (premium-config.js): the card
+  // shows the cheapest plan as "From ₹X" and the biggest saving across plans.
+  if (!Array.isArray(window.PREMIUM_PLANS) || !window.PREMIUM_PLANS.length) return;
+  const cheapest = window.PREMIUM_PLANS[0];
+  const newPriceEl = document.getElementById('newPrice');
+  if (newPriceEl) newPriceEl.textContent = '₹' + cheapest.price;
+  const biggestSave = Math.max.apply(null,
+    window.PREMIUM_PLANS.map((plan) => plan.save || 0));
+  const discountEl = document.getElementById('discountText');
+  if (discountEl && biggestSave > 0) {
+    discountEl.textContent = 'Save up to ₹' + biggestSave;
+  }
 }
 
 // Call this function when the popup loads
