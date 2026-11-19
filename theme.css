@@ -1,34 +1,38 @@
 :root {
-  /* v2.0.0 — modern clean light theme (Instagram-adjacent). Legacy variable names are
-     kept so the overrides below keep working; only their values changed. */
-  --paper: #fafafa;
-  --paper-2: #f4f4f5;
+  /* v2.0.0 (revised 2026-11-19) — Design B "Colourful bold", picked by Satyam.
+     Replaces the rejected white / Instagram-gradient theme (2026-11-06).
+     Legacy variable names are kept so the base rules below keep working;
+     only their values changed. NO gradient anywhere. */
+  --paper: #eef2ff;
+  --paper-2: #e0e7ff;
   --card: #ffffff;
   --card-hi: #ffffff;
-  --ink: #262626;
-  --ink-2: #525252;
-  --ink-3: #8e8e8e;
-  --rule: #e5e5e5;
-  --rule-strong: #d4d4d4;
-  --rust: #d62976;
-  --rust-deep: #962fbf;
-  --rust-soft: #fdf0f6;
-  --mustard: #fa7e1e;
-  --mustard-deep: #c85a10;
-  --mustard-soft: #fef3e8;
-  --olive: #15803d;
-  --olive-deep: #166534;
-  --olive-soft: #f0fdf4;
-  --oxblood: #ed4956;
-  --oxblood-deep: #c81e2b;
-  --oxblood-soft: #fef2f2;
-  --ig-gradient: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-  --ig-accent: #d62976;
-  --ig-blue: #0095f6;
+  --ink: #1e1b4b;
+  --ink-2: #312e81;
+  --ink-3: #64748b;
+  --rule: #dbe2f7;
+  --rule-strong: #c7d2fe;
+  --rust: #dc2626;
+  --rust-deep: #b91c1c;
+  --rust-soft: #ffe4e6;
+  --mustard: #f59e0b;
+  --mustard-deep: #92400e;
+  --mustard-soft: #fef3c7;
+  --olive: #059669;
+  --olive-deep: #065f46;
+  --olive-soft: #d1fae5;
+  --oxblood: #dc2626;
+  --oxblood-deep: #b91c1c;
+  --oxblood-soft: #ffe4e6;
   --serif: 'Inter', 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --sans: 'Inter', 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --shadow-hard: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 16px rgba(0, 0, 0, 0.06);
-  --shadow-hard-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-hard: 0 1px 2px rgba(30, 27, 75, 0.06), 0 4px 16px rgba(30, 27, 75, 0.08);
+  --shadow-hard-sm: 0 1px 2px rgba(30, 27, 75, 0.06), 0 2px 8px rgba(30, 27, 75, 0.06);
+  --indigo: #4f46e5;
+  --indigo-deep: #4338ca;
+  --indigo-dark: #312e81;
+  --navy: #1e1b4b;
+  --amber: #f59e0b;
 }
 
 html, body {
@@ -78,7 +82,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(38, 32, 22, 0.02) 2px 3px);
+  background: none;
   pointer-events: none;
 }
 
@@ -1500,7 +1504,7 @@ body {
 }
 
 .loading-animation {
-  background: linear-gradient(90deg, var(--paper-2) 25%, var(--rule) 50%, var(--paper-2) 75%) !important;
+  background: var(--paper-2) !important;
   background-size: 200% 100% !important;
   border-radius: 2px !important;
 }
@@ -3027,13 +3031,16 @@ body {
 }
 
 /* ==========================================================================
-   v2.0.0 — modern clean light theme overrides.
+   v2.0.0 (revised 2026-11-19) — Design B "Colourful bold", picked by Satyam.
+   Replaces the rejected white / Instagram-gradient theme (2026-11-06).
    Appended last so these win over the v1 editorial overrides above.
-   Primary actions use the Instagram gradient sparingly; everything else is
-   white / #fafafa with soft shadows and 12px radii. Light-only, no dark mode.
+   Palette: deep indigo/navy header (#1e1b4b) with a 4px amber rule (#f59e0b),
+   lavender-grey page (#eef2ff), white cards, solid indigo primary actions
+   (#4f46e5), solid red danger (#dc2626), stat fills amber / green / rose.
+   NO gradient anywhere. Light-only, no dark mode.
    ========================================================================== */
 
-/* Hard offset "paper" shadows -> soft modern shadows */
+/* Soft shadows (replaces the hard offset "paper" shadows) */
 .google-login-btn,
 .gmail-login-required-btn,
 .login-redirect-btn,
@@ -3063,7 +3070,7 @@ body {
 .swal-custom-popup,
 .login-icon-wrapper,
 .bot-intro-icon {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 1px 2px rgba(30, 27, 75, 0.06), 0 4px 16px rgba(30, 27, 75, 0.08) !important;
 }
 
 /* 12px rounded cards, panels, buttons and inputs */
@@ -3091,7 +3098,8 @@ body {
 .swal2-popup,
 .swal-custom-popup,
 .login-icon-wrapper,
-.logo-icon {
+.logo-icon,
+.admin-gate-card {
   border-radius: 12px !important;
 }
 
@@ -3124,11 +3132,13 @@ body {
 .page-btn,
 .page-nav-btn,
 .bot-more,
-.premium-card-subscribe-button {
+.premium-card-subscribe-button,
+.admin-signout-btn {
   border-radius: 12px !important;
 }
 
 .filter-controls .stat-card,
+.admin-stat,
 .trust-item,
 .security-badge,
 .timer-settings,
@@ -3139,19 +3149,88 @@ body {
   border-radius: 12px !important;
 }
 
-/* Header: thin rule instead of the heavy 3px ink border + ruled-paper lines */
+/* ---- Headers: deep indigo bar, white text, 4px amber rule ---- */
 .header {
-  border-bottom: 1px solid var(--rule) !important;
+  background: #1e1b4b !important;
+  border-bottom: 4px solid #f59e0b !important;
 }
 .header::before,
 .header::after {
   display: none !important;
 }
 .app-header {
-  border-bottom: 1px solid var(--rule) !important;
+  background: #1e1b4b !important;
+  border-bottom: 4px solid #f59e0b !important;
+}
+.header-content h1,
+.logo-text h1 {
+  color: #fff !important;
+}
+.tagline {
+  color: #a5b4fc !important;
+}
+.logo-icon {
+  background: #f59e0b !important;
+  border: 0 !important;
+}
+.logo-icon img {
+  border-radius: 8px !important;
+}
+/* User chip on the indigo header: dark translucent pill, white text */
+.header .user-info-card,
+.app-header .user-profile {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+.header .user-info-name,
+.app-header .user-name {
+  color: #fff !important;
+}
+.app-header .user-email {
+  color: #c7d2fe !important;
+}
+.header .logout-btn,
+.app-header .logout-btn {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  color: #fff !important;
+}
+.header .logout-btn:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #fff !important;
+}
+/* Login button on the indigo header: amber, dark text */
+.header .google-login-btn {
+  background: #f59e0b !important;
+  border-color: transparent !important;
+  color: #1e1b4b !important;
+}
+.header .google-login-btn:hover {
+  background: #fbbf24 !important;
+  border-color: transparent !important;
 }
 
-/* Gradient primary actions (sparingly) */
+/* ---- Menu: white bar, indigo active state ---- */
+.menu-container {
+  background: #fff !important;
+}
+.menu-item {
+  color: #312e81 !important;
+}
+.menu-item:hover {
+  background: #eef2ff !important;
+  color: #1e1b4b !important;
+}
+.menu-item.active {
+  border-bottom-color: #4f46e5 !important;
+  color: #1e1b4b !important;
+}
+.menu-item.active .menu-icon {
+  color: #4f46e5 !important;
+}
+
+/* ---- Primary actions: solid indigo (never a gradient) ---- */
 .btn-primary,
 .action-button,
 .gmail-login-required-btn,
@@ -3159,9 +3238,11 @@ body {
 .subscribe-button,
 .premium-footer-button,
 .footer-premium-btn,
-.limit-upgrade-btn {
-  background: var(--ig-gradient) !important;
+.limit-upgrade-btn,
+.upgrade-btn {
+  background: #4f46e5 !important;
   border: 0 !important;
+  color: #fff !important;
 }
 .btn-primary:hover,
 .action-button:hover,
@@ -3170,98 +3251,214 @@ body {
 .subscribe-button:hover,
 .premium-footer-button:hover,
 .footer-premium-btn:hover,
-.limit-upgrade-btn:hover {
-  background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf) !important;
-  filter: brightness(1.03) !important;
+.limit-upgrade-btn:hover,
+.upgrade-btn:hover {
+  background: #4338ca !important;
 }
 .btn-reanalyze {
-  background: var(--ig-gradient) !important;
+  background: #4f46e5 !important;
   color: #fff !important;
 }
 .btn-reanalyze:hover {
-  background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf) !important;
+  background: #4338ca !important;
   color: #fff !important;
 }
 .custom-modal-btn-confirm,
 .swal2-confirm,
 .swal-custom-confirm {
-  background: var(--ig-gradient) !important;
+  background: #4f46e5 !important;
 }
 .custom-modal-btn-confirm:hover,
 .swal2-confirm:hover,
 .swal-custom-confirm:hover {
-  background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf) !important;
+  background: #4338ca !important;
 }
-
-/* Active menu state: gradient accent instead of rust underline */
-.menu-item.active {
-  border-bottom-color: var(--ig-accent) !important;
+.btn-danger {
+  background: #dc2626 !important;
 }
-.menu-item.active .menu-icon {
-  color: var(--ig-accent) !important;
+.btn-danger:hover {
+  background: #b91c1c !important;
 }
-
-/* Table header: light, not a solid ink bar */
-.following-table thead {
-  background: #fafafa !important;
+/* Secondary buttons: white with an indigo border and indigo text */
+.btn-secondary {
+  background: #fff !important;
+  border: 1px solid #4f46e5 !important;
+  color: #4338ca !important;
 }
-.following-table thead th {
-  color: #737373 !important;
-  border-bottom: 1px solid var(--rule) !important;
+.btn-secondary:hover {
+  background: #eef2ff !important;
+  border-color: #4338ca !important;
 }
-.following-table tbody tr:hover {
-  background: #fdf0f6 !important;
+/* v2 fix, kept: theme's global .button-content is white, which made secondary
+   (white) buttons unreadable — white text on a white button. */
+.btn-secondary .button-content {
+  color: #4338ca !important;
 }
-
-/* Gradient logo tile */
-.logo-icon {
-  background: var(--ig-gradient) !important;
-  border: 0 !important;
+.btn-secondary .button-icon {
+  color: #4338ca !important;
+}
+.google-login-btn {
+  background: #4f46e5 !important;
+}
+.google-login-btn:hover {
+  background: #4338ca !important;
 }
 .login-icon-wrapper {
-  background: var(--ig-gradient) !important;
+  background: #4f46e5 !important;
 }
 .login-icon {
-  color: #fff !important;
+  color: #fbbf24 !important;
 }
 .bot-intro-icon {
-  background: var(--ig-gradient) !important;
+  background: #4f46e5 !important;
   color: #fff !important;
 }
-
-/* Stat cards: white with a soft tint, Inter numerals (no serif) */
-.filter-controls .stat-followers,
-.filter-controls .stat-following,
-.filter-controls .stat-nonfollowers {
-  background: #fff !important;
+.fun-text {
+  color: #4338ca !important;
 }
-.filter-controls .stat-followers .stat-value { color: var(--olive-deep) !important; }
-.filter-controls .stat-following .stat-value { color: var(--ig-accent) !important; }
-.filter-controls .stat-nonfollowers .stat-value { color: var(--oxblood-deep) !important; }
+.security-badge svg {
+  color: #4f46e5 !important;
+}
 
-/* Campaign + premium accents */
+/* ---- Analyzer table: indigo header bar, indigo usernames, red badges ---- */
+.following-table thead {
+  background: #312e81 !important;
+}
+.following-table thead th {
+  color: #fff !important;
+  border-bottom: 0 !important;
+}
+.following-table tbody tr:hover {
+  background: #eef2ff !important;
+}
+.username-cell {
+  color: #4338ca !important;
+}
+.profile-image {
+  border: 2px solid #c7d2fe !important;
+}
+.following-badge {
+  background: #059669 !important;
+}
+.not-following-badge {
+  background: #dc2626 !important;
+}
+.unfollow-btn {
+  background: #dc2626 !important;
+}
+.unfollow-btn:hover {
+  background: #b91c1c !important;
+}
+.page-btn.active {
+  background: #4f46e5 !important;
+  border-color: #4f46e5 !important;
+}
+
+/* ---- Stat cards: solid soft fills (amber / green / rose) ---- */
+.filter-controls .stat-following {
+  background: #fef3c7 !important;
+  border-color: #f59e0b !important;
+}
+.filter-controls .stat-following .stat-value,
+.filter-controls .stat-following .stat-label {
+  color: #92400e !important;
+}
+.filter-controls .stat-following .stat-icon {
+  background: #fff !important;
+  color: #92400e !important;
+}
+.filter-controls .stat-followers {
+  background: #d1fae5 !important;
+  border-color: #059669 !important;
+}
+.filter-controls .stat-followers .stat-value,
+.filter-controls .stat-followers .stat-label {
+  color: #065f46 !important;
+}
+.filter-controls .stat-followers .stat-icon {
+  background: #fff !important;
+  color: #065f46 !important;
+}
+.filter-controls .stat-nonfollowers {
+  background: #ffe4e6 !important;
+  border-color: #dc2626 !important;
+}
+.filter-controls .stat-nonfollowers .stat-value,
+.filter-controls .stat-nonfollowers .stat-label {
+  color: #b91c1c !important;
+}
+.filter-controls .stat-nonfollowers .stat-icon {
+  background: #fff !important;
+  color: #b91c1c !important;
+}
+.stat-trend {
+  font-size: 11px;
+  font-weight: 600;
+  color: #4338ca;
+  margin-top: 2px;
+}
+
+/* ---- Timer / countdown pills ---- */
+.timer-settings {
+  background: #fef3c7 !important;
+  border: 1px solid #fde68a !important;
+}
+.timer-icon {
+  color: #92400e !important;
+}
+.timer-label {
+  color: #92400e !important;
+}
+.countdown-display {
+  background: #ffe4e6 !important;
+  border: 1px solid #fda4af !important;
+}
+.countdown-icon {
+  color: #b91c1c !important;
+}
+.countdown-text {
+  color: #b91c1c !important;
+}
+
+/* ---- Campaign + premium accents: indigo + amber ---- */
 .campaign-banner {
-  background: var(--ig-gradient) !important;
-  border-left: 0 !important;
+  background: #1e1b4b !important;
+  border-left: 4px solid #f59e0b !important;
+}
+.campaign-text strong {
+  color: #fff !important;
 }
 .pricing-card.featured {
-  border: 2px solid var(--ig-accent) !important;
+  border: 2px solid #4f46e5 !important;
 }
 .plan-badge {
-  background: var(--ig-gradient) !important;
-  color: #fff !important;
+  background: #f59e0b !important;
+  color: #1e1b4b !important;
 }
 .new-price {
-  color: var(--ig-accent) !important;
-  -webkit-text-fill-color: var(--ig-accent) !important;
-  text-fill-color: var(--ig-accent) !important;
+  color: #4338ca !important;
+  -webkit-text-fill-color: #4338ca !important;
+  text-fill-color: #4338ca !important;
 }
 .discount-badge span {
-  background: var(--rust-soft) !important;
-  color: var(--rust-deep) !important;
+  background: #fef3c7 !important;
+  color: #92400e !important;
+}
+.upgrade-btn {
+  background: #4f46e5 !important;
+}
+.upgrade-btn:hover {
+  background: #4338ca !important;
+}
+.limit-banner-premium-btn {
+  background: #f59e0b !important;
+  color: #1e1b4b !important;
+}
+.limit-banner-premium-btn:hover {
+  background: #fbbf24 !important;
 }
 
-/* Toggles / progress use the accent, not rust-brown */
+/* ---- Toggles / progress use indigo ---- */
 .toggle-switch input:checked + .toggle-slider,
 .filter-switch input:checked + .switch-slider,
 .progress-fill,
@@ -3269,19 +3466,15 @@ body {
 .loading-bar-fill,
 .scan-ring-arc,
 .loading-ring-progress {
-  background: var(--ig-accent) !important;
-  border-color: var(--ig-accent) !important;
+  background: #4f46e5 !important;
+  border-color: #4f46e5 !important;
 }
 .scan-ring-arc,
 .loading-ring-progress {
-  stroke: var(--ig-accent) !important;
-}
-.page-btn.active {
-  background: var(--ig-accent) !important;
-  border-color: var(--ig-accent) !important;
+  stroke: #4f46e5 !important;
 }
 
-/* v2 toolbar (analyzer search / sort / chips / export) */
+/* ---- Analyzer toolbar (v2 search / sort / chips / export) ---- */
 .analyzer-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -3292,7 +3485,7 @@ body {
   border-radius: 12px;
   padding: 12px 14px;
   margin-bottom: 14px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(30, 27, 75, 0.06), 0 2px 8px rgba(30, 27, 75, 0.06);
 }
 .analyzer-search {
   flex: 1 1 220px;
@@ -3303,12 +3496,12 @@ body {
   font: inherit;
   font-size: 13px;
   color: var(--ink);
-  background: #fafafa;
+  background: #eef2ff;
   outline: none;
 }
 .analyzer-search:focus {
-  border-color: var(--ig-accent);
-  box-shadow: 0 0 0 3px rgba(214, 41, 118, 0.12);
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
   background: #fff;
 }
 .analyzer-sort {
@@ -3322,8 +3515,8 @@ body {
   outline: none;
 }
 .analyzer-sort:focus {
-  border-color: var(--ig-accent);
-  box-shadow: 0 0 0 3px rgba(214, 41, 118, 0.12);
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
 .filter-chip {
   padding: 7px 12px;
@@ -3337,11 +3530,11 @@ body {
   cursor: pointer;
 }
 .filter-chip:hover {
-  border-color: var(--ig-accent);
-  color: var(--ig-accent);
+  border-color: #4f46e5;
+  color: #4338ca;
 }
 .filter-chip.active {
-  background: var(--ig-gradient);
+  background: #4f46e5;
   border-color: transparent;
   color: #fff;
 }
@@ -3353,21 +3546,21 @@ body {
 .analyzer-export .btn {
   white-space: nowrap;
 }
-.stat-trend {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--ink-2);
-  margin-top: 2px;
+.analyzer-export .btn-primary {
+  background: #1e1b4b !important;
+}
+.analyzer-export .btn-primary:hover {
+  background: #312e81 !important;
 }
 
-/* Last-analysis summary card (popup home) */
+/* ---- Last-analysis summary card (popup home) ---- */
 .last-analysis-card {
   background: #fff;
   border: 1px solid var(--rule);
   border-radius: 12px;
   padding: 14px 16px;
   margin-top: 12px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(30, 27, 75, 0.06), 0 2px 8px rgba(30, 27, 75, 0.06);
 }
 .last-analysis-card h3 {
   margin: 0 0 8px;
@@ -3405,51 +3598,195 @@ body {
   width: 100%;
 }
 
-/* Honest privacy note replacing the old trust-indicator blocks */
+/* ---- Honest privacy note (replaces the old trust-indicator blocks) ---- */
 .privacy-note {
   margin-top: 14px;
   padding: 10px 12px;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background: #d1fae5;
+  border: 1px solid #6ee7b7;
   border-radius: 12px;
   font-size: 12px;
-  color: #166534;
+  color: #065f46;
   text-align: center;
 }
 
-/* v2 fix: theme's global .button-content is white, which made secondary (white)
-   buttons unreadable — white text on a white button. Seen in the v2 screenshots. */
-.btn-secondary .button-content {
-  color: var(--ink) !important;
-}
-.btn-secondary .button-icon {
-  color: var(--ink) !important;
-}
-
-/* Premium modal classes (analyzer.html / bot-scan.html use premium-* names) */
+/* ---- Premium modal classes (analyzer.html / bot-scan.html) ---- */
 .premium-modal-content {
   border: 1px solid var(--rule) !important;
   border-top: 1px solid var(--rule) !important;
   border-radius: 12px !important;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 8px 30px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 1px 2px rgba(30, 27, 75, 0.06), 0 8px 30px rgba(30, 27, 75, 0.12) !important;
 }
 .premium-pricing-card {
   border-radius: 12px !important;
 }
 .premium-pricing-card.premium-featured {
-  border: 2px solid var(--ig-accent) !important;
+  border: 2px solid #4f46e5 !important;
 }
 .premium-plan-badge {
-  background: var(--ig-gradient) !important;
-  color: #fff !important;
+  background: #f59e0b !important;
+  color: #1e1b4b !important;
 }
 .premium-card-subscribe-button {
   border-radius: 12px !important;
 }
 .premium-card-subscribe-button.premium-featured-button {
-  background: var(--ig-gradient) !important;
+  background: #4f46e5 !important;
   color: #fff !important;
 }
 .premium-card-subscribe-button.premium-featured-button:hover {
-  background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf) !important;
+  background: #4338ca !important;
+}
+
+/* ---- Bot scan: indigo accents, solid score chips ---- */
+.bot-filter-btn.active {
+  background: #4f46e5 !important;
+  border-color: #4f46e5 !important;
+  color: #fff !important;
+}
+.bot-filter-btn:hover {
+  border-color: #4f46e5 !important;
+  color: #4338ca !important;
+}
+.bot-filter-btn.active:hover {
+  color: #fff !important;
+}
+.bot-score-high {
+  background: #ffe4e6 !important;
+  color: #b91c1c !important;
+}
+.bot-score-mid {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+}
+.bot-score-low {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+}
+.bot-chip-high {
+  background: #ffe4e6 !important;
+  color: #b91c1c !important;
+}
+.bot-chip-mid {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+}
+.bot-chip-low {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+}
+.bot-more {
+  color: #4338ca !important;
+}
+.bot-more:hover {
+  background: #eef2ff !important;
+  border-color: #4f46e5 !important;
+}
+.bot-modal-score {
+  color: #4338ca !important;
+}
+.bot-signal-dot {
+  background: #4f46e5 !important;
+}
+
+/* ---- Admin console ---- */
+.admin-stat {
+  background: #fff !important;
+  border: 1px solid var(--rule) !important;
+}
+.admin-stat-value {
+  color: #1e1b4b !important;
+}
+.admin-search {
+  border: 1px solid var(--rule-strong) !important;
+  background: #fff !important;
+}
+.admin-search:focus {
+  border-color: #4f46e5 !important;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15) !important;
+}
+.admin-table thead {
+  background: #312e81 !important;
+}
+.admin-table thead th {
+  color: #fff !important;
+}
+.admin-gate-card {
+  background: #fff !important;
+  border: 1px solid var(--rule) !important;
+}
+
+/* ---- Popup profile + misc ---- */
+.instagram-profile {
+  border: 1px solid var(--rule) !important;
+}
+.profile-username {
+  color: #1e1b4b !important;
+}
+.profile-status {
+  color: #065f46 !important;
+}
+.stat-icon {
+  background: #eef2ff !important;
+  color: #4338ca !important;
+}
+.stat-icon i {
+  color: #4338ca !important;
+}
+.botscan-card {
+  background: #fff !important;
+}
+.botscan-icon {
+  background: #eef2ff !important;
+  color: #4338ca !important;
+}
+.botscan-card h3 {
+  color: #1e1b4b !important;
+}
+.popup-footer .footer-heart {
+  color: #dc2626;
+}
+
+/* ---- Review fixes (2026-11-19, from screenshot review) ---- */
+/* Verified check: indigo, not red */
+.verified-badge,
+.verified-badge svg {
+  color: #4338ca !important;
+}
+/* Premium prices: solid indigo, never gradient text (premium-modal.css uses a
+   blue gradient-text fill; the yearly card fell back to the red --rust). */
+.premium-pricing-card .premium-new-price {
+  background: none !important;
+  -webkit-text-fill-color: #4338ca !important;
+  text-fill-color: #4338ca !important;
+  color: #4338ca !important;
+}
+.premium-pricing-card .premium-old-price {
+  color: #64748b !important;
+}
+.premium-discount-badge span {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+}
+/* Page buttons had no horizontal padding, so "Prev"/"Next" text spilled past
+   the button edges (seen on the admin pagination). */
+.page-btn,
+.page-nav-btn {
+  padding: 0 12px !important;
+  width: auto !important;
+}
+/* Admin membership badges: solid B colours, pill shape */
+.admin-badge {
+  border-radius: 999px !important;
+}
+.admin-badge.grant,
+.admin-badge.premium {
+  background: #f59e0b !important;
+  color: #1e1b4b !important;
+  border: 1px solid transparent !important;
+}
+.admin-badge.free {
+  background: #eef2ff !important;
+  color: #4338ca !important;
+  border: 1px solid #c7d2fe !important;
 }

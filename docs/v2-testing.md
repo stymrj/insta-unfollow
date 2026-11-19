@@ -12,7 +12,7 @@ Load the branch unpacked — nothing here publishes anything.
 
 | # | Check | How |
 |---|-------|-----|
-| 1 | New look | Open the popup and the analyzer. Background should be white / very light grey with pink-purple gradient primary buttons, 12px rounded cards, Inter font — no beige, no serif headings. |
+| 1 | New look (Design B) | Open the popup and the analyzer. Design B "Colourful bold": lavender-grey page (#eef2ff), deep indigo header bar with a 4px amber rule, solid indigo primary buttons, amber/green/rose stat cards, indigo table header, 12px rounded cards, Inter font — no gradient anywhere, no beige, no serif headings. |
 | 2 | Last Analysis card | After one analysis, the popup home tab shows a "Last analysis" card (followers / following / not-following / scan date). "View results" opens the analyzer. Before any analysis, the card is hidden. |
 | 3 | Analyzer search | In the analyzer table toolbar, type part of a username or full name — the list filters as you type. Clear it to get the full list back. |
 | 4 | Analyzer sort | Sort dropdown: "Username A–Z" reorders alphabetically; "Not following first" puts non-followers on top. ("Most followers" is intentionally absent — Instagram's list data has no follower counts.) |
@@ -33,6 +33,6 @@ Load the branch unpacked — nothing here publishes anything.
 
 ## If something looks wrong
 
-- Popup/analyzer still beige: you loaded the store build or an old unpacked copy — remove it and load the `v2` folder again, then hard-reload the analyzer tab.
+- Popup/analyzer still beige (v1) or white with pink-purple gradient buttons (rejected first v2 theme): you loaded the store build or an old unpacked copy — remove it and load the `v2` folder again, then hard-reload the analyzer tab.
 - "Last analysis" card missing after an analysis: it only appears after a **fresh** analysis saves a snapshot (loading from cache does not rewrite it). Run one fresh analysis.
 - Trend line shows the wrong comparison: it compares with your last saved snapshot. If you only ever ran one analysis, there is nothing to compare with — that is correct behaviour.

@@ -3,7 +3,8 @@
 ## 2.0.0 — 2026-11-06
 
 ### Design
-- Replaced the beige "paper & ink" editorial theme with a modern clean light theme: white / `#fafafa` backgrounds, `#262626` ink, Inter throughout, Instagram gradient accent (`#feda75 → #fa7e1e → #d62976 → #962fbf → #4f5bd5`) on primary buttons, active states and the logo, 12px rounded cards, soft shadows. Light-only, no dark mode.
+- Replaced the beige "paper & ink" editorial theme with a modern clean light theme: white / `#fafafa` backgrounds, `#262626` ink, Inter throughout, Instagram gradient accent (`#feda75 → #fa7e1e → #d62976 → #962fbf → #4f5bd5`) on primary buttons, active states and the logo, 12px rounded cards, soft shadows. Light-only, no dark mode. **Superseded 2026-11-19 — see revision note below.**
+- **2026-11-19 revision — Design B "Colourful bold" (Satyam's pick).** The white / Instagram-gradient theme above was rejected by Satyam on 2026-11-06 ("too much worst design"). It was replaced with the design he picked from three mockups: deep indigo/navy header (`#1e1b4b`) with a 4px amber (`#f59e0b`) rule, lavender-grey page (`#eef2ff`), white cards, solid indigo primary actions (`#4f46e5`), solid red danger (`#dc2626`), amber / green / rose stat fills, indigo table header — applied consistently to the analyzer, popup, bot scan, admin console and premium modal, with no gradient anywhere. All store screenshots, promo tile and marquee regenerated from the real B theme.
 - Regenerated all store screenshots, promo tile (440×280) and marquee (1400×560) from the new UI with headless Chromium (`screenshots/` and `store-assets/`).
 - Fixed two v1 rendering bugs found while screenshotting: secondary buttons had white text on a white button (unreadable), and the premium modal had a 4px black top border.
 
