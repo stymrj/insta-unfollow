@@ -14,9 +14,23 @@
 - Popup: Last Analysis summary card (followers / following / not-following / scan date) with a View results button; hidden cleanly when no analysis exists yet. The analyzer writes one small `lastAnalysisSummary` key so the popup can read it without knowing the Instagram user id.
 - Bot scan: Export flagged CSV (username, full name, verdict, score %, raw score, reasons, deep-checked) from the already-computed scores — no new requests.
 
+### Payments, admin & reliability fixes (2026-11-19 — same 2.0.0, before store publish)
+
+- **Price decision (supersedes the $ pricing above): the real price is ₹199/month and ₹1,499/year, INR.** The worker's old `199`/`1499` were meant as rupees; the `$6.99`/`$74.99` UI was v1 legacy USD that never matched the worker. All user-facing pricing is now ₹: monthly ₹699 → ₹199 (72% OFF), yearly ₹2,388 (12 × ₹199) → ₹1,499 (**37% OFF**, corrected from 42% — 889/2388 = 37.2%), "Save ₹889/year vs monthly". Fixed in popup, premium modal, store description. The worker now sends Razorpay amounts in paise as Razorpay requires: `19900` / `149900`.
+- **Premium now actually expires.** The worker records `paidAt`/`expiresAt` (30 days monthly, 365 days yearly) the first time a paid link is seen and signs every later token with that same expiry. Previously every status check signed a fresh 365 days, so one payment meant premium forever.
+- **Dead payment links are never reused.** An expired/cancelled Razorpay link now yields a fresh link instead of being handed back to the user.
+- **Razorpay webhook added** (`POST /webhook/razorpay`, HMAC-SHA256 verified against new env var `RAZORPAY_WEBHOOK_SECRET`): premium activates the moment Razorpay reports `payment_link.paid`, even if the user closed the tab. Status polling remains as fallback. Redeploy required — see `docs/worker-deploy.md`.
+- **Auth added to `/create-link` and `/register`:** a Google access token whose user id matches the request is now required; `/status` stays public (its token is signed and bound to the user).
+- **`/status` no longer hammers Razorpay:** an unpaid link checked < 5 min ago returns `premium:false` from cache.
+- **Popup Subscribe now polls like the premium modal** (shared `pollPremiumActivation` helper, every 4s up to 5 min) and shows a waiting state; paying from the popup no longer leaves the user on Free until reopen. Subscribe errors now name the real problem instead of "Set PAYMENT_API_URL".
+- **One membership source of truth:** the background script now asks the worker on login/status checks, so an admin revoke/ban takes effect on the next check; local token is only a fallback when the worker is unreachable. Tokens are accepted only when their `sub` matches the logged-in Google id.
+- **Expiry is visible:** popup shows "Premium until 12 Dec 2026" when premium; admin list shows plan, paid date and days-left for paid users as well as grants.
+- **Admin console fixes:** membership is expiry-aware (expired grants/payments show Free, not Premium); the user list now pages past the first 500 users (was stuck at 500); grants store the real plan (`trial`/`monthly`/`yearly`); revoke keeps the payment record (marked revoked) instead of deleting it; `/admin/users` returns plan / paid date / expiry / revoked / link status.
+- **Not done (deliberately): server-side free limits.** Enforcing daily scan limits from the worker touches the analyzer's scan flow and could break analysis. Free limits remain enforced locally in the extension as before.
+
 ### Honesty / trust fixes
 - Removed fake social proof everywhere: "10,000+ Active Users", "4.8/5 Rating", and the fake live counter "150 people upgraded in the last 24h" (which reset to 150 every day and counted up to 350). Replaced with "Your data stays on your device — nothing is uploaded." No user or rating numbers are claimed anywhere now.
-- Pricing math: $25 → $6.99 is **72% OFF**, not 50% OFF. Fixed consistently in the popup, the analyzer premium modal, and `_locales/en/messages.json` (`discountOff`). Yearly $129.99 → $74.99 stays 42% OFF (already correct).
+- Pricing math: $25 → $6.99 is **72% OFF**, not 50% OFF. Fixed consistently in the popup, the analyzer premium modal, and `_locales/en/messages.json` (`discountOff`). Yearly $129.99 → $74.99 stays 42% OFF (already correct). **Superseded 2026-11-19 by the ₹ pricing in the section above** — the $ figures no longer appear in the UI.
 - Turkish leftovers: "(+20/gün)" → "(+20/day)", "Sonraki: 120s" → "Next: 120s", and the Turkish live-counter strings removed with the counter.
 - Free plan wording standardised everywhere: "40 analyses on day 1, +20 every day, 50 unfollows/day" (was "Max 40 following analysis").
 

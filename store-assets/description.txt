@@ -14,11 +14,11 @@ Key features:
 • Premium (optional) — unlimited analysis and unlimited unfollowing
 
 What's new in 2.0:
-• Fresh, clean design — modern light theme with Instagram-style accents
+• Fresh, colourful bold design — navy header, solid indigo buttons and bold stat cards
 • Search, sort, filter chips, Export CSV and Copy usernames in the analyzer
 • Last-analysis summary in the popup, with a visible since-last-analysis trend
 • Export flagged accounts as CSV from the bot scan
-• Honest pricing — monthly Premium is 72% off ($25 → $6.99); yearly is 42% off ($129.99 → $74.99)
+• Honest pricing — monthly Premium is 72% off (₹699 → ₹199); yearly is 37% off (₹2,388 → ₹1,499), saving ₹889/year vs monthly
 
 How it works:
 1. Sign in with Google

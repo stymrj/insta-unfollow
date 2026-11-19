@@ -13,6 +13,7 @@
  *   3. Set env vars:
  *        RAZORPAY_KEY_ID       — from dashboard.razorpay.com (API Keys)
  *        RAZORPAY_KEY_SECRET   — same page, keep secret
+ *        RAZORPAY_WEBHOOK_SECRET — Razorpay webhook secret (dashboard -> Settings -> Webhooks)
  *        SIGN_PRIVATE_KEY      — the Ed25519 private seed hex (32 bytes)
  *        ADMIN_EMAIL           — the Google email that runs the admin console
  *   4. Put the worker URL in the extension's premium-config.js (PAYMENT_API_URL).
@@ -22,6 +23,7 @@
  *   POST /create-link       {plan: 'monthly'|'yearly',userId} -> {short_url, linkId}
  *   GET  /status?u=<googleUserId>&email=<email>             -> {premium, token} | {banned}
  *   GET  /health                                            -> {ok:true}
+ *   POST /webhook/razorpay   (HMAC-verified Razorpay webhook) -> {ok:true}
  *
  * PAYTM FIXED LINKS
  *   When a plan has a fixed Paytm payment link set below (or as PAYTM_MONTHLY_URL /
@@ -41,9 +43,19 @@
  *   POST /admin/users/<id>/delete                           -> remove every record
  */
 
+/**
+ * Razorpay amounts are in paise: ₹1 = 100 paise, so ₹199 = 19900 paise
+ * and ₹1,499 = 149900 paise.
+ */
 const PLANS = {
-  monthly: { amount: 199, currency: 'INR', description: 'Insta Unfollow Premium — Monthly' },
-  yearly: { amount: 1499, currency: 'INR', description: 'Insta Unfollow Premium — Yearly' }
+  monthly: { amount: 19900, currency: 'INR', description: 'Insta Unfollow Premium — Monthly' },
+  yearly: { amount: 149900, currency: 'INR', description: 'Insta Unfollow Premium — Yearly' }
+};
+
+/** How many days of premium each plan buys, counted from the payment date. */
+const PLAN_DAYS = {
+  monthly: 30,
+  yearly: 365
 };
 
 /**
@@ -161,6 +173,71 @@ function json(data, status = 200) {
   });
 }
 
+/**
+ * Validate a Google access token (Authorization: Bearer <token>) by asking
+ * Google who it belongs to. The returned user id must equal expectedId, and
+ * when an email is supplied it must match the returned email (case-insensitive).
+ * Any failure — missing token, Google fetch failing, id/email mismatch — is false.
+ */
+async function verifyGoogleAccessToken(token, expectedId, expectedEmail) {
+  if (!token || !expectedId) return false;
+  let response;
+  try {
+    response = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+      headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json' }
+    });
+  } catch (error) {
+    return false;
+  }
+  if (!response.ok) return false;
+  const userInfo = await response.json();
+  if (String(userInfo.id || '') !== String(expectedId)) return false;
+  if (expectedEmail) {
+    if (String(userInfo.email || '').toLowerCase() !== String(expectedEmail).toLowerCase()) return false;
+  }
+  return true;
+}
+
+function bearerToken(request) {
+  const header = request.headers.get('Authorization') || '';
+  return header.startsWith('Bearer ') ? header.slice(7) : '';
+}
+
+function bytesToHex(bytes) {
+  return [...bytes].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+/**
+ * Verify a Razorpay webhook signature: hex HMAC-SHA256 of the RAW request body,
+ * keyed with env.RAZORPAY_WEBHOOK_SECRET. Sign-then-compare (constant-time
+ * comparison) — Workers crypto.subtle has no direct HMAC verify shortcut here.
+ * Missing secret or signature, or a mismatch, is false.
+ */
+async function verifyRazorpaySignature(env, rawBody, signature) {
+  if (!env.RAZORPAY_WEBHOOK_SECRET || !signature) return false;
+  const key = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(env.RAZORPAY_WEBHOOK_SECRET),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  );
+  const digest = new Uint8Array(
+    await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(rawBody))
+  );
+  const expected = bytesToHex(digest);
+  return bytesEqual(
+    new TextEncoder().encode(expected.toLowerCase()),
+    new TextEncoder().encode(String(signature).toLowerCase())
+  );
+}
+
+/** Expiry for a plan, anchored to the moment it was paid. */
+function expiryForPlan(plan, paidAt) {
+  const days = PLAN_DAYS[plan] || PLAN_DAYS.monthly;
+  return paidAt + days * 24 * 60 * 60 * 1000;
+}
+
 async function handleCreateLink(request, env) {
   const body = await request.json();
   const plan = PLANS[body.plan];
@@ -168,6 +245,11 @@ async function handleCreateLink(request, env) {
 
   const userId = String(body.userId || '');
   if (!userId) return json({ error: 'missing userId' }, 400);
+
+  // The caller must prove they are this Google user.
+  if (!(await verifyGoogleAccessToken(bearerToken(request), userId, body.email || ''))) {
+    return json({ error: 'unauthorized' }, 401);
+  }
 
   // Fixed Paytm link for this plan? Return it directly; the extension opens it and the
   // admin confirms the payment from the console (no auto-verification possible).
@@ -180,10 +262,18 @@ async function handleCreateLink(request, env) {
   const key = `${ADMIN_PAYMENT_PREFIX}${userId}`;
   const existing = kv ? JSON.parse((await kv.get(key)) || 'null') : null;
 
-  if (existing && existing.linkId) {
-    // Reuse the same link until it is paid; a fresh one each click would orphan the first.
+  if (existing && existing.linkId && existing.plan === body.plan) {
+    // Reuse a stored link ONLY while it is still live and for the same plan.
+    // A link created for a different plan charges the wrong amount, and an
+    // expired/cancelled link, or one whose expire_by has passed, is dead —
+    // never hand either back; fall through and create a fresh one instead.
     const link = await razorpay(env, `/v1/payment_links/${existing.linkId}`);
-    if (link.status !== 'paid') return json({ short_url: link.short_url, linkId: link.id });
+    const live = link.status === 'created' || link.status === 'partially_paid';
+    const notExpired = !link.expire_by || link.expire_by * 1000 > Date.now();
+    if (live && notExpired) {
+      if (kv) await kv.put(key, JSON.stringify({ ...existing, linkStatus: link.status }));
+      return json({ short_url: link.short_url, linkId: link.id });
+    }
   }
 
   const created = await razorpay(env, '/v1/payment_links', {
@@ -198,7 +288,7 @@ async function handleCreateLink(request, env) {
     }
   });
 
-  if (kv) await kv.put(key, JSON.stringify({ linkId: created.id, plan: body.plan, createdAt: Date.now() }));
+  if (kv) await kv.put(key, JSON.stringify({ linkId: created.id, plan: body.plan, createdAt: Date.now(), linkStatus: created.status || 'created' }));
   return json({ short_url: created.short_url, linkId: created.id });
 }
 
@@ -209,6 +299,11 @@ async function handleRegister(request, env) {
   const body = await request.json();
   const googleId = String(body.googleId || '');
   if (!googleId) return json({ error: 'missing googleId' }, 400);
+
+  // The caller must prove they are this Google user.
+  if (!(await verifyGoogleAccessToken(bearerToken(request), googleId, body.email || ''))) {
+    return json({ error: 'unauthorized' }, 401);
+  }
 
   const email = String(body.email || '').toLowerCase();
   const now = Date.now();
@@ -268,12 +363,56 @@ async function handleStatus(request, env) {
   }
 
   const existing = kv ? JSON.parse((await kv.get(key)) || 'null') : null;
-  if (existing && existing.linkId) {
-    const link = await razorpay(env, `/v1/payment_links/${existing.linkId}`);
-    if (link.status === 'paid') {
-      const token = await signToken(env, userId, existing.plan || 'monthly');
-      if (kv) await kv.put(key, JSON.stringify({ ...existing, paid: true }));
+
+  // A paid, unrevoked record with a known expiry needs no Razorpay call: the
+  // token is signed with that stored expiry, never a fresh 365 days.
+  if (existing && existing.paid && !existing.revoked && existing.expiresAt) {
+    if (existing.expiresAt > Date.now()) {
+      const token = await signToken(env, userId, existing.plan || 'monthly', existing.expiresAt);
       return json({ premium: true, token });
+    }
+    // Expired: fall through to the admin-email check, then {premium:false}.
+    // The record is kept, not deleted.
+  }
+
+  if (existing && existing.linkId) {
+    const now = Date.now();
+    // Unpaid links are re-checked at most once every 5 minutes; a recent
+    // negative check answers from the stored record without calling Razorpay.
+    const recentlyChecked =
+      !existing.paid &&
+      existing.lastRazorpayCheck &&
+      now - existing.lastRazorpayCheck < 5 * 60 * 1000;
+    if (!recentlyChecked) {
+      const link = await razorpay(env, `/v1/payment_links/${existing.linkId}`);
+      if (link.status === 'paid') {
+        // First time this payment is seen: anchor expiry to the payment moment.
+        // A repeat sighting never moves paidAt/expiresAt.
+        const paidAt = existing.paidAt || now;
+        const expiresAt = existing.expiresAt || expiryForPlan(existing.plan || 'monthly', paidAt);
+        const updated = {
+          ...existing,
+          paid: true,
+          paidAt,
+          expiresAt,
+          linkStatus: link.status,
+          lastRazorpayCheck: now
+        };
+        if (kv) await kv.put(key, JSON.stringify(updated));
+        // A revoked payment stays revoked even though Razorpay says paid.
+        if (!updated.revoked && expiresAt > now) {
+          const token = await signToken(env, userId, existing.plan || 'monthly', expiresAt);
+          return json({ premium: true, token });
+        }
+        // Revoked or already expired: fall through to {premium:false}.
+      } else {
+        if (kv) {
+          await kv.put(
+            key,
+            JSON.stringify({ ...existing, linkStatus: link.status, lastRazorpayCheck: now })
+          );
+        }
+      }
     }
   }
 
@@ -284,6 +423,71 @@ async function handleStatus(request, env) {
   }
 
   return json({ premium: false });
+}
+
+/**
+ * POST /webhook/razorpay — Razorpay payment-link webhook.
+ * Verifies HMAC-SHA256 (header x-razorpay-signature over the raw body, keyed
+ * with env.RAZORPAY_WEBHOOK_SECRET); 401 on a missing/bad secret or signature.
+ * On payment_link.paid, marks that user's KV payment record paid, anchoring
+ * paidAt/expiresAt to the event — only if not already paid, so repeat events
+ * never move paidAt. Unknown events are acknowledged and ignored.
+ */
+async function handleRazorpayWebhook(request, env) {
+  const rawBody = await request.text();
+  const signature = request.headers.get('x-razorpay-signature') || '';
+  if (!(await verifyRazorpaySignature(env, rawBody, signature))) {
+    return json({ error: 'invalid webhook signature' }, 401);
+  }
+
+  let body;
+  try {
+    body = JSON.parse(rawBody);
+  } catch (error) {
+    return json({ error: 'invalid JSON' }, 400);
+  }
+
+  // Razorpay sends either a flat payment_link object or the nested webhook
+  // envelope payload.payment_link.entity — accept both.
+  const linkRaw = body.payload?.payment_link || body.payment_link || null;
+  const link = linkRaw?.entity || linkRaw || null;
+  const event = body.event || '';
+  const isPaid = event === 'payment_link.paid' || link?.status === 'paid';
+  if (!isPaid) return json({ ok: true, ignored: true });
+
+  const extUser =
+    link?.notes?.ext_user ||
+    link?.reference_id ||
+    body.payload?.payment_link?.entity?.notes?.ext_user ||
+    '';
+  if (!extUser) return json({ ok: true, ignored: true });
+
+  const kv = env.PAYMENTS_KV;
+  if (kv) {
+    const key = `${ADMIN_PAYMENT_PREFIX}${extUser}`;
+    const existing = JSON.parse((await kv.get(key)) || 'null');
+    if (!existing?.paid) {
+      const now = Date.now();
+      const plan = existing?.plan || 'monthly';
+      const paidAt = now;
+      await kv.put(
+        key,
+        JSON.stringify({
+          ...(existing || {}),
+          linkId: link?.id || existing?.linkId || null,
+          plan,
+          paid: true,
+          paidAt,
+          expiresAt: expiryForPlan(plan, paidAt),
+          linkStatus: 'paid',
+          createdAt: existing?.createdAt || now
+        })
+      );
+    }
+    // Already paid: leave paidAt/expiresAt exactly as they are.
+  }
+
+  return json({ ok: true });
 }
 
 async function handleAdminLogin(request, env) {
@@ -344,8 +548,21 @@ async function loadUserState(env, profiles) {
 
 function membershipOf(user) {
   if (user.banned) return { status: 'banned', label: 'Banned' };
-  if (user.grant) return { status: 'grant', label: 'Premium', granted: true };
-  if (user.payment && user.payment.paid) return { status: 'premium', label: 'Premium', paid: true };
+  // A grant counts only while it is still inside its own window.
+  if (user.grant && user.grant.days && user.grant.grantedAt) {
+    const expiresAt = user.grant.grantedAt + user.grant.days * 24 * 60 * 60 * 1000;
+    if (expiresAt > Date.now()) return { status: 'grant', label: 'Premium', granted: true };
+  }
+  const payment = user.payment;
+  if (payment && payment.paid && !payment.revoked && payment.expiresAt && payment.expiresAt > Date.now()) {
+    return { status: 'premium', label: 'Premium', paid: true };
+  }
+  // Revoked takes precedence over expired: a revoked payment that has not
+  // yet expired reads 'Revoked'; a revoked payment past its expiry is just Free.
+  // A paid record with no expiresAt is a legacy record — treat it as Free.
+  if (payment && payment.paid && payment.revoked && payment.expiresAt && payment.expiresAt > Date.now()) {
+    return { status: 'revoked', label: 'Revoked' };
+  }
   return { status: 'free', label: 'Free' };
 }
 
@@ -369,8 +586,11 @@ async function handleAdminUsers(request, env) {
   const limit = Math.min(100, Math.max(1, parseInt(url.searchParams.get('limit') || '25', 10) || 25));
 
   // Scan in chunks; a query that matches few rows may need several round trips.
+  // Keep listing with the returned cursor until list_complete is true — KV
+  // pages at most 500 keys per list call.
   const profiles = [];
   let cursor = null;
+  let listComplete = false;
   do {
     const list = await kv.list({ prefix: ADMIN_PROFILE_PREFIX, limit: 500, cursor: cursor || undefined });
     const chunk = await Promise.all(
@@ -378,11 +598,26 @@ async function handleAdminUsers(request, env) {
     );
     profiles.push(...chunk.filter(Boolean));
     cursor = list.cursor;
-    if (!list.list_complete) break;
-  } while (cursor);
+    listComplete = list.list_complete;
+  } while (!listComplete && cursor);
 
   const users = (await loadUserState(env, profiles))
-    .map((u) => ({ ...u, membership: membershipOf(u) }))
+    .map((u) => {
+      const membership = membershipOf(u);
+      const grantExpiresAt =
+        u.grant && u.grant.days && u.grant.grantedAt
+          ? u.grant.grantedAt + u.grant.days * 24 * 60 * 60 * 1000
+          : null;
+      return {
+        ...u,
+        membership,
+        plan: u.grant?.plan || u.payment?.plan || null,
+        paidAt: u.payment?.paidAt || null,
+        expiresAt: grantExpiresAt || u.payment?.expiresAt || null,
+        revoked: Boolean(u.payment?.revoked),
+        linkStatus: u.payment?.linkStatus || null
+      };
+    })
     .filter((u) => matchQuery(u, q))
     .sort((a, b) => (b.lastSeen || 0) - (a.lastSeen || 0));
 
@@ -398,6 +633,7 @@ async function handleAdminStats(env) {
 
   const profiles = [];
   let cursor = null;
+  let listComplete = false;
   do {
     const list = await kv.list({ prefix: ADMIN_PROFILE_PREFIX, limit: 500, cursor: cursor || undefined });
     const chunk = await Promise.all(
@@ -405,7 +641,8 @@ async function handleAdminStats(env) {
     );
     profiles.push(...chunk.filter(Boolean));
     cursor = list.cursor;
-  } while (cursor);
+    listComplete = list.list_complete;
+  } while (!listComplete && cursor);
 
   const users = await loadUserState(env, profiles);
   const dayStart = new Date();
@@ -416,8 +653,9 @@ async function handleAdminStats(env) {
   let banned = 0;
   let newToday = 0;
   for (const user of users) {
+    const membership = membershipOf(user);
     if (user.banned) banned++;
-    else if (user.grant || (user.payment && user.payment.paid)) premium++;
+    else if (membership.status === 'grant' || membership.status === 'premium') premium++;
     if ((user.firstSeen || 0) >= dayMs) newToday++;
   }
 
@@ -442,9 +680,10 @@ async function handleAdminUserAction(request, env, userId, action) {
     const body = await request.json().catch(() => ({}));
     const days = parseInt(body.days, 10);
     if (![7, 30, 365].includes(days)) return json({ error: 'days must be 7, 30 or 365' }, 400);
+    const grantPlan = { 7: 'trial', 30: 'monthly', 365: 'yearly' }[days];
     await kv.put(`${ADMIN_GRANT_PREFIX}${userId}`, JSON.stringify({
       days,
-      plan: 'monthly',
+      plan: grantPlan,
       grantedAt: Date.now(),
       grantedBy: request.headers.get('X-Admin-Email') || 'admin'
     }));
@@ -453,7 +692,16 @@ async function handleAdminUserAction(request, env, userId, action) {
 
   if (action === 'revoke') {
     await kv.delete(`${ADMIN_GRANT_PREFIX}${userId}`);
-    await kv.delete(`${ADMIN_PAYMENT_PREFIX}${userId}`);
+    // Revoke never deletes the payment record: mark it revoked so /status
+    // and the admin console keep showing it as Revoked, not Premium.
+    const paymentKey = `${ADMIN_PAYMENT_PREFIX}${userId}`;
+    const existingPayment = JSON.parse((await kv.get(paymentKey)) || 'null');
+    if (existingPayment) {
+      await kv.put(
+        paymentKey,
+        JSON.stringify({ ...existingPayment, revoked: true, revokedAt: Date.now() })
+      );
+    }
     return json({ ok: true });
   }
 
@@ -498,6 +746,7 @@ export default {
     try {
       if (pathname === '/register' && request.method === 'POST') return await handleRegister(request, env);
       if (pathname === '/create-link' && request.method === 'POST') return await handleCreateLink(request, env);
+      if (pathname === '/webhook/razorpay' && request.method === 'POST') return await handleRazorpayWebhook(request, env);
       if (pathname === '/status') return await handleStatus(request, env);
       if (pathname === '/health') return json({ ok: true });
 

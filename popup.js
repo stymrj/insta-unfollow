@@ -45,6 +45,27 @@ function initializeI18n() {
     });
 }
 
+// Premium expiry as "12 Dec 2026" (en-IN, day month year), or null when unknown.
+function formatPremiumExpiry(expiry) {
+    if (!expiry) return null;
+    const date = new Date(expiry);
+    if (isNaN(date.getTime())) return null;
+    return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+// The header badge is the popup's premium-status element: "Premium" / "Free", and
+// "Premium until <date>" while a dated premium membership is active.
+function setPremiumBadge(badge, membership) {
+    if (!badge) return;
+    membership = membership || { turu: 'free' };
+    const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
+    const expiryText = isPremium ? formatPremiumExpiry(membership.expiry) : null;
+    badge.textContent = expiryText
+        ? 'Premium until ' + expiryText
+        : (isPremium ? getMessage('planPremium') : getMessage('planFree'));
+    badge.className = `user-info-badge ${isPremium ? 'premium' : 'free'}`;
+}
+
 // Function to update subscription button visibility based on login state
 function updateSubscribeButtonVisibility(isLoggedIn) {
     const subscribeButton = document.getElementById('subscribeButton');
@@ -179,24 +200,58 @@ function setupMenuAndContent() {
                 showSuccessMessage(getMessage('premiumUnlockAllMessage'));
                 return;
             }
+            const originalText = subscribeButton.textContent;
+            const apiUrl = window.PAYMENT_API_URL;
+            if (!apiUrl || typeof apiUrl !== 'string' || apiUrl.includes('PASTE-YOUR-WORKER')) {
+                showErrorMessage('Payment is not configured yet.');
+                return;
+            }
+            const data = await chrome.storage.local.get(['user_info']);
+            const userId = (data.user_info && data.user_info.id) || '';
+            const email = (data.user_info && data.user_info.email) || '';
+            let response;
             try {
-                const data = await chrome.storage.local.get(['user_info']);
-                const userId = (data.user_info && data.user_info.id) || '';
-                const response = await fetch(window.PAYMENT_API_URL + '/create-link', {
+                response = await fetch(apiUrl + '/create-link', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ plan: 'monthly', userId })
                 });
-                const payload = await response.json().catch(() => ({}));
-                if (!response.ok || !payload.short_url) {
-                    throw new Error(payload.error || ('payment link failed: ' + response.status));
-                }
-                window.open(payload.short_url, '_blank');
-                showSuccessMessage('Complete the payment in the opened tab. Premium activates once the payment is confirmed.');
             } catch (error) {
                 console.error('Payment link failed:', error);
-                showErrorMessage('Payment link unavailable. Set PAYMENT_API_URL in premium-config.js.');
+                showErrorMessage('Could not reach the payment server — check your connection and try again.');
+                return;
             }
+            const payload = await response.json().catch(() => ({}));
+            if (!response.ok || !payload.short_url) {
+                // The worker answered with an error payload: show its text. A bare
+                // non-ok response means the server could not be reached usefully.
+                showErrorMessage(payload.error || 'Could not reach the payment server — check your connection and try again.');
+                return;
+            }
+            window.open(payload.short_url, '_blank');
+            if (typeof window.pollPremiumActivation !== 'function') {
+                showSuccessMessage('Complete the payment in the opened tab. Premium activates once the payment is confirmed.');
+                return;
+            }
+            subscribeButton.textContent = 'Waiting for payment…';
+            subscribeButton.disabled = true;
+            window.pollPremiumActivation({
+                userId,
+                email,
+                onActive: async () => {
+                    subscribeButton.disabled = false;
+                    showSuccessMessage('Premium active!');
+                    // Re-run the membership UI update path so the badge, expiry and
+                    // subscribe button all reflect the new premium state.
+                    const fresh = await getPremiumMembership();
+                    updateUIAfterLogin(data.user_info, fresh);
+                },
+                onTimeout: () => {
+                    subscribeButton.disabled = false;
+                    subscribeButton.textContent = originalText;
+                    showErrorMessage('Payment not confirmed yet — reopen the popup to check');
+                }
+            });
         });
     }
 
@@ -363,16 +418,12 @@ async function updateUIAfterLogin(userInfo, membership) {
         
         if (avatar) avatar.src = userInfo.picture || '';
         if (name) name.textContent = userInfo.given_name || userInfo.name || userInfo.email || '';
-        
-        if (badge) {
-            const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
-            badge.textContent = isPremium ? getMessage('planPremium') : getMessage('planFree');
-            badge.className = `user-info-badge ${isPremium ? 'premium' : 'free'}`;
-        }
-        
+
+        setPremiumBadge(badge, membership);
+
         userInfoContainer.style.display = 'flex';
     }
-    
+
     // Update logout button
     if (logoutBtn) {
         logoutBtn.style.display = 'flex';
@@ -596,13 +647,9 @@ async function checkLoginStatus() {
                 
                 if (avatar) avatar.src = userInfo.picture || '';
                 if (name) name.textContent = userInfo.given_name || userInfo.name || userInfo.email || '';
-                
-                if (badge) {
-                    const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
-                    badge.textContent = isPremium ? getMessage('planPremium') : getMessage('planFree');
-                    badge.className = `user-info-badge ${isPremium ? 'premium' : 'free'}`;
-                }
-                
+
+                setPremiumBadge(badge, membership);
+
                 userInfoContainer.style.display = 'flex';
             }
             
@@ -655,8 +702,8 @@ async function checkLoginStatus() {
 
 function fetchPrices() {
   // Static pricing — no external server
-  document.getElementById('oldPrice').textContent = '$25';
-  document.getElementById('newPrice').textContent = '$6.99';
+  document.getElementById('oldPrice').textContent = '₹699';
+  document.getElementById('newPrice').textContent = '₹199';
 }
 
 // Call this function when the popup loads

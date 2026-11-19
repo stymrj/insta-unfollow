@@ -125,15 +125,18 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
           }
           if (status.premium && status.token && await verifyPremiumToken(status.token)) {
             const parsed = parseToken(status.token);
-            await chrome.storage.local.set({
-              membership: {
-                uye_id: userInfo.id,
-                turu: 'premium',
-                token: status.token,
-                kayit_tarihi: new Date().toISOString()
-              }
-            });
-            return { turu: 'premium', expiry: parsed ? new Date(parsed.payload.exp).toISOString() : null };
+            // A token signed for another user is not this user's premium: never store it.
+            if (parsed && parsed.payload.sub === userInfo.id) {
+              await chrome.storage.local.set({
+                membership: {
+                  uye_id: userInfo.id,
+                  turu: 'premium',
+                  token: status.token,
+                  kayit_tarihi: new Date().toISOString()
+                }
+              });
+              return { turu: 'premium', expiry: new Date(parsed.payload.exp).toISOString() };
+            }
           }
           if (status.premium === false) {
             // The worker's answer wins: an admin revoke overrides any locally stored token.
@@ -145,7 +148,11 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
       }
 
       if (stored.turu === 'premium' && stored.token && await verifyPremiumToken(stored.token)) {
-        return { turu: 'premium', expiry: stored.expiry || null };
+        const parsed = parseToken(stored.token);
+        // A verified token only counts when it was signed for the signed-in user.
+        if (parsed && userInfo && parsed.payload.sub === userInfo.id) {
+          return { turu: 'premium', expiry: new Date(parsed.payload.exp).toISOString() };
+        }
       }
 
       const email = userInfo && userInfo.email;
@@ -160,6 +167,69 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
     }
   }
 
+  /**
+   * Shared payment-activation poller, used by both the premium modal (premium.js)
+   * and the popup subscribe button (popup.js) so the two never drift apart.
+   *
+   * Polls GET PAYMENT_API_URL + '/status?u=...&email=...' every 4s for up to
+   * ~5 minutes (75 attempts). On premium + token it stores the membership in
+   * chrome.storage.local and calls onActive(); if nothing lands in time it calls
+   * onTimeout(). Polling stops on success, on timeout, or when the page unloads —
+   * no runaway timer is left behind. The stored token is re-verified (signature
+   * and sub) by the next getPremiumMembership() call before the UI trusts it.
+   */
+  function pollPremiumActivation({ userId, email, onActive, onTimeout }) {
+    const apiUrl = window.PAYMENT_API_URL;
+    const maxAttempts = 75;
+    const intervalMs = 4000;
+    let attempts = 0;
+    let stopped = false;
+    const stop = () => { stopped = true; };
+    if (typeof window !== 'undefined' && window.addEventListener) {
+      window.addEventListener('pagehide', stop, { once: true });
+    }
+    const check = async () => {
+      if (stopped) return;
+      attempts++;
+      try {
+        const statusResponse = await fetch(
+          apiUrl + '/status?u=' + encodeURIComponent(userId || '') +
+          '&email=' + encodeURIComponent(email || '')
+        );
+        const status = await statusResponse.json();
+        if (status.premium && status.token) {
+          stopped = true;
+          try {
+            await chrome.storage.local.set({
+              membership: {
+                uye_id: userId,
+                turu: 'premium',
+                token: status.token,
+                kayit_tarihi: new Date().toISOString()
+              }
+            });
+          } catch (error) {
+            console.warn('Could not store premium membership:', error);
+          }
+          if (typeof onActive === 'function') onActive();
+          return;
+        }
+      } catch (error) {
+        console.error('Payment status check failed:', error);
+      }
+      if (stopped) return;
+      if (attempts >= maxAttempts) {
+        stopped = true;
+        if (typeof onTimeout === 'function') onTimeout();
+        return;
+      }
+      setTimeout(check, intervalMs);
+    };
+    check();
+    return stop;
+  }
+
   window.verifyPremiumToken = verifyPremiumToken;
   window.getPremiumMembership = getPremiumMembership;
+  window.pollPremiumActivation = pollPremiumActivation;
 })();

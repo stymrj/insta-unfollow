@@ -40,8 +40,8 @@ async function fetchPremiumPrices() {
     const oldPriceEl = document.getElementById('premiumOldPrice');
     const newPriceEl = document.getElementById('premiumNewPrice');
     
-    if (oldPriceEl) oldPriceEl.textContent = '$25';
-    if (newPriceEl) newPriceEl.textContent = '$6.99';
+    if (oldPriceEl) oldPriceEl.textContent = '₹699';
+    if (newPriceEl) newPriceEl.textContent = '₹199';
     
     const discountText = document.getElementById('premiumDiscountText');
     if (discountText) {
@@ -51,17 +51,17 @@ async function fetchPremiumPrices() {
     const yearlyOldPriceEl = document.getElementById('premiumYearlyOldPrice');
     const yearlyNewPriceEl = document.getElementById('premiumYearlyNewPrice');
     
-    if (yearlyOldPriceEl) yearlyOldPriceEl.textContent = '$129.99';
-    if (yearlyNewPriceEl) yearlyNewPriceEl.textContent = '$74.99';
+    if (yearlyOldPriceEl) yearlyOldPriceEl.textContent = '₹2,388';
+    if (yearlyNewPriceEl) yearlyNewPriceEl.textContent = '₹1,499';
     
     const yearlyDiscountText = document.getElementById('premiumYearlyDiscountText');
     if (yearlyDiscountText) {
-        yearlyDiscountText.textContent = '42% OFF';
+        yearlyDiscountText.textContent = '37% OFF';
     }
     
     const savingsEl = document.getElementById('premiumYearlySavings');
     if (savingsEl) {
-        savingsEl.textContent = 'Save $8.89/year';
+        savingsEl.textContent = 'Save ₹889/year vs monthly';
     }
 }
 
@@ -74,6 +74,18 @@ function updatePremiumModalContent() {
 
   function handlePremiumSubscribe(planType = 'monthly') {
   (async () => {
+    const button = document.querySelector(`.premium-card-subscribe-button[data-plan="${planType}"]`);
+    const originalText = button ? button.textContent : '';
+    // Show a failure on the button itself, then offer a retry. The message names the
+    // real problem: never "not configured" when the worker URL is already set.
+    const fail = (message) => {
+      if (button) {
+        button.textContent = message;
+        setTimeout(() => {
+          if (button) button.textContent = t('premiumRetry') || 'Try again';
+        }, 4000);
+      }
+    };
     try {
       const already = await getPremiumMembership();
       if (already.turu === 'premium') {
@@ -81,21 +93,34 @@ function updatePremiumModalContent() {
         return;
       }
 
-      const button = document.querySelector(`.premium-card-subscribe-button[data-plan="${planType}"]`);
-      const originalText = button ? button.textContent : '';
       if (button) button.textContent = t('premiumOpeningPayment') || 'Opening payment…';
 
       const data = await chrome.storage.local.get(['user_info']);
       const userId = (data.user_info && data.user_info.id) || '';
+      const email = (data.user_info && data.user_info.email) || '';
 
-      const response = await fetch(window.PAYMENT_API_URL + '/create-link', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: planType, userId })
-      });
+      const apiUrl = window.PAYMENT_API_URL;
+      if (!apiUrl || typeof apiUrl !== 'string' || apiUrl.includes('PASTE-YOUR-WORKER')) {
+        fail('Payment is not configured yet.');
+        return;
+      }
+
+      let response;
+      try {
+        response = await fetch(apiUrl + '/create-link', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ plan: planType, userId })
+        });
+      } catch (error) {
+        console.error('Payment link failed:', error);
+        fail('Could not reach the payment server — check your connection and try again.');
+        return;
+      }
       const payload = await response.json().catch(() => ({}));
       if (!response.ok || !payload.short_url) {
-        throw new Error(payload.error || ('payment link failed: ' + response.status));
+        fail(payload.error || 'Could not reach the payment server — check your connection and try again.');
+        return;
       }
 
       window.open(payload.short_url, '_blank');
@@ -108,48 +133,25 @@ function updatePremiumModalContent() {
       }
 
       // Wait for the payment to land; Razorpay settles within seconds of success, an admin
-      // grant from the console lands within minutes of a Paytm payment.
-      const poll = async (attemptsLeft) => {
-        if (attemptsLeft <= 0) {
+      // grant from the console lands within minutes of a Paytm payment. Shared with the
+      // popup subscribe button (see pollPremiumActivation in premium-config.js).
+      window.pollPremiumActivation({
+        userId,
+        email,
+        onActive: () => {
+          if (button) button.textContent = '✓ ' + (t('premiumActive') || 'Premium active!');
+          setTimeout(() => {
+            closePremiumModal();
+            location.reload();
+          }, 900);
+        },
+        onTimeout: () => {
           if (button) button.textContent = originalText;
-          return;
         }
-        try {
-          const email = (data.user_info && data.user_info.email) || '';
-          const statusResponse = await fetch(
-            window.PAYMENT_API_URL + '/status?u=' + encodeURIComponent(userId) +
-            '&email=' + encodeURIComponent(email)
-          );
-          const status = await statusResponse.json();
-          if (status.premium && status.token) {
-            await chrome.storage.local.set({
-              membership: {
-                uye_id: userId,
-                turu: 'premium',
-                token: status.token,
-                kayit_tarihi: new Date().toISOString()
-              }
-            });
-            if (button) button.textContent = '✓ ' + (t('premiumActive') || 'Premium active!');
-            setTimeout(() => {
-              closePremiumModal();
-              location.reload();
-            }, 900);
-            return;
-          }
-        } catch (error) {
-          console.error('Payment status check failed:', error);
-        }
-        setTimeout(() => poll(attemptsLeft - 1), 4000);
-      };
-      poll(75); // ~5 minutes of checking
+      });
     } catch (error) {
       console.error('handlePremiumSubscribe failed:', error);
-      const button = document.querySelector('.premium-card-subscribe-button');
-      if (button) button.textContent = t('premiumPaymentError') || 'Payment failed — try again';
-      setTimeout(() => {
-        if (button) button.textContent = t('premiumRetry') || 'Try again';
-      }, 2500);
+      fail(t('premiumPaymentError') || 'Payment failed — try again');
     }
   })();
 }

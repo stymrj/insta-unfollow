@@ -20,7 +20,7 @@ Load the branch unpacked — nothing here publishes anything.
 | 6 | Export CSV | With any filter active, click **Export CSV** — a `insta-unfollow-nonfollowers.csv` downloads with username, full name, verified, following-you, whitelisted for the filtered rows only. |
 | 7 | Copy usernames | Click **Copy usernames** — a toast says "N usernames copied"; paste into a text editor to confirm. |
 | 8 | Trend line | Under the "Not following back" stat card, after a **second** analysis you should see e.g. "+7 since last analysis · 4 Nov 2026" (real numbers from your stored snapshot, never hardcoded). On the first analysis after upgrading, no trend line shows until a previous snapshot exists. |
-| 9 | Pricing | Popup → Upgrade tab: Premium monthly shows $25 → **$6.99, 72% OFF**; banner says "Save 72%". Yearly $129.99 → $74.99, 42% OFF. Free plan reads "40 analyses on day 1 (+20/day)". |
+| 9 | Pricing | Popup → Upgrade tab: Premium monthly shows ₹699 → **₹199, 72% OFF**; banner says "Save 72%". Yearly ₹2,388 → ₹1,499, 37% OFF. Free plan reads "40 analyses on day 1 (+20/day)". |
 | 10 | No fake numbers | The Upgrade tab and the premium modal show a "Your data stays on your device" note. There must be **no** "10,000+ Active Users", **no** "4.8/5 Rating", and **no** "150 people upgraded in the last 24h" anywhere. |
 | 11 | Bot scan export | Run a bot scan (or open it from a cached scan), then click **Export flagged CSV** next to "Run deep checks" — a `insta-unfollow-flagged.csv` downloads with the flagged rows and their scores/reasons. |
 | 12 | No Turkish leftovers | Search the UI for "gün" or "Sonraki" — there should be none. Countdown during unfollowing reads "Next: 84s". |

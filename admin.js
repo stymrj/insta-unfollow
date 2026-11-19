@@ -182,20 +182,33 @@
 
       const badgeTd = document.createElement('td');
       const badge = document.createElement('span');
-      const status = membership.status || 'free';
-      badge.className = 'admin-badge ' + status;
-      badge.textContent = membership.label || 'Free';
+      const isRevoked = status === 'revoked' || (user.revoked === true && status !== 'banned');
+      const effectiveStatus = isRevoked ? 'revoked' : status;
+      // theme.css has no .admin-badge.revoked rule, so reuse the muted free styling.
+      badge.className = 'admin-badge ' + (isRevoked ? 'free' : status);
+      badge.textContent = isRevoked ? (membership.label || 'Revoked') : (membership.label || 'Free');
       if (status === 'grant' || status === 'premium') {
         const sub = document.createElement('span');
         sub.className = 'admin-badge-sub';
-        if (status === 'grant' && user.grant) {
+        const plan = user.plan || membership.plan || (user.payment && user.payment.plan) || '';
+        const expiresAt = user.expiresAt || membership.expiresAt || null;
+        let subText = '';
+        if (expiresAt) {
+          const leftDays = Math.max(0, Math.round((expiresAt - Date.now()) / 86400000));
+          subText = ' · ' + (plan ? plan + ' · ' : '') + leftDays + 'd left';
+        } else if (status === 'grant' && user.grant && user.grant.grantedAt && user.grant.days) {
           const left = (user.grant.grantedAt + user.grant.days * 86400000) - Date.now();
-          sub.textContent = ' · ' + Math.max(0, Math.round(left / 86400000)) + 'd left';
+          subText = ' · ' + (plan ? plan + ' · ' : '') + Math.max(0, Math.round(left / 86400000)) + 'd left';
         } else if (user.payment) {
-          sub.textContent = ' · paid';
+          subText = ' · paid';
         }
         badgeTd.appendChild(badge);
-        badgeTd.appendChild(sub);
+        if (subText) {
+          sub.textContent = subText;
+          badgeTd.appendChild(sub);
+        }
+        const paidAt = user.paidAt || membership.paidAt || (user.payment && user.payment.paidAt) || null;
+        if (paidAt) badgeTd.title = 'Paid ' + fmtDate(paidAt);
       } else {
         badgeTd.appendChild(badge);
       }
@@ -208,7 +221,7 @@
       if (status === 'banned') {
         actions.appendChild(actionButton('unban', 'Unban', 'secondary'));
       } else {
-        if (status === 'free') {
+        if (status === 'free' || effectiveStatus === 'revoked') {
           actions.appendChild(actionButton('grant', 'Grant 30d', 'primary', '30'));
           actions.appendChild(actionButton('grant', 'Grant 365d', 'primary', '365'));
         } else {
@@ -249,7 +262,7 @@
   async function runAction(userId, action, extra) {
     const labels = {
       grant: extra + ' days of premium for this user?',
-      revoke: 'Revoke premium from this user? Their paid status is removed too.',
+      revoke: 'Revoke premium from this user? Their payment record is kept for history.',
       ban: 'Ban this user? They lose premium and access is blocked.',
       unban: 'Unban this user?',
       delete: 'Delete every record of this user? This cannot be undone.'

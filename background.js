@@ -23,21 +23,28 @@ function base64urlDecode(str) {
   return bytes;
 }
 
+/** v1.<payload-b64url>.<signature-b64url> — payload is JSON {sub, plan, exp}, or null. */
+function parsePremiumToken(token) {
+  if (typeof token !== 'string') return null;
+  const parts = token.split('.');
+  if (parts.length !== 3 || parts[0] !== 'v1') return null;
+  try {
+    const payload = JSON.parse(new TextDecoder().decode(base64urlDecode(parts[1])));
+    if (!payload || typeof payload.exp !== 'number') return null;
+    return { payload, signature: base64urlDecode(parts[2]), message: base64urlDecode(parts[1]) };
+  } catch (error) {
+    return null;
+  }
+}
+
 /** v1.<payload-b64url>.<signature-b64url> — returns true only for a valid, unexpired token. */
 async function verifyPremiumToken(token) {
-  if (typeof token !== 'string') return false;
-  const parts = token.split('.');
-  if (parts.length !== 3 || parts[0] !== 'v1') return false;
-  let payload;
-  try {
-    payload = JSON.parse(new TextDecoder().decode(base64urlDecode(parts[1])));
-  } catch (error) {
-    return false;
-  }
-  if (!payload || typeof payload.exp !== 'number' || Date.now() > payload.exp) return false;
+  const parsed = parsePremiumToken(token);
+  if (!parsed) return false;
+  if (Date.now() > parsed.payload.exp) return false;
   try {
     const key = await crypto.subtle.importKey('raw', hexToBytes(PREMIUM_PUBLIC_KEY), { name: 'Ed25519' }, false, ['verify']);
-    return await crypto.subtle.verify({ name: 'Ed25519' }, key, base64urlDecode(parts[2]), base64urlDecode(parts[1]));
+    return await crypto.subtle.verify({ name: 'Ed25519' }, key, parsed.signature, parsed.message);
   } catch (error) {
     console.error('Premium token verification failed:', error);
     return false;
@@ -45,22 +52,69 @@ async function verifyPremiumToken(token) {
 }
 
 /**
- * The membership a login/status check should report: a verified signed token wins,
- * then the owner email, otherwise free. Hand-edited storage no longer counts as premium.
+ * The membership a login/status check should report. The payment worker is the
+ * authority when its URL is configured (same storage key premium-config.js writes
+ * on every extension page load): a worker answer wins over any locally stored
+ * token, and only a failed fetch or an unusable worker response falls back to
+ * the local token. A token only counts when its signature verifies AND its sub
+ * matches the signed-in user — a token for another user is rejected everywhere.
+ * Hand-edited storage no longer counts as premium.
  */
 async function resolveMembership(userInfo) {
     if (PREMIUM_BY_DEFAULT) {
       return { uye_id: userInfo && userInfo.id, turu: 'premium' };
     }
+    const userId = userInfo && userInfo.id;
+
+    if (userId) {
+      try {
+        const { paymentApiUrl } = await chrome.storage.local.get('paymentApiUrl');
+        if (paymentApiUrl && !paymentApiUrl.includes('PASTE-YOUR-WORKER')) {
+          const statusResponse = await fetch(
+            paymentApiUrl + '/status?u=' + encodeURIComponent(userId) +
+            '&email=' + encodeURIComponent((userInfo && userInfo.email) || '')
+          );
+          const status = await statusResponse.json();
+          if (status.banned) {
+            return { uye_id: userId, turu: 'free', banned: true, kayit_tarihi: new Date().toISOString() };
+          }
+          if (status.premium && status.token && await verifyPremiumToken(status.token)) {
+            const parsed = parsePremiumToken(status.token);
+            if (parsed && parsed.payload.sub === userId) {
+              return {
+                uye_id: userId,
+                turu: 'premium',
+                token: status.token,
+                kayit_tarihi: new Date().toISOString(),
+                expiry: new Date(parsed.payload.exp).toISOString()
+              };
+            }
+            // Verified token for another user: do not trust it; fall through
+            // to the local-token fallback below.
+          }
+          if (status.premium === false) {
+            // The worker's answer wins: an admin revoke overrides any locally stored token.
+            return { uye_id: userId, turu: 'free', kayit_tarihi: new Date().toISOString() };
+          }
+        }
+      } catch (error) {
+        console.warn('Worker membership check failed, using local token:', error);
+      }
+    }
+
     const stored = await chrome.storage.local.get('membership');
   const m = stored.membership || {};
   if (m.turu === 'premium' && m.token && await verifyPremiumToken(m.token)) {
-    return m;
+    const parsed = parsePremiumToken(m.token);
+    if (parsed && userId && parsed.payload.sub === userId) {
+      return { ...m, uye_id: userId, expiry: new Date(parsed.payload.exp).toISOString() };
+    }
+    // Verified token for another user (or no signed-in user to match against): not premium.
   }
   if (userInfo && userInfo.email && userInfo.email.toLowerCase() === PREMIUM_ADMIN_EMAIL.toLowerCase()) {
     return { ...m, uye_id: userInfo.id, turu: 'premium' };
   }
-  return { uye_id: userInfo && userInfo.id, turu: 'free', kayit_tarihi: new Date().toISOString() };
+  return { uye_id: userId, turu: 'free', kayit_tarihi: new Date().toISOString() };
 }
 
 // Perform login in background - New tab method
