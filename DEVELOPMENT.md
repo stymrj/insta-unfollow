@@ -107,6 +107,12 @@ account; Delete removes every record. Admin sessions last 1 hour.
 ## Store release (how the zip is built)
 
 ```sh
+# Normalise permissions FIRST — the store's Linux install test extracts the
+# package as one user and may load it as another, so files must be
+# world-readable (644) and dirs 755. A zip built from a restrictive umask
+# (660/770 entries) can fail automated installation testing.
+find . -type d -exec chmod 755 {} +
+find . -type f -exec chmod 644 {} +
 zip -r ../insta-unfollow-v2.0.0.zip . -x ".git/*" ".env" ".gitignore" ".DS_Store" \
   "README.md" "docs/*" "screenshots/*" "store-assets/*" "wrangler.toml" \
   "payments-worker.js" "img/logo.svg" "*.zip"
