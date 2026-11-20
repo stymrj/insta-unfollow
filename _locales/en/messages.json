@@ -1154,7 +1154,12 @@
       "message": "Copy usernames"
    },
    "copiedUsernames": {
-      "message": "$COUNT$ usernames copied"
+      "message": "$COUNT$ usernames copied",
+      "placeholders": {
+         "count": {
+            "content": "$1"
+         }
+      }
    },
    "exportCsvEmpty": {
       "message": "Nothing to export — the current filter is empty."
