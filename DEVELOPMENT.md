@@ -106,6 +106,13 @@ account; Delete removes every record. Admin sessions last 1 hour.
 
 ## Store release (how the zip is built)
 
+> Unpacked test builds: `manifest.json` carries a `"key"` (public key only) that pins the
+> unpacked extension id to `gpgcdajecndabpbigkblhbojakohoiil`, so Google sign-in works
+> from a test build — the OAuth client has that id's `chromiumapp.org` redirect registered
+> alongside the store id's. The private key lives at `~/workspace/iu-dev-key.pem`: never
+> commit it, never put it in the zip. The store ignores the key on upload, so the published
+> listing keeps its own id.
+
 ```sh
 # Normalise permissions FIRST — the store's Linux install test extracts the
 # package as one user and may load it as another, so files must be
