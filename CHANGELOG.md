@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.1 — 2026-11-21
+
+### Session bootstrap fix (Instagram removed `/data/shared_data/`)
+- **Analyze was broken for every user after v2.0.0 went live:** Instagram removed `https://www.instagram.com/data/shared_data/` (it now answers 404), and that endpoint was the extension's session bootstrap — viewer id, username and csrf token for the analyzer, the popup's sign-in check, the bot scan and every unfollow all started there. A 404 threw the generic "An error occurred while fetching data" before any list was read (0 followers / 0 following / 0 not following). This was not a v2 regression: v1.0.0 read the same endpoint and breaks identically.
+- **New shared helper `ig-session.js`** (loaded before its callers in analyzer.html, bot-scan.html and popup.html, and injected into the Instagram tab by ig-content.js before unfollow-bridge.js; added to manifest `web_accessible_resources`): reads the viewer id, username and csrf token off the Instagram homepage HTML, confirms the sign-in with `api/v1/accounts/edit/web_form_data/` (401/403 = signed out, 429/5xx = throttled), and falls back to the public profile page for the id when the homepage hides it. A csrf token alone never counts as a session — the logged-out page carries one too. `fetchSession()` never throws; it returns `ok` / `logged_out` / `refused`, the same three-way answer the old check gave callers.
+- **Call sites switched over:** analyzer `getCurrentUserId` (session found / not signed in / rate-limited messages preserved), `getCsrfTokenOnce` (prefers the viewer already fetched for the analysis), `displayUserInfo` (avatar from the homepage parse, `users/{id}/info/` as fallback); popup `checkInstagramLogin` (same login vs limited alerts as before); bridge `getViewer` (degrades to null when the helper is absent, so an older injected page script falls back to the extension-page read instead of throwing).
+- **Not verifiable from here:** the list reads (v1 friendships / graphql) and the unfollow flow can only be exercised with a logged-in Instagram session — test with the 2.0.1 zip loaded unpacked (see `docs/v2-testing.md`).
+
 ## 2.0.0 — 2026-11-06
 
 ### Design

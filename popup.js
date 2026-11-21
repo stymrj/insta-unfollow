@@ -942,44 +942,28 @@ async function checkInstagramLogin() {
     showLoading(); // Show loading
 
     /*
-     * shared_data comes first, and it decides whether the user is signed in. Nothing else can.
-     *
-     * A signed-out browser is sent an HTML login page with status 200 — byte-for-byte the same
-     * shape as a throttled refusal. So "200 carrying HTML" cannot tell the two apart, and reading
-     * it as throttling told a signed-out user their account was being rate limited.
-     *
-     * This endpoint is the exception: it answers with JSON either way, and simply leaves
-     * `config.viewer` empty when nobody is signed in. That makes it the one reliable test, so it
-     * runs first and everything after it is interpreted in light of its answer.
+     * The session bootstrap (ig-session.js) replaces /data/shared_data/, which Instagram removed
+     * (it now answers 404). It reads the viewer id off the Instagram homepage and confirms the
+     * sign-in with web_form_data, so it keeps the same three-way answer this check relies on:
+     * signed out, throttled, or signed in with a known viewer id.
      */
-    const sharedFirst = await fetch('https://www.instagram.com/data/shared_data/', {
-      method: 'GET',
-      credentials: 'include'
-    });
-    const shared = await readIgJson(sharedFirst);
+    const session = await window.IgSession.fetchSession();
 
-    if (shared.expired) {
+    if (session.status === 'logged_out') {
       hideLoading();
       showInstagramLoginAlert();
       hideAnalyzeButton();
       return;
     }
-    // Even a signed-out visitor gets JSON here, so a non-JSON body means Instagram is refusing us
-    // outright — that really is throttling, not a sign-in problem.
-    if (shared.refused || !shared.data) {
+    // No viewer id and not a clean sign-out: Instagram is refusing us outright — that really is
+    // throttling, not a sign-in problem.
+    if (session.status !== 'ok') {
       hideLoading();
       showInstagramLimitedAlert();
       return;
     }
 
-    const viewerId = shared.data?.config?.viewer?.id;
-    if (!viewerId) {
-      // JSON arrived and there is no viewer in it. This is the one honest "please sign in".
-      hideLoading();
-      showInstagramLoginAlert();
-      hideAnalyzeButton();
-      return;
-    }
+    const viewerId = session.id;
 
     // From here the user is known to be signed in, so any refusal below is throttling.
     const userResponse = await fetch('https://www.instagram.com/api/v1/accounts/edit/web_form_data/', {
@@ -1005,7 +989,7 @@ async function checkInstagramLogin() {
     // web_profile_info was used here, but Instagram now answers 400 when it is asked for the
     // viewer's own username — it still works for other people's usernames, which is why the
     // unfollow flow in analyzer.js is unaffected. users/{id}/info/ returns the same three fields
-    // and answers for one's own account. The viewer id comes from the shared_data call above.
+    // and answers for one's own account. The viewer id comes from the session bootstrap above.
     const profileResponse = await fetch(`https://www.instagram.com/api/v1/users/${viewerId}/info/`, {
       method: 'GET',
       credentials: 'include',

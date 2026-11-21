@@ -308,23 +308,29 @@ function handleInstagramApiError(response) {
 // Instagram API Functions
 async function getCurrentUserId() {
     try {
-        // Without credentials this endpoint still answers 200 with JSON, but as a logged-out
-        // visitor — `config.viewer` comes back empty and the caller concludes the user is signed out.
-        const response = await fetch('https://www.instagram.com/data/shared_data/', {
-            credentials: 'include'
-        });
-        handleInstagramApiError(response);
-        const data = await response.json();
-        const viewer = data.config.viewer;
-        sessionUsername = viewer?.username || '';
+        // Session bootstrap (ig-session.js): Instagram removed /data/shared_data/ (404), so the
+        // viewer id now comes off the Instagram homepage, confirmed with web_form_data.
+        const session = await window.IgSession.fetchSession();
+        if (session.status === 'logged_out') {
+            logScanDiag({
+                stage: 'session',
+                msg: 'NO Instagram session in this Chrome browser',
+                detail: 'Open instagram.com in this Chrome browser and log in first'
+            });
+            return null;
+        }
+        if (session.status !== 'ok') {
+            const err = new Error(getMessage(session.reason === 'rate_limit' ? 'errorRateLimit' : 'errorInstagramUnavailable'));
+            err.code = session.reason === 'rate_limit' ? 'RATE_LIMIT' : 'SERVER_ERROR';
+            throw err;
+        }
+        sessionUsername = session.username || '';
         logScanDiag({
             stage: 'session',
-            msg: viewer ? 'Instagram session found' : 'NO Instagram session in this Chrome browser',
-            detail: viewer
-                ? '@' + sessionUsername + ' (id ' + viewer.id + ') — the scan reads this account'
-                : 'Open instagram.com in this Chrome browser and log in first'
+            msg: 'Instagram session found',
+            detail: '@' + sessionUsername + ' (id ' + session.id + ') — the scan reads this account'
         });
-        return viewer?.id;
+        return session.id;
     } catch (error) {
         console.error('Error getting user ID:', error);
         if (error.code) throw error; // re-throw API errors with user-friendly messages
@@ -1863,16 +1869,15 @@ async function initializeFollowingList(forceRefresh = false) {
 let cachedCsrfToken = null;
 async function getCsrfTokenOnce() {
     if (cachedCsrfToken) return cachedCsrfToken;
-    // credentials matters here: without the session cookie Instagram still answers 200 with JSON,
-    // but the token it hands back is an anonymous one. Signing an unfollow with that token gets
-    // the request rejected — and the rejection arrives as 200 with an HTML login page, which is
-    // exactly the "it worked but nothing happened" symptom.
-    const response = await fetch('https://www.instagram.com/data/shared_data/', {
-        credentials: 'include'
-    });
-    handleInstagramApiError(response);
-    const data = await response.json();
-    cachedCsrfToken = data?.config?.csrf_token || null;
+    // Prefer the viewer already fetched for this analysis (its csrf token came with it);
+    // otherwise ask the session bootstrap, which reads it off the Instagram homepage.
+    const viewer = await getViewerOnce().catch(() => null);
+    if (viewer?.csrfToken) {
+        cachedCsrfToken = viewer.csrfToken;
+        return cachedCsrfToken;
+    }
+    const session = await window.IgSession.fetchSession();
+    cachedCsrfToken = session.csrfToken || null;
     return cachedCsrfToken;
 }
 
@@ -2986,11 +2991,34 @@ function updateStats() {
 // Kullanıcı bilgilerini al ve göster
 async function displayUserInfo() {
     try {
-        const response = await fetch('https://www.instagram.com/data/shared_data/', {
-            credentials: 'include'
-        });
-        const data = await response.json();
-        const user = data.config.viewer;
+        // Session bootstrap (ig-session.js): /data/shared_data/ is gone (404); the viewer now
+        // comes off the Instagram homepage, with the avatar read from users/{id}/info/ when the
+        // homepage did not carry one.
+        const session = await window.IgSession.fetchSession();
+        if (session.status !== 'ok') {
+            const userInfo = document.querySelector('.user-info');
+            if (userInfo) {
+                userInfo.style.display = 'none';
+            }
+            return;
+        }
+        const user = {
+            username: session.username,
+            email: '',
+            profile_pic_url: session.profilePicUrl || ''
+        };
+        if (!user.profile_pic_url) {
+            try {
+                const res = await fetch(`https://www.instagram.com/api/v1/users/${encodeURIComponent(session.id)}/info/`, {
+                    credentials: 'include',
+                    headers: { 'x-ig-app-id': '936619743392459' }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data?.user?.profile_pic_url) user.profile_pic_url = data.user.profile_pic_url;
+                }
+            } catch (e) { /* avatar is cosmetic; keep the default */ }
+        }
 
         if (user) {
             const userAvatar = document.getElementById('userAvatar');

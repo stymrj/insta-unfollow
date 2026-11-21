@@ -19,7 +19,8 @@
 
   // The reader has to run in the page's own context to inherit its origin, and a content script
   // cannot reach that context directly — hence a script tag rather than an import.
-  for (const file of ['unfollow-bridge.js', 'ig-inject.js']) {
+  // ig-session.js goes first: the bridge's getViewer() reads the session through it.
+  for (const file of ['ig-session.js', 'unfollow-bridge.js', 'ig-inject.js']) {
     const script = document.createElement('script');
     script.src = chrome.runtime.getURL(file);
     script.async = false;              // preserves order: the bridge must define itself first

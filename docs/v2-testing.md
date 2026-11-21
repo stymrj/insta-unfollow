@@ -36,3 +36,17 @@ Load the branch unpacked — nothing here publishes anything.
 - Popup/analyzer still beige (v1) or white with pink-purple gradient buttons (rejected first v2 theme): you loaded the store build or an old unpacked copy — remove it and load the `v2` folder again, then hard-reload the analyzer tab.
 - "Last analysis" card missing after an analysis: it only appears after a **fresh** analysis saves a snapshot (loading from cache does not rewrite it). Run one fresh analysis.
 - Trend line shows the wrong comparison: it compares with your last saved snapshot. If you only ever ran one analysis, there is nothing to compare with — that is correct behaviour.
+
+## 2.0.1 — session bootstrap fix (load unpacked and test Analyze first)
+
+Instagram removed `/data/shared_data/`, so v2.0.0's Analyze failed for everyone with
+"An error occurred while fetching data" before any list was read. 2.0.1 replaces that
+call with `ig-session.js` (homepage viewer parse + `web_form_data` sign-in check).
+
+| # | Check | How |
+|---|-------|-----|
+| S1 | Analyze works signed in | Load 2.0.1 unpacked, open instagram.com and log in in the same Chrome profile, open the analyzer, click Analyze. Followers / Following / Not Following must show real counts (not 0/0/0) and the table must fill. |
+| S2 | Signed-out message | Log out of instagram.com, reload the analyzer, Analyze: you must see the "please log in to Instagram" message — NOT "An error occurred while fetching data". |
+| S3 | Popup sign-in state | With Instagram logged in, open the popup: no login alert, profile info shows. Log out of Instagram, reopen the popup: the login alert shows. |
+| S4 | Bot scan still starts | Open Bot scan and start a scan: it must reach the scoring stage (it reads the viewer through the same helper). |
+| S5 | Console errors | On the analyzer page press F12 → Console during an analysis. No `404` for `shared_data` and no `IgSession is not defined` / `fetchSession is not a function` errors. If Analyze still fails, copy the console errors — they say which endpoint refused. |
