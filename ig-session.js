@@ -12,12 +12,18 @@
  *      include`, so it carries the user's session). A signed-in page embeds the viewer
  *      (`"viewer":{"id":"…","username":"…"}`) and a csrf token in its bootstrap JSON.
  *      A csrf token alone proves nothing — the logged-out page carries one too — so a
- *      session only counts when a viewer id is found.
+ *      session only counts when a viewer id is found. A failure of this fetch (dropped
+ *      request, 429, 5xx) NEVER ends the attempt: the page is heavy and Instagram
+ *      throttles it first, while the API endpoint below often still answers.
  *   2. `api/v1/accounts/edit/web_form_data/` (already used by background.js and popup.js):
  *      answers with the signed-in username, or 401/403 when nobody is signed in. That
  *      is what tells "signed out" apart from "Instagram is refusing us".
  *   3. If the user is signed in but the homepage hid the id, the public profile page
  *      (`instagram.com/<username>/`) embeds the same id next to the username.
+ *
+ * One retry: a `refused` with reason `network` or `server` is retried once after 2s —
+ * a single dropped request should not kill an analysis. Rate-limit and signed-out
+ * results are never retried.
  *
  * Loaded in three contexts, always before its callers:
  *   - analyzer.html and bot-scan.html (extension pages, before unfollow-bridge.js)
@@ -120,14 +126,21 @@
   }
 
   async function fetchSessionUncached() {
+    // 1. The homepage: the only source that carries id + username + csrf in one shot.
+    // A failure here NEVER ends the attempt — the page is heavy and Instagram throttles
+    // or drops it first, while the lightweight API endpoint below often still answers.
+    // (Returning refused on a homepage network error was the 2.0.1 bug: one dropped
+    // request killed Analyze with "temporarily unavailable" before web_form_data ran.)
+    var homeFailed = '';
     var homeHtml = '';
     try {
       var home = await fetch(IG_HOME_URL, { credentials: 'include' });
-      if (home.status === 429) return emptySession('refused', 'rate_limit');
-      if (home.status >= 500) return emptySession('refused', 'server');
-      if (home.ok) homeHtml = await home.text();
+      if (home.status === 429) homeFailed = 'rate_limit';
+      else if (home.status >= 500) homeFailed = 'server';
+      else if (home.ok) homeHtml = await home.text();
+      else homeFailed = 'unknown';
     } catch (e) {
-      return emptySession('refused', 'network');
+      homeFailed = 'network';
     }
 
     var parsed = parseViewerFromHtml(homeHtml);
@@ -138,7 +151,9 @@
       };
     }
 
-    // No viewer in the homepage: ask web_form_data whether anyone is signed in at all.
+    // 2. web_form_data: the lightweight API endpoint; also the sign-in oracle. Its
+    // 401/403 is the one definitive "nobody is signed in" — it overrides a throttled
+    // homepage, which cannot tell a signed-out browser from a throttled one.
     var form = { username: '', id: '' };
     try {
       var res = await fetch(WEB_FORM_DATA_URL, {
@@ -147,13 +162,15 @@
       });
       if (res.status === 401 || res.status === 403) return emptySession('logged_out', 'expired');
       if (res.status === 429) return emptySession('refused', 'rate_limit');
-      if (res.status >= 500) return emptySession('refused', 'server');
+      if (res.status >= 500) {
+        return emptySession('refused', homeFailed === 'rate_limit' ? 'rate_limit' : 'server');
+      }
       if (res.ok) {
         var data = await res.json().catch(function () { return null; });
         form = parseWebFormData(data);
       }
     } catch (e) {
-      return emptySession('refused', 'network');
+      return emptySession('refused', homeFailed === 'rate_limit' ? 'rate_limit' : 'network');
     }
 
     if (form.id) {
@@ -163,11 +180,11 @@
       };
     }
     if (!form.username) {
-      // No viewer and no username: Instagram served the logged-out page.
+      // No viewer in the homepage and the API answered without a username: logged out.
       return emptySession('logged_out', 'expired');
     }
 
-    // Signed in, but the homepage hid the id: read it off the public profile page.
+    // 3. Signed in, but the homepage hid the id: read it off the public profile page.
     try {
       var prof = await fetch(IG_HOME_URL + encodeURIComponent(form.username) + '/', { credentials: 'include' });
       if (prof.status === 429) return emptySession('refused', 'rate_limit');
@@ -187,6 +204,13 @@
   async function fetchSession() {
     if (cachedSession && cachedSession.status === 'ok') return cachedSession;
     var session = await fetchSessionUncached();
+    if (session.status === 'refused' && (session.reason === 'network' || session.reason === 'server')) {
+      // One retry: a single dropped request or a hiccuping endpoint should not kill the
+      // analysis. Never retried: rate_limit (retrying makes throttling longer),
+      // logged_out, and unknown (the page shapes will not change in 2 seconds).
+      await new Promise(function (resolve) { setTimeout(resolve, 2000); });
+      session = await fetchSessionUncached();
+    }
     if (session.status === 'ok') cachedSession = session;
     return session;
   }

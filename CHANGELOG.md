@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.2 — 2026-11-21
+
+### Session bootstrap: a dropped homepage request no longer kills Analyze
+- **The bug:** `fetchSession()` returned `refused` the moment the Instagram homepage fetch failed (dropped request, 429, 5xx) — before `web_form_data` ever ran. In a real browser that surfaced as "Instagram is temporarily unavailable. Please try again later." on Analyze, even though the lightweight API endpoint would have answered.
+- **The fix:** a homepage failure now only records the failure and the attempt continues to `web_form_data` (401/403 there is still the definitive "nobody is signed in"; the profile-page fallback still covers a signed-in user whose id the homepage hid). A `refused` with reason `network` or `server` is retried once after 2s; rate-limit and signed-out results are never retried.
+- **Also:** the unpacked-build `key` (2.0.1) and its registered redirect URI carry over unchanged — same dev id `gpgcdajecndabpbigkblhbojakohoiil`.
+
 ## 2.0.1 — 2026-11-21
 
 ### Session bootstrap fix (Instagram removed `/data/shared_data/`)
