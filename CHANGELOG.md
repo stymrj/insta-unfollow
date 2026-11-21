@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.4 — 2026-11-21
+
+### The id now comes from Instagram's own APIs, not from HTML
+- **The diagnosis (from v2.0.3's own detail):** `homepage: ok, no viewer; web_form_data: signed in as @satyamgupta2_; profile page: ok, no id found`. Verified against the real pages: Instagram's homepage fetch now returns a shell with no viewer block, and the profile page returns an error page to fetches — HTML can no longer identify anyone. The API endpoints still answer.
+- **The fix:** the chain now reads the id from `api/v1/accounts/current_user/` (needs no username) and, failing that, `api/v1/users/<username>/usernameinfo/` (username from `web_form_data`). Both endpoints were verified to exist (401/403/429, never 404). The profile-page HTML read stays as a last resort. A 429 on `usernameinfo` no longer ends the attempt — the profile page still follows — and a `web_form_data` failure keeps going when the homepage already gave a username.
+- **Also:** the harness caught a real bug in the first draft of this fix (`usernameinfo` 429 short-circuiting the attempt) — fixed and covered.
+
 ## 2.0.3 — 2026-11-21
 
 ### Session failures now say exactly what failed (and which build said it)

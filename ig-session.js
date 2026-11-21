@@ -14,12 +14,18 @@
  *      A csrf token alone proves nothing — the logged-out page carries one too — so a
  *      session only counts when a viewer id is found. A failure of this fetch (dropped
  *      request, 429, 5xx) NEVER ends the attempt: the page is heavy and Instagram
- *      throttles it first, while the API endpoint below often still answers.
- *   2. `api/v1/accounts/edit/web_form_data/` (already used by background.js and popup.js):
+ *      throttles it first, while the API endpoints below often still answer.
+ *   2. `api/v1/accounts/current_user/`: the "who am I" API — answers the signed-in user
+ *      with id, no username needed. This is the step that matters now: the homepage fetch
+ *      returns a shell with no viewer block, so HTML alone can no longer identify anyone.
+ *   3. `api/v1/accounts/edit/web_form_data/` (already used by background.js and popup.js):
  *      answers with the signed-in username, or 401/403 when nobody is signed in. That
  *      is what tells "signed out" apart from "Instagram is refusing us".
- *   3. If the user is signed in but the homepage hid the id, the public profile page
- *      (`instagram.com/<username>/`) embeds the same id next to the username.
+ *   4. `api/v1/users/<username>/usernameinfo/`: resolves the username from step 3 to its
+ *      id through the API.
+ *   5. Last resort, the public profile page (`instagram.com/<username>/`), which used to
+ *      embed the id next to the username — Instagram now serves it an error page to
+ *      fetches, so it rarely answers anymore.
  *
  * One retry: a `refused` with reason `network` or `server` is retried once after 2s —
  * a single dropped request should not kill an analysis. Rate-limit and signed-out
@@ -51,6 +57,7 @@
   var IG_APP_ID = '936619743392459';
   var IG_HOME_URL = 'https://www.instagram.com/';
   var WEB_FORM_DATA_URL = 'https://www.instagram.com/api/v1/accounts/edit/web_form_data/';
+  var CURRENT_USER_URL = 'https://www.instagram.com/api/v1/accounts/current_user/';
 
   var cachedSession = null;
 
@@ -118,6 +125,23 @@
     return m ? m[1] : '';
   }
 
+  /**
+   * The id out of a user API object (`current_user`, `usernameinfo`): both answer
+   * `{ user: { pk, username, ... } }`, but the id is read under `pk` or `id`, number or
+   * string, at the top level or under `user` — Instagram is not consistent about it.
+   */
+  function parseUserIdFromApi(data) {
+    if (!data || typeof data !== 'object') return '';
+    var user = (data.user && typeof data.user === 'object') ? data.user : data;
+    var id = user.pk != null ? user.pk : user.id;
+    return id != null ? String(id) : '';
+  }
+  function parseUsernameFromApi(data) {
+    if (!data || typeof data !== 'object') return '';
+    var user = (data.user && typeof data.user === 'object') ? data.user : data;
+    return typeof user.username === 'string' ? user.username : '';
+  }
+
   /** web_form_data answers `{ form_data: { username, ... } }`; the id is read too if present. */
   function parseWebFormData(data) {
     var form = (data && data.form_data) || {};
@@ -138,7 +162,7 @@
 
     // 1. The homepage: the only source that carries id + username + csrf in one shot.
     // A failure here NEVER ends the attempt — the page is heavy and Instagram throttles
-    // or drops it first, while the lightweight API endpoint below often still answers.
+    // or drops it first, while the API endpoints below often still answer.
     // (Returning refused on a homepage network error was the 2.0.1 bug: one dropped
     // request killed Analyze with "temporarily unavailable" before web_form_data ran.)
     var homeFailed = '';
@@ -162,9 +186,51 @@
       };
     }
 
-    // 2. web_form_data: the lightweight API endpoint; also the sign-in oracle. Its
+    // 2. current_user: the "who am I" API — answers the signed-in user (with id) and
+    // needs no username first. This is the step that matters now: Instagram's homepage
+    // fetch returns a shell with no viewer block, and the profile page returns an error
+    // page to fetches, so HTML is no longer a reliable id source at all.
+    var currentUserFailed = '';
+    try {
+      var cu = await fetch(CURRENT_USER_URL, {
+        credentials: 'include',
+        headers: { 'x-ig-app-id': IG_APP_ID, 'x-requested-with': 'XMLHttpRequest' }
+      });
+      if (cu.status === 401 || cu.status === 403) {
+        step('current_user', String(cu.status));
+        currentUserFailed = 'logged_out';
+      } else if (cu.status === 429) {
+        step('current_user', '429');
+        currentUserFailed = 'rate_limit';
+      } else if (cu.status >= 500) {
+        step('current_user', String(cu.status));
+        currentUserFailed = 'server';
+      } else if (cu.ok) {
+        var cuData = await cu.json().catch(function () { return null; });
+        var cuId = parseUserIdFromApi(cuData);
+        if (cuId) {
+          step('current_user', 'ok');
+          return {
+            status: 'ok', reason: '', detail: detail(), id: cuId,
+            username: parseUsernameFromApi(cuData) || '',
+            csrfToken: parsed.csrfToken, profilePicUrl: ''
+          };
+        }
+        step('current_user', 'ok, no id');
+      } else {
+        step('current_user', String(cu.status));
+        currentUserFailed = 'unknown';
+      }
+    } catch (e) {
+      step('current_user', 'network error');
+      currentUserFailed = 'network';
+    }
+
+    // 3. web_form_data: the lightweight API endpoint; also the sign-in oracle. Its
     // 401/403 is the one definitive "nobody is signed in" — it overrides a throttled
-    // homepage, which cannot tell a signed-out browser from a throttled one.
+    // homepage or a current_user 401, which cannot tell a signed-out browser from a
+    // throttled one.
+    var anyRateLimited = homeFailed === 'rate_limit' || currentUserFailed === 'rate_limit';
     var form = { username: '', id: '' };
     try {
       var res = await fetch(WEB_FORM_DATA_URL, {
@@ -176,12 +242,14 @@
         return emptySession('logged_out', 'expired', detail());
       }
       if (res.status === 429) {
-        step('web_form_data', '429');
-        return emptySession('refused', 'rate_limit', detail());
+        step('web_form_data', parsed.username ? '429, using homepage username' : '429');
+        if (parsed.username) form.username = parsed.username;
+        else return emptySession('refused', 'rate_limit', detail());
       }
       if (res.status >= 500) {
         step('web_form_data', String(res.status));
-        return emptySession('refused', homeFailed === 'rate_limit' ? 'rate_limit' : 'server', detail());
+        if (parsed.username) form.username = parsed.username;
+        else return emptySession('refused', anyRateLimited ? 'rate_limit' : 'server', detail());
       }
       if (res.ok) {
         var data = await res.json().catch(function () { return null; });
@@ -192,7 +260,8 @@
       }
     } catch (e) {
       step('web_form_data', 'network error');
-      return emptySession('refused', homeFailed === 'rate_limit' ? 'rate_limit' : 'network', detail());
+      if (parsed.username) form.username = parsed.username;
+      else return emptySession('refused', anyRateLimited ? 'rate_limit' : 'network', detail());
     }
 
     if (form.id) {
@@ -206,9 +275,42 @@
       return emptySession('logged_out', 'expired', detail());
     }
 
-    // 3. Signed in, but the homepage hid the id: read it off the public profile page.
-    // Two attempts: this page is HTML like the homepage, so a single dropped request
-    // should not turn a proven signed-in session into "unavailable".
+    // 4. usernameinfo: resolve the username to its id through the API, now that the
+    // profile page no longer serves a parseable page to fetches. A 429 here does NOT
+    // end the attempt (the profile page below can still answer); it only sets the
+    // reason the final failure reports if nothing after it succeeds either.
+    var usernameinfoFailed = '';
+    try {
+      var ui = await fetch(IG_HOME_URL + 'api/v1/users/' + encodeURIComponent(form.username) + '/usernameinfo/', {
+        credentials: 'include',
+        headers: { 'x-ig-app-id': IG_APP_ID, 'x-requested-with': 'XMLHttpRequest' }
+      });
+      if (ui.status === 429) {
+        step('usernameinfo', '429');
+        usernameinfoFailed = 'rate_limit';
+      }
+      if (ui.ok) {
+        var uiData = await ui.json().catch(function () { return null; });
+        var uiId = parseUserIdFromApi(uiData);
+        if (uiId) {
+          step('usernameinfo', 'ok');
+          return {
+            status: 'ok', reason: '', detail: detail(), id: uiId, username: form.username,
+            csrfToken: parsed.csrfToken, profilePicUrl: ''
+          };
+        }
+        step('usernameinfo', 'ok, no id');
+      } else {
+        step('usernameinfo', String(ui.status));
+      }
+    } catch (e) {
+      step('usernameinfo', 'network error');
+    }
+
+    // 5. Last resort, the public profile page — kept because it used to work, but
+    // Instagram now serves it an error page to fetches, so it rarely answers anymore.
+    // Two attempts: a single dropped request should not turn a proven signed-in
+    // session into "unavailable".
     for (var attempt = 0; attempt < 2; attempt++) {
       if (attempt > 0) await new Promise(function (resolve) { setTimeout(resolve, 1500); });
       try {
@@ -234,7 +336,8 @@
         step('profile page', 'network error');
       }
     }
-    return emptySession('refused', 'unknown', detail());
+    var anyRateLimited = homeFailed === 'rate_limit' || currentUserFailed === 'rate_limit' || usernameinfoFailed === 'rate_limit';
+    return emptySession('refused', anyRateLimited ? 'rate_limit' : 'unknown', detail());
   }
   async function fetchSession() {
     if (cachedSession && cachedSession.status === 'ok') return cachedSession;
@@ -255,6 +358,8 @@
     parseViewerFromHtml: parseViewerFromHtml,
     parseProfileIdFromHtml: parseProfileIdFromHtml,
     parseWebFormData: parseWebFormData,
+    parseUserIdFromApi: parseUserIdFromApi,
+    parseUsernameFromApi: parseUsernameFromApi,
     // Test-only: the Node harness resets the page-lifetime cache between scenarios.
     _resetCache: function () { cachedSession = null; }
   };
