@@ -1,11 +1,19 @@
 # Chrome Web Store — Insta Unfollow
 
+> ✅ **STORE ID VERIFIED 2026-11-19 (dashboard check).** The live listing is
+> `kdlobnohhjkneflmopckfidfekdkokcd` (Published, v1.0.0, 38 users at the time;
+> 126 views / 2.75k impressions in the last 30 days). `gemhambjlinaackpaifgpgcmbbckmbnf`
+> is a REJECTED duplicate that was never published — do not upload to it. The
+> OAuth redirect for the live ID,
+> `https://kdlobnohhjkneflmopckfidfekdkokcd.chromiumapp.org/`, was confirmed
+> already registered on the OAuth client (2026-11-19).
+
 Everything needed to publish a new version.
 
 ## Item details
 
-- **Store ID:** `gemhambjlinaackpaifgpgcmbbckmbnf`
-- **Store URL:** https://chromewebstore.google.com/detail/gemhambjlinaackpaifgpgcmbbckmbnf
+- **Store ID:** `kdlobnohhjkneflmopckfidfekdkokcd`
+- **Store URL:** https://chromewebstore.google.com/detail/kdlobnohhjkneflmopckfidfekdkokcd
 - **Privacy policy:** https://stymrj.github.io/insta-unfollow/privacy.html
 - **Homepage / Support:** https://github.com/stymrj/insta-unfollow
 - **Dev extension ID:** `ajlpgmeldhjmemkagchcejcipekhjpcc`
@@ -17,7 +25,7 @@ OAuth client: `483666926131-ho9r406mnt14ssnlv25nv108fbpmj5s0.apps.googleusercont
 Authorized redirect URIs that must ALL be registered (Google Cloud Console → OAuth 2.0 Client IDs → the client above):
 
 - `https://ajlpgmeldhjmemkagchcejcipekhjpcc.chromiumapp.org/` (local dev copy)
-- `https://gemhambjlinaackpaifgpgcmbbckmbnf.chromiumapp.org/` (store version)
+- `https://kdlobnohhjkneflmopckfidfekdkokcd.chromiumapp.org/` (store version — confirmed registered 2026-11-19)
 
 Client status must be **Production** (not Testing), or sign-in fails for users.
 
@@ -25,14 +33,40 @@ Client status must be **Production** (not Testing), or sign-in fails for users.
 
 1. Edit code, bump `version` in `manifest.json` (store rejects duplicate versions).
 2. Reload the dev extension (`chrome://extensions` → Reload) and test.
-3. Build the zip, excluding dev/server files:
+3. Build the zip, excluding dev/server files. Normalise permissions FIRST —
+   the store's Linux install test extracts as one user and may load as
+   another, so files must be world-readable (644) and dirs 755:
    ```sh
+   find . -type d -exec chmod 755 {} +
+   find . -type f -exec chmod 644 {} +
    zip -r ../insta-unfollow.zip . -x ".git/*" ".env" ".gitignore" ".DS_Store" \
      "README.md" "docs/*" "screenshots/*" "store-assets/*" "wrangler.toml" \
      "payments-worker.js" "img/logo.svg" "*.zip"
    ```
 4. Upload to the Chrome Web Store dashboard → Package → new version.
 5. Update screenshots in the listing if the UI changed (files in `store-assets/`).
+
+## v2.0.0 publish checklist
+
+Branch: `v2` (local only — merge to `main` after verifying, then publish from `main`).
+
+- [x] `manifest.json` version bumped 1.0.0 → 2.0.0
+- [x] Design refresh (theme.css) + all 7 store images regenerated from the new UI
+      (`store-assets/`: 5 screenshots 1280×800, promo 440×280, marquee 1400×560)
+- [x] `store-assets/description.txt` rewritten (keyword-rich first lines, What's New in 2.0,
+      honest free/premium limits, no fake numbers)
+- [x] `CHANGELOG.md` added with the 2.0.0 entry
+- [x] Pricing fixed to the five plans everywhere: 1 month ₹49 · 3 months ₹129 (save ₹18) · 6 months ₹249 (save ₹45) · 9 months ₹399 (save ₹42) · 12 months ₹499 (save ₹89)
+- [x] Fake social proof removed (10,000+ users, 4.8/5 rating, "150 upgraded in last 24h")
+- [x] **Live Store ID verified** 2026-11-19: `kdlobnohhjkneflmopckfidfekdkokcd`
+      (`gemhamb…` is a rejected duplicate, never published)
+- [x] **OAuth redirect URIs verified** for the live store ID on the Google Cloud
+      Console (client `483666926131-ho9r406mnt14ssnlv25nv108fbpmj5s0.apps.googleusercontent.com`,
+      confirmed 2026-11-19). Do NOT change the client ID or the worker URL.
+- [ ] Load the branch unpacked and run through `docs/v2-testing.md`
+- [ ] Merge `v2` → `main`, build the zip (step 3 above), upload to the dashboard
+- [ ] After the store review passes, confirm the listing shows version 2.0.0 and the
+      new screenshots; watch the first week for sign-in / payment complaints
 
 ## Store listing reference
 

@@ -13,6 +13,14 @@ function initializeI18n() {
         }
     });
     
+    // Handle placeholder attributes (v2 search box)
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const message = getMessage(element.getAttribute('data-i18n-placeholder'));
+        if (message && message !== element.getAttribute('data-i18n-placeholder')) {
+            element.placeholder = message;
+        }
+    });
+
     // Handle title attributes
     document.querySelectorAll('[data-i18n-title]').forEach(element => {
         const key = element.getAttribute('data-i18n-title');
@@ -125,6 +133,15 @@ async function saveAnalysisSnapshot(userId, followersCount, followingCount, nonF
                 nonFollowersCount: prev.nonFollowersCount,
                 timestamp: prev.timestamp
             } : null
+        },
+        // v2: one small key the popup can read without knowing the Instagram user id,
+        // so it can show a "Last analysis" summary. Only counts + date, no user list.
+        lastAnalysisSummary: {
+            userId,
+            followersCount,
+            followingCount,
+            nonFollowersCount,
+            timestamp: Date.now()
         }
     });
 }
@@ -164,6 +181,10 @@ let allFollowersList = [];     // full followers list for comparison
 let allFollowingFull = [];
 let currentWhitelistSet = new Set();
 let showOnlyNonFollowersFilter = false;
+// v2 toolbar state (client-side only, over already-loaded data)
+let analyzerSearchQuery = '';
+let analyzerSortMode = 'default';
+let analyzerChipFilter = 'all';
 
 // Sekme geri geldiğinde timer'ı hemen güncelle (Chrome throttling fix)
 document.addEventListener('visibilitychange', () => {
@@ -214,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add click handlers for card subscribe buttons
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('premium-card-subscribe-button')) {
-            const planType = e.target.getAttribute('data-plan') || 'monthly';
+            const planType = e.target.getAttribute('data-plan') || '1mo';
             handlePremiumSubscribe(planType);
         }
     });
@@ -287,23 +308,36 @@ function handleInstagramApiError(response) {
 // Instagram API Functions
 async function getCurrentUserId() {
     try {
-        // Without credentials this endpoint still answers 200 with JSON, but as a logged-out
-        // visitor — `config.viewer` comes back empty and the caller concludes the user is signed out.
-        const response = await fetch('https://www.instagram.com/data/shared_data/', {
-            credentials: 'include'
-        });
-        handleInstagramApiError(response);
-        const data = await response.json();
-        const viewer = data.config.viewer;
-        sessionUsername = viewer?.username || '';
+        // Session bootstrap (ig-session.js): Instagram removed /data/shared_data/ (404), so the
+        // viewer id now comes off the Instagram homepage, confirmed with web_form_data.
+        const session = await window.IgSession.fetchSession();
+        if (session.status === 'logged_out') {
+            logScanDiag({
+                stage: 'session',
+                msg: 'NO Instagram session in this Chrome browser',
+                detail: 'Open instagram.com in this Chrome browser and log in first' + (session.detail ? ' — ' + session.detail : '')
+            });
+            return null;
+        }
+        if (session.status !== 'ok') {
+            // Say exactly what failed, and which build said it: the detail names the
+            // request that broke ("homepage: network error; web_form_data: 500"), and the
+            // version proves which build is running — the two facts a bare
+            // "temporarily unavailable" hides.
+            const version = (chrome.runtime && chrome.runtime.getManifest && chrome.runtime.getManifest().version) || '';
+            const detail = (session.detail ? ' — ' + session.detail : '') + (version ? ' [v' + version + ']' : '');
+            logScanDiag({ stage: 'session', msg: 'Session refused (' + (session.reason || 'unknown') + ')', detail: session.detail || '' });
+            const err = new Error(getMessage(session.reason === 'rate_limit' ? 'errorRateLimit' : 'errorInstagramUnavailable') + detail);
+            err.code = session.reason === 'rate_limit' ? 'RATE_LIMIT' : 'SERVER_ERROR';
+            throw err;
+        }
+        sessionUsername = session.username || '';
         logScanDiag({
             stage: 'session',
-            msg: viewer ? 'Instagram session found' : 'NO Instagram session in this Chrome browser',
-            detail: viewer
-                ? '@' + sessionUsername + ' (id ' + viewer.id + ') — the scan reads this account'
-                : 'Open instagram.com in this Chrome browser and log in first'
+            msg: 'Instagram session found',
+            detail: '@' + sessionUsername + ' (id ' + session.id + ') — the scan reads this account'
         });
-        return viewer?.id;
+        return session.id;
     } catch (error) {
         console.error('Error getting user ID:', error);
         if (error.code) throw error; // re-throw API errors with user-friendly messages
@@ -923,13 +957,85 @@ function showTableMessage(message, isError = false) {
 }
 
 // Pagination functions
+// v2: search (username / full name), filter chips and sort, all client-side over the
+// already-loaded list. Pagination still slices the filtered result in renderCurrentPage.
 function getFilteredData() {
-    if (showOnlyNonFollowersFilter) {
-        return allDisplayData.filter(user =>
-            !allFollowersList.some(f => f.node.id === user.node.id)
-        );
+    const followerIds = new Set(allFollowersList.map(f => f.node.id));
+    let data = allDisplayData.filter(user => {
+        const isFollowing = followerIds.has(user.node.id);
+        const isWhitelisted = currentWhitelistSet.has(user.node.username);
+        if (showOnlyNonFollowersFilter && isFollowing) return false;
+        if (analyzerChipFilter === 'notFollowing' && isFollowing) return false;
+        if (analyzerChipFilter === 'following' && !isFollowing) return false;
+        if (analyzerChipFilter === 'whitelisted' && !isWhitelisted) return false;
+        if (analyzerSearchQuery) {
+            const haystack = ((user.node.username || '') + ' ' + (user.node.full_name || '')).toLowerCase();
+            if (!haystack.includes(analyzerSearchQuery)) return false;
+        }
+        return true;
+    });
+    if (analyzerSortMode === 'username') {
+        data = [...data].sort((a, b) => (a.node.username || '').localeCompare(b.node.username || ''));
+    } else if (analyzerSortMode === 'notFollowing') {
+        // Stable: not-following first, original order kept inside each group.
+        data = [...data].sort((a, b) => (followerIds.has(a.node.id) ? 1 : 0) - (followerIds.has(b.node.id) ? 1 : 0));
     }
-    return allDisplayData;
+    // NOTE: no "most followers" sort — the following-list data Instagram returns has no
+    // per-account follower count (see unfollow-bridge.js: only id/username/full_name/
+    // verified/pic). Sorting by it would need one profile request per account.
+    return data;
+}
+
+// v2: CSV of the current filter (username, full name, verified, following you, whitelisted).
+function downloadFilteredCsv() {
+    const rows = getFilteredData();
+    if (!rows.length) {
+        showToast(getMessage('exportCsvEmpty'), 'error');
+        return;
+    }
+    const followerIds = new Set(allFollowersList.map(f => f.node.id));
+    const esc = (v) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
+    const lines = [['username', 'full_name', 'verified', 'following_you', 'whitelisted'].join(',')];
+    for (const user of rows) {
+        const n = user.node;
+        lines.push([
+            esc(n.username), esc(n.full_name || ''), n.is_verified ? 'yes' : 'no',
+            followerIds.has(n.id) ? 'yes' : 'no',
+            currentWhitelistSet.has(n.username) ? 'yes' : 'no'
+        ].join(','));
+    }
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'insta-unfollow-nonfollowers.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// v2: copy the usernames of the current filter, one per line.
+async function copyFilteredUsernames() {
+    const rows = getFilteredData();
+    if (!rows.length) {
+        showToast(getMessage('exportCsvEmpty'), 'error');
+        return;
+    }
+    const text = rows.map(u => u.node.username).join('\n');
+    try {
+        await navigator.clipboard.writeText(text);
+    } catch (e) {
+        // Clipboard API needs a user gesture / focus; fall back to a hidden textarea.
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+    }
+    const msg = getMessage('copiedUsernames', [String(rows.length)]);
+    showToast(msg === 'copiedUsernames' ? `${rows.length} usernames copied` : msg);
 }
 
 function renderCurrentPage() {
@@ -1038,7 +1144,7 @@ function showTrend(statId, diff) {
     parent.appendChild(el);
 }
 
-// Filter kontrolü için event listener
+// Filter + toolbar event listeners (v2: search / sort / chips / export)
 function setupFilterListener() {
     const filterCheckbox = document.getElementById('showOnlyNonFollowers');
     if (filterCheckbox) {
@@ -1048,6 +1154,33 @@ function setupFilterListener() {
             renderCurrentPage();
         });
     }
+    const searchInput = document.getElementById('analyzerSearch');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            analyzerSearchQuery = this.value.trim().toLowerCase();
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    }
+    const sortSelect = document.getElementById('analyzerSort');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            analyzerSortMode = this.value;
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    }
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', function() {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            analyzerChipFilter = this.dataset.chip || 'all';
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    });
+    document.getElementById('exportCsvBtn')?.addEventListener('click', downloadFilteredCsv);
+    document.getElementById('copyUsernamesBtn')?.addEventListener('click', copyFilteredUsernames);
 }
 
 // Daily scan limit helper functions (per Instagram account) - CUMULATIVE LIMIT
@@ -1667,13 +1800,25 @@ async function initializeFollowingList(forceRefresh = false) {
             elements.nonFollowersCount.textContent = nonFollowersCount.toLocaleString('tr-TR');
         }
 
-        // Show trend comparison with previous analysis
+        // Show trend comparison with the last analysis (v2: was comparing with the
+        // analysis before that — prevSnapshot.previous — skipping the most recent one)
         const prevSnapshot = await getLastAnalysisSnapshot(userId);
-        if (prevSnapshot && prevSnapshot.previous) {
-            const prev = prevSnapshot.previous;
-            showTrend('followersCount', followersCount - prev.followersCount);
-            showTrend('followingCount', followingCount - prev.followingCount);
-            showTrend('nonFollowersCount', nonFollowersCount - prev.nonFollowersCount);
+        if (prevSnapshot) {
+            showTrend('followersCount', followersCount - prevSnapshot.followersCount);
+            showTrend('followingCount', followingCount - prevSnapshot.followingCount);
+            showTrend('nonFollowersCount', nonFollowersCount - prevSnapshot.nonFollowersCount);
+            const trendEl = document.getElementById('nonFollowersTrend');
+            if (trendEl) {
+                const diff = nonFollowersCount - prevSnapshot.nonFollowersCount;
+                const dateStr = new Date(prevSnapshot.timestamp).toLocaleDateString([], { day: 'numeric', month: 'short', year: 'numeric' });
+                // Uses the trendUp / trendDown / trendNoChange strings that already
+                // existed in _locales/en (v1 defined them but never displayed them).
+                let text;
+                if (diff === 0) text = getMessage('trendNoChange');
+                else if (diff > 0) text = getMessage('trendUp', [String(diff)]);
+                else text = getMessage('trendDown', [String(diff)]);
+                trendEl.textContent = text + ' · ' + dateStr;
+            }
         }
 
         // Save current snapshot (only on fresh analysis)
@@ -1731,16 +1876,15 @@ async function initializeFollowingList(forceRefresh = false) {
 let cachedCsrfToken = null;
 async function getCsrfTokenOnce() {
     if (cachedCsrfToken) return cachedCsrfToken;
-    // credentials matters here: without the session cookie Instagram still answers 200 with JSON,
-    // but the token it hands back is an anonymous one. Signing an unfollow with that token gets
-    // the request rejected — and the rejection arrives as 200 with an HTML login page, which is
-    // exactly the "it worked but nothing happened" symptom.
-    const response = await fetch('https://www.instagram.com/data/shared_data/', {
-        credentials: 'include'
-    });
-    handleInstagramApiError(response);
-    const data = await response.json();
-    cachedCsrfToken = data?.config?.csrf_token || null;
+    // Prefer the viewer already fetched for this analysis (its csrf token came with it);
+    // otherwise ask the session bootstrap, which reads it off the Instagram homepage.
+    const viewer = await getViewerOnce().catch(() => null);
+    if (viewer?.csrfToken) {
+        cachedCsrfToken = viewer.csrfToken;
+        return cachedCsrfToken;
+    }
+    const session = await window.IgSession.fetchSession();
+    cachedCsrfToken = session.csrfToken || null;
     return cachedCsrfToken;
 }
 
@@ -2765,7 +2909,7 @@ function updateTimerDisplay(seconds) {
             if (countdownText) {
                 const secondsInt = Math.floor(seconds);
                 // Placeholder'ı manuel olarak değiştir
-                let message = getMessage('nextInSeconds') || 'Sonraki: $SECONDS$s';
+                let message = getMessage('nextInSeconds') || 'Next in $SECONDS$s';
                 
                 // Önce $SECONDS$ formatını dene (messages.json'da bu format kullanılıyor)
                 if (message.includes('$SECONDS$')) {
@@ -2777,7 +2921,7 @@ function updateTimerDisplay(seconds) {
                 }
                 // Hiçbiri yoksa direkt ekle
                 else {
-                    message = `Sonraki: ${secondsInt}s`;
+                    message = `Next: ${secondsInt}s`;
                 }
                 
                 countdownText.textContent = message;
@@ -2854,11 +2998,34 @@ function updateStats() {
 // Kullanıcı bilgilerini al ve göster
 async function displayUserInfo() {
     try {
-        const response = await fetch('https://www.instagram.com/data/shared_data/', {
-            credentials: 'include'
-        });
-        const data = await response.json();
-        const user = data.config.viewer;
+        // Session bootstrap (ig-session.js): /data/shared_data/ is gone (404); the viewer now
+        // comes off the Instagram homepage, with the avatar read from users/{id}/info/ when the
+        // homepage did not carry one.
+        const session = await window.IgSession.fetchSession();
+        if (session.status !== 'ok') {
+            const userInfo = document.querySelector('.user-info');
+            if (userInfo) {
+                userInfo.style.display = 'none';
+            }
+            return;
+        }
+        const user = {
+            username: session.username,
+            email: '',
+            profile_pic_url: session.profilePicUrl || ''
+        };
+        if (!user.profile_pic_url) {
+            try {
+                const res = await fetch(`https://www.instagram.com/api/v1/users/${encodeURIComponent(session.id)}/info/`, {
+                    credentials: 'include',
+                    headers: { 'x-ig-app-id': '936619743392459' }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data?.user?.profile_pic_url) user.profile_pic_url = data.user.profile_pic_url;
+                }
+            } catch (e) { /* avatar is cosmetic; keep the default */ }
+        }
 
         if (user) {
             const userAvatar = document.getElementById('userAvatar');

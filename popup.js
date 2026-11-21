@@ -45,18 +45,236 @@ function initializeI18n() {
     });
 }
 
+// Premium expiry as "12 Dec 2026" (en-IN, day month year), or null when unknown.
+function formatPremiumExpiry(expiry) {
+    if (!expiry) return null;
+    const date = new Date(expiry);
+    if (isNaN(date.getTime())) return null;
+    return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+// The header badge is the popup's premium-status element: "Premium" / "Free", and
+// "Premium until <date>" while a dated premium membership is active.
+function setPremiumBadge(badge, membership) {
+    if (!badge) return;
+    membership = membership || { turu: 'free' };
+    const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
+    const expiryText = isPremium ? formatPremiumExpiry(membership.expiry) : null;
+    badge.textContent = expiryText
+        ? 'Premium until ' + expiryText
+        : (isPremium ? getMessage('planPremium') : getMessage('planFree'));
+    badge.className = `user-info-badge ${isPremium ? 'premium' : 'free'}`;
+}
+
 // Function to update subscription button visibility based on login state
 function updateSubscribeButtonVisibility(isLoggedIn) {
     const subscribeButton = document.getElementById('subscribeButton');
+    const planPicker = document.getElementById('popupPlanPicker');
     const loginMessage = document.getElementById('loginMessage');
-    
+
     if (isLoggedIn) {
-        subscribeButton.style.display = 'block';
-        loginMessage.style.display = 'none';
+        if (subscribeButton) subscribeButton.style.display = 'block';
+        if (planPicker) planPicker.style.display = 'block';
+        if (loginMessage) loginMessage.style.display = 'none';
     } else {
-        subscribeButton.style.display = 'none';
-        loginMessage.style.display = 'block';
+        if (subscribeButton) subscribeButton.style.display = 'none';
+        if (planPicker) planPicker.style.display = 'none';
+        if (loginMessage) loginMessage.style.display = 'block';
     }
+}
+
+// --- Plan picker: the same five plans as the premium modal, from the shared
+// definition in premium-config.js. Default selected plan: 1 month. The
+// picker sits before the payment step; the selected plan drives the method
+// picker, UPI view and proof form exactly as the modal does.
+
+let popupSelectedPlan = '1mo';
+
+function getPopupSelectedPlan() {
+    if (typeof window.getPremiumPlan === 'function') {
+        return window.getPremiumPlan(popupSelectedPlan).key;
+    }
+    return popupSelectedPlan || '1mo';
+}
+
+function updatePopupContinueButton() {
+    const button = document.getElementById('subscribeButton');
+    if (!button) return;
+    if (typeof window.getPremiumPlan !== 'function') return;
+    const plan = window.getPremiumPlan(popupSelectedPlan);
+    button.textContent = 'Continue — ' + plan.label + ' · ₹' + plan.price;
+}
+
+function setPopupSelectedPlan(planKey) {
+    popupSelectedPlan = typeof window.getPremiumPlan === 'function'
+        ? window.getPremiumPlan(planKey).key : (planKey || '1mo');
+    renderPopupPlanPicker();
+}
+
+function renderPopupPlanPicker() {
+    const picker = document.getElementById('popupPlanPicker');
+    if (!picker || !Array.isArray(window.PREMIUM_PLANS)) return;
+    picker.innerHTML = '';
+    window.PREMIUM_PLANS.forEach((plan) => {
+        const selected = plan.key === getPopupSelectedPlan();
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('data-plan', plan.key);
+        btn.setAttribute('role', 'radio');
+        btn.setAttribute('aria-checked', selected ? 'true' : 'false');
+        btn.style.cssText = 'display:grid;grid-template-columns:1fr auto;grid-template-areas:' +
+            '"duration price" "save per-month";align-items:center;gap:2px 10px;width:100%;' +
+            'padding:9px 12px;margin:0 0 6px;background:' + (selected ? '#eff6ff' : '#fff') + ';' +
+            'border:1.5px solid ' + (selected ? '#2563eb' : '#e5e5e5') + ';border-radius:10px;' +
+            'color:#262626;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;';
+        const duration = document.createElement('span');
+        duration.textContent = plan.label;
+        duration.style.cssText = 'grid-area:duration;font-size:13px;font-weight:700;';
+        const price = document.createElement('span');
+        price.style.cssText = 'grid-area:price;display:flex;align-items:baseline;gap:6px;' +
+            'font-size:15px;font-weight:700;justify-self:end;';
+        if (plan.strike != null) {
+            const strike = document.createElement('span');
+            strike.textContent = '₹' + plan.strike;
+            strike.style.cssText = 'text-decoration:line-through;color:#8e8e8e;font-size:12px;font-weight:500;';
+            price.appendChild(strike);
+        }
+        const current = document.createElement('span');
+        current.textContent = '₹' + plan.price;
+        current.style.color = '#2563eb';
+        price.appendChild(current);
+        const save = document.createElement('span');
+        save.textContent = plan.save > 0 ? 'Save ₹' + plan.save : 'No discount';
+        save.style.cssText = 'grid-area:save;font-size:11px;font-weight:600;color:#1e40af;';
+        const perMonth = document.createElement('span');
+        perMonth.textContent = '₹' + plan.perMonth + '/mo';
+        perMonth.style.cssText = 'grid-area:per-month;font-size:11px;font-weight:600;color:#8e8e8e;justify-self:end;';
+        btn.appendChild(duration);
+        btn.appendChild(price);
+        btn.appendChild(save);
+        btn.appendChild(perMonth);
+        btn.addEventListener('click', () => setPopupSelectedPlan(plan.key));
+        picker.appendChild(btn);
+    });
+    updatePopupContinueButton();
+}
+
+// --- Manual-payment checkout (UPI), for the plan picked in the
+// plan picker above ----------------------------------------------
+// Shares the method picker, UPI view and proof form with the premium modal
+// (premium-config.js) so the two never drift apart. Nothing here promises
+// automatic activation for a manual payment: premium activates only once an
+// admin approves the submitted proof.
+
+function getPopupPaymentStep() {
+    return document.getElementById('paymentStep');
+}
+
+function showPopupPaymentStep() {
+    const step = getPopupPaymentStep();
+    if (step) {
+        step.style.display = 'block';
+        step.innerHTML = '';
+    }
+    return step;
+}
+
+function hidePopupPaymentStep() {
+    const step = getPopupPaymentStep();
+    if (step) {
+        step.style.display = 'none';
+        step.innerHTML = '';
+    }
+}
+
+function showPopupUnderReview() {
+    const subscribeButton = document.getElementById('subscribeButton');
+    if (subscribeButton) subscribeButton.style.display = 'none';
+    const planPicker = document.getElementById('popupPlanPicker');
+    if (planPicker) planPicker.style.display = 'none';
+    const step = showPopupPaymentStep();
+    if (step && typeof window.createUnderReviewNotice === 'function') {
+        step.appendChild(window.createUnderReviewNotice());
+    }
+}
+
+// When a proof is under review the popup shows that state instead of the
+// Subscribe button. Called after login / login-status checks.
+function refreshPopupPendingState(membership) {
+    if (!membership || membership.turu === 'premium' || !membership.pendingProof) return;
+    showPopupUnderReview();
+}
+
+async function showPopupPaymentFlow(plan) {
+    plan = typeof window.getPremiumPlan === 'function'
+        ? window.getPremiumPlan(plan).key : (plan || '1mo');
+    const subscribeButton = document.getElementById('subscribeButton');
+    const planPicker = document.getElementById('popupPlanPicker');
+    const apiUrl = window.PAYMENT_API_URL;
+    if (!apiUrl || typeof apiUrl !== 'string' || apiUrl.includes('PASTE-YOUR-WORKER')) {
+        showErrorMessage('Payment is not configured yet.');
+        return;
+    }
+    const data = await chrome.storage.local.get(['user_info']);
+    const userId = (data.user_info && data.user_info.id) || '';
+    const email = (data.user_info && data.user_info.email) || '';
+
+    if (subscribeButton) subscribeButton.style.display = 'none';
+    if (planPicker) planPicker.style.display = 'none';
+    const step = showPopupPaymentStep();
+    if (step) step.textContent = 'Loading payment methods…';
+    const methods = typeof window.getPaymentMethods === 'function'
+        ? await window.getPaymentMethods()
+        : { upi: true, razorpay: false };
+
+    const renderPicker = () => {
+        const stepEl = showPopupPaymentStep();
+        if (!stepEl || typeof window.createPaymentMethodPicker !== 'function') return;
+        stepEl.appendChild(window.createPaymentMethodPicker({
+            plan: plan,
+            methods,
+            onPick: (method) => onMethodPicked(method)
+        }));
+        const backBtn = document.createElement('button');
+        backBtn.type = 'button';
+        backBtn.textContent = 'Back';
+        backBtn.style.cssText = 'margin-top:8px;padding:8px 14px;background:transparent;' +
+            'border:1.5px solid #d4d4d4;border-radius:8px;color:#262626;font-size:13px;' +
+            'font-weight:600;cursor:pointer;';
+        backBtn.addEventListener('click', () => {
+            hidePopupPaymentStep();
+            if (planPicker) planPicker.style.display = 'block';
+            if (subscribeButton) subscribeButton.style.display = 'block';
+        });
+        stepEl.appendChild(backBtn);
+    };
+
+    const showProofForm = (method) => {
+        const stepEl = getPopupPaymentStep();
+        if (!stepEl || typeof window.createProofForm !== 'function') return;
+        stepEl.appendChild(window.createProofForm({
+            plan: plan,
+            method,
+            userId,
+            onSuccess: () => {
+                // Proof accepted for review: keep Subscribe hidden so the
+                // user cannot start a second checkout for the same plan.
+                if (subscribeButton) subscribeButton.style.display = 'none';
+            }
+        }));
+    };
+
+    const onMethodPicked = async (method) => {
+        if (method === 'upi') {
+            const stepEl = showPopupPaymentStep();
+            if (!stepEl) return;
+            stepEl.appendChild(window.createUpiPaymentView(plan));
+            showProofForm('upi');
+            return;
+        }
+    };
+
+    renderPicker();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -179,26 +397,18 @@ function setupMenuAndContent() {
                 showSuccessMessage(getMessage('premiumUnlockAllMessage'));
                 return;
             }
-            try {
-                const data = await chrome.storage.local.get(['user_info']);
-                const userId = (data.user_info && data.user_info.id) || '';
-                const response = await fetch(window.PAYMENT_API_URL + '/create-link', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ plan: 'monthly', userId })
-                });
-                const payload = await response.json().catch(() => ({}));
-                if (!response.ok || !payload.short_url) {
-                    throw new Error(payload.error || ('payment link failed: ' + response.status));
-                }
-                window.open(payload.short_url, '_blank');
-                showSuccessMessage('Complete the payment in the opened tab. Premium activates once the payment is confirmed.');
-            } catch (error) {
-                console.error('Payment link failed:', error);
-                showErrorMessage('Payment link unavailable. Set PAYMENT_API_URL in premium-config.js.');
+            if (membership.pendingProof) {
+                // A proof is already under review: show that state instead of
+                // Subscribe, and do not start a poll for it.
+                showPopupUnderReview();
+                return;
             }
+            await showPopupPaymentFlow(getPopupSelectedPlan());
         });
     }
+
+    // Render the five-plan picker (default 1 month) in the Upgrade section.
+    renderPopupPlanPicker();
 
     // Analyze butonuna tıklandığında Instagram kontrolü yap
     const analyzeBtn = document.getElementById('analyzeBtn');
@@ -363,16 +573,12 @@ async function updateUIAfterLogin(userInfo, membership) {
         
         if (avatar) avatar.src = userInfo.picture || '';
         if (name) name.textContent = userInfo.given_name || userInfo.name || userInfo.email || '';
-        
-        if (badge) {
-            const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
-            badge.textContent = isPremium ? getMessage('planPremium') : getMessage('planFree');
-            badge.className = `user-info-badge ${isPremium ? 'premium' : 'free'}`;
-        }
-        
+
+        setPremiumBadge(badge, membership);
+
         userInfoContainer.style.display = 'flex';
     }
-    
+
     // Update logout button
     if (logoutBtn) {
         logoutBtn.style.display = 'flex';
@@ -389,10 +595,15 @@ async function updateUIAfterLogin(userInfo, membership) {
         const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
         if (isPremium) {
             subscribeButton.textContent = getMessage('manageSubscription');
+            const planPicker = document.getElementById('popupPlanPicker');
+            if (planPicker) planPicker.style.display = 'none';
         } else {
-            subscribeButton.textContent = getMessage('upgradeToPremium');
+            updatePopupContinueButton();
         }
     }
+
+    // A proof under review replaces the Subscribe button with that state.
+    refreshPopupPendingState(membership);
 
 }
 
@@ -596,13 +807,9 @@ async function checkLoginStatus() {
                 
                 if (avatar) avatar.src = userInfo.picture || '';
                 if (name) name.textContent = userInfo.given_name || userInfo.name || userInfo.email || '';
-                
-                if (badge) {
-                    const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
-                    badge.textContent = isPremium ? getMessage('planPremium') : getMessage('planFree');
-                    badge.className = `user-info-badge ${isPremium ? 'premium' : 'free'}`;
-                }
-                
+
+                setPremiumBadge(badge, membership);
+
                 userInfoContainer.style.display = 'flex';
             }
             
@@ -619,10 +826,18 @@ async function checkLoginStatus() {
                 const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
                 if (isPremium) {
                     subscribeButton.textContent = getMessage('manageSubscription');
+                    const planPicker = document.getElementById('popupPlanPicker');
+                    if (planPicker) planPicker.style.display = 'none';
                 } else {
-                    subscribeButton.textContent = getMessage('upgradeToPremium');
+                    updatePopupContinueButton();
                 }
             }
+
+            // A proof under review replaces the Subscribe button with that state.
+            // Re-read membership here: the background's copy may not carry
+            // pendingProof, while the popup's own getPremiumMembership does.
+            const freshMembership = await getPremiumMembership().catch(() => membership);
+            refreshPopupPendingState(freshMembership);
             
             // Instagram kontrolünü başlat
             checkInstagramLogin();
@@ -654,9 +869,18 @@ async function checkLoginStatus() {
 
 
 function fetchPrices() {
-  // Static pricing — no external server
-  document.getElementById('oldPrice').textContent = '$25';
-  document.getElementById('newPrice').textContent = '$6.99';
+  // Prices come from the shared plan definition (premium-config.js): the card
+  // shows the cheapest plan as "From ₹X" and the biggest saving across plans.
+  if (!Array.isArray(window.PREMIUM_PLANS) || !window.PREMIUM_PLANS.length) return;
+  const cheapest = window.PREMIUM_PLANS[0];
+  const newPriceEl = document.getElementById('newPrice');
+  if (newPriceEl) newPriceEl.textContent = '₹' + cheapest.price;
+  const biggestSave = Math.max.apply(null,
+    window.PREMIUM_PLANS.map((plan) => plan.save || 0));
+  const discountEl = document.getElementById('discountText');
+  if (discountEl && biggestSave > 0) {
+    discountEl.textContent = 'Save up to ₹' + biggestSave;
+  }
 }
 
 // Call this function when the popup loads
@@ -718,44 +942,28 @@ async function checkInstagramLogin() {
     showLoading(); // Show loading
 
     /*
-     * shared_data comes first, and it decides whether the user is signed in. Nothing else can.
-     *
-     * A signed-out browser is sent an HTML login page with status 200 — byte-for-byte the same
-     * shape as a throttled refusal. So "200 carrying HTML" cannot tell the two apart, and reading
-     * it as throttling told a signed-out user their account was being rate limited.
-     *
-     * This endpoint is the exception: it answers with JSON either way, and simply leaves
-     * `config.viewer` empty when nobody is signed in. That makes it the one reliable test, so it
-     * runs first and everything after it is interpreted in light of its answer.
+     * The session bootstrap (ig-session.js) replaces /data/shared_data/, which Instagram removed
+     * (it now answers 404). It reads the viewer id off the Instagram homepage and confirms the
+     * sign-in with web_form_data, so it keeps the same three-way answer this check relies on:
+     * signed out, throttled, or signed in with a known viewer id.
      */
-    const sharedFirst = await fetch('https://www.instagram.com/data/shared_data/', {
-      method: 'GET',
-      credentials: 'include'
-    });
-    const shared = await readIgJson(sharedFirst);
+    const session = await window.IgSession.fetchSession();
 
-    if (shared.expired) {
+    if (session.status === 'logged_out') {
       hideLoading();
       showInstagramLoginAlert();
       hideAnalyzeButton();
       return;
     }
-    // Even a signed-out visitor gets JSON here, so a non-JSON body means Instagram is refusing us
-    // outright — that really is throttling, not a sign-in problem.
-    if (shared.refused || !shared.data) {
+    // No viewer id and not a clean sign-out: Instagram is refusing us outright — that really is
+    // throttling, not a sign-in problem.
+    if (session.status !== 'ok') {
       hideLoading();
       showInstagramLimitedAlert();
       return;
     }
 
-    const viewerId = shared.data?.config?.viewer?.id;
-    if (!viewerId) {
-      // JSON arrived and there is no viewer in it. This is the one honest "please sign in".
-      hideLoading();
-      showInstagramLoginAlert();
-      hideAnalyzeButton();
-      return;
-    }
+    const viewerId = session.id;
 
     // From here the user is known to be signed in, so any refusal below is throttling.
     const userResponse = await fetch('https://www.instagram.com/api/v1/accounts/edit/web_form_data/', {
@@ -781,7 +989,7 @@ async function checkInstagramLogin() {
     // web_profile_info was used here, but Instagram now answers 400 when it is asked for the
     // viewer's own username — it still works for other people's usernames, which is why the
     // unfollow flow in analyzer.js is unaffected. users/{id}/info/ returns the same three fields
-    // and answers for one's own account. The viewer id comes from the shared_data call above.
+    // and answers for one's own account. The viewer id comes from the session bootstrap above.
     const profileResponse = await fetch(`https://www.instagram.com/api/v1/users/${viewerId}/info/`, {
       method: 'GET',
       credentials: 'include',
@@ -829,8 +1037,41 @@ async function checkInstagramLogin() {
   }
 }
 
+// v2: show the last analysis summary (followers / following / not-following / date)
+// when the analyzer has stored one. Hidden cleanly when nothing exists yet.
+function loadLastAnalysisSummary() {
+  const card = document.getElementById('lastAnalysisCard');
+  if (!card) return;
+  chrome.storage.local.get(['lastAnalysisSummary'], (data) => {
+    const summary = data.lastAnalysisSummary;
+    if (!summary || typeof summary.nonFollowersCount !== 'number') {
+      card.style.display = 'none';
+      return;
+    }
+    document.getElementById('lastFollowers').textContent =
+      Number(summary.followersCount).toLocaleString();
+    document.getElementById('lastFollowing').textContent =
+      Number(summary.followingCount).toLocaleString();
+    document.getElementById('lastNonFollowers').textContent =
+      Number(summary.nonFollowersCount).toLocaleString();
+    const dateStr = new Date(summary.timestamp).toLocaleDateString([], { day: 'numeric', month: 'short', year: 'numeric' });
+    const dateEl = document.getElementById('lastAnalysisDate');
+    const msg = getMessage('lastAnalysisDate', [dateStr]);
+    dateEl.textContent = msg === 'lastAnalysisDate' ? `Scanned ${dateStr}` : msg;
+    card.style.display = 'block';
+  });
+  const viewBtn = document.getElementById('viewResultsBtn');
+  if (viewBtn && !viewBtn.dataset.wired) {
+    viewBtn.dataset.wired = '1';
+    viewBtn.addEventListener('click', () => {
+      chrome.tabs.create({ url: chrome.runtime.getURL('analyzer.html') });
+      window.close();
+    });
+  }
+}
+
 function updateInstagramUI(data) {
-  hideLoading(); // Loading'i gizle
+  hideLoading(); // Hide loading
   
   const infoDiv = document.getElementById('instagramInfo');
   const alertDiv = document.getElementById('instagramLoginAlert');
@@ -848,6 +1089,7 @@ function updateInstagramUI(data) {
     
     infoDiv.style.display = 'block';
     alertDiv.style.display = 'none';
+    loadLastAnalysisSummary();
   } else {
     showInstagramLoginAlert();
   }

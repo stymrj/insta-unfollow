@@ -1,0 +1,53 @@
+# Testing v2.0.0 locally (branch `v2`)
+
+Load the branch unpacked — nothing here publishes anything.
+
+## Load it
+
+1. `git checkout v2` in your local clone (or use the copy at `/tmp/insta-unfollow-v2`).
+2. Open Chrome → `chrome://extensions` → enable **Developer mode** → **Load unpacked** → pick the repo folder.
+3. The popup, analyzer, bot scan and admin pages all run from the unpacked copy. Note: an unpacked install gets its own extension ID, so it has **separate storage** from the store version — no snapshots, whitelist or cached analysis carry over. Sign in with Google again in the unpacked copy; membership is re-checked from the server, but analysis history starts empty, so run one fresh analysis before checking the Last Analysis card and the trend line.
+
+## What to click
+
+| # | Check | How |
+|---|-------|-----|
+| 1 | New look (Design B) | Open the popup and the analyzer. Design B "Colourful bold": lavender-grey page (#eef2ff), deep indigo header bar with a 4px amber rule, solid indigo primary buttons, amber/green/rose stat cards, indigo table header, 12px rounded cards, Inter font — no gradient anywhere, no beige, no serif headings. |
+| 2 | Last Analysis card | After one analysis, the popup home tab shows a "Last analysis" card (followers / following / not-following / scan date). "View results" opens the analyzer. Before any analysis, the card is hidden. |
+| 3 | Analyzer search | In the analyzer table toolbar, type part of a username or full name — the list filters as you type. Clear it to get the full list back. |
+| 4 | Analyzer sort | Sort dropdown: "Username A–Z" reorders alphabetically; "Not following first" puts non-followers on top. ("Most followers" is intentionally absent — Instagram's list data has no follower counts.) |
+| 5 | Filter chips | All / Not following back / Following back / Whitelisted — each filters the table; pagination still works (100 rows per page). The "Show only non-followers" switch still works alongside them. |
+| 6 | Export CSV | With any filter active, click **Export CSV** — a `insta-unfollow-nonfollowers.csv` downloads with username, full name, verified, following-you, whitelisted for the filtered rows only. |
+| 7 | Copy usernames | Click **Copy usernames** — a toast says "N usernames copied"; paste into a text editor to confirm. |
+| 8 | Trend line | Under the "Not following back" stat card, after a **second** analysis you should see e.g. "+7 since last analysis · 4 Nov 2026" (real numbers from your stored snapshot, never hardcoded). On the first analysis after upgrading, no trend line shows until a previous snapshot exists. |
+| 9 | Pricing | Popup → Upgrade tab: five Premium plan cards — 1 month ₹49, 3 months ₹129 (strike ₹147, save ₹18), 6 months ₹249 (strike ₹294, save ₹45), 9 months ₹399 (strike ₹441, save ₹42), 12 months ₹499 (strike ₹588, save ₹89) — and the popup plan picker offers the same five plans. Every card shows its strike and save line (1 month has no discount). Free plan reads "40 analyses on day 1 (+20/day)". |
+| 10 | No fake numbers | The Upgrade tab and the premium modal show a "Your data stays on your device" note. There must be **no** "10,000+ Active Users", **no** "4.8/5 Rating", and **no** "150 people upgraded in the last 24h" anywhere. |
+| 11 | Bot scan export | Run a bot scan (or open it from a cached scan), then click **Export flagged CSV** next to "Run deep checks" — a `insta-unfollow-flagged.csv` downloads with the flagged rows and their scores/reasons. |
+| 12 | No Turkish leftovers | Search the UI for "gün" or "Sonraki" — there should be none. Countdown during unfollowing reads "Next: 84s". |
+
+## What NOT to test
+
+- **Do not bulk-unfollow on your real account to "test" v2.** The unfollow flow, delays and pacing are unchanged from v1, but every unfollow is real. If you want to check the unfollow buttons, unfollow at most 1–2 accounts you genuinely want gone, and watch the countdown ("Next: …s") behave.
+- **Do not test the payment flow with a real card** unless you intend to buy Premium. The prices shown are the live ones; a test purchase is a real purchase.
+- **Do not publish from this branch.** Publishing is a manual dashboard upload of the zip (see `STORE.md` → v2.0.0 publish checklist). Verify the Store ID mismatch note at the top of `STORE.md` first.
+
+## If something looks wrong
+
+- Popup/analyzer still beige (v1) or white with pink-purple gradient buttons (rejected first v2 theme): you loaded the store build or an old unpacked copy — remove it and load the `v2` folder again, then hard-reload the analyzer tab.
+- "Last analysis" card missing after an analysis: it only appears after a **fresh** analysis saves a snapshot (loading from cache does not rewrite it). Run one fresh analysis.
+- Trend line shows the wrong comparison: it compares with your last saved snapshot. If you only ever ran one analysis, there is nothing to compare with — that is correct behaviour.
+
+## 2.0.1 — session bootstrap fix (load unpacked and test Analyze first)
+
+Instagram removed `/data/shared_data/`, so v2.0.0's Analyze failed for everyone with
+"An error occurred while fetching data" before any list was read. 2.0.1 replaces that
+call with `ig-session.js` (homepage viewer parse + `web_form_data` sign-in check).
+
+| # | Check | How |
+|---|-------|-----|
+| S1 | Analyze works signed in | Load 2.0.1 unpacked, open instagram.com and log in in the same Chrome profile, open the analyzer, click Analyze. Followers / Following / Not Following must show real counts (not 0/0/0) and the table must fill. |
+| S2 | Signed-out message | Log out of instagram.com, reload the analyzer, Analyze: you must see the "please log in to Instagram" message — NOT "An error occurred while fetching data". |
+| S3 | Popup sign-in state | With Instagram logged in, open the popup: no login alert, profile info shows. Log out of Instagram, reopen the popup: the login alert shows. |
+| S4 | Bot scan still starts | Open Bot scan and start a scan: it must reach the scoring stage (it reads the viewer through the same helper). |
+| S5 | Console errors | On the analyzer page press F12 → Console during an analysis. No `404` for `shared_data` and no `IgSession is not defined` / `fetchSession is not a function` errors. If Analyze still fails, copy the console errors — they say which endpoint refused. |
+| S6 | Google sign-in from the unpacked build | Open the popup and click Sign in with Google: it must complete without `redirect_uri_mismatch`. (The unpacked build is pinned to id `gpgcdajecndabpbigkblhbojakohoiil` by the `key` in manifest.json, and that id's redirect is registered on the OAuth client. If Google still shows the mismatch right after a console change, wait a few minutes — Google says new redirect settings can take minutes to hours to take effect — then retry.) |
