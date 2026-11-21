@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.3 — 2026-11-21
+
+### Session failures now say exactly what failed (and which build said it)
+- **The problem:** "Instagram is temporarily unavailable" hid the cause — it could be the homepage dropping, the API refusing, or the profile page hiding the id — and it hid which build was even running, so a still-failing 2.0.1 looked identical to a failing 2.0.2.
+- **The fix:** `fetchSession()` now returns a `detail` string naming every step ("homepage: network error; web_form_data: 500"), and the analyzer's error shows it plus the build version, e.g. "Instagram is temporarily unavailable. Please try again later. — homepage: 429; web_form_data: 429 [v2.0.3]". The same detail is written to the on-page scan diagnostics.
+- **Also:** the profile-page fallback (step 3) now tries twice with a 1.5s gap — a single dropped request no longer turns a proven signed-in session into "unavailable".
+
 ## 2.0.2 — 2026-11-21
 
 ### Session bootstrap: a dropped homepage request no longer kills Analyze

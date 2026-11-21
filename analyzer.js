@@ -315,12 +315,19 @@ async function getCurrentUserId() {
             logScanDiag({
                 stage: 'session',
                 msg: 'NO Instagram session in this Chrome browser',
-                detail: 'Open instagram.com in this Chrome browser and log in first'
+                detail: 'Open instagram.com in this Chrome browser and log in first' + (session.detail ? ' — ' + session.detail : '')
             });
             return null;
         }
         if (session.status !== 'ok') {
-            const err = new Error(getMessage(session.reason === 'rate_limit' ? 'errorRateLimit' : 'errorInstagramUnavailable'));
+            // Say exactly what failed, and which build said it: the detail names the
+            // request that broke ("homepage: network error; web_form_data: 500"), and the
+            // version proves which build is running — the two facts a bare
+            // "temporarily unavailable" hides.
+            const version = (chrome.runtime && chrome.runtime.getManifest && chrome.runtime.getManifest().version) || '';
+            const detail = (session.detail ? ' — ' + session.detail : '') + (version ? ' [v' + version + ']' : '');
+            logScanDiag({ stage: 'session', msg: 'Session refused (' + (session.reason || 'unknown') + ')', detail: session.detail || '' });
+            const err = new Error(getMessage(session.reason === 'rate_limit' ? 'errorRateLimit' : 'errorInstagramUnavailable') + detail);
             err.code = session.reason === 'rate_limit' ? 'RATE_LIMIT' : 'SERVER_ERROR';
             throw err;
         }

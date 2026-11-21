@@ -34,9 +34,11 @@
  * instagram.com session cookies exactly like the old endpoint did.
  *
  * `fetchSession()` never throws: it returns `{ status: 'ok' | 'logged_out' | 'refused',
- * reason, id, username, csrfToken, profilePicUrl }`. Callers map 'logged_out' to the
- * "please sign in" path and 'refused' to the rate-limit / try-later path, the same
- * three-way answer the old shared_data check gave them. Successful sessions are cached
+ * reason, detail, id, username, csrfToken, profilePicUrl }`. `detail` is a plain-words
+ * log of what each step did ("homepage: network error; web_form_data: 500"), so a failed
+ * session can say exactly which request failed instead of a bare "temporarily unavailable".
+ * Callers map 'logged_out' to the "please sign in" path and 'refused' to the rate-limit /
+ * try-later path, the same three-way answer the old shared_data check gave them. Successful sessions are cached
  * for the page lifetime (the callers already cache the viewer the same way); failures
  * are not cached, so Re-analyze after signing in works without reloading the page.
  *
@@ -52,8 +54,8 @@
 
   var cachedSession = null;
 
-  function emptySession(status, reason) {
-    return { status: status, reason: reason || '', id: '', username: '', csrfToken: '', profilePicUrl: '' };
+  function emptySession(status, reason, detail) {
+    return { status: status, reason: reason || '', detail: detail || '', id: '', username: '', csrfToken: '', profilePicUrl: '' };
   }
 
   /**
@@ -126,6 +128,14 @@
   }
 
   async function fetchSessionUncached() {
+    // Every step records what happened, in plain words, so a failed session can say
+    // exactly which request failed and how — "temporarily unavailable" on its own
+    // tells nobody whether the homepage dropped, the API refused, or the profile page
+    // hid the id. The detail travels out on the session object (see fetchSession).
+    var steps = [];
+    function step(name, outcome) { steps.push(name + ': ' + outcome); }
+    function detail() { return steps.join('; '); }
+
     // 1. The homepage: the only source that carries id + username + csrf in one shot.
     // A failure here NEVER ends the attempt — the page is heavy and Instagram throttles
     // or drops it first, while the lightweight API endpoint below often still answers.
@@ -135,18 +145,19 @@
     var homeHtml = '';
     try {
       var home = await fetch(IG_HOME_URL, { credentials: 'include' });
-      if (home.status === 429) homeFailed = 'rate_limit';
-      else if (home.status >= 500) homeFailed = 'server';
-      else if (home.ok) homeHtml = await home.text();
-      else homeFailed = 'unknown';
+      if (home.status === 429) { homeFailed = 'rate_limit'; step('homepage', '429'); }
+      else if (home.status >= 500) { homeFailed = 'server'; step('homepage', String(home.status)); }
+      else if (home.ok) { homeHtml = await home.text(); step('homepage', 'ok, no viewer'); }
+      else { homeFailed = 'unknown'; step('homepage', String(home.status)); }
     } catch (e) {
       homeFailed = 'network';
+      step('homepage', 'network error');
     }
 
     var parsed = parseViewerFromHtml(homeHtml);
     if (parsed.id) {
       return {
-        status: 'ok', reason: '', id: parsed.id, username: parsed.username,
+        status: 'ok', reason: '', detail: detail(), id: parsed.id, username: parsed.username,
         csrfToken: parsed.csrfToken, profilePicUrl: parsed.profilePicUrl
       };
     }
@@ -160,47 +171,71 @@
         credentials: 'include',
         headers: { 'x-ig-app-id': IG_APP_ID, 'x-requested-with': 'XMLHttpRequest' }
       });
-      if (res.status === 401 || res.status === 403) return emptySession('logged_out', 'expired');
-      if (res.status === 429) return emptySession('refused', 'rate_limit');
+      if (res.status === 401 || res.status === 403) {
+        step('web_form_data', String(res.status));
+        return emptySession('logged_out', 'expired', detail());
+      }
+      if (res.status === 429) {
+        step('web_form_data', '429');
+        return emptySession('refused', 'rate_limit', detail());
+      }
       if (res.status >= 500) {
-        return emptySession('refused', homeFailed === 'rate_limit' ? 'rate_limit' : 'server');
+        step('web_form_data', String(res.status));
+        return emptySession('refused', homeFailed === 'rate_limit' ? 'rate_limit' : 'server', detail());
       }
       if (res.ok) {
         var data = await res.json().catch(function () { return null; });
         form = parseWebFormData(data);
+        step('web_form_data', form.username ? 'signed in as @' + form.username : 'ok, no username');
+      } else {
+        step('web_form_data', String(res.status));
       }
     } catch (e) {
-      return emptySession('refused', homeFailed === 'rate_limit' ? 'rate_limit' : 'network');
+      step('web_form_data', 'network error');
+      return emptySession('refused', homeFailed === 'rate_limit' ? 'rate_limit' : 'network', detail());
     }
 
     if (form.id) {
       return {
-        status: 'ok', reason: '', id: form.id, username: form.username,
+        status: 'ok', reason: '', detail: detail(), id: form.id, username: form.username,
         csrfToken: parsed.csrfToken, profilePicUrl: ''
       };
     }
     if (!form.username) {
       // No viewer in the homepage and the API answered without a username: logged out.
-      return emptySession('logged_out', 'expired');
+      return emptySession('logged_out', 'expired', detail());
     }
 
     // 3. Signed in, but the homepage hid the id: read it off the public profile page.
-    try {
-      var prof = await fetch(IG_HOME_URL + encodeURIComponent(form.username) + '/', { credentials: 'include' });
-      if (prof.status === 429) return emptySession('refused', 'rate_limit');
-      if (prof.ok) {
-        var id = parseProfileIdFromHtml(await prof.text(), form.username);
-        if (id) {
-          return {
-            status: 'ok', reason: '', id: id, username: form.username,
-            csrfToken: parsed.csrfToken, profilePicUrl: ''
-          };
+    // Two attempts: this page is HTML like the homepage, so a single dropped request
+    // should not turn a proven signed-in session into "unavailable".
+    for (var attempt = 0; attempt < 2; attempt++) {
+      if (attempt > 0) await new Promise(function (resolve) { setTimeout(resolve, 1500); });
+      try {
+        var prof = await fetch(IG_HOME_URL + encodeURIComponent(form.username) + '/', { credentials: 'include' });
+        if (prof.status === 429) {
+          step('profile page', '429');
+          return emptySession('refused', 'rate_limit', detail());
         }
+        if (prof.ok) {
+          var id = parseProfileIdFromHtml(await prof.text(), form.username);
+          if (id) {
+            step('profile page', 'ok');
+            return {
+              status: 'ok', reason: '', detail: detail(), id: id, username: form.username,
+              csrfToken: parsed.csrfToken, profilePicUrl: ''
+            };
+          }
+          step('profile page', 'ok, no id found');
+        } else {
+          step('profile page', String(prof.status));
+        }
+      } catch (e) {
+        step('profile page', 'network error');
       }
-    } catch (e) { /* fall through to refused below */ }
-    return emptySession('refused', 'unknown');
+    }
+    return emptySession('refused', 'unknown', detail());
   }
-
   async function fetchSession() {
     if (cachedSession && cachedSession.status === 'ok') return cachedSession;
     var session = await fetchSessionUncached();
