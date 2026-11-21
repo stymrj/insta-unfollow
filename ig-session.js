@@ -29,7 +29,9 @@
  *
  * One retry: a `refused` with reason `network` or `server` is retried once after 2s —
  * a single dropped request should not kill an analysis. Rate-limit and signed-out
- * results are never retried.
+ * results are never retried. A rate-limit refusal is instead cached for 5 minutes
+ * (memory + storage, so it survives the popup reopening): while it is fresh, no new
+ * request goes to Instagram at all, because retrying into a limit makes it last longer.
  *
  * Loaded in three contexts, always before its callers:
  *   - analyzer.html and bot-scan.html (extension pages, before unfollow-bridge.js)
@@ -60,6 +62,34 @@
   var CURRENT_USER_URL = 'https://www.instagram.com/api/v1/accounts/current_user/';
 
   var cachedSession = null;
+
+  // A rate-limit refusal is cached for 5 minutes, in memory AND in storage (the popup
+  // is a fresh page on every open, so memory alone would not survive it). While it is
+  // fresh, fetchSession answers from the cache and sends NO request to Instagram:
+  // retrying into a rate limit is the one thing that makes the limit last longer.
+  // Storage is best-effort — any failure degrades to "no cache", never to a broken flow.
+  var RATE_LIMIT_CACHE_MS = 5 * 60 * 1000;
+  var cachedRateLimit = null;
+  var cachedRateLimitAt = 0;
+
+  async function readStoredRateLimit() {
+    try {
+      if (typeof chrome === 'undefined' || !chrome.storage || !chrome.storage.local) return null;
+      var got = await chrome.storage.local.get('igSessionRateLimit');
+      var rec = got && got.igSessionRateLimit;
+      if (rec && rec.status === 'refused' && rec.reason === 'rate_limit' && typeof rec.at === 'number') {
+        if (Date.now() - rec.at < RATE_LIMIT_CACHE_MS) return rec;
+      }
+    } catch (e) { /* no cache, fetch normally */ }
+    return null;
+  }
+
+  async function storeRateLimit(session) {
+    try {
+      if (typeof chrome === 'undefined' || !chrome.storage || !chrome.storage.local) return;
+      await chrome.storage.local.set({ igSessionRateLimit: { status: 'refused', reason: 'rate_limit', detail: session.detail || '', at: Date.now() } });
+    } catch (e) { /* caching is optional */ }
+  }
 
   function emptySession(status, reason, detail) {
     return { status: status, reason: reason || '', detail: detail || '', id: '', username: '', csrfToken: '', profilePicUrl: '' };
@@ -341,6 +371,13 @@
   }
   async function fetchSession() {
     if (cachedSession && cachedSession.status === 'ok') return cachedSession;
+    if (cachedRateLimit && Date.now() - cachedRateLimitAt < RATE_LIMIT_CACHE_MS) return cachedRateLimit;
+    var stored = await readStoredRateLimit();
+    if (stored) {
+      cachedRateLimit = stored;
+      cachedRateLimitAt = stored.at;
+      return stored;
+    }
     var session = await fetchSessionUncached();
     if (session.status === 'refused' && (session.reason === 'network' || session.reason === 'server')) {
       // One retry: a single dropped request or a hiccuping endpoint should not kill the
@@ -350,6 +387,11 @@
       session = await fetchSessionUncached();
     }
     if (session.status === 'ok') cachedSession = session;
+    if (session.status === 'refused' && session.reason === 'rate_limit') {
+      cachedRateLimit = session;
+      cachedRateLimitAt = Date.now();
+      await storeRateLimit(session);
+    }
     return session;
   }
 
@@ -361,6 +403,15 @@
     parseUserIdFromApi: parseUserIdFromApi,
     parseUsernameFromApi: parseUsernameFromApi,
     // Test-only: the Node harness resets the page-lifetime cache between scenarios.
-    _resetCache: function () { cachedSession = null; }
+    _resetCache: function () {
+      cachedSession = null;
+      cachedRateLimit = null;
+      cachedRateLimitAt = 0;
+      try {
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+          chrome.storage.local.remove('igSessionRateLimit');
+        }
+      } catch (e) { /* optional */ }
+    }
   };
 })(typeof window !== 'undefined' ? window : globalThis);

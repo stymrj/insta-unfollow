@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.5 — 2026-11-21
+
+### A rate limit no longer gets worse every time you retry
+- **What happened:** after a day of repeated Analyze attempts, Instagram started 429-ing the session calls — the popup correctly showed "Instagram is limiting requests right now". The account is fine; the limit lifts on its own (hours, sometimes tomorrow).
+- **The fix:** a rate-limit refusal is now cached for 5 minutes, in memory and in storage (the popup is a fresh page on every open, so memory alone would not survive it). While it is fresh, `fetchSession` answers from the cache and sends NO request to Instagram at all — retrying into a limit is the one thing that makes it last longer. The screen still says to wait; now the code waits too.
+
 ## 2.0.4 — 2026-11-21
 
 ### The id now comes from Instagram's own APIs, not from HTML
