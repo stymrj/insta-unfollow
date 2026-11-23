@@ -603,6 +603,41 @@
    * followers the ordinary accounts are the overwhelming majority, and showing them first means
    * scrolling past hundreds of "Looks real" to reach the ones worth a decision.
    */
+  /**
+   * v2: download the flagged rows (current filter tab, likely-bot / suspicious only)
+   * as CSV. Uses the already-computed scores and reasons — no new requests.
+   * Columns: username, full name, verdict, score %, raw score, reasons, deep-checked.
+   */
+  function exportFlaggedCsv() {
+    const V = window.BotDetector.VERDICT;
+    const rows = visibleRows().filter((e) => e.verdict !== V.CLEAN);
+    if (!rows.length) {
+      setStatus(msg('botNoFlagged') || 'Nothing flagged — your follower list looks clean.');
+      return;
+    }
+    const esc = (v) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
+    const lines = [['username', 'full_name', 'verdict', 'score_percent', 'score_raw', 'reasons', 'deep_checked'].join(',')];
+    for (const entry of rows) {
+      const u = entry.user || {};
+      const reasons = entry.reasons.filter((r) => r.weight > 0).map(reasonLabel).join('; ');
+      lines.push([
+        esc(u.username), esc(u.full_name || ''),
+        esc(entry.verdict === V.BOT ? 'likely_bot' : 'suspicious'),
+        esc(asPercent(entry.score)), esc(entry.score),
+        esc(reasons), entry.deep ? 'yes' : 'no'
+      ].join(','));
+    }
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'insta-unfollow-flagged.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
   function visibleRows() {
     const V = window.BotDetector.VERDICT;
     if (filter === 'bot') return scored.filter((e) => e.verdict === V.BOT);
@@ -774,7 +809,7 @@
         <tr>
           <td class="row-number">${start + i + 1}</td>
           <td><div class="profile-cell">
-            <img src="${avatarUrl(u.profile_pic_url)}" data-orig="${avatarUrl(u.profile_pic_url)}" referrerpolicy="no-referrer" alt="" class="profile-image" onerror="this.onerror=null;this.src='img/48.png'"></div></td>
+            <img src="${avatarUrl(u.profile_pic_url)}" data-orig="${avatarUrl(u.profile_pic_url)}" referrerpolicy="no-referrer" alt="" class="profile-image"></div></td>
           <td>
             <a href="https://instagram.com/${encodeURIComponent(u.username)}" target="_blank" rel="noopener"
                class="username-cell">@${escapeHtml(u.username)}</a>
@@ -872,7 +907,7 @@
     });
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('premium-card-subscribe-button')) {
-        handlePremiumSubscribe(e.target.getAttribute('data-plan') || 'monthly');
+        handlePremiumSubscribe(e.target.getAttribute('data-plan') || '1mo');
       }
     });
   }
@@ -1021,12 +1056,19 @@
   }
 
   // ---------------------------------------------------------------- wiring
+  document.addEventListener('error', function (e) {
+    if (e.target && e.target.tagName === 'IMG' && e.target.classList.contains('profile-image')) {
+      e.target.src = 'img/48.png';
+    }
+  }, true);
+
   document.addEventListener('DOMContentLoaded', async () => {
     applyI18n();
     // Read before anything is drawn: rendering first would flash the full table at a free account.
     await loadMembership();
     $('startBotScan').addEventListener('click', runScan);
     $('runDeepChecks').addEventListener('click', runDeepScan);
+    $('exportFlaggedCsv').addEventListener('click', exportFlaggedCsv);
     $('stopBotScan').addEventListener('click', () => { stopRequested = true; setStatus(msg('stopping') || 'Stopping…'); });
 
     document.querySelectorAll('.bot-filter-btn').forEach((b) => {

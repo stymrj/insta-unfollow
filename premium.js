@@ -8,27 +8,27 @@
  * Both pages include the same markup block and load this file before their own script.
  */
 
-/**
- * Timer behind the "N people upgraded in the last 24 hours" counter.
- *
- * Declared here rather than in analyzer.js, where it used to sit: the live-counter code below is
- * the only thing that touches it, and analyzer.js is not loaded on the bot scan page. Left behind
- * during the extraction, it made this file depend on a variable that only existed on one of the two
- * pages — `initializeLiveCounter` reads it before assigning, and reading an undeclared name throws,
- * so opening the modal from the bot scan raised a ReferenceError.
- */
-let counterTimeoutId = null;
 function openPremiumModal() {
     const premiumModal = document.getElementById('premiumModal');
     if (premiumModal) {
         premiumModal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        
+
         // Fetch and update prices from API
         fetchPremiumPrices();
-        
+
+        // Plan options default to the 1-month plan on every open.
+        wireModalPlanOptions();
+        setModalSelectedPlan('1mo');
+
         // Update pricing and subscription button visibility
         updatePremiumModalContent();
+
+        // A proof under review replaces the Subscribe buttons (and no poll
+        // runs — polling a 5-minute wait for an admin decision is pointless).
+        // Otherwise the modal resumes its normal state and watches for an
+        // admin approval landing while it is open (see below).
+        refreshModalPaymentState();
     }
 }
 
@@ -38,182 +38,166 @@ function closePremiumModal() {
         premiumModal.classList.remove('active');
         document.body.style.overflow = '';
     }
-    
-    // Clear counter timeout when modal is closed (optional but good practice)
-    // Note: We keep it running in background, but this prevents leaks if modal is closed/reopened frequently
-    // Uncomment the line below if you want to stop counter when modal closes:
-    // if (counterTimeoutId !== null) {
-    //     clearTimeout(counterTimeoutId);
-    //     counterTimeoutId = null;
-    // }
+    stopModalActivationPoll();
+}
+
+// The poll started by refreshModalPaymentState while the modal is open; at
+// most one runs at a time, and closing the modal stops it.
+let modalPollStop = null;
+
+function stopModalActivationPoll() {
+    if (typeof modalPollStop === 'function') {
+        try { modalPollStop(); } catch (error) { /* already stopped */ }
+    }
+    modalPollStop = null;
+}
+
+function getModalPaymentStep() {
+    return document.getElementById('premiumPaymentStep');
+}
+
+function setModalSubscribeButtonsVisible(visible) {
+    document.querySelectorAll('.premium-card-subscribe-button').forEach((button) => {
+        button.style.display = visible ? '' : 'none';
+    });
+}
+
+function showModalPaymentStep() {
+    const step = getModalPaymentStep();
+    if (step) {
+        step.style.display = 'block';
+        step.innerHTML = '';
+    }
+    return step;
+}
+
+function hideModalPaymentStep() {
+    const step = getModalPaymentStep();
+    if (step) {
+        step.style.display = 'none';
+        step.innerHTML = '';
+    }
+}
+
+function showModalUnderReview() {
+    setModalSubscribeButtonsVisible(false);
+    const step = showModalPaymentStep();
+    if (step && typeof window.createUnderReviewNotice === 'function') {
+        step.appendChild(window.createUnderReviewNotice());
+    }
+}
+
+/**
+ * Decides the modal's payment state on open: premium members and pending
+ * proofs never see Subscribe buttons; a free user with nothing pending gets
+ * the normal pricing view, and the shared poll watches for an admin approval
+ * landing while the modal stays open (it fires onActive -> Premium active).
+ */
+async function refreshModalPaymentState() {
+    if (typeof getPremiumMembership !== 'function') return;
+    stopModalActivationPoll();
+    let membership;
+    try {
+        membership = await getPremiumMembership();
+    } catch (error) {
+        console.error('refreshModalPaymentState failed:', error);
+        return;
+    }
+    if (!membership || membership.turu === 'premium') {
+        setModalSubscribeButtonsVisible(false);
+        hideModalPaymentStep();
+        return;
+    }
+    if (membership.pendingProof) {
+        showModalUnderReview();
+        return;
+    }
+    setModalSubscribeButtonsVisible(true);
+    hideModalPaymentStep();
+    if (typeof window.pollPremiumActivation !== 'function') return;
+    try {
+        const data = await chrome.storage.local.get(['user_info']);
+        const userId = (data.user_info && data.user_info.id) || '';
+        const email = (data.user_info && data.user_info.email) || '';
+        modalPollStop = window.pollPremiumActivation({
+            userId,
+            email,
+            onActive: () => {
+                setModalSubscribeButtonsVisible(false);
+                const step = showModalPaymentStep();
+                if (step) step.textContent = '✓ Premium active!';
+                setTimeout(() => {
+                    closePremiumModal();
+                    location.reload();
+                }, 900);
+            },
+            onTimeout: () => { /* nothing landed; the user just keeps browsing */ }
+        });
+    } catch (error) {
+        console.error('Modal activation poll failed to start:', error);
+    }
 }
 
 function initializePremiumModal() {
     // Fetch prices from API
     fetchPremiumPrices();
-    
-    // Initialize live counter
-    initializeLiveCounter();
+    wireModalPlanOptions();
 }
 
-async function fetchPremiumPrices() {
-    // Static pricing — no external server
-    const oldPriceEl = document.getElementById('premiumOldPrice');
-    const newPriceEl = document.getElementById('premiumNewPrice');
-    
-    if (oldPriceEl) oldPriceEl.textContent = '$25';
-    if (newPriceEl) newPriceEl.textContent = '$6.99';
-    
-    const discountText = document.getElementById('premiumDiscountText');
-    if (discountText) {
-        discountText.textContent = '72% OFF';
+// The selected plan option drives the single subscribe button below the
+// options: its data-plan (read by the page's click handler) and its label
+// always match the selected option. Default selected plan: 1 month.
+function setModalSelectedPlan(planKey) {
+    if (!Array.isArray(window.PREMIUM_PLANS) || !window.PREMIUM_PLANS.length) return '1mo';
+    const plan = typeof window.getPremiumPlan === 'function'
+        ? window.getPremiumPlan(planKey) : window.PREMIUM_PLANS[0];
+    document.querySelectorAll('.premium-plan-option').forEach((option) => {
+        const selected = option.getAttribute('data-plan') === plan.key;
+        option.classList.toggle('selected', selected);
+        option.setAttribute('aria-checked', selected ? 'true' : 'false');
+    });
+    const button = document.getElementById('premiumSubscribeButton');
+    if (button) {
+        button.setAttribute('data-plan', plan.key);
+        button.textContent = 'Continue — ' + plan.label + ' · ₹' + plan.price;
     }
-    
-    const yearlyOldPriceEl = document.getElementById('premiumYearlyOldPrice');
-    const yearlyNewPriceEl = document.getElementById('premiumYearlyNewPrice');
-    
-    if (yearlyOldPriceEl) yearlyOldPriceEl.textContent = '$129.99';
-    if (yearlyNewPriceEl) yearlyNewPriceEl.textContent = '$74.99';
-    
-    const yearlyDiscountText = document.getElementById('premiumYearlyDiscountText');
-    if (yearlyDiscountText) {
-        yearlyDiscountText.textContent = '42% OFF';
-    }
-    
-    const savingsEl = document.getElementById('premiumYearlySavings');
-    if (savingsEl) {
-        savingsEl.textContent = 'Save $8.89/year';
-    }
+    return plan.key;
 }
 
-function initializeLiveCounter() {
-    // Clear any existing timeout before initializing
-    if (counterTimeoutId !== null) {
-        clearTimeout(counterTimeoutId);
-        counterTimeoutId = null;
-    }
-    
-    const counterEl = document.getElementById('premiumLiveCounter');
-    if (!counterEl) return;
-    
-    // Get or initialize counter data
-    chrome.storage.local.get(['premiumCounterData'], function(data) {
-        const today = new Date().toDateString();
-        let counterData = data.premiumCounterData || {};
-        
-        // Check if we need to reset (new day)
-        if (counterData.lastResetDate !== today) {
-            // New day - reset to 150
-            const startValue = 150;
-            counterData = {
-                lastResetDate: today,
-                currentValue: startValue,
-                lastUpdate: Date.now()
-            };
-            
-            // Save new data
-            chrome.storage.local.set({ premiumCounterData: counterData });
-            
-            // Update display
-            updateCounterDisplay(counterEl, startValue);
-        } else {
-            // Same day - use existing value
-            updateCounterDisplay(counterEl, counterData.currentValue || 150);
-        }
-        
-        // Start periodic updates
-        startCounterUpdates(counterEl, counterData);
+let modalPlanOptionsWired = false;
+
+function wireModalPlanOptions() {
+    if (modalPlanOptionsWired) return;
+    const options = document.getElementById('premiumPlanOptions');
+    if (!options) return;
+    modalPlanOptionsWired = true;
+    options.addEventListener('click', (event) => {
+        const option = event.target.closest('.premium-plan-option');
+        if (option) setModalSelectedPlan(option.getAttribute('data-plan'));
     });
 }
 
-function startCounterUpdates(counterEl, counterData) {
-    // Clear any existing timeout before starting a new one
-    if (counterTimeoutId !== null) {
-        clearTimeout(counterTimeoutId);
-        counterTimeoutId = null;
-    }
-    
-    // Update every 4-5 minutes (240000-300000 ms)
-    const updateInterval = () => {
-        // Check if element still exists in DOM
-        if (!counterEl || !document.getElementById('premiumLiveCounter')) {
-            // Element removed from DOM, stop updates
-            counterTimeoutId = null;
-            return;
+function fetchPremiumPrices() {
+    // Prices come from the shared plan definition (premium-config.js) — the
+    // static markup carries the same values as a first render, and this
+    // re-renders them from the definition on every open so the two cannot drift.
+    if (!Array.isArray(window.PREMIUM_PLANS)) return;
+    window.PREMIUM_PLANS.forEach((plan) => {
+        const priceEl = document.getElementById('premiumPlanPrice-' + plan.key);
+        if (priceEl) priceEl.textContent = '₹' + plan.price;
+        const strikeEl = document.getElementById('premiumPlanStrike-' + plan.key);
+        if (strikeEl) strikeEl.textContent = plan.strike == null ? '' : '₹' + plan.strike;
+        const saveEl = document.getElementById('premiumPlanSave-' + plan.key);
+        if (saveEl) {
+            saveEl.textContent = plan.save == null ? ''
+                : (plan.save > 0 ? 'Save ₹' + plan.save : 'No discount');
         }
-        
-        const interval = Math.floor(Math.random() * 60000) + 240000; // 4-5 minutes (240-300 seconds)
-        
-        counterTimeoutId = setTimeout(() => {
-            chrome.storage.local.get(['premiumCounterData'], function(data) {
-                // Check if element still exists before updating
-                const counterElement = document.getElementById('premiumLiveCounter');
-                if (!counterElement) {
-                    counterTimeoutId = null;
-                    return;
-                }
-                
-                const today = new Date().toDateString();
-                let currentData = data.premiumCounterData || {};
-                
-                // Check if still same day
-                if (currentData.lastResetDate === today) {
-                    // Always increase by +1
-                    let currentValue = currentData.currentValue || 150;
-                    let newValue = currentValue + 1;
-                    
-                    // Max at 350
-                    if (newValue > 350) {
-                        newValue = 350; // Max at 350
-                    }
-                    
-                    // Never go below current value
-                    if (newValue < currentValue) {
-                        newValue = currentValue; // Never decrease
-                    }
-                    
-                    currentData.currentValue = newValue;
-                    currentData.lastUpdate = Date.now();
-                    
-                    // Save updated data
-                    chrome.storage.local.set({ premiumCounterData: currentData });
-                    
-                    // Update display with animation
-                    updateCounterDisplay(counterElement, newValue, true);
-                } else {
-                    // New day - reset to 150
-                    const startValue = 150;
-                    currentData = {
-                        lastResetDate: today,
-                        currentValue: startValue,
-                        lastUpdate: Date.now()
-                    };
-                    chrome.storage.local.set({ premiumCounterData: currentData });
-                    updateCounterDisplay(counterElement, startValue);
-                }
-                
-                // Schedule next update
-                updateInterval();
-            });
-        }, interval);
-    };
-    
-    // Start first update
-    updateInterval();
-}
-
-function updateCounterDisplay(counterEl, value, animate = false) {
-    if (animate) {
-        counterEl.classList.add('updating');
-        setTimeout(() => {
-            counterEl.textContent = value;
-            setTimeout(() => {
-                counterEl.classList.remove('updating');
-            }, 500);
-        }, 100);
-    } else {
-        counterEl.textContent = value;
-    }
+        const perMonthEl = document.getElementById('premiumPlanPerMonth-' + plan.key);
+        if (perMonthEl) perMonthEl.textContent = '₹' + plan.perMonth + '/mo';
+    });
+    // Keep the subscribe button in sync with the current selection.
+    const selected = document.querySelector('.premium-plan-option.selected');
+    if (selected) setModalSelectedPlan(selected.getAttribute('data-plan'));
 }
 
 function updatePremiumModalContent() {
@@ -223,84 +207,88 @@ function updatePremiumModalContent() {
 
   const t = (key) => (typeof getMessage === 'function' ? getMessage(key) : '') || '';
 
-  function handlePremiumSubscribe(planType = 'monthly') {
+  // Manual-payment checkout: plan -> method picker -> UPI view
+  // -> proof-submission form. Nothing here promises automatic activation for
+  // a manual payment: premium activates only once an admin approves the
+  // submitted proof.
+  function handlePremiumSubscribe(planType = '1mo') {
+  // Unknown or legacy plan keys fall back to the 1-month plan.
+  planType = typeof window.getPremiumPlan === 'function'
+    ? window.getPremiumPlan(planType).key : (planType || '1mo');
   (async () => {
+    const step = getModalPaymentStep();
     try {
       const already = await getPremiumMembership();
       if (already.turu === 'premium') {
         closePremiumModal();
         return;
       }
-
-      const button = document.querySelector(`.premium-card-subscribe-button[data-plan="${planType}"]`);
-      const originalText = button ? button.textContent : '';
-      if (button) button.textContent = t('premiumOpeningPayment') || 'Opening payment…';
+      if (already.pendingProof) {
+        // A proof is already under review: show that state instead of
+        // Subscribe buttons, and do not start a poll for it.
+        showModalUnderReview();
+        return;
+      }
 
       const data = await chrome.storage.local.get(['user_info']);
       const userId = (data.user_info && data.user_info.id) || '';
+      const email = (data.user_info && data.user_info.email) || '';
 
-      const response = await fetch(window.PAYMENT_API_URL + '/create-link', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: planType, userId })
-      });
-      const payload = await response.json().catch(() => ({}));
-      if (!response.ok || !payload.short_url) {
-        throw new Error(payload.error || ('payment link failed: ' + response.status));
+      const apiUrl = window.PAYMENT_API_URL;
+      if (!apiUrl || typeof apiUrl !== 'string' || apiUrl.includes('PASTE-YOUR-WORKER')) {
+        const stepEl = showModalPaymentStep();
+        if (stepEl) stepEl.textContent = 'Payment is not configured yet.';
+        return;
       }
 
-      window.open(payload.short_url, '_blank');
+      showModalPaymentStep();
+      if (step) step.textContent = 'Loading payment methods…';
+      const methods = typeof window.getPaymentMethods === 'function'
+        ? await window.getPaymentMethods()
+        : { upi: true, razorpay: false };
 
-      // A fixed Paytm link cannot be polled for its order status, so tell the user what to
-      // expect: premium activates once the admin confirms the payment from the console.
-      // The poll below still runs — it picks up the moment that confirmation lands.
-      if (payload.paytm) {
-        if (button) button.textContent = t('premiumPaytmNote') || 'Complete payment in the opened tab — premium activates once confirmed';
-      }
+      const renderPicker = () => {
+        const stepEl = showModalPaymentStep();
+        if (!stepEl || typeof window.createPaymentMethodPicker !== 'function') return;
+        stepEl.appendChild(window.createPaymentMethodPicker({
+          plan: planType,
+          methods,
+          onPick: (method) => onMethodPicked(method)
+        }));
+      };
 
-      // Wait for the payment to land; Razorpay settles within seconds of success, an admin
-      // grant from the console lands within minutes of a Paytm payment.
-      const poll = async (attemptsLeft) => {
-        if (attemptsLeft <= 0) {
-          if (button) button.textContent = originalText;
+      const showProofForm = (method) => {
+        const stepEl = getModalPaymentStep();
+        if (!stepEl || typeof window.createProofForm !== 'function') return;
+        stepEl.appendChild(window.createProofForm({
+          plan: planType,
+          method,
+          userId,
+          onSuccess: () => {
+            // Proof accepted for review: hide the Subscribe buttons so the
+            // user cannot start a second checkout for the same plan.
+            setModalSubscribeButtonsVisible(false);
+          }
+        }));
+      };
+
+      const onMethodPicked = async (method) => {
+        if (method === 'upi') {
+          const stepEl = showModalPaymentStep();
+          if (!stepEl) return;
+          stepEl.appendChild(window.createUpiPaymentView(planType));
+          showProofForm('upi');
           return;
         }
-        try {
-          const email = (data.user_info && data.user_info.email) || '';
-          const statusResponse = await fetch(
-            window.PAYMENT_API_URL + '/status?u=' + encodeURIComponent(userId) +
-            '&email=' + encodeURIComponent(email)
-          );
-          const status = await statusResponse.json();
-          if (status.premium && status.token) {
-            await chrome.storage.local.set({
-              membership: {
-                uye_id: userId,
-                turu: 'premium',
-                token: status.token,
-                kayit_tarihi: new Date().toISOString()
-              }
-            });
-            if (button) button.textContent = '✓ ' + (t('premiumActive') || 'Premium active!');
-            setTimeout(() => {
-              closePremiumModal();
-              location.reload();
-            }, 900);
-            return;
-          }
-        } catch (error) {
-          console.error('Payment status check failed:', error);
-        }
-        setTimeout(() => poll(attemptsLeft - 1), 4000);
       };
-      poll(75); // ~5 minutes of checking
+
+      renderPicker();
     } catch (error) {
       console.error('handlePremiumSubscribe failed:', error);
-      const button = document.querySelector('.premium-card-subscribe-button');
-      if (button) button.textContent = t('premiumPaymentError') || 'Payment failed — try again';
-      setTimeout(() => {
-        if (button) button.textContent = t('premiumRetry') || 'Try again';
-      }, 2500);
+      const stepEl = showModalPaymentStep();
+      if (stepEl) {
+        stepEl.textContent = t('premiumPaymentError') || 'Payment failed — try again';
+      }
     }
   })();
 }

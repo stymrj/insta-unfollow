@@ -45,48 +45,16 @@
   };
 
   const CONFIG = {
-    /** The site asks for 12 on the first page of the sheet; matching that keeps the opening quiet. */
-    firstPageSize: 12,
-    /**
-     * Measured, not chosen: v1 hands back about 23 accounts per request no matter what `count`
-     * says — 50, 100 and 200 all return the same page. The value is kept at 50 because that is
-     * what the site itself sends, and asking for more buys nothing.
-     */
-    pageSize: 50,
-    /**
-     * Randomised, so the cadence doesn't read as a machine ticking on a fixed interval.
-     *
-     * Roughly one request every 425ms, tightened from 550ms at the owner's request after watching
-     * a 17,000-follower list take nearly seven minutes. That is about 2.4 requests a second.
-     *
-     * For reference, the behaviour that was getting accounts flagged ran two parallel streams at a
-     * fixed 300ms — about six a second. This stays sequential and under half of that, but the
-     * trade is real and unmeasured: request rate is what draws the throttling, and there is no
-     * threshold published anywhere to aim at. If accounts start getting held off more often, this
-     * pair is the first thing to put back.
-     */
-    minDelayMs: 250,
-    maxDelayMs: 600,
-    fallbackPageSize: 50,
-    /**
-     * Still slower per request than v1, and deliberately so: this path is only reached because the
-     * account is already being held back, and it is the one that draws attention.
-     *
-     * Tightened from 1500–3000 to 1200–2400 — about 1800ms average — for the same reason as above.
-     * It reads roughly twice as many accounts per request as v1, so the pages are worth more; what
-     * makes it feel slow is that a fallback re-reads the list from the beginning, since the v1
-     * cursor means nothing here.
-     */
-    fallbackMinDelayMs: 1200,
-    fallbackMaxDelayMs: 2400,
+    firstPageSize: 100,
+    pageSize: 100,
+    minDelayMs: 800,
+    maxDelayMs: 1500,
+    fallbackPageSize: 100,
+    fallbackMinDelayMs: 1000,
+    fallbackMaxDelayMs: 2000,
     maxConsecutiveErrors: 3,
-    /**
-     * Ceiling on requests for one list. At 50 accounts a page this covers 100,000 followers, so it
-     * never fires for a real account — it exists only so a repeating cursor cannot loop forever.
-     */
     maxRequests: 2000,
-    /** Each 429 waits longer; when the patience runs out we stop rather than keep pushing. */
-    rateLimitBackoffMs: [30000, 60000, 120000]
+    rateLimitBackoffMs: [3000, 6000, 15000]
   };
 
   const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
@@ -139,9 +107,24 @@
     return !contentType.includes('json');
   }
 
+  function buildIgHeaders(token) {
+    return {
+      'Accept': '*/*',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'X-Asbd-Id': '198387',
+      'X-Ig-App-Id': IG_APP_ID,
+      'X-Instagram-AJAX': '1',
+      'X-CSRFToken': token || '',
+      'X-Requested-With': 'XMLHttpRequest'
+    };
+  }
+
   async function readV1Page({ userId, type, cursor, count, token, signal }) {
+    if (!token && window.IgSession && typeof window.IgSession.getCookie === 'function') {
+      try { token = await window.IgSession.getCookie('csrftoken'); } catch (e) {}
+    }
     const query = new URLSearchParams({
-      count: String(count),
+      count: String(count || 100),
       search_surface: 'follow_list_page'
     });
     if (cursor) query.set('max_id', cursor);
@@ -153,11 +136,7 @@
         {
           credentials: 'include',
           signal,
-          headers: {
-            'x-ig-app-id': IG_APP_ID,
-            'x-csrftoken': token || '',
-            'x-requested-with': 'XMLHttpRequest'
-          }
+          headers: buildIgHeaders(token)
         }
       );
     } catch (error) {
@@ -165,7 +144,8 @@
     }
 
     if (response.status === 401 || response.status === 403) return { kind: 'auth' };
-    if (response.status >= 500) return { kind: 'error' };
+    if (response.status === 429) return { kind: 'rate_limited', status: 429 };
+    if (response.status >= 500) return { kind: 'error', status: response.status };
     if (looksRefused(response)) return { kind: 'blocked' };
 
     let payload;
@@ -175,13 +155,64 @@
       return { kind: 'blocked' };
     }
 
-    if (!payload || !Array.isArray(payload.users)) return { kind: 'blocked' };
+    if (!payload || !Array.isArray(payload.users)) {
+      if (payload && (payload.message === 'feedback_required' || payload.message === 'checkpoint_required')) {
+        return { kind: 'blocked', message: payload.message };
+      }
+      return { kind: 'blocked' };
+    }
 
     return {
       kind: 'ok',
       users: payload.users.map((u) => toEdge(u, SOURCE.V1)),
-      cursor: payload.next_max_id || ''
+      cursor: payload.next_max_id ? String(payload.next_max_id) : '',
+      hasMore: typeof payload.has_more === 'boolean' ? payload.has_more : !!payload.next_max_id,
+      total: typeof payload.total_count === 'number' ? payload.total_count : undefined
     };
+  }
+
+  async function showMany(userIds) {
+    if (!userIds || !userIds.length) return {};
+    let csrfToken = '';
+    let dtsg = '';
+    if (window.IgSession) {
+      if (typeof window.IgSession.getCookie === 'function') {
+        try { csrfToken = await window.IgSession.getCookie('csrftoken'); } catch (e) {}
+      }
+      if (typeof window.IgSession.getFbDtsg === 'function') {
+        try {
+          const d = await window.IgSession.getFbDtsg();
+          dtsg = (d && d.dtsg) || '';
+        } catch (e) {}
+      }
+    }
+    const headers = buildIgHeaders(csrfToken);
+    headers['Content-Type'] = 'application/x-www-form-urlencoded';
+
+    const params = new URLSearchParams({ user_ids: userIds.join(',') });
+    if (dtsg) {
+      params.set('fb_dtsg', dtsg);
+      if (window.IgSession && typeof window.IgSession.getJazoest === 'function') {
+        params.set('jazoest', window.IgSession.getJazoest(dtsg));
+      }
+    }
+
+    try {
+      const response = await fetch('https://www.instagram.com/api/v1/friendships/show_many/', {
+        method: 'POST',
+        headers,
+        credentials: 'include',
+        body: params.toString()
+      });
+      if (!response.ok) return {};
+      const data = await response.json().catch(() => null);
+      if (data && data.status === 'ok' && data.friendship_statuses) {
+        return data.friendship_statuses;
+      }
+    } catch (e) {
+      console.warn('[unfollow-bridge] show_many error:', e);
+    }
+    return {};
   }
 
   async function readGraphqlPage({ userId, type, cursor, count, signal }) {
@@ -194,7 +225,7 @@
       response = await fetch(url, {
         credentials: 'include',
         signal,
-        headers: { 'x-requested-with': 'XMLHttpRequest' }
+        headers: buildIgHeaders()
       });
     } catch (error) {
       return { kind: 'network', error };
@@ -252,8 +283,6 @@
     const users = [];
     const seen = new Set();
     let cursor = '';
-    let transport = (preferGraphql && GRAPHQL_QUERY_HASH[type]) ? SOURCE.GRAPHQL : SOURCE.V1;
-    let triedFallback = false;
     let consecutiveErrors = 0;
     let rateLimitHits = 0;
     let requests = 0;
@@ -263,89 +292,43 @@
       users,
       reason,
       complete: reason === SCAN_REASON.COMPLETE,
-      source: transport,
-      usedFallback: triedFallback,
+      source: SOURCE.V1,
+      usedFallback: false,
       requests,
       total
     });
 
-    /**
-     * Move to whichever endpoint is not being used, once. Returns false when there is nowhere
-     * left to go — which is either transport already having been swapped, or graphql being the
-     * one to swap to for a list it has no query hash for.
-     */
-    const switchToFallback = () => {
-      if (triedFallback) return false;
-      const other = transport === SOURCE.V1 ? SOURCE.GRAPHQL : SOURCE.V1;
-      if (other === SOURCE.GRAPHQL && !GRAPHQL_QUERY_HASH[type]) return false;
-      triedFallback = true;
-      transport = other;
-      cursor = '';
-      consecutiveErrors = 0;
-      rateLimitHits = 0;
-      // Either path re-reads from the start: the two cursors are not interchangeable in either
-      // direction, so previously seen ids must not be double counted.
-      return true;
-    };
-
     while (true) {
       if (shouldStop && shouldStop()) return finish(SCAN_REASON.STOPPED);
-
-      // A runaway guard, not a product limit: if Instagram ever hands back the same cursor
-      // forever, the loop would otherwise never end. Set far above any real account.
       if (requests >= CONFIG.maxRequests) return finish(SCAN_REASON.RATE_LIMITED);
 
-      const onFallback = transport === SOURCE.GRAPHQL;
-      // Keyed on the cursor rather than on the request count: a first page that had to be retried
-      // is still a first page, and should still ask for the small opening batch the site uses.
-      const count = onFallback
-        ? CONFIG.fallbackPageSize
-        : (cursor ? CONFIG.pageSize : CONFIG.firstPageSize);
-
       requests++;
-      const page = onFallback
-        ? await readGraphqlPage({ userId, type, cursor, count, signal })
-        : await readV1Page({ userId, type, cursor, count, token: csrfToken, signal });
+      const page = await readV1Page({ userId, type, cursor, count: CONFIG.pageSize, token: csrfToken, signal });
 
       if (shouldStop && shouldStop()) return finish(SCAN_REASON.STOPPED);
-
       if (page.kind === 'auth') return finish(SCAN_REASON.FAILED);
 
-      if (page.kind === 'network' || page.kind === 'error') {
-        if (++consecutiveErrors >= CONFIG.maxConsecutiveErrors) {
-          if (switchToFallback()) continue;
-          return finish(users.length ? SCAN_REASON.RATE_LIMITED : SCAN_REASON.FAILED);
+      if (page.kind === 'rate_limited' || page.kind === 'blocked') {
+        if (rateLimitHits < 3) {
+          rateLimitHits++;
+          const waitMs = rateLimitHits * 3500;
+          if (onProgress) onProgress({ count: users.length, source: SOURCE.V1, rateLimitedForMs: waitMs });
+          await sleepUnlessStopped(waitMs, shouldStop);
+          continue;
         }
-        // Each retry waits longer than the last, so a struggling connection or a wobbling server
-        // is not met with a fixed drumbeat of requests.
-        const base = transport === SOURCE.GRAPHQL
-          ? randomBetween(CONFIG.fallbackMinDelayMs, CONFIG.fallbackMaxDelayMs)
-          : randomBetween(CONFIG.minDelayMs, CONFIG.maxDelayMs);
-        await sleepUnlessStopped(base * consecutiveErrors, shouldStop);
-        continue;
+        return finish(users.length ? SCAN_REASON.RATE_LIMITED : SCAN_REASON.BLOCKED);
       }
 
-      if (page.kind === 'blocked') {
-        // Refused: try the other endpoint first, since that is the whole point of having one.
-        if (switchToFallback()) continue;
-
-        // Refused with nothing collected and no endpoint left. The limit is on the account, not
-        // on our pace, so waiting would spend minutes to learn the same thing. Stop now and let
-        // the caller say so — a user watching a spinner for three and a half minutes before being
-        // told it failed is worse than being told immediately.
-        if (users.length === 0) return finish(SCAN_REASON.BLOCKED);
-
-        // Mid-list: the rows already collected are real, so back off and try to finish rather
-        // than throwing them away.
-        const backoff = CONFIG.rateLimitBackoffMs[rateLimitHits];
-        if (backoff === undefined) return finish(SCAN_REASON.RATE_LIMITED);
-        rateLimitHits++;
-        if (onProgress) onProgress({ count: users.length, source: transport, rateLimitedForMs: backoff });
-        await sleepUnlessStopped(backoff, shouldStop);
-        continue;
+      if (page.kind === 'network' || page.kind === 'error') {
+        if (++consecutiveErrors < CONFIG.maxConsecutiveErrors) {
+          await sleepUnlessStopped(2000 * consecutiveErrors, shouldStop);
+          continue;
+        }
+        return finish(users.length ? SCAN_REASON.RATE_LIMITED : SCAN_REASON.FAILED);
       }
 
       consecutiveErrors = 0;
+      rateLimitHits = 0;
       if (page.total !== undefined) total = page.total;
 
       for (const edge of page.users) {
@@ -355,45 +338,45 @@
       }
 
       if (onProgress) {
-        // The caller draws a bar from this, so it gets everything needed to do so without
-        // having to time the scan itself: how many are expected, and how long it has taken.
         const target = expected || total;
         onProgress({
           count: users.length,
-          source: transport,
+          source: SOURCE.V1,
           total: target,
           percent: target ? Math.min(99, Math.round((users.length / target) * 100)) : undefined,
           elapsedMs: Date.now() - startedAt
         });
       }
 
-      if (!page.cursor) return finish(SCAN_REASON.COMPLETE);
+      if (!page.cursor || page.hasMore === false) return finish(SCAN_REASON.COMPLETE);
       cursor = page.cursor;
 
-      const minDelay = onFallback ? CONFIG.fallbackMinDelayMs : CONFIG.minDelayMs;
-      const maxDelay = onFallback ? CONFIG.fallbackMaxDelayMs : CONFIG.maxDelayMs;
-      await sleepUnlessStopped(randomBetween(minDelay, maxDelay), shouldStop);
+      await sleepUnlessStopped(randomBetween(CONFIG.minDelayMs, CONFIG.maxDelayMs), shouldStop);
     }
   }
 
-  /** Viewer identity and csrf token in one call; the page already relies on this endpoint. */
+  /**
+   * Viewer identity and csrf token in one call, via the shared session bootstrap (ig-session.js).
+   *
+   * This used to read /data/shared_data/; Instagram removed that endpoint (404), so the helper
+   * now reads the viewer off the Instagram homepage and confirms the sign-in with web_form_data.
+   * Runs in two contexts — the analyzer/bot-scan extension pages and the Instagram tab page
+   * (ig-content.js injects ig-session.js before this file in both) — so a missing helper
+   * degrades to null rather than throwing, and the caller falls back to the extension-page read.
+   */
   async function getViewer() {
-    const response = await fetch('https://www.instagram.com/data/shared_data/', {
-      credentials: 'include'
-    });
-    if (looksRefused(response)) return null;
-    let data;
+    if (!window.IgSession || typeof window.IgSession.fetchSession !== 'function') return null;
+    let session;
     try {
-      data = await response.json();
+      session = await window.IgSession.fetchSession();
     } catch {
       return null;
     }
-    const viewer = data?.config?.viewer;
-    if (!viewer?.id) return null;
+    if (!session || session.status !== 'ok' || !session.id) return null;
     return {
-      id: String(viewer.id),
-      username: viewer.username || '',
-      csrfToken: data?.config?.csrf_token || ''
+      id: String(session.id),
+      username: session.username || '',
+      csrfToken: session.csrfToken || ''
     };
   }
 
@@ -408,18 +391,26 @@
   async function getExpectedCounts(userId) {
     if (!userId) return null;
     try {
-      const response = await fetch(
-        `https://www.instagram.com/api/v1/users/${encodeURIComponent(userId)}/info/`,
-        { credentials: 'include', headers: { 'x-ig-app-id': IG_APP_ID } }
-      );
-      if (looksRefused(response)) return null;
-      const data = await response.json();
-      const user = data?.user;
-      if (!user) return null;
-      return {
-        followers: user.follower_count,
-        following: user.following_count
-      };
+      if (window.IgSession && typeof window.IgSession.fetchSession === 'function') {
+        const session = await window.IgSession.fetchSession();
+        if (session && String(session.id) === String(userId) && session.followerCount != null && session.followingCount != null) {
+          return {
+            followers: session.followerCount,
+            following: session.followingCount
+          };
+        }
+      }
+      if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+        const stored = await chrome.storage.local.get('ig_profile_' + userId);
+        const p = stored && stored['ig_profile_' + userId];
+        if (p && p.followerCount != null && p.followingCount != null) {
+          return {
+            followers: p.followerCount,
+            following: p.followingCount
+          };
+        }
+      }
+      return null;
     } catch {
       return null;
     }
@@ -438,89 +429,28 @@
    * two accounts, both fields present on every record across nine pages, and the result matched the
    * old two-list diff exactly — 50 non-followers either way, zero disagreement.
    */
-  const FOLLOWS_VIEWER_HASH = '3dec7e2c57367ef3da3d987d89f9dbc8';
-
-  function toStatusEdge(user) {
-    return {
-      node: {
-        id: String(user.id),
-        username: user.username,
-        full_name: user.full_name || '',
-        is_verified: !!user.is_verified,
-        is_private: !!user.is_private,
-        profile_pic_url: user.profile_pic_url || '',
-        // The answer this whole path exists for.
-        follows_viewer: !!user.follows_viewer,
-        // Not carried by this query. Left undefined rather than false so the bot scorer keeps
-        // refusing to score a signal it could not test — same rule as the reserve reader above.
-        has_anonymous_profile_picture: undefined,
-        account_badges: undefined
-      }
-    };
-  }
-
-  async function readFollowingStatusPage({ userId, cursor, count, signal }) {
-    const variables = {
-      id: String(userId), include_reel: true, fetch_mutual: false, first: count,
-      ...(cursor ? { after: cursor } : {})
-    };
-    const url = `https://www.instagram.com/graphql/query/?query_hash=${FOLLOWS_VIEWER_HASH}` +
-      `&variables=${encodeURIComponent(JSON.stringify(variables))}`;
-
-    let response;
-    try {
-      response = await fetch(url, { credentials: 'include', signal });
-    } catch (error) {
-      return { kind: 'network', error };
-    }
-    if (response.status === 401 || response.status === 403) return { kind: 'auth' };
-    if (response.status >= 500) return { kind: 'error' };
-    if (looksRefused(response)) return { kind: 'blocked' };
-
-    let payload;
-    try {
-      payload = await response.json();
-    } catch {
-      return { kind: 'blocked' };
-    }
-    const edge = payload?.data?.user?.edge_follow;
-    if (!edge || !Array.isArray(edge.edges)) return { kind: 'blocked' };
-
-    // A page that answers but has lost the field would silently mark everyone as a non-follower,
-    // and the bulk unfollow button acts on exactly that list. Treat it as unusable, not as data.
-    const first = edge.edges[0]?.node;
-    if (first && !('follows_viewer' in first)) return { kind: 'no_status' };
-
-    return {
-      kind: 'ok',
-      users: edge.edges.map((e) => toStatusEdge(e.node)),
-      total: edge.count,
-      cursor: edge.page_info?.has_next_page ? edge.page_info.end_cursor : ''
-    };
-  }
-
   /**
-   * Read `following` with each record's follow-back status attached.
-   *
-   * Deliberately has no fallback of its own: if this query stops working the caller drops back to
-   * the two-list read, which is still there and unchanged. Reason `NO_STATUS` is what says so.
+   * Read `following` with each record's follow-back status attached via show_many.
+   * Eliminates dead legacy GraphQL query hashes and reads followers status efficiently.
    */
   async function scanFollowingWithStatus({ userId, expected, onProgress, shouldStop, signal }) {
     const startedAt = Date.now();
     const users = [];
     const seen = new Set();
     let cursor = '';
-    let consecutiveErrors = 0;
-    let rateLimitHits = 0;
     let requests = 0;
+    let rateLimitHits = 0;
     let total;
 
     const finish = (reason) => ({
-      users, reason,
+      users,
+      reason,
       complete: reason === SCAN_REASON.COMPLETE,
-      source: SOURCE.GRAPHQL,
+      source: SOURCE.V1,
       usedFallback: false,
-      requests, total
+      usedStatusReader: true,
+      requests,
+      total
     });
 
     while (true) {
@@ -528,41 +458,64 @@
       if (requests >= CONFIG.maxRequests) return finish(SCAN_REASON.RATE_LIMITED);
 
       requests++;
-      const page = await readFollowingStatusPage({
-        userId, cursor, count: CONFIG.fallbackPageSize, signal
-      });
+      const page = await readV1Page({ userId, type: 'following', cursor, count: 100, signal });
 
       if (shouldStop && shouldStop()) return finish(SCAN_REASON.STOPPED);
       if (page.kind === 'auth') return finish(SCAN_REASON.FAILED);
-      if (page.kind === 'no_status') return finish('no_status');
+
+      if (page.kind === 'rate_limited' || page.kind === 'blocked') {
+        if (rateLimitHits < 3) {
+          rateLimitHits++;
+          const waitMs = rateLimitHits * 3500;
+          if (onProgress) onProgress({ count: users.length, source: SOURCE.V1, rateLimitedForMs: waitMs });
+          await sleepUnlessStopped(waitMs, shouldStop);
+          continue;
+        }
+        if (users.length === 0) return finish('no_status');
+        return finish(SCAN_REASON.RATE_LIMITED);
+      }
 
       if (page.kind === 'network' || page.kind === 'error') {
-        if (++consecutiveErrors >= CONFIG.maxConsecutiveErrors) {
-          return finish(users.length ? SCAN_REASON.RATE_LIMITED : SCAN_REASON.FAILED);
+        if (rateLimitHits < 3) {
+          rateLimitHits++;
+          await sleepUnlessStopped(2000, shouldStop);
+          continue;
         }
-        await sleepUnlessStopped(
-          randomBetween(CONFIG.fallbackMinDelayMs, CONFIG.fallbackMaxDelayMs) * consecutiveErrors,
-          shouldStop
-        );
-        continue;
+        return finish(users.length ? SCAN_REASON.RATE_LIMITED : 'no_status');
       }
 
-      if (page.kind === 'blocked') {
-        if (users.length === 0) return finish(SCAN_REASON.BLOCKED);
-        const backoff = CONFIG.rateLimitBackoffMs[rateLimitHits];
-        if (backoff === undefined) return finish(SCAN_REASON.RATE_LIMITED);
-        rateLimitHits++;
-        if (onProgress) onProgress({ count: users.length, source: SOURCE.GRAPHQL, rateLimitedForMs: backoff });
-        await sleepUnlessStopped(backoff, shouldStop);
-        continue;
-      }
-
-      consecutiveErrors = 0;
+      rateLimitHits = 0;
       if (page.total !== undefined) total = page.total;
 
+      const pageUserIds = [];
+      const newEdges = [];
       for (const edge of page.users) {
         if (seen.has(edge.node.id)) continue;
         seen.add(edge.node.id);
+        pageUserIds.push(edge.node.id);
+        newEdges.push(edge);
+      }
+
+      // Query show_many for follow status
+      if (pageUserIds.length > 0) {
+        const statuses = await showMany(pageUserIds);
+        if (statuses && Object.keys(statuses).length > 0) {
+          for (const edge of newEdges) {
+            const st = statuses[edge.node.id];
+            if (st) {
+              edge.node.follows_viewer = !!st.followed_by;
+              edge.node.is_private = typeof st.is_private === 'boolean' ? st.is_private : edge.node.is_private;
+            }
+          }
+        } else {
+          // If show_many didn't return data on first page, fall back to two-list read
+          if (users.length === 0) {
+            return finish('no_status');
+          }
+        }
+      }
+
+      for (const edge of newEdges) {
         users.push(edge);
       }
 
@@ -570,18 +523,18 @@
         const target = expected || total;
         onProgress({
           count: users.length,
-          source: SOURCE.GRAPHQL,
+          source: SOURCE.V1,
           total: target,
           percent: target ? Math.min(99, Math.round((users.length / target) * 100)) : undefined,
           elapsedMs: Date.now() - startedAt
         });
       }
 
-      if (!page.cursor) return finish(SCAN_REASON.COMPLETE);
+      if (!page.cursor || page.hasMore === false) {
+        return finish(SCAN_REASON.COMPLETE);
+      }
       cursor = page.cursor;
-      await sleepUnlessStopped(
-        randomBetween(CONFIG.fallbackMinDelayMs, CONFIG.fallbackMaxDelayMs), shouldStop
-      );
+      await sleepUnlessStopped(randomBetween(CONFIG.minDelayMs, CONFIG.maxDelayMs), shouldStop);
     }
   }
 
@@ -603,11 +556,7 @@
       userId, type: 'followers', cursor: '', count: CONFIG.pageSize, token: csrfToken, signal
     });
     if (v1.kind === 'ok' && v1.users.length) return v1.users;
-
-    const gql = await readGraphqlPage({
-      userId, type: 'followers', cursor: '', count: CONFIG.fallbackPageSize, signal
-    });
-    return gql.kind === 'ok' ? gql.users : [];
+    return [];
   }
 
   window.UnfollowBridge = {
@@ -616,6 +565,7 @@
     CONFIG,
     scanPeers,
     scanFollowingWithStatus,
+    showMany,
     readFollowersSample,
     getViewer,
     getExpectedCounts

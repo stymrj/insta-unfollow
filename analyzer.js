@@ -13,6 +13,14 @@ function initializeI18n() {
         }
     });
     
+    // Handle placeholder attributes (v2 search box)
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const message = getMessage(element.getAttribute('data-i18n-placeholder'));
+        if (message && message !== element.getAttribute('data-i18n-placeholder')) {
+            element.placeholder = message;
+        }
+    });
+
     // Handle title attributes
     document.querySelectorAll('[data-i18n-title]').forEach(element => {
         const key = element.getAttribute('data-i18n-title');
@@ -125,6 +133,15 @@ async function saveAnalysisSnapshot(userId, followersCount, followingCount, nonF
                 nonFollowersCount: prev.nonFollowersCount,
                 timestamp: prev.timestamp
             } : null
+        },
+        // v2: one small key the popup can read without knowing the Instagram user id,
+        // so it can show a "Last analysis" summary. Only counts + date, no user list.
+        lastAnalysisSummary: {
+            userId,
+            followersCount,
+            followingCount,
+            nonFollowersCount,
+            timestamp: Date.now()
         }
     });
 }
@@ -164,6 +181,10 @@ let allFollowersList = [];     // full followers list for comparison
 let allFollowingFull = [];
 let currentWhitelistSet = new Set();
 let showOnlyNonFollowersFilter = false;
+// v2 toolbar state (client-side only, over already-loaded data)
+let analyzerSearchQuery = '';
+let analyzerSortMode = 'default';
+let analyzerChipFilter = 'all';
 
 // Sekme geri geldiğinde timer'ı hemen güncelle (Chrome throttling fix)
 document.addEventListener('visibilitychange', () => {
@@ -172,6 +193,13 @@ document.addEventListener('visibilitychange', () => {
         updateTimerDisplay(remaining);
     }
 });
+
+// Capture image load errors without violating CSP with inline onerror handlers
+document.addEventListener('error', function (e) {
+    if (e.target && e.target.tagName === 'IMG' && (e.target.classList.contains('profile-image') || e.target.id === 'userAvatar')) {
+        e.target.src = 'img/48.png';
+    }
+}, true);
 
 // DOM yüklendiğinde elements'i kontrol et
 document.addEventListener('DOMContentLoaded', () => {
@@ -188,10 +216,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Unfollow butonları için event listener'ları ekle
     setupUnfollowListeners();
 
-    // Premium upgrade butonu için event listener
+    // Premium upgrade buttons
     const upgradeBtn = document.getElementById('upgradeToPremiumBtn');
     if (upgradeBtn) {
         upgradeBtn.addEventListener('click', function() {
+            openPremiumModal();
+        });
+    }
+    const headerUpgradeBtn = document.getElementById('headerUpgradeBtn');
+    if (headerUpgradeBtn) {
+        headerUpgradeBtn.addEventListener('click', function() {
             openPremiumModal();
         });
     }
@@ -214,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add click handlers for card subscribe buttons
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('premium-card-subscribe-button')) {
-            const planType = e.target.getAttribute('data-plan') || 'monthly';
+            const planType = e.target.getAttribute('data-plan') || '1mo';
             handlePremiumSubscribe(planType);
         }
     });
@@ -287,23 +321,32 @@ function handleInstagramApiError(response) {
 // Instagram API Functions
 async function getCurrentUserId() {
     try {
-        // Without credentials this endpoint still answers 200 with JSON, but as a logged-out
-        // visitor — `config.viewer` comes back empty and the caller concludes the user is signed out.
-        const response = await fetch('https://www.instagram.com/data/shared_data/', {
-            credentials: 'include'
-        });
-        handleInstagramApiError(response);
-        const data = await response.json();
-        const viewer = data.config.viewer;
-        sessionUsername = viewer?.username || '';
+        // Session bootstrap (ig-session.js): Instagram removed /data/shared_data/ (404), so the
+        // viewer id now comes off the Instagram homepage, confirmed with web_form_data.
+        const session = await window.IgSession.fetchSession();
+        if (session.status === 'logged_out' || !session.id) {
+            logScanDiag({
+                stage: 'session',
+                msg: 'NO Instagram session in this Chrome browser',
+                detail: 'Open instagram.com in this Chrome browser and log in first' + (session.detail ? ' — ' + session.detail : '')
+            });
+            return null;
+        }
+        if (session.status !== 'ok') {
+            const version = (chrome.runtime && chrome.runtime.getManifest && chrome.runtime.getManifest().version) || '';
+            const detail = (session.detail ? ' — ' + session.detail : '') + (version ? ' [v' + version + ']' : '');
+            logScanDiag({ stage: 'session', msg: 'Session refused (' + (session.reason || 'unknown') + ')', detail: session.detail || '' });
+            const err = new Error(getMessage(session.reason === 'rate_limit' ? 'errorRateLimit' : 'errorInstagramUnavailable') + detail);
+            err.code = session.reason === 'rate_limit' ? 'RATE_LIMIT' : 'SERVER_ERROR';
+            throw err;
+        }
+        sessionUsername = session.username || ('user_' + String(session.id).slice(-4));
         logScanDiag({
             stage: 'session',
-            msg: viewer ? 'Instagram session found' : 'NO Instagram session in this Chrome browser',
-            detail: viewer
-                ? '@' + sessionUsername + ' (id ' + viewer.id + ') — the scan reads this account'
-                : 'Open instagram.com in this Chrome browser and log in first'
+            msg: 'Instagram session found',
+            detail: '@' + sessionUsername + ' (id ' + session.id + ') — the scan reads this account'
         });
-        return viewer?.id;
+        return session.id;
     } catch (error) {
         console.error('Error getting user ID:', error);
         if (error.code) throw error; // re-throw API errors with user-friendly messages
@@ -886,7 +929,7 @@ function createTableRow(user, index, followers, whitelistSet) {
             <td class="row-number">${index + 1}</td>
             <td>
                 <div class="profile-cell">
-                    <img src="${originalProfileUrl}" data-orig="${originalProfileUrl}" referrerpolicy="no-referrer" alt="Profile" class="profile-image" onerror="this.onerror=null;this.src='img/48.png'">
+                    <img src="${originalProfileUrl}" data-orig="${originalProfileUrl}" referrerpolicy="no-referrer" alt="Profile" class="profile-image">
                 </div>
             </td>
             <td>
@@ -923,13 +966,85 @@ function showTableMessage(message, isError = false) {
 }
 
 // Pagination functions
+// v2: search (username / full name), filter chips and sort, all client-side over the
+// already-loaded list. Pagination still slices the filtered result in renderCurrentPage.
 function getFilteredData() {
-    if (showOnlyNonFollowersFilter) {
-        return allDisplayData.filter(user =>
-            !allFollowersList.some(f => f.node.id === user.node.id)
-        );
+    const followerIds = new Set(allFollowersList.map(f => f.node.id));
+    let data = allDisplayData.filter(user => {
+        const isFollowing = followerIds.has(user.node.id);
+        const isWhitelisted = currentWhitelistSet.has(user.node.username);
+        if (showOnlyNonFollowersFilter && isFollowing) return false;
+        if (analyzerChipFilter === 'notFollowing' && isFollowing) return false;
+        if (analyzerChipFilter === 'following' && !isFollowing) return false;
+        if (analyzerChipFilter === 'whitelisted' && !isWhitelisted) return false;
+        if (analyzerSearchQuery) {
+            const haystack = ((user.node.username || '') + ' ' + (user.node.full_name || '')).toLowerCase();
+            if (!haystack.includes(analyzerSearchQuery)) return false;
+        }
+        return true;
+    });
+    if (analyzerSortMode === 'username') {
+        data = [...data].sort((a, b) => (a.node.username || '').localeCompare(b.node.username || ''));
+    } else if (analyzerSortMode === 'notFollowing') {
+        // Stable: not-following first, original order kept inside each group.
+        data = [...data].sort((a, b) => (followerIds.has(a.node.id) ? 1 : 0) - (followerIds.has(b.node.id) ? 1 : 0));
     }
-    return allDisplayData;
+    // NOTE: no "most followers" sort — the following-list data Instagram returns has no
+    // per-account follower count (see unfollow-bridge.js: only id/username/full_name/
+    // verified/pic). Sorting by it would need one profile request per account.
+    return data;
+}
+
+// v2: CSV of the current filter (username, full name, verified, following you, whitelisted).
+function downloadFilteredCsv() {
+    const rows = getFilteredData();
+    if (!rows.length) {
+        showToast(getMessage('exportCsvEmpty'), 'error');
+        return;
+    }
+    const followerIds = new Set(allFollowersList.map(f => f.node.id));
+    const esc = (v) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
+    const lines = [['username', 'full_name', 'verified', 'following_you', 'whitelisted'].join(',')];
+    for (const user of rows) {
+        const n = user.node;
+        lines.push([
+            esc(n.username), esc(n.full_name || ''), n.is_verified ? 'yes' : 'no',
+            followerIds.has(n.id) ? 'yes' : 'no',
+            currentWhitelistSet.has(n.username) ? 'yes' : 'no'
+        ].join(','));
+    }
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'insta-unfollow-nonfollowers.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// v2: copy the usernames of the current filter, one per line.
+async function copyFilteredUsernames() {
+    const rows = getFilteredData();
+    if (!rows.length) {
+        showToast(getMessage('exportCsvEmpty'), 'error');
+        return;
+    }
+    const text = rows.map(u => u.node.username).join('\n');
+    try {
+        await navigator.clipboard.writeText(text);
+    } catch (e) {
+        // Clipboard API needs a user gesture / focus; fall back to a hidden textarea.
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+    }
+    const msg = getMessage('copiedUsernames', [String(rows.length)]);
+    showToast(msg === 'copiedUsernames' ? `${rows.length} usernames copied` : msg);
 }
 
 function renderCurrentPage() {
@@ -1038,7 +1153,7 @@ function showTrend(statId, diff) {
     parent.appendChild(el);
 }
 
-// Filter kontrolü için event listener
+// Filter + toolbar event listeners (v2: search / sort / chips / export)
 function setupFilterListener() {
     const filterCheckbox = document.getElementById('showOnlyNonFollowers');
     if (filterCheckbox) {
@@ -1048,6 +1163,33 @@ function setupFilterListener() {
             renderCurrentPage();
         });
     }
+    const searchInput = document.getElementById('analyzerSearch');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            analyzerSearchQuery = this.value.trim().toLowerCase();
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    }
+    const sortSelect = document.getElementById('analyzerSort');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            analyzerSortMode = this.value;
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    }
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', function() {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            this.classList.add('active');
+            analyzerChipFilter = this.dataset.chip || 'all';
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    });
+    document.getElementById('exportCsvBtn')?.addEventListener('click', downloadFilteredCsv);
+    document.getElementById('copyUsernamesBtn')?.addEventListener('click', copyFilteredUsernames);
 }
 
 // Daily scan limit helper functions (per Instagram account) - CUMULATIVE LIMIT
@@ -1145,18 +1287,20 @@ async function getDailyScanLimit(userId) {
 }
 
 // Daily unfollow allowance (per Instagram account), in the same shape as the scan limit so one
-// plan means one thing. Premium is unlimited; free gets FREE_DAILY_UNFOLLOWS per day.
+// plan means one thing. Premium is unlimited; free gets FREE_DAILY_UNFOLLOWS (+ optional 100 review bonus).
 async function getDailyUnfollowAllowance(userId) {
     if (!userId) return null;
 
     const membership = await getPremiumMembership();
     const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
     if (isPremium) {
-        return { isPremium: true, used: 0, remaining: Infinity, total: Infinity };
+        return { isPremium: true, used: 0, remaining: Infinity, total: Infinity, reviewBonus: 0 };
     }
 
-    const data = await chrome.storage.local.get(['dailyUnfollowLimits']);
+    const data = await chrome.storage.local.get(['dailyUnfollowLimits', 'review_bonus_unfollows']);
     const allLimits = data.dailyUnfollowLimits || {};
+    const reviewBonus = Number(data.review_bonus_unfollows) || 0;
+    const baseTotal = FREE_DAILY_UNFOLLOWS + reviewBonus;
     const today = new Date().toDateString();
     const record = allLimits[userId] || {};
 
@@ -1164,15 +1308,16 @@ async function getDailyUnfollowAllowance(userId) {
         await chrome.storage.local.set({
             dailyUnfollowLimits: { ...allLimits, [userId]: { date: today, used: 0 } }
         });
-        return { isPremium: false, used: 0, remaining: FREE_DAILY_UNFOLLOWS, total: FREE_DAILY_UNFOLLOWS };
+        return { isPremium: false, used: 0, remaining: baseTotal, total: baseTotal, reviewBonus: reviewBonus };
     }
 
     const used = record.used || 0;
     return {
         isPremium: false,
         used: used,
-        remaining: Math.max(0, FREE_DAILY_UNFOLLOWS - used),
-        total: FREE_DAILY_UNFOLLOWS
+        remaining: Math.max(0, baseTotal - used),
+        total: baseTotal,
+        reviewBonus: reviewBonus
     };
 }
 
@@ -1189,6 +1334,11 @@ async function recordUnfollowUsed(userId) {
     await chrome.storage.local.set({
         dailyUnfollowLimits: { ...allLimits, [userId]: { date: today, used } }
     });
+
+    // Track for smart review prompt milestone
+    if (window.ReviewPrompt && typeof window.ReviewPrompt.trackSuccessfulUnfollow === 'function') {
+        window.ReviewPrompt.trackSuccessfulUnfollow();
+    }
 }
 
 // Show daily limit info in UI - Basit ve anlaşılır uyarı
@@ -1628,6 +1778,15 @@ async function initializeFollowingList(forceRefresh = false) {
         renderCurrentPage();
         renderScanDiag();
 
+        // Check if user is eligible for smart review & bonus unfollows banner
+        if (window.ReviewPrompt && typeof window.ReviewPrompt.shouldShowPrompt === 'function') {
+            window.ReviewPrompt.shouldShowPrompt().then((shouldShow) => {
+                if (shouldShow && allDisplayData.length > 0) {
+                    setTimeout(() => window.ReviewPrompt.renderBanner(), 2000);
+                }
+            }).catch(() => {});
+        }
+
         // Eğer limit varsa bilgi mesajı göster (tablo dışında)
         const limitMessageContainer = document.getElementById('limitMessageContainer');
         if (!isLimited && limitMessageContainer) {
@@ -1658,22 +1817,34 @@ async function initializeFollowingList(forceRefresh = false) {
         nonFollowersCount = nonFollowers.length;
         
         if (elements.followersCount) {
-            elements.followersCount.textContent = followersCount.toLocaleString('tr-TR');
+            elements.followersCount.textContent = followersCount.toLocaleString();
         }
         if (elements.followingCount) {
-            elements.followingCount.textContent = followingCount.toLocaleString('tr-TR');
+            elements.followingCount.textContent = followingCount.toLocaleString();
         }
         if (elements.nonFollowersCount) {
-            elements.nonFollowersCount.textContent = nonFollowersCount.toLocaleString('tr-TR');
+            elements.nonFollowersCount.textContent = nonFollowersCount.toLocaleString();
         }
 
-        // Show trend comparison with previous analysis
+        // Show trend comparison with the last analysis (v2: was comparing with the
+        // analysis before that — prevSnapshot.previous — skipping the most recent one)
         const prevSnapshot = await getLastAnalysisSnapshot(userId);
-        if (prevSnapshot && prevSnapshot.previous) {
-            const prev = prevSnapshot.previous;
-            showTrend('followersCount', followersCount - prev.followersCount);
-            showTrend('followingCount', followingCount - prev.followingCount);
-            showTrend('nonFollowersCount', nonFollowersCount - prev.nonFollowersCount);
+        if (prevSnapshot) {
+            showTrend('followersCount', followersCount - prevSnapshot.followersCount);
+            showTrend('followingCount', followingCount - prevSnapshot.followingCount);
+            showTrend('nonFollowersCount', nonFollowersCount - prevSnapshot.nonFollowersCount);
+            const trendEl = document.getElementById('nonFollowersTrend');
+            if (trendEl) {
+                const diff = nonFollowersCount - prevSnapshot.nonFollowersCount;
+                const dateStr = new Date(prevSnapshot.timestamp).toLocaleDateString([], { day: 'numeric', month: 'short', year: 'numeric' });
+                // Uses the trendUp / trendDown / trendNoChange strings that already
+                // existed in _locales/en (v1 defined them but never displayed them).
+                let text;
+                if (diff === 0) text = getMessage('trendNoChange');
+                else if (diff > 0) text = getMessage('trendUp', [String(diff)]);
+                else text = getMessage('trendDown', [String(diff)]);
+                trendEl.textContent = text + ' · ' + dateStr;
+            }
         }
 
         // Save current snapshot (only on fresh analysis)
@@ -1731,16 +1902,15 @@ async function initializeFollowingList(forceRefresh = false) {
 let cachedCsrfToken = null;
 async function getCsrfTokenOnce() {
     if (cachedCsrfToken) return cachedCsrfToken;
-    // credentials matters here: without the session cookie Instagram still answers 200 with JSON,
-    // but the token it hands back is an anonymous one. Signing an unfollow with that token gets
-    // the request rejected — and the rejection arrives as 200 with an HTML login page, which is
-    // exactly the "it worked but nothing happened" symptom.
-    const response = await fetch('https://www.instagram.com/data/shared_data/', {
-        credentials: 'include'
-    });
-    handleInstagramApiError(response);
-    const data = await response.json();
-    cachedCsrfToken = data?.config?.csrf_token || null;
+    // Prefer the viewer already fetched for this analysis (its csrf token came with it);
+    // otherwise ask the session bootstrap, which reads it off the Instagram homepage.
+    const viewer = await getViewerOnce().catch(() => null);
+    if (viewer?.csrfToken) {
+        cachedCsrfToken = viewer.csrfToken;
+        return cachedCsrfToken;
+    }
+    const session = await window.IgSession.fetchSession();
+    cachedCsrfToken = session.csrfToken || null;
     return cachedCsrfToken;
 }
 
@@ -1923,10 +2093,10 @@ const TRANSPORT_FAILED = Symbol('transport-failed');
  *   true/false — Instagram answered; null — it answered with the refusal signature (200 carrying
  *   HTML); TRANSPORT_FAILED — no usable answer at all.
  */
-async function postUnfollow(url, headers) {
+async function postUnfollow(url, headers, body = '') {
     let response;
     try {
-        response = await fetch(url, { method: 'POST', credentials: 'include', headers, body: '' });
+        response = await fetch(url, { method: 'POST', credentials: 'include', headers, body });
     } catch (error) {
         return TRANSPORT_FAILED;          // offline, DNS, aborted — not a decision by Instagram
     }
@@ -1968,6 +2138,24 @@ async function unfollowUser(username, userId, options = {}) {
         );
 
         if (ok === null || ok === TRANSPORT_FAILED) {
+            let dtsg = '';
+            if (window.IgSession && typeof window.IgSession.getFbDtsg === 'function') {
+                try {
+                    const d = await window.IgSession.getFbDtsg();
+                    dtsg = (d && d.dtsg) || '';
+                } catch (e) {}
+            }
+            const bodyParams = new URLSearchParams({
+                container_module: 'profile',
+                user_id: String(targetId)
+            });
+            if (dtsg) {
+                bodyParams.set('fb_dtsg', dtsg);
+                if (window.IgSession && typeof window.IgSession.getJazoest === 'function') {
+                    bodyParams.set('jazoest', window.IgSession.getJazoest(dtsg));
+                }
+            }
+
             ok = await postUnfollow(
                 `https://www.instagram.com/api/v1/friendships/destroy/${targetId}/`,
                 {
@@ -1978,7 +2166,8 @@ async function unfollowUser(username, userId, options = {}) {
                     'x-ig-app-id': '936619743392459',
                     'x-ig-www-claim': '0',
                     'x-requested-with': 'XMLHttpRequest'
-                }
+                },
+                bodyParams.toString()
             );
         }
 
@@ -2350,13 +2539,37 @@ async function applyUnfollowAllowance(mode) {
     if (!allowance || allowance.isPremium) return queue;
 
     if (allowance.remaining <= 0) {
+        // If user hasn't claimed their review bonus yet, offer +100 bonus unfollows for leaving a review!
+        const canClaimBonus = window.ReviewPrompt && !(await window.ReviewPrompt.isBonusClaimed());
+        if (canClaimBonus) {
+            await showCustomModal({
+                icon: 'gift',
+                title: 'Daily Limit Reached — Unlock +100 Free!',
+                message: 'You have reached today\'s ' + allowance.total + ' unfollows limit. Leave a quick 5-star review on the Chrome Web Store to immediately unlock +100 bonus unfollows!',
+                confirmText: '⭐ Rate & Get +100 Free',
+                cancelText: 'Upgrade to Premium',
+                showCancel: true
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    await window.ReviewPrompt.claimBonus();
+                    showToast('🎉 +100 Bonus Unfollows added!', 'success');
+                } else {
+                    openPremiumModal();
+                }
+            });
+            return null;
+        }
+
         await showCustomModal({
             icon: 'info',
             title: 'Daily unfollow limit reached',
             message: getMessage('freeUnfollowLimitReached', [String(allowance.total)])
                 || 'You can unfollow up to ' + allowance.total + ' users per day with the free plan. Upgrade to Premium for unlimited unfollowing.',
-            confirmText: getMessage('ok') || 'OK',
-            showCancel: false
+            confirmText: getMessage('upgradeToPremium') || 'Upgrade to Premium',
+            cancelText: getMessage('ok') || 'OK',
+            showCancel: true
+        }).then((result) => {
+            if (result.isConfirmed) openPremiumModal();
         });
         return null;
     }
@@ -2765,7 +2978,7 @@ function updateTimerDisplay(seconds) {
             if (countdownText) {
                 const secondsInt = Math.floor(seconds);
                 // Placeholder'ı manuel olarak değiştir
-                let message = getMessage('nextInSeconds') || 'Sonraki: $SECONDS$s';
+                let message = getMessage('nextInSeconds') || 'Next in $SECONDS$s';
                 
                 // Önce $SECONDS$ formatını dene (messages.json'da bu format kullanılıyor)
                 if (message.includes('$SECONDS$')) {
@@ -2777,7 +2990,7 @@ function updateTimerDisplay(seconds) {
                 }
                 // Hiçbiri yoksa direkt ekle
                 else {
-                    message = `Sonraki: ${secondsInt}s`;
+                    message = `Next: ${secondsInt}s`;
                 }
                 
                 countdownText.textContent = message;
@@ -2854,41 +3067,90 @@ function updateStats() {
 // Kullanıcı bilgilerini al ve göster
 async function displayUserInfo() {
     try {
-        const response = await fetch('https://www.instagram.com/data/shared_data/', {
-            credentials: 'include'
-        });
-        const data = await response.json();
-        const user = data.config.viewer;
+        // Session bootstrap (ig-session.js): /data/shared_data/ is gone (404); the viewer now
+        // comes off the Instagram homepage, with the avatar read from users/{id}/info/ when the
+        // homepage did not carry one.
+        const session = await window.IgSession.fetchSession();
+        if (session.status !== 'ok' || !session.username) {
+            const userInfo = document.querySelector('.user-info');
+            if (userInfo) {
+                userInfo.style.display = 'none';
+            }
+            return;
+        }
+        const user = {
+            username: session.username,
+            email: '',
+            profile_pic_url: session.profilePicUrl || ''
+        };
+        if (!user.profile_pic_url) {
+            try {
+                const res = await fetch(`https://www.instagram.com/api/v1/users/${encodeURIComponent(session.id)}/info/`, {
+                    credentials: 'include',
+                    headers: {
+                        'Accept': '*/*',
+                        'Accept-Language': 'en-US,en;q=0.9',
+                        'X-Asbd-Id': '198387',
+                        'X-Ig-App-Id': '936619743392459',
+                        'X-Instagram-AJAX': '1',
+                        'X-CSRFToken': session.csrfToken || '',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data?.user?.profile_pic_url) user.profile_pic_url = data.user.profile_pic_url;
+                }
+            } catch (e) { /* avatar is cosmetic; keep the default */ }
+        }
 
         if (user) {
             const userAvatar = document.getElementById('userAvatar');
             const userInfo = document.querySelector('.user-info');
+            const userName = document.getElementById('userName');
+            const userEmail = document.getElementById('userEmail');
+            const userPlanPill = document.getElementById('userPlanPill');
+            const headerUpgradeBtn = document.getElementById('headerUpgradeBtn');
 
-            if (userAvatar && user.profile_pic_url) {
-                // Görseli yüklemeye başla
-                userAvatar.src = user.profile_pic_url;
-                if (window.loadAvatar) loadAvatar(userAvatar, user.profile_pic_url);
-                
-                // Görsel yüklendiğinde
-                userAvatar.onload = () => {
-                    userAvatar.classList.add('loaded');
-                    userInfo.classList.add('loaded');
-                };
+            if (userInfo) {
+                userInfo.style.display = 'flex';
+                userInfo.classList.add('loaded');
             }
 
-            const userName = document.getElementById('userName');
+            if (userAvatar) {
+                userAvatar.onerror = () => {
+                    userAvatar.src = 'img/128.png';
+                    userAvatar.classList.add('loaded');
+                };
+                if (user.profile_pic_url) {
+                    userAvatar.src = user.profile_pic_url;
+                    if (window.loadAvatar) loadAvatar(userAvatar, user.profile_pic_url);
+                    userAvatar.onload = () => userAvatar.classList.add('loaded');
+                } else {
+                    userAvatar.src = 'img/128.png';
+                    userAvatar.classList.add('loaded');
+                }
+            }
+
             if (userName) {
                 userName.textContent = user.username;
             }
 
-            const userEmail = document.getElementById('userEmail');
             if (userEmail) {
                 userEmail.textContent = user.email || '@' + user.username;
             }
 
-            // User info'yu görünür yap
-            if (userInfo) {
-                userInfo.style.display = 'block';
+            if (typeof getPremiumMembership === 'function') {
+                getPremiumMembership().then((membership) => {
+                    const isPremium = membership && (membership.turu === 'premium' || membership.turu === 'Premium');
+                    if (userPlanPill) {
+                        userPlanPill.textContent = isPremium ? 'PRO' : 'FREE';
+                        userPlanPill.className = 'user-plan-pill ' + (isPremium ? 'pro' : 'free');
+                    }
+                    if (headerUpgradeBtn && isPremium) {
+                        headerUpgradeBtn.style.display = 'none';
+                    }
+                }).catch(() => {});
             }
         } else {
             const userInfo = document.querySelector('.user-info');

@@ -12,7 +12,7 @@
    } ],
    "default_locale": "en",
    "description": "__MSG_extensionDescription__",
-   "host_permissions": [ "https://*.instagram.com/*", "https://*.cdninstagram.com/*", "https://*.fbcdn.net/*", "https://accounts.google.com/*", "https://www.googleapis.com/*", "https://*.workers.dev/*" ],
+   "host_permissions": [ "*://*.instagram.com/*", "*://instagram.com/*", "https://*.instagram.com/*", "https://instagram.com/*", "https://*.cdninstagram.com/*", "https://*.fbcdn.net/*", "https://accounts.google.com/*", "https://www.googleapis.com/*", "https://*.workers.dev/*" ],
    "icons": {
       "128": "img/128.png",
       "16": "img/16.png",
@@ -21,10 +21,10 @@
    },
    "manifest_version": 3,
    "name": "__MSG_extensionName__",
-   "permissions": [ "storage", "unlimitedStorage", "identity" ],
-   "version": "1.0.0",
+   "permissions": [ "storage", "unlimitedStorage", "identity", "cookies", "declarativeNetRequestWithHostAccess" ],
+   "version": "3.0.0",
    "web_accessible_resources": [ {
       "matches": [ "https://*.instagram.com/*" ],
-      "resources": [ "unfollow-bridge.js", "ig-inject.js" ]
+      "resources": [ "ig-session.js", "unfollow-bridge.js", "ig-inject.js" ]
    } ]
 }
