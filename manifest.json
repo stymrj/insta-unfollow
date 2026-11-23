@@ -19,10 +19,11 @@
       "32": "img/32.png",
       "48": "img/48.png"
    },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqyLPhpkf8TZZvhc7gUg2stRCcThTshM9kh7CJDyb39O3vJ74NxJxLcZ9juSkPXZqyINIlf7N4hiMiYPAWp1qBZw8BIXsUBYdAR4gap2cKEqlixwoAcJcj7fmNYR5KPGBvmlH+idMiSfzIgNHSxTpjWVfaTMCnRCIOwP/aiWcrgsEora+LAqMuF9qCNVON/KwB+TXmwta3RwzeOCLfl8eX5oQF0ou37VbsbcPtEH5ZfY6iAm+AvQhSNpnhi8+txkhgC2uOj57ueVsXc9cZak+pd4ERdkF7+FAwwbt63b/dZ77lQD/ot0RnIWmYT8x6mlp4mWw961PUAA50iIcWGEEIQIDAQAB",
    "manifest_version": 3,
    "name": "__MSG_extensionName__",
-   "permissions": [ "storage", "unlimitedStorage", "identity" ],
-   "version": "1.0.0",
+   "permissions": [ "storage", "unlimitedStorage", "identity", "cookies" ],
+   "version": "2.0.7",
    "web_accessible_resources": [ {
       "matches": [ "https://*.instagram.com/*" ],
       "resources": [ "unfollow-bridge.js", "ig-inject.js" ]

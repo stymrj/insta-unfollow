@@ -90,7 +90,7 @@
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
-                    <span class="countdown-text" id="countdownText">Sonraki: 120s</span>
+                    <span class="countdown-text" id="countdownText">Next: 120s</span>
                 </div>
 
                 
@@ -220,9 +220,30 @@
                     <div class="stat-content">
                         <div class="stat-value" id="nonFollowersCount">0</div>
                         <div class="stat-label" data-i18n="statNonFollowers"></div>
+                        <div class="stat-trend" id="nonFollowersTrend"></div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- v2 toolbar: search / sort / filter chips / export (client-side, loaded data only) -->
+        <div class="analyzer-toolbar">
+            <input type="search" id="analyzerSearch" class="analyzer-search"
+                   data-i18n-placeholder="searchPlaceholder" placeholder="Search username or name…"
+                   aria-label="Search">
+            <select id="analyzerSort" class="analyzer-sort" aria-label="Sort">
+                <option value="default" data-i18n="sortDefault">Default order</option>
+                <option value="username" data-i18n="sortUsername">Username A–Z</option>
+                <option value="notFollowing" data-i18n="sortNotFollowing">Not following first</option>
+            </select>
+            <button type="button" class="filter-chip active" data-chip="all" data-i18n="chipAll">All</button>
+            <button type="button" class="filter-chip" data-chip="notFollowing" data-i18n="chipNotFollowing">Not following back</button>
+            <button type="button" class="filter-chip" data-chip="following" data-i18n="chipFollowing">Following back</button>
+            <button type="button" class="filter-chip" data-chip="whitelisted" data-i18n="chipWhitelisted">Whitelisted</button>
+            <span class="analyzer-export">
+                <button type="button" id="exportCsvBtn" class="btn btn-secondary" data-i18n="exportCsv">Export CSV</button>
+                <button type="button" id="copyUsernamesBtn" class="btn btn-secondary" data-i18n="copyUsernames">Copy usernames</button>
+            </span>
         </div>
 
         <!-- Table Container -->
@@ -255,18 +276,11 @@
     </main>
 
     <!-- Premium Modal -->
-    <div id="premiumModal" class="premium-modal">
+<div id="premiumModal" class="premium-modal">
         <div class="premium-modal-overlay"></div>
         <div class="premium-modal-content">
             <button class="premium-modal-close">&times;</button>
             
-            <!-- Live Counter -->
-            <div class="premium-live-counter">
-                <div class="premium-counter-icon">⚡</div>
-                <div class="premium-counter-content">
-                    <strong class="premium-counter-main"><span data-i18n="liveCounterPrefix">Son 24 saatte</span> <span class="premium-counter-number" id="premiumLiveCounter">150</span> <span data-i18n="liveCounterSuffix">kişi Premium'a geçti!</span></strong>
-                </div>
-            </div>
 
             <!-- Pricing Cards -->
             <div class="premium-pricing-cards">
@@ -280,8 +294,8 @@
                         <li class="premium-feature-item">
                             <span class="premium-feature-icon">✓</span>
                             <span class="premium-feature-text">
-                                <span data-i18n="featureMax50Analysis">Max 40 following analysis</span>
-                                <span class="premium-feature-detail" data-i18n="featureDetailDaily"> (+20/gün)</span>
+                                <span data-i18n="featureMax50Analysis">40 analyses on day 1</span>
+                                <span class="premium-feature-detail" data-i18n="featureDetailDaily"> (+20/day)</span>
                             </span>
                         </li>
                         <li class="premium-feature-item">
@@ -307,19 +321,11 @@
                     </ul>
                 </div>
 
-                <!-- Premium Monthly Plan (Featured) -->
+                <!-- Premium Plan: one feature set, five durations to choose from -->
                 <div class="premium-pricing-card premium-premium-card premium-featured">
                     <div class="premium-plan-badge" data-i18n="planPopular">Popular</div>
                     <div class="premium-plan-header">
                         <h3 class="premium-plan-name" data-i18n="planPremium">Premium</h3>
-                        <div class="premium-plan-price">
-                            <span class="premium-old-price" id="premiumOldPrice">$25</span>
-                            <span class="premium-new-price" id="premiumNewPrice">$6.99</span>
-                            <span class="premium-price-period" data-i18n="perMonth">/month</span>
-                        </div>
-                        <div class="premium-discount-badge">
-                            <span id="premiumDiscountText" data-i18n="discountOff">72% OFF</span>
-                        </div>
                     </div>
                     <ul class="premium-features-list">
                         <li class="premium-feature-item">
@@ -347,85 +353,49 @@
                             <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
                         </li>
                     </ul>
-                    <button class="premium-card-subscribe-button premium-featured-button" data-plan="monthly" data-i18n="chooseMonthly">
-                        Choose Monthly
-                    </button>
-                </div>
-
-                <!-- Premium Yearly Plan -->
-                <div class="premium-pricing-card premium-yearly-card">
-                    <div class="premium-plan-header">
-                        <h3 class="premium-plan-name" data-i18n="planPremiumYearly">Premium Yearly</h3>
-                        <div class="premium-plan-price">
-                            <span class="premium-old-price" id="premiumYearlyOldPrice">$129.99</span>
-                            <span class="premium-new-price" id="premiumYearlyNewPrice">$74.99</span>
-                            <span class="premium-price-period" data-i18n="perYear">/year</span>
-                        </div>
-                        <div class="premium-discount-badge">
-                            <span id="premiumYearlyDiscountText">42% OFF</span>
-                        </div>
-                        <div class="premium-yearly-savings">
-                        </div>
+                    <div class="premium-plan-options" id="premiumPlanOptions" role="radiogroup" aria-label="Choose a plan">
+                        <button type="button" class="premium-plan-option selected" data-plan="1mo" role="radio" aria-checked="true">
+                            <span class="premium-plan-option-duration">1 month</span>
+                            <span class="premium-plan-option-price"><span class="premium-plan-option-new" id="premiumPlanPrice-1mo">₹49</span></span>
+                            <span class="premium-plan-option-save" id="premiumPlanSave-1mo">No discount</span>
+                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-1mo">₹49/mo</span>
+                        </button>
+                        <button type="button" class="premium-plan-option" data-plan="3mo" role="radio" aria-checked="false">
+                            <span class="premium-plan-option-duration">3 months</span>
+                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-3mo">₹147</span><span class="premium-plan-option-new" id="premiumPlanPrice-3mo">₹129</span></span>
+                            <span class="premium-plan-option-save" id="premiumPlanSave-3mo">Save ₹18</span>
+                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-3mo">₹43/mo</span>
+                        </button>
+                        <button type="button" class="premium-plan-option" data-plan="6mo" role="radio" aria-checked="false">
+                            <span class="premium-plan-option-duration">6 months</span>
+                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-6mo">₹294</span><span class="premium-plan-option-new" id="premiumPlanPrice-6mo">₹249</span></span>
+                            <span class="premium-plan-option-save" id="premiumPlanSave-6mo">Save ₹45</span>
+                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-6mo">₹42/mo</span>
+                        </button>
+                        <button type="button" class="premium-plan-option" data-plan="9mo" role="radio" aria-checked="false">
+                            <span class="premium-plan-option-duration">9 months</span>
+                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-9mo">₹441</span><span class="premium-plan-option-new" id="premiumPlanPrice-9mo">₹399</span></span>
+                            <span class="premium-plan-option-save" id="premiumPlanSave-9mo">Save ₹42</span>
+                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-9mo">₹44/mo</span>
+                        </button>
+                        <button type="button" class="premium-plan-option" data-plan="12mo" role="radio" aria-checked="false">
+                            <span class="premium-plan-option-duration">12 months</span>
+                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-12mo">₹588</span><span class="premium-plan-option-new" id="premiumPlanPrice-12mo">₹499</span></span>
+                            <span class="premium-plan-option-save" id="premiumPlanSave-12mo">Save ₹89</span>
+                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-12mo">₹42/mo</span>
+                        </button>
                     </div>
-                    <ul class="premium-features-list">
-                        <li class="premium-feature-item">
-                            <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureUnlimitedFollowingAnalysis">Unlimited following analysis</span>
-                        </li>
-                        <li class="premium-feature-item">
-                            <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureAdvancedUnfollow">Advanced unfollow features</span>
-                        </li>
-                        <li class="premium-feature-item">
-                            <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureSpamDetector">Spam account detector</span>
-                        </li>
-                        <li class="premium-feature-item">
-                            <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
-                        </li>
-                        <li class="premium-feature-item">
-                            <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureAdvancedFilteringReporting">Advanced filtering and reporting</span>
-                        </li>
-                        <li class="premium-feature-item premium-highlight">
-                            <span class="premium-feature-icon">✨</span>
-                            <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
-                        </li>
-                    </ul>
-                    <button class="premium-card-subscribe-button" data-plan="yearly" data-i18n="chooseYearly">
-                        Choose Yearly
+                    <button class="premium-card-subscribe-button premium-featured-button" id="premiumSubscribeButton" data-plan="1mo">
+                        Continue — 1 month · ₹49
                     </button>
                 </div>
             </div>
 
+            <!-- Manual-payment checkout step: method picker / UPI view / proof form (filled by premium.js) -->
+            <div id="premiumPaymentStep" class="premium-payment-step" style="display:none"></div>
+
             <!-- Trust Indicators -->
             <div class="premium-trust-indicators">
-                <div class="premium-trust-item">
-                    <div class="premium-trust-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <div class="premium-trust-content">
-                        <div class="premium-trust-value">10,000+</div>
-                        <div class="premium-trust-label" data-i18n="activeUsers">Active Users</div>
-                    </div>
-                </div>
-                <div class="premium-trust-item">
-                    <div class="premium-trust-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                        </svg>
-                    </div>
-                    <div class="premium-trust-content">
-                        <div class="premium-trust-value">4.8/5</div>
-                        <div class="premium-trust-label" data-i18n="rating">Rating</div>
-                    </div>
-                </div>
                 <div class="premium-trust-item">
                     <div class="premium-trust-icon">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -449,6 +419,7 @@
                     </div>
                 </div>
             </div>
+            <p class="privacy-note" data-i18n="privacyNote">Your data stays on your device — nothing is uploaded.</p>
         </div>
     </div>
 
@@ -457,9 +428,10 @@
         <pre id="scanDiagnosticsPre" style="white-space: pre-wrap; margin: 8px 0 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #475569; overflow-x: auto;"></pre>
     </details>
 
+    <script src="ig-session.js"></script>
     <script src="unfollow-bridge.js"></script>
     <script src="ig-client.js"></script>
-    <script src="premium-config.js"></script>
+<script src="premium-config.js"></script>
     <script src="premium.js"></script>
 <script src="analyzer.js"></script>
 </body>

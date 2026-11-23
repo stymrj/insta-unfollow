@@ -376,24 +376,28 @@
     }
   }
 
-  /** Viewer identity and csrf token in one call; the page already relies on this endpoint. */
+  /**
+   * Viewer identity and csrf token in one call, via the shared session bootstrap (ig-session.js).
+   *
+   * This used to read /data/shared_data/; Instagram removed that endpoint (404), so the helper
+   * now reads the viewer off the Instagram homepage and confirms the sign-in with web_form_data.
+   * Runs in two contexts — the analyzer/bot-scan extension pages and the Instagram tab page
+   * (ig-content.js injects ig-session.js before this file in both) — so a missing helper
+   * degrades to null rather than throwing, and the caller falls back to the extension-page read.
+   */
   async function getViewer() {
-    const response = await fetch('https://www.instagram.com/data/shared_data/', {
-      credentials: 'include'
-    });
-    if (looksRefused(response)) return null;
-    let data;
+    if (!window.IgSession || typeof window.IgSession.fetchSession !== 'function') return null;
+    let session;
     try {
-      data = await response.json();
+      session = await window.IgSession.fetchSession();
     } catch {
       return null;
     }
-    const viewer = data?.config?.viewer;
-    if (!viewer?.id) return null;
+    if (!session || session.status !== 'ok' || !session.id) return null;
     return {
-      id: String(viewer.id),
-      username: viewer.username || '',
-      csrfToken: data?.config?.csrf_token || ''
+      id: String(session.id),
+      username: session.username || '',
+      csrfToken: session.csrfToken || ''
     };
   }
 
