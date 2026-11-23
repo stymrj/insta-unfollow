@@ -51,3 +51,16 @@ call with `ig-session.js` (homepage viewer parse + `web_form_data` sign-in check
 | S4 | Bot scan still starts | Open Bot scan and start a scan: it must reach the scoring stage (it reads the viewer through the same helper). |
 | S5 | Console errors | On the analyzer page press F12 → Console during an analysis. No `404` for `shared_data` and no `IgSession is not defined` / `fetchSession is not a function` errors. If Analyze still fails, copy the console errors — they say which endpoint refused. |
 | S6 | Google sign-in from the unpacked build | Open the popup and click Sign in with Google: it must complete without `redirect_uri_mismatch`. (The unpacked build is pinned to id `gpgcdajecndabpbigkblhbojakohoiil` by the `key` in manifest.json, and that id's redirect is registered on the OAuth client. If Google still shows the mismatch right after a console change, wait a few minutes — Google says new redirect settings can take minutes to hours to take effect — then retry.) |
+
+## 2.0.7 — popup shows the session, not the counts fetch (load unpacked and test the popup first)
+
+The popup used to show "Instagram is limiting requests right now" whenever its own
+`web_form_data` or counts call was refused — even when the session (from the cookie)
+was fine. 2.0.7 makes the session decide the logged-in state; username and counts are
+best-effort.
+
+| # | Check | How |
+|---|-------|-----|
+| S7 | Popup logged-in on a throttled account | Load 2.0.7 unpacked, open instagram.com and log in in the same Chrome profile, open the popup: the profile block shows (username, avatar) and Start Analysis is visible — NOT the yellow "limiting requests" card. Counts may show "-" while Instagram throttles; that is fine. |
+| S8 | Analyze from the popup state | Click Start Analysis: the analyzer must find the session and run the scan (or show the scan-blocked notice only if the list reads themselves are refused — that is a real throttle on the lists, not the session). |
+| S9 | Signed-out still shows the login alert | Log out of instagram.com, reopen the popup: the "Please login to Instagram first!" alert shows. |

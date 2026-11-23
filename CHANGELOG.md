@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.7 — 2026-11-23
+
+### The popup no longer cries "limiting requests" when the session is fine
+- **The bug (found in the code, not guessed):** 2.0.6 fixed the session check with the cookie, but the popup then fired two more API calls of its own (`web_form_data` for the username, `users/{id}/info/` for the counts) — and a 429 on either one still showed "Instagram is limiting requests right now", even with a perfectly good session. The cookie fix never got a chance to help the popup.
+- **The fix:** the session alone now decides the logged-in state. The popup uses the username/avatar the session already carries; `web_form_data` runs only when the username is missing, and the counts call is best-effort — a refusal leaves the dashes instead of the limit screen. Start Analysis stays available.
+- **Also:** a rate-limit refusal cached from an earlier run used to be answered before the cookie was ever read, so a stale cache could veto a session the browser holds for free. The cookie step now runs first; the cached refusal only skips the cookie step's one user-info call.
+- **Tests:** harness 42/42 (3 new cases: cookie beats a fresh cached refusal, no-cookie still honours it, stale cache ignored), plus a real-browser check with a planted `ds_user_id` cookie.
+
 ## 2.0.6 — 2026-11-23
 
 ### The session now comes from your browser's own cookies — zero requests

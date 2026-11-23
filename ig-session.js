@@ -36,6 +36,10 @@
  * results are never retried. A rate-limit refusal is instead cached for 5 minutes
  * (memory + storage, so it survives the popup reopening): while it is fresh, no new
  * request goes to Instagram at all, because retrying into a limit makes it last longer.
+ * One exception: the cookie step (step 0) always runs first, even with a fresh cached
+ * refusal — the browser already holds that session for free, so a refusal cached from
+ * an earlier run must never veto it. The cached refusal only skips the cookie step's
+ * one user-info call; the id still stands without it.
  *
  * Loaded in three contexts, always before its callers:
  *   - analyzer.html and bot-scan.html (extension pages, before unfollow-bridge.js)
@@ -199,57 +203,65 @@
     };
   }
 
-  async function fetchSessionUncached() {
+  // 0. Cookies first — the step that costs zero requests. Instagram's own
+  // `ds_user_id` cookie IS the numeric viewer id, and `csrftoken` is the csrf token,
+  // so a signed-in browser already holds the whole session without any fetch. This
+  // is what the working competitor does, and why it works on an account whose API
+  // calls Instagram is throttling: no request, nothing to throttle. Needs the
+  // `cookies` permission; in contexts without it (the IG tab page) this silently
+  // skips and the chain below runs as before.
+  //
+  // Returns the session when the cookie is there, null when it is not. The user-info
+  // call only fills in the username and avatar: if it fails, the id still stands.
+  // skipUserInfo (a fresh cached rate-limit refusal) skips even that one call —
+  // the id alone is enough, and one less request into a throttled session is better.
+  async function tryCookieSession(steps, skipUserInfo) {
+    function step(name, outcome) { steps.push(name + ': ' + outcome); }
+    var cookiesAvailable = (typeof chrome !== 'undefined' && chrome.cookies && chrome.cookies.get);
+    if (!cookiesAvailable) return null;
+    var cookieId = await getCookie('ds_user_id');
+    if (!cookieId) { step('cookies', 'no ds_user_id'); return null; }
+    var cookieCsrf = await getCookie('csrftoken');
+    step('cookies', 'ok' + (cookieCsrf ? '' : ', no csrftoken cookie'));
+    // One call to fill in the username and avatar: users/{id}/info/ is the same
+    // endpoint the analyzer already uses for the avatar, and it answers with the
+    // id already known. If it fails, the id still stands — the scan proceeds and
+    // only the display name is missing.
+    var cookieUsername = '';
+    var cookiePic = '';
+    if (!skipUserInfo) {
+      try {
+        var info = await fetch(IG_HOME_URL + 'api/v1/users/' + encodeURIComponent(cookieId) + '/info/', {
+          credentials: 'include',
+          headers: { 'x-ig-app-id': IG_APP_ID, 'x-requested-with': 'XMLHttpRequest' }
+        });
+        if (info.ok) {
+          var infoData = await info.json().catch(function () { return null; });
+          cookieUsername = parseUsernameFromApi(infoData) || '';
+          cookiePic = (infoData && infoData.user && infoData.user.profile_pic_url) || '';
+          step('user info', 'ok');
+        } else {
+          step('user info', String(info.status));
+        }
+      } catch (e) {
+        step('user info', 'network error');
+      }
+    }
+    return {
+      status: 'ok', reason: '', detail: steps.join('; '), id: cookieId, username: cookieUsername,
+      csrfToken: cookieCsrf, profilePicUrl: cookiePic
+    };
+  }
+
+  async function fetchSessionUncached(steps) {
     // Every step records what happened, in plain words, so a failed session can say
     // exactly which request failed and how — "temporarily unavailable" on its own
     // tells nobody whether the homepage dropped, the API refused, or the profile page
     // hid the id. The detail travels out on the session object (see fetchSession).
-    var steps = [];
+    // `steps` is owned by fetchSession: it already holds the cookie step, and the
+    // chain below appends to it.
     function step(name, outcome) { steps.push(name + ': ' + outcome); }
     function detail() { return steps.join('; '); }
-
-    // 0. Cookies first — the step that costs zero requests. Instagram's own
-    // `ds_user_id` cookie IS the numeric viewer id, and `csrftoken` is the csrf token,
-    // so a signed-in browser already holds the whole session without any fetch. This
-    // is what the working competitor does, and why it works on an account whose API
-    // calls Instagram is throttling: no request, nothing to throttle. Needs the
-    // `cookies` permission; in contexts without it (the IG tab page) this silently
-    // skips and the chain below runs as before.
-    var cookiesAvailable = (typeof chrome !== 'undefined' && chrome.cookies && chrome.cookies.get);
-    if (cookiesAvailable) {
-      var cookieId = await getCookie('ds_user_id');
-      if (cookieId) {
-        var cookieCsrf = await getCookie('csrftoken');
-        step('cookies', 'ok' + (cookieCsrf ? '' : ', no csrftoken cookie'));
-        // One call to fill in the username and avatar: users/{id}/info/ is the same
-        // endpoint the analyzer already uses for the avatar, and it answers with the
-        // id already known. If it fails, the id still stands — the scan proceeds and
-        // only the display name is missing.
-        var cookieUsername = '';
-        var cookiePic = '';
-        try {
-          var info = await fetch(IG_HOME_URL + 'api/v1/users/' + encodeURIComponent(cookieId) + '/info/', {
-            credentials: 'include',
-            headers: { 'x-ig-app-id': IG_APP_ID, 'x-requested-with': 'XMLHttpRequest' }
-          });
-          if (info.ok) {
-            var infoData = await info.json().catch(function () { return null; });
-            cookieUsername = parseUsernameFromApi(infoData) || '';
-            cookiePic = (infoData && infoData.user && infoData.user.profile_pic_url) || '';
-            step('user info', 'ok');
-          } else {
-            step('user info', String(info.status));
-          }
-        } catch (e) {
-          step('user info', 'network error');
-        }
-        return {
-          status: 'ok', reason: '', detail: detail(), id: cookieId, username: cookieUsername,
-          csrfToken: cookieCsrf, profilePicUrl: cookiePic
-        };
-      }
-      step('cookies', 'no ds_user_id');
-    }
 
     // 1. The homepage: the only source that carries id + username + csrf in one shot.
     // A failure here NEVER ends the attempt — the page is heavy and Instagram throttles
@@ -432,20 +444,35 @@
   }
   async function fetchSession() {
     if (cachedSession && cachedSession.status === 'ok') return cachedSession;
-    if (cachedRateLimit && Date.now() - cachedRateLimitAt < RATE_LIMIT_CACHE_MS) return cachedRateLimit;
+    // The cookie step runs before either rate-limit cache (memory or storage):
+    // the browser already holds that session for free, so a refusal cached from
+    // an earlier run must never veto it. The caches only decide whether the cookie
+    // step may spend its one user-info call — the id stands without it.
     var stored = await readStoredRateLimit();
+    var cachedFresh = cachedRateLimit && Date.now() - cachedRateLimitAt < RATE_LIMIT_CACHE_MS;
+    var steps = [];
+    var cookieSession = await tryCookieSession(steps, cachedFresh || !!stored);
+    if (cookieSession) {
+      cachedSession = cookieSession;
+      return cookieSession;
+    }
+    if (cachedFresh) return cachedRateLimit;
     if (stored) {
       cachedRateLimit = stored;
       cachedRateLimitAt = stored.at;
       return stored;
     }
-    var session = await fetchSessionUncached();
+    // Only the cookie step so far — the chain has not run yet. Kept so a retried
+    // chain still says where the id was looked for.
+    var cookieSteps = steps.slice();
+    var session = await fetchSessionUncached(steps);
     if (session.status === 'refused' && (session.reason === 'network' || session.reason === 'server')) {
       // One retry: a single dropped request or a hiccuping endpoint should not kill the
       // analysis. Never retried: rate_limit (retrying makes throttling longer),
       // logged_out, and unknown (the page shapes will not change in 2 seconds).
       await new Promise(function (resolve) { setTimeout(resolve, 2000); });
-      session = await fetchSessionUncached();
+      session = await fetchSessionUncached([]);
+      session.detail = cookieSteps.concat([session.detail]).join('; ');
     }
     if (session.status === 'ok') cachedSession = session;
     if (session.status === 'refused' && session.reason === 'rate_limit') {

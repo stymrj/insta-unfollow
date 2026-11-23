@@ -943,9 +943,12 @@ async function checkInstagramLogin() {
 
     /*
      * The session bootstrap (ig-session.js) replaces /data/shared_data/, which Instagram removed
-     * (it now answers 404). It reads the viewer id off the Instagram homepage and confirms the
-     * sign-in with web_form_data, so it keeps the same three-way answer this check relies on:
-     * signed out, throttled, or signed in with a known viewer id.
+     * (it now answers 404). On a signed-in browser the viewer id comes from the browser's own
+     * Instagram cookies, so the session check itself needs no request at all — and the id it
+     * returns is proof of sign-in. Everything after it here is display detail (username,
+     * follower/following counts), and a refusal there must never turn a signed-in user into
+     * the "Instagram is limiting requests" screen: that screen is only for when no session
+     * could be established at all.
      */
     const session = await window.IgSession.fetchSession();
 
@@ -965,61 +968,61 @@ async function checkInstagramLogin() {
 
     const viewerId = session.id;
 
-    // From here the user is known to be signed in, so any refusal below is throttling.
-    const userResponse = await fetch('https://www.instagram.com/api/v1/accounts/edit/web_form_data/', {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'x-ig-app-id': '936619743392459',
-        'x-requested-with': 'XMLHttpRequest'
+    // Username: the session usually carries it (the cookie step's user-info call). Only when
+    // it is missing do we ask web_form_data — and a refusal there is not a session problem,
+    // so the popup stays logged in with the name blank instead of showing the limit screen.
+    let username = session.username || '';
+    let profilePic = session.profilePicUrl || '';
+    if (!username) {
+      try {
+        const userResponse = await fetch('https://www.instagram.com/api/v1/accounts/edit/web_form_data/', {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'x-ig-app-id': '936619743392459',
+            'x-requested-with': 'XMLHttpRequest'
+          }
+        });
+        const userForm = await readIgJson(userResponse);
+        if (!userForm.refused && !userForm.expired && userForm.data) {
+          username = (userForm.data.form_data && userForm.data.form_data.username) || '';
+        }
+      } catch (e) {
+        // Username stays blank; the session id is enough to proceed.
       }
-    });
-
-    const userForm = await readIgJson(userResponse);
-    if (userForm.refused || userForm.expired) {
-      hideLoading();
-      showInstagramLimitedAlert();
-      return;
     }
 
-    const username = userForm.data && userForm.data.form_data && userForm.data.form_data.username;
-
-    // Profil bilgilerini al.
-    //
-    // web_profile_info was used here, but Instagram now answers 400 when it is asked for the
-    // viewer's own username — it still works for other people's usernames, which is why the
-    // unfollow flow in analyzer.js is unaffected. users/{id}/info/ returns the same three fields
-    // and answers for one's own account. The viewer id comes from the session bootstrap above.
-    const profileResponse = await fetch(`https://www.instagram.com/api/v1/users/${viewerId}/info/`, {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'x-ig-app-id': '936619743392459',
-        'x-requested-with': 'XMLHttpRequest'
+    // Counts are best-effort: a refusal leaves the dashes the HTML already shows.
+    // They never decide the logged-in state.
+    let followers = '-';
+    let following = '-';
+    try {
+      const profileResponse = await fetch(`https://www.instagram.com/api/v1/users/${viewerId}/info/`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'x-ig-app-id': '936619743392459',
+          'x-requested-with': 'XMLHttpRequest'
+        }
+      });
+      const profile = await readIgJson(profileResponse);
+      const user = profile.data && profile.data.user;
+      if (user) {
+        followers = (user.follower_count ?? 0).toLocaleString();
+        following = (user.following_count ?? 0).toLocaleString();
+        if (!profilePic) profilePic = user.profile_pic_url || '';
+        if (!username) username = user.username || '';
       }
-    });
-
-    const profile = await readIgJson(profileResponse);
-    if (profile.refused) {
-      hideLoading();
-      showInstagramLimitedAlert();
-      return;
+    } catch (e) {
+      // Counts stay dashes.
     }
-
-    const user = profile.data && profile.data.user;
-    if (!user) {
-      throw new Error('No user in profile response');
-    }
-
-    // Use the profile picture URL directly
-    const originalProfileUrl = user.profile_pic_url;
 
     updateInstagramUI({
       isLoggedIn: true,
-      username: user.username || username,
-      followers: (user.follower_count ?? 0).toLocaleString(),
-      following: (user.following_count ?? 0).toLocaleString(),
-      profileImage: originalProfileUrl
+      username: username,
+      followers: followers,
+      following: following,
+      profileImage: profilePic || 'img/48.png'
     });
 
   } catch (error) {
@@ -1036,6 +1039,7 @@ async function checkInstagramLogin() {
     hideAnalyzeButton();
   }
 }
+
 
 // v2: show the last analysis summary (followers / following / not-following / date)
 // when the analyzer has stored one. Hidden cleanly when nothing exists yet.
