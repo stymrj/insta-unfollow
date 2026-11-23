@@ -8,6 +8,10 @@
  * generic "An error occurred while fetching data" error before any list was read.
  *
  * What replaces it, in order:
+ *   0. The browser's own Instagram cookies: `ds_user_id` IS the numeric viewer id and
+ *      `csrftoken` is the csrf token, so a signed-in browser holds the session with
+ *      zero requests — nothing for Instagram to throttle. One `users/{id}/info/` call
+ *      fills in the username and avatar. Needs the `cookies` permission.
  *   1. The Instagram homepage HTML (same fetch the old endpoint used — `credentials:
  *      include`, so it carries the user's session). A signed-in page embeds the viewer
  *      (`"viewer":{"id":"…","username":"…"}`) and a csrf token in its bootstrap JSON.
@@ -62,6 +66,20 @@
   var CURRENT_USER_URL = 'https://www.instagram.com/api/v1/accounts/current_user/';
 
   var cachedSession = null;
+
+  // Read one Instagram cookie. Callback-style on purpose: chrome.cookies.get
+  // supports promises in MV3, but the callback form works in every context that has
+  // the API at all (and in none that doesn't — the tab page context has no `chrome`).
+  function getCookie(name) {
+    return new Promise(function (resolve) {
+      try {
+        if (typeof chrome === 'undefined' || !chrome.cookies || !chrome.cookies.get) { resolve(''); return; }
+        chrome.cookies.get({ url: IG_HOME_URL, name: name }, function (cookie) {
+          resolve(cookie && cookie.value ? String(cookie.value) : '');
+        });
+      } catch (e) { resolve(''); }
+    });
+  }
 
   // A rate-limit refusal is cached for 5 minutes, in memory AND in storage (the popup
   // is a fresh page on every open, so memory alone would not survive it). While it is
@@ -189,6 +207,49 @@
     var steps = [];
     function step(name, outcome) { steps.push(name + ': ' + outcome); }
     function detail() { return steps.join('; '); }
+
+    // 0. Cookies first — the step that costs zero requests. Instagram's own
+    // `ds_user_id` cookie IS the numeric viewer id, and `csrftoken` is the csrf token,
+    // so a signed-in browser already holds the whole session without any fetch. This
+    // is what the working competitor does, and why it works on an account whose API
+    // calls Instagram is throttling: no request, nothing to throttle. Needs the
+    // `cookies` permission; in contexts without it (the IG tab page) this silently
+    // skips and the chain below runs as before.
+    var cookiesAvailable = (typeof chrome !== 'undefined' && chrome.cookies && chrome.cookies.get);
+    if (cookiesAvailable) {
+      var cookieId = await getCookie('ds_user_id');
+      if (cookieId) {
+        var cookieCsrf = await getCookie('csrftoken');
+        step('cookies', 'ok' + (cookieCsrf ? '' : ', no csrftoken cookie'));
+        // One call to fill in the username and avatar: users/{id}/info/ is the same
+        // endpoint the analyzer already uses for the avatar, and it answers with the
+        // id already known. If it fails, the id still stands — the scan proceeds and
+        // only the display name is missing.
+        var cookieUsername = '';
+        var cookiePic = '';
+        try {
+          var info = await fetch(IG_HOME_URL + 'api/v1/users/' + encodeURIComponent(cookieId) + '/info/', {
+            credentials: 'include',
+            headers: { 'x-ig-app-id': IG_APP_ID, 'x-requested-with': 'XMLHttpRequest' }
+          });
+          if (info.ok) {
+            var infoData = await info.json().catch(function () { return null; });
+            cookieUsername = parseUsernameFromApi(infoData) || '';
+            cookiePic = (infoData && infoData.user && infoData.user.profile_pic_url) || '';
+            step('user info', 'ok');
+          } else {
+            step('user info', String(info.status));
+          }
+        } catch (e) {
+          step('user info', 'network error');
+        }
+        return {
+          status: 'ok', reason: '', detail: detail(), id: cookieId, username: cookieUsername,
+          csrfToken: cookieCsrf, profilePicUrl: cookiePic
+        };
+      }
+      step('cookies', 'no ds_user_id');
+    }
 
     // 1. The homepage: the only source that carries id + username + csrf in one shot.
     // A failure here NEVER ends the attempt — the page is heavy and Instagram throttles

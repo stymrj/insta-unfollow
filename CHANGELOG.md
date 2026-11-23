@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.6 — 2026-11-23
+
+### The session now comes from your browser's own cookies — zero requests
+- **The proof:** Unfollow Pro (v2.14.7, tested working on the same account) reads the viewer id from Chrome's own Instagram cookies — `ds_user_id` IS the numeric id, `sessionid` proves the session — with zero network requests. Our extension was burning 5–6 API requests to discover the same id, and those are exactly the requests Instagram throttles.
+- **The fix:** `fetchSession` now reads `ds_user_id` + `csrftoken` from the browser cookies first (new `cookies` permission), then fills in the username/avatar with one `users/{id}/info/` call. No cookie, no problem — the API chain (homepage → `current_user` → `web_form_data` → `usernameinfo` → profile page) still runs as before. Privacy policy updated with a cookies line.
+- **Tests:** 39/39, including a real-browser check with a planted `ds_user_id` cookie.
+
 ## 2.0.5 — 2026-11-21
 
 ### A rate limit no longer gets worse every time you retry
