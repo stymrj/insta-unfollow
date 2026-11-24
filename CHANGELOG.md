@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.3 — 2026-11-24
+
+### Admin Promo Management & Follower Status Fix
+- **Version Bump:** Bumped to 3.0.3 to satisfy Chrome Web Store package version sequence.
+- **Visual Promo Code Manager:** Added complete promo creation, copying, and deletion inside Admin Console.
+
 ## 3.0.2 — 2026-11-24
 
 ### Bug Fixes, Promotional Redeem Codes & Admin Growth Tools
