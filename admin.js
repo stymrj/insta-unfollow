@@ -145,13 +145,16 @@
   }
 
   // Grant durations offered in the admin console: plan key -> days.
-  // The 7-day trial is intentionally NOT offered here.
   const GRANT_DURATIONS = [
+    { days: 10, label: '10 days (Promo)' },
+    { days: 7, label: '7 days (Trial)' },
+    { days: 14, label: '14 days' },
     { days: 30, label: '1 month' },
     { days: 90, label: '3 months' },
     { days: 180, label: '6 months' },
     { days: 270, label: '9 months' },
-    { days: 365, label: '12 months' }
+    { days: 365, label: '12 months' },
+    { days: 'custom', label: 'Custom days…' }
   ];
 
   function methodLabel(method) {
@@ -476,6 +479,109 @@
     }, 300);
   }
 
+  async function exportUsersCsv() {
+    toast('Fetching all users for export…');
+    try {
+      let allUsers = [];
+      let p = 1;
+      const limit = 50;
+      while (true) {
+        const response = await api('/admin/users?page=' + p + '&limit=' + limit);
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || 'Failed to fetch users');
+        const list = payload.users || [];
+        allUsers = allUsers.concat(list);
+        if (p >= (payload.pages || 1) || list.length === 0) break;
+        p++;
+      }
+
+      if (!allUsers.length) {
+        toast('No users found to export.', false);
+        return;
+      }
+
+      const esc = (v) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
+      const lines = [['Name', 'Email', 'Google ID', 'Status', 'Plan', 'Joined Date', 'Last Seen Date'].join(',')];
+      for (const u of allUsers) {
+        const m = u.membership || {};
+        lines.push([
+          esc(u.name || ''),
+          esc(u.email || ''),
+          esc(u.id || ''),
+          esc(m.status || 'free'),
+          esc(u.plan || m.plan || ''),
+          esc(u.firstSeen ? new Date(u.firstSeen).toISOString() : ''),
+          esc(u.lastSeen ? new Date(u.lastSeen).toISOString() : '')
+        ].join(','));
+      }
+
+      const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `insta-unfollow-users-${allUsers.length}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      toast(`Exported ${allUsers.length} users successfully!`);
+    } catch (e) {
+      toast('Export failed: ' + e.message, false);
+    }
+  }
+
+  async function bulkGrantFreeUsers(days = 10) {
+    if (!window.confirm(`Are you sure you want to grant ${days} days of free promotional premium to ALL free users?`)) {
+      return;
+    }
+
+    toast(`Fetching free users…`);
+    try {
+      let allUsers = [];
+      let p = 1;
+      const limit = 50;
+      while (true) {
+        const response = await api('/admin/users?page=' + p + '&limit=' + limit);
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || 'Failed to fetch users');
+        const list = payload.users || [];
+        allUsers = allUsers.concat(list);
+        if (p >= (payload.pages || 1) || list.length === 0) break;
+        p++;
+      }
+
+      const freeUsers = allUsers.filter(u => {
+        const s = (u.membership && u.membership.status) || 'free';
+        return s === 'free' || s === 'revoked';
+      });
+
+      if (!freeUsers.length) {
+        toast('No free users found to grant.');
+        return;
+      }
+
+      toast(`Granting ${days} days to ${freeUsers.length} users… Please wait.`);
+      let grantedCount = 0;
+      for (const u of freeUsers) {
+        try {
+          await api('/admin/users/' + encodeURIComponent(u.id) + '/grant', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ days: parseInt(days, 10) })
+          });
+          grantedCount++;
+        } catch (err) {
+          console.warn('Failed to grant user:', u.email, err);
+        }
+      }
+
+      toast(`🎉 Granted ${days} days to ${grantedCount} users!`);
+      await Promise.all([loadUsers(), loadStats()]);
+    } catch (e) {
+      toast('Bulk grant failed: ' + e.message, false);
+    }
+  }
+
   async function boot() {
     const data = await chrome.storage.local.get(['auth_token', 'user_info']);
     const userInfo = data.user_info;
@@ -538,6 +644,11 @@
     $('adminRefresh').addEventListener('click', () => {
       Promise.all([loadProofs(), loadUsers(), loadStats()]).catch((error) => toast(error.message, false));
     });
+    const exportBtn = $('adminExportCsv');
+    if (exportBtn) exportBtn.addEventListener('click', exportUsersCsv);
+    const bulkGrantBtn = $('adminBulkGrant');
+    if (bulkGrantBtn) bulkGrantBtn.addEventListener('click', () => bulkGrantFreeUsers(10));
+
     $('adminSearch').addEventListener('input', debounceSearch);
     $('adminPrev').addEventListener('click', () => {
       if (state.page > 1) { state.page--; loadUsers().catch((error) => toast(error.message, false)); }
@@ -555,7 +666,12 @@
         // Grant button next to the duration select: read the chosen duration.
         const select = button.closest('.admin-actions') &&
           button.closest('.admin-actions').querySelector('.admin-grant-select');
-        extra = select ? select.value : '30';
+        extra = select ? select.value : '10';
+        if (extra === 'custom') {
+          const input = prompt('Enter number of days to grant:', '10');
+          if (!input || isNaN(parseInt(input, 10)) || parseInt(input, 10) <= 0) return;
+          extra = String(parseInt(input, 10));
+        }
       }
       runAction(row.dataset.userId, button.dataset.action, extra);
     });

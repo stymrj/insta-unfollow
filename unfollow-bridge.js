@@ -171,7 +171,7 @@
     };
   }
 
-  async function showMany(userIds) {
+  async function querySingleShowManyChunk(userIds) {
     if (!userIds || !userIds.length) return {};
     let csrfToken = '';
     let dtsg = '';
@@ -204,15 +204,38 @@
         credentials: 'include',
         body: params.toString()
       });
-      if (!response.ok) return {};
+      if (!response.ok) return null;
       const data = await response.json().catch(() => null);
       if (data && data.status === 'ok' && data.friendship_statuses) {
         return data.friendship_statuses;
       }
     } catch (e) {
-      console.warn('[unfollow-bridge] show_many error:', e);
+      console.warn('[unfollow-bridge] show_many chunk error:', e);
     }
-    return {};
+    return null;
+  }
+
+  async function showMany(userIds) {
+    if (!userIds || !userIds.length) return {};
+    // Instagram's show_many API has a batch limit of 30 IDs per call.
+    // Querying in chunks of 30 prevents 400 Bad Request and missing follow status.
+    const CHUNK_SIZE = 30;
+    const allStatuses = {};
+    for (let i = 0; i < userIds.length; i += CHUNK_SIZE) {
+      const chunk = userIds.slice(i, i + CHUNK_SIZE);
+      let res = await querySingleShowManyChunk(chunk);
+      if (!res) {
+        await sleepUnlessStopped(500);
+        res = await querySingleShowManyChunk(chunk);
+      }
+      if (res) {
+        Object.assign(allStatuses, res);
+      } else {
+        console.warn('[unfollow-bridge] show_many chunk failed for:', chunk);
+        return null;
+      }
+    }
+    return allStatuses;
   }
 
   async function readGraphqlPage({ userId, type, cursor, count, signal }) {
@@ -501,17 +524,18 @@
         const statuses = await showMany(pageUserIds);
         if (statuses && Object.keys(statuses).length > 0) {
           for (const edge of newEdges) {
-            const st = statuses[edge.node.id];
+            const idStr = String(edge.node.id);
+            const st = statuses[idStr] || statuses[edge.node.id];
             if (st) {
               edge.node.follows_viewer = !!st.followed_by;
               edge.node.is_private = typeof st.is_private === 'boolean' ? st.is_private : edge.node.is_private;
             }
           }
         } else {
-          // If show_many didn't return data on first page, fall back to two-list read
-          if (users.length === 0) {
-            return finish('no_status');
-          }
+          // If show_many fails or is incomplete on ANY page, fall back to two-list read
+          // to guarantee zero wrong follow-back verdicts.
+          console.warn('[bridge] show_many failed or incomplete, falling back to two-list scan');
+          return finish('no_status');
         }
       }
 

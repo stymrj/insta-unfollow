@@ -329,6 +329,49 @@ document.addEventListener('DOMContentLoaded', function() {
             checkInstagramLogin(true);
         });
     }
+
+    // Promo Code Redeem in Popup
+    const popupPromoBtn = document.getElementById('popupPromoBtn');
+    const popupPromoInput = document.getElementById('popupPromoInput');
+    const popupPromoMsg = document.getElementById('popupPromoMsg');
+    if (popupPromoBtn && popupPromoInput) {
+        const handlePopupRedeem = async () => {
+            const code = popupPromoInput.value.trim();
+            if (!code) {
+                if (popupPromoMsg) {
+                    popupPromoMsg.textContent = 'Please enter a code.';
+                    popupPromoMsg.className = 'popup-promo-msg error';
+                    popupPromoMsg.style.display = 'block';
+                }
+                return;
+            }
+            popupPromoBtn.disabled = true;
+            popupPromoBtn.textContent = '…';
+            if (popupPromoMsg) popupPromoMsg.style.display = 'none';
+
+            if (typeof window.redeemPromoCode === 'function') {
+                const res = await window.redeemPromoCode(code);
+                popupPromoBtn.disabled = false;
+                popupPromoBtn.textContent = 'Redeem';
+                if (popupPromoMsg) {
+                    popupPromoMsg.textContent = res.message || res.error;
+                    popupPromoMsg.className = 'popup-promo-msg ' + (res.success ? 'success' : 'error');
+                    popupPromoMsg.style.display = 'block';
+                }
+                if (res.success) {
+                    popupPromoInput.value = '';
+                    setTimeout(() => location.reload(), 1500);
+                }
+            }
+        };
+        popupPromoBtn.addEventListener('click', handlePopupRedeem);
+        popupPromoInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handlePopupRedeem();
+            }
+        });
+    }
 });
 
 function setupMenuAndContent() {

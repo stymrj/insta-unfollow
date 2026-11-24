@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0.2 — 2026-11-24
+
+### Bug Fixes, Promotional Redeem Codes & Admin Growth Tools
+- **Mutuals & Follower Detection Engine Overhauled:** Fixed critical false-negative bug where users following back were marked as "Not following you". `showMany` query is now chunked in safe batches of 30 with retry resilience, preventing 400 Bad Request dropped statuses.
+- **Promotional Redeem Code System:** Added promo code redemption in the extension modal and popup. Users can redeem codes (e.g. `FREE10`, `WELCOME10`, `PROMO10`) for 10 days of free unlimited premium.
+- **Admin Console Allotment & Bulk Grant:** Added custom day allotment (10 days, 7 days, 14 days, custom days) and 1-click **"Grant 10d to All Free Users"** bulk button.
+- **Admin Users CSV Export:** Added 1-click **"Export Users (CSV)"** button in Admin Console to easily export user names and emails for email marketing campaigns.
+- **Admin Table UI & Controls Restyled:** Fixed ugly multi-line button wrapping in table rows; styled select dropdowns, ghost buttons, and toolbar.
+
 ## 3.0.1 — 2026-11-24
 
 ### Store Reviews URL & Author Attribution

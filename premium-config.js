@@ -26,6 +26,14 @@ window.UPI_PAYEE_NAME = 'Satyam Raj';
 // Flip this to false once PAYMENT_API_URL points at a live worker and you start selling.
 window.PREMIUM_BY_DEFAULT = false;
 
+// Promotional Redeem Codes (e.g. 10 days free premium campaigns)
+window.PROMO_CODES = {
+  'FREE10': { days: 10, label: '10 Days Promotional Free Access' },
+  'WELCOME10': { days: 10, label: '10 Days Welcome Gift' },
+  'PROMO10': { days: 10, label: '10 Days Promotional Pass' },
+  'INSTA10': { days: 10, label: '10 Days Free Unlimited Premium' }
+};
+
 // The background service worker cannot load this file, so it reads the worker URL from
 // storage instead. Kept in sync here, once, on every extension page load.
 if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
@@ -114,6 +122,17 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
       const data = await chrome.storage.local.get(['membership', 'user_info']);
       const stored = data.membership || {};
       const userInfo = data.user_info;
+
+      // Active local promotional code entitlement
+      if (stored.turu === 'premium' && stored.grantExpiresAt && Date.now() < stored.grantExpiresAt) {
+        return {
+          turu: 'premium',
+          expiry: new Date(stored.grantExpiresAt).toISOString(),
+          pendingProof: false,
+          isPromo: true,
+          promoCode: stored.redeemedCode
+        };
+      }
 
       const workerLive = typeof window.PAYMENT_API_URL === 'string' &&
         !window.PAYMENT_API_URL.includes('PASTE-YOUR-WORKER');
@@ -645,6 +664,52 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
     form.appendChild(submitBtn);
     return form;
   }
+
+  window.redeemPromoCode = async function (code) {
+    if (!code || typeof code !== 'string') {
+      return { success: false, error: 'Please enter a valid promo code.' };
+    }
+    const cleanCode = code.trim().toUpperCase();
+    const promo = (window.PROMO_CODES || {})[cleanCode];
+    if (!promo) {
+      return { success: false, error: 'Invalid or unrecognized promo code. Please check and try again.' };
+    }
+
+    try {
+      const data = await chrome.storage.local.get(['redeemed_codes', 'user_info', 'membership']);
+      const redeemedList = Array.isArray(data.redeemed_codes) ? data.redeemed_codes : [];
+      if (redeemedList.includes(cleanCode)) {
+        return { success: false, error: 'You have already redeemed this promo code on this device.' };
+      }
+
+      const days = promo.days || 10;
+      const expiresAt = Date.now() + days * 86400000;
+      const userInfo = data.user_info;
+
+      const newMembership = {
+        uye_id: (userInfo && userInfo.id) || 'local_user',
+        turu: 'premium',
+        grantExpiresAt: expiresAt,
+        redeemedCode: cleanCode,
+        kayit_tarihi: new Date().toISOString()
+      };
+
+      await chrome.storage.local.set({
+        redeemed_codes: [...redeemedList, cleanCode],
+        membership: newMembership
+      });
+
+      return {
+        success: true,
+        code: cleanCode,
+        days: days,
+        expiresAt: expiresAt,
+        message: `🎉 Success! ${promo.label || (days + ' Days Premium')} has been activated!`
+      };
+    } catch (e) {
+      return { success: false, error: 'Failed to apply promo code: ' + (e.message || String(e)) };
+    }
+  };
 
   window.verifyPremiumToken = verifyPremiumToken;
   window.getPremiumMembership = getPremiumMembership;

@@ -19,6 +19,7 @@ function openPremiumModal() {
 
         // Plan options default to the 1-month plan on every open.
         wireModalPlanOptions();
+        wirePromoRedeem();
         setModalSelectedPlan('1mo');
 
         // Update pricing and subscription button visibility
@@ -292,3 +293,56 @@ function updatePremiumModalContent() {
     }
   })();
 }
+
+function wirePromoRedeem() {
+    const btn = document.getElementById('promoRedeemBtn');
+    const input = document.getElementById('promoCodeInput');
+    const msg = document.getElementById('promoCodeMsg');
+    if (!btn || !input || btn.dataset.wired === 'true') return;
+    btn.dataset.wired = 'true';
+
+    const handleRedeem = async () => {
+        const code = input.value.trim();
+        if (!code) {
+            if (msg) {
+                msg.textContent = 'Please enter a code to redeem.';
+                msg.className = 'promo-code-msg error';
+                msg.style.display = 'block';
+            }
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Redeeming…';
+        if (msg) msg.style.display = 'none';
+
+        if (typeof window.redeemPromoCode === 'function') {
+            const res = await window.redeemPromoCode(code);
+            btn.disabled = false;
+            btn.textContent = 'Redeem Code';
+            if (msg) {
+                msg.textContent = res.message || res.error;
+                msg.className = 'promo-code-msg ' + (res.success ? 'success' : 'error');
+                msg.style.display = 'block';
+            }
+            if (res.success) {
+                input.value = '';
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            }
+        }
+    };
+
+    btn.addEventListener('click', handleRedeem);
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleRedeem();
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    wirePromoRedeem();
+});

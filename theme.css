@@ -2921,53 +2921,104 @@ body {
 }
 
 .admin-actions {
-  display: flex;
-  gap: 6px;
-  justify-content: flex-end;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex-wrap: nowrap !important;
+  justify-content: flex-end !important;
+}
+
+.admin-actions-cell {
+  white-space: nowrap !important;
+  text-align: right !important;
+  vertical-align: middle !important;
+}
+
+.admin-grant-select {
+  padding: 4px 8px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--rule-strong, #cbd5e1) !important;
+  background: #ffffff !important;
+  color: #1e1b4b !important;
+  outline: none !important;
+  cursor: pointer !important;
+  height: 28px !important;
+  box-sizing: border-box !important;
+}
+
+.admin-grant-select:focus {
+  border-color: #4f46e5 !important;
 }
 
 .admin-action-btn {
   font-family: var(--sans) !important;
-  font-size: 11px !important;
+  font-size: 11.5px !important;
   font-weight: 600 !important;
-  letter-spacing: 0.04em !important;
-  padding: 5px 9px !important;
-  border-radius: 2px !important;
-  border: 1px solid var(--rule-strong) !important;
+  letter-spacing: 0.02em !important;
+  padding: 4px 10px !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--rule-strong, #cbd5e1) !important;
   cursor: pointer !important;
-  white-space: nowrap;
+  white-space: nowrap !important;
+  height: 28px !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
 }
 
 .admin-action-btn.primary {
-  background: var(--rust) !important;
-  color: var(--card-hi) !important;
-  border-color: var(--rust) !important;
+  background: #4f46e5 !important;
+  color: #ffffff !important;
+  border-color: #4338ca !important;
 }
 
 .admin-action-btn.primary:hover {
-  background: var(--rust-deep) !important;
+  background: #4338ca !important;
 }
 
 .admin-action-btn.secondary {
-  background: var(--olive-soft) !important;
-  color: var(--olive-deep) !important;
-  border-color: var(--olive) !important;
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+  border-color: #cbd5e1 !important;
 }
 
 .admin-action-btn.secondary:hover {
-  background: var(--olive) !important;
-  color: var(--card-hi) !important;
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
 }
 
 .admin-action-btn.danger {
-  background: var(--oxblood-soft) !important;
-  color: var(--oxblood-deep) !important;
-  border-color: var(--oxblood) !important;
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  border-color: #fca5a5 !important;
 }
 
 .admin-action-btn.danger:hover {
-  background: var(--oxblood) !important;
-  color: var(--card-hi) !important;
+  background: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+.admin-action-btn.ghost {
+  background: transparent !important;
+  color: #64748b !important;
+  border-color: #e2e8f0 !important;
+}
+
+.admin-action-btn.ghost:hover {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+.admin-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 16px !important;
+  flex-wrap: wrap !important;
 }
 
 .admin-action-btn.ghost {

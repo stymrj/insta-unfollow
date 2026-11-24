@@ -914,7 +914,7 @@ function findNonFollowers(following, followers) {
 }
 
 function createTableRow(user, index, followers, whitelistSet) {
-    const isFollowing = followers.some(f => f.node.id === user.node.id);
+    const isFollowing = followers.some(f => String(f.node.id) === String(user.node.id));
     const rowClass = isFollowing ? 'following-user' : 'not-following-user';
     const isWhitelisted = whitelistSet && whitelistSet.has(user.node.username);
 
@@ -969,9 +969,9 @@ function showTableMessage(message, isError = false) {
 // v2: search (username / full name), filter chips and sort, all client-side over the
 // already-loaded list. Pagination still slices the filtered result in renderCurrentPage.
 function getFilteredData() {
-    const followerIds = new Set(allFollowersList.map(f => f.node.id));
+    const followerIds = new Set(allFollowersList.map(f => String(f.node.id)));
     let data = allDisplayData.filter(user => {
-        const isFollowing = followerIds.has(user.node.id);
+        const isFollowing = followerIds.has(String(user.node.id));
         const isWhitelisted = currentWhitelistSet.has(user.node.username);
         if (showOnlyNonFollowersFilter && isFollowing) return false;
         if (analyzerChipFilter === 'notFollowing' && isFollowing) return false;
@@ -1002,14 +1002,14 @@ function downloadFilteredCsv() {
         showToast(getMessage('exportCsvEmpty'), 'error');
         return;
     }
-    const followerIds = new Set(allFollowersList.map(f => f.node.id));
+    const followerIds = new Set(allFollowersList.map(f => String(f.node.id)));
     const esc = (v) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
     const lines = [['username', 'full_name', 'verified', 'following_you', 'whitelisted'].join(',')];
     for (const user of rows) {
         const n = user.node;
         lines.push([
             esc(n.username), esc(n.full_name || ''), n.is_verified ? 'yes' : 'no',
-            followerIds.has(n.id) ? 'yes' : 'no',
+            followerIds.has(String(n.id)) ? 'yes' : 'no',
             currentWhitelistSet.has(n.username) ? 'yes' : 'no'
         ].join(','));
     }
@@ -2362,13 +2362,13 @@ function showToast(message, type = 'success') {
 
 // Helper: build queue from global data
 function buildUnfollowQueue(mode) {
-    const followerIds = new Set(allFollowersList.map(f => f.node.id));
+    const followerIds = new Set(allFollowersList.map(f => String(f.node.id)));
     return allDisplayData.filter(user => {
         if (currentWhitelistSet.has(user.node.username)) return false;
         if (user._unfollowed) return false;
         if (user._unfollowError) return false;
         if (user._unfollowSkippedForLimit) return false;
-        if (mode === 'nonFollowers') return !followerIds.has(user.node.id);
+        if (mode === 'nonFollowers') return !followerIds.has(String(user.node.id));
         return true;
     });
 }

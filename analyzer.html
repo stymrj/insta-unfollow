@@ -440,6 +440,25 @@
             <!-- Manual-payment checkout step: method picker / UPI view / proof form (filled by premium.js) -->
             <div id="premiumPaymentStep" class="premium-payment-step" style="display:none"></div>
 
+            <!-- Promo / Redeem Code Box -->
+            <div class="promo-redeem-card">
+                <div class="promo-redeem-header">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 12v10H4V12"></path>
+                        <path d="M2 7h20v5H2z"></path>
+                        <path d="M12 22V7"></path>
+                        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                    </svg>
+                    <span>Have a Promo or Gift Code?</span>
+                </div>
+                <div class="promo-redeem-row">
+                    <input type="text" id="promoCodeInput" placeholder="Enter code (e.g. FREE10)" class="promo-code-input" autocomplete="off" />
+                    <button type="button" id="promoRedeemBtn" class="promo-redeem-btn">Redeem Code</button>
+                </div>
+                <div id="promoCodeMsg" class="promo-code-msg" style="display:none;"></div>
+            </div>
+
             <!-- Trust Indicators -->
             <div class="premium-trust-indicators">
                 <div class="premium-trust-item">
