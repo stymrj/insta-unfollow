@@ -3030,6 +3030,18 @@ body {
   color: var(--rust);
 }
 
+.popup-footer a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.popup-footer a:hover {
+  opacity: 0.8;
+  color: var(--indigo, #4f46e5);
+}
+
 /* ==========================================================================
    v2.0.0 (revised 2026-11-19) — Design B "Colourful bold", picked by Satyam.
    Replaces the rejected white / Instagram-gradient theme (2026-11-06).

@@ -22,12 +22,10 @@
 
   var ReviewPrompt = {
     BONUS_AMOUNT: BONUS_AMOUNT,
+    STORE_REVIEW_URL: 'https://chromewebstore.google.com/detail/insta-unfollow-followers/kdlobnohhjkneflmopckfidfekdkokcd/reviews',
 
     getReviewUrl: function () {
-      var id = (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.id)
-        ? chrome.runtime.id
-        : '';
-      return id ? 'https://chromewebstore.google.com/detail/' + id + '/reviews' : 'https://chromewebstore.google.com/';
+      return this.STORE_REVIEW_URL;
     },
 
     /**

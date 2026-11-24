@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1 — 2026-11-24
+
+### Store Reviews URL & Author Attribution
+- **Store Review URL Pointed Directly to Web Store:** Smart review and rating banner now directly opens the published Chrome Web Store listing review page (`kdlobnohhjkneflmopckfidfekdkokcd/reviews`), ensuring review claims reliably register.
+- **Author Attribution:** Added verified LinkedIn profile hyperlink for creator [Satyam Raj](https://www.linkedin.com/in/satyamraj1) in the popup footer.
+
 ## 3.0.0 — 2026-11-23
 
 ### Major V3 Release: Complete Modern Redesign, Zero-Throttling Engine & Growth System

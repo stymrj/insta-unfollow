@@ -154,4 +154,4 @@ Contributions, issues, and feature requests are welcome!
 - **License:** Distributed under the MIT License.
 - **Disclaimer:** This project is an independent tool and is not affiliated with, authorized, maintained, sponsored or endorsed by Instagram, Meta, or any of its affiliates. Use responsibly and adhere to Instagram's Terms of Use.
 
-<p align="center">Made with ❤️ for Instagram Creators & Community</p>
+<p align="center">Made with ❤️ by <a href="https://www.linkedin.com/in/satyamraj1">Satyam Raj</a> for Instagram Creators & Community</p>

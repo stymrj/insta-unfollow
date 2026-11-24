@@ -278,6 +278,15 @@ async function showPopupPaymentFlow(plan) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Open external links safely in new browser tabs
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a[href^="http"]');
+        if (link) {
+            e.preventDefault();
+            chrome.tabs.create({ url: link.href });
+        }
+    });
+
     // Initialize i18n
     initializeI18n();
     
