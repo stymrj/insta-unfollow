@@ -670,13 +670,18 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
       return { success: false, error: 'Please enter a valid promo code.' };
     }
     const cleanCode = code.trim().toUpperCase();
-    const promo = (window.PROMO_CODES || {})[cleanCode];
-    if (!promo) {
-      return { success: false, error: 'Invalid or unrecognized promo code. Please check and try again.' };
-    }
 
     try {
-      const data = await chrome.storage.local.get(['redeemed_codes', 'user_info', 'membership']);
+      const data = await chrome.storage.local.get(['redeemed_codes', 'user_info', 'membership', 'admin_promos']);
+      let promo = (window.PROMO_CODES || {})[cleanCode];
+      if (!promo && Array.isArray(data.admin_promos)) {
+        const found = data.admin_promos.find(x => x.code === cleanCode);
+        if (found) promo = { days: found.days, label: found.note || `${found.days} Days Free Access` };
+      }
+
+      if (!promo) {
+        return { success: false, error: 'Invalid or unrecognized promo code. Please check and try again.' };
+      }
       const redeemedList = Array.isArray(data.redeemed_codes) ? data.redeemed_codes : [];
       if (redeemedList.includes(cleanCode)) {
         return { success: false, error: 'You have already redeemed this promo code on this device.' };

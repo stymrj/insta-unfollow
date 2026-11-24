@@ -109,6 +109,42 @@
             <div id="adminProofsEmpty" class="admin-empty" style="display:none">No pending payments.</div>
         </div>
 
+        <!-- Promo Codes Management Section -->
+        <div class="admin-promo-section">
+            <div class="admin-promo-header">
+                <div>
+                    <h2 class="admin-proofs-title" style="margin:0;">Promo & Redeem Codes</h2>
+                    <span class="admin-promo-sub">Create marketing codes that users can redeem for free premium</span>
+                </div>
+                <button id="toggleCreatePromoBtn" class="btn btn-primary" style="padding: 7px 16px; font-size: 13px;">+ Create Promo Code</button>
+            </div>
+
+            <!-- Create Promo Form Card -->
+            <div id="createPromoCard" class="admin-create-promo-card" style="display:none;">
+                <div class="admin-create-promo-form">
+                    <div class="admin-form-group">
+                        <label>Promo Code</label>
+                        <input id="newPromoCode" type="text" placeholder="e.g. FREE10" style="text-transform:uppercase;" autocomplete="off" />
+                    </div>
+                    <div class="admin-form-group" style="width: 120px;">
+                        <label>Days Granted</label>
+                        <input id="newPromoDays" type="number" value="10" min="1" max="365" />
+                    </div>
+                    <div class="admin-form-group" style="flex: 2;">
+                        <label>Campaign / Description (Optional)</label>
+                        <input id="newPromoNote" type="text" placeholder="e.g. 10 Days Gift for Romania Users" />
+                    </div>
+                    <div class="admin-form-actions">
+                        <button id="savePromoCodeBtn" class="btn btn-primary">Save Code</button>
+                        <button id="cancelPromoCodeBtn" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promo Codes Grid -->
+            <div id="adminPromoList" class="admin-promo-grid"></div>
+        </div>
+
         <div class="admin-toolbar">
             <input id="adminSearch" class="admin-search" type="search"
                    placeholder="Search name, email or Google ID…" autocomplete="off">

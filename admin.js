@@ -582,6 +582,122 @@
     }
   }
 
+  const DEFAULT_PROMOS = [
+    { code: 'FREE10', days: 10, note: '10 Days Promotional Free Access' },
+    { code: 'WELCOME10', days: 10, note: '10 Days Welcome Gift' },
+    { code: 'PROMO10', days: 10, note: '10 Days Promotional Pass' }
+  ];
+
+  async function getStoredPromos() {
+    const data = await chrome.storage.local.get(['admin_promos']);
+    if (Array.isArray(data.admin_promos) && data.admin_promos.length > 0) {
+      return data.admin_promos;
+    }
+    await chrome.storage.local.set({ admin_promos: DEFAULT_PROMOS });
+    return DEFAULT_PROMOS;
+  }
+
+  async function renderPromoCodes() {
+    const listEl = $('adminPromoList');
+    if (!listEl) return;
+    const promos = await getStoredPromos();
+    listEl.innerHTML = '';
+
+    promos.forEach((p) => {
+      const card = document.createElement('div');
+      card.className = 'admin-promo-item';
+      card.innerHTML = `
+        <div class="admin-promo-item-top">
+          <span class="admin-promo-badge">${escapeHtml(p.code)}</span>
+          <span class="admin-promo-days-pill">${p.days} Days Free</span>
+        </div>
+        <div class="admin-promo-note">${escapeHtml(p.note || 'Promotional Campaign Pass')}</div>
+        <div class="admin-promo-actions">
+          <button class="admin-promo-copy-btn" data-code="${escapeHtml(p.code)}">📋 Copy Code</button>
+          <button class="admin-promo-del-btn" data-code="${escapeHtml(p.code)}">Delete</button>
+        </div>
+      `;
+      listEl.appendChild(card);
+    });
+
+    listEl.querySelectorAll('.admin-promo-copy-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        navigator.clipboard.writeText(btn.dataset.code);
+        toast(`Code ${btn.dataset.code} copied!`);
+      });
+    });
+
+    listEl.querySelectorAll('.admin-promo-del-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const code = btn.dataset.code;
+        if (!confirm(`Delete promo code ${code}?`)) return;
+        const current = await getStoredPromos();
+        const filtered = current.filter(x => x.code !== code);
+        await chrome.storage.local.set({ admin_promos: filtered });
+        if (window.PROMO_CODES) delete window.PROMO_CODES[code];
+        toast(`Deleted promo code ${code}`);
+        renderPromoCodes();
+      });
+    });
+  }
+
+  function setupPromoManager() {
+    const toggleBtn = $('toggleCreatePromoBtn');
+    const card = $('createPromoCard');
+    const saveBtn = $('savePromoCodeBtn');
+    const cancelBtn = $('cancelPromoCodeBtn');
+    const codeInput = $('newPromoCode');
+    const daysInput = $('newPromoDays');
+    const noteInput = $('newPromoNote');
+
+    if (toggleBtn && card) {
+      toggleBtn.addEventListener('click', () => {
+        card.style.display = card.style.display === 'none' ? 'block' : 'none';
+        if (card.style.display === 'block') codeInput.focus();
+      });
+    }
+
+    if (cancelBtn && card) {
+      cancelBtn.addEventListener('click', () => {
+        card.style.display = 'none';
+      });
+    }
+
+    if (saveBtn) {
+      saveBtn.addEventListener('click', async () => {
+        const code = (codeInput.value || '').trim().toUpperCase();
+        const days = parseInt(daysInput.value, 10);
+        const note = (noteInput.value || '').trim();
+
+        if (!code) {
+          toast('Please enter a promo code name.', false);
+          return;
+        }
+        if (isNaN(days) || days <= 0) {
+          toast('Please enter a valid number of days.', false);
+          return;
+        }
+
+        const current = await getStoredPromos();
+        if (current.some(x => x.code === code)) {
+          toast(`Code ${code} already exists!`, false);
+          return;
+        }
+
+        const updated = [{ code, days, note }, ...current];
+        await chrome.storage.local.set({ admin_promos: updated });
+        if (!window.PROMO_CODES) window.PROMO_CODES = {};
+        window.PROMO_CODES[code] = { days, label: `${days} Days (${note || 'Custom Promo'})` };
+
+        toast(`🎉 Promo code ${code} (${days} days) created!`);
+        codeInput.value = '';
+        noteInput.value = '';
+        card.style.display = 'none';
+        renderPromoCodes();
+      });
+    }
+  }
+
   async function boot() {
     const data = await chrome.storage.local.get(['auth_token', 'user_info']);
     const userInfo = data.user_info;
@@ -684,6 +800,9 @@
       if (button.dataset.action === 'view') viewProof(proofId);
       else runProofAction(proofId, button.dataset.action, card);
     });
+
+    setupPromoManager();
+    renderPromoCodes().catch(() => {});
 
     try {
       await Promise.all([loadProofs(), loadUsers(), loadStats()]);
