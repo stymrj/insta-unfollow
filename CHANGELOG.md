@@ -1,6 +1,21 @@
 # Changelog
 
-## 3.0.3 — 2026-11-24
+## 3.0.4 — 2026-11-25
+
+### Follower Detection 100% Accuracy & Modern UI System Overhaul
+- **Follower Detection Bug Completely Resolved:**
+  - Resolved the false-negative follower bug where mutual followers who follow the viewer back were occasionally shown as "Not following you".
+  - Implemented dual ID and case-insensitive username matching (`isUserFollowingMe`) across all views, filters, sort orders, and unfollow queues.
+  - Added direct inspection of `user.node.follows_viewer` from friendship status endpoints.
+  - Added cache schema versioning (`ANALYSIS_CACHE_VERSION = 2`) that automatically invalidates legacy incomplete caches where `follows_viewer` flags and usernames were omitted.
+  - Fixed `_csrftoken` injection and extended friendship status detection in `unfollow-bridge.js`.
+- **Modern UI & Design System Overhaul:**
+  - Fixed global button CSS bugs where button icons were turning mustard yellow and secondary buttons had unreadable text.
+  - Overhauled control panel with vibrant, modern indigo gradients, smooth drop shadows, and 10px rounded corners.
+  - Upgraded table row action buttons: sleek outline unfollow button with smooth hover state, clean bookmark whitelist button.
+  - Redesigned follower badges into modern pill badges with soft green/red backgrounds and clear typography.
+  - Overhauled Overview stat cards with clean floating white card aesthetics and distinct metric colors.
+
 
 ### Admin Promo Management & Follower Status Fix
 - **Version Bump:** Bumped to 3.0.3 to satisfy Chrome Web Store package version sequence.

@@ -190,6 +190,9 @@
     headers['Content-Type'] = 'application/x-www-form-urlencoded';
 
     const params = new URLSearchParams({ user_ids: userIds.join(',') });
+    if (csrfToken) {
+      params.set('_csrftoken', csrfToken);
+    }
     if (dtsg) {
       params.set('fb_dtsg', dtsg);
       if (window.IgSession && typeof window.IgSession.getJazoest === 'function') {
@@ -527,7 +530,7 @@
             const idStr = String(edge.node.id);
             const st = statuses[idStr] || statuses[edge.node.id];
             if (st) {
-              edge.node.follows_viewer = !!st.followed_by;
+              edge.node.follows_viewer = !!(st.followed_by === true || st.followed_by === 1 || st.is_following_me === true || st.following_viewer === true);
               edge.node.is_private = typeof st.is_private === 'boolean' ? st.is_private : edge.node.is_private;
             }
           }

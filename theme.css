@@ -522,13 +522,13 @@ body {
   transform: none !important;
 }
 
-.button-content {
+.action-button .button-content {
   color: var(--card-hi) !important;
   font-size: 14px !important;
   letter-spacing: 0.03em !important;
 }
 
-.button-icon {
+.action-button .button-icon {
   color: var(--mustard) !important;
 }
 
@@ -4021,4 +4021,361 @@ body {
   background: #eef2ff !important;
   color: #4338ca !important;
   border: 1px solid #c7d2fe !important;
+}
+
+/* ==========================================================================
+   v3.0.4 Modern UI System & Component Overhauls
+   Clean, polished, high-contrast, modern SaaS design system
+   ========================================================================== */
+
+/* Buttons & Controls */
+.btn {
+  border-radius: 10px !important;
+  font-family: var(--sans) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+  border: none !important;
+}
+
+.btn .button-content {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+}
+
+.btn .button-icon {
+  color: inherit !important;
+  width: 16px !important;
+  height: 16px !important;
+  flex-shrink: 0 !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.32) !important;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.42) !important;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0) !important;
+}
+
+.btn-secondary {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  color: #475569 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.btn-secondary .button-content,
+.btn-secondary .button-icon {
+  color: inherit !important;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.28) !important;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important;
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 6px 20px rgba(225, 29, 72, 0.38) !important;
+}
+
+.btn-reanalyze {
+  background: #ffffff !important;
+  border: 1.5px solid #bfdbfe !important;
+  color: #2563eb !important;
+  border-radius: 10px !important;
+  padding: 8px 16px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-reanalyze:hover:not(:disabled) {
+  background: #eff6ff !important;
+  border-color: #3b82f6 !important;
+  color: #1d4ed8 !important;
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.16) !important;
+}
+
+.btn:disabled,
+.btn-reanalyze:disabled {
+  opacity: 0.55 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Control Panel Card */
+.control-panel {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+  padding: 20px 24px !important;
+}
+
+/* Overview Stat Cards */
+.stats-grid .stat-card,
+.filter-controls .stat-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05) !important;
+  padding: 18px 22px !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.stats-grid .stat-card:hover,
+.filter-controls .stat-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.09) !important;
+}
+
+.stat-followers .stat-icon {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+  border-radius: 12px !important;
+  padding: 10px !important;
+}
+
+.stat-followers .stat-value {
+  color: #1e3a8a !important;
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.stat-following .stat-icon {
+  background: #faf5ff !important;
+  color: #7c3aed !important;
+  border-radius: 12px !important;
+  padding: 10px !important;
+}
+
+.stat-following .stat-value {
+  color: #581c87 !important;
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.stat-nonfollowers .stat-icon {
+  background: #fff1f2 !important;
+  color: #e11d48 !important;
+  border-radius: 12px !important;
+  padding: 10px !important;
+}
+
+.stat-nonfollowers .stat-value {
+  color: #9f1239 !important;
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Toolbar & Filter Chips */
+.analyzer-chip {
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  padding: 6px 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+.analyzer-chip.active {
+  background: #4f46e5 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.28) !important;
+}
+
+/* Table Design Overhaul */
+.table-container {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
+  overflow: hidden !important;
+}
+
+.following-table thead {
+  background: #f8fafc !important;
+}
+
+.following-table thead th {
+  color: #475569 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+  padding: 12px 14px !important;
+}
+
+.following-table tbody tr {
+  transition: background 0.15s ease !important;
+}
+
+.following-table tbody tr:hover {
+  background: #f8fafc !important;
+}
+
+.following-table tbody td {
+  border-bottom: 1px solid #f1f5f9 !important;
+  padding: 11px 14px !important;
+  vertical-align: middle !important;
+}
+
+.username-cell {
+  color: #4f46e5 !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+.username-cell:hover {
+  color: #3730a3 !important;
+  text-decoration: underline !important;
+}
+
+.profile-image {
+  border-radius: 50% !important;
+  border: 2px solid #e0e7ff !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Modern Pill Badges */
+.following-badge {
+  background: #ecfdf5 !important;
+  color: #059669 !important;
+  border: 1px solid #a7f3d0 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  border-radius: 9999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  letter-spacing: 0.02em !important;
+  box-shadow: none !important;
+}
+
+.not-following-badge {
+  background: #fff1f2 !important;
+  color: #e11d48 !important;
+  border: 1px solid #fecdd3 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  border-radius: 9999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  letter-spacing: 0.02em !important;
+  box-shadow: none !important;
+}
+
+/* Table Action Buttons */
+.unfollow-btn {
+  background: #ffffff !important;
+  color: #e11d48 !important;
+  border: 1.5px solid #fda4af !important;
+  border-radius: 8px !important;
+  padding: 6px 14px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 1px 3px rgba(225, 29, 72, 0.08) !important;
+}
+
+.unfollow-btn:hover:not(:disabled) {
+  background: #e11d48 !important;
+  color: #ffffff !important;
+  border-color: #e11d48 !important;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.3) !important;
+  transform: translateY(-1.5px) !important;
+}
+
+.unfollow-btn:disabled {
+  opacity: 0.45 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.whitelist-btn {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #64748b !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.whitelist-btn:hover {
+  background: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #059669 !important;
+  transform: scale(1.08) !important;
+}
+
+.whitelist-btn.active {
+  background: #ecfdf5 !important;
+  border-color: #059669 !important;
+  color: #059669 !important;
+}
+
+/* App Header & Upgrade */
+.app-header {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
+}
+
+.header-upgrade-btn {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  font-weight: 700 !important;
+  padding: 8px 16px !important;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.28) !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.header-upgrade-btn:hover {
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.38) !important;
 }

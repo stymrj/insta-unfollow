@@ -46,13 +46,15 @@ const elements = {
     loadingCount: document.getElementById('loadingCount')
 };
 
+const ANALYSIS_CACHE_VERSION = 2;
+
 // Cache functions
 async function getAnalysisCache(userId) {
     const data = await chrome.storage.local.get([`analysisCache_${userId}`]);
     const cache = data[`analysisCache_${userId}`] || null;
-    // Anything written before the completeness flag could be a truncated list saved as if whole.
-    // Dropping it costs one re-scan; trusting it can cost the user real followers.
-    if (cache && cache.complete !== true) return null;
+    // Anything written before the completeness flag or version 2 could have missing follows_viewer flags.
+    if (!cache || cache.complete !== true) return null;
+    if (!cache.version || cache.version < ANALYSIS_CACHE_VERSION) return null;
     return cache;
 }
 
@@ -60,27 +62,27 @@ async function saveAnalysisCache(userId, followingList, followersList, followers
     // Slim data before saving to avoid quota issues (50K users = ~18MB vs ~70MB raw)
     const slimFollowing = followingList.map(u => ({
         node: {
-            id: u.node.id,
+            id: String(u.node.id),
             username: u.node.username,
             full_name: u.node.full_name || '',
             profile_pic_url: u.node.profile_pic_url,
-            is_verified: u.node.is_verified || false
+            is_verified: u.node.is_verified || false,
+            follows_viewer: !!u.node.follows_viewer
         }
     }));
     const slimFollowers = followersList.map(u => ({
-        node: { id: u.node.id }
+        node: {
+            id: String(u.node.id),
+            username: u.node.username || ''
+        }
     }));
     await chrome.storage.local.set({
         [`analysisCache_${userId}`]: {
+            version: ANALYSIS_CACHE_VERSION,
             followingList: slimFollowing,
             followersList: slimFollowers,
-            // Only set on the follows_viewer path, where followersList holds just the followers
-            // who are also followed back — so its length is not the follower count and the number
-            // shown on screen has to come from Instagram's own figure instead.
             followersTotal: followersTotal ?? null,
             timestamp: Date.now(),
-            // Marks a pair that was read end to end. Entries written before this flag existed may
-            // have been truncated by the old reader, so they are discarded rather than trusted.
             complete: true
         }
     });
@@ -908,13 +910,36 @@ async function readList(userId, type) {
     return result.users;
 }
 
+function isUserFollowingMe(user, followersList) {
+    if (!user || !user.node) return false;
+    if (user.node.follows_viewer === true) return true;
+    if (!followersList || !followersList.length) return false;
+    const uid = user.node.id != null ? String(user.node.id) : null;
+    const uname = user.node.username ? user.node.username.toLowerCase() : null;
+    return followersList.some(f => {
+        if (!f || !f.node) return false;
+        if (uid && f.node.id != null && String(f.node.id) === uid) return true;
+        if (uname && f.node.username && f.node.username.toLowerCase() === uname) return true;
+        return false;
+    });
+}
+
 function findNonFollowers(following, followers) {
-    const followerIds = new Set(followers.map(f => f.node.id));
-    return following.filter(f => !followerIds.has(f.node.id));
+    if (!following || !following.length) return [];
+    const followerIds = new Set((followers || []).map(f => f?.node?.id != null ? String(f.node.id) : null).filter(Boolean));
+    const followerUsernames = new Set((followers || []).map(f => f?.node?.username ? f.node.username.toLowerCase() : null).filter(Boolean));
+    return following.filter(user => {
+        if (user?.node?.follows_viewer === true) return false;
+        const uid = user?.node?.id != null ? String(user.node.id) : null;
+        if (uid && followerIds.has(uid)) return false;
+        const uname = user?.node?.username ? user.node.username.toLowerCase() : null;
+        if (uname && followerUsernames.has(uname)) return false;
+        return true;
+    });
 }
 
 function createTableRow(user, index, followers, whitelistSet) {
-    const isFollowing = followers.some(f => String(f.node.id) === String(user.node.id));
+    const isFollowing = isUserFollowingMe(user, followers);
     const rowClass = isFollowing ? 'following-user' : 'not-following-user';
     const isWhitelisted = whitelistSet && whitelistSet.has(user.node.username);
 
@@ -969,9 +994,21 @@ function showTableMessage(message, isError = false) {
 // v2: search (username / full name), filter chips and sort, all client-side over the
 // already-loaded list. Pagination still slices the filtered result in renderCurrentPage.
 function getFilteredData() {
-    const followerIds = new Set(allFollowersList.map(f => String(f.node.id)));
+    const followerIds = new Set(allFollowersList.map(f => f?.node?.id != null ? String(f.node.id) : null).filter(Boolean));
+    const followerUsernames = new Set(allFollowersList.map(f => f?.node?.username ? f.node.username.toLowerCase() : null).filter(Boolean));
+
+    const checkIsFollowing = (user) => {
+        if (!user || !user.node) return false;
+        if (user.node.follows_viewer === true) return true;
+        const uid = user.node.id != null ? String(user.node.id) : null;
+        if (uid && followerIds.has(uid)) return true;
+        const uname = user.node.username ? user.node.username.toLowerCase() : null;
+        if (uname && followerUsernames.has(uname)) return true;
+        return false;
+    };
+
     let data = allDisplayData.filter(user => {
-        const isFollowing = followerIds.has(String(user.node.id));
+        const isFollowing = checkIsFollowing(user);
         const isWhitelisted = currentWhitelistSet.has(user.node.username);
         if (showOnlyNonFollowersFilter && isFollowing) return false;
         if (analyzerChipFilter === 'notFollowing' && isFollowing) return false;
@@ -987,7 +1024,7 @@ function getFilteredData() {
         data = [...data].sort((a, b) => (a.node.username || '').localeCompare(b.node.username || ''));
     } else if (analyzerSortMode === 'notFollowing') {
         // Stable: not-following first, original order kept inside each group.
-        data = [...data].sort((a, b) => (followerIds.has(a.node.id) ? 1 : 0) - (followerIds.has(b.node.id) ? 1 : 0));
+        data = [...data].sort((a, b) => (checkIsFollowing(a) ? 1 : 0) - (checkIsFollowing(b) ? 1 : 0));
     }
     // NOTE: no "most followers" sort — the following-list data Instagram returns has no
     // per-account follower count (see unfollow-bridge.js: only id/username/full_name/
@@ -1002,14 +1039,26 @@ function downloadFilteredCsv() {
         showToast(getMessage('exportCsvEmpty'), 'error');
         return;
     }
-    const followerIds = new Set(allFollowersList.map(f => String(f.node.id)));
+    const followerIds = new Set(allFollowersList.map(f => f?.node?.id != null ? String(f.node.id) : null).filter(Boolean));
+    const followerUsernames = new Set(allFollowersList.map(f => f?.node?.username ? f.node.username.toLowerCase() : null).filter(Boolean));
+
+    const checkIsFollowing = (user) => {
+        if (!user || !user.node) return false;
+        if (user.node.follows_viewer === true) return true;
+        const uid = user.node.id != null ? String(user.node.id) : null;
+        if (uid && followerIds.has(uid)) return true;
+        const uname = user.node.username ? user.node.username.toLowerCase() : null;
+        if (uname && followerUsernames.has(uname)) return true;
+        return false;
+    };
+
     const esc = (v) => '"' + String(v ?? '').replace(/"/g, '""') + '"';
     const lines = [['username', 'full_name', 'verified', 'following_you', 'whitelisted'].join(',')];
     for (const user of rows) {
         const n = user.node;
         lines.push([
             esc(n.username), esc(n.full_name || ''), n.is_verified ? 'yes' : 'no',
-            followerIds.has(String(n.id)) ? 'yes' : 'no',
+            checkIsFollowing(user) ? 'yes' : 'no',
             currentWhitelistSet.has(n.username) ? 'yes' : 'no'
         ].join(','));
     }
@@ -1802,9 +1851,7 @@ async function initializeFollowingList(forceRefresh = false) {
         }
 
         // Takipçi, takip edilen ve takip etmeyen sayılarını güncelle
-        const nonFollowers = followingList.filter(user =>
-            !followersList.some(f => f.node.id === user.node.id)
-        );
+        const nonFollowers = findNonFollowers(followingList, followersList);
         
         // On the follows_viewer path `followersList` holds only the followers who are also followed
         // back, so counting it would show a number far below the real one. Instagram's own figure
@@ -2362,13 +2409,21 @@ function showToast(message, type = 'success') {
 
 // Helper: build queue from global data
 function buildUnfollowQueue(mode) {
-    const followerIds = new Set(allFollowersList.map(f => String(f.node.id)));
+    const followerIds = new Set(allFollowersList.map(f => f?.node?.id != null ? String(f.node.id) : null).filter(Boolean));
+    const followerUsernames = new Set(allFollowersList.map(f => f?.node?.username ? f.node.username.toLowerCase() : null).filter(Boolean));
     return allDisplayData.filter(user => {
         if (currentWhitelistSet.has(user.node.username)) return false;
         if (user._unfollowed) return false;
         if (user._unfollowError) return false;
         if (user._unfollowSkippedForLimit) return false;
-        if (mode === 'nonFollowers') return !followerIds.has(String(user.node.id));
+        if (mode === 'nonFollowers') {
+            if (user?.node?.follows_viewer === true) return false;
+            const uid = user?.node?.id != null ? String(user.node.id) : null;
+            if (uid && followerIds.has(uid)) return false;
+            const uname = user?.node?.username ? user.node.username.toLowerCase() : null;
+            if (uname && followerUsernames.has(uname)) return false;
+            return true;
+        }
         return true;
     });
 }
