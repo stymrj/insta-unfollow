@@ -27,7 +27,7 @@
     const message = event.data;
     if (!message || message.type !== REQUEST) return;
 
-    const { id, userId, listType, mode } = message;
+    const { id, userId, listType, mode, expected } = message;
     if (!id || running.has(id)) return;
     running.add(id);
 
@@ -54,10 +54,11 @@
         && typeof bridge.scanFollowingWithStatus === 'function';
 
       const result = useStatus
-        ? await bridge.scanFollowingWithStatus({ userId, onProgress })
+        ? await bridge.scanFollowingWithStatus({ userId, expected, csrfToken: viewer && viewer.csrfToken, onProgress })
         : await bridge.scanPeers({
             userId,
             type: listType,
+            expected,
             csrfToken: viewer && viewer.csrfToken,
             onProgress,
             // An older page script ignores this and reads v1-first, which is the behaviour that

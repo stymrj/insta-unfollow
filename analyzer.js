@@ -46,30 +46,38 @@ const elements = {
     loadingCount: document.getElementById('loadingCount')
 };
 
-const ANALYSIS_CACHE_VERSION = 2;
+const ANALYSIS_CACHE_VERSION = 3;
 
 // Cache functions
 async function getAnalysisCache(userId) {
     const data = await chrome.storage.local.get([`analysisCache_${userId}`]);
     const cache = data[`analysisCache_${userId}`] || null;
-    // Anything written before the completeness flag or version 2 could have missing follows_viewer flags.
+    // Version 3 invalidates all pre-3.0.5 caches that were poisoned by Web show_many omitting followed_by.
     if (!cache || cache.complete !== true) return null;
     if (!cache.version || cache.version < ANALYSIS_CACHE_VERSION) return null;
+    if (!Array.isArray(cache.followingList) || !Array.isArray(cache.followersList)) return null;
+    // Sanity guard: if account has followers and >=5 following, a 0-follower status cache is suspect.
+    if (cache.followersTotal > 0 && cache.followingList.length >= 5 && cache.followersList.length === 0) {
+        return null;
+    }
     return cache;
 }
 
 async function saveAnalysisCache(userId, followingList, followersList, followersTotal) {
     // Slim data before saving to avoid quota issues (50K users = ~18MB vs ~70MB raw)
-    const slimFollowing = followingList.map(u => ({
-        node: {
+    const slimFollowing = followingList.map(u => {
+        const node = {
             id: String(u.node.id),
             username: u.node.username,
             full_name: u.node.full_name || '',
             profile_pic_url: u.node.profile_pic_url,
-            is_verified: u.node.is_verified || false,
-            follows_viewer: !!u.node.follows_viewer
+            is_verified: u.node.is_verified || false
+        };
+        if (typeof u.node.follows_viewer === 'boolean') {
+            node.follows_viewer = u.node.follows_viewer;
         }
-    }));
+        return { node };
+    });
     const slimFollowers = followersList.map(u => ({
         node: {
             id: String(u.node.id),
@@ -810,49 +818,115 @@ async function readFollowingWithStatus(userId) {
         return null;
     }
 
+    // Verify every single user actually carries boolean follows_viewer
+    const allHaveBooleanStatus = result.users.every(u => u && u.node && typeof u.node.follows_viewer === 'boolean');
+    if (!allHaveBooleanStatus) {
+        logScanDiag({ stage: 'following', msg: 'missing boolean follows_viewer, falling back to two-list scan' });
+        return null;
+    }
+
+    // Spot-verify fast-path honesty against a 1-page follower sample + single-account friendship check
+    const expectedFollowers = await getExpectedOnce(userId, 'followers');
+    const honest = await verifyStatusScanHonesty(userId, result.users, expectedFollowers);
+    if (!honest) {
+        logScanDiag({ stage: 'following', msg: 'follows_viewer failed spot-check, falling back to two-list scan' });
+        return null;
+    }
+
     console.log('[bridge] follows_viewer:', {
         count: result.users.length, requests: result.requests, reason: result.reason
     });
     return result;
 }
 
-async function getFollowingList(userId) {
-    return readList(userId, 'following');
+/**
+ * Cross-checks a `follows_viewer` scan against real follower sample & `friendships/show/{id}/`
+ * so a stale or altered GraphQL field can NEVER misclassify mutual followers as non-followers.
+ */
+async function verifyStatusScanHonesty(userId, followingUsers, expectedFollowers) {
+    if (!Array.isArray(followingUsers) || followingUsers.length === 0) return true;
+    try {
+        const viewer = await getViewerOnce().catch(() => null);
+        const { readFollowersSample, checkFriendshipStatus } = window.UnfollowBridge;
+
+        // 1. Compare against one real page of followers (1 request)
+        if (typeof readFollowersSample === 'function') {
+            const sample = await readFollowersSample({ userId, csrfToken: viewer?.csrfToken });
+            if (Array.isArray(sample) && sample.length > 0) {
+                const sampleIds = new Set(sample.map(s => s?.node?.id != null ? String(s.node.id) : '').filter(Boolean));
+                const sampleNames = new Set(sample.map(s => s?.node?.username ? s.node.username.toLowerCase() : '').filter(Boolean));
+                for (const u of followingUsers) {
+                    const uid = u?.node?.id != null ? String(u.node.id) : '';
+                    const uname = u?.node?.username ? u.node.username.toLowerCase() : '';
+                    if ((uid && sampleIds.has(uid)) || (uname && sampleNames.has(uname))) {
+                        if (u.node.follows_viewer !== true) {
+                            console.warn('[verify] Follower in sample had follows_viewer=false:', u.node.username);
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 2. Spot-check up to 2 accounts marked as non-followers via authoritative friendships/show/{id}/
+        if (typeof checkFriendshipStatus === 'function') {
+            const markedNonFollowers = followingUsers.filter(u => u?.node?.follows_viewer === false && u?.node?.id);
+            const probes = markedNonFollowers.slice(0, 2);
+            let verifiedCount = 0;
+            for (const u of probes) {
+                const rel = await checkFriendshipStatus(u.node.id, viewer?.csrfToken);
+                if (rel && rel.ok) {
+                    verifiedCount++;
+                    if (rel.followedBy === true) {
+                        console.warn('[verify] Account marked non-follower actually follows back:', u.node.username);
+                        return false;
+                    }
+                }
+            }
+            // If 0 mutuals were found despite account having followers, require at least 1 confirmed check
+            const mutualCount = followingUsers.filter(u => u?.node?.follows_viewer === true).length;
+            if (expectedFollowers > 0 && followingUsers.length >= 5 && mutualCount === 0 && verifiedCount === 0) {
+                return false;
+            }
+        }
+        return true;
+    } catch (e) {
+        console.warn('[verify] Honesty check error, preferring two-list scan:', e);
+        return false;
+    }
 }
 
-async function getFollowersList(userId) {
-    return readList(userId, 'followers');
+async function getFollowingList(userId, opts) {
+    return readList(userId, 'following', opts);
+}
+
+async function getFollowersList(userId, opts) {
+    return readList(userId, 'followers', opts);
 }
 
 /**
  * Read one list through the bridge (v1 first, legacy graphql in reserve) and record how it ended.
  * Returns the same edge array shape the rest of this file has always consumed.
  */
-async function readList(userId, type) {
+async function readList(userId, type, opts = {}) {
     const { scanPeers, SCAN_REASON } = window.UnfollowBridge;
     const viewer = await getViewerOnce();
-    const messageKey = type === 'following' ? 'dataLoadingFollowing' : 'dataLoadingFollowers';
+    const preferGraphql = !!opts.preferGraphql;
 
     const expected = await getExpectedOnce(userId, type);
 
-    /**
-     * Draws the progress panel.
-     *
-     * v1 returns about 23 accounts per request, so a 10,000-follower list is several hundred
-     * round trips. Without a count and a remaining estimate that reads as a hung spinner, which
-     * is the single biggest reason a working scan gets abandoned half way.
-     */
     setScanStage(type);
     const reportCount = (progress) => renderScanProgress(type, progress, expected);
 
-    // Prefer to run the read inside an open Instagram tab: the requests then leave from
-    // instagram.com instead of from this extension page, which is what the site's own calls look
-    // like. If no tab is open, or it goes away mid-read, fall through and read from here — the
-    // path this extension has always used.
     let result = null;
     const pageBridge = window.UnfollowPageBridge;
     if (pageBridge && await pageBridge.isPageAvailable()) {
-        const attempt = await pageBridge.runScanInPage({ userId, listType: type, onProgress: reportCount });
+        const attempt = await pageBridge.runScanInPage({
+            userId,
+            listType: type,
+            mode: preferGraphql ? 'graphql_first' : undefined,
+            onProgress: reportCount
+        });
         if (attempt.delivered && attempt.result) {
             result = attempt.result;
             logScanDiag({ stage: type, path: 'instagram-tab', msg: 'bridge read ok',
@@ -869,6 +943,7 @@ async function readList(userId, type) {
             type,
             expected,
             csrfToken: viewer?.csrfToken,
+            preferGraphql,
             onProgress: reportCount
         });
         logScanDiag({ stage: type, path: 'extension-page', msg: 'direct read',
@@ -938,19 +1013,36 @@ function findNonFollowers(following, followers) {
     });
 }
 
+function escapeHtmlSafe(str) {
+    return String(str == null ? '' : str).replace(/[&<>"']/g, (c) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[c]);
+}
+
 function createTableRow(user, index, followers, whitelistSet) {
     const isFollowing = isUserFollowingMe(user, followers);
-    const rowClass = isFollowing ? 'following-user' : 'not-following-user';
+    const isUnfollowed = !!user._unfollowed;
+    const rowClass = (isFollowing ? 'following-user' : 'not-following-user') + (isUnfollowed ? ' unfollowed-row' : '');
     const isWhitelisted = whitelistSet && whitelistSet.has(user.node.username);
 
-    const originalProfileUrl = user.node.profile_pic_url;
+    const originalProfileUrl = user.node.profile_pic_url || 'img/48.png';
 
     const followingBadgeText = isFollowing ? getMessage('followingYouBadge') : getMessage('notFollowingYouBadge');
-    const unfollowText = getMessage('unfollow');
+    const unfollowText = isUnfollowed
+        ? `<span class="success-icon">✓</span> ${getMessage('unfollowedSuccess')}`
+        : getMessage('unfollow');
     const whitelistTitle = isWhitelisted ? getMessage('removeFromWhitelist') : getMessage('addToWhitelist');
+    const safeUsername = escapeHtmlSafe(user.node.username);
+    const safeFullName = escapeHtmlSafe(user.node.full_name || '');
+    const btnClasses = [
+        'unfollow-btn',
+        isFollowing ? 'mutual-unfollow-btn' : '',
+        isUnfollowed ? 'unfollowed' : ''
+    ].filter(Boolean).join(' ');
+    const btnDisabled = (isUnfollowed || isWhitelisted) ? ' disabled' : '';
 
     return `
-        <tr class="${rowClass}${isWhitelisted ? ' whitelisted-row' : ''}" data-username="${user.node.username}" data-fullname="${user.node.full_name || ''}">
+        <tr class="${rowClass}${isWhitelisted ? ' whitelisted-row' : ''}" data-username="${safeUsername}" data-fullname="${safeFullName}">
             <td class="row-number">${index + 1}</td>
             <td>
                 <div class="profile-cell">
@@ -958,20 +1050,20 @@ function createTableRow(user, index, followers, whitelistSet) {
                 </div>
             </td>
             <td>
-                <a href="https://instagram.com/${user.node.username}" target="_blank" class="username-cell">@${user.node.username}</a>
+                <a href="https://instagram.com/${encodeURIComponent(user.node.username)}" target="_blank" rel="noopener noreferrer" class="username-cell">@${safeUsername}</a>
             </td>
-            <td>${user.node.full_name}</td>
-            <td>${user.node.is_verified ? '<span class="verified-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>' : ''}</td>
+            <td class="fullname-cell">${safeFullName || '<span class="text-muted">—</span>'}</td>
+            <td>${user.node.is_verified ? '<span class="verified-badge" title="Verified"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>' : '<span class="text-muted">—</span>'}</td>
             <td>
                 <span class="${isFollowing ? 'following-badge' : 'not-following-badge'}">
                     ${followingBadgeText}
                 </span>
             </td>
             <td class="action-cell">
-                <button class="whitelist-btn${isWhitelisted ? ' active' : ''}" data-username="${user.node.username}" title="${whitelistTitle}">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="${isWhitelisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <button type="button" class="whitelist-btn${isWhitelisted ? ' active' : ''}" data-username="${safeUsername}" title="${escapeHtmlSafe(whitelistTitle)}" aria-label="${escapeHtmlSafe(whitelistTitle)}">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="${isWhitelisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                 </button>
-                <button class="unfollow-btn" data-username="${user.node.username}" data-userid="${user.node.id}">${unfollowText}</button>
+                <button type="button" class="${btnClasses}" data-username="${safeUsername}" data-userid="${escapeHtmlSafe(user.node.id)}" data-following="${isFollowing ? 'true' : 'false'}"${btnDisabled}>${unfollowText}</button>
             </td>
         </tr>
     `;
@@ -1097,6 +1189,7 @@ async function copyFilteredUsernames() {
 }
 
 function renderCurrentPage() {
+    updateFilterChipCounts();
     const filtered = getFilteredData();
     totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
     if (currentPage > totalPages) currentPage = totalPages;
@@ -1105,12 +1198,27 @@ function renderCurrentPage() {
     const pageData = filtered.slice(start, start + PAGE_SIZE);
 
     if (elements.followingList) {
-        elements.followingList.innerHTML = pageData.map((user, i) =>
-            createTableRow(user, start + i, allFollowersList, currentWhitelistSet)
-        ).join('');
+        if (pageData.length === 0) {
+            const emptyLabel = analyzerSearchQuery
+                ? `No matching accounts for "${escapeHtmlSafe(analyzerSearchQuery)}".`
+                : (analyzerChipFilter === 'whitelisted'
+                    ? 'No whitelisted accounts yet. Click the shield icon on any row to protect an account from unfollowing.'
+                    : (analyzerChipFilter === 'notFollowing'
+                        ? '🎉 Everyone shown here follows you back!'
+                        : 'No accounts in this filter.'));
+            elements.followingList.innerHTML = `
+                <tr>
+                    <td colspan="7" class="no-data-message">${emptyLabel}</td>
+                </tr>
+            `;
+        } else {
+            elements.followingList.innerHTML = pageData.map((user, i) =>
+                createTableRow(user, start + i, allFollowersList, currentWhitelistSet)
+            ).join('');
+        }
     }
 
-    if (window.loadAvatar) {
+    if (window.loadAvatar && elements.followingList) {
         elements.followingList.querySelectorAll('img.profile-image').forEach((img) => {
             loadAvatar(img, img.dataset.orig || img.src);
         });
@@ -1202,12 +1310,68 @@ function showTrend(statId, diff) {
     parent.appendChild(el);
 }
 
-// Filter + toolbar event listeners (v2: search / sort / chips / export)
+let filterListenersInitialized = false;
+
+function updateFilterChipCounts() {
+    if (!allDisplayData) return;
+    const followerIds = new Set(allFollowersList.map(f => f?.node?.id != null ? String(f.node.id) : null).filter(Boolean));
+    const followerUsernames = new Set(allFollowersList.map(f => f?.node?.username ? f.node.username.toLowerCase() : null).filter(Boolean));
+
+    let notFollowingCnt = 0;
+    let followingCnt = 0;
+    let whitelistedCnt = 0;
+
+    for (const user of allDisplayData) {
+        if (!user || !user.node) continue;
+        const uid = user.node.id != null ? String(user.node.id) : null;
+        const uname = user.node.username ? user.node.username.toLowerCase() : null;
+        const isFoll = user.node.follows_viewer === true ||
+            (uid && followerIds.has(uid)) ||
+            (uname && followerUsernames.has(uname));
+        if (isFoll) followingCnt++;
+        else notFollowingCnt++;
+        if (currentWhitelistSet.has(user.node.username)) whitelistedCnt++;
+    }
+
+    const counts = {
+        all: allDisplayData.length,
+        notFollowing: notFollowingCnt,
+        following: followingCnt,
+        whitelisted: whitelistedCnt
+    };
+
+    document.querySelectorAll('.filter-chip').forEach((chip) => {
+        const key = chip.dataset.chip || 'all';
+        if (!chip.dataset.baseLabel) {
+            chip.dataset.baseLabel = chip.textContent.trim();
+        }
+        const count = counts[key] ?? 0;
+        chip.innerHTML = `<span>${escapeHtmlSafe(chip.dataset.baseLabel)}</span><span class="chip-count">${count}</span>`;
+    });
+}
+
+function setActiveFilterChip(chipName) {
+    analyzerChipFilter = chipName || 'all';
+    showOnlyNonFollowersFilter = (analyzerChipFilter === 'notFollowing');
+    const filterCheckbox = document.getElementById('showOnlyNonFollowers');
+    if (filterCheckbox) filterCheckbox.checked = showOnlyNonFollowersFilter;
+
+    document.querySelectorAll('.filter-chip').forEach((c) => {
+        const isSelected = (c.dataset.chip || 'all') === analyzerChipFilter;
+        c.classList.toggle('active', isSelected);
+        c.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+    });
+}
+
+// Filter + toolbar event listeners (idempotent — bound once)
 function setupFilterListener() {
+    if (filterListenersInitialized) return;
+    filterListenersInitialized = true;
+
     const filterCheckbox = document.getElementById('showOnlyNonFollowers');
     if (filterCheckbox) {
         filterCheckbox.addEventListener('change', function() {
-            showOnlyNonFollowersFilter = this.checked;
+            setActiveFilterChip(this.checked ? 'notFollowing' : 'all');
             currentPage = 1;
             renderCurrentPage();
         });
@@ -1230,9 +1394,7 @@ function setupFilterListener() {
     }
     document.querySelectorAll('.filter-chip').forEach(chip => {
         chip.addEventListener('click', function() {
-            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-            this.classList.add('active');
-            analyzerChipFilter = this.dataset.chip || 'all';
+            setActiveFilterChip(this.dataset.chip || 'all');
             currentPage = 1;
             renderCurrentPage();
         });
@@ -1668,40 +1830,85 @@ async function initializeFollowingList(forceRefresh = false) {
 
         // Fetch fresh data if no cache or force refresh
         if (!fromCache) {
+            if (forceRefresh) {
+                cachedExpected = null;
+                cachedViewer = null;
+                if (window.IgSession && typeof window.IgSession._resetCache === 'function') {
+                    window.IgSession._resetCache();
+                }
+            }
             usedFollowsViewer = false;
             realFollowersTotal = null;
 
-            // Ask the one query that already knows the answer. It reads the following list only,
-            // so the followers list — the long one, the one the throttle lands on — is never read.
-            const withStatus = await readFollowingWithStatus(userId);
+            const expectedFollowers = await getExpectedOnce(userId, 'followers');
+            // For normal-sized accounts (<= 1,500 followers), read BOTH actual lists directly via
+            // Instagram's follower/following endpoints for 100% literal ID + username ground truth.
+            // For large accounts (> 1,500 followers), try the spot-verified status query first so
+            // scanning stays fast without hitting follower pagination limits.
+            const preferDirectTwoList = expectedFollowers != null && expectedFollowers <= 1500;
 
-            if (withStatus) {
-                usedFollowsViewer = true;
-                followingList = withStatus.users;
-                // Everything downstream diffs `following` against `followers` by id, so the same
-                // answer is expressed in the shape that code already speaks: the followers it
-                // needs are exactly the ones that follow back. It is not the whole followers list
-                // and is not treated as one — see realFollowersTotal below.
-                followersList = withStatus.users.filter((u) => u.node.follows_viewer);
-                realFollowersTotal = await getExpectedOnce(userId, 'followers');
-
-                lastScanInfo.following = {
-                    complete: true, reason: withStatus.reason, count: followingList.length,
-                    source: withStatus.source, requests: withStatus.requests
-                };
-                lastScanInfo.followers = {
-                    complete: true, reason: 'follows_viewer', count: followersList.length
-                };
-            } else {
-                // Sequential, and followers first. Two parallel streams double the request rate against
-                // an endpoint that throttles, and it is the followers list whose truncation does the
-                // damage — if it comes back short there is no point spending requests on the other one.
+            if (preferDirectTwoList) {
                 followersList = await getFollowersList(userId);
-                followingList = await getFollowingList(userId);
+                if (lastScanInfo.followers?.complete) {
+                    followingList = await getFollowingList(userId);
+                } else {
+                    // Followers endpoint throttled — try verified status path before reporting incomplete
+                    const withStatus = await readFollowingWithStatus(userId);
+                    if (withStatus) {
+                        usedFollowsViewer = true;
+                        followingList = withStatus.users;
+                        followersList = withStatus.users.filter((u) => u.node.follows_viewer === true);
+                        realFollowersTotal = expectedFollowers;
+                        lastScanInfo.following = {
+                            complete: true, reason: withStatus.reason, count: followingList.length,
+                            source: withStatus.source, requests: withStatus.requests
+                        };
+                        lastScanInfo.followers = {
+                            complete: true, reason: 'follows_viewer', count: followersList.length
+                        };
+                    } else {
+                        followingList = [];
+                    }
+                }
+            } else {
+                const withStatus = await readFollowingWithStatus(userId);
+                if (withStatus) {
+                    usedFollowsViewer = true;
+                    followingList = withStatus.users;
+                    followersList = withStatus.users.filter((u) => u.node.follows_viewer === true);
+                    realFollowersTotal = expectedFollowers;
+
+                    lastScanInfo.following = {
+                        complete: true, reason: withStatus.reason, count: followingList.length,
+                        source: withStatus.source, requests: withStatus.requests
+                    };
+                    lastScanInfo.followers = {
+                        complete: true, reason: 'follows_viewer', count: followersList.length
+                    };
+                } else {
+                    followersList = await getFollowersList(userId, {
+                        preferGraphql: expectedFollowers != null && expectedFollowers > 1500
+                    });
+                    followingList = lastScanInfo.followers?.complete
+                        ? await getFollowingList(userId)
+                        : [];
+                }
             }
 
-            // Only a complete pair is worth keeping. A truncated list cached here would poison
-            // every later session, which is how the old reader turned one bad scan into a habit.
+            // Stamp explicit boolean `follows_viewer` onto `followingList` from the two-list diff
+            // as well, so every downstream check agrees 100% regardless of which scan path ran.
+            if (!usedFollowsViewer && followingList.length > 0 && isDataComplete()) {
+                const fIds = new Set(followersList.map(f => f?.node?.id != null ? String(f.node.id) : '').filter(Boolean));
+                const fNames = new Set(followersList.map(f => f?.node?.username ? f.node.username.toLowerCase() : '').filter(Boolean));
+                for (const u of followingList) {
+                    if (!u || !u.node) continue;
+                    const uid = u.node.id != null ? String(u.node.id) : '';
+                    const uname = u.node.username ? u.node.username.toLowerCase() : '';
+                    u.node.follows_viewer = (uid && fIds.has(uid)) || (uname && fNames.has(uname)) || false;
+                }
+            }
+
+            // Only a complete pair is worth keeping.
             if (followingList.length > 0 && isDataComplete()) {
                 await saveAnalysisCache(userId, followingList, followersList, realFollowersTotal);
             }
@@ -1780,14 +1987,18 @@ async function initializeFollowingList(forceRefresh = false) {
                 dailyLimit = freshLimit;
             }
 
-            // Cumulative limit - show up to totalLimit (always show, never block)
+            // Cumulative limit - prioritize non-followers first when slicing for free accounts
+            // so non-followers are never hidden behind mutual friends in the first N rows!
             const maxToShow = Math.min(
                 followingList.length,
                 dailyLimit.totalLimit || 50
             );
+            const prioritizedFollowing = [...followingList].sort((a, b) =>
+                (isUserFollowingMe(a, followersList) ? 1 : 0) - (isUserFollowingMe(b, followersList) ? 1 : 0)
+            );
 
-            displayList = followingList.slice(0, maxToShow);
-            isLimited = true;
+            displayList = prioritizedFollowing.slice(0, maxToShow);
+            isLimited = followingList.length > maxToShow;
 
             // UI'da limit bilgisi göster
             showDailyLimitInfo(dailyLimit, followingList.length);
@@ -1819,9 +2030,7 @@ async function initializeFollowingList(forceRefresh = false) {
         // complete picture to be sure the account it picks really is not followed.
         allFollowingFull = followingList;
         currentPage = 1;
-        showOnlyNonFollowersFilter = false;
-        const filterCheckbox = document.getElementById('showOnlyNonFollowers');
-        if (filterCheckbox) filterCheckbox.checked = false;
+        setActiveFilterChip('all');
 
         // Render first page
         renderCurrentPage();
@@ -2007,8 +2216,17 @@ function rememberWriteProbe(value) {
  * So when memory cannot supply one, a single page of followers is read for the purpose. One
  * request, and only when a bulk run is about to start.
  */
-async function findWriteProbeTarget(followingIds) {
-    const fromMemory = allFollowersList.find((f) => f.node.id && !followingIds.has(f.node.id));
+async function findWriteProbeTarget(followingIds, followingUsernames) {
+    const isAlreadyFollowed = (f) => {
+        const fid = f?.node?.id != null ? String(f.node.id) : '';
+        const funame = f?.node?.username ? f.node.username.toLowerCase() : '';
+        if (!fid || !funame) return true;
+        if (followingIds.has(fid)) return true;
+        if (followingUsernames.has(funame)) return true;
+        return false;
+    };
+
+    const fromMemory = allFollowersList.find((f) => !isAlreadyFollowed(f));
     if (fromMemory) return fromMemory;
 
     const viewer = await getViewerOnce();
@@ -2027,7 +2245,7 @@ async function findWriteProbeTarget(followingIds) {
     // Nothing found is a real answer, not a failure: an account that follows back everyone it is
     // followed by has no safe target, and the probe correctly reports 'unknown' rather than
     // unfollowing somebody to find out.
-    return sample.find((f) => f.node.id && !followingIds.has(f.node.id)) || null;
+    return sample.find((f) => !isAlreadyFollowed(f)) || null;
 }
 
 async function probeWritePath() {
@@ -2039,15 +2257,28 @@ async function probeWritePath() {
     // Someone who follows this account but is not followed back: unfollowing them is a no-op.
     // Built from the complete following list, never the display slice — a wrong answer here would
     // mean really unfollowing somebody during a check that is supposed to change nothing.
-    if (!allFollowingFull.length) return 'unknown';
-    const followingIds = new Set(allFollowingFull.map((u) => u.node.id));
-    const target = await findWriteProbeTarget(followingIds);
-    if (!target) return 'unknown';
+    if (!allFollowingFull.length || lastScanInfo.following?.complete === false) return 'unknown';
+    const followingIds = new Set(allFollowingFull.map((u) => u?.node?.id != null ? String(u.node.id) : '').filter(Boolean));
+    const followingUsernames = new Set(allFollowingFull.map((u) => u?.node?.username ? u.node.username.toLowerCase() : '').filter(Boolean));
+    const target = await findWriteProbeTarget(followingIds, followingUsernames);
+    if (!target || !target.node?.id || !target.node?.username) return 'unknown';
+
+    // Server-side verification before firing the write probe: guarantee we do NOT follow or have an
+    // outgoing follow request to this target, even if in-memory lists lagged by a second.
+    if (typeof window.UnfollowBridge?.checkFriendshipStatus === 'function') {
+        const csrfToken = await getCsrfTokenOnce().catch(() => null);
+        const rel = await window.UnfollowBridge.checkFriendshipStatus(target.node.id, csrfToken);
+        if (!rel || !rel.ok || rel.following !== false || rel.outgoingRequest === true) {
+            return 'unknown';
+        }
+    } else {
+        return 'unknown';
+    }
 
     try {
         // Probes the same two endpoints the real unfollow uses, in the same order, so the answer
         // reflects what a run would actually meet rather than one path's health. A no-op on a
-        // non-follower, so it must never spend the free plan's daily unfollow quota.
+        // non-followed account, so it must never spend the free plan's daily unfollow quota.
         await unfollowUser(target.node.username, target.node.id, { countQuota: false });
         return rememberWriteProbe('open');
     } catch (error) {
@@ -2258,8 +2489,27 @@ function setupUnfollowListeners() {
         clone.addEventListener('click', async function(e) {
             e.preventDefault();
             const username = this.dataset.username;
+            const targetUserId = this.dataset.userid;
+            const isMutualFollower = this.dataset.following === 'true';
             const row = this.closest('tr');
-            const fullName = row?.dataset.fullname || '';
+
+            if (currentWhitelistSet.has(username)) {
+                showToast(`@${username} is protected in your whitelist.`, 'info');
+                return;
+            }
+
+            // Extra safety confirmation before manually unfollowing someone who follows back
+            if (isMutualFollower) {
+                const proceed = await showCustomModal({
+                    icon: 'warning',
+                    title: `@${username} follows you back`,
+                    message: `This user is currently following you. Are you sure you still want to unfollow @${username}?`,
+                    confirmText: getMessage('yesUnfollow') || 'Yes, Unfollow',
+                    cancelText: getMessage('cancel') || 'Cancel',
+                    danger: true
+                });
+                if (!proceed) return;
+            }
 
             try {
                 this.disabled = true;
@@ -2277,13 +2527,45 @@ function setupUnfollowListeners() {
                     return;
                 }
 
-                // The id is on the button, so the username never has to be resolved again.
-                const success = await unfollowUser(username, this.dataset.userid);
+                // If row looked like a non-follower, double-check live relationship so stale state never removes a new follower
+                if (!isMutualFollower && window.UnfollowBridge && typeof window.UnfollowBridge.checkFriendshipStatus === 'function') {
+                    const liveRel = await window.UnfollowBridge.checkFriendshipStatus(targetUserId);
+                    if (liveRel && liveRel.ok && liveRel.followedBy === true) {
+                        markUserAsFollowingBackInMemory(targetUserId, username, row, this);
+                        const stillUnfollow = await showCustomModal({
+                            icon: 'info',
+                            title: `@${username} actually follows you back!`,
+                            message: `Live check confirmed @${username} is following you. We updated their badge to "Following You" and paused the unfollow. Unfollow anyway?`,
+                            confirmText: 'Unfollow anyway',
+                            cancelText: 'Keep following',
+                            danger: true
+                        });
+                        if (!stillUnfollow) return;
+                        this.disabled = true;
+                        this.textContent = getMessage('unfollowing');
+                    }
+                }
+
+                const success = await unfollowUser(username, targetUserId);
 
                 if (success) {
-                    this.textContent = getMessage('unfollowedSuccess');
+                    this.innerHTML = `<span class="success-icon">✓</span> ${getMessage('unfollowedSuccess')}`;
                     this.classList.add('unfollowed');
-                    row.classList.add('unfollowed-row');
+                    if (row) row.classList.add('unfollowed-row');
+
+                    const markUnfollowed = (u) => {
+                        if (u && u.node && (u.node.username === username || String(u.node.id) === String(targetUserId))) {
+                            u._unfollowed = true;
+                        }
+                    };
+                    allDisplayData.forEach(markUnfollowed);
+                    allFollowingFull.forEach(markUnfollowed);
+
+                    if (followingCount > 0) followingCount--;
+                    if (!isMutualFollower && nonFollowersCount > 0) nonFollowersCount--;
+                    updateStats();
+                    updateFilterChipCounts();
+
                     if (currentUserId) {
                         removeUserFromCache(currentUserId, username);
                     }
@@ -2317,6 +2599,54 @@ function setupUnfollowListeners() {
     });
 }
 
+function markUserAsFollowingBackInMemory(userIdStr, username, row, btnEl) {
+    const idNorm = userIdStr != null ? String(userIdStr) : '';
+    const unameNorm = (username || '').toLowerCase();
+
+    const updateNode = (u) => {
+        if (!u || !u.node) return;
+        if ((idNorm && String(u.node.id) === idNorm) || (unameNorm && (u.node.username || '').toLowerCase() === unameNorm)) {
+            u.node.follows_viewer = true;
+        }
+    };
+    allDisplayData.forEach(updateNode);
+    allFollowingFull.forEach(updateNode);
+
+    const alreadyInFollowers = allFollowersList.some(f =>
+        f?.node && ((idNorm && String(f.node.id) === idNorm) || (unameNorm && (f.node.username || '').toLowerCase() === unameNorm))
+    );
+    if (!alreadyInFollowers) {
+        allFollowersList.push({ node: { id: idNorm, username: username || '' } });
+    }
+
+    if (row) {
+        row.classList.remove('not-following-user', 'processing');
+        row.classList.add('following-user');
+        const badge = row.querySelector('.not-following-badge, .following-badge');
+        if (badge) {
+            badge.className = 'following-badge';
+            badge.textContent = getMessage('followingYouBadge');
+        }
+    }
+    if (btnEl) {
+        btnEl.classList.remove('loading');
+        btnEl.classList.add('mutual-unfollow-btn');
+        btnEl.dataset.following = 'true';
+        btnEl.textContent = getMessage('unfollow');
+        btnEl.disabled = currentWhitelistSet.has(username);
+    }
+
+    if (nonFollowersCount > 0) {
+        nonFollowersCount--;
+        updateStats();
+    }
+    updateFilterChipCounts();
+
+    if (currentUserId && allFollowingFull.length > 0 && isDataComplete()) {
+        saveAnalysisCache(currentUserId, allFollowingFull, allFollowersList, realFollowersTotal).catch(() => {});
+    }
+}
+
 // Whitelist button listeners
 function setupWhitelistListeners() {
     document.querySelectorAll('.whitelist-btn').forEach(btn => {
@@ -2328,21 +2658,35 @@ function setupWhitelistListeners() {
             if (!currentUserId) return;
             const username = this.dataset.username;
             const row = this.closest('tr');
+            const unfollowBtn = row?.querySelector('.unfollow-btn');
             const isActive = this.classList.contains('active');
 
             if (isActive) {
                 await removeFromWhitelist(currentUserId, username);
+                currentWhitelistSet.delete(username);
                 this.classList.remove('active');
                 this.querySelector('svg').setAttribute('fill', 'none');
                 this.title = getMessage('addToWhitelist');
                 if (row) row.classList.remove('whitelisted-row');
+                if (unfollowBtn && !unfollowBtn.classList.contains('unfollowed')) {
+                    unfollowBtn.disabled = false;
+                }
+                if (analyzerChipFilter === 'whitelisted') {
+                    renderCurrentPage();
+                    return;
+                }
             } else {
                 await addToWhitelist(currentUserId, username);
+                currentWhitelistSet.add(username);
                 this.classList.add('active');
                 this.querySelector('svg').setAttribute('fill', 'currentColor');
                 this.title = getMessage('removeFromWhitelist');
                 if (row) row.classList.add('whitelisted-row');
+                if (unfollowBtn) {
+                    unfollowBtn.disabled = true;
+                }
             }
+            updateFilterChipCounts();
         });
     });
 }
@@ -2597,25 +2941,24 @@ async function applyUnfollowAllowance(mode) {
         // If user hasn't claimed their review bonus yet, offer +100 bonus unfollows for leaving a review!
         const canClaimBonus = window.ReviewPrompt && !(await window.ReviewPrompt.isBonusClaimed());
         if (canClaimBonus) {
-            await showCustomModal({
-                icon: 'gift',
+            const wantsBonus = await showCustomModal({
+                icon: 'info',
                 title: 'Daily Limit Reached — Unlock +100 Free!',
                 message: 'You have reached today\'s ' + allowance.total + ' unfollows limit. Leave a quick 5-star review on the Chrome Web Store to immediately unlock +100 bonus unfollows!',
                 confirmText: '⭐ Rate & Get +100 Free',
                 cancelText: 'Upgrade to Premium',
                 showCancel: true
-            }).then(async (result) => {
-                if (result.isConfirmed) {
-                    await window.ReviewPrompt.claimBonus();
-                    showToast('🎉 +100 Bonus Unfollows added!', 'success');
-                } else {
-                    openPremiumModal();
-                }
             });
+            if (wantsBonus) {
+                await window.ReviewPrompt.claimBonus();
+                showToast('🎉 +100 Bonus Unfollows added!', 'success');
+            } else {
+                openPremiumModal();
+            }
             return null;
         }
 
-        await showCustomModal({
+        const wantsUpgrade = await showCustomModal({
             icon: 'info',
             title: 'Daily unfollow limit reached',
             message: getMessage('freeUnfollowLimitReached', [String(allowance.total)])
@@ -2623,9 +2966,8 @@ async function applyUnfollowAllowance(mode) {
             confirmText: getMessage('upgradeToPremium') || 'Upgrade to Premium',
             cancelText: getMessage('ok') || 'OK',
             showCancel: true
-        }).then((result) => {
-            if (result.isConfirmed) openPremiumModal();
         });
+        if (wantsUpgrade) openPremiumModal();
         return null;
     }
 
@@ -2806,9 +3148,16 @@ async function processUnfollowQueue() {
 
         const user = queue[i];
         const username = user.node.username;
-        const fullName = user.node.full_name || '';
 
-        // Navigate to the page containing this user (filtre-aware)
+        // Re-check whitelist & follower state live before acting (user may have whitelisted mid-run)
+        if (currentWhitelistSet.has(username) || user._unfollowed) {
+            continue;
+        }
+        if (unfollowMode === 'nonFollowers' && isUserFollowingMe(user, allFollowersList)) {
+            continue;
+        }
+
+        // Navigate to the page containing this user (filter-aware)
         const filtered = getFilteredData();
         const filteredIndex = filtered.indexOf(user);
         const targetPage = filteredIndex >= 0 ? Math.floor(filteredIndex / PAGE_SIZE) + 1 : currentPage;
@@ -2819,20 +3168,35 @@ async function processUnfollowQueue() {
         }
 
         // Find row in DOM - retry once if not found after page render
-        let row = document.querySelector(`tr[data-username="${username}"]`);
+        let row = document.querySelector(`tr[data-username="${CSS.escape(username)}"]`);
         if (!row) {
             await new Promise(r => setTimeout(r, 200));
-            row = document.querySelector(`tr[data-username="${username}"]`);
+            row = document.querySelector(`tr[data-username="${CSS.escape(username)}"]`);
         }
         const unfollowBtn = row?.querySelector('.unfollow-btn');
 
         try {
-            // Wait before each unfollow - zaman damgası tabanlı (sekme throttling'den etkilenmez)
+            // LIVE PRE-UNFOLLOW CIRCUIT BREAKER (before waiting, so skipped mutuals cost 0 wait time!):
+            // Query Instagram's single-user friendship endpoint to guarantee we NEVER unfollow someone
+            // who follows the viewer back (even if they followed back after the scan ran!).
+            if (unfollowMode === 'nonFollowers' && window.UnfollowBridge && typeof window.UnfollowBridge.checkFriendshipStatus === 'function') {
+                const liveRel = await window.UnfollowBridge.checkFriendshipStatus(user.node.id);
+                if (liveRel && liveRel.ok && liveRel.followedBy === true) {
+                    markUserAsFollowingBackInMemory(user.node.id, username, row, unfollowBtn);
+                    showToast(`Protected @${username} — follows you back!`, 'info');
+                    if (analyzerChipFilter === 'notFollowing') {
+                        renderCurrentPage();
+                    }
+                    continue;
+                }
+            }
+
+            // Wait before each unfollow - timestamp-based (survives background tab throttling)
             const waitSeconds = unfollowDelay / 1000;
             if (waitSeconds > 0) {
                 await new Promise((resolve) => {
                     const endTime = Date.now() + (waitSeconds * 1000);
-                    unfollowEndTime = endTime; // Global referans (visibilitychange için)
+                    unfollowEndTime = endTime;
 
                     const checkRemaining = () => {
                         if (!isUnfollowingActive) { updateTimerDisplay(0); resolve(); return; }
@@ -2848,50 +3212,65 @@ async function processUnfollowQueue() {
             }
 
             if (!isUnfollowingActive) break;
+            if (currentWhitelistSet.has(username)) continue;
 
-            // Update DOM if row is visible
+            // Second live check after a long wait (>30s), in case they followed back during the countdown!
+            if (unfollowMode === 'nonFollowers' && waitSeconds >= 30 && window.UnfollowBridge && typeof window.UnfollowBridge.checkFriendshipStatus === 'function') {
+                const postWaitRel = await window.UnfollowBridge.checkFriendshipStatus(user.node.id);
+                if (postWaitRel && postWaitRel.ok && postWaitRel.followedBy === true) {
+                    markUserAsFollowingBackInMemory(user.node.id, username, row, unfollowBtn);
+                    showToast(`Protected @${username} — follows you back!`, 'info');
+                    continue;
+                }
+            }
+
+            // Refresh DOM reference in case user changed page/filter during countdown
+            row = document.querySelector(`tr[data-username="${CSS.escape(username)}"]`);
+            const activeUnfollowBtn = row?.querySelector('.unfollow-btn');
+
             if (row) {
                 row.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 row.classList.add('processing');
             }
-            if (unfollowBtn) {
-                unfollowBtn.disabled = true;
-                unfollowBtn.classList.add('loading');
-                unfollowBtn.innerHTML = `<span class="loading-spinner-small"></span>`;
+            if (activeUnfollowBtn) {
+                activeUnfollowBtn.disabled = true;
+                activeUnfollowBtn.classList.add('loading');
+                activeUnfollowBtn.innerHTML = `<span class="loading-spinner-small"></span>`;
             }
 
-            // The queue entry already carries the id, so the bulk run no longer spends a
-            // web_profile_info request per account resolving a username it started from.
+            const wasFollowingMe = isUserFollowingMe(user, allFollowersList);
             const success = await unfollowUser(username, user.node.id);
 
-            if (unfollowBtn) unfollowBtn.classList.remove('loading');
+            if (activeUnfollowBtn) activeUnfollowBtn.classList.remove('loading');
 
             if (success) {
-                // Mark in global data
                 user._unfollowed = true;
+                allFollowingFull.forEach(u => {
+                    if (u && u.node && String(u.node.id) === String(user.node.id)) u._unfollowed = true;
+                });
 
                 if (row) {
                     row.classList.remove('processing');
                     row.classList.add('unfollowed-row');
                 }
-                if (unfollowBtn) {
-                    unfollowBtn.innerHTML = `<span class="success-icon">✓</span> ${getMessage('unfollowedSuccess')}`;
-                    unfollowBtn.disabled = true;
-                    unfollowBtn.classList.add('unfollowed');
+                if (activeUnfollowBtn) {
+                    activeUnfollowBtn.innerHTML = `<span class="success-icon">✓</span> ${getMessage('unfollowedSuccess')}`;
+                    activeUnfollowBtn.disabled = true;
+                    activeUnfollowBtn.classList.add('unfollowed');
                 }
 
                 if (currentUserId) {
                     removeUserFromCache(currentUserId, username);
                 }
-                if (nonFollowersCount > 0) {
-                    nonFollowersCount--;
-                    updateStats();
-                }
+                if (followingCount > 0) followingCount--;
+                if (!wasFollowingMe && nonFollowersCount > 0) nonFollowersCount--;
+                updateStats();
+                updateFilterChipCounts();
             } else {
                 if (row) row.classList.remove('processing');
-                if (unfollowBtn) {
-                    unfollowBtn.textContent = getMessage('unfollowFailed');
-                    unfollowBtn.disabled = false;
+                if (activeUnfollowBtn) {
+                    activeUnfollowBtn.textContent = getMessage('unfollowFailed');
+                    activeUnfollowBtn.disabled = false;
                 }
             }
 
@@ -3103,19 +3482,19 @@ function updateTimerDisplay(seconds) {
 document.addEventListener('DOMContentLoaded', () => initializeFollowingList(false));
 
 function updateStats() {
-    // İstatistik elementlerini bul ve güncelle
+    // Update overview stat cards with user's locale formatting
     const followersElement = document.getElementById('followersCount');
     const followingElement = document.getElementById('followingCount');
     const nonFollowersElement = document.getElementById('nonFollowersCount');
 
     if (followersElement) {
-        followersElement.textContent = followersCount.toLocaleString('tr-TR');
+        followersElement.textContent = followersCount.toLocaleString();
     }
     if (followingElement) {
-        followingElement.textContent = followingCount.toLocaleString('tr-TR');
+        followingElement.textContent = followingCount.toLocaleString();
     }
     if (nonFollowersElement) {
-        nonFollowersElement.textContent = nonFollowersCount.toLocaleString('tr-TR');
+        nonFollowersElement.textContent = nonFollowersCount.toLocaleString();
     }
 }
 

@@ -126,6 +126,7 @@
    * keeps "Start Bot Scan" meaning what it says rather than quietly replaying stored profile stats.
    */
   const cacheKey = (userId) => `botScanCache_${userId}`;
+  const BOT_SCAN_CACHE_VERSION = 2;
 
   /** Past this the profile-picture links have usually expired, same as the analyzer's warning. */
   const CACHE_STALE_DAYS = 4;
@@ -134,7 +135,7 @@
     try {
       const data = await chrome.storage.local.get([cacheKey(userId)]);
       const cache = data[cacheKey(userId)] || null;
-      if (!cache || cache.complete !== true || !Array.isArray(cache.users) || !cache.users.length) {
+      if (!cache || cache.version !== BOT_SCAN_CACHE_VERSION || cache.complete !== true || !Array.isArray(cache.users) || !cache.users.length) {
         return null;
       }
       return cache;
@@ -166,7 +167,7 @@
 
     try {
       await chrome.storage.local.set({
-        [cacheKey(userId)]: { users: slim, stats: stats || {}, unresolved: [...unresolvedIds], complete: true, timestamp: Date.now() }
+        [cacheKey(userId)]: { version: BOT_SCAN_CACHE_VERSION, users: slim, stats: stats || {}, unresolved: [...unresolvedIds], complete: true, timestamp: Date.now() }
       });
     } catch (error) {
       console.warn('[bot-scan] cache yazilamadi', error);   // not worth failing the scan over
@@ -307,7 +308,7 @@
       const page = window.UnfollowPageBridge;
       if (page && await page.isPageAvailable()) {
         const attempt = await page.runScanInPage({
-          userId: viewer.id, listType: 'followers', mode: 'graphql_first', onProgress: report
+          userId: viewer.id, listType: 'followers', mode: 'graphql_first', expected, onProgress: report
         });
         if (attempt.delivered && attempt.result) result = attempt.result;
       }
@@ -325,6 +326,9 @@
         });
       }
 
+      if (result.complete && expected && result.users.length < expected * 0.9) {
+        result = { ...result, complete: false, reason: 'short_of_expected' };
+      }
       followersComplete = !!result.complete;
       if (!result.users.length) {
         showMessage(msg('botScanNoData') || 'Could not read your follower list. Instagram is holding us off — try again later.');

@@ -100,7 +100,7 @@
    * @returns {Promise<{delivered: boolean, result?: object, error?: string}>}
    *          `delivered: false` means nothing was read there — not that the list is empty.
    */
-  function runScanInPage({ userId, listType, mode, onProgress }) {
+  function runScanInPage({ userId, listType, mode, expected, onProgress }) {
     const p = connect();
     if (!p) return Promise.resolve({ delivered: false, error: 'no port' });
 
@@ -111,7 +111,7 @@
       try {
         // `mode` is optional and absent means the two-list read, so an older page script — one
         // still injected in a tab opened before an update — behaves exactly as it did before.
-        p.postMessage({ type: 'UA_SCAN_REQUEST', id, userId, listType, mode });
+        p.postMessage({ type: 'UA_SCAN_REQUEST', id, userId, listType, mode, expected });
       } catch (error) {
         settle(id, { delivered: false, error: 'send failed' });
       }

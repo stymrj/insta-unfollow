@@ -41,19 +41,45 @@
     };
   }
 
-  // Read one Instagram cookie using chrome.cookies.getAll
+  // Read cookie from document.cookie when running inside instagram.com main world
+  function getDocumentCookie(name) {
+    try {
+      if (typeof document === 'undefined' || typeof document.cookie !== 'string') return '';
+      var prefix = name + '=';
+      var parts = document.cookie.split(';');
+      for (var i = 0; i < parts.length; i++) {
+        var c = parts[i].trim();
+        if (c.indexOf(prefix) === 0) {
+          return decodeURIComponent(c.substring(prefix.length));
+        }
+      }
+    } catch (e) {}
+    return '';
+  }
+
+  function isInstagramPageContext() {
+    try {
+      return typeof location !== 'undefined' &&
+        typeof location.hostname === 'string' &&
+        (location.hostname === 'instagram.com' || location.hostname.endsWith('.instagram.com'));
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // Read one Instagram cookie using chrome.cookies.getAll, falling back to document.cookie in page world
   function getCookie(name) {
     return new Promise(function (resolve) {
       try {
         if (typeof chrome === 'undefined' || !chrome.cookies || !chrome.cookies.getAll) {
-          resolve('');
+          resolve(getDocumentCookie(name));
           return;
         }
         var settled = false;
         function finish(val) {
           if (!settled) {
             settled = true;
-            resolve(val || '');
+            resolve(val || getDocumentCookie(name) || '');
           }
         }
         var res = chrome.cookies.getAll({ domain: 'instagram.com' }, function (cookies) {
@@ -249,17 +275,20 @@
     function step(name, outcome) { steps.push(name + ': ' + outcome); }
     function detail() { return steps.join('; '); }
 
-    // Step 0: Check Instagram cookies in browser
+    // Step 0: Check Instagram cookies in browser (or document.cookie in instagram.com tab)
     var cookieId = await getCookie('ds_user_id');
     var sessionid = await getCookie('sessionid');
     var cookieCsrf = await getCookie('csrftoken');
+    var inPageWorld = isInstagramPageContext() && (typeof chrome === 'undefined' || !chrome.cookies);
 
-    if (!cookieId || !sessionid) {
+    // Note: sessionid is HttpOnly, so in instagram.com main-world scripts only ds_user_id + csrftoken
+    // are visible in document.cookie; the browser still sends sessionid on every credentials:'include' fetch.
+    if (!cookieId || (!sessionid && !inPageWorld)) {
       step('cookies', 'not logged in (missing ds_user_id or sessionid)');
       return emptySession('logged_out', 'not_logged_in', detail());
     }
 
-    step('cookies', 'ds_user_id=' + cookieId + ', sessionid present');
+    step('cookies', 'ds_user_id=' + cookieId + (sessionid ? ', sessionid present' : ', page-world cookie'));
 
     var username = '';
     var profilePicUrl = '';
@@ -339,7 +368,46 @@
       }
     }
 
-    // Step 4: Fallback - current_user API
+    // Step 4: Fallback - users/{id}/info/ for username, avatar, AND accurate follower/following counts
+    if (!username || followerCount == null || followingCount == null) {
+      try {
+        var infoRes = await fetch('https://www.instagram.com/api/v1/users/' + encodeURIComponent(cookieId) + '/info/', {
+          credentials: 'include',
+          headers: getStandardHeaders(cookieCsrf)
+        });
+        if (infoRes.ok) {
+          var infoData = await infoRes.json().catch(function () { return null; });
+          var infoUser = infoData && infoData.user;
+          if (infoUser) {
+            if (infoUser.username && !username) username = infoUser.username;
+            if (infoUser.profile_pic_url && !profilePicUrl) profilePicUrl = infoUser.profile_pic_url;
+            if (infoUser.follower_count != null && followerCount == null) followerCount = infoUser.follower_count;
+            if (infoUser.following_count != null && followingCount == null) followingCount = infoUser.following_count;
+            step('user_info', 'ok (@' + (username || cookieId) + ')');
+            if (username && typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+              try {
+                var infoSave = {};
+                infoSave[cacheKey] = {
+                  username: username,
+                  fullName: infoUser.full_name || '',
+                  profilePicUrl: profilePicUrl,
+                  followerCount: followerCount,
+                  followingCount: followingCount,
+                  updatedAt: Date.now()
+                };
+                chrome.storage.local.set(infoSave);
+              } catch (e) {}
+            }
+          }
+        } else if (inPageWorld && (infoRes.status === 401 || infoRes.status === 403) && !username) {
+          return emptySession('logged_out', 'not_logged_in', detail());
+        }
+      } catch (e) {
+        step('user_info', 'failed');
+      }
+    }
+
+    // Step 5: Fallback - current_user API
     if (!username) {
       try {
         var cuRes = await fetch(CURRENT_USER_URL, {

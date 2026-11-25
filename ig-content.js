@@ -30,12 +30,17 @@
   let port = null;
 
   function connect() {
+    if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.id) {
+      return; // Extension context invalidated after update/reload; stop reconnecting from orphaned script
+    }
     try {
       port = chrome.runtime.connect({ name: PORT_NAME });
     } catch (error) {
-      // The extension is reloading or shutting down; try again shortly.
+      // The extension is reloading or shutting down; try again shortly if context still valid.
       port = null;
-      setTimeout(connect, RECONNECT_DELAY_MS);
+      if (chrome.runtime && chrome.runtime.id) {
+        setTimeout(connect, RECONNECT_DELAY_MS);
+      }
       return;
     }
 

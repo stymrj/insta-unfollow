@@ -1,5 +1,26 @@
 # Changelog
 
+## 3.0.5 — 2026-11-25
+
+### Critical Scan Engine Reconstruction, Pre-Unfollow Mutual Protection & Filter/UI Overhaul
+- **Eliminated False "Not Following You" Bug at Root Cause:**
+  - Removed `POST /api/v1/friendships/show_many/` from follow-back detection completely: on Instagram Web (`X-Ig-App-Id: 936619743392459`), `show_many` omits `followed_by`, which caused mutual followers to be marked `follows_viewer = false`.
+  - Restored strict `FOLLOWS_VIEWER_HASH` GraphQL reader requiring an explicit boolean `follows_viewer` on every node (`no_status` fallback otherwise) plus `verifyStatusScanHonesty()` cross-checking against live `readFollowersSample` and `GET /api/v1/friendships/show/{id}/`.
+  - Direct two-list comparison (`followers` + `following`) now leads for accounts up to 1,500 followers and stamps explicit boolean `follows_viewer` across every row; larger accounts run spot-verified status scans with automatic V1 ↔ GraphQL fallback.
+  - Fixed `readV1Page` premature Page-1 cutoff (`has_more === false` ignored when `next_max_id` is present) and restored live `api/v1/users/{id}/info/` expected counts so truncated scans are never marked complete.
+  - Bumped `ANALYSIS_CACHE_VERSION = 3` (and `BOT_SCAN_CACHE_VERSION = 2`) with zero-mutual cache poisoning rejection so corrupted caches from `v3.0.0–v3.0.4` are invalidated automatically.
+- **Triple-Layer Mutual Protection Before Unfollow:**
+  - Added `UnfollowBridge.checkFriendshipStatus(userId)` (`GET /api/v1/friendships/show/{id}/`) live pre-unfollow circuit breaker inside `processUnfollowQueue`: before unfollowing any queued non-follower (and again after any >30s pause), verifies `followed_by !== true` on Instagram's server and skips/updates the row live if they follow back.
+  - Added mutual-follower confirmation dialog + live relationship check on manual single-row unfollows.
+  - Hardened `probeWritePath()` with normalized ID + username checks and live `checkFriendshipStatus` verification (`following === false && outgoingRequest === false`) so pre-flight probes can never touch a followed account.
+- **Filtering, Whitelist, Free Plan & Promo Fixes:**
+  - Fixed whitelist toggle to immediately update `currentWhitelistSet` in memory and disable/enable row unfollow buttons so newly whitelisted users are excluded from unfollow queues and reflected in the `Whitelisted` filter immediately.
+  - Synchronized `.filter-chip` tabs with the `#showOnlyNonFollowers` switch (`setActiveFilterChip`), made `setupFilterListener` idempotent, and added live counts on every filter chip.
+  - Prioritized non-followers first when slicing rows on the Free plan so non-followers are never hidden behind mutuals.
+  - Fixed `background.js` `resolveMembership` overwriting active local promo-code grants (`grantExpiresAt`) with `free`, and fixed `showCustomModal` boolean return handling.
+- **UI & Accessibility Polish:**
+  - Fixed 4-column stat card wrapping on Bot Scan (`repeat(auto-fit, minmax(200px, 1fr))`), sticky table headers, accessible keyboard-scrollable table regions (`tabindex="0"`, `role="region"`), status indicator pills, distinct mutual outline buttons, and dimmed `.unfollowed-row` state.
+
 ## 3.0.4 — 2026-11-25
 
 ### Follower Detection 100% Accuracy & Modern UI System Overhaul

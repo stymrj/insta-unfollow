@@ -128,6 +128,18 @@ async function resolveMembership(userInfo) {
       return { uye_id: userInfo && userInfo.id, turu: 'premium' };
     }
     const userId = userInfo && userInfo.id;
+    const stored = await chrome.storage.local.get('membership');
+    const m = stored.membership || {};
+
+    // Preserve active promotional redeem code grants so checkLoginStatus / re-login never wipes them out.
+    if (m.turu === 'premium' && m.grantExpiresAt && Date.now() < m.grantExpiresAt) {
+      return {
+        ...m,
+        uye_id: userId || m.uye_id,
+        turu: 'premium',
+        expiry: new Date(m.grantExpiresAt).toISOString()
+      };
+    }
 
     if (userId) {
       try {
@@ -165,8 +177,6 @@ async function resolveMembership(userInfo) {
       }
     }
 
-    const stored = await chrome.storage.local.get('membership');
-  const m = stored.membership || {};
   if (m.turu === 'premium' && m.token && await verifyPremiumToken(m.token)) {
     const parsed = parsePremiumToken(m.token);
     if (parsed && userId && parsed.payload.sub === userId) {
