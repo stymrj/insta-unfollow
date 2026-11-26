@@ -447,10 +447,8 @@ function describeScanFailure() {
         return {
             title: getMessage('scanBlockedTitle') || 'Instagram wants a short break',
             body: which + ' ' + (getMessage('scanBlockedBody')
-                || 'This is common, it clears up on its own, and there is nothing wrong with your '
-                 + 'account or the extension. We stopped straight away rather than retrying, '
-                 + 'because repeated attempts make the wait longer. Try again later today.'),
-            retry: false
+                || 'Make sure an instagram.com tab is open and logged into this account, then click Re-analyze below.'),
+            retry: true
         };
     }
 
@@ -856,35 +854,16 @@ async function verifyStatusScanHonesty(userId, followingUsers, expectedFollowers
     if (!Array.isArray(followingUsers) || followingUsers.length === 0) return true;
     try {
         const viewer = await getViewerOnce().catch(() => null);
-        const { readFollowersSample, checkFriendshipStatus } = window.UnfollowBridge;
+        const { checkFriendshipStatus } = window.UnfollowBridge;
+        if (typeof checkFriendshipStatus !== 'function') return true;
 
+        // Spot-check up to 2 accounts marked as non-followers via `GET /api/v1/friendships/show/{id}/`
+        // in parallel (~180ms total, WITHOUT touching `/followers/` at all!).
         const markedNonFollowers = followingUsers.filter(u => u?.node?.follows_viewer === false && u?.node?.id);
         const probes = markedNonFollowers.slice(0, 2);
-
-        // Run follower sample + 2 authoritative probes in PARALLEL (~200ms total instead of 1.2s)
-        const [sample, probeResults] = await Promise.all([
-            typeof readFollowersSample === 'function'
-                ? readFollowersSample({ userId, csrfToken: viewer?.csrfToken }).catch(() => [])
-                : Promise.resolve([]),
-            typeof checkFriendshipStatus === 'function' && probes.length > 0
-                ? Promise.all(probes.map(u => checkFriendshipStatus(u.node.id, viewer?.csrfToken).then(rel => ({ u, rel }))))
-                : Promise.resolve([])
-        ]);
-
-        if (Array.isArray(sample) && sample.length > 0) {
-            const sampleIds = new Set(sample.map(s => s?.node?.id != null ? String(s.node.id) : '').filter(Boolean));
-            const sampleNames = new Set(sample.map(s => s?.node?.username ? s.node.username.toLowerCase() : '').filter(Boolean));
-            for (const u of followingUsers) {
-                const uid = u?.node?.id != null ? String(u.node.id) : '';
-                const uname = u?.node?.username ? u.node.username.toLowerCase() : '';
-                if ((uid && sampleIds.has(uid)) || (uname && sampleNames.has(uname))) {
-                    if (u.node.follows_viewer !== true) {
-                        console.warn('[verify] Follower in sample had follows_viewer=false:', u.node.username);
-                        return false;
-                    }
-                }
-            }
-        }
+        const probeResults = probes.length > 0
+            ? await Promise.all(probes.map(u => checkFriendshipStatus(u.node.id, viewer?.csrfToken).then(rel => ({ u, rel }))))
+            : [];
 
         let verifiedCount = 0;
         for (const { u, rel } of probeResults) {
@@ -1923,39 +1902,53 @@ async function initializeFollowingList(forceRefresh = false) {
                 if (!lastScanInfo.following?.complete || followingList.length === 0) {
                     followersList = [];
                 } else {
-                    const shouldResolveDirectly =
-                        followingList.length <= 320 &&
-                        (expectedFollowers == null || expectedFollowers > Math.max(500, Math.round(followingList.length * 1.6))) &&
-                        typeof window.UnfollowBridge?.verifyUsersFollowBack === 'function';
-
-                    let resolvedDirectly = false;
-                    if (shouldResolveDirectly) {
+                    const resolveViaShowPool = async () => {
+                        if (typeof window.UnfollowBridge?.verifyUsersFollowBack !== 'function') return false;
                         const viewer = await getViewerOnce().catch(() => null);
                         setScanStage('following', true);
                         const directRes = await window.UnfollowBridge.verifyUsersFollowBack(followingList, {
                             csrfToken: viewer?.csrfToken,
-                            concurrency: 6,
-                            delayMs: 45,
+                            concurrency: 5,
+                            delayMs: 60,
                             onProgress: (done, total) => {
                                 renderScanProgress('following', { count: done, elapsedMs: 0 }, total);
                             }
                         });
                         if (!directRes.stoppedEarly && directRes.checked === followingList.length) {
-                            resolvedDirectly = true;
                             usedFollowsViewer = true;
                             followersList = followingList.filter((u) => u.node.follows_viewer === true);
                             realFollowersTotal = expectedFollowers;
                             lastScanInfo.followers = {
                                 complete: true, reason: 'direct_friendship_show', count: followersList.length
                             };
+                            return true;
                         }
+                        return false;
+                    };
+
+                    const preferDirectPoolFirst =
+                        followingList.length <= 350 &&
+                        (expectedFollowers == null || expectedFollowers > Math.max(450, Math.round(followingList.length * 1.5)));
+
+                    let resolvedDirectly = false;
+                    if (preferDirectPoolFirst) {
+                        resolvedDirectly = await resolveViaShowPool();
                     }
 
-                    // TIER 2B: Turbo `followers` read (`count=200`, 110-200ms burst pacing)
+                    // TIER 2B: Read `followers` (`count=24/50`, bare-cookie GraphQL reserve)
                     if (!resolvedDirectly) {
                         followersList = await getFollowersList(userId, {
-                            preferGraphql: expectedFollowers != null && expectedFollowers > 2500
+                            preferGraphql: expectedFollowers != null && expectedFollowers > 1500
                         });
+                    }
+
+                    // TIER 3 NEVER-SURRENDER RESCUE:
+                    // If `/followers/` is throttled/blocked by Instagram on this account right now,
+                    // do NOT fail with "Instagram wants a short break" — rescue the already-loaded
+                    // `followingList` directly via `friendships/show/{id}/`!
+                    if (!resolvedDirectly && !lastScanInfo.followers?.complete && !preferDirectPoolFirst && followingList.length <= 1500) {
+                        logScanDiag({ stage: 'followers', msg: 'followers endpoint blocked — rescuing via friendships/show pool' });
+                        await resolveViaShowPool();
                     }
                 }
             }
@@ -2171,6 +2164,7 @@ async function initializeFollowingList(forceRefresh = false) {
         if (elements.nonFollowersCount) {
             elements.nonFollowersCount.textContent = nonFollowersCount.toLocaleString();
         }
+        updateStats();
 
         // Show trend comparison with the last analysis (v2: was comparing with the
         // analysis before that — prevSnapshot.previous — skipping the most recent one)
@@ -3568,6 +3562,7 @@ function updateStats() {
     const followersElement = document.getElementById('followersCount');
     const followingElement = document.getElementById('followingCount');
     const nonFollowersElement = document.getElementById('nonFollowersCount');
+    const rateElement = document.getElementById('followBackRate');
 
     if (followersElement) {
         followersElement.textContent = followersCount.toLocaleString();
@@ -3577,6 +3572,14 @@ function updateStats() {
     }
     if (nonFollowersElement) {
         nonFollowersElement.textContent = nonFollowersCount.toLocaleString();
+    }
+    if (rateElement) {
+        if (followingCount > 0) {
+            const mutuals = Math.max(0, followingCount - nonFollowersCount);
+            rateElement.textContent = Math.round((mutuals / followingCount) * 100) + '%';
+        } else {
+            rateElement.textContent = '--%';
+        }
     }
 }
 

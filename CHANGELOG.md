@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.1.0 — 2026-11-26
+
+### Followers-Block Fix, Never-Surrender Rescue & Obsidian Neon-Aurora Studio Design
+- **Fixed `"Instagram wants a short break"` Followers Block (`unfollow-bridge.js` & `analyzer.js`):**
+  - Replaced `count=200` (which triggered HTTP `400 Bad Request` on Instagram Web's `/followers/` validator) with Instagram-accepted `count=24/50` on `followers` and `count=100` on `following`, and removed Android `rank_token` from Web `search_surface=follow_list_page` calls.
+  - Restored bare-cookie-first GraphQL edge reads (`fetchGraphqlEdge`) with `3dec7e2c57367ef3da3d987d89f9dbc8` and `7dd9a7e2160524fd85f50317462cff9f` leading, and automatic reserve-hash fallback whenever `edge.edges` is absent.
+  - **Never-Surrender Rescue:** If `/followers/` is rate-limited on an account while `following` succeeds, Analyzer now automatically resolves `followingList` directly through the 5x-concurrent `friendships/show/{id}/` pool instead of stopping with an error screen.
+- **Signature Obsidian Neon-Aurora Creator Studio UI (`theme.css`, `welcome.css`, `analyzer.html`):**
+  - Replaced generic white-and-indigo cards with a Raycast/Linear-inspired Obsidian & Neon-Aurora glass design system (`#06080f` deep cosmos canvas, specular glass borders, multi-stop `#6366f1 -> #8b5cf6 -> #ec4899` luminous CTAs).
+  - Upgraded Analyzer to a **4-Card Executive Bento Deck** (adding live **Mutual Follow Ratio `%`**), glowing corner radial accents, dark glass radar telemetry modal, dark diagnostic notice card, and eliminated the mouse-click table focus border.
+
 ## 3.0.9 — 2026-11-26
 
 ### Complete Login Screen, Popup Cards & Scanning Dashboard UI Overhaul

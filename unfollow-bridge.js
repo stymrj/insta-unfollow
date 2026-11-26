@@ -24,14 +24,14 @@
 
   /** Proven GraphQL query hashes for reserve list reads and multi-hash status fast-path. */
   const GRAPHQL_QUERY_HASH = {
-    followers: 'c76146de99bb02f6415203be841dd25a',
-    followersReserve: '7dd9a7e2160524fd85f50317462cff9f',
+    followers: '7dd9a7e2160524fd85f50317462cff9f',
+    followersReserve: 'c76146de99bb02f6415203be841dd25a',
     following: '58712303d941c6855d4e888c5f0cd22f'
   };
   const GRAPHQL_EDGE = { followers: 'edge_followed_by', following: 'edge_follow' };
   const FOLLOWS_VIEWER_HASHES = [
-    'd04b0a864b4b54837c0d870b0e77e076',
-    '3dec7e2c57367ef3da3d987d89f9dbc8'
+    '3dec7e2c57367ef3da3d987d89f9dbc8',
+    'd04b0a864b4b54837c0d870b0e77e076'
   ];
 
   const SOURCE = { V1: 'v1', GRAPHQL: 'graphql' };
@@ -47,31 +47,32 @@
   };
 
   const CONFIG = {
-    firstPageSize: 200,
-    pageSize: 200,
-    minDelayMs: 120,
-    maxDelayMs: 220,
+    /** Exact Web-accepted page sizes (`count=200` triggers 400 Bad Request on Web followers!). */
+    firstPageSize: 24,
+    pageSize: 50,
+    followingPageSize: 100,
+    minDelayMs: 220,
+    maxDelayMs: 380,
     fallbackPageSize: 50,
-    fallbackMinDelayMs: 140,
-    fallbackMaxDelayMs: 250,
+    fallbackMinDelayMs: 240,
+    fallbackMaxDelayMs: 420,
     maxConsecutiveErrors: 3,
     maxRequests: 2500,
     rateLimitBackoffMs: [4000, 10000, 22000]
   };
 
   /**
-   * Adaptive burst-then-pace delay:
-   * Fast burst (120–220ms) for normal-sized scans (first 14 pages = up to ~1,400–2,800 accounts),
-   * stepping smoothly to moderate pacing only on massive lists so standard accounts finish in seconds.
+   * Adaptive fast-yet-safe Web pacing:
+   * 220–380ms for normal scans (first 16 pages), stepping gently on huge accounts.
    */
   function adaptiveDelayMs(pageCount, onGraphql) {
-    if (pageCount <= 14) {
-      return onGraphql ? randomBetween(130, 230) : randomBetween(110, 200);
+    if (pageCount <= 16) {
+      return onGraphql ? randomBetween(220, 380) : randomBetween(200, 350);
     }
-    if (pageCount <= 32) {
-      return onGraphql ? randomBetween(240, 380) : randomBetween(220, 350);
+    if (pageCount <= 36) {
+      return onGraphql ? randomBetween(350, 540) : randomBetween(320, 500);
     }
-    return onGraphql ? randomBetween(400, 650) : randomBetween(380, 600);
+    return onGraphql ? randomBetween(500, 800) : randomBetween(450, 720);
   }
 
   function makeRankToken() {
@@ -152,13 +153,13 @@
     };
   }
 
-  async function readV1Page({ userId, type, cursor, count, token, rankToken, signal }) {
+  async function readV1Page({ userId, type, cursor, count, token, signal }) {
     token = await resolveCsrfToken(token);
+    const safeCount = count || (type === 'following' ? CONFIG.followingPageSize : CONFIG.pageSize);
     const query = new URLSearchParams({
-      count: String(count || CONFIG.pageSize),
+      count: String(safeCount),
       search_surface: 'follow_list_page'
     });
-    if (rankToken) query.set('rank_token', rankToken);
     if (cursor) query.set('max_id', cursor);
 
     let response;
@@ -208,6 +209,43 @@
     };
   }
 
+  /**
+   * Fetch a GraphQL edge (`edge_followed_by` or `edge_follow`) trying bare cookie credentials
+   * first (exact v2.0.6 shape that Instagram's legacy graphql/query prefers) and falling back
+   * to full X-IG-App-ID headers if bare credentials fail or return `user: null`.
+   */
+  async function fetchGraphqlEdge(url, edgeKey, token, signal) {
+    const attemptFetch = async (withIgHeaders) => {
+      const response = await fetch(url, {
+        credentials: 'include',
+        signal,
+        ...(withIgHeaders ? { headers: buildIgHeaders(token) } : {})
+      });
+      if (response.status === 401 || response.status === 403) return { kind: 'auth' };
+      if (response.status === 429) return { kind: 'rate_limited', status: 429 };
+      if (response.status >= 500) return { kind: 'error' };
+      if (looksRefused(response)) return { kind: 'blocked' };
+
+      let payload;
+      try {
+        payload = await response.json();
+      } catch {
+        return { kind: 'blocked' };
+      }
+      const edge = payload?.data?.user?.[edgeKey];
+      if (!edge || !Array.isArray(edge.edges)) return { kind: 'blocked' };
+      return { kind: 'ok', edge };
+    };
+
+    try {
+      const first = await attemptFetch(false);
+      if (first.kind === 'ok' || first.kind === 'auth' || first.kind === 'rate_limited') return first;
+      return await attemptFetch(true);
+    } catch (error) {
+      return { kind: 'network', error };
+    }
+  }
+
   let activeFollowersGqlHash = GRAPHQL_QUERY_HASH.followers;
 
   async function readGraphqlPage({ userId, type, cursor, count, token, queryHashOverride, signal }) {
@@ -217,41 +255,17 @@
     const url = `https://www.instagram.com/graphql/query/?query_hash=${hash}` +
       `&variables=${encodeURIComponent(JSON.stringify(variables))}`;
 
-    let response;
-    try {
-      response = await fetch(url, {
-        credentials: 'include',
-        signal,
-        headers: buildIgHeaders(token)
-      });
-      if (!cursor && (looksRefused(response) || (!response.ok && response.status !== 401 && response.status !== 403 && response.status !== 429))) {
-        response = await fetch(url, { credentials: 'include', signal });
-      }
-    } catch (error) {
-      return { kind: 'network', error };
-    }
-
-    if (response.status === 401 || response.status === 403) return { kind: 'auth' };
-    if (response.status === 429) return { kind: 'rate_limited', status: 429 };
-    if (response.status >= 500) return { kind: 'error' };
-    if (looksRefused(response)) {
-      if (!cursor && !queryHashOverride && type === 'followers' && activeFollowersGqlHash !== GRAPHQL_QUERY_HASH.followersReserve) {
+    const res = await fetchGraphqlEdge(url, GRAPHQL_EDGE[type], token, signal);
+    if (res.kind !== 'ok') {
+      if (res.kind === 'blocked' && !cursor && !queryHashOverride &&
+          type === 'followers' && activeFollowersGqlHash !== GRAPHQL_QUERY_HASH.followersReserve) {
         activeFollowersGqlHash = GRAPHQL_QUERY_HASH.followersReserve;
         return readGraphqlPage({ userId, type, cursor, count, token, queryHashOverride: activeFollowersGqlHash, signal });
       }
-      return { kind: 'blocked' };
+      return res;
     }
 
-    let payload;
-    try {
-      payload = await response.json();
-    } catch {
-      return { kind: 'blocked' };
-    }
-
-    const edge = payload?.data?.user?.[GRAPHQL_EDGE[type]];
-    if (!edge || !Array.isArray(edge.edges)) return { kind: 'blocked' };
-
+    const edge = res.edge;
     return {
       kind: 'ok',
       users: edge.edges.map((e) => toEdge(e.node, SOURCE.GRAPHQL)),
@@ -275,7 +289,6 @@
     let rateLimitHits = 0;
     let requests = 0;
     let total;
-    const rankToken = makeRankToken();
 
     const finish = (reason) => ({
       users,
@@ -307,12 +320,12 @@
       const onGraphql = transport === SOURCE.GRAPHQL;
       const count = onGraphql
         ? CONFIG.fallbackPageSize
-        : (cursor ? CONFIG.pageSize : CONFIG.firstPageSize);
+        : (type === 'following' ? CONFIG.followingPageSize : (cursor ? CONFIG.pageSize : CONFIG.firstPageSize));
 
       requests++;
       const page = onGraphql
         ? await readGraphqlPage({ userId, type, cursor, count, token: csrfToken, signal })
-        : await readV1Page({ userId, type, cursor, count, token: csrfToken, rankToken, signal });
+        : await readV1Page({ userId, type, cursor, count, token: csrfToken, signal });
 
       if (shouldStop && shouldStop()) return finish(SCAN_REASON.STOPPED);
       if (page.kind === 'auth') return finish(SCAN_REASON.FAILED);
@@ -484,32 +497,11 @@
     const url = `https://www.instagram.com/graphql/query/?query_hash=${hash}` +
       `&variables=${encodeURIComponent(JSON.stringify(variables))}`;
 
-    let response;
-    try {
-      response = await fetch(url, {
-        credentials: 'include',
-        signal,
-        headers: buildIgHeaders(token)
-      });
-      if (!cursor && (looksRefused(response) || (!response.ok && response.status !== 401 && response.status !== 403 && response.status !== 429))) {
-        response = await fetch(url, { credentials: 'include', signal });
-      }
-    } catch (error) {
-      return { kind: 'network', error };
+    const res = await fetchGraphqlEdge(url, 'edge_follow', token, signal);
+    if (res.kind !== 'ok') {
+      return res.kind === 'rate_limited' ? { kind: 'blocked' } : res;
     }
-    if (response.status === 401 || response.status === 403) return { kind: 'auth' };
-    if (response.status === 429) return { kind: 'blocked' };
-    if (response.status >= 500) return { kind: 'error' };
-    if (looksRefused(response)) return { kind: 'blocked' };
-
-    let payload;
-    try {
-      payload = await response.json();
-    } catch {
-      return { kind: 'blocked' };
-    }
-    const edge = payload?.data?.user?.edge_follow;
-    if (!edge || !Array.isArray(edge.edges)) return { kind: 'blocked' };
+    const edge = res.edge;
 
     // STRICT SAFETY INVARIANT: Every single returned node MUST carry an explicit boolean
     // `follows_viewer`. If even one node omits it, reject the response as `no_status`.
