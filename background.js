@@ -60,8 +60,11 @@ async function installInstagramHeaderRules() {
   }
 }
 installInstagramHeaderRules();
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener((details) => {
   installInstagramHeaderRules();
+  if (details && details.reason === 'install') {
+    chrome.tabs.create({ url: chrome.runtime.getURL('welcome.html') });
+  }
 });
 
 // Owner bypass: this Google account is always premium, no payment needed.

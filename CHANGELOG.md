@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.8 — 2026-11-26
+
+### Interactive Post-Install Welcome & Quick-Start Onboarding (`welcome.html`)
+- **Automatic Post-Install Onboarding Tab:** `background.js` now opens `welcome.html` automatically when the extension is installed (`details.reason === 'install'`), plus added a 1-click **Setup Guide** link in the popup footer.
+- **Interactive Live 3-Step Setup:** Features a top-right animated Chrome toolbar **Pin Extension** guide, live **Google Sign-In** integration, automatic **Instagram session detection** (auto-refreshing on tab switch via `visibilitychange`), live readiness progress bar, and 1-click launchers for Non-Follower Analyzer and Bot Scanner.
+
 ## 3.0.7 — 2026-11-26
 
 ### Multi-Tier Turbo Scan Engine (10x–20x Faster Analysis)

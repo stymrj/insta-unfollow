@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>Welcome to Insta Unfollow — Quick Setup</title>
+  <link rel="stylesheet" href="assets/inter/inter.css">
+  <link rel="stylesheet" href="welcome.css">
+</head>
+<body>
+  <!-- Floating Top-Right Chrome Toolbar Pin Guide -->
+  <aside id="pinCallout" class="pin-callout" aria-label="Pin extension to toolbar">
+    <div class="pin-arrow" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    </div>
+    <div class="pin-callout-body">
+      <div class="pin-callout-top">
+        <span class="pin-step-pill">STEP 1</span>
+        <button type="button" id="dismissPinCallout" class="pin-dismiss-btn" aria-label="Dismiss pin hint">✕</button>
+      </div>
+      <p class="pin-callout-title">Pin <strong>Insta Unfollow</strong> for 1-click access</p>
+      <div class="toolbar-demo" aria-hidden="true">
+        <span class="demo-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"/></svg>
+          Extensions
+        </span>
+        <span class="demo-sep">→</span>
+        <span class="demo-chip demo-pin-active">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
+          Pin
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Top Navigation Bar -->
+  <header class="welcome-nav">
+    <div class="nav-inner">
+      <div class="brand-group">
+        <img src="img/48.png" alt="Insta Unfollow" class="brand-logo">
+        <div>
+          <div class="brand-title-row">
+            <span class="brand-name">Insta Unfollow</span>
+            <span id="welcomeVersionBadge" class="version-badge">v3.0.8</span>
+          </div>
+          <span class="brand-sub">Smart Follower &amp; Unfollow Manager</span>
+        </div>
+      </div>
+      <div class="nav-badges">
+        <span class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          No Instagram Password Needed
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="welcome-main">
+    <!-- Hero Section -->
+    <section class="hero-card">
+      <div class="hero-badge-row">
+        <span class="installed-pill">
+          <span class="pulse-dot"></span>
+          Extension Installed Successfully
+        </span>
+      </div>
+      <h1 class="hero-title">Clean up your Instagram following in <span class="gradient-text">seconds, safely.</span></h1>
+      <p class="hero-subtitle">
+        See everyone who doesn't follow you back, protect close friends with a 1-click Whitelist, and detect fake or ghost followers — 100% locally in your browser.
+      </p>
+
+      <!-- Live Readiness Bar -->
+      <div class="readiness-bar-wrap">
+        <div class="readiness-header">
+          <span id="readinessLabel" class="readiness-label">Checking setup status…</span>
+          <span id="readinessFraction" class="readiness-count">0 / 3 Ready</span>
+        </div>
+        <div class="readiness-track" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0" id="readinessProgress">
+          <div id="readinessFill" class="readiness-fill"></div>
+        </div>
+      </div>
+
+      <!-- Primary Hero Actions -->
+      <div class="hero-actions">
+        <button type="button" id="heroLaunchAnalyzerBtn" class="cta-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span id="heroLaunchText">Launch Non-Follower Analyzer</span>
+          <span class="cta-arrow">→</span>
+        </button>
+        <button type="button" id="heroBotScanBtn" class="cta-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="8" width="18" height="12" rx="3"></rect>
+            <path d="M12 8V4"></path><circle cx="12" cy="3" r="1"></circle>
+            <circle cx="8.5" cy="14" r="1.2"></circle><circle cx="15.5" cy="14" r="1.2"></circle>
+          </svg>
+          <span>Scan Fake / Bot Followers</span>
+        </button>
+      </div>
+      <p id="heroActionFeedback" class="hero-feedback" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- Interactive 3-Step Setup Grid -->
+    <section class="steps-section" aria-labelledby="stepsHeading">
+      <div class="section-head">
+        <h2 id="stepsHeading">Quick 3-Step Setup</h2>
+        <p>Complete these quick steps once — statuses update automatically in real time.</p>
+      </div>
+
+      <div class="steps-grid">
+        <!-- Step 1: Pin Extension -->
+        <article id="stepCardPin" class="step-card">
+          <div class="step-top">
+            <span class="step-num">1</span>
+            <span id="stepPinBadge" class="status-pill pending">Recommended</span>
+          </div>
+          <h3>Pin to Chrome Toolbar</h3>
+          <p>Click the <strong>Extensions 🧩</strong> icon in the top-right corner of Chrome and click the <strong>Pin 📌</strong> icon next to <strong>Insta Unfollow</strong>.</p>
+          <div class="step-visual-box">
+            <div class="mock-browser-bar">
+              <div class="mock-url">instagram.com</div>
+              <div class="mock-ext-icon" title="Insta Unfollow Pinned">
+                <img src="img/32.png" alt="">
+              </div>
+              <div class="mock-puzzle" title="Chrome Extensions">🧩</div>
+            </div>
+          </div>
+          <div class="step-footer">
+            <button type="button" id="markPinnedBtn" class="step-btn outline">
+              <span id="markPinnedText">I've Pinned It ✓</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Step 2: Google Account Sign-In -->
+        <article id="stepCardGoogle" class="step-card">
+          <div class="step-top">
+            <span class="step-num">2</span>
+            <span id="stepGoogleBadge" class="status-pill pending">Checking…</span>
+          </div>
+          <h3>Sign In with Google</h3>
+          <p>Sign in with 1 click to activate your free daily unfollow allowance, sync membership status, or redeem promo codes.</p>
+          <div id="googleAccountBox" class="account-preview-box">
+            <div class="account-placeholder">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Not signed in yet</span>
+            </div>
+          </div>
+          <div class="step-footer">
+            <button type="button" id="welcomeGoogleBtn" class="step-btn google">
+              <svg width="16" height="16" viewBox="0 0 18 18" aria-hidden="true">
+                <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+                <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
+                <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.192 0 7.56 0 9s.348 2.808.957 4.039l3.007-2.332z"/>
+                <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/>
+              </svg>
+              <span id="welcomeGoogleBtnText">Continue with Google</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Step 3: Active Instagram Session -->
+        <article id="stepCardIg" class="step-card">
+          <div class="step-top">
+            <span class="step-num">3</span>
+            <span id="stepIgBadge" class="status-pill pending">Checking…</span>
+          </div>
+          <h3>Log Into Instagram Web</h3>
+          <p>Make sure you're logged into <strong>instagram.com</strong> in this Chrome profile. When you switch back here, we detect it automatically!</p>
+          <div id="igAccountBox" class="account-preview-box">
+            <div class="account-placeholder">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <span>Detecting Instagram session…</span>
+            </div>
+          </div>
+          <div class="step-footer step-footer-dual">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" id="openIgBtn" class="step-btn indigo">
+              <span>Open Instagram.com ↗</span>
+            </a>
+            <button type="button" id="recheckIgBtn" class="step-btn icon-only" title="Re-check Instagram session" aria-label="Re-check Instagram session">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Feature Bento Grid -->
+    <section class="features-section" aria-labelledby="featuresHeading">
+      <div class="section-head">
+        <h2 id="featuresHeading">Built for Speed, Accuracy &amp; Account Safety</h2>
+        <p>Engineered to protect mutual friends while keeping your Instagram session clean and fast.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon indigo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Multi-Tier Turbo Scan</h3>
+          <p>Reads follow-back status in seconds using burst pagination and concurrent verification instead of slow manual scrolling.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon emerald">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Triple Mutual Protection</h3>
+          <p>Live pre-unfollow relationship checks plus 1-click shield Whitelisting ensure friends who follow you back are never removed by mistake.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon amber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="8" width="18" height="12" rx="3"/><path d="M12 8V4"/><circle cx="8.5" cy="14" r="1.2"/><circle cx="15.5" cy="14" r="1.2"/></svg>
+          </div>
+          <h3>Bot &amp; Ghost Detector</h3>
+          <p>Audit your followers for likely bots and inactive ghost accounts with transparent signal chips and CSV export.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon rose">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Smart Anti-Block Pacing</h3>
+          <p>Human-like randomized intervals and automatic cooldown timers prevent Instagram action blocks during bulk unfollows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Practices Safety Strip -->
+    <section class="safety-banner">
+      <div class="safety-icon" aria-hidden="true">💡</div>
+      <div class="safety-text">
+        <strong>Pro Tips for Safe Unfollowing:</strong>
+        Keep an <code>instagram.com</code> tab open while scanning for fastest same-origin speed, whitelist your VIP friends with the shield icon, and unfollow in comfortable daily batches.
+      </div>
+    </section>
+  </main>
+
+  <footer class="welcome-footer">
+    <div class="footer-inner">
+      <span>🔒 100% local in-browser processing — your Instagram credentials never leave your device.</span>
+      <span>Made with ♥ by <a href="https://www.linkedin.com/in/satyamraj1" target="_blank" rel="noopener noreferrer">Satyam Raj</a></span>
+    </div>
+  </footer>
+
+  <script src="ig-session.js"></script>
+  <script src="welcome.js"></script>
+</body>
+</html>
