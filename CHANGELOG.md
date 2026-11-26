@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.0.9 — 2026-11-26
+
+### Complete Login Screen, Popup Cards & Scanning Dashboard UI Overhaul
+- **Modern SaaS Login Screen (`popup.html` + `theme.css`):** Replaced the legacy stacked-emoji login box with an elevated white SaaS card featuring a local-privacy trust pill, glowing brand emblem, 3 feature mini-cards (*Turbo Scan*, *Mutual Guard*, *Bot Detector*), and a high-contrast Google OAuth 2.0 CTA button.
+- **Popup Header, Segmented Nav & Cards:** Upgraded the popup header to frosted white glass, converted all-caps bordered tabs into a sleek segmented pill bar, styled the 3-tile *Last Analysis* bento card, and fixed mustard-yellow icons on primary CTA buttons.
+- **Scanning Dashboard & Live Telemetry Card (`analyzer.html` + `theme.css`):**
+  - Fixed invisible white-on-white user profile text in the Analyzer header.
+  - Redesigned the live scanning overlay (`.scan-panel`) into a frosted glass telemetry card with glowing ring progress, `tabular-nums` counters, and gradient progress bar.
+  - Upgraded Overview stat cards with top color-stripe accents (`Followers`, `Following`, `Not Following You`), fixed search input icon overlap (`padding-left: 38px`), preserved SVG icons on Export CSV / Copy buttons, and replaced the harsh red Free Plan banner with a clean indigo-tinted card.
+
 ## 3.0.8 — 2026-11-26
 
 ### Interactive Post-Install Welcome & Quick-Start Onboarding (`welcome.html`)

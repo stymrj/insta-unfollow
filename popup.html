@@ -127,45 +127,76 @@
             </div>
           </div>
 
-          <!-- Gmail Login Required Screen -->
+          <!-- Modern SaaS Login Screen -->
           <div id="gmailLoginRequired" class="gmail-login-required" style="display: none;">
             <div class="login-required-content">
-              <div class="login-icon-wrapper">
-                <svg class="login-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                </svg>
+              <div class="login-trust-top">
+                <span class="login-safe-pill">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                  <span>100% Local · No Instagram Password Needed</span>
+                </span>
               </div>
-              <h2 class="login-title" data-i18n="welcomeTitle">Welcome! 👋</h2>
-              <p class="login-description">
-                <span class="fun-text" data-i18n="welcomeFunText1">Want to see who's not following you back? 😏</span>
-                <span class="trust-text" data-i18n="welcomeTrustText">Just sign in with your Google account, your data is safe!</span>
-                <span class="fun-text" data-i18n="welcomeFunText2">Unfollow process is now much easier 😊</span>
+
+              <div class="login-brand-emblem">
+                <img src="img/128.png" alt="Insta Unfollow" class="login-emblem-img">
+              </div>
+
+              <h2 class="login-title" data-i18n="welcomeTitle">See Who Doesn't Follow Back</h2>
+              <p class="login-subtitle">
+                Audit non-followers in seconds, protect mutual friends with a 1-click Whitelist, and clean up fake accounts safely from your browser.
               </p>
+
+              <div class="login-highlights-grid">
+                <div class="login-highlight-card">
+                  <div class="lh-icon indigo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  </div>
+                  <span class="lh-title">Turbo Scan</span>
+                  <span class="lh-sub">Results in seconds</span>
+                </div>
+                <div class="login-highlight-card">
+                  <div class="lh-icon emerald">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                  </div>
+                  <span class="lh-title">Mutual Guard</span>
+                  <span class="lh-sub">Zero false removals</span>
+                </div>
+                <div class="login-highlight-card">
+                  <div class="lh-icon violet">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="8" width="18" height="12" rx="3"/><path d="M12 8V4"/><circle cx="8.5" cy="14" r="1.2"/><circle cx="15.5" cy="14" r="1.2"/></svg>
+                  </div>
+                  <span class="lh-title">Bot Detector</span>
+                  <span class="lh-sub">Spot ghost accounts</span>
+                </div>
+              </div>
+
+              <button id="gmailLoginRequiredBtn" class="gmail-login-required-btn">
+                <span class="google-g-chip">
+                  <svg class="google-icon" width="18" height="18" viewBox="0 0 18 18">
+                    <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+                    <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
+                    <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.192 0 7.56 0 9s.348 2.808.957 4.039l3.007-2.332z"/>
+                    <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/>
+                  </svg>
+                </span>
+                <span data-i18n="getStartedWithGoogle">Continue with Google</span>
+                <svg class="login-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+
               <div class="security-badges">
                 <div class="security-badge">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    <path d="M9 12l2 2 4-4"/>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                   </svg>
-                  <span data-i18n="secureLogin">Secure Login</span>
+                  <span data-i18n="secureLogin">Google OAuth 2.0</span>
                 </div>
                 <div class="security-badge">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
                   </svg>
-                  <span data-i18n="privacyProtected">Privacy Protected</span>
+                  <span data-i18n="privacyProtected">On-Device Privacy</span>
                 </div>
               </div>
-              <button id="gmailLoginRequiredBtn" class="gmail-login-required-btn">
-                <svg class="google-icon" width="20" height="20" viewBox="0 0 18 18">
-                  <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
-                  <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
-                  <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.192 0 7.56 0 9s.348 2.808.957 4.039l3.007-2.332z"/>
-                  <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z"/>
-                </svg>
-                <span data-i18n="getStartedWithGoogle">Get Started with Google</span>
-              </button>
             </div>
           </div>
 

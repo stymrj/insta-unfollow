@@ -23,7 +23,7 @@
    "manifest_version": 3,
    "name": "__MSG_extensionName__",
    "permissions": [ "storage", "unlimitedStorage", "identity", "cookies", "declarativeNetRequestWithHostAccess" ],
-   "version": "3.0.8",
+   "version": "3.0.9",
    "web_accessible_resources": [ {
       "matches": [ "https://*.instagram.com/*" ],
       "resources": [ "ig-session.js", "unfollow-bridge.js", "ig-inject.js" ]

@@ -19,7 +19,7 @@
                 <img src="img/48.png" alt="Insta Unfollow" class="brand-logo">
                 <div class="brand-titles">
                     <h1 data-i18n="appTitle">Insta Unfollow</h1>
-                    <span class="brand-tagline">SMART UNFOLLOW MANAGER <span id="appVersionBadge" class="version-pill">v3.0.8</span></span>
+                    <span class="brand-tagline">SMART UNFOLLOW MANAGER <span id="appVersionBadge" class="version-pill">v3.0.9</span></span>
                 </div>
             </div>
             <div class="header-actions">
@@ -263,20 +263,24 @@
                 <span class="switch-label" data-i18n="showOnlyNonFollowers">Non-followers only</span>
             </label>
             <span class="analyzer-export">
-                <button type="button" id="exportCsvBtn" class="btn btn-secondary" data-i18n="exportCsv">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    <span>Export CSV</span>
+                <button type="button" id="exportCsvBtn" class="btn btn-secondary">
+                    <div class="button-content">
+                        <svg class="button-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span data-i18n="exportCsv">Export CSV</span>
+                    </div>
                 </button>
-                <button type="button" id="copyUsernamesBtn" class="btn btn-secondary" data-i18n="copyUsernames">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                    <span>Copy</span>
+                <button type="button" id="copyUsernamesBtn" class="btn btn-secondary">
+                    <div class="button-content">
+                        <svg class="button-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span data-i18n="copyUsernames">Copy</span>
+                    </div>
                 </button>
             </span>
         </div>
