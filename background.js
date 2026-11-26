@@ -1,67 +1,68 @@
 // Background Service Worker - Login with new tab method
 // This method completely solves the popup closing issue and works on all platforms
 
-// Configure declarativeNetRequest rules to ensure all Instagram API/graphql requests
-// have correct Origin and Referer headers so Instagram treats them like same-origin calls.
-const IG_DNR_RULE_IDS = [1, 2, 3];
+// Configure declarativeNetRequest rules so extension-initiated Instagram requests match real
+// browser header shapes:
+//   - GET/HEAD requests: Referer set to instagram.com, Origin REMOVED (browsers never send Origin on same-origin GETs!)
+//   - POST requests: both Origin and Referer set to instagram.com
+const IG_DNR_RULE_IDS = [1, 2, 3, 4, 5, 6];
 async function installInstagramHeaderRules() {
   try {
     if (typeof chrome === 'undefined' || !chrome.declarativeNetRequest || !chrome.declarativeNetRequest.updateDynamicRules) {
       return;
     }
-    const headers = [
+    const getHeaders = [
+      { header: 'origin', operation: chrome.declarativeNetRequest.HeaderOperation.REMOVE },
+      { header: 'referer', operation: chrome.declarativeNetRequest.HeaderOperation.SET, value: 'https://www.instagram.com/' }
+    ];
+    const postHeaders = [
       { header: 'origin', operation: chrome.declarativeNetRequest.HeaderOperation.SET, value: 'https://www.instagram.com' },
       { header: 'referer', operation: chrome.declarativeNetRequest.HeaderOperation.SET, value: 'https://www.instagram.com/' }
     ];
+    const urlFilters = ['||instagram.com/api/', '||instagram.com/graphql/', '||instagram.com/web/'];
+    const rules = [];
+    urlFilters.forEach((urlFilter, idx) => {
+      rules.push({
+        id: idx + 1,
+        priority: 1,
+        action: {
+          type: chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
+          requestHeaders: getHeaders
+        },
+        condition: {
+          urlFilter,
+          excludedRequestMethods: ['post'],
+          resourceTypes: [chrome.declarativeNetRequest.ResourceType.XMLHTTPREQUEST]
+        }
+      });
+      rules.push({
+        id: idx + 4,
+        priority: 2,
+        action: {
+          type: chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
+          requestHeaders: postHeaders
+        },
+        condition: {
+          urlFilter,
+          requestMethods: ['post'],
+          resourceTypes: [chrome.declarativeNetRequest.ResourceType.XMLHTTPREQUEST]
+        }
+      });
+    });
+
     await chrome.declarativeNetRequest.updateDynamicRules({
       removeRuleIds: IG_DNR_RULE_IDS,
-      addRules: [
-        {
-          id: IG_DNR_RULE_IDS[0],
-          priority: 1,
-          action: {
-            type: chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
-            requestHeaders: headers
-          },
-          condition: {
-            urlFilter: '||instagram.com/api/',
-            resourceTypes: [chrome.declarativeNetRequest.ResourceType.XMLHTTPREQUEST]
-          }
-        },
-        {
-          id: IG_DNR_RULE_IDS[1],
-          priority: 1,
-          action: {
-            type: chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
-            requestHeaders: headers
-          },
-          condition: {
-            urlFilter: '||instagram.com/graphql/',
-            resourceTypes: [chrome.declarativeNetRequest.ResourceType.XMLHTTPREQUEST]
-          }
-        },
-        {
-          id: IG_DNR_RULE_IDS[2],
-          priority: 1,
-          action: {
-            type: chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
-            requestHeaders: headers
-          },
-          condition: {
-            urlFilter: '||instagram.com/web/',
-            resourceTypes: [chrome.declarativeNetRequest.ResourceType.XMLHTTPREQUEST]
-          }
-        }
-      ]
+      addRules: rules
     });
-    console.log('[background] Instagram declarativeNetRequest origin/referer rules installed');
+    console.log('[background] Instagram declarativeNetRequest GET/POST header rules installed');
   } catch (err) {
-    console.error('[background] Failed to install Instagram origin rules:', err);
+    console.error('[background] Failed to install Instagram header rules:', err);
   }
 }
 installInstagramHeaderRules();
 chrome.runtime.onInstalled.addListener((details) => {
   installInstagramHeaderRules();
+  ensureInstagramPagePort({ openIfMissing: false }).catch(() => {});
   if (details && details.reason === 'install') {
     chrome.tabs.create({ url: chrome.runtime.getURL('welcome.html') });
   }
@@ -494,6 +495,79 @@ const uaPagePorts = new Set();
 const uaClientPorts = new Set();
 /** Scan id -> the page port carrying it, so a closed tab can be reported instead of hanging. */
 const uaInflight = new Map();
+let uaHelperTabId = null;
+
+function waitForPagePort(timeoutMs) {
+  if (uaPagePorts.size > 0) return Promise.resolve(true);
+  return new Promise((resolve) => {
+    const started = Date.now();
+    const timer = setInterval(() => {
+      if (uaPagePorts.size > 0) {
+        clearInterval(timer);
+        resolve(true);
+      } else if (Date.now() - started >= timeoutMs) {
+        clearInterval(timer);
+        resolve(false);
+      }
+    }, 120);
+  });
+}
+
+/**
+ * Re-connects already-open instagram.com tabs after an extension reload/update via
+ * `chrome.scripting.executeScript`, or optionally opens an inactive background helper tab
+ * when `openIfMissing` is true so scans ALWAYS execute same-origin inside `www.instagram.com`.
+ */
+async function ensureInstagramPagePort({ openIfMissing = false } = {}) {
+  if (uaPagePorts.size > 0) return true;
+  try {
+    if (chrome.tabs && chrome.tabs.query && chrome.scripting && chrome.scripting.executeScript) {
+      const tabs = await chrome.tabs.query({ url: ['https://www.instagram.com/*', 'https://instagram.com/*'] });
+      for (const tab of (tabs || [])) {
+        if (!tab || typeof tab.id !== 'number') continue;
+        try {
+          await chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            files: ['ig-content.js']
+          });
+        } catch (e) {}
+      }
+      if (tabs && tabs.length > 0) {
+        const connected = await waitForPagePort(2200);
+        if (connected) return true;
+      }
+    }
+
+    if (openIfMissing && chrome.tabs && chrome.tabs.create) {
+      const created = await chrome.tabs.create({ url: 'https://www.instagram.com/', active: false });
+      if (created && typeof created.id === 'number') {
+        uaHelperTabId = created.id;
+        const connected = await waitForPagePort(6500);
+        if (!connected && chrome.scripting && chrome.scripting.executeScript) {
+          try {
+            await chrome.scripting.executeScript({
+              target: { tabId: created.id },
+              files: ['ig-content.js']
+            });
+          } catch (e) {}
+          return await waitForPagePort(2500);
+        }
+        return connected;
+      }
+    }
+  } catch (err) {
+    console.warn('[background] ensureInstagramPagePort failed:', err);
+  }
+  return uaPagePorts.size > 0;
+}
+
+function closeHelperTabIfAny() {
+  if (uaHelperTabId != null && chrome.tabs && chrome.tabs.remove) {
+    const idToClose = uaHelperTabId;
+    uaHelperTabId = null;
+    try { chrome.tabs.remove(idToClose).catch(() => {}); } catch (e) {}
+  }
+}
 
 function uaBroadcastToClients(message) {
   for (const port of uaClientPorts) {
@@ -511,8 +585,6 @@ chrome.runtime.onConnect.addListener((port) => {
     });
     port.onDisconnect.addListener(() => {
       uaPagePorts.delete(port);
-      // A tab closed or navigated away mid-read. Say so, otherwise the analyzer waits forever
-      // for an answer that is never coming instead of reading the list itself.
       for (const [id, owner] of uaInflight) {
         if (owner !== port) continue;
         uaInflight.delete(id);
@@ -525,16 +597,34 @@ chrome.runtime.onConnect.addListener((port) => {
   if (port.name === 'ua-scan-client') {
     uaClientPorts.add(port);
     port.onDisconnect.addListener(() => uaClientPorts.delete(port));
-    port.onMessage.addListener((message) => {
+    port.onMessage.addListener(async (message) => {
       if (!message || !message.type) return;
 
       if (message.type === 'UA_AVAILABLE') {
+        if (uaPagePorts.size === 0) {
+          await ensureInstagramPagePort({ openIfMissing: false });
+        }
         try { port.postMessage({ type: 'UA_AVAILABLE_RESULT', available: uaPagePorts.size > 0 }); }
         catch (e) { uaClientPorts.delete(port); }
         return;
       }
 
+      if (message.type === 'UA_ENSURE_PAGE') {
+        const available = await ensureInstagramPagePort({ openIfMissing: !!message.openIfMissing });
+        try { port.postMessage({ type: 'UA_ENSURE_RESULT', reqId: message.reqId, available }); }
+        catch (e) { uaClientPorts.delete(port); }
+        return;
+      }
+
+      if (message.type === 'UA_RELEASE_HELPER') {
+        closeHelperTabIfAny();
+        return;
+      }
+
       if (message.type === 'UA_SCAN_REQUEST') {
+        if (uaPagePorts.size === 0) {
+          await ensureInstagramPagePort({ openIfMissing: false });
+        }
         const pagePort = uaPagePorts.values().next().value;
         if (!pagePort) {
           try { port.postMessage({ type: 'UA_SCAN_RESULT', id: message.id, delivered: false, error: 'no page' }); }

@@ -47,18 +47,18 @@
   };
 
   const CONFIG = {
-    /** Exact Web-accepted page sizes (`count=200` triggers 400 Bad Request on Web followers!). */
-    firstPageSize: 24,
+    /** Exact Web follower-sheet opening size (12) + 50 per page, matching Instagram's own UI. */
+    firstPageSize: 12,
     pageSize: 50,
-    followingPageSize: 100,
-    minDelayMs: 220,
-    maxDelayMs: 380,
+    followingPageSize: 50,
+    minDelayMs: 250,
+    maxDelayMs: 550,
     fallbackPageSize: 50,
-    fallbackMinDelayMs: 240,
-    fallbackMaxDelayMs: 420,
+    fallbackMinDelayMs: 320,
+    fallbackMaxDelayMs: 650,
     maxConsecutiveErrors: 3,
     maxRequests: 2500,
-    rateLimitBackoffMs: [4000, 10000, 22000]
+    rateLimitBackoffMs: [5000, 14000, 28000]
   };
 
   /**
@@ -141,15 +141,16 @@
     return '';
   }
 
-  function buildIgHeaders(token) {
+  /**
+   * Minimal clean GET headers matching original proven `fade765` Web reader
+   * (omits `X-Instagram-AJAX: 1` and `X-Asbd-Id` which are POST/mutation headers and trigger
+   * soft-refusals when attached to GET list/graphql reads).
+   */
+  function buildReadHeaders(token) {
     return {
-      'Accept': '*/*',
-      'Accept-Language': 'en-US,en;q=0.9',
-      'X-Asbd-Id': '198387',
-      'X-Ig-App-Id': IG_APP_ID,
-      'X-Instagram-AJAX': '1',
-      'X-CSRFToken': token || '',
-      'X-Requested-With': 'XMLHttpRequest'
+      'x-ig-app-id': IG_APP_ID,
+      'x-csrftoken': token || '',
+      'x-requested-with': 'XMLHttpRequest'
     };
   }
 
@@ -169,7 +170,7 @@
         {
           credentials: 'include',
           signal,
-          headers: buildIgHeaders(token)
+          headers: buildReadHeaders(token)
         }
       );
     } catch (error) {
@@ -211,36 +212,42 @@
 
   /**
    * Fetch a GraphQL edge (`edge_followed_by` or `edge_follow`) trying bare cookie credentials
-   * first (exact v2.0.6 shape that Instagram's legacy graphql/query prefers) and falling back
-   * to full X-IG-App-ID headers if bare credentials fail or return `user: null`.
+   * first (exact v2.0.6 `follows_viewer` shape), then `x-requested-with: XMLHttpRequest` (exact
+   * `fade765` reserve shape), and finally `buildReadHeaders(token)`.
    */
   async function fetchGraphqlEdge(url, edgeKey, token, signal) {
-    const attemptFetch = async (withIgHeaders) => {
-      const response = await fetch(url, {
-        credentials: 'include',
-        signal,
-        ...(withIgHeaders ? { headers: buildIgHeaders(token) } : {})
-      });
-      if (response.status === 401 || response.status === 403) return { kind: 'auth' };
-      if (response.status === 429) return { kind: 'rate_limited', status: 429 };
-      if (response.status >= 500) return { kind: 'error' };
-      if (looksRefused(response)) return { kind: 'blocked' };
-
-      let payload;
-      try {
-        payload = await response.json();
-      } catch {
-        return { kind: 'blocked' };
-      }
-      const edge = payload?.data?.user?.[edgeKey];
-      if (!edge || !Array.isArray(edge.edges)) return { kind: 'blocked' };
-      return { kind: 'ok', edge };
-    };
+    const modes = [
+      null,
+      { 'x-requested-with': 'XMLHttpRequest' },
+      buildReadHeaders(token)
+    ];
 
     try {
-      const first = await attemptFetch(false);
-      if (first.kind === 'ok' || first.kind === 'auth' || first.kind === 'rate_limited') return first;
-      return await attemptFetch(true);
+      let lastRes = { kind: 'blocked' };
+      for (const hdrs of modes) {
+        const init = { credentials: 'include', signal };
+        if (hdrs) init.headers = hdrs;
+        const response = await fetch(url, init);
+        if (response.status === 401 || response.status === 403) return { kind: 'auth' };
+        if (response.status === 429) return { kind: 'rate_limited', status: 429 };
+        if (response.status >= 500) { lastRes = { kind: 'error' }; continue; }
+        if (looksRefused(response)) { lastRes = { kind: 'blocked' }; continue; }
+
+        let payload;
+        try {
+          payload = await response.json();
+        } catch {
+          lastRes = { kind: 'blocked' };
+          continue;
+        }
+        const edge = payload?.data?.user?.[edgeKey];
+        if (!edge || !Array.isArray(edge.edges)) {
+          lastRes = { kind: 'blocked' };
+          continue;
+        }
+        return { kind: 'ok', edge };
+      }
+      return lastRes;
     } catch (error) {
       return { kind: 'network', error };
     }
@@ -447,7 +454,7 @@
         readGraphqlPage({ userId, type: 'following', cursor: '', count: 1, token }).catch(() => ({})),
         fetch(`https://www.instagram.com/api/v1/users/${encodeURIComponent(userId)}/info/`, {
           credentials: 'include',
-          headers: buildIgHeaders(token)
+          headers: buildReadHeaders(token)
         }).then(async (r) => (r.ok && !looksRefused(r)) ? r.json().catch(() => null) : null).catch(() => null)
       ]);
 
@@ -503,14 +510,22 @@
     }
     const edge = res.edge;
 
-    // STRICT SAFETY INVARIANT: Every single returned node MUST carry an explicit boolean
-    // `follows_viewer`. If even one node omits it, reject the response as `no_status`.
+    // SAFETY INVARIANT: Every returned node must carry the `follows_viewer` key, and at least one
+    // node in any non-empty page must have a boolean value. Individual deactivated/restricted
+    // accounts may carry `follows_viewer: null` and are flagged for single-user verification.
+    let booleanSeen = edge.edges.length === 0;
     for (const item of edge.edges) {
       const node = item && item.node;
-      if (!node || !('follows_viewer' in node) || typeof node.follows_viewer !== 'boolean') {
+      if (!node || !('follows_viewer' in node)) {
+        return { kind: 'no_status' };
+      }
+      if (typeof node.follows_viewer === 'boolean') {
+        booleanSeen = true;
+      } else if (node.follows_viewer !== null) {
         return { kind: 'no_status' };
       }
     }
+    if (!booleanSeen) return { kind: 'no_status' };
 
     return {
       kind: 'ok',
@@ -643,12 +658,16 @@
         {
           method: 'GET',
           credentials: 'include',
-          headers: buildIgHeaders(token)
+          headers: buildReadHeaders(token)
         }
       );
+      if (response.status === 404) return { ok: false, notFound: true, status: 404 };
       if (!response.ok || looksRefused(response)) return { ok: false, status: response.status };
       const data = await response.json().catch(() => null);
       if (!data || typeof data.followed_by !== 'boolean') {
+        if (data && data.status === 'fail' && response.status === 400) {
+          return { ok: false, notFound: true, status: 400 };
+        }
         return { ok: false };
       }
       return {
@@ -689,16 +708,19 @@
    */
   async function verifyUsersFollowBack(users, {
     csrfToken,
-    concurrency = 6,
-    delayMs = 50,
+    concurrency = 3,
+    delayMs = 110,
     onProgress,
     onMutualFound,
     shouldStop
   } = {}) {
-    if (!Array.isArray(users) || !users.length) return { checked: 0, mutualsFound: 0, stoppedEarly: false };
+    if (!Array.isArray(users) || !users.length) {
+      return { checked: 0, mutualsFound: 0, unresolvedCount: 0, aborted: false, stoppedEarly: false };
+    }
     const token = await resolveCsrfToken(csrfToken);
     let checked = 0;
     let mutualsFound = 0;
+    let unresolvedCount = 0;
     let consecutiveFailures = 0;
     let aborted = false;
     let nextIdx = 0;
@@ -707,7 +729,7 @@
 
     async function worker(workerId) {
       if (workerId > 0 && delayMs > 0) {
-        await sleepUnlessStopped(workerId * 30, shouldStop);
+        await sleepUnlessStopped(workerId * 45, shouldStop);
       }
       while (!aborted) {
         if (shouldStop && shouldStop()) { aborted = true; return; }
@@ -716,16 +738,29 @@
 
         const u = users[idx];
         const uid = u?.node?.id != null ? String(u.node.id) : '';
-        if (!uid) continue;
+        if (!uid) {
+          unresolvedCount++;
+          continue;
+        }
 
         const rel = await checkFriendshipStatus(uid, token);
         if (aborted) return;
 
         if (!rel || !rel.ok) {
-          if (rel?.status === 429 || ++consecutiveFailures >= 3) {
+          // Deactivated/deleted accounts return 404 — record cleanly without aborting the pool!
+          if (rel?.notFound) {
+            consecutiveFailures = 0;
+            unresolvedCount++;
+            u.node.follows_viewer = false;
+            u.node._friendshipVerified = true;
+            if (onProgress) onProgress(checked + unresolvedCount, users.length, mutualsFound);
+            continue;
+          }
+          if (rel?.status === 429 || ++consecutiveFailures >= 5) {
             aborted = true;
             return;
           }
+          unresolvedCount++;
           continue;
         }
 
@@ -738,7 +773,7 @@
           mutualsFound++;
           if (onMutualFound) onMutualFound(u, rel);
         }
-        if (onProgress) onProgress(checked, users.length, mutualsFound);
+        if (onProgress) onProgress(checked + unresolvedCount, users.length, mutualsFound);
 
         if (nextIdx < users.length && delayMs > 0) {
           await sleepUnlessStopped(delayMs, shouldStop);
@@ -747,7 +782,14 @@
     }
 
     await Promise.all(Array.from({ length: workerCount }, (_, i) => worker(i)));
-    return { checked, mutualsFound, stoppedEarly: aborted || checked < users.length };
+    const resolvedTotal = checked + unresolvedCount;
+    return {
+      checked,
+      mutualsFound,
+      unresolvedCount,
+      aborted,
+      stoppedEarly: aborted || resolvedTotal < users.length
+    };
   }
 
   window.UnfollowBridge = {

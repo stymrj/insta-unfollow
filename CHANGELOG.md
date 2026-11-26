@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.1.2 — 2026-11-26
+
+### Same-Origin Scan Auto-Recovery, Clean GET Headers & Pearl-and-Ink Daylight Studio UI
+- **Fixed Followers Scan Refusal (`background.js`, `ig-content.js`, `ig-inject.js`, `ig-client.js`, `unfollow-bridge.js`, `analyzer.js`):**
+  - Removed forced `Origin` header on `GET` requests in `declarativeNetRequest` (browsers never send `Origin` on same-origin `GET`s) and stripped `X-Instagram-AJAX: 1` / `X-Asbd-Id` from `GET` list/status reads, restoring `firstPageSize: 12` + `x-requested-with` headers matching Instagram Web's native follower sheet.
+  - Added automatic `chrome.scripting.executeScript` reconnection for already-open `instagram.com` tabs after extension reloads, `verify_pool` same-origin execution inside `instagram.com`, graceful `404` deactivated-account handling in `verifyUsersFollowBack`, and automatic background `instagram.com` helper-tab recovery when no Instagram tab is open.
+- **Pearl & Ink Daylight Studio Design System (`theme.css`, `welcome.css`):**
+  - Replaced dark mode with a crisp Pearl & Ink Daylight Studio light theme (`#f6f7fb` canvas, `#ffffff` elevated surfaces, `#0f172a` carbon-ink actions, `>= 3:1` accessible control borders, Daylight Customizable `<select>` plan dropdown, and clean white telemetry & diagnostic cards).
+
 ## 3.1.1 — 2026-11-26
 
 ### Studio Pro Subscription Page, Animated Plan Dropdown & Dark-Glass UPI Checkout

@@ -57,6 +57,12 @@
         return;
       }
 
+      if (message.type === 'UA_ENSURE_RESULT') {
+        const entry = pending.get(message.reqId);
+        if (entry) { pending.delete(message.reqId); clearTimeout(entry.timer); entry.resolve(!!message.available); }
+        return;
+      }
+
       if (message.type === 'UA_SCAN_PROGRESS') {
         const entry = pending.get(message.id);
         if (!entry) return;
@@ -83,24 +89,42 @@
     return port;
   }
 
-  /** Whether at least one Instagram tab is currently connected. */
+  /** Whether at least one Instagram tab is currently connected (auto-reconnecting open tabs). */
   function isPageAvailable() {
     const p = connect();
     if (!p) return Promise.resolve(false);
     return new Promise((resolve) => {
-      const timer = setTimeout(() => { pending.delete('available'); resolve(false); }, 1500);
+      const timer = setTimeout(() => { pending.delete('available'); resolve(false); }, 3200);
       pending.set('available', { resolve, timer });
       try { p.postMessage({ type: 'UA_AVAILABLE' }); }
       catch (error) { clearTimeout(timer); pending.delete('available'); resolve(false); }
     });
   }
 
+  /** Ensure an Instagram tab bridge is live; optionally opens a quiet background helper tab. */
+  function ensurePage({ openIfMissing = false } = {}) {
+    const p = connect();
+    if (!p) return Promise.resolve(false);
+    const reqId = 'ensure-' + (nextId++);
+    const waitMs = openIfMissing ? 9500 : 3500;
+    return new Promise((resolve) => {
+      const timer = setTimeout(() => { pending.delete(reqId); resolve(false); }, waitMs);
+      pending.set(reqId, { resolve, timer });
+      try { p.postMessage({ type: 'UA_ENSURE_PAGE', reqId, openIfMissing }); }
+      catch (error) { clearTimeout(timer); pending.delete(reqId); resolve(false); }
+    });
+  }
+
+  function releaseHelperTab() {
+    const p = connect();
+    if (!p) return;
+    try { p.postMessage({ type: 'UA_RELEASE_HELPER' }); } catch (e) {}
+  }
+
   /**
    * Run one read inside an Instagram tab.
-   * @returns {Promise<{delivered: boolean, result?: object, error?: string}>}
-   *          `delivered: false` means nothing was read there — not that the list is empty.
    */
-  function runScanInPage({ userId, listType, mode, expected, onProgress }) {
+  function runScanInPage({ userId, listType, mode, expected, users, onProgress }) {
     const p = connect();
     if (!p) return Promise.resolve({ delivered: false, error: 'no port' });
 
@@ -109,14 +133,12 @@
       pending.set(id, { resolve, onProgress, timer: null });
       armIdleTimer(id);
       try {
-        // `mode` is optional and absent means the two-list read, so an older page script — one
-        // still injected in a tab opened before an update — behaves exactly as it did before.
-        p.postMessage({ type: 'UA_SCAN_REQUEST', id, userId, listType, mode, expected });
+        p.postMessage({ type: 'UA_SCAN_REQUEST', id, userId, listType, mode, expected, users });
       } catch (error) {
         settle(id, { delivered: false, error: 'send failed' });
       }
     });
   }
 
-  window.UnfollowPageBridge = { isPageAvailable, runScanInPage };
+  window.UnfollowPageBridge = { isPageAvailable, ensurePage, releaseHelperTab, runScanInPage };
 })();

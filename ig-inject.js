@@ -22,19 +22,22 @@
   /** Scans currently running here, so a second request for the same id does not start twice. */
   const running = new Set();
 
-  window.addEventListener('message', async (event) => {
+  // Detach any listener left by an older extension version injected into this same tab
+  if (typeof window.__uaDetachInject === 'function') {
+    try { window.__uaDetachInject(); } catch (e) {}
+  }
+
+  const onMessage = async (event) => {
     if (event.source !== window) return;
     const message = event.data;
     if (!message || message.type !== REQUEST) return;
 
-    const { id, userId, listType, mode, expected } = message;
+    const { id, userId, listType, mode, expected, users: poolUsers } = message;
     if (!id || running.has(id)) return;
     running.add(id);
 
     const bridge = window.UnfollowBridge;
     if (!bridge) {
-      // The reader failed to load; say so rather than leaving the caller waiting, so it can fall
-      // back to scanning from the extension page.
       window.postMessage({ type: RESULT, id, delivered: false, error: 'bridge missing' }, '*');
       running.delete(id);
       return;
@@ -46,10 +49,32 @@
         window.postMessage({ type: PROGRESS, id, progress }, '*');
       };
 
-      // The follow-back read is the one that matters most for this to happen here: it is the read
-      // every analysis performs, so it is the one whose requests are worth having leave from
-      // instagram.com. An unknown mode, or a page script older than the caller, falls through to
-      // the two-list read rather than failing.
+      if (mode === 'verify_pool' && typeof bridge.verifyUsersFollowBack === 'function' && Array.isArray(poolUsers)) {
+        const poolRes = await bridge.verifyUsersFollowBack(poolUsers, {
+          csrfToken: viewer && viewer.csrfToken,
+          concurrency: 3,
+          delayMs: 120,
+          onProgress: (done, total, mutualsFound) => {
+            onProgress({ count: done, total, mutualsFound, elapsedMs: 0 });
+          }
+        });
+        window.postMessage({
+          type: RESULT,
+          id,
+          delivered: true,
+          result: {
+            users: poolUsers,
+            checked: poolRes.checked,
+            mutualsFound: poolRes.mutualsFound,
+            unresolvedCount: poolRes.unresolvedCount || 0,
+            aborted: !!poolRes.aborted,
+            stoppedEarly: !!poolRes.stoppedEarly,
+            usedVerifyPool: true
+          }
+        }, '*');
+        return;
+      }
+
       const useStatus = mode === 'follows_viewer'
         && typeof bridge.scanFollowingWithStatus === 'function';
 
@@ -61,16 +86,11 @@
             expected,
             csrfToken: viewer && viewer.csrfToken,
             onProgress,
-            // An older page script ignores this and reads v1-first, which is the behaviour that
-            // shipped before — slower on a large list, never wrong.
             preferGraphql: mode === 'graphql_first'
           });
 
-      // Says which reader actually ran, so the caller is never left assuming it got status data
-      // from a page that quietly did the old read instead.
       const usedStatusReader = useStatus;
 
-      // Structured-clone safe: only plain data crosses postMessage.
       window.postMessage({
         type: RESULT,
         id,
@@ -92,7 +112,10 @@
     } finally {
       running.delete(id);
     }
-  });
+  };
+
+  window.addEventListener('message', onMessage);
+  window.__uaDetachInject = () => window.removeEventListener('message', onMessage);
 
   // Tells the content script the page side is listening, so a request is never posted into a void.
   window.postMessage({ type: READY }, '*');

@@ -17,17 +17,30 @@
   const FROM_PAGE = ['UA_SCAN_PROGRESS', 'UA_SCAN_RESULT', 'UA_SCAN_READY'];
   const RECONNECT_DELAY_MS = 2000;
 
-  // The reader has to run in the page's own context to inherit its origin, and a content script
-  // cannot reach that context directly — hence a script tag rather than an import.
-  // ig-session.js goes first: the bridge's getViewer() reads the session through it.
+  // Prevent duplicate active relays in the same content-script world
+  if (window.__uaContentPortValid && window.__uaContentPortValid()) {
+    return;
+  }
+
+  // Remove any stale main-world bridge script tags from an older extension version before injecting
+  try {
+    document.querySelectorAll('script[data-ua-bridge="1"]').forEach((s) => s.remove());
+  } catch (e) {}
+
+  const ver = (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getManifest)
+    ? chrome.runtime.getManifest().version
+    : String(Date.now());
+
   for (const file of ['ig-session.js', 'unfollow-bridge.js', 'ig-inject.js']) {
     const script = document.createElement('script');
-    script.src = chrome.runtime.getURL(file);
-    script.async = false;              // preserves order: the bridge must define itself first
+    script.src = chrome.runtime.getURL(file) + '?v=' + encodeURIComponent(ver);
+    script.async = false;
+    script.setAttribute('data-ua-bridge', '1');
     (document.head || document.documentElement).appendChild(script);
   }
 
   let port = null;
+  window.__uaContentPortValid = () => !!(port && typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.id);
 
   function connect() {
     if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.id) {

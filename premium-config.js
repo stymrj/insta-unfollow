@@ -592,12 +592,21 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
     var summary = el('div', '', '');
     summary.className = 'pro-checkout-summary';
     var sumLeft = el('div', '', '');
-    sumLeft.appendChild(el('div', 'Selected Plan', 'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#94a3b8;'));
-    sumLeft.appendChild(el('div', 'Pro Pass · ' + upiPlanLabel(plan), 'font-size:14.5px;font-weight:800;color:#ffffff;margin-top:2px;'));
+    var sumKicker = el('div', 'Selected Plan', '');
+    sumKicker.className = 'pro-sum-kicker';
+    var sumTitle = el('div', 'Pro Pass · ' + upiPlanLabel(plan), '');
+    sumTitle.className = 'pro-sum-title';
+    sumLeft.appendChild(sumKicker);
+    sumLeft.appendChild(sumTitle);
+
     var sumRight = el('div', '', 'text-align:right;');
-    sumRight.appendChild(el('div', '₹' + upiAmountForPlan(plan), 'font-size:20px;font-weight:800;color:#c4b5fd;'));
+    var sumPrice = el('div', '₹' + upiAmountForPlan(plan), '');
+    sumPrice.className = 'pro-sum-price';
+    sumRight.appendChild(sumPrice);
     if (planObj.save > 0) {
-      sumRight.appendChild(el('div', 'Saving ₹' + planObj.save, 'font-size:11px;font-weight:700;color:#34d399;'));
+      var sumSave = el('div', 'Saving ₹' + planObj.save, '');
+      sumSave.className = 'pro-sum-save';
+      sumRight.appendChild(sumSave);
     }
     summary.appendChild(sumLeft);
     summary.appendChild(sumRight);

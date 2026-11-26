@@ -1872,90 +1872,150 @@ async function initializeFollowingList(forceRefresh = false) {
                     window.IgSession._resetCache();
                 }
             }
-            usedFollowsViewer = false;
-            realFollowersTotal = null;
 
-            const expectedFollowers = await getExpectedOnce(userId, 'followers');
+            // Auto-reconnect any already-open instagram.com tab (even right after extension reload)
+            const pageBridge = window.UnfollowPageBridge;
+            if (pageBridge && typeof pageBridge.ensurePage === 'function') {
+                await pageBridge.ensurePage({ openIfMissing: false });
+            }
 
-            // TIER 1: Multi-hash GraphQL `follows_viewer` fast-path (`d04b0a86...` + `3dec7e2c...`)
-            // Reads ONLY `following` with burst pacing (~1-4 seconds total, zero follower pages read!).
-            const withStatus = await readFollowingWithStatus(userId);
-            if (withStatus) {
-                usedFollowsViewer = true;
-                followingList = withStatus.users;
-                followersList = withStatus.users.filter((u) => u.node.follows_viewer === true);
-                realFollowersTotal = expectedFollowers;
+            const runScanPipeline = async () => {
+                usedFollowsViewer = false;
+                realFollowersTotal = null;
+                lastScanInfo.followers = null;
+                lastScanInfo.following = null;
 
-                lastScanInfo.following = {
-                    complete: true, reason: withStatus.reason, count: followingList.length,
-                    source: withStatus.source, requests: withStatus.requests
-                };
-                lastScanInfo.followers = {
-                    complete: true, reason: 'follows_viewer', count: followersList.length
-                };
-            } else {
-                // TIER 2: Smart Cost Router — read `following` FIRST (`count=200`, ~0.5-1.5s)!
-                // Why: if the account has thousands of followers and a modest following list,
-                // resolving `following` directly via 6x-parallel `friendships/show/{id}/` finishes in
-                // ~2-4 seconds without ever scraping thousands of follower pages!
+                const expectedFollowers = await getExpectedOnce(userId, 'followers');
+
+                // TIER 1: Multi-hash GraphQL `follows_viewer` fast-path (`3dec7e2c...` + `d04b0a86...`)
+                const withStatus = await readFollowingWithStatus(userId);
+                if (withStatus) {
+                    usedFollowsViewer = true;
+                    followingList = withStatus.users;
+                    followersList = withStatus.users.filter((u) => u.node.follows_viewer === true);
+                    realFollowersTotal = expectedFollowers;
+
+                    lastScanInfo.following = {
+                        complete: true, reason: withStatus.reason, count: followingList.length,
+                        source: withStatus.source, requests: withStatus.requests
+                    };
+                    lastScanInfo.followers = {
+                        complete: true, reason: 'follows_viewer', count: followersList.length
+                    };
+                    return;
+                }
+
+                // TIER 2: Read `following` first
                 followingList = await getFollowingList(userId);
-
                 if (!lastScanInfo.following?.complete || followingList.length === 0) {
                     followersList = [];
-                } else {
-                    const resolveViaShowPool = async () => {
-                        if (typeof window.UnfollowBridge?.verifyUsersFollowBack !== 'function') return false;
+                    return;
+                }
+
+                // Helper: resolve `followingList` via same-origin Instagram-tab pool first, then direct pool
+                const resolveViaShowPool = async () => {
+                    setScanStage('following', true);
+                    let directRes = null;
+
+                    if (pageBridge && await pageBridge.isPageAvailable()) {
+                        const pageAttempt = await pageBridge.runScanInPage({
+                            userId,
+                            mode: 'verify_pool',
+                            users: followingList,
+                            onProgress: (p) => renderScanProgress('following', { count: p.count || 0, elapsedMs: 0 }, followingList.length)
+                        });
+                        if (pageAttempt.delivered && pageAttempt.result?.usedVerifyPool && Array.isArray(pageAttempt.result.users)) {
+                            followingList = pageAttempt.result.users;
+                            directRes = pageAttempt.result;
+                            logScanDiag({
+                                stage: 'followers',
+                                path: 'instagram-tab',
+                                msg: 'verify_pool finished',
+                                detail: `checked=${directRes.checked} unresolved=${directRes.unresolvedCount || 0} aborted=${directRes.aborted}`
+                            });
+                        }
+                    }
+
+                    if (!directRes && typeof window.UnfollowBridge?.verifyUsersFollowBack === 'function') {
                         const viewer = await getViewerOnce().catch(() => null);
-                        setScanStage('following', true);
-                        const directRes = await window.UnfollowBridge.verifyUsersFollowBack(followingList, {
+                        directRes = await window.UnfollowBridge.verifyUsersFollowBack(followingList, {
                             csrfToken: viewer?.csrfToken,
-                            concurrency: 5,
-                            delayMs: 60,
+                            concurrency: 3,
+                            delayMs: 110,
                             onProgress: (done, total) => {
                                 renderScanProgress('following', { count: done, elapsedMs: 0 }, total);
                             }
                         });
-                        if (!directRes.stoppedEarly && directRes.checked === followingList.length) {
-                            usedFollowsViewer = true;
-                            followersList = followingList.filter((u) => u.node.follows_viewer === true);
-                            realFollowersTotal = expectedFollowers;
-                            lastScanInfo.followers = {
-                                complete: true, reason: 'direct_friendship_show', count: followersList.length
-                            };
-                            return true;
-                        }
-                        return false;
-                    };
-
-                    const preferDirectPoolFirst =
-                        followingList.length <= 350 &&
-                        (expectedFollowers == null || expectedFollowers > Math.max(450, Math.round(followingList.length * 1.5)));
-
-                    let resolvedDirectly = false;
-                    if (preferDirectPoolFirst) {
-                        resolvedDirectly = await resolveViaShowPool();
-                    }
-
-                    // TIER 2B: Read `followers` (`count=24/50`, bare-cookie GraphQL reserve)
-                    if (!resolvedDirectly) {
-                        followersList = await getFollowersList(userId, {
-                            preferGraphql: expectedFollowers != null && expectedFollowers > 1500
+                        logScanDiag({
+                            stage: 'followers',
+                            path: 'extension-page',
+                            msg: 'verifyUsersFollowBack finished',
+                            detail: `checked=${directRes.checked} unresolved=${directRes.unresolvedCount || 0} aborted=${directRes.aborted}`
                         });
                     }
 
-                    // TIER 3 NEVER-SURRENDER RESCUE:
-                    // If `/followers/` is throttled/blocked by Instagram on this account right now,
-                    // do NOT fail with "Instagram wants a short break" — rescue the already-loaded
-                    // `followingList` directly via `friendships/show/{id}/`!
-                    if (!resolvedDirectly && !lastScanInfo.followers?.complete && !preferDirectPoolFirst && followingList.length <= 1500) {
-                        logScanDiag({ stage: 'followers', msg: 'followers endpoint blocked — rescuing via friendships/show pool' });
-                        await resolveViaShowPool();
+                    const resolvedTotal = directRes ? (directRes.checked + (directRes.unresolvedCount || 0)) : 0;
+                    if (directRes && !directRes.aborted && resolvedTotal >= Math.max(1, Math.floor(followingList.length * 0.95))) {
+                        usedFollowsViewer = true;
+                        followersList = followingList.filter((u) => u.node.follows_viewer === true);
+                        realFollowersTotal = expectedFollowers;
+                        lastScanInfo.followers = {
+                            complete: true, reason: 'direct_friendship_show', count: followersList.length
+                        };
+                        return true;
                     }
+                    return false;
+                };
+
+                const preferDirectPoolFirst =
+                    followingList.length <= 250 &&
+                    expectedFollowers != null &&
+                    expectedFollowers > Math.max(600, Math.round(followingList.length * 2));
+
+                let resolvedDirectly = false;
+                if (preferDirectPoolFirst) {
+                    resolvedDirectly = await resolveViaShowPool();
+                }
+
+                // TIER 2B: Read `followers` (`firstPageSize=12`, `pageSize=50`, GraphQL reserve)
+                if (!resolvedDirectly) {
+                    followersList = await getFollowersList(userId, {
+                        preferGraphql: expectedFollowers != null && expectedFollowers > 1500
+                    });
+                }
+
+                // TIER 3 NEVER-SURRENDER RESCUE (always attempted if `/followers/` did not complete!)
+                if (!resolvedDirectly && !lastScanInfo.followers?.complete && followingList.length <= 5000) {
+                    logScanDiag({ stage: 'followers', msg: 'followers endpoint blocked — rescuing via friendships/show pool' });
+                    await resolveViaShowPool();
+                }
+            };
+
+            try {
+                await runScanPipeline();
+
+                // TIER 4 AUTO SAME-ORIGIN TAB RECOVERY:
+                // If no instagram.com tab was open and extension-origin fetches were refused by
+                // Instagram's Sec-Fetch-Site check, spin up a quiet background instagram.com tab
+                // so the scan executes 100% same-origin on www.instagram.com, then close it!
+                if (!isDataComplete() && pageBridge && typeof pageBridge.ensurePage === 'function') {
+                    const hadTab = await pageBridge.isPageAvailable();
+                    if (!hadTab) {
+                        logScanDiag({ stage: 'recovery', msg: 'opening background instagram.com helper tab for same-origin scan' });
+                        const connected = await pageBridge.ensurePage({ openIfMissing: true });
+                        if (connected) {
+                            await runScanPipeline();
+                        }
+                    }
+                }
+            } finally {
+                if (pageBridge && typeof pageBridge.releaseHelperTab === 'function') {
+                    pageBridge.releaseHelperTab();
                 }
             }
 
             // Stamp explicit boolean `follows_viewer` onto `followingList` from the two-list diff,
-            // plus a sub-second 6x-parallel pre-render check on the top 18 suspected non-followers!
+            // plus a fast pre-render check on the top 12 suspected non-followers!
             if (!usedFollowsViewer && followingList.length > 0 && isDataComplete()) {
                 const fIds = new Set(followersList.map(f => f?.node?.id != null ? String(f.node.id) : '').filter(Boolean));
                 const fNames = new Set(followersList.map(f => f?.node?.username ? f.node.username.toLowerCase() : '').filter(Boolean));
@@ -1974,15 +2034,13 @@ async function initializeFollowingList(forceRefresh = false) {
                     }
                 }
 
-                // Fast ~0.5s 6x-concurrent verification on top 18 visible suspects (remaining rows
-                // verify asynchronously via scheduleVisibleRowVerification after instant render).
                 if (suspectedNonFollowers.length > 0 && typeof window.UnfollowBridge?.verifyUsersFollowBack === 'function') {
-                    const topBatch = suspectedNonFollowers.slice(0, 18);
+                    const topBatch = suspectedNonFollowers.slice(0, 12);
                     const viewer = await getViewerOnce().catch(() => null);
                     await window.UnfollowBridge.verifyUsersFollowBack(topBatch, {
                         csrfToken: viewer?.csrfToken,
-                        concurrency: 6,
-                        delayMs: 40,
+                        concurrency: 3,
+                        delayMs: 80,
                         onMutualFound: (u) => {
                             followersList.push({
                                 node: { id: String(u.node.id), username: u.node.username || '' }
@@ -2028,6 +2086,9 @@ async function initializeFollowingList(forceRefresh = false) {
             if (elements.loadingIndicator) elements.loadingIndicator.style.display = 'none';
             if (elements.followingList) elements.followingList.style.opacity = '1';
             showScanNotice(describeScanFailure());
+            renderScanDiag();
+            const diagBox = document.getElementById('scanDiagnosticsBox');
+            if (diagBox) diagBox.open = true;
             console.warn('[bridge] eksik veri, tablo gosterilmedi:', lastScanInfo);
             return;
         }

@@ -22,8 +22,8 @@
    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqyLPhpkf8TZZvhc7gUg2stRCcThTshM9kh7CJDyb39O3vJ74NxJxLcZ9juSkPXZqyINIlf7N4hiMiYPAWp1qBZw8BIXsUBYdAR4gap2cKEqlixwoAcJcj7fmNYR5KPGBvmlH+idMiSfzIgNHSxTpjWVfaTMCnRCIOwP/aiWcrgsEora+LAqMuF9qCNVON/KwB+TXmwta3RwzeOCLfl8eX5oQF0ou37VbsbcPtEH5ZfY6iAm+AvQhSNpnhi8+txkhgC2uOj57ueVsXc9cZak+pd4ERdkF7+FAwwbt63b/dZ77lQD/ot0RnIWmYT8x6mlp4mWw961PUAA50iIcWGEEIQIDAQAB",
    "manifest_version": 3,
    "name": "__MSG_extensionName__",
-   "permissions": [ "storage", "unlimitedStorage", "identity", "cookies", "declarativeNetRequestWithHostAccess" ],
-   "version": "3.1.1",
+   "permissions": [ "storage", "unlimitedStorage", "identity", "cookies", "declarativeNetRequestWithHostAccess", "scripting" ],
+   "version": "3.1.2",
    "web_accessible_resources": [ {
       "matches": [ "https://*.instagram.com/*" ],
       "resources": [ "ig-session.js", "unfollow-bridge.js", "ig-inject.js" ]
