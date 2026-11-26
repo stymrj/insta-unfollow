@@ -22,13 +22,17 @@
 
   const IG_APP_ID = '936619743392459';
 
-  /** Proven GraphQL query hashes for reserve list reads and status fast-path. */
+  /** Proven GraphQL query hashes for reserve list reads and multi-hash status fast-path. */
   const GRAPHQL_QUERY_HASH = {
-    followers: '7dd9a7e2160524fd85f50317462cff9f',
+    followers: 'c76146de99bb02f6415203be841dd25a',
+    followersReserve: '7dd9a7e2160524fd85f50317462cff9f',
     following: '58712303d941c6855d4e888c5f0cd22f'
   };
   const GRAPHQL_EDGE = { followers: 'edge_followed_by', following: 'edge_follow' };
-  const FOLLOWS_VIEWER_HASH = '3dec7e2c57367ef3da3d987d89f9dbc8';
+  const FOLLOWS_VIEWER_HASHES = [
+    'd04b0a864b4b54837c0d870b0e77e076',
+    '3dec7e2c57367ef3da3d987d89f9dbc8'
+  ];
 
   const SOURCE = { V1: 'v1', GRAPHQL: 'graphql' };
 
@@ -43,17 +47,32 @@
   };
 
   const CONFIG = {
-    firstPageSize: 50,
-    pageSize: 50,
-    minDelayMs: 650,
-    maxDelayMs: 1200,
+    firstPageSize: 200,
+    pageSize: 200,
+    minDelayMs: 120,
+    maxDelayMs: 220,
     fallbackPageSize: 50,
-    fallbackMinDelayMs: 1000,
-    fallbackMaxDelayMs: 1900,
+    fallbackMinDelayMs: 140,
+    fallbackMaxDelayMs: 250,
     maxConsecutiveErrors: 3,
     maxRequests: 2500,
-    rateLimitBackoffMs: [5000, 15000, 30000]
+    rateLimitBackoffMs: [4000, 10000, 22000]
   };
+
+  /**
+   * Adaptive burst-then-pace delay:
+   * Fast burst (120–220ms) for normal-sized scans (first 14 pages = up to ~1,400–2,800 accounts),
+   * stepping smoothly to moderate pacing only on massive lists so standard accounts finish in seconds.
+   */
+  function adaptiveDelayMs(pageCount, onGraphql) {
+    if (pageCount <= 14) {
+      return onGraphql ? randomBetween(130, 230) : randomBetween(110, 200);
+    }
+    if (pageCount <= 32) {
+      return onGraphql ? randomBetween(240, 380) : randomBetween(220, 350);
+    }
+    return onGraphql ? randomBetween(400, 650) : randomBetween(380, 600);
+  }
 
   function makeRankToken() {
     if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
@@ -189,10 +208,13 @@
     };
   }
 
-  async function readGraphqlPage({ userId, type, cursor, count, token, signal }) {
+  let activeFollowersGqlHash = GRAPHQL_QUERY_HASH.followers;
+
+  async function readGraphqlPage({ userId, type, cursor, count, token, queryHashOverride, signal }) {
     token = await resolveCsrfToken(token);
+    const hash = queryHashOverride || (type === 'followers' ? activeFollowersGqlHash : GRAPHQL_QUERY_HASH[type]);
     const variables = { id: String(userId), first: count || CONFIG.fallbackPageSize, after: cursor || '' };
-    const url = `https://www.instagram.com/graphql/query/?query_hash=${GRAPHQL_QUERY_HASH[type]}` +
+    const url = `https://www.instagram.com/graphql/query/?query_hash=${hash}` +
       `&variables=${encodeURIComponent(JSON.stringify(variables))}`;
 
     let response;
@@ -202,8 +224,6 @@
         signal,
         headers: buildIgHeaders(token)
       });
-      // If full X-Ig headers were soft-refused on legacy GraphQL, retry once with bare credentials
-      // (matching the original v2.0.6 GraphQL request shape).
       if (!cursor && (looksRefused(response) || (!response.ok && response.status !== 401 && response.status !== 403 && response.status !== 429))) {
         response = await fetch(url, { credentials: 'include', signal });
       }
@@ -214,7 +234,13 @@
     if (response.status === 401 || response.status === 403) return { kind: 'auth' };
     if (response.status === 429) return { kind: 'rate_limited', status: 429 };
     if (response.status >= 500) return { kind: 'error' };
-    if (looksRefused(response)) return { kind: 'blocked' };
+    if (looksRefused(response)) {
+      if (!cursor && !queryHashOverride && type === 'followers' && activeFollowersGqlHash !== GRAPHQL_QUERY_HASH.followersReserve) {
+        activeFollowersGqlHash = GRAPHQL_QUERY_HASH.followersReserve;
+        return readGraphqlPage({ userId, type, cursor, count, token, queryHashOverride: activeFollowersGqlHash, signal });
+      }
+      return { kind: 'blocked' };
+    }
 
     let payload;
     try {
@@ -353,9 +379,7 @@
       seenCursors.add(page.cursor);
       cursor = page.cursor;
 
-      const minDelay = onGraphql ? CONFIG.fallbackMinDelayMs : CONFIG.minDelayMs;
-      const maxDelay = onGraphql ? CONFIG.fallbackMaxDelayMs : CONFIG.maxDelayMs;
-      await sleepUnlessStopped(randomBetween(minDelay, maxDelay), shouldStop);
+      await sleepUnlessStopped(adaptiveDelayMs(requests, onGraphql), shouldStop);
     }
   }
 
@@ -379,74 +403,56 @@
   }
 
   /**
-   * Live follower/following counts across Web-native sources (IgSession Polaris GraphQL,
-   * 1-node GraphQL edge count, `api/v1/users/{id}/info/`, and storage fallback).
+   * Fast parallel expected-counts lookup with a 2,000ms cap so scan startup is never delayed.
    */
   async function getExpectedCounts(userId) {
     if (!userId) return null;
-    let followers = null;
-    let following = null;
 
-    // 1. IgSession (PolarisProfilePageContentQuery — official Web profile query)
+    // 1. Instant return if IgSession or local profile cache already has both counts
     try {
       if (window.IgSession && typeof window.IgSession.fetchSession === 'function') {
         const session = await window.IgSession.fetchSession();
-        if (session && String(session.id) === String(userId)) {
-          if (typeof session.followerCount === 'number') followers = session.followerCount;
-          if (typeof session.followingCount === 'number') following = session.followingCount;
-          if (followers != null && following != null) return { followers, following };
+        if (session && String(session.id) === String(userId) &&
+            typeof session.followerCount === 'number' && typeof session.followingCount === 'number') {
+          return { followers: session.followerCount, following: session.followingCount };
         }
       }
-    } catch {}
-
-    // 2. Web GraphQL 1-item edge count (works cleanly on desktop Chrome even when mobile v1 info 400s)
-    try {
-      const token = await resolveCsrfToken('');
-      if (followers == null) {
-        const fPage = await readGraphqlPage({ userId, type: 'followers', cursor: '', count: 1, token });
-        if (fPage.kind === 'ok' && typeof fPage.total === 'number') followers = fPage.total;
-      }
-      if (following == null) {
-        const gPage = await readGraphqlPage({ userId, type: 'following', cursor: '', count: 1, token });
-        if (gPage.kind === 'ok' && typeof gPage.total === 'number') following = gPage.total;
-      }
-      if (followers != null && following != null) return { followers, following };
-    } catch {}
-
-    // 3. v1 users/{id}/info/ fallback
-    try {
-      const token = await resolveCsrfToken('');
-      const response = await fetch(
-        `https://www.instagram.com/api/v1/users/${encodeURIComponent(userId)}/info/`,
-        { credentials: 'include', headers: buildIgHeaders(token) }
-      );
-      if (response.ok && !looksRefused(response)) {
-        const data = await response.json().catch(() => null);
-        const user = data?.user;
-        if (user) {
-          if (followers == null && typeof user.follower_count === 'number') followers = user.follower_count;
-          if (following == null && typeof user.following_count === 'number') following = user.following_count;
-          if (followers != null && following != null) return { followers, following };
-        }
-      }
-    } catch {}
-
-    // 4. Local profile cache fallback
-    try {
       if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
         const stored = await chrome.storage.local.get('ig_profile_' + userId);
         const p = stored && stored['ig_profile_' + userId];
-        if (p) {
-          if (followers == null && p.followerCount != null) followers = p.followerCount;
-          if (following == null && p.followingCount != null) following = p.followingCount;
+        if (p && typeof p.followerCount === 'number' && typeof p.followingCount === 'number') {
+          return { followers: p.followerCount, following: p.followingCount };
         }
       }
     } catch {}
 
-    if (followers != null || following != null) {
-      return { followers: followers ?? undefined, following: following ?? undefined };
-    }
-    return null;
+    // 2. Parallel race across Web GraphQL 1-item edge counts + v1 info, capped at 2.0s
+    const lookupPromise = (async () => {
+      const token = await resolveCsrfToken('');
+      const [fPage, gPage, infoRes] = await Promise.all([
+        readGraphqlPage({ userId, type: 'followers', cursor: '', count: 1, token }).catch(() => ({})),
+        readGraphqlPage({ userId, type: 'following', cursor: '', count: 1, token }).catch(() => ({})),
+        fetch(`https://www.instagram.com/api/v1/users/${encodeURIComponent(userId)}/info/`, {
+          credentials: 'include',
+          headers: buildIgHeaders(token)
+        }).then(async (r) => (r.ok && !looksRefused(r)) ? r.json().catch(() => null) : null).catch(() => null)
+      ]);
+
+      const followers = typeof fPage?.total === 'number'
+        ? fPage.total
+        : (typeof infoRes?.user?.follower_count === 'number' ? infoRes.user.follower_count : null);
+      const following = typeof gPage?.total === 'number'
+        ? gPage.total
+        : (typeof infoRes?.user?.following_count === 'number' ? infoRes.user.following_count : null);
+
+      if (followers != null || following != null) {
+        return { followers: followers ?? undefined, following: following ?? undefined };
+      }
+      return null;
+    })();
+
+    const timeoutPromise = new Promise((resolve) => setTimeout(() => resolve(null), 2000));
+    return Promise.race([lookupPromise, timeoutPromise]);
   }
 
   function toStatusEdge(user) {
@@ -465,8 +471,9 @@
     };
   }
 
-  async function readFollowingStatusPage({ userId, cursor, count, token, signal }) {
+  async function readFollowingStatusPage({ userId, cursor, count, token, queryHash, signal }) {
     token = await resolveCsrfToken(token);
+    const hash = queryHash || FOLLOWS_VIEWER_HASHES[0];
     const variables = {
       id: String(userId),
       include_reel: true,
@@ -474,7 +481,7 @@
       first: count || CONFIG.fallbackPageSize,
       ...(cursor ? { after: cursor } : {})
     };
-    const url = `https://www.instagram.com/graphql/query/?query_hash=${FOLLOWS_VIEWER_HASH}` +
+    const url = `https://www.instagram.com/graphql/query/?query_hash=${hash}` +
       `&variables=${encodeURIComponent(JSON.stringify(variables))}`;
 
     let response;
@@ -484,8 +491,6 @@
         signal,
         headers: buildIgHeaders(token)
       });
-      // If full X-Ig headers were soft-refused on legacy GraphQL, retry once with bare credentials
-      // (matching the original v2.0.6 GraphQL request shape).
       if (!cursor && (looksRefused(response) || (!response.ok && response.status !== 401 && response.status !== 403 && response.status !== 429))) {
         response = await fetch(url, { credentials: 'include', signal });
       }
@@ -507,8 +512,7 @@
     if (!edge || !Array.isArray(edge.edges)) return { kind: 'blocked' };
 
     // STRICT SAFETY INVARIANT: Every single returned node MUST carry an explicit boolean
-    // `follows_viewer`. If even one node omits it, reject the response as `no_status` so the
-    // caller falls back to the two-list diff instead of marking real followers as non-followers.
+    // `follows_viewer`. If even one node omits it, reject the response as `no_status`.
     for (const item of edge.edges) {
       const node = item && item.node;
       if (!node || !('follows_viewer' in node) || typeof node.follows_viewer !== 'boolean') {
@@ -525,16 +529,16 @@
   }
 
   /**
-   * Read `following` with each record's `follows_viewer` boolean attached via GraphQL.
-   * Returns `reason: 'no_status'` (`complete: false`) if the endpoint refuses or omits the field,
-   * allowing the caller to fall back cleanly to the two-list scan.
+   * Read `following` with each record's `follows_viewer` boolean attached via multi-hash GraphQL
+   * (`d04b0a864b4b54837c0d870b0e77e076` -> `3dec7e2c57367ef3da3d987d89f9dbc8`) and burst pacing.
    */
-  async function scanFollowingWithStatus({ userId, expected, onProgress, shouldStop, signal }) {
+  async function scanFollowingWithStatus({ userId, expected, csrfToken, onProgress, shouldStop, signal }) {
     const startedAt = Date.now();
     const users = [];
     const seen = new Set();
     const seenCursors = new Set();
     let cursor = '';
+    let hashIndex = 0;
     let consecutiveErrors = 0;
     let rateLimitHits = 0;
     let requests = 0;
@@ -545,7 +549,7 @@
       reason,
       complete: reason === SCAN_REASON.COMPLETE,
       source: SOURCE.GRAPHQL,
-      usedFallback: false,
+      usedFallback: hashIndex > 0,
       usedStatusReader: true,
       requests,
       total
@@ -557,26 +561,40 @@
 
       requests++;
       const page = await readFollowingStatusPage({
-        userId, cursor, count: CONFIG.fallbackPageSize, signal
+        userId,
+        cursor,
+        count: CONFIG.fallbackPageSize,
+        token: csrfToken,
+        queryHash: FOLLOWS_VIEWER_HASHES[hashIndex],
+        signal
       });
 
       if (shouldStop && shouldStop()) return finish(SCAN_REASON.STOPPED);
       if (page.kind === 'auth') return finish(SCAN_REASON.FAILED);
-      if (page.kind === 'no_status') return finish('no_status');
+
+      if (page.kind === 'no_status' || (page.kind === 'blocked' && users.length === 0)) {
+        if (users.length === 0 && hashIndex + 1 < FOLLOWS_VIEWER_HASHES.length) {
+          hashIndex++;
+          consecutiveErrors = 0;
+          continue;
+        }
+        return finish('no_status');
+      }
 
       if (page.kind === 'network' || page.kind === 'error') {
+        if (users.length === 0 && hashIndex + 1 < FOLLOWS_VIEWER_HASHES.length) {
+          hashIndex++;
+          consecutiveErrors = 0;
+          continue;
+        }
         if (++consecutiveErrors >= CONFIG.maxConsecutiveErrors) {
           return finish(users.length ? SCAN_REASON.RATE_LIMITED : 'no_status');
         }
-        await sleepUnlessStopped(
-          randomBetween(CONFIG.fallbackMinDelayMs, CONFIG.fallbackMaxDelayMs) * consecutiveErrors,
-          shouldStop
-        );
+        await sleepUnlessStopped(adaptiveDelayMs(requests, true) * consecutiveErrors, shouldStop);
         continue;
       }
 
       if (page.kind === 'blocked') {
-        if (users.length === 0) return finish('no_status');
         const backoff = CONFIG.rateLimitBackoffMs[rateLimitHits];
         if (backoff === undefined) return finish(SCAN_REASON.RATE_LIMITED);
         rateLimitHits++;
@@ -612,9 +630,7 @@
       seenCursors.add(page.cursor);
       cursor = page.cursor;
 
-      await sleepUnlessStopped(
-        randomBetween(CONFIG.fallbackMinDelayMs, CONFIG.fallbackMaxDelayMs), shouldStop
-      );
+      await sleepUnlessStopped(adaptiveDelayMs(requests, true), shouldStop);
     }
   }
 
@@ -673,15 +689,16 @@
   }
 
   /**
-   * Gently verifies a batch of suspected non-followers against Instagram's authoritative
-   * `GET /api/v1/friendships/show/{id}/` endpoint (the same endpoint Instagram Web profile
-   * hover-cards use to render the "Follows you" pill).
+   * Concurrent worker-pool relationship verifier against Instagram's authoritative
+   * `GET /api/v1/friendships/show/{id}/` endpoint (`followed_by`).
    *
-   * Stops immediately on rate-limiting so it never pressures the session.
+   * Uses `concurrency` parallel workers (default 6) so 18–200 checks finish in 0.5–4 seconds
+   * while halting immediately on any 429 or consecutive refusals.
    */
   async function verifyUsersFollowBack(users, {
     csrfToken,
-    delayMs = 260,
+    concurrency = 6,
+    delayMs = 50,
     onProgress,
     onMutualFound,
     shouldStop
@@ -691,37 +708,54 @@
     let checked = 0;
     let mutualsFound = 0;
     let consecutiveFailures = 0;
+    let aborted = false;
+    let nextIdx = 0;
 
-    for (const u of users) {
-      if (shouldStop && shouldStop()) return { checked, mutualsFound, stoppedEarly: true };
-      const uid = u?.node?.id != null ? String(u.node.id) : '';
-      if (!uid) continue;
+    const workerCount = Math.max(1, Math.min(concurrency, users.length));
 
-      const rel = await checkFriendshipStatus(uid, token);
-      if (!rel || !rel.ok) {
-        if (rel?.status === 429 || ++consecutiveFailures >= 2) {
-          return { checked, mutualsFound, stoppedEarly: true };
+    async function worker(workerId) {
+      if (workerId > 0 && delayMs > 0) {
+        await sleepUnlessStopped(workerId * 30, shouldStop);
+      }
+      while (!aborted) {
+        if (shouldStop && shouldStop()) { aborted = true; return; }
+        const idx = nextIdx++;
+        if (idx >= users.length) return;
+
+        const u = users[idx];
+        const uid = u?.node?.id != null ? String(u.node.id) : '';
+        if (!uid) continue;
+
+        const rel = await checkFriendshipStatus(uid, token);
+        if (aborted) return;
+
+        if (!rel || !rel.ok) {
+          if (rel?.status === 429 || ++consecutiveFailures >= 3) {
+            aborted = true;
+            return;
+          }
+          continue;
         }
-        continue;
-      }
 
-      consecutiveFailures = 0;
-      checked++;
-      u.node.follows_viewer = rel.followedBy === true;
-      u.node._friendshipVerified = true;
+        consecutiveFailures = 0;
+        checked++;
+        u.node.follows_viewer = rel.followedBy === true;
+        u.node._friendshipVerified = true;
 
-      if (rel.followedBy === true) {
-        mutualsFound++;
-        if (onMutualFound) onMutualFound(u, rel);
-      }
-      if (onProgress) onProgress(checked, users.length, mutualsFound);
+        if (rel.followedBy === true) {
+          mutualsFound++;
+          if (onMutualFound) onMutualFound(u, rel);
+        }
+        if (onProgress) onProgress(checked, users.length, mutualsFound);
 
-      if (checked < users.length && delayMs > 0) {
-        await sleepUnlessStopped(delayMs, shouldStop);
+        if (nextIdx < users.length && delayMs > 0) {
+          await sleepUnlessStopped(delayMs, shouldStop);
+        }
       }
     }
 
-    return { checked, mutualsFound, stoppedEarly: false };
+    await Promise.all(Array.from({ length: workerCount }, (_, i) => worker(i)));
+    return { checked, mutualsFound, stoppedEarly: aborted || checked < users.length };
   }
 
   window.UnfollowBridge = {

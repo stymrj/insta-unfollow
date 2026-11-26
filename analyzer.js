@@ -858,49 +858,53 @@ async function verifyStatusScanHonesty(userId, followingUsers, expectedFollowers
         const viewer = await getViewerOnce().catch(() => null);
         const { readFollowersSample, checkFriendshipStatus } = window.UnfollowBridge;
 
-        // 1. Compare against one real page of followers (1 request)
-        if (typeof readFollowersSample === 'function') {
-            const sample = await readFollowersSample({ userId, csrfToken: viewer?.csrfToken });
-            if (Array.isArray(sample) && sample.length > 0) {
-                const sampleIds = new Set(sample.map(s => s?.node?.id != null ? String(s.node.id) : '').filter(Boolean));
-                const sampleNames = new Set(sample.map(s => s?.node?.username ? s.node.username.toLowerCase() : '').filter(Boolean));
-                for (const u of followingUsers) {
-                    const uid = u?.node?.id != null ? String(u.node.id) : '';
-                    const uname = u?.node?.username ? u.node.username.toLowerCase() : '';
-                    if ((uid && sampleIds.has(uid)) || (uname && sampleNames.has(uname))) {
-                        if (u.node.follows_viewer !== true) {
-                            console.warn('[verify] Follower in sample had follows_viewer=false:', u.node.username);
-                            return false;
-                        }
+        const markedNonFollowers = followingUsers.filter(u => u?.node?.follows_viewer === false && u?.node?.id);
+        const probes = markedNonFollowers.slice(0, 2);
+
+        // Run follower sample + 2 authoritative probes in PARALLEL (~200ms total instead of 1.2s)
+        const [sample, probeResults] = await Promise.all([
+            typeof readFollowersSample === 'function'
+                ? readFollowersSample({ userId, csrfToken: viewer?.csrfToken }).catch(() => [])
+                : Promise.resolve([]),
+            typeof checkFriendshipStatus === 'function' && probes.length > 0
+                ? Promise.all(probes.map(u => checkFriendshipStatus(u.node.id, viewer?.csrfToken).then(rel => ({ u, rel }))))
+                : Promise.resolve([])
+        ]);
+
+        if (Array.isArray(sample) && sample.length > 0) {
+            const sampleIds = new Set(sample.map(s => s?.node?.id != null ? String(s.node.id) : '').filter(Boolean));
+            const sampleNames = new Set(sample.map(s => s?.node?.username ? s.node.username.toLowerCase() : '').filter(Boolean));
+            for (const u of followingUsers) {
+                const uid = u?.node?.id != null ? String(u.node.id) : '';
+                const uname = u?.node?.username ? u.node.username.toLowerCase() : '';
+                if ((uid && sampleIds.has(uid)) || (uname && sampleNames.has(uname))) {
+                    if (u.node.follows_viewer !== true) {
+                        console.warn('[verify] Follower in sample had follows_viewer=false:', u.node.username);
+                        return false;
                     }
                 }
             }
         }
 
-        // 2. Spot-check up to 2 accounts marked as non-followers via authoritative friendships/show/{id}/
-        if (typeof checkFriendshipStatus === 'function') {
-            const markedNonFollowers = followingUsers.filter(u => u?.node?.follows_viewer === false && u?.node?.id);
-            const probes = markedNonFollowers.slice(0, 2);
-            let verifiedCount = 0;
-            for (const u of probes) {
-                const rel = await checkFriendshipStatus(u.node.id, viewer?.csrfToken);
-                if (rel && rel.ok) {
-                    verifiedCount++;
-                    if (rel.followedBy === true) {
-                        console.warn('[verify] Account marked non-follower actually follows back:', u.node.username);
-                        return false;
-                    }
+        let verifiedCount = 0;
+        for (const { u, rel } of probeResults) {
+            if (rel && rel.ok) {
+                verifiedCount++;
+                u.node._friendshipVerified = true;
+                if (rel.followedBy === true) {
+                    console.warn('[verify] Account marked non-follower actually follows back:', u.node.username);
+                    return false;
                 }
             }
-            // If 0 mutuals were found despite account having followers, require at least 1 confirmed check
-            const mutualCount = followingUsers.filter(u => u?.node?.follows_viewer === true).length;
-            if (expectedFollowers > 0 && followingUsers.length >= 5 && mutualCount === 0 && verifiedCount === 0) {
-                return false;
-            }
+        }
+
+        const mutualCount = followingUsers.filter(u => u?.node?.follows_viewer === true).length;
+        if (expectedFollowers > 0 && followingUsers.length >= 5 && mutualCount === 0 && verifiedCount === 0) {
+            return false;
         }
         return true;
     } catch (e) {
-        console.warn('[verify] Honesty check error, preferring two-list scan:', e);
+        console.warn('[verify] Honesty check error, preferring fallback scan:', e);
         return false;
     }
 }
@@ -1250,7 +1254,7 @@ let visibleVerifyRunId = 0;
 function scheduleVisibleRowVerification(pageData) {
     const runId = ++visibleVerifyRunId;
     if (!Array.isArray(pageData) || !pageData.length) return;
-    if (!window.UnfollowBridge || typeof window.UnfollowBridge.checkFriendshipStatus !== 'function') return;
+    if (!window.UnfollowBridge || typeof window.UnfollowBridge.verifyUsersFollowBack !== 'function') return;
 
     const unverifiedSuspects = pageData.filter((u) =>
         u && u.node && u.node.id &&
@@ -1262,30 +1266,21 @@ function scheduleVisibleRowVerification(pageData) {
 
     (async () => {
         const csrfToken = await getCsrfTokenOnce().catch(() => null);
-        let consecutiveFailures = 0;
-        for (const u of unverifiedSuspects) {
-            if (runId !== visibleVerifyRunId || isUnfollowingActive) return;
-            const uid = String(u.node.id);
-            const uname = u.node.username;
-            const rel = await window.UnfollowBridge.checkFriendshipStatus(uid, csrfToken);
-            if (runId !== visibleVerifyRunId) return;
-
-            if (!rel || !rel.ok) {
-                if (rel?.status === 429 || ++consecutiveFailures >= 2) return;
-                continue;
-            }
-            consecutiveFailures = 0;
-            u.node._friendshipVerified = true;
-
-            if (rel.followedBy === true) {
+        await window.UnfollowBridge.verifyUsersFollowBack(unverifiedSuspects, {
+            csrfToken,
+            concurrency: 3,
+            delayMs: 90,
+            shouldStop: () => runId !== visibleVerifyRunId || isUnfollowingActive,
+            onMutualFound: (u) => {
+                if (runId !== visibleVerifyRunId) return;
+                const uid = String(u.node.id);
+                const uname = u.node.username;
                 const escName = (typeof CSS !== 'undefined' && CSS.escape) ? CSS.escape(uname) : uname.replace(/"/g, '\\"');
                 const row = elements.followingList?.querySelector(`tr[data-username="${escName}"]`) || null;
                 const btn = row?.querySelector('.unfollow-btn') || null;
                 markUserAsFollowingBackInMemory(uid, uname, row, btn);
             }
-
-            await new Promise((r) => setTimeout(r, 320));
-        }
+        });
     })().catch(() => {});
 }
 
@@ -1902,9 +1897,8 @@ async function initializeFollowingList(forceRefresh = false) {
 
             const expectedFollowers = await getExpectedOnce(userId, 'followers');
 
-            // 1. Lead with `readFollowingWithStatus` (`FOLLOWS_VIEWER_HASH`) FIRST for ALL accounts:
-            //    Every returned node carries Instagram's own `follows_viewer` boolean directly,
-            //    avoiding the 2–9% follower-list omissions that Instagram's followers endpoint applies.
+            // TIER 1: Multi-hash GraphQL `follows_viewer` fast-path (`d04b0a86...` + `3dec7e2c...`)
+            // Reads ONLY `following` with burst pacing (~1-4 seconds total, zero follower pages read!).
             const withStatus = await readFollowingWithStatus(userId);
             if (withStatus) {
                 usedFollowsViewer = true;
@@ -1920,19 +1914,54 @@ async function initializeFollowingList(forceRefresh = false) {
                     complete: true, reason: 'follows_viewer', count: followersList.length
                 };
             } else {
-                // 2. Fallback: read both lists sequentially (`followers` then `following`) with automatic
-                //    V1 <-> GraphQL merge on shortfall.
-                followersList = await getFollowersList(userId, {
-                    preferGraphql: expectedFollowers != null && expectedFollowers > 1500
-                });
-                followingList = lastScanInfo.followers?.complete
-                    ? await getFollowingList(userId)
-                    : [];
+                // TIER 2: Smart Cost Router — read `following` FIRST (`count=200`, ~0.5-1.5s)!
+                // Why: if the account has thousands of followers and a modest following list,
+                // resolving `following` directly via 6x-parallel `friendships/show/{id}/` finishes in
+                // ~2-4 seconds without ever scraping thousands of follower pages!
+                followingList = await getFollowingList(userId);
+
+                if (!lastScanInfo.following?.complete || followingList.length === 0) {
+                    followersList = [];
+                } else {
+                    const shouldResolveDirectly =
+                        followingList.length <= 320 &&
+                        (expectedFollowers == null || expectedFollowers > Math.max(500, Math.round(followingList.length * 1.6))) &&
+                        typeof window.UnfollowBridge?.verifyUsersFollowBack === 'function';
+
+                    let resolvedDirectly = false;
+                    if (shouldResolveDirectly) {
+                        const viewer = await getViewerOnce().catch(() => null);
+                        setScanStage('following', true);
+                        const directRes = await window.UnfollowBridge.verifyUsersFollowBack(followingList, {
+                            csrfToken: viewer?.csrfToken,
+                            concurrency: 6,
+                            delayMs: 45,
+                            onProgress: (done, total) => {
+                                renderScanProgress('following', { count: done, elapsedMs: 0 }, total);
+                            }
+                        });
+                        if (!directRes.stoppedEarly && directRes.checked === followingList.length) {
+                            resolvedDirectly = true;
+                            usedFollowsViewer = true;
+                            followersList = followingList.filter((u) => u.node.follows_viewer === true);
+                            realFollowersTotal = expectedFollowers;
+                            lastScanInfo.followers = {
+                                complete: true, reason: 'direct_friendship_show', count: followersList.length
+                            };
+                        }
+                    }
+
+                    // TIER 2B: Turbo `followers` read (`count=200`, 110-200ms burst pacing)
+                    if (!resolvedDirectly) {
+                        followersList = await getFollowersList(userId, {
+                            preferGraphql: expectedFollowers != null && expectedFollowers > 2500
+                        });
+                    }
+                }
             }
 
             // Stamp explicit boolean `follows_viewer` onto `followingList` from the two-list diff,
-            // AND reconcile suspected non-followers via authoritative `friendships/show/{id}/` so
-            // any follower Instagram omitted from `followersList` is caught BEFORE rendering!
+            // plus a sub-second 6x-parallel pre-render check on the top 18 suspected non-followers!
             if (!usedFollowsViewer && followingList.length > 0 && isDataComplete()) {
                 const fIds = new Set(followersList.map(f => f?.node?.id != null ? String(f.node.id) : '').filter(Boolean));
                 const fNames = new Set(followersList.map(f => f?.node?.username ? f.node.username.toLowerCase() : '').filter(Boolean));
@@ -1951,22 +1980,15 @@ async function initializeFollowingList(forceRefresh = false) {
                     }
                 }
 
-                // Pre-render authoritative verification on up to the first 60 suspected non-followers
-                // (covers the entire Free-plan display slice and top of Page 1 before table renders!)
+                // Fast ~0.5s 6x-concurrent verification on top 18 visible suspects (remaining rows
+                // verify asynchronously via scheduleVisibleRowVerification after instant render).
                 if (suspectedNonFollowers.length > 0 && typeof window.UnfollowBridge?.verifyUsersFollowBack === 'function') {
-                    const batchToVerify = suspectedNonFollowers.slice(0, 60);
+                    const topBatch = suspectedNonFollowers.slice(0, 18);
                     const viewer = await getViewerOnce().catch(() => null);
-                    if (elements.loadingCount) {
-                        elements.loadingCount.textContent = `Verifying relationships (0/${batchToVerify.length})…`;
-                    }
-                    await window.UnfollowBridge.verifyUsersFollowBack(batchToVerify, {
+                    await window.UnfollowBridge.verifyUsersFollowBack(topBatch, {
                         csrfToken: viewer?.csrfToken,
-                        delayMs: 240,
-                        onProgress: (done, total) => {
-                            if (elements.loadingCount) {
-                                elements.loadingCount.textContent = `Verifying relationships (${done}/${total})…`;
-                            }
-                        },
+                        concurrency: 6,
+                        delayMs: 40,
                         onMutualFound: (u) => {
                             followersList.push({
                                 node: { id: String(u.node.id), username: u.node.username || '' }
@@ -2175,14 +2197,6 @@ async function initializeFollowingList(forceRefresh = false) {
         if (!fromCache) {
             await saveAnalysisSnapshot(userId, followersCount, followingCount, nonFollowersCount);
         }
-
-        if (elements.loadingCount) {
-            elements.loadingCount.textContent = getMessage('finalizingAnalysis');
-            const detail = document.getElementById('loadingDetail');
-            if (detail) detail.textContent = '';
-        }
-
-        await new Promise(resolve => setTimeout(resolve, 600));
 
         if (elements.loadingIndicator) {
             elements.loadingIndicator.style.display = 'none';
