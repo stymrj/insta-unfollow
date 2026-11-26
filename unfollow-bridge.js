@@ -43,18 +43,27 @@
   };
 
   const CONFIG = {
-    /** Matches Instagram Web's own initial follow-sheet request size. */
-    firstPageSize: 12,
+    firstPageSize: 50,
     pageSize: 50,
-    minDelayMs: 300,
-    maxDelayMs: 650,
+    minDelayMs: 650,
+    maxDelayMs: 1200,
     fallbackPageSize: 50,
-    fallbackMinDelayMs: 1100,
-    fallbackMaxDelayMs: 2200,
+    fallbackMinDelayMs: 1000,
+    fallbackMaxDelayMs: 1900,
     maxConsecutiveErrors: 3,
     maxRequests: 2500,
     rateLimitBackoffMs: [5000, 15000, 30000]
   };
+
+  function makeRankToken() {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+      return crypto.randomUUID();
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+      const r = (Math.random() * 16) | 0;
+      return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+    });
+  }
 
   const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
 
@@ -124,12 +133,13 @@
     };
   }
 
-  async function readV1Page({ userId, type, cursor, count, token, signal }) {
+  async function readV1Page({ userId, type, cursor, count, token, rankToken, signal }) {
     token = await resolveCsrfToken(token);
     const query = new URLSearchParams({
       count: String(count || CONFIG.pageSize),
       search_surface: 'follow_list_page'
     });
+    if (rankToken) query.set('rank_token', rankToken);
     if (cursor) query.set('max_id', cursor);
 
     let response;
@@ -192,6 +202,11 @@
         signal,
         headers: buildIgHeaders(token)
       });
+      // If full X-Ig headers were soft-refused on legacy GraphQL, retry once with bare credentials
+      // (matching the original v2.0.6 GraphQL request shape).
+      if (!cursor && (looksRefused(response) || (!response.ok && response.status !== 401 && response.status !== 403 && response.status !== 429))) {
+        response = await fetch(url, { credentials: 'include', signal });
+      }
     } catch (error) {
       return { kind: 'network', error };
     }
@@ -234,6 +249,7 @@
     let rateLimitHits = 0;
     let requests = 0;
     let total;
+    const rankToken = makeRankToken();
 
     const finish = (reason) => ({
       users,
@@ -270,7 +286,7 @@
       requests++;
       const page = onGraphql
         ? await readGraphqlPage({ userId, type, cursor, count, token: csrfToken, signal })
-        : await readV1Page({ userId, type, cursor, count, token: csrfToken, signal });
+        : await readV1Page({ userId, type, cursor, count, token: csrfToken, rankToken, signal });
 
       if (shouldStop && shouldStop()) return finish(SCAN_REASON.STOPPED);
       if (page.kind === 'auth') return finish(SCAN_REASON.FAILED);
@@ -310,19 +326,30 @@
         users.push(edge);
       }
 
+      const targetTotal = expected || total;
       if (onProgress) {
-        const target = expected || total;
         onProgress({
           count: users.length,
           source: transport,
-          total: target,
-          percent: target ? Math.min(99, Math.round((users.length / target) * 100)) : undefined,
+          total: targetTotal,
+          percent: targetTotal ? Math.min(99, Math.round((users.length / targetTotal) * 100)) : undefined,
           elapsedMs: Date.now() - startedAt
         });
       }
 
-      if (!page.cursor || page.users.length === 0) return finish(SCAN_REASON.COMPLETE);
-      if (seenCursors.has(page.cursor)) return finish(SCAN_REASON.COMPLETE);
+      const cursorEnded = !page.cursor || page.users.length === 0 || seenCursors.has(page.cursor);
+      if (cursorEnded) {
+        // If one transport silently truncated early (e.g. V1 soft-cap dropping next_max_id),
+        // switch to the reserve transport and merge any missing accounts!
+        const minAcceptable = targetTotal && targetTotal >= 15
+          ? Math.min(targetTotal - 3, Math.floor(targetTotal * 0.96))
+          : 0;
+        if (minAcceptable > 0 && users.length < minAcceptable) {
+          if (switchToFallback()) continue;
+        }
+        return finish(SCAN_REASON.COMPLETE);
+      }
+
       seenCursors.add(page.cursor);
       cursor = page.cursor;
 
@@ -352,11 +379,41 @@
   }
 
   /**
-   * Live follower/following counts directly from Instagram (`api/v1/users/{id}/info/`),
-   * with fallback to IgSession/storage only if the live endpoint refuses.
+   * Live follower/following counts across Web-native sources (IgSession Polaris GraphQL,
+   * 1-node GraphQL edge count, `api/v1/users/{id}/info/`, and storage fallback).
    */
   async function getExpectedCounts(userId) {
     if (!userId) return null;
+    let followers = null;
+    let following = null;
+
+    // 1. IgSession (PolarisProfilePageContentQuery — official Web profile query)
+    try {
+      if (window.IgSession && typeof window.IgSession.fetchSession === 'function') {
+        const session = await window.IgSession.fetchSession();
+        if (session && String(session.id) === String(userId)) {
+          if (typeof session.followerCount === 'number') followers = session.followerCount;
+          if (typeof session.followingCount === 'number') following = session.followingCount;
+          if (followers != null && following != null) return { followers, following };
+        }
+      }
+    } catch {}
+
+    // 2. Web GraphQL 1-item edge count (works cleanly on desktop Chrome even when mobile v1 info 400s)
+    try {
+      const token = await resolveCsrfToken('');
+      if (followers == null) {
+        const fPage = await readGraphqlPage({ userId, type: 'followers', cursor: '', count: 1, token });
+        if (fPage.kind === 'ok' && typeof fPage.total === 'number') followers = fPage.total;
+      }
+      if (following == null) {
+        const gPage = await readGraphqlPage({ userId, type: 'following', cursor: '', count: 1, token });
+        if (gPage.kind === 'ok' && typeof gPage.total === 'number') following = gPage.total;
+      }
+      if (followers != null && following != null) return { followers, following };
+    } catch {}
+
+    // 3. v1 users/{id}/info/ fallback
     try {
       const token = await resolveCsrfToken('');
       const response = await fetch(
@@ -366,36 +423,29 @@
       if (response.ok && !looksRefused(response)) {
         const data = await response.json().catch(() => null);
         const user = data?.user;
-        if (user && typeof user.follower_count === 'number' && typeof user.following_count === 'number') {
-          return {
-            followers: user.follower_count,
-            following: user.following_count
-          };
+        if (user) {
+          if (followers == null && typeof user.follower_count === 'number') followers = user.follower_count;
+          if (following == null && typeof user.following_count === 'number') following = user.following_count;
+          if (followers != null && following != null) return { followers, following };
         }
       }
     } catch {}
 
+    // 4. Local profile cache fallback
     try {
-      if (window.IgSession && typeof window.IgSession.fetchSession === 'function') {
-        const session = await window.IgSession.fetchSession();
-        if (session && String(session.id) === String(userId) && session.followerCount != null && session.followingCount != null) {
-          return {
-            followers: session.followerCount,
-            following: session.followingCount
-          };
-        }
-      }
       if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
         const stored = await chrome.storage.local.get('ig_profile_' + userId);
         const p = stored && stored['ig_profile_' + userId];
-        if (p && p.followerCount != null && p.followingCount != null) {
-          return {
-            followers: p.followerCount,
-            following: p.followingCount
-          };
+        if (p) {
+          if (followers == null && p.followerCount != null) followers = p.followerCount;
+          if (following == null && p.followingCount != null) following = p.followingCount;
         }
       }
     } catch {}
+
+    if (followers != null || following != null) {
+      return { followers: followers ?? undefined, following: following ?? undefined };
+    }
     return null;
   }
 
@@ -434,6 +484,11 @@
         signal,
         headers: buildIgHeaders(token)
       });
+      // If full X-Ig headers were soft-refused on legacy GraphQL, retry once with bare credentials
+      // (matching the original v2.0.6 GraphQL request shape).
+      if (!cursor && (looksRefused(response) || (!response.ok && response.status !== 401 && response.status !== 403 && response.status !== 429))) {
+        response = await fetch(url, { credentials: 'include', signal });
+      }
     } catch (error) {
       return { kind: 'network', error };
     }
@@ -617,6 +672,58 @@
     return gql.kind === 'ok' ? gql.users : [];
   }
 
+  /**
+   * Gently verifies a batch of suspected non-followers against Instagram's authoritative
+   * `GET /api/v1/friendships/show/{id}/` endpoint (the same endpoint Instagram Web profile
+   * hover-cards use to render the "Follows you" pill).
+   *
+   * Stops immediately on rate-limiting so it never pressures the session.
+   */
+  async function verifyUsersFollowBack(users, {
+    csrfToken,
+    delayMs = 260,
+    onProgress,
+    onMutualFound,
+    shouldStop
+  } = {}) {
+    if (!Array.isArray(users) || !users.length) return { checked: 0, mutualsFound: 0, stoppedEarly: false };
+    const token = await resolveCsrfToken(csrfToken);
+    let checked = 0;
+    let mutualsFound = 0;
+    let consecutiveFailures = 0;
+
+    for (const u of users) {
+      if (shouldStop && shouldStop()) return { checked, mutualsFound, stoppedEarly: true };
+      const uid = u?.node?.id != null ? String(u.node.id) : '';
+      if (!uid) continue;
+
+      const rel = await checkFriendshipStatus(uid, token);
+      if (!rel || !rel.ok) {
+        if (rel?.status === 429 || ++consecutiveFailures >= 2) {
+          return { checked, mutualsFound, stoppedEarly: true };
+        }
+        continue;
+      }
+
+      consecutiveFailures = 0;
+      checked++;
+      u.node.follows_viewer = rel.followedBy === true;
+      u.node._friendshipVerified = true;
+
+      if (rel.followedBy === true) {
+        mutualsFound++;
+        if (onMutualFound) onMutualFound(u, rel);
+      }
+      if (onProgress) onProgress(checked, users.length, mutualsFound);
+
+      if (checked < users.length && delayMs > 0) {
+        await sleepUnlessStopped(delayMs, shouldStop);
+      }
+    }
+
+    return { checked, mutualsFound, stoppedEarly: false };
+  }
+
   window.UnfollowBridge = {
     SOURCE,
     SCAN_REASON,
@@ -624,6 +731,7 @@
     scanPeers,
     scanFollowingWithStatus,
     checkFriendshipStatus,
+    verifyUsersFollowBack,
     readFollowersSample,
     getViewer,
     getExpectedCounts

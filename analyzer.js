@@ -46,13 +46,13 @@ const elements = {
     loadingCount: document.getElementById('loadingCount')
 };
 
-const ANALYSIS_CACHE_VERSION = 3;
+const ANALYSIS_CACHE_VERSION = 4;
 
 // Cache functions
 async function getAnalysisCache(userId) {
     const data = await chrome.storage.local.get([`analysisCache_${userId}`]);
     const cache = data[`analysisCache_${userId}`] || null;
-    // Version 3 invalidates all pre-3.0.5 caches that were poisoned by Web show_many omitting followed_by.
+    // Version 4 invalidates all pre-3.0.6 caches so every user gets server-verified follow-back data.
     if (!cache || cache.complete !== true) return null;
     if (!cache.version || cache.version < ANALYSIS_CACHE_VERSION) return null;
     if (!Array.isArray(cache.followingList) || !Array.isArray(cache.followersList)) return null;
@@ -75,6 +75,9 @@ async function saveAnalysisCache(userId, followingList, followersList, followers
         };
         if (typeof u.node.follows_viewer === 'boolean') {
             node.follows_viewer = u.node.follows_viewer;
+        }
+        if (u.node._friendshipVerified === true) {
+            node._friendshipVerified = true;
         }
         return { node };
     });
@@ -215,6 +218,12 @@ document.addEventListener('error', function (e) {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize i18n
     initializeI18n();
+
+    // Stamp live extension version badge in header so loaded version is always unmistakable
+    const verBadge = document.getElementById('appVersionBadge');
+    if (verBadge && typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getManifest) {
+        verBadge.textContent = 'v' + chrome.runtime.getManifest().version;
+    }
     
     // Elements'in tüm değerlerini kontrol et
     for (const [key, value] of Object.entries(elements)) {
@@ -924,6 +933,7 @@ async function readList(userId, type, opts = {}) {
         const attempt = await pageBridge.runScanInPage({
             userId,
             listType: type,
+            expected,
             mode: preferGraphql ? 'graphql_first' : undefined,
             onProgress: reportCount
         });
@@ -953,12 +963,11 @@ async function readList(userId, type, opts = {}) {
     const panel = document.getElementById('loadingProgress');
     if (panel) panel.style.display = 'none';
 
-    // Independent check on the scan's own verdict. A read can end tidily — cursor exhausted, no
-    // refusal — and still be far short of the list Instagram says exists. Trusting `complete`
-    // alone would let that through to the diff, and the diff is what bulk unfollow acts on.
-    // The tolerance is deliberately loose: the count moves while the scan runs, and Instagram's
-    // own figure lags. Only a gross shortfall is treated as truncation.
-    if (result.complete && expected && result.users.length < expected * 0.9) {
+    // Independent check on the scan's own verdict.
+    const minRequired = expected && expected >= 20
+        ? Math.min(expected - 3, Math.floor(expected * 0.94))
+        : (expected ? Math.floor(expected * 0.9) : 0);
+    if (result.complete && minRequired > 0 && result.users.length < minRequired) {
         console.warn(`[bridge] ${type}: ${result.users.length}/${expected} geldi, eksik sayiliyor`);
         result = { ...result, complete: false, reason: 'short_of_expected' };
     }
@@ -1227,6 +1236,57 @@ function renderCurrentPage() {
     renderPaginationControls(filtered.length);
     setupUnfollowListeners();
     setupWhitelistListeners();
+    scheduleVisibleRowVerification(pageData);
+}
+
+let visibleVerifyRunId = 0;
+
+/**
+ * Live background safety net on every rendered table page:
+ * Gently confirms visible rows marked "Not Following You" (that haven't been server-verified yet)
+ * against Instagram's authoritative `GET /api/v1/friendships/show/{id}/` endpoint.
+ * If any visible user actually follows back, flips their badge to "Following You" live!
+ */
+function scheduleVisibleRowVerification(pageData) {
+    const runId = ++visibleVerifyRunId;
+    if (!Array.isArray(pageData) || !pageData.length) return;
+    if (!window.UnfollowBridge || typeof window.UnfollowBridge.checkFriendshipStatus !== 'function') return;
+
+    const unverifiedSuspects = pageData.filter((u) =>
+        u && u.node && u.node.id &&
+        !u._unfollowed &&
+        u.node._friendshipVerified !== true &&
+        !isUserFollowingMe(u, allFollowersList)
+    );
+    if (!unverifiedSuspects.length) return;
+
+    (async () => {
+        const csrfToken = await getCsrfTokenOnce().catch(() => null);
+        let consecutiveFailures = 0;
+        for (const u of unverifiedSuspects) {
+            if (runId !== visibleVerifyRunId || isUnfollowingActive) return;
+            const uid = String(u.node.id);
+            const uname = u.node.username;
+            const rel = await window.UnfollowBridge.checkFriendshipStatus(uid, csrfToken);
+            if (runId !== visibleVerifyRunId) return;
+
+            if (!rel || !rel.ok) {
+                if (rel?.status === 429 || ++consecutiveFailures >= 2) return;
+                continue;
+            }
+            consecutiveFailures = 0;
+            u.node._friendshipVerified = true;
+
+            if (rel.followedBy === true) {
+                const escName = (typeof CSS !== 'undefined' && CSS.escape) ? CSS.escape(uname) : uname.replace(/"/g, '\\"');
+                const row = elements.followingList?.querySelector(`tr[data-username="${escName}"]`) || null;
+                const btn = row?.querySelector('.unfollow-btn') || null;
+                markUserAsFollowingBackInMemory(uid, uname, row, btn);
+            }
+
+            await new Promise((r) => setTimeout(r, 320));
+        }
+    })().catch(() => {});
 }
 
 function renderPaginationControls(totalItems) {
@@ -1841,70 +1901,78 @@ async function initializeFollowingList(forceRefresh = false) {
             realFollowersTotal = null;
 
             const expectedFollowers = await getExpectedOnce(userId, 'followers');
-            // For normal-sized accounts (<= 1,500 followers), read BOTH actual lists directly via
-            // Instagram's follower/following endpoints for 100% literal ID + username ground truth.
-            // For large accounts (> 1,500 followers), try the spot-verified status query first so
-            // scanning stays fast without hitting follower pagination limits.
-            const preferDirectTwoList = expectedFollowers != null && expectedFollowers <= 1500;
 
-            if (preferDirectTwoList) {
-                followersList = await getFollowersList(userId);
-                if (lastScanInfo.followers?.complete) {
-                    followingList = await getFollowingList(userId);
-                } else {
-                    // Followers endpoint throttled — try verified status path before reporting incomplete
-                    const withStatus = await readFollowingWithStatus(userId);
-                    if (withStatus) {
-                        usedFollowsViewer = true;
-                        followingList = withStatus.users;
-                        followersList = withStatus.users.filter((u) => u.node.follows_viewer === true);
-                        realFollowersTotal = expectedFollowers;
-                        lastScanInfo.following = {
-                            complete: true, reason: withStatus.reason, count: followingList.length,
-                            source: withStatus.source, requests: withStatus.requests
-                        };
-                        lastScanInfo.followers = {
-                            complete: true, reason: 'follows_viewer', count: followersList.length
-                        };
-                    } else {
-                        followingList = [];
-                    }
-                }
+            // 1. Lead with `readFollowingWithStatus` (`FOLLOWS_VIEWER_HASH`) FIRST for ALL accounts:
+            //    Every returned node carries Instagram's own `follows_viewer` boolean directly,
+            //    avoiding the 2–9% follower-list omissions that Instagram's followers endpoint applies.
+            const withStatus = await readFollowingWithStatus(userId);
+            if (withStatus) {
+                usedFollowsViewer = true;
+                followingList = withStatus.users;
+                followersList = withStatus.users.filter((u) => u.node.follows_viewer === true);
+                realFollowersTotal = expectedFollowers;
+
+                lastScanInfo.following = {
+                    complete: true, reason: withStatus.reason, count: followingList.length,
+                    source: withStatus.source, requests: withStatus.requests
+                };
+                lastScanInfo.followers = {
+                    complete: true, reason: 'follows_viewer', count: followersList.length
+                };
             } else {
-                const withStatus = await readFollowingWithStatus(userId);
-                if (withStatus) {
-                    usedFollowsViewer = true;
-                    followingList = withStatus.users;
-                    followersList = withStatus.users.filter((u) => u.node.follows_viewer === true);
-                    realFollowersTotal = expectedFollowers;
-
-                    lastScanInfo.following = {
-                        complete: true, reason: withStatus.reason, count: followingList.length,
-                        source: withStatus.source, requests: withStatus.requests
-                    };
-                    lastScanInfo.followers = {
-                        complete: true, reason: 'follows_viewer', count: followersList.length
-                    };
-                } else {
-                    followersList = await getFollowersList(userId, {
-                        preferGraphql: expectedFollowers != null && expectedFollowers > 1500
-                    });
-                    followingList = lastScanInfo.followers?.complete
-                        ? await getFollowingList(userId)
-                        : [];
-                }
+                // 2. Fallback: read both lists sequentially (`followers` then `following`) with automatic
+                //    V1 <-> GraphQL merge on shortfall.
+                followersList = await getFollowersList(userId, {
+                    preferGraphql: expectedFollowers != null && expectedFollowers > 1500
+                });
+                followingList = lastScanInfo.followers?.complete
+                    ? await getFollowingList(userId)
+                    : [];
             }
 
-            // Stamp explicit boolean `follows_viewer` onto `followingList` from the two-list diff
-            // as well, so every downstream check agrees 100% regardless of which scan path ran.
+            // Stamp explicit boolean `follows_viewer` onto `followingList` from the two-list diff,
+            // AND reconcile suspected non-followers via authoritative `friendships/show/{id}/` so
+            // any follower Instagram omitted from `followersList` is caught BEFORE rendering!
             if (!usedFollowsViewer && followingList.length > 0 && isDataComplete()) {
                 const fIds = new Set(followersList.map(f => f?.node?.id != null ? String(f.node.id) : '').filter(Boolean));
                 const fNames = new Set(followersList.map(f => f?.node?.username ? f.node.username.toLowerCase() : '').filter(Boolean));
+                const suspectedNonFollowers = [];
+
                 for (const u of followingList) {
                     if (!u || !u.node) continue;
                     const uid = u.node.id != null ? String(u.node.id) : '';
                     const uname = u.node.username ? u.node.username.toLowerCase() : '';
-                    u.node.follows_viewer = (uid && fIds.has(uid)) || (uname && fNames.has(uname)) || false;
+                    const matched = !!(uid && fIds.has(uid)) || !!(uname && fNames.has(uname));
+                    u.node.follows_viewer = matched;
+                    if (matched) {
+                        u.node._friendshipVerified = true;
+                    } else {
+                        suspectedNonFollowers.push(u);
+                    }
+                }
+
+                // Pre-render authoritative verification on up to the first 60 suspected non-followers
+                // (covers the entire Free-plan display slice and top of Page 1 before table renders!)
+                if (suspectedNonFollowers.length > 0 && typeof window.UnfollowBridge?.verifyUsersFollowBack === 'function') {
+                    const batchToVerify = suspectedNonFollowers.slice(0, 60);
+                    const viewer = await getViewerOnce().catch(() => null);
+                    if (elements.loadingCount) {
+                        elements.loadingCount.textContent = `Verifying relationships (0/${batchToVerify.length})…`;
+                    }
+                    await window.UnfollowBridge.verifyUsersFollowBack(batchToVerify, {
+                        csrfToken: viewer?.csrfToken,
+                        delayMs: 240,
+                        onProgress: (done, total) => {
+                            if (elements.loadingCount) {
+                                elements.loadingCount.textContent = `Verifying relationships (${done}/${total})…`;
+                            }
+                        },
+                        onMutualFound: (u) => {
+                            followersList.push({
+                                node: { id: String(u.node.id), username: u.node.username || '' }
+                            });
+                        }
+                    });
                 }
             }
 

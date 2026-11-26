@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.0.6 — 2026-11-26
+
+### Authoritative Relationship Reconciliation, Shortfall Merge & Live Version Badge
+- **Eliminated Omitted-Follower False Negatives (`v3.0.6`):**
+  - Restored `FOLLOWS_VIEWER_HASH` (`readFollowingWithStatus`) as the primary reader for **all** account sizes (not only `> 1,500` followers), avoiding the 2–9% follower-list omissions Instagram applies on `/api/v1/friendships/{id}/followers/`. Added automatic bare-credential retry on GraphQL soft-refusals.
+  - Added `UnfollowBridge.verifyUsersFollowBack()` + pre-render authoritative reconciliation against `GET /api/v1/friendships/show/{id}/` (`followed_by`) whenever the two-list fallback runs, plus `scheduleVisibleRowVerification()` to live-verify visible `Not Following You` rows in the background and flip any mutual follower to **Following You** immediately.
+  - Upgraded `scanPeers` with persistent `rank_token` UUID pagination, gentler Web pacing (`650–1200ms`), and automatic V1 ↔ GraphQL union merge when the primary transport stops below 96% of expected counts.
+  - Upgraded `getExpectedCounts()` to resolve counts across Web Polaris GraphQL, 1-node GraphQL edge counts, `users/{id}/info/`, and profile storage so desktop Chrome sessions always know exact expected counts.
+  - Bumped `ANALYSIS_CACHE_VERSION = 4` and added a live `#appVersionBadge` (`v3.0.6`) pill in the Analyzer header so the active build version is immediately visible.
+
 ## 3.0.5 — 2026-11-25
 
 ### Critical Scan Engine Reconstruction, Pre-Unfollow Mutual Protection & Filter/UI Overhaul

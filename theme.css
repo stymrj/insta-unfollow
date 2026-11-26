@@ -4501,3 +4501,17 @@ body {
   transform: translateY(-1.5px) !important;
   box-shadow: 0 6px 18px rgba(217, 119, 6, 0.38) !important;
 }
+
+.version-pill {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4f46e5;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
