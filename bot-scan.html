@@ -270,8 +270,19 @@
 <div id="premiumModal" class="premium-modal">
         <div class="premium-modal-overlay"></div>
         <div class="premium-modal-content">
-            <button class="premium-modal-close">&times;</button>
-            
+            <button class="premium-modal-close" aria-label="Close modal">&times;</button>
+
+            <!-- Modal Hero Header -->
+            <div class="premium-modal-hero">
+                <div class="premium-hero-badge">
+                    <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    <span>INSTA UNFOLLOW PRO</span>
+                </div>
+                <h2 class="premium-hero-title">Unlock Full Bot &amp; Audience Intelligence</h2>
+                <p class="premium-hero-desc">Reveal every flagged bot account, run unlimited deep profile inspections, and export clean audience lists anytime.</p>
+            </div>
 
             <!-- Pricing Cards -->
             <div class="premium-pricing-cards">
@@ -305,18 +316,21 @@
                             <span class="premium-feature-icon">✗</span>
                             <span class="premium-feature-text" data-i18n="featureAdvancedFiltering">Advanced filtering</span>
                         </li>
-                        <li class="premium-feature-item premium-disabled">
-                            <span class="premium-feature-icon">✗</span>
-                            <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
-                        </li>
                     </ul>
                 </div>
 
-                <!-- Premium Plan: one feature set, five durations to choose from -->
+                <!-- Premium Plan: Dynamic live price + Rich Plan Dropdown -->
                 <div class="premium-pricing-card premium-premium-card premium-featured">
-                    <div class="premium-plan-badge" data-i18n="planPopular">Popular</div>
+                    <div class="premium-plan-badge" id="modalLiveSave">SAVE ₹45</div>
                     <div class="premium-plan-header">
+                        <span class="pro-tier-kicker">PRO CREATOR PASS</span>
                         <h3 class="premium-plan-name" data-i18n="planPremium">Premium</h3>
+                        <div class="pro-price-main modal-price-main">
+                            <span class="pro-old-price" id="modalLiveStrike">₹294</span>
+                            <span class="pro-live-price" id="modalLivePrice">₹249</span>
+                            <span class="pro-live-cycle" id="modalLiveCycle">/ 6 months</span>
+                        </div>
+                        <div class="pro-eff-rate" id="modalLivePerMonth">₹42/mo effective · One-time pass, no auto-debit</div>
                     </div>
                     <ul class="premium-features-list">
                         <li class="premium-feature-item">
@@ -333,51 +347,19 @@
                         </li>
                         <li class="premium-feature-item">
                             <span class="premium-feature-icon">✓</span>
-                            <span class="premium-feature-text" data-i18n="featureUnlimitedAnalysis">Unlimited analysis</span>
+                            <span class="premium-feature-text">Live Mutual Guard &amp; 1-click Whitelist</span>
                         </li>
                         <li class="premium-feature-item">
                             <span class="premium-feature-icon">✓</span>
                             <span class="premium-feature-text" data-i18n="featureAdvancedFilteringReporting">Advanced filtering and reporting</span>
                         </li>
-                        <li class="premium-feature-item premium-highlight">
-                            <span class="premium-feature-icon">✨</span>
-                            <span class="premium-feature-text" data-i18n="featureAdvancedNotifications"></span>
-                        </li>
                     </ul>
-                    <div class="premium-plan-options" id="premiumPlanOptions" role="radiogroup" aria-label="Choose a plan">
-                        <button type="button" class="premium-plan-option selected" data-plan="1mo" role="radio" aria-checked="true">
-                            <span class="premium-plan-option-duration">1 month</span>
-                            <span class="premium-plan-option-price"><span class="premium-plan-option-new" id="premiumPlanPrice-1mo">₹49</span></span>
-                            <span class="premium-plan-option-save" id="premiumPlanSave-1mo">No discount</span>
-                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-1mo">₹49/mo</span>
-                        </button>
-                        <button type="button" class="premium-plan-option" data-plan="3mo" role="radio" aria-checked="false">
-                            <span class="premium-plan-option-duration">3 months</span>
-                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-3mo">₹147</span><span class="premium-plan-option-new" id="premiumPlanPrice-3mo">₹129</span></span>
-                            <span class="premium-plan-option-save" id="premiumPlanSave-3mo">Save ₹18</span>
-                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-3mo">₹43/mo</span>
-                        </button>
-                        <button type="button" class="premium-plan-option" data-plan="6mo" role="radio" aria-checked="false">
-                            <span class="premium-plan-option-duration">6 months</span>
-                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-6mo">₹294</span><span class="premium-plan-option-new" id="premiumPlanPrice-6mo">₹249</span></span>
-                            <span class="premium-plan-option-save" id="premiumPlanSave-6mo">Save ₹45</span>
-                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-6mo">₹42/mo</span>
-                        </button>
-                        <button type="button" class="premium-plan-option" data-plan="9mo" role="radio" aria-checked="false">
-                            <span class="premium-plan-option-duration">9 months</span>
-                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-9mo">₹441</span><span class="premium-plan-option-new" id="premiumPlanPrice-9mo">₹399</span></span>
-                            <span class="premium-plan-option-save" id="premiumPlanSave-9mo">Save ₹42</span>
-                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-9mo">₹44/mo</span>
-                        </button>
-                        <button type="button" class="premium-plan-option" data-plan="12mo" role="radio" aria-checked="false">
-                            <span class="premium-plan-option-duration">12 months</span>
-                            <span class="premium-plan-option-price"><span class="premium-plan-option-old" id="premiumPlanStrike-12mo">₹588</span><span class="premium-plan-option-new" id="premiumPlanPrice-12mo">₹499</span></span>
-                            <span class="premium-plan-option-save" id="premiumPlanSave-12mo">Save ₹89</span>
-                            <span class="premium-plan-option-per-month" id="premiumPlanPerMonth-12mo">₹42/mo</span>
-                        </button>
+                    <div class="premium-plan-options" id="premiumPlanOptions">
+                        <label class="pro-select-label" for="modalPlanSelect">Select billing duration</label>
+                        <select id="modalPlanSelect" class="pro-plan-select" name="plan"></select>
                     </div>
-                    <button class="premium-card-subscribe-button premium-featured-button" id="premiumSubscribeButton" data-plan="1mo">
-                        Continue — 1 month · ₹49
+                    <button class="premium-card-subscribe-button premium-featured-button" id="premiumSubscribeButton" data-plan="6mo">
+                        Unlock Pro — 6 months · ₹249 →
                     </button>
                 </div>
             </div>

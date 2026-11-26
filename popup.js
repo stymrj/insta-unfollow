@@ -72,23 +72,20 @@ function updateSubscribeButtonVisibility(isLoggedIn) {
     const planPicker = document.getElementById('popupPlanPicker');
     const loginMessage = document.getElementById('loginMessage');
 
+    // Always allow users to inspect plans via the dropdown!
+    if (planPicker) planPicker.style.display = 'block';
+
     if (isLoggedIn) {
-        if (subscribeButton) subscribeButton.style.display = 'block';
-        if (planPicker) planPicker.style.display = 'block';
+        if (subscribeButton) subscribeButton.style.display = 'inline-flex';
         if (loginMessage) loginMessage.style.display = 'none';
     } else {
         if (subscribeButton) subscribeButton.style.display = 'none';
-        if (planPicker) planPicker.style.display = 'none';
-        if (loginMessage) loginMessage.style.display = 'block';
+        if (loginMessage) loginMessage.style.display = 'flex';
     }
 }
 
-// --- Plan picker: the same five plans as the premium modal, from the shared
-// definition in premium-config.js. Default selected plan: 1 month. The
-// picker sits before the payment step; the selected plan drives the method
-// picker, UPI view and proof form exactly as the modal does.
-
-let popupSelectedPlan = '1mo';
+// --- Plan Dropdown Picker: shared 5-plan source of truth from premium-config.js ---
+let popupSelectedPlan = '6mo';
 
 function getPopupSelectedPlan() {
     if (typeof window.getPremiumPlan === 'function') {
@@ -97,65 +94,91 @@ function getPopupSelectedPlan() {
     return popupSelectedPlan || '1mo';
 }
 
+function syncPopupLivePricingUI(plan) {
+    if (!plan) return;
+    const newPriceEl = document.getElementById('newPrice');
+    const oldPriceEl = document.getElementById('oldPrice');
+    const cycleEl = document.getElementById('proLiveCycle');
+    const effRateEl = document.getElementById('proEffRate');
+    const discountEl = document.getElementById('discountText');
+    const discountWrap = document.getElementById('discountBadgeWrap');
+
+    if (newPriceEl) newPriceEl.textContent = '₹' + plan.price;
+    if (oldPriceEl) {
+        if (plan.strike != null && plan.strike > plan.price) {
+            oldPriceEl.textContent = '₹' + plan.strike;
+            oldPriceEl.style.display = 'inline';
+        } else {
+            oldPriceEl.style.display = 'none';
+        }
+    }
+    if (cycleEl) cycleEl.textContent = '/ ' + plan.label;
+    if (effRateEl) {
+        effRateEl.textContent = '₹' + plan.perMonth + '/mo effective · One-time UPI pass, no auto-debit';
+    }
+    if (discountEl) {
+        if (plan.save > 0) {
+            discountEl.textContent = (plan.key === '12mo' ? 'BEST VALUE · SAVE ₹' : 'SAVE ₹') + plan.save;
+            if (discountWrap) discountWrap.classList.remove('muted');
+        } else {
+            discountEl.textContent = 'FLEXIBLE STARTER';
+            if (discountWrap) discountWrap.classList.add('muted');
+        }
+    }
+}
+
 function updatePopupContinueButton() {
     const button = document.getElementById('subscribeButton');
-    if (!button) return;
     if (typeof window.getPremiumPlan !== 'function') return;
     const plan = window.getPremiumPlan(popupSelectedPlan);
-    button.textContent = 'Continue — ' + plan.label + ' · ₹' + plan.price;
+    syncPopupLivePricingUI(plan);
+    if (!button) return;
+    const textSpan = button.querySelector('.pro-cta-text');
+    const label = 'Unlock Pro — ' + plan.label + ' · ₹' + plan.price;
+    if (textSpan) {
+        textSpan.textContent = label;
+    } else {
+        button.textContent = label;
+    }
 }
 
 function setPopupSelectedPlan(planKey) {
     popupSelectedPlan = typeof window.getPremiumPlan === 'function'
         ? window.getPremiumPlan(planKey).key : (planKey || '1mo');
-    renderPopupPlanPicker();
+    const select = document.getElementById('popupPlanSelect');
+    if (select && select.value !== popupSelectedPlan) {
+        select.value = popupSelectedPlan;
+    }
+    updatePopupContinueButton();
+}
+
+function buildPlanSelectOptions(selectEl, selectedKey) {
+    if (!selectEl || !Array.isArray(window.PREMIUM_PLANS)) return;
+    if (typeof window.populateProPlanSelect === 'function') {
+        window.populateProPlanSelect(selectEl, selectedKey);
+        return;
+    }
+    selectEl.innerHTML = '';
+    window.PREMIUM_PLANS.forEach((plan) => {
+        const opt = document.createElement('option');
+        opt.value = plan.key;
+        opt.selected = plan.key === selectedKey;
+        opt.textContent = plan.label + ' — ₹' + plan.price + ' (₹' + plan.perMonth + '/mo)';
+        selectEl.appendChild(opt);
+    });
 }
 
 function renderPopupPlanPicker() {
-    const picker = document.getElementById('popupPlanPicker');
-    if (!picker || !Array.isArray(window.PREMIUM_PLANS)) return;
-    picker.innerHTML = '';
-    window.PREMIUM_PLANS.forEach((plan) => {
-        const selected = plan.key === getPopupSelectedPlan();
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.setAttribute('data-plan', plan.key);
-        btn.setAttribute('role', 'radio');
-        btn.setAttribute('aria-checked', selected ? 'true' : 'false');
-        btn.style.cssText = 'display:grid;grid-template-columns:1fr auto;grid-template-areas:' +
-            '"duration price" "save per-month";align-items:center;gap:2px 10px;width:100%;' +
-            'padding:9px 12px;margin:0 0 6px;background:' + (selected ? '#eff6ff' : '#fff') + ';' +
-            'border:1.5px solid ' + (selected ? '#2563eb' : '#e5e5e5') + ';border-radius:10px;' +
-            'color:#262626;font-family:inherit;text-align:left;cursor:pointer;box-sizing:border-box;';
-        const duration = document.createElement('span');
-        duration.textContent = plan.label;
-        duration.style.cssText = 'grid-area:duration;font-size:13px;font-weight:700;';
-        const price = document.createElement('span');
-        price.style.cssText = 'grid-area:price;display:flex;align-items:baseline;gap:6px;' +
-            'font-size:15px;font-weight:700;justify-self:end;';
-        if (plan.strike != null) {
-            const strike = document.createElement('span');
-            strike.textContent = '₹' + plan.strike;
-            strike.style.cssText = 'text-decoration:line-through;color:#8e8e8e;font-size:12px;font-weight:500;';
-            price.appendChild(strike);
-        }
-        const current = document.createElement('span');
-        current.textContent = '₹' + plan.price;
-        current.style.color = '#2563eb';
-        price.appendChild(current);
-        const save = document.createElement('span');
-        save.textContent = plan.save > 0 ? 'Save ₹' + plan.save : 'No discount';
-        save.style.cssText = 'grid-area:save;font-size:11px;font-weight:600;color:#1e40af;';
-        const perMonth = document.createElement('span');
-        perMonth.textContent = '₹' + plan.perMonth + '/mo';
-        perMonth.style.cssText = 'grid-area:per-month;font-size:11px;font-weight:600;color:#8e8e8e;justify-self:end;';
-        btn.appendChild(duration);
-        btn.appendChild(price);
-        btn.appendChild(save);
-        btn.appendChild(perMonth);
-        btn.addEventListener('click', () => setPopupSelectedPlan(plan.key));
-        picker.appendChild(btn);
-    });
+    const select = document.getElementById('popupPlanSelect');
+    if (!select || !Array.isArray(window.PREMIUM_PLANS)) return;
+    const currentKey = getPopupSelectedPlan();
+    buildPlanSelectOptions(select, currentKey);
+    if (!select.dataset.wired) {
+        select.dataset.wired = '1';
+        select.addEventListener('change', () => {
+            setPopupSelectedPlan(select.value);
+        });
+    }
     updatePopupContinueButton();
 }
 
@@ -237,14 +260,12 @@ async function showPopupPaymentFlow(plan) {
         }));
         const backBtn = document.createElement('button');
         backBtn.type = 'button';
-        backBtn.textContent = 'Back';
-        backBtn.style.cssText = 'margin-top:8px;padding:8px 14px;background:transparent;' +
-            'border:1.5px solid #d4d4d4;border-radius:8px;color:#262626;font-size:13px;' +
-            'font-weight:600;cursor:pointer;';
+        backBtn.className = 'pro-back-btn';
+        backBtn.textContent = '← Change plan';
         backBtn.addEventListener('click', () => {
             hidePopupPaymentStep();
             if (planPicker) planPicker.style.display = 'block';
-            if (subscribeButton) subscribeButton.style.display = 'block';
+            if (subscribeButton) subscribeButton.style.display = 'inline-flex';
         });
         stepEl.appendChild(backBtn);
     };
@@ -293,10 +314,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event Listeners
     document.getElementById('googleLoginBtn').addEventListener('click', handleGoogleLogin);
     
-    // Gmail login required button
+    // Gmail login required button & upgrade inline login button
     const gmailLoginRequiredBtn = document.getElementById('gmailLoginRequiredBtn');
     if (gmailLoginRequiredBtn) {
         gmailLoginRequiredBtn.addEventListener('click', handleGoogleLogin);
+    }
+    const upgradeLoginPromptBtn = document.getElementById('upgradeLoginPromptBtn');
+    if (upgradeLoginPromptBtn) {
+        upgradeLoginPromptBtn.addEventListener('click', handleGoogleLogin);
     }
 
     try {
@@ -402,15 +427,15 @@ function setupMenuAndContent() {
             e.preventDefault();
             
             const page = this.dataset.page || this.querySelector('span').textContent.toLowerCase();
-            
-            // Check if user is logged in
-            chrome.storage.local.get(['auth_token', 'user_info'], (data) => {
-                if (!data.auth_token || !data.user_info) {
-                    // Show login required screen
-                    showGmailLoginRequired();
-                    return;
-                }
-            });
+
+            // Allow browsing Home & Upgrade (plan dropdown) even before login; gate Bot Scan / Admin
+            if (page !== 'home' && page !== 'upgrade') {
+                chrome.storage.local.get(['auth_token', 'user_info'], (data) => {
+                    if (!data.auth_token || !data.user_info) {
+                        showGmailLoginRequired();
+                    }
+                });
+            }
             
             // Remove active class from all menu items
             menuItems.forEach(i => i.classList.remove('active'));
@@ -516,10 +541,16 @@ function showGmailLoginRequired() {
         mainContent.style.display = 'none';
     }
     
-    // Disable menu items
+    // Keep Home & Upgrade tabs clickable when logged out so users can preview plans; disable Bot Scan
     menuItems.forEach(item => {
-        item.style.pointerEvents = 'none';
-        item.style.opacity = '0.5';
+        const p = item.dataset.page;
+        if (p === 'home' || p === 'upgrade') {
+            item.style.pointerEvents = 'auto';
+            item.style.opacity = '1';
+        } else {
+            item.style.pointerEvents = 'none';
+            item.style.opacity = '0.45';
+        }
     });
 }
 
@@ -649,11 +680,12 @@ async function updateUIAfterLogin(userInfo, membership) {
     // Show the admin menu item for the owner account
     setupAdminEntry();
 
+    syncActiveProBanner(membership);
     const subscribeButton = document.getElementById('subscribeButton');
     if (subscribeButton) {
         const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
         if (isPremium) {
-            subscribeButton.textContent = getMessage('manageSubscription');
+            subscribeButton.style.display = 'none';
             const planPicker = document.getElementById('popupPlanPicker');
             if (planPicker) planPicker.style.display = 'none';
         } else {
@@ -878,13 +910,15 @@ async function checkLoginStatus() {
 
             // Login durumunu güncelle
             updateSubscribeButtonVisibility(true);
-            
-            // Update subscribe button text based on premium status
+
+            const freshMembership = await getPremiumMembership().catch(() => membership);
+            syncActiveProBanner(freshMembership);
+
             const subscribeButton = document.getElementById('subscribeButton');
             if (subscribeButton) {
-                const isPremium = membership.turu === 'premium' || membership.turu === 'Premium';
+                const isPremium = freshMembership && (freshMembership.turu === 'premium' || freshMembership.turu === 'Premium');
                 if (isPremium) {
-                    subscribeButton.textContent = getMessage('manageSubscription');
+                    subscribeButton.style.display = 'none';
                     const planPicker = document.getElementById('popupPlanPicker');
                     if (planPicker) planPicker.style.display = 'none';
                 } else {
@@ -892,10 +926,6 @@ async function checkLoginStatus() {
                 }
             }
 
-            // A proof under review replaces the Subscribe button with that state.
-            // Re-read membership here: the background's copy may not carry
-            // pendingProof, while the popup's own getPremiumMembership does.
-            const freshMembership = await getPremiumMembership().catch(() => membership);
             refreshPopupPendingState(freshMembership);
             
             // Instagram kontrolünü başlat
@@ -927,19 +957,27 @@ async function checkLoginStatus() {
 
 
 
+function syncActiveProBanner(membership) {
+    const activeBanner = document.getElementById('popupActiveProBanner');
+    const activeSub = document.getElementById('popupActiveProSub');
+    if (!activeBanner) return;
+    const isPremium = membership && (membership.turu === 'premium' || membership.turu === 'Premium');
+    if (isPremium) {
+        const exp = formatPremiumExpiry(membership.expiry);
+        if (activeSub) {
+            activeSub.textContent = exp
+                ? 'Valid until ' + exp + ' · All unlimited scans & bot checks unlocked.'
+                : 'Lifetime / Owner Pro access · All unlimited scans & bot checks unlocked.';
+        }
+        activeBanner.style.display = 'flex';
+    } else {
+        activeBanner.style.display = 'none';
+    }
+}
+
 function fetchPrices() {
-  // Prices come from the shared plan definition (premium-config.js): the card
-  // shows the cheapest plan as "From ₹X" and the biggest saving across plans.
   if (!Array.isArray(window.PREMIUM_PLANS) || !window.PREMIUM_PLANS.length) return;
-  const cheapest = window.PREMIUM_PLANS[0];
-  const newPriceEl = document.getElementById('newPrice');
-  if (newPriceEl) newPriceEl.textContent = '₹' + cheapest.price;
-  const biggestSave = Math.max.apply(null,
-    window.PREMIUM_PLANS.map((plan) => plan.save || 0));
-  const discountEl = document.getElementById('discountText');
-  if (discountEl && biggestSave > 0) {
-    discountEl.textContent = 'Save up to ₹' + biggestSave;
-  }
+  renderPopupPlanPicker();
 }
 
 // Call this function when the popup loads

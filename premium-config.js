@@ -469,123 +469,226 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
     return node;
   }
 
-  function createUnderReviewNotice() {
-    return el('div', UNDER_REVIEW_TEXT,
-      'background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;border-radius:10px;' +
-      'padding:12px 14px;font-size:13px;font-weight:600;line-height:1.5;text-align:center;');
+  /**
+   * Populate a `<select class="pro-plan-select">` using the modern Customizable Select
+   * structure (`<button><selectedcontent></selectedcontent></button>` + rich `<option>` rows)
+   * with natural plain-text phrasing so older browsers that strip inner HTML still render
+   * crystal-clear option text.
+   */
+  function populateProPlanSelect(selectEl, selectedKey) {
+    if (!selectEl || !Array.isArray(window.PREMIUM_PLANS)) return;
+    selectEl.innerHTML = '';
+
+    var supportsBaseSelect = typeof CSS !== 'undefined' &&
+      typeof CSS.supports === 'function' &&
+      CSS.supports('appearance', 'base-select');
+
+    if (supportsBaseSelect) {
+      var triggerBtn = document.createElement('button');
+      var selectedContent = document.createElement('selectedcontent');
+      triggerBtn.appendChild(selectedContent);
+      selectEl.appendChild(triggerBtn);
+    }
+
+    window.PREMIUM_PLANS.forEach(function (plan) {
+      var opt = document.createElement('option');
+      opt.value = plan.key;
+      if (plan.key === selectedKey) opt.selected = true;
+
+      var capLabel = plan.label.charAt(0).toUpperCase() + plan.label.slice(1);
+
+      if (!supportsBaseSelect) {
+        var tagTxt = plan.key === '6mo' ? ' ★ Popular' : (plan.key === '12mo' ? ' ★ Best Value' : '');
+        var saveTxt = plan.save > 0 ? ' · Save ₹' + plan.save : '';
+        opt.textContent = capLabel + tagTxt + ' — ₹' + plan.price + ' (₹' + plan.perMonth + '/mo' + saveTxt + ')';
+        selectEl.appendChild(opt);
+        return;
+      }
+
+      var left = el('span', '', '');
+      left.className = 'opt-left';
+
+      var titleRow = el('span', '', '');
+      titleRow.className = 'opt-title-row';
+
+      var dur = el('span', capLabel, '');
+      dur.className = 'opt-duration';
+      titleRow.appendChild(dur);
+
+      if (plan.key === '6mo') {
+        var popSep = el('span', ' · ', '');
+        popSep.className = 'visually-hidden';
+        titleRow.appendChild(popSep);
+        var popBadge = el('span', 'POPULAR', '');
+        popBadge.className = 'opt-tag popular';
+        titleRow.appendChild(popBadge);
+      } else if (plan.key === '12mo') {
+        var bestSep = el('span', ' · ', '');
+        bestSep.className = 'visually-hidden';
+        titleRow.appendChild(bestSep);
+        var bestBadge = el('span', 'BEST VALUE', '');
+        bestBadge.className = 'opt-tag best';
+        titleRow.appendChild(bestBadge);
+      }
+
+      var subSep = el('span', ' — ', '');
+      subSep.className = 'visually-hidden';
+      var sub = el('span', '₹' + plan.perMonth + '/mo effective', '');
+      sub.className = 'opt-sub';
+
+      left.appendChild(titleRow);
+      left.appendChild(subSep);
+      left.appendChild(sub);
+
+      var right = el('span', '', '');
+      right.className = 'opt-right';
+
+      var priceSep = el('span', ' · ', '');
+      priceSep.className = 'visually-hidden';
+      right.appendChild(priceSep);
+
+      if (plan.save > 0) {
+        var saveChip = el('span', 'Save ₹' + plan.save, '');
+        saveChip.className = 'opt-save';
+        right.appendChild(saveChip);
+        var sSep = el('span', ' · ', '');
+        sSep.className = 'visually-hidden';
+        right.appendChild(sSep);
+      }
+
+      var priceSpan = el('span', '₹' + plan.price, '');
+      priceSpan.className = 'opt-price';
+      right.appendChild(priceSpan);
+
+      opt.appendChild(left);
+      opt.appendChild(right);
+      selectEl.appendChild(opt);
+    });
   }
 
-  function styleMethodButton(btn, disabled) {
-    btn.style.cssText = 'display:block;width:100%;text-align:left;padding:12px 14px;margin:6px 0;' +
-      'background:#fff;border:1.5px solid #2563eb;border-radius:10px;color:#262626;' +
-      'font-size:14px;font-weight:700;cursor:' + (disabled ? 'not-allowed' : 'pointer') + ';' +
-      (disabled ? 'opacity:0.55;border-color:#d4d4d4;color:#8e8e8e;' : '');
+  function createUnderReviewNotice() {
+    var box = el('div', '', '');
+    box.className = 'pro-review-notice';
+    var badge = el('div', '⏳ VERIFICATION IN PROGRESS', '');
+    badge.className = 'pro-review-kicker';
+    var msg = el('div', UNDER_REVIEW_TEXT, '');
+    msg.className = 'pro-review-body';
+    box.appendChild(badge);
+    box.appendChild(msg);
+    return box;
   }
 
   /**
-   * Method picker for one plan. UPI is the only method (always available —
-   * the real UPI ID is configured). Razorpay is never rendered. When nothing
-   * is usable, the "not available yet" message is shown and no Subscribe
-   * button is rendered. onPick(method) fires for 'upi'.
+   * Method picker for one plan (UPI dark-glass studio card).
    */
   function createPaymentMethodPicker(opts) {
     opts = opts || {};
     var plan = opts.plan || '1mo';
+    var planObj = getPremiumPlan(plan);
     var methods = opts.methods || { upi: true, razorpay: false };
     var container = el('div', '', '');
-    container.className = 'premium-payment-methods';
-    container.appendChild(el('div',
-      'Choose a payment method — Premium ' + upiPlanLabel(plan) + ' ₹' + upiAmountForPlan(plan),
-      'font-size:14px;font-weight:700;color:#262626;margin-bottom:8px;'));
+    container.className = 'premium-payment-methods pro-checkout-box';
+
+    var summary = el('div', '', '');
+    summary.className = 'pro-checkout-summary';
+    var sumLeft = el('div', '', '');
+    sumLeft.appendChild(el('div', 'Selected Plan', 'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#94a3b8;'));
+    sumLeft.appendChild(el('div', 'Pro Pass · ' + upiPlanLabel(plan), 'font-size:14.5px;font-weight:800;color:#ffffff;margin-top:2px;'));
+    var sumRight = el('div', '', 'text-align:right;');
+    sumRight.appendChild(el('div', '₹' + upiAmountForPlan(plan), 'font-size:20px;font-weight:800;color:#c4b5fd;'));
+    if (planObj.save > 0) {
+      sumRight.appendChild(el('div', 'Saving ₹' + planObj.save, 'font-size:11px;font-weight:700;color:#34d399;'));
+    }
+    summary.appendChild(sumLeft);
+    summary.appendChild(sumRight);
+    container.appendChild(summary);
 
     var usable = 0;
     if (methods.upi) {
-      var upiBtn = el('button', 'Pay with UPI — ₹' + upiAmountForPlan(plan), '');
-      styleMethodButton(upiBtn, false);
+      var upiBtn = el('button', '', '');
       upiBtn.type = 'button';
+      upiBtn.className = 'pro-method-upi-btn';
+      var upiLabel = el('span', 'Pay ₹' + upiAmountForPlan(plan) + ' via Instant UPI QR', '');
+      var upiSub = el('span', 'GPay · PhonePe · Paytm · BHIM →', 'font-size:11.5px;font-weight:600;opacity:0.9;');
+      upiBtn.appendChild(upiLabel);
+      upiBtn.appendChild(upiSub);
       upiBtn.addEventListener('click', function () { opts.onPick && opts.onPick('upi'); });
       container.appendChild(upiBtn);
       usable++;
     }
     if (usable === 0) {
       container.appendChild(el('div', 'Payments are not available yet — please check back soon.',
-        'color:#8e8e8e;font-size:13px;font-weight:500;padding:8px 2px;'));
+        'color:#94a3b8;font-size:13px;font-weight:500;padding:8px 2px;'));
     }
     return container;
   }
 
   /**
-   * UPI payment view for one plan: amount, UPI ID with a Copy button, the
-   * owner's static UPI QR image (img/paytm-qr.jpg — the same relative path
-   * from analyzer.html, bot-scan.html and popup.html, all in the repo root),
-   * and an "Open UPI app" deep link using the same upi:// URI. The static QR
-   * has NO amount embedded, so the view tells the user to enter the plan
-   * amount themselves when scanning it directly; only the deep link prefills
-   * the amount.
+   * UPI payment view for one plan: dark-glass summary, 1-click UPI ID copy pill,
+   * crisp white-framed QR pad for camera reliability, and deep-link button.
    */
   function createUpiPaymentView(plan) {
     plan = plan || '1mo';
+    var amount = upiAmountForPlan(plan);
     var container = el('div', '', '');
-    container.className = 'premium-upi-view';
-    container.appendChild(el('div',
-      'Pay ₹' + upiAmountForPlan(plan) + ' — Premium ' + upiPlanLabel(plan),
-      'font-size:15px;font-weight:700;color:#262626;margin-bottom:10px;'));
+    container.className = 'premium-upi-view pro-upi-card';
 
-    var idRow = el('div', '', 'display:flex;align-items:center;gap:8px;margin-bottom:10px;');
-    idRow.appendChild(el('span', 'UPI ID: ' + window.UPI_ID,
-      'font-size:13px;font-weight:600;color:#262626;word-break:break-all;flex:1;'));
-    var copyBtn = el('button', 'Copy', 'flex-shrink:0;padding:6px 12px;background:#2563eb;' +
-      'border:none;border-radius:8px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;');
-    copyBtn.type = 'button';
-    copyBtn.addEventListener('click', function () {
-      var done = function () {
-        copyBtn.textContent = 'Copied';
-        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 2000);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(window.UPI_ID).then(done, function () { copyBtn.textContent = 'Copy failed'; });
-      } else {
-        copyBtn.textContent = 'Copy failed';
-      }
-    });
-    idRow.appendChild(copyBtn);
-    container.appendChild(idRow);
+    var stepTag = el('div', 'STEP 1 · COMPLETE UPI TRANSFER', '');
+    stepTag.className = 'pro-step-kicker';
+    container.appendChild(stepTag);
 
-    var uri = buildUpiPaymentUri(plan);
+    var head = el('div', 'Pay ₹' + amount + ' for Pro (' + upiPlanLabel(plan) + ')', '');
+    head.className = 'pro-upi-headline';
+    container.appendChild(head);
+
+    var qrFrame = el('div', '', '');
+    qrFrame.className = 'pro-qr-frame';
     var qrImg = document.createElement('img');
     qrImg.src = 'img/paytm-qr.jpg';
     qrImg.alt = 'Pay with UPI — scan with any UPI app';
-    qrImg.style.cssText = 'display:block;width:180px;height:auto;max-width:100%;margin:0 auto;' +
-      'border:1px solid #e5e5e5;border-radius:10px;background:#fff;';
-    var qrBox = el('div', '', 'text-align:center;margin:4px 0 10px;');
-    qrBox.appendChild(qrImg);
-    qrBox.appendChild(el('div', 'Scan with any UPI app',
-      'font-size:12px;color:#8e8e8e;margin-top:6px;'));
-    container.appendChild(qrBox);
-    container.appendChild(el('div', 'Pay with any UPI app — GPay, PhonePe, Paytm, BHIM',
-      'font-size:13px;font-weight:600;color:#262626;text-align:center;margin-bottom:10px;'));
-    container.appendChild(el('div',
-      'This QR code has no amount in it — enter ₹' + upiAmountForPlan(plan) +
-      ' yourself in your UPI app after scanning. The "Open UPI app" button below fills in the amount for you.',
-      'font-size:12px;color:#8e8e8e;line-height:1.5;margin-bottom:10px;'));
+    qrFrame.appendChild(qrImg);
+    container.appendChild(qrFrame);
 
-    var openLink = el('a', 'Open UPI app', 'display:inline-block;margin-bottom:10px;' +
-      'color:#2563eb;font-size:13px;font-weight:700;text-decoration:underline;');
-    openLink.href = uri;
+    var amountHint = el('div',
+      'Scan with GPay, PhonePe, Paytm, or BHIM and enter ₹' + amount + ' manually (or tap Open UPI App below to prefill ₹' + amount + ').',
+      '');
+    amountHint.className = 'pro-upi-hint';
+    container.appendChild(amountHint);
+
+    var idRow = el('div', '', '');
+    idRow.className = 'pro-upi-id-bar';
+    var idText = el('span', window.UPI_ID, '');
+    idText.className = 'pro-upi-id-code';
+    var copyBtn = el('button', 'Copy UPI ID', '');
+    copyBtn.type = 'button';
+    copyBtn.className = 'pro-upi-copy-btn';
+    copyBtn.addEventListener('click', function () {
+      var done = function () {
+        copyBtn.textContent = '✓ Copied';
+        setTimeout(function () { copyBtn.textContent = 'Copy UPI ID'; }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(window.UPI_ID).then(done, function () { copyBtn.textContent = 'Failed'; });
+      } else {
+        copyBtn.textContent = 'Failed';
+      }
+    });
+    idRow.appendChild(idText);
+    idRow.appendChild(copyBtn);
+    container.appendChild(idRow);
+
+    var openLink = el('a', 'Open UPI App (₹' + amount + ' prefilled) ↗', '');
+    openLink.className = 'pro-upi-deeplink';
+    openLink.href = buildUpiPaymentUri(plan);
     openLink.target = '_blank';
     openLink.rel = 'noopener';
     container.appendChild(openLink);
-    container.appendChild(el('div', 'After paying, submit your payment proof below.',
-      'font-size:12px;color:#8e8e8e;margin-bottom:4px;'));
+
     return container;
   }
 
   /**
-   * Proof-submission form, shared by the modal and the popup. The method is
-   * shown as fixed text (not editable); the UTR is optional; the screenshot
-   * is required and compressed before upload. On success the form is replaced
-   * with the under-review notice and onSuccess() fires; no poll is started —
-   * activation happens when an admin approves the proof.
+   * Proof-submission form with styled screenshot dropzone & UTR input.
    */
   function createProofForm(opts) {
     opts = opts || {};
@@ -593,39 +696,60 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
     var method = opts.method || 'upi';
     var planInfo = getPremiumPlan(plan);
     var form = el('div', '', '');
-    form.className = 'premium-proof-form';
+    form.className = 'premium-proof-form pro-proof-card';
 
-    form.appendChild(el('div', 'Submit payment proof',
-      'font-size:14px;font-weight:700;color:#262626;margin:12px 0 8px;'));
-    form.appendChild(el('div', 'Plan: ' + planInfo.label + ' — ₹' + planInfo.price,
-      'font-size:13px;font-weight:600;color:#262626;margin-bottom:8px;'));
-    form.appendChild(el('div', 'Payment method: UPI',
-      'font-size:13px;font-weight:600;color:#262626;margin-bottom:8px;'));
+    var stepTag = el('div', 'STEP 2 · UPLOAD PAYMENT SCREENSHOT', '');
+    stepTag.className = 'pro-step-kicker';
+    form.appendChild(stepTag);
 
-    var utrInput = el('input', '', 'width:100%;box-sizing:border-box;padding:10px 12px;' +
-      'border:1.5px solid #d4d4d4;border-radius:8px;font-size:13px;margin-bottom:8px;');
+    var subInfo = el('div', 'Verifying ' + planInfo.label + ' Pro Pass (₹' + planInfo.price + ' via UPI)', '');
+    subInfo.className = 'pro-proof-sub';
+    form.appendChild(subInfo);
+
+    var utrInput = el('input', '', '');
     utrInput.type = 'text';
-    utrInput.placeholder = 'UTR / transaction ID (if you have it)';
+    utrInput.className = 'pro-proof-input';
+    utrInput.placeholder = '12-digit UTR / UPI Ref ID (optional, speeds review)';
     utrInput.setAttribute('aria-label', 'UTR or transaction ID (optional)');
     form.appendChild(utrInput);
 
-    var fileInput = el('input', '', 'width:100%;box-sizing:border-box;font-size:13px;margin-bottom:8px;');
+    var dropLabel = document.createElement('label');
+    dropLabel.className = 'pro-upload-dropzone';
+    var fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = 'image/*';
     fileInput.required = true;
+    fileInput.className = 'pro-file-hidden';
     fileInput.setAttribute('aria-label', 'Payment screenshot (required)');
-    form.appendChild(fileInput);
-    form.appendChild(el('div', 'Payment screenshot is required.',
-      'font-size:12px;color:#8e8e8e;margin-bottom:10px;'));
 
-    var errorEl = el('div', '', 'display:none;color:#dc2626;font-size:13px;' +
-      'font-weight:600;margin-bottom:8px;line-height:1.5;');
+    var dropTitle = el('span', '📎 Click to attach payment screenshot (Required)', '');
+    dropTitle.className = 'pro-upload-title';
+    var dropHint = el('span', 'PNG or JPG · Compressed locally on your device', '');
+    dropHint.className = 'pro-upload-hint';
+
+    fileInput.addEventListener('change', function () {
+      var f = fileInput.files && fileInput.files[0];
+      if (f) {
+        dropTitle.textContent = '✓ ' + f.name;
+        dropLabel.classList.add('has-file');
+      } else {
+        dropTitle.textContent = '📎 Click to attach payment screenshot (Required)';
+        dropLabel.classList.remove('has-file');
+      }
+    });
+
+    dropLabel.appendChild(fileInput);
+    dropLabel.appendChild(dropTitle);
+    dropLabel.appendChild(dropHint);
+    form.appendChild(dropLabel);
+
+    var errorEl = el('div', '', 'display:none;');
+    errorEl.className = 'pro-proof-error';
     form.appendChild(errorEl);
 
-    var submitBtn = el('button', 'Submit payment proof', 'width:100%;padding:11px 16px;' +
-      'background:#2563eb;border:none;border-radius:10px;color:#fff;font-size:14px;' +
-      'font-weight:700;cursor:pointer;');
+    var submitBtn = el('button', 'Submit Payment Proof →', '');
     submitBtn.type = 'button';
+    submitBtn.className = 'pro-proof-submit-btn';
     submitBtn.addEventListener('click', function () {
       var showError = function (message) {
         errorEl.textContent = message;
@@ -634,15 +758,15 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
       errorEl.style.display = 'none';
       var file = fileInput.files && fileInput.files[0];
       if (!file) {
-        showError('Please attach your payment screenshot.');
+        showError('Please attach your payment screenshot first.');
         return;
       }
       if (file.type.indexOf('image/') !== 0) {
-        showError('Please attach an image file as your payment screenshot.');
+        showError('Please attach an image file (PNG or JPG) as your payment screenshot.');
         return;
       }
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting…';
+      submitBtn.textContent = 'Encrypting & submitting…';
       compressProofScreenshot(file).then(function (screenshotDataUrl) {
         return submitPaymentProof({
           userId: opts.userId || '',
@@ -657,7 +781,7 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
         if (typeof opts.onSuccess === 'function') opts.onSuccess();
       }).catch(function (error) {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit payment proof';
+        submitBtn.textContent = 'Submit Payment Proof →';
         showError((error && error.message) || 'Payment proof could not be submitted — please try again.');
       });
     });
@@ -731,4 +855,5 @@ if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
   window.createUpiPaymentView = createUpiPaymentView;
   window.createProofForm = createProofForm;
   window.createUnderReviewNotice = createUnderReviewNotice;
+  window.populateProPlanSelect = populateProPlanSelect;
 })();

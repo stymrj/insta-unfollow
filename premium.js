@@ -17,10 +17,10 @@ function openPremiumModal() {
         // Fetch and update prices from API
         fetchPremiumPrices();
 
-        // Plan options default to the 1-month plan on every open.
+        // Plan dropdown defaults to 6-month popular plan on open.
         wireModalPlanOptions();
         wirePromoRedeem();
-        setModalSelectedPlan('1mo');
+        setModalSelectedPlan(modalSelectedPlanKey || '6mo');
 
         // Update pricing and subscription button visibility
         updatePremiumModalContent();
@@ -145,22 +145,50 @@ function initializePremiumModal() {
     wireModalPlanOptions();
 }
 
-// The selected plan option drives the single subscribe button below the
-// options: its data-plan (read by the page's click handler) and its label
-// always match the selected option. Default selected plan: 1 month.
+let modalSelectedPlanKey = '6mo';
+
 function setModalSelectedPlan(planKey) {
     if (!Array.isArray(window.PREMIUM_PLANS) || !window.PREMIUM_PLANS.length) return '1mo';
     const plan = typeof window.getPremiumPlan === 'function'
         ? window.getPremiumPlan(planKey) : window.PREMIUM_PLANS[0];
-    document.querySelectorAll('.premium-plan-option').forEach((option) => {
-        const selected = option.getAttribute('data-plan') === plan.key;
-        option.classList.toggle('selected', selected);
-        option.setAttribute('aria-checked', selected ? 'true' : 'false');
-    });
+    modalSelectedPlanKey = plan.key;
+
+    const selectEl = document.getElementById('modalPlanSelect');
+    if (selectEl && selectEl.value !== plan.key) {
+        selectEl.value = plan.key;
+    }
+
+    // Update live Pro Price Header in modal
+    const livePrice = document.getElementById('modalLivePrice');
+    const liveStrike = document.getElementById('modalLiveStrike');
+    const liveCycle = document.getElementById('modalLiveCycle');
+    const liveSave = document.getElementById('modalLiveSave');
+    const liveEff = document.getElementById('modalLivePerMonth');
+
+    if (livePrice) livePrice.textContent = '₹' + plan.price;
+    if (liveStrike) {
+        if (plan.strike != null && plan.strike > plan.price) {
+            liveStrike.textContent = '₹' + plan.strike;
+            liveStrike.style.display = 'inline';
+        } else {
+            liveStrike.style.display = 'none';
+        }
+    }
+    if (liveCycle) liveCycle.textContent = '/ ' + plan.label;
+    if (liveSave) {
+        liveSave.textContent = plan.save > 0
+            ? ((plan.key === '12mo' ? 'BEST VALUE · SAVE ₹' : 'SAVE ₹') + plan.save)
+            : 'FLEXIBLE STARTER';
+        liveSave.classList.toggle('muted', !(plan.save > 0));
+    }
+    if (liveEff) {
+        liveEff.textContent = '₹' + plan.perMonth + '/mo effective · One-time pass, no auto-debit';
+    }
+
     const button = document.getElementById('premiumSubscribeButton');
     if (button) {
         button.setAttribute('data-plan', plan.key);
-        button.textContent = 'Continue — ' + plan.label + ' · ₹' + plan.price;
+        button.textContent = 'Unlock Pro — ' + plan.label + ' · ₹' + plan.price + ' →';
     }
     return plan.key;
 }
@@ -168,37 +196,26 @@ function setModalSelectedPlan(planKey) {
 let modalPlanOptionsWired = false;
 
 function wireModalPlanOptions() {
-    if (modalPlanOptionsWired) return;
-    const options = document.getElementById('premiumPlanOptions');
-    if (!options) return;
-    modalPlanOptionsWired = true;
-    options.addEventListener('click', (event) => {
-        const option = event.target.closest('.premium-plan-option');
-        if (option) setModalSelectedPlan(option.getAttribute('data-plan'));
-    });
+    const selectEl = document.getElementById('modalPlanSelect');
+    if (!selectEl || !Array.isArray(window.PREMIUM_PLANS)) return;
+    if (typeof window.populateProPlanSelect === 'function' && !selectEl.options.length) {
+        window.populateProPlanSelect(selectEl, modalSelectedPlanKey);
+    }
+    if (!modalPlanOptionsWired) {
+        modalPlanOptionsWired = true;
+        selectEl.addEventListener('change', () => {
+            setModalSelectedPlan(selectEl.value);
+        });
+    }
 }
 
 function fetchPremiumPrices() {
-    // Prices come from the shared plan definition (premium-config.js) — the
-    // static markup carries the same values as a first render, and this
-    // re-renders them from the definition on every open so the two cannot drift.
     if (!Array.isArray(window.PREMIUM_PLANS)) return;
-    window.PREMIUM_PLANS.forEach((plan) => {
-        const priceEl = document.getElementById('premiumPlanPrice-' + plan.key);
-        if (priceEl) priceEl.textContent = '₹' + plan.price;
-        const strikeEl = document.getElementById('premiumPlanStrike-' + plan.key);
-        if (strikeEl) strikeEl.textContent = plan.strike == null ? '' : '₹' + plan.strike;
-        const saveEl = document.getElementById('premiumPlanSave-' + plan.key);
-        if (saveEl) {
-            saveEl.textContent = plan.save == null ? ''
-                : (plan.save > 0 ? 'Save ₹' + plan.save : 'No discount');
-        }
-        const perMonthEl = document.getElementById('premiumPlanPerMonth-' + plan.key);
-        if (perMonthEl) perMonthEl.textContent = '₹' + plan.perMonth + '/mo';
-    });
-    // Keep the subscribe button in sync with the current selection.
-    const selected = document.querySelector('.premium-plan-option.selected');
-    if (selected) setModalSelectedPlan(selected.getAttribute('data-plan'));
+    const selectEl = document.getElementById('modalPlanSelect');
+    if (selectEl && typeof window.populateProPlanSelect === 'function') {
+        window.populateProPlanSelect(selectEl, modalSelectedPlanKey);
+    }
+    setModalSelectedPlan(modalSelectedPlanKey);
 }
 
 function updatePremiumModalContent() {
@@ -256,6 +273,16 @@ function updatePremiumModalContent() {
           methods,
           onPick: (method) => onMethodPicked(method)
         }));
+        const backBtn = document.createElement('button');
+        backBtn.type = 'button';
+        backBtn.className = 'pro-back-btn';
+        backBtn.textContent = '← Change plan';
+        backBtn.addEventListener('click', () => {
+          hideModalPaymentStep();
+          setModalSubscribeButtonsVisible(true);
+        });
+        stepEl.appendChild(backBtn);
+        stepEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       };
 
       const showProofForm = (method) => {

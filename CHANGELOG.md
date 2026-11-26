@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.1.1 — 2026-11-26
+
+### Studio Pro Subscription Page, Animated Plan Dropdown & Dark-Glass UPI Checkout
+- **Redesigned Subscription Experience (`popup.html`, `analyzer.html`, `bot-scan.html`, `theme.css`):**
+  - Replaced the 5 stacked inline-white radio buttons and cramped 2-column popup boxes with a flagship **Pro Creator Pass Showcase Card**, live tabular pricing telemetry (`₹49` to `₹499`, crossed-out strike price, effective `₹/mo` rate, and dynamic `SAVE ₹XX` / `BEST VALUE` badges), 6-perk grid, and a clean **Free vs Pro Comparison Matrix**.
+  - Built an accessible, animated **Plan Duration Dropdown (`<select class="pro-plan-select">`)** powered by modern CSS `appearance: base-select`, `<selectedcontent>`, top-layer `::picker(select)` (`width: anchor-size(width)`), `@starting-style` + `transition-behavior: allow-discrete` animations, and graceful plain-text fallback.
+  - Upgraded the shared **UPI Checkout & Proof Submission Flow (`premium-config.js`)** with dark-glass summary headers, 1-click UPI ID copy bar, camera-ready QR frame, and a custom drag/click screenshot dropzone.
+
 ## 3.1.0 — 2026-11-26
 
 ### Followers-Block Fix, Never-Surrender Rescue & Obsidian Neon-Aurora Studio Design
